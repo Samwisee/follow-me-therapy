@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<!-- saved from url=(0032)http://127.0.0.1:5500/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Follow Me Therapy | Occupational Therapy by Simone Gabriele</title>
+    <style>
+
+@font-face {
+    font-family: "Formula Condensed";
+    src: url('fonts/FormulaCondensed.woff2') format('woff2'),
+         url('fonts/FormulaCondensed.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Apply the font globally */
+html, body {
+    font-family: "Formula Condensed", sans-serif;
+}
+        /* Enable smooth scroll behavior for anchor links */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        html, body {
+            font-family: "Obviously", sans-serif;
+        }
+
+        body {
+            font-family: 'Obviously', sans-serif;
+            color: #333;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        h1, h2, h3 {
+            color: #333;
+            text-align: center;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 2.8em;
+        }
+
+        h2 {
+            font-size: 2.4em;
+            margin-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.1em;
+            line-height: 1.8em;
+            margin-bottom: 20px;
+            text-align: left;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+            text-align: left;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        ul li {
+            margin-bottom: 15px;
+        }
+
+        /* Section Wrapper for full-width backgrounds */
+        .section-wrapper {
+            width: 100%;
+        }
+
+        section {
+            padding: 50px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-section {
+            position: relative;
+            background: url('main.png') no-repeat center center/cover;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero-content {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px 40px;
+            border-radius: 10px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .btn-primary, .btn-secondary {
+            background-color: #FF6F61;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1.2em;
+            cursor: pointer;
+            margin: 10px 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-secondary {
+            background-color: #7B61FF;
+        }
+
+        .btn-primary:hover {
+            background-color: #E65A50;
+        }
+
+        .btn-secondary:hover {
+            background-color: #6953E0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .service-item {
+            background-color: #FFFFFF;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .service-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            animation:fadein .15s;
+        }
+
+        .modal.show {
+            display: block;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 40px;
+            width: 90%;
+            max-width: 600px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes fadein {
+            from {
+                opacity:0;
+            }
+            to {
+                opacity:1;
+            }
+        }
+
+        .modal .close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        .modal .btn-primary {
+            margin-top: 30px;
+            width: 100%;
+            text-align: center;
+        }
+
+        header.fixed-header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            max-width: 400px;
+            left: 50%; /* Center horizontally */
+            transform: translateX(-50%);
+            background-color: rgba(255, 255, 255, 0.8); /* Translucent light color */
+            backdrop-filter: blur(4px); /* Vibrancy effect */
+            color: white;
+            padding: 10px 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 0 0 10px 10px;
+            z-index: 1000;
+        }
+
+        header.fixed-header a {
+            padding: 0 10px;
+            text-decoration: none;
+            color: black;
+            border-radius: 5px;
+        }
+
+        header.fixed-header a:hover {
+            background-color: #E65A50;
+        }
+
+        footer.fixed-footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            max-width: 400px; /* Set max width */
+            left: 50%; /* Center horizontally */
+            transform: translateX(-50%);
+            background-color: rgba(255, 255, 255, 0.8); /* Translucent dark color */
+            backdrop-filter: blur(4px); /* Vibrancy effect */
+            color: white;
+            padding: 10px 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px 10px 0 0;
+        }
+
+        footer.fixed-footer a {
+            padding: 10px 20px;
+            text-decoration: none;
+            color: white;
+            background-color: rgb(23, 117, 118);
+            border-radius: 5px;
+        }
+
+        footer.fixed-footer a:hover {
+            background-color: #E65A50;
+        }
+
+        footer.fixed-footer .btn-secondary {
+            background-color: #7B61FF;
+        }
+
+        footer.fixed-footer .btn-secondary:hover {
+            background-color: #6953E0;
+        }
+
+        footer.footer-section {
+            background-color: #2E2E2E;
+            color: white;
+            padding: 20px 0;
+            margin-top: 60px;
+        }
+
+        footer .social-links a {
+            color: #FF6F61;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer .social-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Flex styles for image and list */
+        .flex-container {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .flex-container ul {
+            flex: 1 1 200px;
+        }
+
+        .flex-container img {
+            flex: 1 2 200px;
+        }
+
+        /* Responsive Image */
+        img.responsive-image {
+            max-width: 50%;
+            border-radius: 10px;
+        }
+
+        .divider {
+            margin-left: 20%;
+            margin-right: 20%;
+            border: none;
+            border-bottom: 1px solid #ccc;
+        }
+
+        /* Media Queries for responsiveness */
+        @media (max-width: 650px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2.5em;
+            }
+
+            h2 {
+                font-size: 2em;
+            }
+
+            .hero-section {
+                height: 50vh;
+            }
+
+            p {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+
+            ul {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+
+            img.responsive-image {
+                max-width: 100%;
+                height: auto;
+            }
+
+            .flex-container {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2.3em;
+            }
+
+            h2 {
+                font-size: 2em;
+            }
+
+            .hero-section {
+                height: 40vh;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="fixed-header">
+        <a href="http://127.0.0.1:5500/index.html#ot-services">Services</a>
+        <a href="http://127.0.0.1:5500/index.html#telehealth">Telehealth</a>
+        <a href="http://127.0.0.1:5500/index.html#funding">Funding</a>
+        <a href="http://127.0.0.1:5500/index.html#about-simone">Team</a>
+    </header>
+
+    <div class="section-wrapper" style="background: url(&#39;path.png&#39;) no-repeat center center/cover;">
+        <section id="about" class="content-section" style="background-color: transparent;">
+            <div class="content-wrapper" style="
+    background-color: rgba(255, 255, 255, 0.4); /* Translucent white */
+    backdrop-filter: blur(4px); /* Vibrancy effect */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    border-radius: 10px; /* Rounded corners */
+    color: black; 
+    padding-bottom: 20px; 
+    padding: 20px;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    text-align: center;">
+    
+    <img src="./Follow Me Therapy _ Occupational Therapy by Simone Gabriele_files/main_logo.png" alt="Follow Me Therapy Logo" style="max-width: 400px; width: 100%; height: auto; margin-bottom: 20px; margin-top: 40px;">
+    <p>We are a <b>paediatric occupational therapy</b> provider empowering children, young people, and their families to live their fullest life!</p>
+    <p>We service 0-18 years of age, with a wide range of support needs. As a mobile service, we provide Telehealth and community-based sessions in the North-Western Melbourne area.</p> 
+    <p>We know that your time is limited – so let's maximise what we’re getting out of therapy!</p> 
+    <p style="font-size: 24px;">So what are you waiting for?</p>
+    <p style="font-size: 48px; font-family: &#39;Comic Sans MS&#39;, cursive; color: #FF6F61; margin-top: -10px;">Follow Me!</p>
+</div>
+        </section>
+    </div>
+
+    <div class="section-wrapper" style="background-color: #FFE8BA;">
+        <section id="ot-services" class="content-section" style="padding-bottom: 50px;">
+            <div class="content-wrapper">
+                <h2>Occupational Therapy</h2>
+                <p style="font-size: 20px"><i>Occupational therapy (OT) is about daily activities, joy, and who we aspire to be.</i></p>
+                <p>We help children recover, develop, and maintain the skills for independence and community involvement. Our services are personalized to meet each child’s unique needs.</p>
+                <div class="flex-container">
+                    <div>
+                        <p>Occupational therapy can help you to:</p>
+                        <ul style="text-align: left;">
+                            <li style="margin-bottom: 15px;">— Improve fine and gross motor skills</li>
+                            <li style="margin-bottom: 15px;">— Enhance sensory processing</li>
+                            <li style="margin-bottom: 15px;">— Develop social skills</li>
+                            <li style="margin-bottom: 15px;">— Support emotional regulation</li>
+                            <li style="margin-bottom: 15px;">— Build self-care and independence</li>
+                        </ul>
+                    </div>
+                    <img src="./Follow Me Therapy _ Occupational Therapy by Simone Gabriele_files/kids-playing.jpg" alt="Occupational Therapy Services" class="responsive-image" style="margin-top: 20px;">
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="section-wrapper" style="background-color: #FFE8BA;">
+        <section id="services" class="content-section services-section" style="padding-bottom: 50px;">
+            <div class="content-wrapper">
+                <h2>Our Services</h2>
+                <div class="services-grid">
+                    <div class="service-item" data-service="pediatric">
+                        <h3>5 Steps Forward</h3>
+                        <p>A focused 5-session program designed to address specific therapy goals.</p>
+                    </div>
+                    <div class="service-item" data-service="adult">
+                        <h3>Steady Steps Block</h3>
+                        <p>12-week structured therapy block for building key skills through consistent, ongoing support.</p>
+                    </div>
+                    <div class="service-item" data-service="home">
+                        <h3>Early Start Denver Model</h3>
+                        <p>An evidence-based, play-based therapy designed for young children with autism.</p>
+                    </div>
+                    <div class="service-item" data-service="assessments">
+                        <h3>Assessments</h3>
+                        <ul>
+                            <li>NDIS Access Report</li>
+                            <li>Functional Capacity</li>
+                            <li>Progress Report</li>
+                            <li>Sensory Processing</li>
+                            <li>Assistive Technology</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="section-wrapper" style="background-color: #e7d7f8">
+        <section id="telehealth" class="content-section" style="padding-bottom: 20px;">
+            <div class="content-wrapper">
+                <h2>Telehealth Services</h2>
+                <p>Telehealth therapy offers a convenient and flexible way to access occupational therapy services from the comfort of your home. By using secure video conferencing, families can connect with their therapist without the need for travel, saving valuable time and making therapy more accessible. This approach not only allows for flexible scheduling to accommodate busy lives but also enables us to reach more families, including those in remote or underserved areas. With telehealth, therapy sessions can be seamlessly integrated into your routine, ensuring consistent and effective support for your child’s development.</p>
+                <div class="telehealth-logo">
+                    <p>Our telehealth sessions are conducted via:</p>
+                    <img src="./Follow Me Therapy _ Occupational Therapy by Simone Gabriele_files/teams-logo.webp" alt="Microsoft Teams Logo" style="width:130px;">
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="section-wrapper" style="background-color: #e7d7f8" ;"="">
+        <section id="funding" class="content-section" style="padding-bottom: 50px;">
+            <div class="content-wrapper">
+                <h2>Funding Options</h2>
+                <p><b>NDIS</b> – We service Self-Managed and Plan managed NDIS participants. We tailor therapy plans to meet your goals.</p>
+                <p><b>Private</b> – Flexible options are available for families and children, including short and long-term support. We also work with private health cover.</p> 
+                <p><b>Medicare referral</b> – Contact us to explore Medicare options for occupational therapy services.</p> 
+            </div>
+            <div class="telehealth-logo">
+                <a href="http://127.0.0.1:5500/index.html#funding">
+                    <img src="./Follow Me Therapy _ Occupational Therapy by Simone Gabriele_files/medicare-logo.png" alt="Medicare Logo" style="width:200px;">
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <div class="section-wrapper" style="background-color: rgb(255, 219, 134);">
+        <section id="about-simone" class="content-section">
+            <h2>Meet the Team</h2>
+            <div class="content-wrapper" style="display: flex; flex-wrap: wrap; align-items: center; gap: 40px;">
+                <img src="./Follow Me Therapy _ Occupational Therapy by Simone Gabriele_files/simone.jpg" alt="Simone Gabriele" style="flex: 1; max-width: 100%; height: auto; border-radius: 10px;">
+                <div style="flex: 2;">
+                    <p>Simone Gabriele, Master of Occupational Therapy graduate from La Trobe University, specializes in early intervention, supporting children with developmental delays, autism, and sensory challenges.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="section-wrapper" style="background-color: rgb(206, 191, 250);">
+        <section id="contact" class="content-section contact-section" style="padding-bottom: 100px;">
+            <div class="content-wrapper">
+                <h2>Get in Touch</h2>
+                <p style="text-align: center;">Contact us today to schedule a consultation and learn more about how we can help:</p>
+                <div style="text-align: center;">
+                    <a href="mailto:info@followmetherapy.com.au" style="display: block; margin-bottom: 10px;">
+                        info@followmetherapy.com.au
+                    </a>
+                    <a href="tel:+61435076683" style="display: block;">
+                        0435 076 683
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="section-wrapper" style="background-color: #5b1f10;">
+        <section id="company" class="content-section" style="padding: 50px 20px; color: white;">
+            <div class="content-wrapper">
+                <h4 style="color: white;">Follow Me Therapy Pty Ltd</h4>
+                <p style="text-align: center; font-size: 1.2em; max-width: 800px; margin-left: auto; margin-right: auto;">
+                    Follow Me Therapy Pty Ltd is a registered Australian company providing high-quality paediatric occupational therapy services. We are committed to empowering children and families through tailored intervention programs and support.
+                </p>
+                <p style="text-align: center; font-size: 1.1em; margin-bottom: 40px;">
+                    ABN: 12 345 678 910<br>Registered Office: North-Western Melbourne, Victoria, Australia
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <footer class="fixed-footer">
+        <a href="https://follow-me-therapy.splose.com/public-form/e84c8756-615f-4404-a6f3-a90f3760223b" target="_blank" class="btn-primary">Contact Us</a>
+        <a href="https://follow-me-therapy.splose.com/public-form/975d61d5-cd63-44e5-86e7-f9315fa6a5b0" target="_blank" class="btn-secondary">Referral Link</a>
+    </footer>
+
+    <!-- Modal Structure -->
+    <div id="serviceModal" class="modal">
+        <div class="modal-content">
+            <span class="close">×</span>
+            <div id="modalContent"></div>
+            <a href="https://follow-me-therapy.splose.com/public-form/e84c8756-615f-4404-a6f3-a90f3760223b" class="btn-primary">Contact Us</a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            const serviceItems = document.querySelectorAll('.service-item');
+            const modal = document.getElementById('serviceModal');
+            const modalContent = document.getElementById('modalContent');
+            const closeModal = document.querySelector('.modal .close');
+
+            const serviceDetails = {
+                pediatric: {
+                    title: '5 Steps Forward',
+                    content: '5 Steps Forward is a focused, short-term occupational therapy program designed to deliver targeted support over the course of 5 sessions in 5 weeks. Ideal for families looking for quick, actionable results.'
+                },
+                adult: {
+                    title: 'Steady Steps Block Model',
+                    content: 'A 12-week therapy block offering structured and consistent support to develop essential skills and achieve lasting progress.'
+                },
+                home: {
+                    title: 'Early Start Denver Model',
+                    content: 'Evidence-based therapy for young children with autism, focusing on play-based developmental growth.'
+                },
+                assessments: {
+                    title: 'Assessments',
+                    content: '<ul><li>NDIS Access Report</li><li>Functional Capacity Assessment</li><li>Progress Report</li><li>Sensory Processing Assessment</li><li>Assistive Technology Assessment</li></ul>'
+                }
+            };
+
+            serviceItems.forEach(item => {
+                item.addEventListener('click', function () {
+                    const serviceType = this.getAttribute('data-service');
+                    modalContent.innerHTML = `<h3>${serviceDetails[serviceType].title}</h3><p>${serviceDetails[serviceType].content}</p>`;
+                    modal.classList.add('show');
+                });
+            });
+
+            closeModal.addEventListener('click', function () {
+                modal.classList.remove('show');
+            });
+
+            window.addEventListener('click', function (event) {
+                if (event.target == modal) {
+                    modal.classList.remove('show');
+                }
+            });
+        });
+    </script>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+</body></html>
