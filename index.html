@@ -301,10 +301,6 @@
         border-radius: 5px;
       }
 
-      header.fixed-header a:hover {
-        background-color: #e65a50;
-      }
-
       /* Initially hide the footer by positioning it off-screen */
       footer.fixed-footer {
         position: fixed;
@@ -339,7 +335,7 @@
       }
 
       footer.fixed-footer a:hover {
-        background-color: #e65a50;
+        background-color: rgb(14, 103, 104);
       }
 
       footer.fixed-footer .btn-secondary {
@@ -420,6 +416,28 @@
       }
 
       .simone-image {
+        width: 300px;
+        height: auto;
+        float: left;
+        margin-right: 20px;
+        border-radius: 10px;
+      }
+
+      /* Telehealth Section Styling */
+      .telehealth-wrapper {
+        background-color: #e7d7f8;
+      }
+
+      .telehealth-content {
+        position: relative;
+        z-index: 2;
+        border-radius: 15px;
+        padding: 20px;
+        margin-top: 30px;
+        text-align: left;
+      }
+
+      .telehealth-image {
         width: 300px;
         height: auto;
         float: left;
@@ -574,19 +592,6 @@
           font-size: 2em;
         }
 
-        .telehealth-image {
-          width: 100%; /* Make the image full width on mobile */
-          display: block;
-          margin: 0 auto 20px auto; /* Center the image and add margin-bottom for spacing */
-        }
-
-        .telehealth-content {
-          align-items: center;
-          display: flex; /* To make sure it wraps as needed */
-          flex-wrap: wrap; /* Allow the items to wrap */
-          gap: 20px; /* Add some gap between the items */
-        }
-
         .cta-text {
           font-size: 20px;
         }
@@ -595,7 +600,8 @@
           font-size: 36px;
         }
 
-        #about-simone .content-wrapper img {
+        #about-simone .content-wrapper img,
+        .telehealth-content img {
           float: none;
           display: block;
           margin: 0 auto 20px auto;
@@ -603,11 +609,13 @@
           max-width: 100%;
         }
 
-        #about-simone .content-wrapper {
+        #about-simone .content-wrapper,
+        .telehealth-content {
           text-align: center;
         }
 
-        #about-simone .content-wrapper p {
+        #about-simone .content-wrapper p,
+        .telehealth-content p {
           text-align: left;
         }
       }
@@ -668,26 +676,6 @@
           transparent 12px,
           #e7d7f8 13px
         );
-      }
-
-      /* Telehealth Section Styling */
-      .telehealth-wrapper {
-        background-color: #e7d7f8;
-      }
-
-      .telehealth-content {
-        align-items: center;
-        gap: 20px;
-        margin-top: 30px;
-        text-align: left;
-      }
-
-      .telehealth-image {
-        width: 100%;
-        height: auto;
-        float: left;
-        margin-right: 20px;
-        border-radius: 10px;
       }
 
       .wave::after {
@@ -889,23 +877,19 @@
               class="telehealth-image"
             />
             <p style="margin-top: 0px">
-              Delivered remotely via secure video calls and phone calls,
-              telehealth allows families to receive therapy from the comfort of
-              their own home. In fact, telepractice is nothing new, with decades
-              of evidence backing its use. Our vision is for families, children,
-              and young people to access support when they need it most. With
-              telehealth seamlessly integrated into the family routine, you’ll
-              receive the consistent support your child needs for development
-              and skill-building. Families can connect with their therapist
-              virtually without the need for travel, saving valuable time and
-              making therapy more accessible, including for those in rural or
-              underserved areas. Telehealth can be utilised to go beyond the
-              home to support you in a variety of settings. Whether it be a
-              coaching video call with grandparents, developing a skill building
-              program for your support workers, or collaborating with the
-              classroom teacher. Telehealth can be a long term solution to
-              accessing professional support from anywhere in Australia. Or an
-              interim solution to extensive wait times.
+              Families can connect with their therapist virtually via video or
+              phone call without the need for travel. Telepractices save
+              valuable time and make therapy more accessible, including for
+              those in rural or underserved areas. With telehealth seamlessly
+              integrated into the family routine, you’ll receive the consistent
+              support your child needs for development and skill-building.
+              Telehealth can be utilised to go beyond the home to support you in
+              a variety of settings. Whether it be a coaching call with
+              grandparents, developing a skill building program for your support
+              workers, or collaborating with the classroom teacher. Telehealth
+              can be a long term solution to accessing professional support from
+              anywhere in Australia. Or an interim solution to extensive wait
+              times.
             </p>
             <div
               class="telehealth-logo"
@@ -1003,9 +987,8 @@
           <div class="content-wrapper">
             <h2>Get in Touch</h2>
             <p class="centered-text">
-              Get in touch directly to schedule an initial assessment, or fill
-              in the “Contact Us” form below and our team will be in touch
-              shortly:
+              Fill in the “Contact Us” form below, or get in touch directly to
+              find out more:
             </p>
             <div style="text-align: center">
               <a href="mailto:info@followmetherapy.com.au" class="contact-link">
