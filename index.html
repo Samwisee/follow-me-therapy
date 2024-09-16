@@ -1,846 +1,996 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Follow Me Therapy | Occupational Therapy by Simone Gabriele</title>
-    <link rel="icon" href="fave_icon.png" type="image/png">
+    <link rel="icon" href="fave_icon.png" type="image/png" />
 
     <!-- Google Fonts: Quicksand -->
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
     <style>
+      /* Global Styles */
+      html {
+        scroll-behavior: smooth;
+      }
 
-        /* Enable smooth scroll behavior for anchor links */
-        html {
-            scroll-behavior: smooth;
+      html,
+      body {
+        font-family: "Quicksand", sans-serif;
+        color: #333;
+        background-color: #f9f9f9;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Headings */
+      h1,
+      h2,
+      h3 {
+        color: #333;
+        margin: 0;
+      }
+
+      h1 {
+        font-size: 2.8em;
+        text-align: center;
+      }
+
+      h2 {
+        font-size: 2.4em;
+        margin-bottom: 10px;
+        text-align: left;
+        position: relative;
+        display: inline-block;
+        padding-bottom: 30px;
+      }
+
+      h2::after {
+        content: "";
+        display: block;
+        width: 100px;
+        height: 2px;
+        background-color: #333;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+      }
+
+      h3 {
+        font-size: 1.8em;
+        margin-bottom: 10px;
+      }
+
+      /* Text Elements */
+      p {
+        font-size: 1.1em;
+        line-height: 1.8em;
+        margin-bottom: 20px;
+        text-align: left;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      ul {
+        list-style: none;
+        padding-left: 0;
+        text-align: left;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      ul li {
+        margin-bottom: 15px;
+      }
+
+      /* Section Wrapper */
+      .section-wrapper {
+        width: 100%;
+      }
+
+      section {
+        padding: 50px 20px;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      /* Hero Section */
+      .hero-section {
+        position: relative;
+        background: url("main.png") no-repeat center center/cover;
+        height: 60vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-align: center;
+      }
+
+      .hero-content {
+        background: rgba(0, 0, 0, 0.5);
+        padding: 20px 40px;
+        border-radius: 10px;
+        max-width: 800px;
+        margin: auto;
+      }
+
+      /* Buttons */
+      .btn-primary,
+      .btn-secondary {
+        background-color: #ff6f61;
+        color: white;
+        padding: 15px 30px;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 1.2em;
+        cursor: pointer;
+        margin: 10px 5px;
+        transition: background-color 0.3s ease;
+      }
+
+      .btn-secondary {
+        background-color: #7b61ff;
+      }
+
+      .btn-primary:hover {
+        background-color: #e65a50;
+      }
+
+      .btn-secondary:hover {
+        background-color: #6953e0;
+      }
+
+      /* Service Grid */
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+        margin-top: 40px;
+      }
+
+      .service-item {
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+      }
+
+      .service-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .service-item img {
+        display: block;
+        margin: 0 auto 10px;
+        width: 80px;
+        height: auto;
+      }
+
+      /* Modal styles */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        animation: fadein 0.15s;
+      }
+
+      .modal.show {
+        display: block;
+        opacity: 1;
+      }
+
+      .modal-content {
+        background-color: white;
+        padding: 40px;
+        width: 90%;
+        max-width: 600px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      }
+
+      @keyframes fadein {
+        from {
+          opacity: 0;
         }
-        
-        html, body {
-            font-family: 'Quicksand', sans-serif;
-            color: #333;
-            background-color: #f9f9f9;
-            margin: 0;
-            padding: 0;
+        to {
+          opacity: 1;
         }
-        
-        body {
-            color: #333;
-            background-color: #f9f9f9;
-            margin: 0;
-            padding: 0;
-        }
-        
-        /* Headings */
-        h1, h2, h3 {
-            color: #333;
-            margin: 0;
-        }
-        
-        h1 {
-            font-size: 2.8em;
-            text-align: center;
-        }
-        
-        h2 {
-            font-size: 2.4em;
-            margin-bottom: 10px;
-            text-align: left;
-            position: relative;
-            display: inline-block;
-            padding-bottom: 30px; /* Adjust space between text and underline */
-        }
-        
-        h2:after {
-            content: "";
-            display: block;
-            width: 100px;
-            height: 2px;
-            background-color: #333;
-            position: absolute;
-            bottom: 0;
-            left: 0;
-        }
-        
-        h3 {
-            font-size: 1.8em;
-            margin-bottom: 10px;
-        }
-        
-        /* Text Elements */
-        p {
-            font-size: 1.1em;
-            line-height: 1.8em;
-            margin-bottom: 20px;
-            text-align: left;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        ul {
-            list-style: none;
-            padding-left: 0;
-            text-align: left;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        ul li {
-            margin-bottom: 15px;
-        }
-        
-        /* Section Wrapper for full-width backgrounds */
-        .section-wrapper {
-            width: 100%;
-        }
-        
-        section {
-            padding: 50px 20px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        /* Hero Section */
-        .hero-section {
-            position: relative;
-            background: url('main.png') no-repeat center center/cover;
-            height: 60vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-align: center;
-        }
-        
-        .hero-content {
-            background: rgba(0, 0, 0, 0.5);
-            padding: 20px 40px;
-            border-radius: 10px;
-            max-width: 800px;
-            margin: auto;
-        }
-        
-        /* Buttons */
-        .btn-primary, .btn-secondary {
-            background-color: #FF6F61;
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 1.2em;
-            cursor: pointer;
-            margin: 10px 5px;
-            transition: background-color 0.3s ease;
-        }
-        
-        .btn-secondary {
-            background-color: #7B61FF;
-        }
-        
-        .btn-primary:hover {
-            background-color: #E65A50;
-        }
-        
-        .btn-secondary:hover {
-            background-color: #6953E0;
-        }
-        
-        /* Service Grid */
+      }
+
+      .modal .close {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        font-size: 28px;
+        cursor: pointer;
+      }
+
+      .modal .btn-primary {
+        margin-top: 30px;
+        width: 100%;
+        text-align: center;
+      }
+
+      /* Fixed Header */
+      header.fixed-header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        max-width: 400px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(4px);
+        color: white;
+        padding: 10px 0;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 0 0 10px 10px;
+        z-index: 1000;
+      }
+
+      header.fixed-header a {
+        padding: 0 10px;
+        text-decoration: none;
+        color: black;
+        border-radius: 5px;
+      }
+
+      header.fixed-header a:hover {
+        background-color: #e65a50;
+      }
+
+      /* Fixed Footer */
+      footer.fixed-footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        max-width: 400px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(4px);
+        color: white;
+        padding: 10px 0;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px 10px 0 0;
+        z-index: 1000;
+      }
+
+      footer.fixed-footer a {
+        padding: 10px 20px;
+        text-decoration: none;
+        color: white;
+        background-color: rgb(23, 117, 118);
+        border-radius: 5px;
+      }
+
+      footer.fixed-footer a:hover {
+        background-color: #e65a50;
+      }
+
+      footer.fixed-footer .btn-secondary {
+        background-color: #7b61ff;
+      }
+
+      footer.fixed-footer .btn-secondary:hover {
+        background-color: #6953e0;
+      }
+
+      /* Footer Section */
+      footer.footer-section {
+        background-color: #2e2e2e;
+        color: white;
+        padding: 20px 0;
+        margin-top: 60px;
+      }
+
+      footer .social-links a {
+        color: #ff6f61;
+        text-decoration: none;
+        margin: 0 10px;
+      }
+
+      footer .social-links a:hover {
+        text-decoration: underline;
+      }
+
+      /* Flex styles for image and list */
+      .flex-container {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      .flex-container ul {
+        flex: 1 1 200px;
+      }
+
+      .flex-container img {
+        flex: 1 2 200px;
+      }
+
+      .about-simone-wrapper {
+        background: url("footsies2.png") no-repeat center center/cover;
+      }
+
+      .about-simone-content {
+        background-color: rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 15px;
+        padding: 20px;
+        margin-top: 30px;
+        text-align: left;
+      }
+
+      .simone-image {
+        width: 300px;
+        height: auto;
+        float: left;
+        margin-right: 20px;
+        border-radius: 10px;
+      }
+
+      /* Responsive Image */
+      img.responsive-image {
+        max-width: 50%;
+        border-radius: 10px;
+      }
+
+      /* Divider */
+      .divider {
+        margin-left: 20%;
+        margin-right: 20%;
+        border: none;
+        border-bottom: 1px solid #ccc;
+      }
+
+      /* About section */
+      .about-wrapper {
+        background-color: #008c9e;
+      }
+
+      .about-content {
+        background-color: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(4px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        padding: 20px 60px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .title-and-logo {
+        display: flex;
+        align-items: center;
+        background-color: #d9b5ff;
+        padding: 20px;
+        border-radius: 10px;
+      }
+
+      .title-and-logo h1 {
+        text-align: start;
+        margin-right: 10px;
+        font-size: 2.5em;
+        margin: 0;
+      }
+
+      .logo-image {
+        width: auto;
+        height: 110px;
+        aspect-ratio: 1 / 1;
+        object-fit: contain;
+      }
+
+      /* Call-to-action text */
+      .cta-text {
+        font-size: 24px;
+        margin-bottom: 0;
+      }
+
+      .cta-emphasis {
+        font-weight: 600;
+        font-size: 54px;
+        color: black;
+        margin-top: -10px;
+      }
+
+      /* Custom Classes */
+      .large-italic-centered {
+        font-size: 28px;
+        text-align: center;
+        font-style: italic;
+      }
+
+      .contact-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 16px;
+        font-size: 24px;
+      }
+
+      .contact-link img {
+        width: 24px;
+        height: 24px;
+        margin-right: 8px;
+      }
+
+      .centered-text {
+        text-align: center;
+        font-size: 24px;
+      }
+
+      /* Media Queries */
+      @media (max-width: 650px) {
         .services-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
-            margin-top: 40px;
+          grid-template-columns: 1fr;
         }
-        
-        .service-item {
-            background-color: #FFFFFF;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
+
+        h1 {
+          font-size: 2.5em;
         }
-        
-        .service-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+
+        h2 {
+          font-size: 2em;
         }
-        
-        .service-item img {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 10px;
-            width: 50px;
-            height: auto;
+
+        .hero-section {
+          height: 50vh;
         }
-        
-        /* Modal styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            animation: fadein .15s;
+
+        p {
+          font-size: 1em;
+          line-height: 1.6em;
+          padding-left: 0;
+          padding-right: 0;
         }
-        
-        .modal.show {
-            display: block;
-            opacity: 1;
+
+        ul {
+          padding-left: 10px;
+          padding-right: 10px;
         }
-        
-        .modal-content {
-            background-color: white;
-            padding: 40px;
-            width: 90%;
-            max-width: 600px;
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-        }
-        
-        @keyframes fadein {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-        
-        .modal .close {
-            position: absolute;
-            top: 10px;
-            right: 20px;
-            font-size: 28px;
-            cursor: pointer;
-        }
-        
-        .modal .btn-primary {
-            margin-top: 30px;
-            width: 100%;
-            text-align: center;
-        }
-        
-        /* Fixed Header */
-        header.fixed-header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            max-width: 400px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(4px);
-            color: white;
-            padding: 10px 0;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            border-radius: 0 0 10px 10px;
-            z-index: 1000;
-        }
-        
-        header.fixed-header a {
-            padding: 0 10px;
-            text-decoration: none;
-            color: black;
-            border-radius: 5px;
-        }
-        
-        header.fixed-header a:hover {
-            background-color: #E65A50;
-        }
-        
-        /* Fixed Footer */
-        footer.fixed-footer {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            max-width: 400px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(4px);
-            color: white;
-            padding: 10px 0;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-            border-radius: 10px 10px 0 0;
-            z-index: 1000;
-        }
-        
-        footer.fixed-footer a {
-            padding: 10px 20px;
-            text-decoration: none;
-            color: white;
-            background-color: rgb(23, 117, 118);
-            border-radius: 5px;
-        }
-        
-        footer.fixed-footer a:hover {
-            background-color: #E65A50;
-        }
-        
-        footer.fixed-footer .btn-secondary {
-            background-color: #7B61FF;
-        }
-        
-        footer.fixed-footer .btn-secondary:hover {
-            background-color: #6953E0;
-        }
-        
-        /* Footer Section */
-        footer.footer-section {
-            background-color: #2E2E2E;
-            color: white;
-            padding: 20px 0;
-            margin-top: 60px;
-        }
-        
-        footer .social-links a {
-            color: #FF6F61;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-        
-        footer .social-links a:hover {
-            text-decoration: underline;
-        }
-        
-        /* Flex styles for image and list */
-        .flex-container {
-            display: flex;
-            flex-wrap: nowrap;
-            justify-content: space-between;
-            gap: 10px;
-        }
-        
-        .flex-container ul {
-            flex: 1 1 200px;
-        }
-        
-        .flex-container img {
-            flex: 1 2 200px;
-        }
-        
-        .about-simone-wrapper {
-            background: url('footsies2.png') no-repeat center center/cover;
-        }
-        
-        .about-simone-content {
-            background-color: rgba(255, 255, 255, 0.4); /* Translucent white */
-            backdrop-filter: blur(10px); /* Vibrancy effect */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-            border-radius: 15px;
-            padding: 20px;
-            margin-top: 30px;
-            text-align: left;
-        }
-        
-        .simone-image {
-            width: 300px;
-            height: auto;
-            float: left;
-            margin-right: 20px;
-            border-radius: 10px;
-        }
-        
-        /* Responsive Image */
+
         img.responsive-image {
-            max-width: 50%;
-            border-radius: 10px;
+          max-width: 100%;
+          height: auto;
         }
-        
-        /* Divider */
-        .divider {
-            margin-left: 20%;
-            margin-right: 20%;
-            border: none;
-            border-bottom: 1px solid #ccc;
+
+        .flex-container {
+          flex-direction: column;
         }
-        
-        /* About section with the content-wrapper */
-        .about-wrapper {
-            background-color: #008c9e;
-        }
-        
+
         .about-content {
-            background-color: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(4px);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            padding: 20px 60px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+          padding: 10px 50px;
         }
-        
-        .title-and-logo {
-            display: flex;
-            align-items: center;
-            background-color: #D9B5FF;
-            padding: 20px;
-            border-radius: 10px;
-        }
-        
+
         .title-and-logo h1 {
-            text-align: start;
-            margin-right: 10px;
-            font-size: 2.5em;
+          font-size: 2em;
         }
-        
-        .logo-image {
-            width: auto;
-            height: 110px;
-        }
-        
-        /* Call-to-action text */
+
         .cta-text {
-            font-size: 24px;
-            margin-bottom: 0;
+          font-size: 20px;
         }
-        
+
         .cta-emphasis {
-            font-weight: 600;
-            font-size: 54px;
-            color: black;
-            margin-top: -10px;
-        }
-        
-        /* Media Queries for responsiveness */
-        @media (max-width: 650px) {
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-        
-            h1 {
-                font-size: 2.5em;
-            }
-        
-            h2 {
-                font-size: 2em;
-            }
-        
-            .hero-section {
-                height: 50vh;
-            }
-        
-            p {
-                padding-left: 0px;
-                padding-right: 0px;
-            }
-        
-            ul {
-                padding-left: 10px;
-                padding-right: 10px;
-            }
-        
-            img.responsive-image {
-                max-width: 100%;
-                height: auto;
-            }
-        
-            .flex-container {
-                flex-direction: column;
-            }
-        
-            /* Specific changes for about section */
-            .about-content {
-                padding: 10px 50px;
-            }
-        
-            .title-and-logo h1 {
-                font-size: 2em;
-            }
-        
-            p {
-                font-size: 1em;
-                line-height: 1.6em;
-            }
-        
-            .cta-text {
-                font-size: 20px;
-            }
-        
-            .cta-emphasis {
-                font-size: 36px;
-            }
-        
-            #about-simone .content-wrapper img {
-                float: none;
-                display: block;
-                margin: 0 auto 20px auto;
-                width: 100%;
-                max-width: 100%;
-            }
-        
-            #about-simone .content-wrapper {
-                text-align: center;
-            }
-        
-            #about-simone .content-wrapper p {
-                text-align: left;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 2.3em;
-            }
-        
-            h2 {
-                font-size: 2em;
-            }
-        
-            .hero-section {
-                height: 40vh;
-            }
-        
-            .about-content {
-                padding: 5px 10px;
-            }
-        
-            .title-and-logo h1 {
-                font-size: 1.8em;
-            }
-        
-            p {
-                font-size: 0.9em;
-                padding: 0px 10px;
-            }
-        
-            .cta-text {
-                font-size: 18px;
-            }
-        
-            .cta-emphasis {
-                font-size: 30px;
-            }
+          font-size: 36px;
         }
 
-        /* Container for title and logo */
-.title-and-logo {
-    display: flex;
-    align-items: center;
-    gap: 0px; /* Space between the logo and text */
-    aspect-ratio: 3 / 1; /* Adjust this ratio based on the desired height-to-width relationship */
-    width: 100%; /* Can adjust width based on how responsive you want it */
-    max-width: 300px; /* Set a max-width to keep it responsive */
-    height: auto;
-}
+        #about-simone .content-wrapper img {
+          float: none;
+          display: block;
+          margin: 0 auto 20px auto;
+          width: 100%;
+          max-width: 100%;
+        }
 
-/* Logo image styling */
-.logo-image {
-    height: 110px; /* Fixed height */
-    aspect-ratio: 1 / 1; /* Ensures the logo maintains a 1:1 aspect ratio */
-    object-fit: contain; /* Ensures the logo fits nicely without distortion */
-}
+        #about-simone .content-wrapper {
+          text-align: center;
+        }
 
-/* h1 styling */
-.title-and-logo h1 {
-    font-size: 2.3em; /* Adjust based on the size of the logo */
-    margin: 0; /* Remove default margin */
-}
-        
-        /* Wave and Sinusoidal Design */
-        .wave {
-            height: 0px;
-            position: relative;
-            background: #FFE8BA;
+        #about-simone .content-wrapper p {
+          text-align: left;
         }
-        
-        .wave::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            background-repeat: repeat;
-            height: 10px;
-            background-size: 20px 20px;
-            background-image: radial-gradient(circle at 10px -5px, transparent 12px, #e7d7f8 13px);
-        }
-        
-        .wave::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            background-repeat: repeat;
-            height: 15px;
-            background-size: 40px 20px;
-            background-image: radial-gradient(circle at 10px 15px, #e7d7f8 12px, transparent 13px);
-        }
-        
-        .wavy-line-horizontal {
-            --s: 60px; /* size of the wave */
-            --b: 20px; /* thickness of the line */
-            --m: 0.7; /* curvature of the wave [0 2] */
-            background: #008c9e;
-            --R: calc(var(--s)*sqrt(var(--m)*var(--m) + 1) + var(--b)/2);
-            height: calc(2*var(--R));
-            width: 100%;
-            --_g: #0000 calc(99% - var(--b)), #000 calc(101% - var(--b)) 99%, #0000 101%;
-            mask:
-              radial-gradient(var(--R) at left 50% bottom calc(-1*var(--m)*var(--s)), var(--_g)) 
-              calc(50% - 2*var(--s)) calc(50% - var(--s)/2 - var(--b)/2)/calc(4*var(--s)) calc(var(--s) + var(--b)) repeat-x,
-              radial-gradient(var(--R) at left 50% top calc(-1*var(--m)*var(--s)),var(--_g)) 
-              50% calc(50% + var(--s)/2 + var(--b)/2)/calc(4*var(--s)) calc(var(--s) + var(--b)) repeat-x;
-        }
-        </style>
-</head>
-<body style="border: white 1px;  border-style: solid;
-  border-width: 8px;">
+      }
 
+      @media (max-width: 480px) {
+        h1 {
+          font-size: 2.3em;
+        }
+
+        h2 {
+          font-size: 2em;
+        }
+
+        .hero-section {
+          height: 40vh;
+        }
+
+        .about-content {
+          padding: 5px 10px;
+        }
+
+        .title-and-logo h1 {
+          font-size: 1.8em;
+        }
+
+        p {
+          font-size: 0.9em;
+          padding: 0 10px;
+        }
+
+        .cta-text {
+          font-size: 18px;
+        }
+
+        .cta-emphasis {
+          font-size: 30px;
+        }
+      }
+
+      /* Wave Design */
+      .wave {
+        height: 0px;
+        position: relative;
+        background: #ffe8ba;
+      }
+
+      .wave::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background-repeat: repeat;
+        height: 10px;
+        background-size: 20px 20px;
+        background-image: radial-gradient(
+          circle at 10px -5px,
+          transparent 12px,
+          #e7d7f8 13px
+        );
+      }
+
+      .wave::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background-repeat: repeat;
+        height: 15px;
+        background-size: 40px 20px;
+        background-image: radial-gradient(
+          circle at 10px 15px,
+          #e7d7f8 12px,
+          transparent 13px
+        );
+      }
+
+      .wavy-line-horizontal {
+        --s: 60px;
+        --b: 20px;
+        --m: 0.7;
+        background: #008c9e;
+        --R: calc(var(--s) * sqrt(var(--m) * var(--m) + 1) + var(--b) / 2);
+        height: calc(2 * var(--R));
+        width: 100%;
+        --_g: #0000 calc(99% - var(--b)), #000 calc(101% - var(--b)) 99%,
+          #0000 101%;
+        mask: radial-gradient(
+              var(--R) at left 50% bottom calc(-1 * var(--m) * var(--s)),
+              var(--_g)
+            )
+            calc(50% - 2 * var(--s)) calc(50% - var(--s) / 2 - var(--b) / 2) /
+            calc(4 * var(--s)) calc(var(--s) + var(--b)) repeat-x,
+          radial-gradient(
+              var(--R) at left 50% top calc(-1 * var(--m) * var(--s)),
+              var(--_g)
+            )
+            50% calc(50% + var(--s) / 2 + var(--b) / 2) / calc(4 * var(--s))
+            calc(var(--s) + var(--b)) repeat-x;
+      }
+    </style>
+  </head>
+  <body>
     <header class="fixed-header">
-        <a href="#ot-services">Services</a>
-        <a href="#telehealth">Telehealth</a>
-        <a href="#funding">Funding</a>
-        <a href="#about-simone">Team</a>
+      <a href="#ot-services">Services</a>
+      <a href="#telehealth">Telehealth</a>
+      <a href="#funding">Funding</a>
+      <a href="#about-simone">Team</a>
     </header>
 
     <div class="section-wrapper about-wrapper">
-        <section id="about" class="content-section">
-            <div class="content-wrapper about-content">
-                <div class="title-and-logo">
-                    <h1>Follow Me Therapy</h1>
-                    <img src="onl.png" alt="Follow me logo" class="logo-image">
-                </div>
-                <p>We are a <b>paediatric occupational therapy</b> provider empowering children, young people, and their families to live their fullest life!</p>
-                <p>Services cater to individuals <b>0-18 years</b> of age, with a wide range of support needs. As a mobile service, <b>Telehealth</b> is available Australia-wide, and <b>Community-based</b> sessions are offered in the North-Western Melbourne area. We know that your time is limited – so let's maximise what we are getting out of therapy!</p>
-                <p style="font-size: 24px;">What are you waiting for?</p>
-                <p style="font-weight: 600; font-size: 54px; color: black; margin-top: 0;"><em>Follow Me!</em></p>
-            </div>
-        </section>
+      <section id="about" class="content-section">
+        <div class="content-wrapper about-content">
+          <div class="title-and-logo">
+            <h1>Follow Me Therapy</h1>
+            <img src="onl.png" alt="Follow me logo" class="logo-image" />
+          </div>
+          <p>
+            We are a <b>paediatric occupational therapy</b> provider empowering
+            children, young people, and their families to live their fullest
+            life!
+          </p>
+          <p>
+            Services cater to individuals <b>0-18 years</b> of age, with a wide
+            range of support needs. As a mobile service, <b>Telehealth</b> is
+            available Australia-wide, and <b>Community-based</b> sessions are
+            offered in the North-Western Melbourne area. We know that your time
+            is limited – so let's maximise what we are getting out of therapy!
+          </p>
+          <p class="cta-text">What are you waiting for?</p>
+          <p class="cta-emphasis"><em>Follow Me!</em></p>
+        </div>
+      </section>
     </div>
 
+    <div class="section-wrapper" style="background-color: #ffe8ba">
+      <div class="wavy-line-horizontal"></div>
 
-    <div class="section-wrapper" style="background-color: #FFE8BA;">
-        <div class="wavy-line-horizontal"></div>
-
-        <section id="ot-services" class="content-section">
-            
-            <h2>Occupational Therapy</h2>
-            <p style="font-size: 28px; text-align: center;"><i>Occupational therapy (OT) is about the activities we do each day, what brings us joy, and the journey to becoming us.</i></p>
-            <p>We help children recover, develop, and maintain the skills for independence and community involvement. Our services are personalized to meet each child’s unique needs.</p>
-            <div class="flex-container">
-                <div>
-                    <p>Occupational therapy can help you to:</p>
-                    <ul style="text-align: left;">
-                        <li style="margin-bottom: 15px;">— Improve fine and gross motor skills</li>
-                        <li style="margin-bottom: 15px;">— Understand your sensory systems</li>
-                        <li style="margin-bottom: 15px;">— Develop play and relationship skills</li>
-                        <li style="margin-bottom: 15px;">— Support emotional regulation</li>
-                        <li style="margin-bottom: 15px;">— Build self-care and independence</li>
-                    </ul>
-                </div>
-                <img src="kids-playing.jpg" alt="Occupational Therapy Services" class="responsive-image" style="margin-top: 20px;">
-            </div>
-            <p>The aim of a Follow Me Therapy OT session is to create a space for real-life problem solving. We empower the child/young person and their family to take control of their therapy journey.</p>
-        </section>
+      <section id="ot-services" class="content-section">
+        <h2>Occupational Therapy</h2>
+        <p class="large-italic-centered">
+          Occupational therapy (OT) is about the activities we do each day, what
+          brings us joy, and the journey to becoming us.
+        </p>
+        <p>
+          We help children recover, develop, and maintain the skills for
+          independence and community involvement. Our services are personalized
+          to meet each child’s unique needs.
+        </p>
+        <div class="flex-container">
+          <div>
+            <p>Occupational therapy can help you to:</p>
+            <ul>
+              <li>— Improve fine and gross motor skills</li>
+              <li>— Understand your sensory systems</li>
+              <li>— Develop play and relationship skills</li>
+              <li>— Support emotional regulation</li>
+              <li>— Build self-care and independence</li>
+            </ul>
+          </div>
+          <img
+            src="kids-playing.jpg"
+            alt="Occupational Therapy Services"
+            class="responsive-image"
+            style="margin-top: 20px"
+          />
+        </div>
+        <p>
+          The aim of a Follow Me Therapy OT session is to create a space for
+          real-life problem solving. We empower the child/young person and their
+          family to take control of their therapy journey.
+        </p>
+      </section>
     </div>
 
-    <div class="section-wrapper" style="background-color: #FFE8BA; padding-bottom: 100px;">
-        <section id="services" class="content-section services-section" style="padding-bottom: 50px;">
-            <div class="content-wrapper">
-                <h2>Our Services</h2>
-                <div class="services-grid">
-                    <div class="service-item" data-service="pediatric">
-                        <img src="footprints.svg" alt="Footsteps icon" style="width: 80px; height: auto; margin: 0 auto 10px; display: block;">
-                        <h3 style="text-align: center;">5 Steps Forward</h3>
-                        <p>A focused 5-session program designed to address specific therapy goals.</p>
-                    </div>
-                    <div class="service-item" data-service="adult">
-                        <img src="stairs.svg" alt="Stairs icon" style="width: 80px; height: auto; margin: 0 auto 10px; display: block;">
-                        <h3 style="text-align: center;">Steady Steps </h3>
-                        <p>12-week structured therapy block for building key skills through consistent, ongoing support.</p>
-                    </div>
-                    <div class="service-item" data-service="home">
-                        <img src="esdm.svg" alt="Early Start Denver Model icon" style="width: 80px; height: auto; margin: 0 auto 10px; display: block;">
-                        <h3 style="text-align: center;">Early Start Denver Model (ESDM)</h3>
-                        <p>An evidence-based, play-based therapy designed for young children with autism, and other developmental delays.</p>
-                    </div>
-                    <div class="service-item" data-service="assessments">
-                        <img src="assessments.svg" alt="Assessments icon" style="width: 80px; height: auto; margin: 0 auto 10px; display: block;">
-                        <h3 style="text-align: center;">Assessment</h3>
-                        <ul>
-                            <li>NDIS Access Report</li>
-                            <li>Functional Capacity Assessment (FCA)</li>
-                            <li>Progress Report</li>
-                            <li>Sensory Processing Assessment</li>
-                            <li>Assistive Technology (AT)</li>
-                        </ul>
-                    </div>
-                </div>
+    <div
+      class="section-wrapper"
+      style="background-color: #ffe8ba; padding-bottom: 100px"
+    >
+      <section
+        id="services"
+        class="content-section services-section"
+        style="padding-bottom: 50px"
+      >
+        <div class="content-wrapper">
+          <h2>Our Services</h2>
+          <div class="services-grid">
+            <div class="service-item" data-service="pediatric">
+              <img src="footprints.svg" alt="Footsteps icon" />
+              <h3 style="text-align: center">5 Steps Forward</h3>
+              <p>
+                A focused 5-session program designed to address specific therapy
+                goals.
+              </p>
             </div>
-        </section>
+            <div class="service-item" data-service="adult">
+              <img src="stairs.svg" alt="Stairs icon" />
+              <h3 style="text-align: center">Steady Steps</h3>
+              <p>
+                12-week structured therapy block for building key skills through
+                consistent, ongoing support.
+              </p>
+            </div>
+            <div class="service-item" data-service="home">
+              <img src="esdm.svg" alt="Early Start Denver Model icon" />
+              <h3 style="text-align: center">
+                Early Start Denver Model (ESDM)
+              </h3>
+              <p>
+                An evidence-based, play-based therapy designed for young
+                children with autism, and other developmental delays.
+              </p>
+            </div>
+            <div class="service-item" data-service="assessments">
+              <img src="assessments.svg" alt="Assessments icon" />
+              <h3 style="text-align: center">Assessment</h3>
+              <ul>
+                <li>NDIS Access Report</li>
+                <li>Functional Capacity Assessment (FCA)</li>
+                <li>Progress Report</li>
+                <li>Sensory Processing Assessment</li>
+                <li>Assistive Technology (AT)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
 
     <div class="wave"></div>
 
-    <div class="section-wrapper" style="background-color: #e7d7f8;">
-        <section id="telehealth" class="content-section" style="padding-bottom: 20px;">
-            <div class="content-wrapper">
-                <h2>Telehealth Services</h2>
-                <p>Telehealth therapy offers a convenient and flexible way to access occupational therapy services from the comfort of your home. By using secure video conferencing, families can connect with their therapist without the need for travel, saving valuable time and making therapy more accessible. This approach not only allows for flexible scheduling to accommodate busy lives but also enables us to reach more families, including those in remote or underserved areas. With telehealth, therapy sessions can be seamlessly integrated into your routine, ensuring consistent and effective support for your child’s development.</p>
-                <div class="telehealth-logo" style="display: flex; align-items: center; gap: 10px;">
-                    <p style="margin: 0;">Our telehealth sessions are conducted via Teams:</p>
-                    <img src="teams-logo.webp" alt="Microsoft Teams Logo" style="width: 130px;">
-                </div>
-            </div>
-        </section>
+    <div class="section-wrapper" style="background-color: #e7d7f8">
+      <section
+        id="telehealth"
+        class="content-section"
+        style="padding-bottom: 20px"
+      >
+        <div class="content-wrapper">
+          <h2>Telehealth Services</h2>
+          <p>
+            Telehealth therapy offers a convenient and flexible way to access
+            occupational therapy services from the comfort of your home. By
+            using secure video conferencing, families can connect with their
+            therapist without the need for travel, saving valuable time and
+            making therapy more accessible. This approach not only allows for
+            flexible scheduling to accommodate busy lives but also enables us to
+            reach more families, including those in remote or underserved areas.
+            With telehealth, therapy sessions can be seamlessly integrated into
+            your routine, ensuring consistent and effective support for your
+            child’s development.
+          </p>
+          <div
+            class="telehealth-logo"
+            style="display: flex; align-items: center; gap: 10px"
+          >
+            <p style="margin: 0">
+              Our telehealth sessions are conducted via Teams:
+            </p>
+            <img
+              src="teams-logo.webp"
+              alt="Microsoft Teams Logo"
+              style="width: 130px"
+            />
+          </div>
+        </div>
+      </section>
     </div>
 
-    <div class="section-wrapper" style="background-color: #e7d7f8";>
-        <section id="funding" class="content-section" style="padding-bottom: 50px;">
-            <div class="content-wrapper">
-                <h2>Funding Options</h2>
-                <p><b>NDIS</b> – We service Self-Managed and Plan managed NDIS participants. We tailor therapy plans to meet your goals.</p>
-                <p><b>Private</b> – Flexible options are available, including short and long-term support. You may also be eligable for a rebate with your private health insurance.</p> 
-                <p><b>Medicare referral</b> – Contact us to explore Medicare options for occupational therapy services.</p> 
-            </div>
-            <div class="telehealth-logo" style="text-align: center; margin-top: 50px;">
-                <a href="#funding">
-                    <img src="medicare-logo.png" alt="Medicare Logo" style="width:200px; display: inline-block;">
-                </a>
-            </div>
-        </section>
+    <div class="section-wrapper" style="background-color: #e7d7f8">
+      <section
+        id="funding"
+        class="content-section"
+        style="padding-bottom: 50px"
+      >
+        <div class="content-wrapper">
+          <h2>Funding Options</h2>
+          <p>
+            <b>NDIS</b> – We service Self-Managed and Plan managed NDIS
+            participants. We tailor therapy plans to meet your goals.
+          </p>
+          <p>
+            <b>Private</b> – Flexible options are available, including short and
+            long-term support. You may also be eligible for a rebate with your
+            private health insurance.
+          </p>
+          <p>
+            <b>Medicare referral</b> – Contact us to explore Medicare options
+            for occupational therapy services.
+          </p>
+        </div>
+        <div
+          class="telehealth-logo"
+          style="text-align: center; margin-top: 50px"
+        >
+          <a href="#funding">
+            <img
+              src="medicare-logo.png"
+              alt="Medicare Logo"
+              style="width: 200px; display: inline-block"
+            />
+          </a>
+        </div>
+      </section>
     </div>
 
     <div class="section-wrapper about-simone-wrapper">
-        <section id="about-simone" class="content-section">
-            <h2>Meet the Team</h2>
-            <div class="content-wrapper about-simone-content">
-                <img src="simone.jpg" alt="Simone Gabriele" class="simone-image">
-                
-                <p style="margin-top: 0px;">Simone Gabriele earned her Master of Occupational Therapy from La Trobe University before launching her career in early intervention supports, and later moving into neurodevelopmental community services. Simone has worked in team lead roles, and provided clinical supervision to the next generation of occupational therapists.</p>
-                
-                <p>Simone has experience working with autism spectrum disorder, behavioural support, neurodevelopmental and genetic disabilities, including cerebral palsy, developmental delays, Down syndrome, motor or coordination impairments, and ADHD.</p>
-            </div>
-        </section>
+      <section id="about-simone" class="content-section">
+        <h2>Meet the Team</h2>
+        <div class="content-wrapper about-simone-content">
+          <img src="simone.png" alt="Simone Gabriele" class="simone-image" />
+          <p style="margin-top: 0px">
+            Simone Gabriele earned her Master of Occupational Therapy from La
+            Trobe University before launching her career in early intervention
+            supports, and later moving into neurodevelopmental community
+            services. Simone has worked in team lead roles, and provided
+            clinical supervision to the next generation of occupational
+            therapists.
+          </p>
+          <p>
+            Simone has experience working with autism spectrum disorder,
+            behavioural support, neurodevelopmental and genetic disabilities,
+            including cerebral palsy, developmental delays, Down syndrome, motor
+            or coordination impairments, and ADHD.
+          </p>
+        </div>
+      </section>
     </div>
 
-    <div class="section-wrapper" style="background-color: #e7d7f8"">
-        <section id="contact" class="content-section contact-section" style="padding-bottom: 100px;">
-            <div class="content-wrapper">
-                <h2>Get in Touch</h2>
-                <p style="text-align: center; font-size: 24px;">Contact us today to schedule a initial assessment or to learn more about how we can help:</p>
-                <div style="text-align: center;">
-                    <a href="mailto:info@followmetherapy.com.au" style="display: flex; align-items: center; justify-content: center; margin-bottom: 16px; font-size: 24px;">
-                        <img src="mail.svg" alt="Mail icon" style="width: 24px; height: 24px; margin-right: 8px;">
-                        info@followmetherapy.com.au
-                    </a>
-                    <a href="tel:+61435076683" style="display: flex; align-items: center; justify-content: center; font-size: 24px;">
-                        <img src="phone.svg" alt="Phone icon" style="width: 24px; height: 24px; margin-right: 8px;">
-                        0435 076 683
-                    </a>
-                </div>
-            </div>
-        </section>
+    <div class="section-wrapper" style="background-color: #e7d7f8">
+      <section
+        id="contact"
+        class="content-section contact-section"
+        style="padding-bottom: 100px"
+      >
+        <div class="content-wrapper">
+          <h2>Get in Touch</h2>
+          <p class="centered-text">
+            Contact us today to schedule an initial assessment or to learn more
+            about how we can help:
+          </p>
+          <div style="text-align: center">
+            <a href="mailto:info@followmetherapy.com.au" class="contact-link">
+              <img src="mail.svg" alt="Mail icon" />
+              info@followmetherapy.com.au
+            </a>
+            <a href="tel:+61435076683" class="contact-link">
+              <img src="phone.svg" alt="Phone icon" />
+              0435 076 683
+            </a>
+          </div>
+        </div>
+      </section>
     </div>
 
-    <div class="section-wrapper" style="background-color: #282828;">
-        <section id="company" class="content-section" style="padding: 50px 20px; color: white;">
-            <div class="content-wrapper">
-                <h4 style="color: white;">Follow Me Therapy Pty Ltd</h2>
-                <p style="text-align: start; font-size: 0.8em; max-width: 800px; margin-left: auto; margin-right: auto;">
-                    Follow Me Therapy Pty Ltd is a registered Australian company providing high-quality paediatric occupational therapy services. We are committed to empowering children and families through tailored intervention programs and support.
-                </p>
-                <p style="text-align: start; font-size: 1.1em; margin-bottom: 40px;">
-                    ABN: 12 345 678 910
-                </p>
-            </div>
-        </section>
+    <div class="section-wrapper" style="background-color: #282828">
+      <section
+        id="company"
+        class="content-section"
+        style="padding: 50px 20px; color: white"
+      >
+        <div class="content-wrapper">
+          <h4 style="color: white">Follow Me Therapy Pty Ltd</h4>
+          <p
+            style="
+              text-align: start;
+              font-size: 0.8em;
+              max-width: 800px;
+              margin-left: auto;
+              margin-right: auto;
+            "
+          >
+            Follow Me Therapy Pty Ltd is a registered Australian company
+            providing high-quality paediatric occupational therapy services. We
+            are committed to empowering children and families through tailored
+            intervention programs and support.
+          </p>
+          <p style="text-align: start; font-size: 1.1em; margin-bottom: 40px">
+            ABN: 12 345 678 910
+          </p>
+        </div>
+      </section>
     </div>
 
     <footer class="fixed-footer">
-        <a href="https://follow-me-therapy.splose.com/public-form/e84c8756-615f-4404-a6f3-a90f3760223b" target="_blank" class="btn-primary">Contact Us</a>
-        <a href="https://follow-me-therapy.splose.com/public-form/975d61d5-cd63-44e5-86e7-f9315fa6a5b0" target="_blank" class="btn-secondary">Referral Link</a>
+      <a
+        href="https://follow-me-therapy.splose.com/public-form/e84c8756-615f-4404-a6f3-a90f3760223b"
+        target="_blank"
+        class="btn-primary"
+        >Contact Us</a
+      >
+      <a
+        href="https://follow-me-therapy.splose.com/public-form/975d61d5-cd63-44e5-86e7-f9315fa6a5b0"
+        target="_blank"
+        class="btn-secondary"
+        >Referral Link</a
+      >
     </footer>
 
     <!-- Modal Structure -->
     <div id="serviceModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <div id="modalContent"></div>
-            <a href="https://follow-me-therapy.splose.com/public-form/e84c8756-615f-4404-a6f3-a90f3760223b" class="btn-primary" style="margin-top: 20px;">Contact Us</a>
-        </div>
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div id="modalContent"></div>
+        <a
+          href="https://follow-me-therapy.splose.com/public-form/e84c8756-615f-4404-a6f3-a90f3760223b"
+          class="btn-primary"
+          style="margin-top: 20px"
+          >Contact Us</a
+        >
+      </div>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                });
+      document.addEventListener("DOMContentLoaded", function () {
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute("href")).scrollIntoView({
+              behavior: "smooth",
             });
-
-            const serviceItems = document.querySelectorAll('.service-item');
-            const modal = document.getElementById('serviceModal');
-            const modalContent = document.getElementById('modalContent');
-            const closeModal = document.querySelector('.modal .close');
-
-            const serviceDetails = {
-                pediatric: {
-                    title: '5 Steps Forward',
-                    content: '5 Steps Forward is a focused, short-term occupational therapy program designed to deliver targeted support over the course of 5 sessions in 5 weeks. Ideal for returning families who need a boost of support, and new families exploring OT for the first time.'
-                },
-                adult: {
-                    title: 'Steady Steps Block Model',
-                    content: 'A 12-week therapy block offering structured and consistent support to problem solve big goals, and develop new skills. In Steady Steps we have time to engage your wider network, and recommend a comprehensive plan of action. When required, blocks may be stacked if additional support is needed.'
-                },
-                home: {
-                    title: 'Early Start Denver Model (ESDM)',
-                    content: 'The Early Start Denver Model (ESDM) is an evidence-based, comprehensive therapy approach designed for young children with autism and other developmental delays, up to 5 years of age. Designed by the UC Davis MIND Institute, ESDM programs integrate play-based learning with developmental and behavioural techniques to support communication, social skills, play and daily living skills, and cognitive development. Our ESDM-certified therapists work closely with children and their families to deliver: <ul><li>- 1:1 therapy sessions at home, or in the community</li> <li>- Individualised learning programs</li><li>- Coaching with those interacting with the child day to day.</li></ul>  We can assess if this model is suitable for your child during your initial assessment.'
-                },
-                assessments: {
-                    title: 'Assessments',
-                    content: '<ul><li>NDIS Access Report</li><li>Functional Capacity Assessment Assessment (FCA)</li><li>Progress Report</li><li>Sensory Processing Assessment</li><li>Assistive Technology (AT) - suitability of AT goals to be reviewed at initial assessment</li></ul>'
-                }
-            };
-
-            serviceItems.forEach(item => {
-                item.addEventListener('click', function () {
-                    const serviceType = this.getAttribute('data-service');
-                    modalContent.innerHTML = `<h3>${serviceDetails[serviceType].title}</h3><p>${serviceDetails[serviceType].content}</p>`;
-                    modal.classList.add('show');
-                });
-            });
-
-            closeModal.addEventListener('click', function () {
-                modal.classList.remove('show');
-            });
-
-            window.addEventListener('click', function (event) {
-                if (event.target == modal) {
-                    modal.classList.remove('show');
-                }
-            });
+          });
         });
+
+        const serviceItems = document.querySelectorAll(".service-item");
+        const modal = document.getElementById("serviceModal");
+        const modalContent = document.getElementById("modalContent");
+        const closeModal = document.querySelector(".modal .close");
+
+        const serviceDetails = {
+          pediatric: {
+            title: "5 Steps Forward",
+            content:
+              "5 Steps Forward is a focused, short-term occupational therapy program designed to deliver targeted support over the course of 5 sessions in 5 weeks. Ideal for returning families who need a boost of support, and new families exploring OT for the first time.",
+          },
+          adult: {
+            title: "Steady Steps Block Model",
+            content:
+              "A 12-week therapy block offering structured and consistent support to problem solve big goals, and develop new skills. In Steady Steps we have time to engage your wider network, and recommend a comprehensive plan of action. When required, blocks may be stacked if additional support is needed.",
+          },
+          home: {
+            title: "Early Start Denver Model (ESDM)",
+            content:
+              "The Early Start Denver Model (ESDM) is an evidence-based, comprehensive therapy approach designed for young children with autism and other developmental delays, up to 5 years of age. Designed by the UC Davis MIND Institute, ESDM programs integrate play-based learning with developmental and behavioural techniques to support communication, social skills, play and daily living skills, and cognitive development. Our ESDM-certified therapists work closely with children and their families to deliver: <ul><li>- 1:1 therapy sessions at home, or in the community</li> <li>- Individualised learning programs</li><li>- Coaching with those interacting with the child day to day.</li></ul>  We can assess if this model is suitable for your child during your initial assessment.",
+          },
+          assessments: {
+            title: "Assessments",
+            content:
+              "<ul><li>NDIS Access Report</li><li>Functional Capacity Assessment (FCA)</li><li>Progress Report</li><li>Sensory Processing Assessment</li><li>Assistive Technology (AT) - suitability of AT goals to be reviewed at initial assessment</li></ul>",
+          },
+        };
+
+        serviceItems.forEach((item) => {
+          item.addEventListener("click", function () {
+            const serviceType = this.getAttribute("data-service");
+            modalContent.innerHTML = `<h3>${serviceDetails[serviceType].title}</h3><p>${serviceDetails[serviceType].content}</p>`;
+            modal.classList.add("show");
+          });
+        });
+
+        closeModal.addEventListener("click", function () {
+          modal.classList.remove("show");
+        });
+
+        window.addEventListener("click", function (event) {
+          if (event.target == modal) {
+            modal.classList.remove("show");
+          }
+        });
+      });
     </script>
-</body>
+  </body>
 </html>
