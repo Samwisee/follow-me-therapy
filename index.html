@@ -40,6 +40,12 @@
         text-align: center;
       }
 
+      /* CSS class to disable fade-in animations */
+      .disable-fade-in .fade-in-content {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+
       h2 {
         font-size: 2.4em;
         margin-bottom: 10px;
@@ -133,11 +139,16 @@
         font-size: 1.2em;
         cursor: pointer;
         margin: 10px 5px;
-        transition: background-color 0.3s ease;
+        transition: background-color 0.3s ease, transform 0.3s ease;
       }
 
       .btn-secondary {
         background-color: #7b61ff;
+      }
+
+      .btn-primary:hover,
+      .btn-secondary:hover {
+        transform: scale(1.05);
       }
 
       .btn-primary:hover {
@@ -209,6 +220,7 @@
         border-radius: 10px;
         text-align: center;
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        animation: modalFadeIn 0.5s forwards;
       }
 
       @keyframes fadein {
@@ -216,6 +228,17 @@
           opacity: 0;
         }
         to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes modalFadeIn {
+        from {
+          transform: translate(-50%, -60%);
+          opacity: 0;
+        }
+        to {
+          transform: translate(-50%, -50%);
           opacity: 1;
         }
       }
@@ -228,10 +251,23 @@
         cursor: pointer;
       }
 
-      .modal .btn-primary {
+      .modal .btn-primary,
+      .modal .btn-secondary {
         margin-top: 30px;
         width: 100%;
         text-align: center;
+      }
+
+      /* Fade-in Animation for Content */
+      .fade-in-content {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+      }
+
+      .fade-in-content.is-visible {
+        opacity: 1;
+        transform: none;
       }
 
       /* Fixed Header */
@@ -265,10 +301,10 @@
         background-color: #e65a50;
       }
 
-      /* Fixed Footer */
+      /* Initially hide the footer by positioning it off-screen */
       footer.fixed-footer {
         position: fixed;
-        bottom: 0;
+        bottom: -100px; /* Move it off-screen */
         width: 100%;
         max-width: 400px;
         left: 50%;
@@ -283,6 +319,11 @@
         box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
         border-radius: 10px 10px 0 0;
         z-index: 1000;
+        transition: bottom 0.5s ease; /* Smooth animation */
+      }
+
+      footer.fixed-footer.show {
+        bottom: 0; /* Bring it into view */
       }
 
       footer.fixed-footer a {
@@ -474,6 +515,14 @@
         font-size: 24px;
       }
 
+      /* Temporarily disable animations and transitions */
+      .disable-animations *,
+      .disable-animations *::before,
+      .disable-animations *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+
       /* Media Queries */
       @media (max-width: 650px) {
         .services-grid {
@@ -519,6 +568,19 @@
 
         .title-and-logo h1 {
           font-size: 2em;
+        }
+
+        .telehealth-image {
+          width: 100%; /* Make the image full width on mobile */
+          display: block;
+          margin: 0 auto 20px auto; /* Center the image and add margin-bottom for spacing */
+        }
+
+        .telehealth-content {
+          align-items: center;
+          display: flex; /* To make sure it wraps as needed */
+          flex-wrap: wrap; /* Allow the items to wrap */
+          gap: 20px; /* Add some gap between the items */
         }
 
         .cta-text {
@@ -610,12 +672,14 @@
       }
 
       .telehealth-content {
+        align-items: center;
+        gap: 20px;
         margin-top: 30px;
         text-align: left;
       }
 
       .telehealth-image {
-        width: 300px;
+        width: 100%;
         height: auto;
         float: left;
         margin-right: 20px;
@@ -673,29 +737,31 @@
 
     <div class="section-wrapper about-wrapper">
       <section id="about" class="content-section">
-        <div class="content-wrapper about-content">
-          <div class="title-and-logo">
-            <h1>Follow Me Therapy</h1>
-            <img src="onl.png" alt="Follow me logo" class="logo-image" />
+        <div class="fade-in-content">
+          <div class="content-wrapper about-content">
+            <div class="title-and-logo">
+              <h1>Follow Me Therapy</h1>
+              <img src="onl.png" alt="Follow me logo" class="logo-image" />
+            </div>
+            <p>
+              A <b>paediatric occupational therapy</b> provider empowering
+              children, young people, and their families to live their fullest
+              life!
+            </p>
+            <p>
+              Services cater to individuals <b>0-18 years</b> of age, with a
+              wide range of support needs. As a mobile service, we offer
+              <b>Telehealth</b> Australia-wide, and <b>Community-based</b> in
+              the North-Western Melbourne area. We know that your time is
+              limited – so let's maximise what we are getting out of therapy!
+            </p>
+            <p class="cta-text" style="text-align: center">
+              We currently have capacity for <em><b>immediate start up</b></em
+              >.
+            </p>
+            <p class="cta-text">So, what are you waiting for?</p>
+            <p class="cta-emphasis"><em>Follow Me!</em></p>
           </div>
-          <p>
-            A <b>paediatric occupational therapy</b> provider empowering
-            children, young people, and their families to live their fullest
-            life!
-          </p>
-          <p>
-            Services cater to individuals <b>0-18 years</b> of age, with a wide
-            range of support needs. As a mobile service, we offer
-            <b>Telehealth</b> Australia-wide, and <b>Community-based</b> in the
-            North-Western Melbourne area. We know that your time is limited – so
-            let's maximise what we are getting out of therapy!
-          </p>
-          <p class="cta-text" style="text-align: center">
-            We currently have capacity for <em><b>immediate start up</b></em
-            >.
-          </p>
-          <p class="cta-text">So, what are you waiting for?</p>
-          <p class="cta-emphasis"><em>Follow Me!</em></p>
         </div>
       </section>
     </div>
@@ -704,43 +770,45 @@
       <div class="wavy-line-horizontal"></div>
 
       <section id="ot-services" class="content-section">
-        <h2>Occupational Therapy</h2>
-        <p class="large-italic-centered">
-          Occupational therapy (OT) is about the activities we do each day, what
-          brings us joy, and the journey to becoming us.
-        </p>
-        <p>
-          We help children and young people to recover, develop, and maintain
-          the skills for independence and community involvement. Our services
-          are personalized to meet each individual's unique needs.
-        </p>
-        <p>Our Occupational therapists can help you to:</p>
-        <div class="flex-container">
-          <div>
-            <ul>
-              <li>— Improve fine and gross motor skills</li>
-              <li>— Understand your sensory systems</li>
-              <li>— Develop play and engagement skills</li>
-              <li>— Support emotional regulation</li>
-              <li>— Build self-care and independence</li>
-              <li>— Prepare for school readiness</li>
-              <li style="margin-bottom: -15px">
-                — Address fussy eating and mealtime skills
-              </li>
-            </ul>
+        <div class="fade-in-content">
+          <h2>Occupational Therapy</h2>
+          <p class="large-italic-centered">
+            Occupational therapy (OT) is about the activities we do each day,
+            what brings us joy, and the journey to becoming us.
+          </p>
+          <p>
+            We help children and young people to recover, develop, and maintain
+            the skills for independence and community involvement. Our services
+            are personalized to meet each individual's unique needs.
+          </p>
+          <p>Our Occupational therapists can help you to:</p>
+          <div class="flex-container">
+            <div>
+              <ul>
+                <li>— Improve fine and gross motor skills</li>
+                <li>— Understand your sensory systems</li>
+                <li>— Develop play and engagement skills</li>
+                <li>— Support emotional regulation</li>
+                <li>— Build self-care and independence</li>
+                <li>— Prepare for school readiness</li>
+                <li style="margin-bottom: -15px">
+                  — Address fussy eating and mealtime skills
+                </li>
+              </ul>
+            </div>
+            <img
+              src="kids-playing.jpg"
+              alt="Occupational Therapy Services"
+              class="responsive-image"
+              style="margin-top: 20px"
+            />
           </div>
-          <img
-            src="kids-playing.jpg"
-            alt="Occupational Therapy Services"
-            class="responsive-image"
-            style="margin-top: 20px"
-          />
+          <p style="margin-top: 40px">
+            The aim of a Follow Me Therapy OT session is to create a space for
+            real-life problem solving. We empower the individual and their
+            family to take control of their therapy journey.
+          </p>
         </div>
-        <p style="margin-top: 40px">
-          The aim of a Follow Me Therapy OT session is to create a space for
-          real-life problem solving. We empower the individual and their family
-          to take control of their therapy journey.
-        </p>
       </section>
     </div>
 
@@ -753,46 +821,48 @@
         class="content-section services-section"
         style="padding-bottom: 50px"
       >
-        <div class="content-wrapper">
-          <h2>Our Services</h2>
-          <p>Click on individual services to find out more:</p>
-          <div class="services-grid">
-            <div class="service-item" data-service="pediatric">
-              <img src="footprints.svg" alt="Footsteps icon" />
-              <h3 style="text-align: center">5 Steps Forward</h3>
-              <p>
-                A focused 5-session program designed to address specific therapy
-                goals.
-              </p>
-            </div>
-            <div class="service-item" data-service="adult">
-              <img src="stairs.svg" alt="Stairs icon" />
-              <h3 style="text-align: center">Steady Steps</h3>
-              <p>
-                12 session structured therapy block for building key skills
-                through consistent, ongoing support.
-              </p>
-            </div>
-            <div class="service-item" data-service="home">
-              <img src="esdm.svg" alt="Early Start Denver Model icon" />
-              <h3 style="text-align: center">
-                Early Start Denver Model (ESDM)
-              </h3>
-              <p>
-                An evidence-based, play-based therapy designed for young
-                children with autism, and other developmental delays.
-              </p>
-            </div>
-            <div class="service-item" data-service="assessments">
-              <img src="assessments.svg" alt="Assessments icon" />
-              <h3 style="text-align: center">Assessments</h3>
-              <ul>
-                <li>NDIS Access Report</li>
-                <li>Functional Capacity Assessment (FCA)</li>
-                <li>Progress Report</li>
-                <li>Sensory Processing Assessment</li>
-                <li>Assistive Technology (AT)</li>
-              </ul>
+        <div class="fade-in-content">
+          <div class="content-wrapper">
+            <h2>Our Services</h2>
+            <p>Click on individual services to find out more:</p>
+            <div class="services-grid">
+              <div class="service-item" data-service="pediatric">
+                <img src="footprints.svg" alt="Footsteps icon" />
+                <h3 style="text-align: center">5 Steps Forward</h3>
+                <p>
+                  A focused 5-session program designed to address specific
+                  therapy goals.
+                </p>
+              </div>
+              <div class="service-item" data-service="adult">
+                <img src="stairs.svg" alt="Stairs icon" />
+                <h3 style="text-align: center">Steady Steps</h3>
+                <p>
+                  12 session structured therapy block for building key skills
+                  through consistent, ongoing support.
+                </p>
+              </div>
+              <div class="service-item" data-service="home">
+                <img src="esdm.svg" alt="Early Start Denver Model icon" />
+                <h3 style="text-align: center">
+                  Early Start Denver Model (ESDM)
+                </h3>
+                <p>
+                  An evidence-based, play-based therapy designed for young
+                  children with autism, and other developmental delays.
+                </p>
+              </div>
+              <div class="service-item" data-service="assessments">
+                <img src="assessments.svg" alt="Assessments icon" />
+                <h3 style="text-align: center">Assessments</h3>
+                <ul>
+                  <li>NDIS Access Report</li>
+                  <li>Functional Capacity Assessment (FCA)</li>
+                  <li>Progress Report</li>
+                  <li>Sensory Processing Assessment</li>
+                  <li>Assistive Technology (AT)</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -806,39 +876,46 @@
       style="background-color: #e7d7f8"
     >
       <section id="telehealth" class="content-section">
-        <h2>Telehealth Services</h2>
-        <div class="content-wrapper telehealth-content">
-          <img
-            src="coord.jpg"
-            alt="Telehealth Coordination"
-            class="telehealth-image"
-          />
-          <p style="margin-top: 0px">
-            Telehealth therapy offers a convenient and flexible way to access
-            occupational therapy services from the comfort of your home. By
-            using secure video conferencing, families can connect with their
-            therapist without the need for travel, saving valuable time and
-            making therapy more accessible.
-          </p>
-          <p>
-            This approach not only allows for flexible scheduling to accommodate
-            busy lives but also enables us to reach more families, including
-            those in remote or underserved areas. With telehealth, therapy
-            sessions can be seamlessly integrated into your routine, ensuring
-            consistent and effective support for your child’s development.
-          </p>
-          <div
-            class="telehealth-logo"
-            style="display: flex; align-items: center; gap: 10px"
-          >
-            <p style="margin: 0">
-              Our telehealth sessions are conducted via Teams:
-            </p>
+        <div class="fade-in-content">
+          <h2>Telehealth Services</h2>
+          <div class="content-wrapper telehealth-content">
             <img
-              src="teams-logo.webp"
-              alt="Microsoft Teams Logo"
-              style="width: 130px"
+              src="coord.jpg"
+              alt="Telehealth Coordination"
+              class="telehealth-image"
             />
+            <p style="margin-top: 0px">
+              Delivered remotely via secure video calls and phone calls,
+              telehealth allows families to receive therapy from the comfort of
+              their own home. In fact, telepractice is nothing new, with decades
+              of evidence backing its use. Our vision is for families, children,
+              and young people to access support when they need it most. With
+              telehealth seamlessly integrated into the family routine, you’ll
+              receive the consistent support your child needs for development
+              and skill-building. Families can connect with their therapist
+              virtually without the need for travel, saving valuable time and
+              making therapy more accessible, including for those in rural or
+              underserved areas. Telehealth can be utilised to go beyond the
+              home to support you in a variety of settings. Whether it be a
+              coaching video call with grandparents, developing a skill building
+              program for your support workers, or collaborating with the
+              classroom teacher. Telehealth can be a long term solution to
+              accessing professional support from anywhere in Australia. Or an
+              interim solution to extensive wait times.
+            </p>
+            <div
+              class="telehealth-logo"
+              style="display: flex; align-items: center; gap: 10px"
+            >
+              <p style="margin: 0">
+                Our telehealth sessions are conducted via Teams:
+              </p>
+              <img
+                src="teams-logo.webp"
+                alt="Microsoft Teams Logo"
+                style="width: 130px"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -850,56 +927,64 @@
         class="content-section"
         style="padding-bottom: 50px"
       >
-        <div class="content-wrapper">
-          <h2>Funding Options</h2>
-          <p>
-            <b>NDIS</b> – We service Self-Managed and Plan managed NDIS
-            participants. We tailor therapy plans to meet your goals.
-          </p>
-          <p>
-            <b>Private</b> – Flexible options are available, including short and
-            long-term support. You may also be eligible for a rebate with your
-            private health insurance.
-          </p>
-          <p>
-            <b>Medicare referral</b> – Contact us to explore Medicare options
-            for occupational therapy services.
-          </p>
-        </div>
-        <div
-          class="telehealth-logo"
-          style="text-align: center; margin-top: 50px"
-        >
-          <a href="#funding">
-            <img
-              src="medicare-logo.png"
-              alt="Medicare Logo"
-              style="width: 200px; display: inline-block"
-            />
-          </a>
+        <div class="fade-in-content">
+          <div class="content-wrapper">
+            <h2>Funding Options</h2>
+            <p>
+              <b>NDIS</b> – We service Self-Managed and Plan managed NDIS
+              participants. We tailor therapy plans to meet your goals.
+            </p>
+            <p>
+              <b>Private</b> – Flexible options are available, including short
+              and long-term support. You may also be eligible for a rebate with
+              your private health insurance.
+            </p>
+            <p>
+              <b>Medicare referral</b> – Contact us to explore Medicare options
+              for occupational therapy services.
+            </p>
+          </div>
+          <div
+            class="telehealth-logo"
+            style="text-align: center; margin-top: 50px"
+          >
+            <a href="#funding">
+              <img
+                src="medicare-logo.png"
+                alt="Medicare Logo"
+                style="width: 200px; display: inline-block"
+              />
+            </a>
+          </div>
         </div>
       </section>
     </div>
 
     <div class="section-wrapper about-simone-wrapper">
       <section id="about-simone" class="content-section">
-        <h2>Meet the Team</h2>
-        <div class="content-wrapper about-simone-content">
-          <img src="simone.png" alt="Simone Gabriele" class="simone-image" />
-          <p style="margin-top: 0px">
-            Simone Gabriele earned her Master of Occupational Therapy from La
-            Trobe University before launching her career in early intervention
-            supports, and later moving into neurodevelopmental community
-            services. Simone has worked in team lead roles, and provided
-            clinical supervision to the next generation of occupational
-            therapists.
-          </p>
-          <p>
-            Simone has experience working with autism spectrum disorder,
-            behavioural support, neurodevelopmental and genetic disabilities,
-            including cerebral palsy, developmental delays, Down syndrome, motor
-            or coordination impairments, and ADHD.
-          </p>
+        <div class="fade-in-content">
+          <h2>Meet the Team</h2>
+          <div class="content-wrapper about-simone-content">
+            <img src="simone.png" alt="Simone Gabriele" class="simone-image" />
+            <p style="margin-top: 0px">
+              Simone Gabriele earned her Master of Occupational Therapy from La
+              Trobe University before launching her career in early intervention
+              supports, and later moving into neurodevelopmental community
+              services. Simone has worked in team lead roles, and provided
+              clinical supervision to the next generation of occupational
+              therapists. She’s passionate about using strength-based and
+              neurodiverse affirming practice to centre her clients. Simone
+              believes therapy should be fun, engaging, and practical in the
+              context of our busy lives!
+            </p>
+            <p>
+              Simone has experience working with autism spectrum disorder (ASD),
+              attention deficit hyperactivity disorder (ADHD), behavioural
+              support needs, global developmental delays, and neurodevelopmental
+              and genetic disabilities, including cerebral palsy, Down syndrome,
+              and motor or coordination impairments.
+            </p>
+          </div>
         </div>
       </section>
     </div>
@@ -910,21 +995,24 @@
         class="content-section contact-section"
         style="padding-bottom: 100px"
       >
-        <div class="content-wrapper">
-          <h2>Get in Touch</h2>
-          <p class="centered-text">
-            Contact us today to schedule an initial assessment or to learn more
-            about how we can help:
-          </p>
-          <div style="text-align: center">
-            <a href="mailto:info@followmetherapy.com.au" class="contact-link">
-              <img src="mail.svg" alt="Mail icon" />
-              info@followmetherapy.com.au
-            </a>
-            <a href="tel:+61435076683" class="contact-link">
-              <img src="phone.svg" alt="Phone icon" />
-              0435 076 683
-            </a>
+        <div class="fade-in-content">
+          <div class="content-wrapper">
+            <h2>Get in Touch</h2>
+            <p class="centered-text">
+              Get in touch directly to schedule an initial assessment, or fill
+              in the “Contact Us” form below and our team will be in touch
+              shortly:
+            </p>
+            <div style="text-align: center">
+              <a href="mailto:info@followmetherapy.com.au" class="contact-link">
+                <img src="mail.svg" alt="Mail icon" />
+                info@followmetherapy.com.au
+              </a>
+              <a href="tel:+61435076683" class="contact-link">
+                <img src="phone.svg" alt="Phone icon" />
+                0435 076 683
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -991,16 +1079,44 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        const links = document.querySelectorAll('a[href^="#"]');
+        const body = document.body;
+
+        // Function to temporarily disable fade-in animations
+        const disableFadeIn = () => {
+          body.classList.add("disable-fade-in");
+          setTimeout(() => {
+            body.classList.remove("disable-fade-in");
+          }, 1000); // Adjust based on how long you want to keep it disabled
+        };
+
+        // Disable smooth scrolling and fade-in for navigation links
+        links.forEach((anchor) => {
           anchor.addEventListener("click", function (e) {
             e.preventDefault();
-            document.querySelector(this.getAttribute("href")).scrollIntoView({
-              behavior: "smooth",
-            });
+
+            // Disable fade-in animations
+            disableFadeIn();
+
+            // Use 'auto' scroll behavior to instantly scroll to the target
+            const target = document.querySelector(this.getAttribute("href"));
+            target.scrollIntoView({ behavior: "auto" });
           });
         });
 
+        // Footer scroll detection and animation
+        const footer = document.querySelector("footer.fixed-footer");
+        const scrollThreshold = 40; // Adjust based on when you want to show the footer
+
+        window.addEventListener("scroll", function () {
+          if (window.scrollY > scrollThreshold) {
+            footer.classList.add("show");
+          } else {
+            footer.classList.remove("show");
+          }
+        });
+
+        // Modal functionality
         const serviceItems = document.querySelectorAll(".service-item");
         const modal = document.getElementById("serviceModal");
         const modalContent = document.getElementById("modalContent");
@@ -1045,6 +1161,38 @@
           if (event.target == modal) {
             modal.classList.remove("show");
           }
+        });
+
+        // Fade-in effect for content
+        const faders = document.querySelectorAll(".fade-in-content");
+        const appearOptions = {
+          threshold: 0.1,
+          rootMargin: "0px 0px -100px 0px",
+        };
+
+        const appearOnScroll = new IntersectionObserver(function (
+          entries,
+          observer
+        ) {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) {
+              return;
+            } else {
+              if (!body.classList.contains("disable-fade-in")) {
+                entry.target.classList.add("is-visible");
+              } else {
+                // Instantly show content if fade-in is disabled
+                entry.target.style.opacity = 1;
+                entry.target.style.transform = "none";
+              }
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        appearOptions);
+
+        faders.forEach((fader) => {
+          appearOnScroll.observe(fader);
         });
       });
     </script>
