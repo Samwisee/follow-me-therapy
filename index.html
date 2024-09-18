@@ -8,7 +8,7 @@
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Follow Me Therapy | Occupational Therapy by Simone Gabriele</title>
-    <link rel="icon" href="fave_icon.png" type="image/png" />
+    <link rel="icon" href="Follow Me Icon.png" type="image/png" />
 
     <!-- Google Fonts: Quicksand -->
     <link
@@ -134,7 +134,7 @@
       /* Buttons */
       .btn-primary,
       .btn-secondary {
-        background-color: #ff6f61;
+        background-color: #008c9e;
         color: white;
         padding: 15px 30px;
         border: none;
@@ -156,7 +156,7 @@
       }
 
       .btn-primary:hover {
-        background-color: #e65a50;
+        background-color: #015a66;
       }
 
       .btn-secondary:hover {
@@ -306,13 +306,13 @@
         position: fixed;
         bottom: -100px; /* Move it off-screen */
         width: 100%;
-        max-width: 400px;
+        max-width: 300px;
         left: 50%;
         transform: translateX(-50%);
         background-color: rgba(255, 255, 255, 0.9);
         backdrop-filter: blur(4px);
         color: white;
-        padding: 10px 0;
+        padding: 20px 20px;
         display: flex;
         justify-content: center;
         gap: 20px;
@@ -655,6 +655,40 @@
         }
       }
 
+      /* Container for title and logo */
+      .title-container {
+        margin: auto;
+        display: flex;
+        align-items: center; /* Center text and logo vertically */
+        justify-content: center; /* Center content horizontally */
+        margin-top: 20px;
+        flex-wrap: wrap; /* Ensures responsiveness on smaller screens */
+      }
+
+      /* Heading */
+      .title-container h1 {
+        font-size: 5vw; /* Scale the font size based on the viewport width */
+        color: black;
+        margin: 0;
+        padding-right: 20px; /* Adds spacing between the text and logo */
+      }
+
+      /* Image */
+      .logo-image {
+        max-width: 10vw; /* Scale the logo size based on the viewport width */
+        height: auto; /* Maintain aspect ratio */
+      }
+
+      /* Responsive adjustments for smaller screens */
+      @media (max-width: 768px) {
+        .title-container h1 {
+          font-size: 8vw; /* Scale up font size for smaller devices */
+        }
+        .logo-image {
+          max-width: 15vw; /* Scale up the logo size for smaller devices */
+        }
+      }
+
       /* Wave Design */
       .wave {
         height: 0px;
@@ -720,6 +754,16 @@
     </style>
   </head>
   <body>
+    <div class="title-and-logo">
+      <div class="title-container">
+        <img
+          src="Follow Me Icon Clear.png"
+          alt="Follow me logo"
+          class="logo-image"
+        />
+        <h1 style="font-weight: 500">Follow Me Therapy</h1>
+      </div>
+    </div>
     <header class="fixed-header">
       <a href="#ot-services">Services</a>
       <a href="#telehealth">Telehealth</a>
@@ -731,24 +775,19 @@
       <section id="about" class="content-section">
         <div class="fade-in-content">
           <div class="content-wrapper about-content">
-            <div class="title-and-logo">
-              <h1>Follow Me Therapy</h1>
-              <img src="onl.png" alt="Follow me logo" class="logo-image" />
-            </div>
             <p>
-              A <b>paediatric occupational therapy</b> provider empowering
-              children, young people, and their families to live their fullest
-              life!
+              We are a <b>paediatric occupational therapy</b> provider
+              empowering children, young people, and their families to live
+              their fullest life! Our services cater to individuals
+              <b>0-18 years</b> of age, with a wide range of support needs. As a
+              mobile service, we offer <b>Telehealth</b> Australia-wide, and
+              <b>Community-based</b> sessions in the North-Western Melbourne
+              area. We know that your time is limited – so let's maximise what
+              we are getting out of therapy!
             </p>
-            <p>
-              Services cater to individuals <b>0-18 years</b> of age, with a
-              wide range of support needs. As a mobile service, we offer
-              <b>Telehealth</b> Australia-wide, and <b>Community-based</b> in
-              the North-Western Melbourne area. We know that your time is
-              limited – so let's maximise what we are getting out of therapy!
-            </p>
-            <p class="cta-text" style="text-align: center">
-              We currently have capacity for <em><b>immediate start up</b></em
+            <p class="cta-text" style="text-align: center; margin-top: -1px">
+              <u
+                >We have capacity for <em><b>immediate start up</b></em></u
               >.
             </p>
             <p class="cta-text">So, what are you waiting for?</p>
@@ -766,7 +805,7 @@
           <h2>Occupational Therapy</h2>
           <p class="large-italic-centered">
             Occupational therapy (OT) is about the activities we do each day,
-            what brings us joy, and the journey to becoming us.
+            what brings us joy, and the journey to becoming you.
           </p>
           <p>
             We help children and young people to recover, develop, and maintain
@@ -955,10 +994,10 @@
           <div class="content-wrapper about-simone-content">
             <img src="simone.png" alt="Simone Gabriele" class="simone-image" />
             <p style="margin-top: 0px">
-              Simone Gabriele earned her Master of Occupational Therapy from La
+              Simone Gabriele holds a Master of Occupational Therapy from La
               Trobe University before launching her career in early intervention
               supports, and later moving into neurodevelopmental community
-              services. Simone has worked in team lead roles, and provided
+              services. Simone has worked in team leader roles, and provided
               clinical supervision to the next generation of occupational
               therapists. She’s passionate about using strength-based and
               neurodiverse affirming practice to centre her clients. Simone
@@ -1012,7 +1051,35 @@
         style="padding: 50px 20px; color: white"
       >
         <div class="content-wrapper">
-          <h4 style="color: white">Follow Me Therapy Pty Ltd</h4>
+          <h3 style="color: white">Follow Me Therapy Pty Ltd</h3>
+
+          <div
+            style="
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: center;
+              gap: 15px;
+              margin-top: 30px;
+            "
+          >
+            <img src="flag 1.png" alt="Flag 1" style="width: 100px" />
+            <img src="flag 2.png" alt="Flag 2" style="width: 100px" />
+            <img src="flag 3.png" alt="Flag 3" style="width: 100px" />
+            <img src="flag 4.png" alt="Flag 4" style="width: 100px" />
+          </div>
+
+          <p>
+            We acknowledge the Traditional Custodians of the lands, seas, and
+            communities across Australia, and to the Wurundjeri people upon
+            where our services are provided. We recognise their enduring
+            connection to Country. We pay our respects to Elders past and
+            present and extend that respect to all Aboriginal and Torres Strait
+            Islander peoples today. We honour the resilience, strength, and
+            cultural pride of Aboriginal and Torres Strait Islander communities,
+            and extend such to all including the LGBTQIA+ community. All are
+            welcome at Follow Me Therapy
+          </p>
+
           <p
             style="
               text-align: start;
@@ -1028,29 +1095,61 @@
             intervention programs and support.
           </p>
           <p style="text-align: start; font-size: 1.1em; margin-bottom: 40px">
-            ABN: 12 345 678 910
+            ABN: 91 08 46 79 39 54 14
+          </p>
+          <p style="text-align: start; font-size: 1.1em; margin-bottom: 40px">
+            Postal Address: Suite 142, 585 Little Collins Street, Melbourne VIC
           </p>
         </div>
       </section>
     </div>
 
+    <!-- Footer Section -->
     <footer class="fixed-footer">
       <a
-        href="https://follow-me-therapy.splose.com/public-form/e84c8756-615f-4404-a6f3-a90f3760223b"
-        target="_blank"
+        href="#"
         class="btn-primary"
+        style="width: 100%; text-align: center; margin: 0 10px"
+        id="contactUsButton"
         >Contact Us</a
-      >
-      <a
-        href="https://follow-me-therapy.splose.com/public-form/975d61d5-cd63-44e5-86e7-f9315fa6a5b0"
-        target="_blank"
-        class="btn-secondary"
-        >Referral Link</a
       >
     </footer>
 
-    <!-- Modal Structure -->
-    <div id="serviceModal" class="modal">
+    <!-- Contact Us Modal Structure -->
+    <div id="contactModal" class="modal contact-modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3>Contact Us</h3>
+        <div>
+          <p style="text-align: center">
+            Ready to get going? Complete our referral form in about 10 minutes:
+          </p>
+          <a
+            href="https://follow-me-therapy.splose.com/public-form/975d61d5-cd63-44e5-86e7-f9315fa6a5b0"
+            target="_blank"
+            class="btn-secondary"
+            style="margin-top: 20px"
+            >Referral Link</a
+          >
+        </div>
+        <div style="margin-top: 40px; text-align: center">
+          <p style="text-align: center">
+            Need more information? Fill in our inquiry form and our team will be
+            in touch:
+          </p>
+          <a
+            href="https://follow-me-therapy.splose.com/public-form/e84c8756-615f-4404-a6f3-a90f3760223b"
+            target="_blank"
+            class="btn-primary"
+            style="margin-top: 20px"
+            >Inquiry</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- Existing Service Modal Structure -->
+    <div id="serviceModal" class="modal service-modal">
       <div class="modal-content">
         <span class="close">&times;</span>
         <div id="modalContent"></div>
@@ -1065,6 +1164,64 @@
     </div>
 
     <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Existing Service Modal logic
+        const serviceItems = document.querySelectorAll(".service-item");
+        const serviceModal = document.getElementById("serviceModal");
+        const serviceModalContent = document.getElementById("modalContent");
+        const closeServiceModal = document.querySelector(
+          "#serviceModal .close"
+        );
+
+        const serviceDetails = {
+          pediatric: {
+            title: "5 Steps Forward",
+            content:
+              "5 Steps Forward is a focused, short-term occupational therapy program...",
+          },
+          // other service details...
+        };
+
+        serviceItems.forEach((item) => {
+          item.addEventListener("click", function () {
+            const serviceType = this.getAttribute("data-service");
+            serviceModalContent.innerHTML = `<h3>${serviceDetails[serviceType].title}</h3><p>${serviceDetails[serviceType].content}</p>`;
+            serviceModal.classList.add("show");
+          });
+        });
+
+        closeServiceModal.addEventListener("click", function () {
+          serviceModal.classList.remove("show");
+        });
+
+        window.addEventListener("click", function (event) {
+          if (event.target == serviceModal) {
+            serviceModal.classList.remove("show");
+          }
+        });
+
+        // Contact Us Modal logic
+        const contactUsButton = document.getElementById("contactUsButton");
+        const contactModal = document.getElementById("contactModal");
+        const closeContactModal = document.querySelector(
+          "#contactModal .close"
+        );
+
+        contactUsButton.addEventListener("click", function (e) {
+          e.preventDefault();
+          contactModal.classList.add("show");
+        });
+
+        closeContactModal.addEventListener("click", function () {
+          contactModal.classList.remove("show");
+        });
+
+        window.addEventListener("click", function (event) {
+          if (event.target == contactModal) {
+            contactModal.classList.remove("show");
+          }
+        });
+      });
       document.addEventListener("DOMContentLoaded", function () {
         const links = document.querySelectorAll('a[href^="#"]');
         const body = document.body;
@@ -1093,15 +1250,9 @@
 
         // Footer scroll detection and animation
         const footer = document.querySelector("footer.fixed-footer");
-        const scrollThreshold = 40; // Adjust based on when you want to show the footer
+        const scrollThreshold = 0; // Adjust based on when you want to show the footer
 
-        window.addEventListener("scroll", function () {
-          if (window.scrollY > scrollThreshold) {
-            footer.classList.add("show");
-          } else {
-            footer.classList.remove("show");
-          }
-        });
+        footer.classList.add("show");
 
         // Modal functionality
         const serviceItems = document.querySelectorAll(".service-item");
@@ -1153,8 +1304,8 @@
         // Fade-in effect for content
         const faders = document.querySelectorAll(".fade-in-content");
         const appearOptions = {
-          threshold: 0.1,
-          rootMargin: "0px 0px -100px 0px",
+          threshold: 0.01,
+          rootMargin: "0px 0px 0px 0px",
         };
 
         const appearOnScroll = new IntersectionObserver(function (
