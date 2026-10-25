@@ -55,12 +55,52 @@
     <script>document.documentElement.classList.add("js");</script>
 
     <!-- Google Fonts: Quicksand -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preload" href="fonts/quicksand-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="fonts/fredoka-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <style>
+      @font-face {
+        font-family: "Fredoka";
+        font-weight: 500;
+        font-display: swap;
+        src: url("fonts/fredoka-latin-500-normal.woff2") format("woff2");
+      }
+      @font-face {
+        font-family: "Fredoka";
+        font-weight: 600;
+        font-display: swap;
+        src: url("fonts/fredoka-latin-600-normal.woff2") format("woff2");
+      }
+      @font-face {
+        font-family: "Fredoka";
+        font-weight: 700;
+        font-display: swap;
+        src: url("fonts/fredoka-latin-700-normal.woff2") format("woff2");
+      }
+      @font-face {
+        font-family: "Quicksand";
+        font-weight: 400;
+        font-display: swap;
+        src: url("fonts/quicksand-latin-400-normal.woff2") format("woff2");
+      }
+      @font-face {
+        font-family: "Quicksand";
+        font-weight: 500;
+        font-display: swap;
+        src: url("fonts/quicksand-latin-500-normal.woff2") format("woff2");
+      }
+      @font-face {
+        font-family: "Quicksand";
+        font-weight: 600;
+        font-display: swap;
+        src: url("fonts/quicksand-latin-600-normal.woff2") format("woff2");
+      }
+      @font-face {
+        font-family: "Quicksand";
+        font-weight: 700;
+        font-display: swap;
+        src: url("fonts/quicksand-latin-700-normal.woff2") format("woff2");
+      }
+    </style>
 
     <style>
       /* Global Styles */
@@ -2086,6 +2126,29 @@
       .walk-print {
         z-index: 0;
       }
+
+      .evidence {
+        font-size: 0.95em !important;
+        margin-top: 20px !important;
+        padding: 14px 18px;
+        background: rgba(255, 255, 255, 0.7);
+        border-radius: 16px;
+        clear: both;
+      }
+      .evidence a,
+      .privacy-note a {
+        color: var(--purple);
+        font-weight: 600;
+      }
+      .privacy-note {
+        text-align: center;
+        font-size: 0.92em !important;
+        margin: 20px auto 0 !important;
+      }
+      .footer-link {
+        color: #fff;
+        font-weight: 600;
+      }
     </style>
   </head>
   <body>
@@ -2294,6 +2357,17 @@
               />
               <span>Sessions run on Microsoft Teams.</span>
             </div>
+            <p class="evidence">
+              Research backs it up: a 2023 review of 18 trials found telehealth
+              OT for children works well alongside face-to-face therapy, and
+              families were happy with it.
+              <a
+                href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10134098/"
+                target="_blank"
+                rel="noopener"
+                >Read the review</a
+              >
+            </p>
           </div>
         </div>
       </section>
@@ -2409,6 +2483,10 @@
                 >
               </div>
             </div>
+            <p class="privacy-note">
+              Forms are confidential.
+              <a href="privacy.html">How we handle your information</a>
+            </p>
             <div class="contact-direct">
               <a href="tel:+61435076683" class="contact-link">
                 <img src="img/phone.svg" alt="" width="24" height="24" />
@@ -2459,6 +2537,7 @@
             </p>
             <p>ABN: 91 08 46 79 39 54 14</p>
             <p>Postal address: Suite 142, 585 Little Collins Street, Melbourne VIC</p>
+            <p><a href="privacy.html" class="footer-link">Privacy policy</a></p>
           </div>
         </div>
       </section>
