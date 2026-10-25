@@ -7,7 +7,7 @@
       content="upgrade-insecure-requests"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Follow Me Therapy | Occupational Therapy by Simone Gabriele</title>
+    <title>Follow Me Therapy | Paediatric Occupational Therapy, Melbourne &amp; Telehealth</title>
     <meta
       name="description"
       content="Paediatric occupational therapy for children and young people aged 0-18. Telehealth Australia-wide and community-based sessions in North-Western Melbourne. NDIS, private and Medicare referral options."
@@ -497,22 +497,6 @@
         background: url("img/team-bg.jpg") no-repeat center center/cover;
       }
 
-      .about-simone-wrapper::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(
-          255,
-          255,
-          255,
-          0.5
-        ); /* White color with 50% opacity */
-        z-index: 1; /* Make sure the overlay appears behind the content */
-        pointer-events: none; /* Allow clicks through the overlay */
-      }
 
       .about-simone-content {
         position: relative;
@@ -595,7 +579,7 @@
         border-radius: 10px;
       }
 
-      .title-and-logo h1 {
+      .title-and-logo .site-title {
         text-align: start;
         margin-right: 10px;
         font-size: 2.5em;
@@ -699,7 +683,7 @@
           padding: 10px 50px;
         }
 
-        .title-and-logo h1 {
+        .title-and-logo .site-title {
           font-size: 2em;
         }
 
@@ -748,7 +732,7 @@
           padding: 5px 10px;
         }
 
-        .title-and-logo h1 {
+        .title-and-logo .site-title {
           font-size: 1.8em;
         }
 
@@ -777,7 +761,7 @@
       }
 
       /* Heading */
-      .title-container h1 {
+      .title-container .site-title {
         font-size: 5vw; /* Scale the font size based on the viewport width */
         color: black;
         margin: 0;
@@ -792,7 +776,7 @@
 
       /* Responsive adjustments for smaller screens */
       @media (max-width: 768px) {
-        .title-container h1 {
+        .title-container .site-title {
           font-size: 8vw; /* Scale up font size for smaller devices */
         }
         .logo-image {
@@ -1489,7 +1473,7 @@
           padding-left: 30px;
           flex-wrap: nowrap;
         }
-        .title-container h1 {
+        .title-container .site-title {
           font-size: 6.6vw;
           padding-right: 0;
           white-space: nowrap;
@@ -1871,9 +1855,6 @@
       .about-simone-wrapper {
         background-image: none !important;
       }
-      .about-simone-wrapper::before {
-        display: none;
-      }
       .about-simone-content {
         background: #fff;
         backdrop-filter: none;
@@ -2005,6 +1986,168 @@
         }
       }
 
+
+      /* ════ Section-level tweaks for the new order ════ */
+      .eyebrow {
+        font-family: "Quicksand", system-ui, sans-serif !important;
+        text-align: center !important;
+        line-height: 1.5;
+      }
+      .section-cta {
+        text-align: center;
+        margin-top: 40px;
+      }
+      .contact-lead {
+        text-align: center;
+        margin: -8px auto 28px;
+        font-size: 1.15em;
+      }
+      .funding-grid {
+        margin-top: 24px;
+      }
+      .funding-card {
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        transition:
+          transform 0.35s cubic-bezier(0.3, 1.5, 0.5, 1),
+          box-shadow 0.3s ease;
+      }
+      .funding-card:hover,
+      .funding-card:focus-visible {
+        transform: translateY(-6px) rotate(1deg);
+        box-shadow: 0 16px 32px rgba(43, 37, 64, 0.12);
+      }
+      .funding-card:nth-child(2):hover {
+        transform: translateY(-6px) rotate(-1deg);
+      }
+      .funding-card:active {
+        transform: scale(0.97);
+      }
+      .funding-card p {
+        margin-bottom: 14px !important;
+      }
+      .funding-card .more {
+        margin-top: auto;
+        font-family: var(--display);
+        font-weight: 500;
+        color: var(--purple);
+      }
+      .fund-svg {
+        width: 60px;
+        height: 60px;
+        border-radius: 18px;
+        margin-bottom: 12px;
+      }
+      .fund-svg svg {
+        width: 34px;
+        height: 34px;
+      }
+      .funding-card:hover .fund-svg {
+        transform: rotate(-8deg) scale(1.08);
+      }
+
+      /* Meet Simone: text wraps around the photo */
+      .bio {
+        display: block !important;
+      }
+      .bio-photo {
+        float: left;
+        width: 44%;
+        max-width: 280px;
+        height: auto;
+        margin: 4px 28px 14px 0;
+        border-radius: 24px;
+        shape-outside: inset(0 round 24px);
+        position: relative;
+        z-index: 1;
+      }
+      .bio p,
+      .bio .person-name {
+        max-width: none;
+        margin-left: 0;
+        margin-right: 0;
+        text-align: left;
+      }
+      .bio .person-name {
+        margin-top: 0;
+      }
+      .bio-clear {
+        clear: both;
+      }
+      @media (max-width: 520px) {
+        .bio-photo {
+          float: none;
+          display: block;
+          width: 100%;
+          max-width: none;
+          aspect-ratio: 1 / 1;
+          object-fit: cover;
+          object-position: center 20%;
+          margin: 0 0 18px;
+        }
+      }
+
+      /* ════ Fun entrances ════ */
+      .js .fade-in-content:not(.is-visible) .stagger > * {
+        opacity: 0;
+      }
+      .is-visible .stagger > * {
+        animation: popIn 0.7s cubic-bezier(0.3, 1.5, 0.5, 1) backwards;
+      }
+      .stagger > :nth-child(1) { animation-delay: 0.05s !important; }
+      .stagger > :nth-child(2) { animation-delay: 0.15s !important; }
+      .stagger > :nth-child(3) { animation-delay: 0.25s !important; }
+      .stagger > :nth-child(4) { animation-delay: 0.35s !important; }
+      .stagger > :nth-child(5) { animation-delay: 0.42s !important; }
+      .stagger > :nth-child(6) { animation-delay: 0.49s !important; }
+      .stagger > :nth-child(7) { animation-delay: 0.56s !important; }
+      .stagger > :nth-child(8) { animation-delay: 0.63s !important; }
+      @keyframes popIn {
+        from { opacity: 0; transform: translateY(26px) scale(0.9) rotate(-2deg); }
+      }
+      .is-visible .step-num {
+        animation: bounceIn 0.8s cubic-bezier(0.3, 1.8, 0.5, 1) backwards;
+        animation-delay: inherit;
+      }
+      @keyframes bounceIn {
+        from { transform: translateY(-30px) scale(0.4); opacity: 0; }
+      }
+      .is-visible .bio-photo {
+        animation: photoIn 0.9s cubic-bezier(0.3, 1.4, 0.5, 1) backwards;
+      }
+      @keyframes photoIn {
+        from { transform: rotate(-6deg) scale(0.85); opacity: 0; }
+      }
+      .is-visible .reveal-img {
+        animation: imgReveal 1s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+      }
+      @keyframes imgReveal {
+        from { clip-path: inset(0 0 100% 0 round 24px); transform: scale(1.04); }
+        to { clip-path: inset(0 0 0 0 round 24px); }
+      }
+      .is-visible h2::after {
+        animation: stepMark 0.9s ease-out backwards 0.2s;
+      }
+      @keyframes stepMark {
+        from { opacity: 0; transform: translateX(-14px); }
+      }
+      .js .fade-in-content {
+        transition-duration: 0.6s !important;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .is-visible .stagger > *,
+        .is-visible .step-num,
+        .is-visible .bio-photo,
+        .is-visible .reveal-img,
+        .is-visible h2::after {
+          animation: none !important;
+        }
+        .js .fade-in-content:not(.is-visible) .stagger > * {
+          opacity: 1;
+        }
+      }
     </style>
   </head>
   <body>
@@ -2024,17 +2167,17 @@
             height="300"
           />
         </div>
-        <h1 class="site-title" style="font-weight: 500">Follow Me Therapy</h1>
+        <p class="site-title" style="font-weight: 500">Follow Me Therapy</p>
       </div>
     </div>
     <header class="fixed-header" aria-label="Main menu">
       <a href="#about" class="nav-logo" aria-label="Back to top"
         ><img src="img/logo.png" alt="" width="27" height="30"
       /></a>
-      <a href="#ot-services">Services</a>
-      <a href="#telehealth">Telehealth</a>
-      <a href="#funding">Funding</a>
+      <a href="#services">Services</a>
       <a href="#about-simone">Team</a>
+      <a href="#funding">Funding</a>
+      <a href="#telehealth">Telehealth</a>
       <a href="#contact">Contact</a>
     </header>
 
@@ -2043,12 +2186,12 @@
       <section id="about" class="content-section">
         <div class="fade-in-content">
           <div class="content-wrapper about-content">
-            <p class="eyebrow">Paediatric Occupational Therapy</p>
+            <h1 class="eyebrow">Paediatric Occupational Therapy · Melbourne &amp; Telehealth</h1>
             <p class="lead">
               Helping children, young people and their families live their
               fullest lives.
             </p>
-            <ul class="facts">
+            <ul class="facts stagger">
               <li>Ages 0–18</li>
               <li>Telehealth Australia-wide</li>
               <li>Community sessions in North-Western Melbourne</li>
@@ -2065,17 +2208,16 @@
     </div>
 
     <div class="section-wrapper tone-cream wave-top">
-
       <section id="ot-services" class="content-section">
         <div class="fade-in-content">
-          <h2>Occupational Therapy</h2>
+          <h2>What is occupational therapy?</h2>
           <p class="large-italic-centered">
-            Occupational therapy (OT) is about the activities we do each day,
-            what brings us joy, and the journey to becoming you.
+            OT is about the activities we do each day, what brings us joy, and
+            the journey to becoming you.
           </p>
           <p>
-            We help children and young people build the skills for independence
-            and everyday life, with therapy shaped around each child.
+            Paediatric OT helps children and young people build the skills for
+            play, school, self-care and everyday independence.
           </p>
           <div class="flex-container">
             <div>
@@ -2092,8 +2234,8 @@
             </div>
             <img
               src="img/kids-playing.jpg"
-              alt="Children playing together"
-              class="responsive-image"
+              alt="Two young children playing with blocks at a table"
+              class="responsive-image reveal-img"
               width="1000"
               height="667"
               loading="lazy"
@@ -2108,13 +2250,13 @@
       </section>
     </div>
 
-    <div class="section-wrapper tone-cream">
+    <div class="section-wrapper tone-white wave-top">
       <section id="services" class="content-section services-section">
         <div class="fade-in-content">
           <div class="content-wrapper">
-            <h2>Our Services</h2>
+            <h2>Our services</h2>
             <p>Tap a service to find out more.</p>
-            <div class="services-grid">
+            <div class="services-grid stagger">
               <div class="service-item" data-service="pediatric" role="button" tabindex="0" aria-haspopup="dialog">
                 <span class="svc-icon svc-footprints"><svg viewBox="0 0 40 40" aria-hidden="true"><ellipse cx="14" cy="16" rx="4.5" ry="7"/><ellipse cx="14" cy="28" rx="3" ry="2.5"/><ellipse cx="26" cy="12" rx="4.5" ry="7" transform="translate(0 6)"/><ellipse cx="26" cy="31" rx="3" ry="2.5" transform="translate(0 -1)"/></svg></span>
                 <h3>5 Steps Forward</h3>
@@ -2145,11 +2287,57 @@
       </section>
     </div>
 
-    <div class="section-wrapper tone-white wave-top">
+    <div class="section-wrapper about-simone-wrapper tone-mint wave-top">
+      <section id="about-simone" class="content-section">
+        <div class="fade-in-content">
+          <h2>Meet Simone</h2>
+          <div class="content-wrapper about-simone-content bio">
+            <img
+              src="img/simone.jpg"
+              alt="Simone Gabriele, paediatric occupational therapist"
+              class="bio-photo"
+              width="700"
+              height="701"
+              loading="lazy"
+              decoding="async"
+            />
+            <h3 class="person-name">Simone Gabriele</h3>
+            <p class="person-role">
+              Paediatric Occupational Therapist<br />Master of Occupational
+              Therapy, La Trobe University
+            </p>
+            <p>
+              Simone began her career in early intervention, then moved into
+              neurodevelopmental community services, where she led teams and
+              supervised new OTs.
+            </p>
+            <p>
+              Her practice is strength-based and neurodiversity-affirming, with
+              your child at the centre. She believes therapy should be fun,
+              engaging and practical for busy families.
+            </p>
+            <div class="bio-clear"></div>
+            <p class="list-label">Experience with:</p>
+            <ul class="chips stagger">
+              <li>Autism (ASD)</li>
+              <li>ADHD</li>
+              <li>Behaviour support needs</li>
+              <li>Global developmental delay</li>
+              <li>Cerebral palsy</li>
+              <li>Down syndrome</li>
+              <li>Genetic and neurodevelopmental disabilities</li>
+              <li>Motor and coordination difficulties</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="section-wrapper tone-lilac wave-top">
       <section id="how" class="content-section">
         <div class="fade-in-content">
           <h2>How it works</h2>
-          <ol class="steps">
+          <ol class="steps stagger">
             <li>
               <span class="step-num">1</span>
               <h3>Referral</h3>
@@ -2169,20 +2357,58 @@
               <p>Telehealth or community sessions, tailored to your goals.</p>
             </li>
           </ol>
+          <div class="section-cta">
+            <a
+              href="https://follow-me-therapy.splose.com/public-form/975d61d5-cd63-44e5-86e7-f9315fa6a5b0"
+              target="_blank"
+              rel="noopener"
+              class="btn-secondary"
+              >Start with a referral</a
+            >
+          </div>
         </div>
       </section>
     </div>
 
-    <div class="section-wrapper telehealth-wrapper tone-lilac wave-top">
+    <div class="section-wrapper tone-cream wave-top">
+      <section id="funding" class="content-section">
+        <div class="fade-in-content">
+          <h2>Funding options</h2>
+          <p>NDIS, Medicare or private health. Tap an option to see how it works.</p>
+          <div class="funding-grid stagger">
+            <div class="funding-card" data-funding="ndis" role="button" tabindex="0" aria-haspopup="dialog">
+              <span class="svc-icon svc-footprints fund-svg"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="12" r="5"/><path d="M9 34c0-7 5-12 11-12s11 5 11 12"/><path d="M27 18l3-3m-17 3l-3-3"/></svg></span>
+              <h3>NDIS</h3>
+              <p>For self-managed and plan-managed participants.</p>
+              <span class="more">How it works →</span>
+            </div>
+            <div class="funding-card" data-funding="medicare" role="button" tabindex="0" aria-haspopup="dialog">
+              <span class="svc-icon svc-stairs fund-svg"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="7" y="7" width="26" height="26" rx="7"/><path d="M20 13v14M13 20h14"/></svg></span>
+              <h3>Medicare</h3>
+              <p>Rebates with an eligible plan from your doctor.</p>
+              <span class="more">How it works →</span>
+            </div>
+            <div class="funding-card" data-funding="private" role="button" tabindex="0" aria-haspopup="dialog">
+              <span class="svc-icon svc-esdm fund-svg"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 5l12 5v9c0 8-5 13-12 16C13 32 8 27 8 19v-9z"/><path d="M15 20l4 4 7-8"/></svg></span>
+              <h3>Private</h3>
+              <p>Flexible short or long-term support, with possible health fund rebates.</p>
+              <span class="more">How it works →</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="section-wrapper telehealth-wrapper tone-white wave-top">
       <section id="telehealth" class="content-section">
         <div class="fade-in-content">
-          <h2>Telehealth</h2>
+          <h2>Telehealth across Australia</h2>
           <div class="content-wrapper telehealth-content">
             <div class="split">
             <img
               src="img/telehealth.jpg"
-              alt="A telehealth session on a laptop"
-              class="telehealth-image"
+              alt="A parent and child at a computer during a telehealth session"
+              class="telehealth-image reveal-img"
               width="800"
               height="1199"
               loading="lazy"
@@ -2190,9 +2416,9 @@
             />
               <div class="split-text">
             <p>
-              Meet your therapist by video or phone, with no travel. Telehealth
-              fits into your family routine and brings therapy to you anywhere
-              in Australia, including rural and regional areas.
+              See your therapist by video or phone, with no travel. Therapy fits
+              into your family routine, wherever you live, including rural and
+              regional areas.
             </p>
             <p class="list-label">It also reaches beyond the home:</p>
             <ul class="checklist">
@@ -2229,84 +2455,7 @@
       </section>
     </div>
 
-    <div class="section-wrapper telehealth-wrapper tone-lilac">
-      <section id="funding" class="content-section">
-        <div class="fade-in-content">
-          <h2>Funding Options</h2>
-          <div class="funding-grid">
-            <div class="funding-card">
-              <h3>NDIS</h3>
-              <p>
-                For self-managed and plan-managed participants, with therapy
-                plans built around your goals.
-              </p>
-            </div>
-            <div class="funding-card">
-              <h3>Private</h3>
-              <p>
-                Short or long-term support. You may be able to claim a rebate
-                through your private health insurance.
-              </p>
-            </div>
-            <div class="funding-card">
-              <h3>Medicare</h3>
-              <p>Have a referral? Get in touch to talk through your options.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-
-    <div class="section-wrapper about-simone-wrapper tone-mint wave-top">
-      <section id="about-simone" class="content-section">
-        <div class="fade-in-content">
-          <h2>Meet the Team</h2>
-          <div class="content-wrapper about-simone-content">
-            <div class="split">
-            <img
-              src="img/simone.jpg"
-              alt="Simone Gabriele, occupational therapist"
-              class="simone-image"
-              width="700"
-              height="701"
-              loading="lazy"
-              decoding="async"
-            />
-              <div class="split-text">
-            <h3 class="person-name">Simone Gabriele</h3>
-            <p class="person-role">
-              Occupational Therapist · Master of Occupational Therapy, La Trobe
-              University
-            </p>
-            <p>
-              Simone began her career in early intervention before moving into
-              neurodevelopmental community services, where she led teams and
-              supervised the next generation of OTs.
-            </p>
-            <p>
-              Her practice is strength-based and neurodiversity-affirming, with
-              each child at the centre. She believes therapy should be fun,
-              engaging and practical for busy families.
-            </p>
-              </div>
-            </div>
-            <p class="list-label">Experience with:</p>
-            <ul class="chips">
-              <li>Autism (ASD)</li>
-              <li>ADHD</li>
-              <li>Behaviour support needs</li>
-              <li>Global developmental delay</li>
-              <li>Cerebral palsy</li>
-              <li>Down syndrome</li>
-              <li>Genetic and neurodevelopmental disabilities</li>
-              <li>Motor and coordination difficulties</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-    </div>
-
-    <div class="section-wrapper tone-cream wave-top">
+    <div class="section-wrapper tone-lilac wave-top">
       <section
         id="contact"
         class="content-section contact-section"
@@ -2314,8 +2463,12 @@
       >
         <div class="fade-in-content">
           <div class="content-wrapper">
-            <h2>Get in Touch</h2>
-            <div class="contact-actions">
+            <h2>Get in touch</h2>
+            <p class="contact-lead">
+              Taking the first step is easy. Make a referral, or ask us anything
+              first.
+            </p>
+            <div class="contact-actions stagger">
               <div class="contact-card">
                 <h3>Ready to start?</h3>
                 <p>Complete our referral form and we’ll take it from there.</p>
@@ -2551,6 +2704,39 @@
           });
         });
 
+        // Funding cards open their details.
+        const fundingDetails = {
+          ndis: {
+            title: "NDIS",
+            content:
+              "<ul class='checklist'><li>We support self-managed and plan-managed NDIS participants.</li><li>Bring your plan goals to the initial assessment and we’ll build therapy around them.</li><li>We can write reports for plan reviews and NDIS access requests.</li></ul><p class='modal-note'>Is your plan NDIA-managed? Get in touch and we’ll talk through your options.</p>",
+          },
+          medicare: {
+            title: "Medicare",
+            content:
+              "<ul class='checklist'><li><b>Chronic condition plan:</b> your GP can write a plan that gives Medicare rebates for up to 5 allied health sessions a year.</li><li><b>Neurodevelopmental plan:</b> children and young people under 25 with an eligible diagnosis, such as autism, may access up to 20 sessions through a referral from a paediatrician or psychiatrist.</li></ul><p class='modal-note'>Not sure if you’re eligible? Ask us or your doctor.</p>",
+          },
+          private: {
+            title: "Private",
+            content:
+              "<ul class='checklist'><li>No plan or referral needed to get started.</li><li>Short programs or long-term support, whatever suits your family.</li><li>If your private health extras cover includes OT, you may be able to claim a rebate. Check with your fund.</li></ul>",
+          },
+        };
+        document.querySelectorAll(".funding-card").forEach((card) => {
+          const open = () => {
+            const d = fundingDetails[card.getAttribute("data-funding")];
+            serviceModalContent.innerHTML = `<h3 id="serviceModalTitle">${d.title}</h3><div class="modal-body">${d.content}</div>`;
+            openModal(serviceModal);
+          };
+          card.addEventListener("click", open);
+          card.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              open();
+            }
+          });
+        });
+
         // Contact Us button.
         const contactModal = document.getElementById("contactModal");
         document.querySelectorAll("#contactUsButton, [data-open-contact]").forEach((btn) =>
@@ -2580,7 +2766,7 @@
           document.querySelectorAll("header.fixed-header a[href^='#']").forEach((a) => {
             links[a.getAttribute("href").slice(1)] = a;
           });
-          const map = { services: "ot-services", how: "ot-services", funding: "funding" };
+          const map = { "ot-services": "services", how: "about-simone" };
           const spy = new IntersectionObserver(
             (entries) => {
               entries.forEach((e) => {
