@@ -2097,6 +2097,103 @@
           opacity: 1;
         }
       }
+
+      /* Call-back form */
+      .callback {
+        margin: 22px 0 0;
+        background: #fff;
+        border-radius: 24px;
+        padding: 26px 24px;
+        box-shadow: 0 8px 24px rgba(43, 37, 64, 0.07);
+        text-align: center;
+        position: relative;
+        z-index: 1;
+      }
+      .callback h3 {
+        margin-bottom: 4px;
+      }
+      .callback > p {
+        text-align: center;
+        font-size: 0.98em !important;
+        margin: 0 auto 18px;
+      }
+      .cb-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        text-align: left;
+        margin-bottom: 18px;
+      }
+      .cb-grid label {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        font-weight: 700;
+        font-size: 0.92em;
+        color: var(--ink);
+      }
+      .cb-grid input,
+      .cb-grid select {
+        font: inherit;
+        font-weight: 500;
+        padding: 11px 14px;
+        border: 2px solid #e2dcf5;
+        border-radius: 14px;
+        background: #fbfaff;
+        color: var(--ink);
+        transition: border-color 0.2s, box-shadow 0.2s;
+      }
+      .cb-grid input:focus,
+      .cb-grid select:focus {
+        outline: none;
+        border-color: var(--purple);
+        box-shadow: 0 0 0 4px rgba(107, 78, 240, 0.15);
+      }
+      .callback button:disabled {
+        opacity: 0.7;
+        cursor: default;
+      }
+      .cb-honey {
+        position: absolute;
+        left: -9999px;
+        width: 1px;
+        height: 1px;
+      }
+      .cb-status {
+        margin: 12px auto 0 !important;
+        font-size: 0.95em !important;
+        min-height: 1.4em;
+      }
+      .cb-status.ok {
+        color: #0f8a5f;
+        font-weight: 700;
+      }
+      .cb-status.err {
+        color: #c0392b;
+        font-weight: 600;
+      }
+      .more-link {
+        margin-top: 14px !important;
+      }
+      .more-link a,
+      .modal-body a {
+        color: var(--purple);
+        font-weight: 700;
+      }
+      .foot-explore {
+        list-style: none;
+        padding: 0;
+        margin: 14px 0 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px 18px;
+        font-size: 0.85em;
+      }
+      @media (max-width: 560px) {
+        .cb-grid {
+          grid-template-columns: 1fr;
+        }
+      }
     </style>
   </head>
   <body>
@@ -2394,6 +2491,9 @@
                 >Read the review</a
               >
             </p>
+            <p class="more-link">
+              <a href="telehealth-occupational-therapy.html">More about telehealth OT →</a>
+            </p>
           </div>
         </div>
       </section>
@@ -2436,6 +2536,36 @@
                 >
               </div>
             </div>
+            <form class="callback" id="callback" novalidate>
+              <h3>Prefer a call back?</h3>
+              <p>Leave your number and we’ll call you. Please don’t include health details here.</p>
+              <div class="cb-grid">
+                <label>Your name<input name="name" autocomplete="name" required /></label>
+                <label>Phone<input name="phone" type="tel" autocomplete="tel" inputmode="tel" required /></label>
+                <label
+                  >Child’s age
+                  <select name="child_age" required>
+                    <option value="">Choose…</option>
+                    <option>0–2</option>
+                    <option>3–5</option>
+                    <option>6–12</option>
+                    <option>13–18</option>
+                  </select></label
+                >
+                <label
+                  >Best time to call
+                  <select name="best_time">
+                    <option>Any time</option>
+                    <option>Morning</option>
+                    <option>Afternoon</option>
+                    <option>Evening</option>
+                  </select></label
+                >
+              </div>
+              <input type="text" name="_honey" class="cb-honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
+              <button type="submit" class="btn-secondary">Request a call</button>
+              <p class="cb-status" role="status" aria-live="polite"></p>
+            </form>
             <p class="privacy-note">
               Forms are confidential.
               <a href="privacy.html">How we handle your information</a>
@@ -2490,7 +2620,13 @@
             </p>
             <p>ABN: 91 08 46 79 39 54 14</p>
             <p>Postal address: Suite 142, 585 Little Collins Street, Melbourne VIC</p>
-            <p><a href="privacy.html" class="footer-link">Privacy policy</a></p>
+            <ul class="foot-explore">
+              <li><a href="telehealth-occupational-therapy.html" class="footer-link">Telehealth OT</a></li>
+              <li><a href="ndis-occupational-therapy.html" class="footer-link">NDIS OT</a></li>
+              <li><a href="esdm-melbourne.html" class="footer-link">ESDM in Melbourne</a></li>
+              <li><a href="occupational-therapy-north-western-melbourne.html" class="footer-link">North-Western Melbourne</a></li>
+              <li><a href="privacy.html" class="footer-link">Privacy policy</a></li>
+            </ul>
           </div>
         </div>
       </section>
@@ -2586,7 +2722,7 @@
           home: {
             title: "Early Start Denver Model (ESDM)",
             content:
-              "<p>An evidence-based, play-based approach for children up to 5 with autism or other developmental delays, developed by the UC Davis MIND Institute.</p><p>It supports communication, social skills, play, daily living and thinking skills. Delivered by an ESDM-certified therapist, it includes:</p><ul class='checklist'><li>1:1 sessions at home or in the community</li><li>An individualised learning program</li><li>Coaching for the people who support your child every day</li></ul><p>We’ll check whether ESDM suits your child at the initial assessment.</p>",
+              "<p>An evidence-based, play-based approach for children up to 5 with autism or other developmental delays, developed by the UC Davis MIND Institute.</p><p>It supports communication, social skills, play, daily living and thinking skills. Delivered by an ESDM-certified therapist, it includes:</p><ul class='checklist'><li>1:1 sessions at home or in the community</li><li>An individualised learning program</li><li>Coaching for the people who support your child every day</li></ul><p>We’ll check whether ESDM suits your child at the initial assessment.</p><p><a href='esdm-melbourne.html'>More about ESDM in Melbourne →</a></p>",
           },
           assessments: {
             title: "Assessments",
@@ -2653,7 +2789,7 @@
           ndis: {
             title: "NDIS",
             content:
-              "<ul class='checklist'><li>We support self-managed and plan-managed NDIS participants.</li><li>Bring your plan goals to the initial assessment and we’ll build therapy around them.</li><li>We can write reports for plan reviews and NDIS access requests.</li></ul><p class='modal-note'>Is your plan NDIA-managed? Get in touch and we’ll talk through your options.</p>",
+              "<ul class='checklist'><li>We support self-managed and plan-managed NDIS participants.</li><li>Bring your plan goals to the initial assessment and we’ll build therapy around them.</li><li>We can write reports for plan reviews and NDIS access requests.</li></ul><p class='modal-note'>Is your plan NDIA-managed? Get in touch and we’ll talk through your options.</p><p><a href='ndis-occupational-therapy.html'>More about NDIS OT →</a></p>",
           },
           medicare: {
             title: "Medicare",
@@ -2680,6 +2816,50 @@
             }
           });
         });
+
+        // Call-back form: sends a short email to the practice inbox.
+        const cb = document.getElementById("callback");
+        if (cb) {
+          cb.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const status = cb.querySelector(".cb-status");
+            const btn = cb.querySelector("button[type=submit]");
+            const data = Object.fromEntries(new FormData(cb));
+            if (data._honey) return;
+            if (!data.name || !data.phone || !data.child_age) {
+              status.textContent = "Please add your name, phone and your child’s age.";
+              status.className = "cb-status err";
+              return;
+            }
+            btn.disabled = true;
+            btn.textContent = "Sending…";
+            try {
+              const res = await fetch("https://formsubmit.co/ajax/info@followmetherapy.com.au", {
+                method: "POST",
+                headers: { "Content-Type": "application/json", Accept: "application/json" },
+                body: JSON.stringify({
+                  _subject: "Call-back request from the website",
+                  _template: "table",
+                  _captcha: "false",
+                  Name: data.name,
+                  Phone: data.phone,
+                  "Child's age": data.child_age,
+                  "Best time": data.best_time,
+                }),
+              });
+              if (!res.ok) throw new Error();
+              cb.reset();
+              status.textContent = "Thanks! We’ll give you a call soon.";
+              status.className = "cb-status ok";
+              btn.textContent = "Sent ✓";
+            } catch (err) {
+              status.textContent = "Sorry, that didn’t send. Please call 0435 076 683 or email info@followmetherapy.com.au.";
+              status.className = "cb-status err";
+              btn.disabled = false;
+              btn.textContent = "Request a call";
+            }
+          });
+        }
 
         // Contact Us button.
         const contactModal = document.getElementById("contactModal");
