@@ -417,51 +417,6 @@
         border-radius: 5px;
       }
 
-      /* Initially hide the footer by positioning it off-screen */
-      footer.fixed-footer {
-        position: fixed;
-        bottom: -100px; /* Move it off-screen */
-        width: 100%;
-        max-width: 300px;
-        left: 50%;
-        transform: translateX(-50%);
-        background-color: rgba(255, 255, 255, 0.9);
-        backdrop-filter: blur(4px);
-        color: white;
-        padding: 20px 20px;
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-        border-radius: 10px 10px 0 0;
-        z-index: 1000;
-        transition: bottom 0.5s ease; /* Smooth animation */
-      }
-
-      footer.fixed-footer.show {
-        bottom: 0; /* Bring it into view */
-      }
-
-      footer.fixed-footer a {
-        padding: 10px 20px;
-        text-decoration: none;
-        color: white;
-        background-color: rgb(23, 117, 118);
-        border-radius: 5px;
-      }
-
-      footer.fixed-footer a:hover {
-        background-color: rgb(14, 103, 104);
-      }
-
-      footer.fixed-footer .btn-secondary {
-        background-color: #6b4ef0;
-      }
-
-      footer.fixed-footer .btn-secondary:hover {
-        background-color: #5a3fd6;
-      }
-
       /* Footer Section */
       footer.footer-section {
         background-color: #2e2e2e;
@@ -1322,19 +1277,211 @@
       .about-simone-content > .list-label {
         margin-left: 0;
       }
+
+      /* ════ Logo: walks in leaving footprints, then idles ════ */
+      .logo-walk {
+        position: relative;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        animation: walkIn 1.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+      }
+      .logo-walk .logo-image {
+        transform-origin: 50% 100%;
+        animation:
+          step 0.4s ease-in-out 4,
+          idle 7s ease-in-out 2.4s infinite;
+      }
+      .logo-walk.hop .logo-image {
+        animation: hop 0.6s cubic-bezier(0.3, 1.6, 0.5, 1);
+      }
+      .trail {
+        position: absolute;
+        right: 100%;
+        bottom: 6px;
+        display: flex;
+        gap: 6px;
+        margin-right: 6px;
+        pointer-events: none;
+      }
+      .trail img {
+        width: 20px;
+        height: 20px;
+        transform: rotate(90deg);
+        opacity: 0;
+        filter: invert(20%) sepia(60%) saturate(1800%) hue-rotate(240deg);
+        animation: print 2.6s ease-out forwards;
+      }
+      .trail img:nth-child(2) { animation-delay: 0.35s; margin-bottom: 8px; }
+      .trail img:nth-child(3) { animation-delay: 0.7s; }
+      .site-title {
+        animation: titleIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.5s both;
+      }
+      @keyframes walkIn {
+        from { transform: translateX(-90px); opacity: 0; }
+        20% { opacity: 1; }
+        to { transform: none; opacity: 1; }
+      }
+      @keyframes step {
+        0%, 100% { transform: translateY(0) rotate(0); }
+        25% { transform: translateY(-5px) rotate(-3deg); }
+        75% { transform: translateY(-5px) rotate(3deg); }
+      }
+      @keyframes idle {
+        0%, 88%, 100% { transform: none; }
+        92% { transform: translateY(-6px) rotate(-2deg); }
+        96% { transform: translateY(0) rotate(1.5deg); }
+      }
+      @keyframes hop {
+        0% { transform: none; }
+        35% { transform: translateY(-14px) scale(1.05) rotate(-4deg); }
+        70% { transform: translateY(0) scale(0.97, 1.03); }
+        100% { transform: none; }
+      }
+      @keyframes print {
+        0% { opacity: 0; transform: rotate(90deg) scale(0.6); }
+        25% { opacity: 0.7; transform: rotate(90deg) scale(1); }
+        100% { opacity: 0.45; transform: rotate(90deg) scale(1); }
+      }
+      @keyframes titleIn {
+        from { transform: translateY(12px); opacity: 0; }
+        to { transform: none; opacity: 1; }
+      }
+
+      /* ════ Floating Contact button ════ */
+      .fab {
+        position: fixed;
+        right: 20px;
+        bottom: calc(20px + env(safe-area-inset-bottom));
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        height: 60px;
+        padding: 0 22px 0 18px;
+        border-radius: 30px;
+        background: #6b4ef0;
+        color: white;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 1.05em;
+        box-shadow: 0 8px 24px rgba(107, 78, 240, 0.4);
+        opacity: 0;
+        transform: translateY(24px) scale(0.6);
+        pointer-events: none;
+        transition:
+          opacity 0.35s ease,
+          transform 0.5s cubic-bezier(0.3, 1.5, 0.5, 1),
+          padding 0.35s ease,
+          gap 0.35s ease,
+          background-color 0.2s ease;
+      }
+      .fab.show {
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
+      }
+      .fab.show.tucked {
+        opacity: 0;
+        transform: translateY(24px) scale(0.6);
+        pointer-events: none;
+      }
+      .fab:hover {
+        background: #5a3fd6;
+      }
+      .fab:active {
+        transform: scale(0.92);
+      }
+      .fab svg {
+        width: 26px;
+        height: 26px;
+        flex: none;
+      }
+      .fab-label {
+        max-width: 120px;
+        overflow: hidden;
+        white-space: nowrap;
+        transition: max-width 0.35s ease, opacity 0.25s ease;
+      }
+      .fab.compact {
+        padding: 0 17px;
+        gap: 0;
+      }
+      .fab.compact .fab-label {
+        max-width: 0;
+        opacity: 0;
+      }
+      .fab:focus-visible {
+        outline: 3px solid #ffe8ba;
+        outline-offset: 3px;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .logo-walk,
+        .logo-walk .logo-image,
+        .site-title,
+        .trail img {
+          animation: none !important;
+        }
+        .trail img {
+          opacity: 0.45;
+        }
+      }
+      .title-container {
+        padding-left: 72px;
+        box-sizing: border-box;
+      }
+      .logo-walk {
+        margin-right: 12px;
+      }
+      @media (min-width: 769px) {
+        .trail img {
+          width: 30px;
+          height: 30px;
+        }
+        .trail {
+          gap: 10px;
+          margin-right: 14px;
+        }
+      }
+      @media (max-width: 768px) {
+        .title-container {
+          padding-left: 30px;
+          flex-wrap: nowrap;
+        }
+        .title-container h1 {
+          font-size: 6.6vw;
+          padding-right: 0;
+          white-space: nowrap;
+        }
+        .trail {
+          gap: 3px;
+        }
+        .trail img {
+          width: 16px;
+          height: 16px;
+        }
+      }
     </style>
   </head>
   <body>
     <div class="title-and-logo" style="border-radius: 0">
       <div class="title-container" style="padding-top: 44px">
-        <img
-          src="img/logo.png"
-          alt="Follow Me Therapy logo"
-          class="logo-image"
-          width="271"
-          height="300"
-        />
-        <h1 style="font-weight: 500">Follow Me Therapy</h1>
+        <div class="logo-walk">
+          <span class="trail" aria-hidden="true">
+            <img src="img/footprints.svg" alt="" width="22" height="22" />
+            <img src="img/footprints.svg" alt="" width="22" height="22" />
+            <img src="img/footprints.svg" alt="" width="22" height="22" />
+          </span>
+          <img
+            src="img/logo.png"
+            alt="Follow Me Therapy logo"
+            class="logo-image"
+            width="271"
+            height="300"
+          />
+        </div>
+        <h1 class="site-title" style="font-weight: 500">Follow Me Therapy</h1>
       </div>
     </div>
     <header class="fixed-header" aria-label="Main menu">
@@ -1642,7 +1789,7 @@
       <section
         id="company"
         class="content-section"
-        style="padding: 56px 20px 130px; color: white"
+        style="padding: 56px 20px 110px; color: white"
       >
         <div class="content-wrapper company">
           <div class="flags">
@@ -1680,15 +1827,21 @@
     </main>
 
     <!-- Footer Section -->
-    <footer class="fixed-footer">
-      <a
-        href="#contact"
-        class="btn-primary"
-        style="width: 100%; text-align: center; margin: 0 10px"
-        id="contactUsButton"
-        >Contact Us</a
-      >
-    </footer>
+    <a href="#contact" class="fab" id="contactUsButton" aria-label="Contact us">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          d="M4 5h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H9l-4 3v-3H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linejoin="round"
+        />
+        <circle cx="8.5" cy="11" r="1.2" fill="currentColor" />
+        <circle cx="12" cy="11" r="1.2" fill="currentColor" />
+        <circle cx="15.5" cy="11" r="1.2" fill="currentColor" />
+      </svg>
+      <span class="fab-label">Contact us</span>
+    </a>
 
     <!-- Contact Us Modal Structure -->
     <div id="contactModal" class="modal contact-modal">
@@ -1833,8 +1986,27 @@
           })
         );
 
-        // Floating Contact Us bar slides up.
-        document.querySelector("footer.fixed-footer").classList.add("show");
+        // Floating Contact button: pops in, shrinks to a circle once you
+        // scroll, and steps aside while the contact section is on screen.
+        const fab = document.getElementById("contactUsButton");
+        setTimeout(() => fab.classList.add("show"), 900);
+        const onScroll = () => fab.classList.toggle("compact", window.scrollY > 240);
+        window.addEventListener("scroll", onScroll, { passive: true });
+        onScroll();
+        if ("IntersectionObserver" in window) {
+          new IntersectionObserver(
+            ([e]) => fab.classList.toggle("tucked", e.isIntersecting),
+            { threshold: 0.25 }
+          ).observe(document.getElementById("contact"));
+        }
+
+        // The logo hops when tapped.
+        const logo = document.querySelector(".logo-walk");
+        logo.addEventListener("click", () => {
+          logo.classList.remove("hop");
+          void logo.offsetWidth;
+          logo.classList.add("hop");
+        });
 
         // ── Content fades in as it scrolls into view ──
         const faders = document.querySelectorAll(".fade-in-content");
