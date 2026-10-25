@@ -867,6 +867,461 @@
             50% calc(50% + var(--s) / 2 + var(--b) / 2) / calc(4 * var(--s))
             calc(var(--s) + var(--b)) repeat-x;
       }
+
+      /* ════ Lighter layout: more air, less text per block ════ */
+      section {
+        padding: 72px 24px;
+      }
+      p {
+        font-size: 1.1em;
+        line-height: 1.7;
+        max-width: 680px;
+      }
+      h2 {
+        margin-bottom: 28px;
+        padding-bottom: 18px;
+      }
+      h2::after {
+        width: 64px;
+        height: 3px;
+        border-radius: 2px;
+        background-color: #008c9e;
+      }
+      h3 {
+        font-size: 1.35em;
+        line-height: 1.3;
+      }
+
+      /* Intro */
+      .about-content {
+        padding: 40px 32px;
+        gap: 4px;
+      }
+      .about-content p {
+        text-align: center;
+      }
+      .eyebrow {
+        font-size: 0.85em !important;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #015a66;
+        margin: 0 0 8px;
+      }
+      .lead {
+        font-size: 1.6em !important;
+        line-height: 1.35 !important;
+        font-weight: 600;
+        margin: 0 auto 24px;
+        max-width: 520px;
+      }
+      .facts {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        margin: 0 auto 24px;
+      }
+      .facts li {
+        margin: 0;
+        padding: 8px 16px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.85);
+        font-weight: 600;
+        font-size: 0.95em;
+      }
+      .badge {
+        display: inline-block;
+        margin: 0 auto 28px !important;
+        padding: 6px 14px;
+        border-radius: 999px;
+        background: #6b4ef0;
+        color: white;
+        font-weight: 700;
+        font-size: 0.95em !important;
+      }
+      .cta-text {
+        margin: 0;
+      }
+      .cta-emphasis {
+        margin: 0 0 20px;
+      }
+      .hero-btn {
+        display: inline-block;
+        margin: 0;
+      }
+
+      /* Lists */
+      .list-label {
+        font-weight: 700;
+        margin: 28px auto 12px;
+      }
+      .checklist {
+        margin-top: 0;
+      }
+      .checklist li {
+        position: relative;
+        padding-left: 30px;
+        margin-bottom: 12px;
+        line-height: 1.5;
+        font-size: 1.05em;
+      }
+      .checklist li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.3em;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: #008c9e
+          url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4 8-9' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
+          center/12px no-repeat;
+      }
+      .flex-container {
+        gap: 40px;
+        align-items: center;
+        margin-bottom: 12px;
+      }
+      .flex-container img {
+        border-radius: 16px;
+      }
+      .callout {
+        margin-top: 36px;
+        padding: 20px 24px;
+        border-left: 4px solid #008c9e;
+        background: rgba(255, 255, 255, 0.6);
+        border-radius: 0 12px 12px 0;
+      }
+
+      /* Service cards */
+      .services-grid {
+        gap: 24px;
+        margin-top: 28px;
+      }
+      .service-item {
+        padding: 28px 24px;
+        border-radius: 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .service-item h3 {
+        text-align: center;
+        margin-bottom: 8px;
+      }
+      .service-item p {
+        text-align: center;
+        font-size: 1em;
+        margin: 0 0 16px;
+      }
+      .service-item img {
+        width: 64px;
+        height: 64px;
+        margin-bottom: 14px;
+      }
+      .service-item .more {
+        margin-top: auto;
+        font-weight: 700;
+        color: #007a8a;
+      }
+
+      /* Telehealth */
+      .telehealth-content {
+        padding: 0;
+        margin-top: 0;
+      }
+      .telehealth-content p:first-of-type {
+        margin-top: 0;
+      }
+      .telehealth-image {
+        width: 280px;
+        margin: 0 32px 16px 0;
+        border-radius: 16px;
+      }
+      .teams-note {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: 20px;
+        font-weight: 600;
+        clear: both;
+      }
+      .telehealth-content .teams-note img {
+        width: 40px;
+        height: 40px;
+        margin: 0;
+        display: block;
+        float: none;
+      }
+
+      /* Funding */
+      .funding-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+      .funding-card {
+        background: white;
+        border-radius: 16px;
+        padding: 24px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      }
+      .funding-card h3 {
+        margin-bottom: 8px;
+        color: #6b4ef0;
+      }
+      .funding-card p {
+        font-size: 1em;
+        margin: 0;
+      }
+
+      /* Team */
+      .about-simone-content {
+        padding: 32px;
+        border-radius: 20px;
+      }
+      .about-simone-content::after {
+        content: "";
+        display: block;
+        clear: both;
+      }
+      .simone-image {
+        width: 260px;
+        margin: 0 28px 16px 0;
+        border-radius: 16px;
+      }
+      .person-name {
+        margin-bottom: 4px;
+      }
+      .person-role {
+        font-size: 0.95em !important;
+        color: #555;
+        margin-top: 0;
+      }
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        clear: both;
+        max-width: none;
+      }
+      .chips li {
+        margin: 0;
+        padding: 6px 14px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        font-size: 0.95em;
+        font-weight: 600;
+      }
+
+      /* Contact */
+      .contact-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+      .contact-card {
+        background: white;
+        border-radius: 16px;
+        padding: 28px 24px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .contact-card h3 {
+        margin-bottom: 6px;
+      }
+      .contact-card p {
+        text-align: center;
+        font-size: 1em;
+        margin: 0 0 20px;
+      }
+      .contact-card a {
+        margin: auto 0 0;
+        display: inline-block;
+        font-size: 1.05em;
+      }
+      .contact-direct {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px 32px;
+        margin-top: 36px;
+      }
+      .contact-link {
+        margin: 0;
+        font-size: 1.15em;
+        color: #015a66;
+        font-weight: 600;
+      }
+
+      /* Company footer */
+      .company p {
+        font-size: 0.95em;
+        color: rgba(255, 255, 255, 0.8);
+      }
+      .flags {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+        margin-bottom: 28px;
+      }
+      .flags img {
+        width: 72px;
+        height: auto;
+      }
+      .company-details {
+        margin-top: 36px;
+        padding-top: 24px;
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+      }
+      .company-details h3 {
+        color: white;
+        font-size: 1.1em;
+      }
+      .company-details p {
+        font-size: 0.85em;
+        margin: 4px 0;
+        max-width: none;
+      }
+
+      /* Modals */
+      .modal-content {
+        padding: 40px 28px 32px;
+      }
+      .modal-content h3 {
+        margin: 0 32px 16px;
+      }
+      .modal-body {
+        text-align: left;
+      }
+      .modal-body p,
+      .modal-option p {
+        font-size: 1.02em;
+        margin: 0 0 14px;
+      }
+      .modal-option {
+        margin-top: 24px;
+      }
+      .modal-option p {
+        text-align: center;
+      }
+      .modal .btn-primary,
+      .modal .btn-secondary {
+        margin: 0 0 8px;
+      }
+      #serviceModal .btn-secondary {
+        margin-top: 16px;
+      }
+      .modal-note {
+        font-size: 0.9em !important;
+        color: #666;
+        text-align: center;
+        margin-top: 24px !important;
+      }
+
+      @media (max-width: 650px) {
+        section {
+          padding: 56px 20px;
+        }
+        .about-content {
+          padding: 28px 20px;
+        }
+        .lead {
+          font-size: 1.35em !important;
+        }
+        .funding-grid,
+        .contact-actions {
+          grid-template-columns: 1fr;
+        }
+        .telehealth-content {
+          text-align: left;
+        }
+        .simone-image {
+          margin: 0 auto 20px;
+        }
+        .about-simone-content {
+          padding: 24px 20px;
+        }
+        .about-simone-content p,
+        .person-name {
+          text-align: left;
+        }
+        .contact-direct {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+      @media (max-width: 480px) {
+        p {
+          padding: 0;
+        }
+        .about-content {
+          padding: 24px 16px;
+        }
+      }
+
+      /* Image beside text, stacking on phones */
+      .split {
+        display: flex;
+        gap: 32px;
+        align-items: flex-start;
+      }
+      .split > img {
+        flex: 0 0 260px;
+        float: none !important;
+        margin: 0 !important;
+        max-width: 260px;
+        height: auto;
+      }
+      .split-text {
+        flex: 1;
+        min-width: 0;
+      }
+      .split-text p,
+      .split-text ul {
+        margin-left: 0;
+        margin-right: 0;
+      }
+      .split-text > p:first-child,
+      .split-text > h3:first-child {
+        margin-top: 0;
+      }
+      .flex-container img {
+        flex: 0 0 44%;
+        max-width: 44%;
+        height: auto;
+        aspect-ratio: 3 / 2;
+        object-fit: cover;
+      }
+      @media (max-width: 650px) {
+        .split {
+          flex-direction: column;
+          gap: 20px;
+        }
+        .split > img {
+          flex: none;
+          width: 100% !important;
+          max-width: 100%;
+        }
+        .flex-container img {
+          max-width: 100%;
+          width: 100%;
+        }
+        .telehealth-content .split > img {
+          aspect-ratio: 4 / 3;
+          object-fit: cover;
+          object-position: center 30%;
+        }
+      }
+      .about-simone-content > .list-label {
+        margin-left: 0;
+      }
     </style>
   </head>
   <body>
@@ -895,22 +1350,22 @@
       <section id="about" class="content-section">
         <div class="fade-in-content">
           <div class="content-wrapper about-content">
-            <p>
-              We are a <b>paediatric occupational therapy</b> provider
-              empowering children, young people, and their families to live
-              their fullest life! Our services cater to individuals
-              <b>0-18 years</b> of age, with a wide range of support needs. As a
-              mobile service, we offer <b>Telehealth</b> Australia-wide, and
-              <b>Community-based</b> sessions in the North-Western Melbourne
-              area.
+            <p class="eyebrow">Paediatric Occupational Therapy</p>
+            <p class="lead">
+              Helping children, young people and their families live their
+              fullest lives.
             </p>
-            <p class="cta-text" style="text-align: center; margin-top: -1px">
-              <u
-                >We have capacity for <em><b>Telehealth</b></em></u
-              >.
-            </p>
+            <ul class="facts">
+              <li>Ages 0–18</li>
+              <li>Telehealth Australia-wide</li>
+              <li>Community sessions in North-Western Melbourne</li>
+            </ul>
+            <p class="badge">Telehealth spots available now</p>
             <p class="cta-text">So, what are you waiting for?</p>
             <p class="cta-emphasis"><em>Follow Me!</em></p>
+            <a href="#contact" class="btn-secondary hero-btn" data-open-contact
+              >Get started</a
+            >
           </div>
         </div>
       </section>
@@ -927,23 +1382,20 @@
             what brings us joy, and the journey to becoming you.
           </p>
           <p>
-            We help children and young people to recover, develop, and maintain
-            the skills for independence and community involvement. Our services
-            are personalized to meet each individual's unique needs.
+            We help children and young people build the skills for independence
+            and everyday life, with therapy shaped around each child.
           </p>
-          <p>Our Occupational therapists can help you to:</p>
           <div class="flex-container">
             <div>
-              <ul>
-                <li>— Improve fine and gross motor skills</li>
-                <li>— Understand your sensory systems</li>
-                <li>— Develop play and engagement skills</li>
-                <li>— Support emotional regulation</li>
-                <li>— Build self-care and independence</li>
-                <li>— Prepare for school readiness</li>
-                <li style="margin-bottom: -15px">
-                  — Address fussy eating and mealtime skills
-                </li>
+              <p class="list-label">OT can help your child:</p>
+              <ul class="checklist">
+                <li>Improve fine and gross motor skills</li>
+                <li>Understand their sensory systems</li>
+                <li>Develop play and engagement skills</li>
+                <li>Regulate their emotions</li>
+                <li>Build self-care and independence</li>
+                <li>Get ready for school</li>
+                <li>Enjoy mealtimes and manage fussy eating</li>
               </ul>
             </div>
             <img
@@ -954,13 +1406,11 @@
               height="667"
               loading="lazy"
               decoding="async"
-              style="margin-top: 20px"
             />
           </div>
-          <p style="margin-top: 40px">
-            The aim of a Follow Me Therapy OT session is to create a space for
-            real-life problem solving. We empower the individual and their
-            family to take control of their therapy journey.
+          <p class="callout">
+            Every session is a space for real-life problem solving, so you and
+            your family feel in control of the therapy journey.
           </p>
         </div>
       </section>
@@ -970,52 +1420,35 @@
       class="section-wrapper"
       style="background-color: #ffe8ba; padding-bottom: 100px"
     >
-      <section
-        id="services"
-        class="content-section services-section"
-        style="padding-bottom: 50px"
-      >
+      <section id="services" class="content-section services-section">
         <div class="fade-in-content">
           <div class="content-wrapper">
             <h2>Our Services</h2>
-            <p>Click on individual services to find out more:</p>
+            <p>Tap a service to find out more.</p>
             <div class="services-grid">
               <div class="service-item" data-service="pediatric" role="button" tabindex="0" aria-haspopup="dialog">
                 <img src="img/footprints.svg" alt="" width="80" height="80" />
-                <h3 style="text-align: center">5 Steps Forward</h3>
-                <p>
-                  A focused 5-session program designed to address specific
-                  therapy goals.
-                </p>
+                <h3>5 Steps Forward</h3>
+                <p>A focused 5-session program for specific goals.</p>
+                <span class="more">Learn more →</span>
               </div>
               <div class="service-item" data-service="adult" role="button" tabindex="0" aria-haspopup="dialog">
                 <img src="img/stairs.svg" alt="" width="80" height="80" />
-                <h3 style="text-align: center">Steady Steps</h3>
-                <p>
-                  12 session structured therapy block for building key skills
-                  through consistent, ongoing support.
-                </p>
+                <h3>Steady Steps</h3>
+                <p>A 12-session block of steady, ongoing support to build key skills.</p>
+                <span class="more">Learn more →</span>
               </div>
               <div class="service-item" data-service="home" role="button" tabindex="0" aria-haspopup="dialog">
                 <img src="img/esdm.svg" alt="" width="80" height="80" />
-                <h3 style="text-align: center">
-                  Early Start Denver Model (ESDM)
-                </h3>
-                <p>
-                  An evidence-based, play-based therapy designed for young
-                  children with autism, and other developmental delays.
-                </p>
+                <h3>Early Start Denver Model (ESDM)</h3>
+                <p>Play-based therapy for young children with autism or developmental delays.</p>
+                <span class="more">Learn more →</span>
               </div>
               <div class="service-item" data-service="assessments" role="button" tabindex="0" aria-haspopup="dialog">
                 <img src="img/assessments.svg" alt="" width="80" height="80" />
-                <h3 style="text-align: center">Assessments</h3>
-                <ul>
-                  <li>NDIS Access Report</li>
-                  <li>Functional Capacity Assessment (FCA)</li>
-                  <li>Progress Report</li>
-                  <li>Sensory Processing Assessment</li>
-                  <li>Assistive Technology (AT)</li>
-                </ul>
+                <h3>Assessments</h3>
+                <p>NDIS access, functional capacity, progress, sensory and assistive technology reports.</p>
+                <span class="more">Learn more →</span>
               </div>
             </div>
           </div>
@@ -1025,14 +1458,12 @@
 
     <div class="wave"></div>
 
-    <div
-      class="section-wrapper telehealth-wrapper"
-      style="background-color: #e7d7f8"
-    >
+    <div class="section-wrapper telehealth-wrapper">
       <section id="telehealth" class="content-section">
         <div class="fade-in-content">
-          <h2>Telehealth Services</h2>
+          <h2>Telehealth</h2>
           <div class="content-wrapper telehealth-content">
+            <div class="split">
             <img
               src="img/telehealth.jpg"
               alt="A telehealth session on a laptop"
@@ -1042,69 +1473,61 @@
               loading="lazy"
               decoding="async"
             />
-            <p style="margin-top: 0px">
-              Families can connect with their therapist virtually via video or
-              phone call without the need for travel. Telepractices save
-              valuable time and make therapy more accessible, including for
-              those in rural or underserved areas. With telehealth seamlessly
-              integrated into the family routine, you’ll receive the consistent
-              support your child needs for development and skill-building.
-              Telehealth can be utilised to go beyond the home to support you in
-              a variety of settings. Whether it be a coaching call with
-              grandparents, developing a skill building program for your support
-              workers, or collaborating with the classroom teacher. Telehealth
-              can be a long term solution to accessing professional support from
-              anywhere in Australia. Or an interim solution to extensive wait
-              times.
+              <div class="split-text">
+            <p>
+              Meet your therapist by video or phone, with no travel. Telehealth
+              fits into your family routine and brings therapy to you anywhere
+              in Australia, including rural and regional areas.
             </p>
-            <div
-              class="telehealth-logo"
-              style="display: flex; align-items: center; gap: 10px"
-            >
-              <p style="margin: 0">
-                Our telehealth sessions are conducted via Teams:
-              </p>
+            <p class="list-label">It also reaches beyond the home:</p>
+            <ul class="checklist">
+              <li>Coaching calls with grandparents or carers</li>
+              <li>Skill-building programs for support workers</li>
+              <li>Working with your child’s teacher</li>
+              <li>Support while you wait for face-to-face services</li>
+            </ul>
+              </div>
+            </div>
+            <div class="teams-note">
               <img
                 src="img/teams-logo.webp"
-                alt="Microsoft Teams"
-                width="130"
-                height="130"
+                alt=""
+                width="48"
+                height="48"
                 loading="lazy"
-                style="width: 130px; height: auto"
               />
+              <span>Sessions run on Microsoft Teams.</span>
             </div>
           </div>
         </div>
       </section>
     </div>
 
-    <div class="section-wrapper" style="background-color: #e7d7f8">
-      <section
-        id="funding"
-        class="content-section"
-        style="padding-bottom: 50px"
-      >
+    <div class="section-wrapper telehealth-wrapper">
+      <section id="funding" class="content-section">
         <div class="fade-in-content">
-          <div class="content-wrapper">
-            <h2>Funding Options</h2>
-            <p>
-              <b>NDIS</b> – We service Self-Managed and Plan managed NDIS
-              participants. We tailor therapy plans to meet your goals.
-            </p>
-            <p>
-              <b>Private</b> – Flexible options are available, including short
-              and long-term support. You may also be eligible for a rebate with
-              your private health insurance.
-            </p>
-            <p>
-              <b>Medicare referral</b> – Contact us to explore Medicare options
-              for occupational therapy services.
-            </p>
+          <h2>Funding Options</h2>
+          <div class="funding-grid">
+            <div class="funding-card">
+              <h3>NDIS</h3>
+              <p>
+                For self-managed and plan-managed participants, with therapy
+                plans built around your goals.
+              </p>
+            </div>
+            <div class="funding-card">
+              <h3>Private</h3>
+              <p>
+                Short or long-term support. You may be able to claim a rebate
+                through your private health insurance.
+              </p>
+            </div>
+            <div class="funding-card">
+              <h3>Medicare</h3>
+              <p>Have a referral? Get in touch to talk through your options.</p>
+            </div>
           </div>
-          <div
-            class="telehealth-logo"
-            style="text-align: center; margin-top: 50px"
-          >
+          <div style="text-align: center; margin-top: 40px">
             <img
               src="img/medicare-logo.png"
               alt="Medicare"
@@ -1123,6 +1546,7 @@
         <div class="fade-in-content">
           <h2>Meet the Team</h2>
           <div class="content-wrapper about-simone-content">
+            <div class="split">
             <img
               src="img/simone.jpg"
               alt="Simone Gabriele, occupational therapist"
@@ -1132,24 +1556,35 @@
               loading="lazy"
               decoding="async"
             />
-            <p style="margin-top: 0px">
-              Simone Gabriele holds a Master of Occupational Therapy from La
-              Trobe University before launching her career in early intervention
-              supports, and later moving into neurodevelopmental community
-              services. Simone has worked in team leader roles, and provided
-              clinical supervision to the next generation of occupational
-              therapists. She’s passionate about using strength-based and
-              neurodiverse affirming practice to centre her clients. Simone
-              believes therapy should be fun, engaging, and practical in the
-              context of our busy lives!
+              <div class="split-text">
+            <h3 class="person-name">Simone Gabriele</h3>
+            <p class="person-role">
+              Occupational Therapist · Master of Occupational Therapy, La Trobe
+              University
             </p>
             <p>
-              Simone has experience working with autism spectrum disorder (ASD),
-              attention deficit hyperactivity disorder (ADHD), behavioural
-              support needs, global developmental delays, and neurodevelopmental
-              and genetic disabilities, including cerebral palsy, Down syndrome,
-              and motor or coordination impairments.
+              Simone began her career in early intervention before moving into
+              neurodevelopmental community services, where she led teams and
+              supervised the next generation of OTs.
             </p>
+            <p>
+              Her practice is strength-based and neurodiversity-affirming, with
+              each child at the centre. She believes therapy should be fun,
+              engaging and practical for busy families.
+            </p>
+              </div>
+            </div>
+            <p class="list-label">Experience with:</p>
+            <ul class="chips">
+              <li>Autism (ASD)</li>
+              <li>ADHD</li>
+              <li>Behaviour support needs</li>
+              <li>Global developmental delay</li>
+              <li>Cerebral palsy</li>
+              <li>Down syndrome</li>
+              <li>Genetic and neurodevelopmental disabilities</li>
+              <li>Motor and coordination difficulties</li>
+            </ul>
           </div>
         </div>
       </section>
@@ -1159,23 +1594,43 @@
       <section
         id="contact"
         class="content-section contact-section"
-        style="padding-bottom: 100px"
+        style="padding-bottom: 90px"
       >
         <div class="fade-in-content">
           <div class="content-wrapper">
             <h2>Get in Touch</h2>
-            <p class="centered-text">
-              Fill in the “Contact Us” form below, or get in touch directly to
-              find out more:
-            </p>
-            <div style="text-align: center">
-              <a href="mailto:info@followmetherapy.com.au" class="contact-link">
-                <img src="img/mail.svg" alt="" width="24" height="24" />
-                info@followmetherapy.com.au
-              </a>
+            <div class="contact-actions">
+              <div class="contact-card">
+                <h3>Ready to start?</h3>
+                <p>Complete our referral form and we’ll take it from there.</p>
+                <a
+                  href="https://follow-me-therapy.splose.com/public-form/975d61d5-cd63-44e5-86e7-f9315fa6a5b0"
+                  target="_blank"
+                  rel="noopener"
+                  class="btn-secondary"
+                  >Make a referral</a
+                >
+              </div>
+              <div class="contact-card">
+                <h3>Have a question?</h3>
+                <p>Send us an enquiry and our team will be in touch.</p>
+                <a
+                  href="https://follow-me-therapy.splose.com/public-form/e84c8756-615f-4404-a6f3-a90f3760223b"
+                  target="_blank"
+                  rel="noopener"
+                  class="btn-primary"
+                  >Send an enquiry</a
+                >
+              </div>
+            </div>
+            <div class="contact-direct">
               <a href="tel:+61435076683" class="contact-link">
                 <img src="img/phone.svg" alt="" width="24" height="24" />
                 0435 076 683
+              </a>
+              <a href="mailto:info@followmetherapy.com.au" class="contact-link">
+                <img src="img/mail.svg" alt="" width="24" height="24" />
+                info@followmetherapy.com.au
               </a>
             </div>
           </div>
@@ -1187,62 +1642,41 @@
       <section
         id="company"
         class="content-section"
-        style="padding: 50px 20px 120px; color: white"
+        style="padding: 56px 20px 130px; color: white"
       >
-        <div class="content-wrapper">
-          <h3 style="color: white">Follow Me Therapy Pty Ltd</h3>
-
-          <div
-            style="
-              display: flex;
-              flex-wrap: wrap;
-              justify-content: center;
-              gap: 15px;
-              margin-top: 30px;
-            "
-          >
-            <img src="img/flag-1.png" alt="Aboriginal flag" width="100" height="60" loading="lazy" style="width: 100px; height: auto" />
-            <img src="img/flag-2.png" alt="Torres Strait Islander flag" width="100" height="60" loading="lazy" style="width: 100px; height: auto" />
-            <img src="img/flag-3.png" alt="Intersex-inclusive Progress Pride flag" width="100" height="60" loading="lazy" style="width: 100px; height: auto" />
-            <img src="img/flag-4.png" alt="Australian flag" width="100" height="60" loading="lazy" style="width: 100px; height: auto" />
+        <div class="content-wrapper company">
+          <div class="flags">
+            <img src="img/flag-1.png" alt="Aboriginal flag" width="100" height="60" loading="lazy" />
+            <img src="img/flag-2.png" alt="Torres Strait Islander flag" width="100" height="60" loading="lazy" />
+            <img src="img/flag-3.png" alt="Intersex-inclusive Progress Pride flag" width="100" height="60" loading="lazy" />
+            <img src="img/flag-4.png" alt="Australian flag" width="100" height="60" loading="lazy" />
           </div>
-
           <p>
-            We acknowledge the Traditional Custodians of the lands, seas, and
-            communities across Australia, and to the Wurundjeri people upon
-            where our services are provided. We recognise their enduring
-            connection to Country. We pay our respects to Elders past and
-            present and extend that respect to all Aboriginal and Torres Strait
-            Islander peoples today. We honour the resilience, strength, and
-            cultural pride of Aboriginal and Torres Strait Islander communities,
-            and extend such to all including the LGBTQIA+ community. All are
-            welcome at Follow Me Therapy
+            We acknowledge the Traditional Custodians of the lands, seas and
+            communities across Australia, and the Wurundjeri people, on whose
+            land we provide our services. We recognise their continuing
+            connection to Country and pay our respects to Elders past and
+            present, and to all Aboriginal and Torres Strait Islander peoples
+            today.
           </p>
-
-          <p
-            style="
-              text-align: start;
-              font-size: 0.8em;
-              max-width: 800px;
-              margin-left: auto;
-              margin-right: auto;
-            "
-          >
-            Follow Me Therapy Pty Ltd is a registered Australian company
-            providing high-quality paediatric occupational therapy services. We
-            are committed to empowering children and families through tailored
-            intervention programs and support.
+          <p>
+            We honour the resilience, strength and cultural pride of Aboriginal
+            and Torres Strait Islander communities, and extend that respect to
+            everyone, including the LGBTQIA+ community. All are welcome at
+            Follow Me Therapy.
           </p>
-          <p style="text-align: start; font-size: 1.1em; margin-bottom: 40px">
-            ABN: 91 08 46 79 39 54 14
-          </p>
-          <p style="text-align: start; font-size: 1.1em; margin-bottom: 40px">
-            Postal Address: Suite 142, 585 Little Collins Street, Melbourne VIC
-          </p>
+          <div class="company-details">
+            <h3>Follow Me Therapy Pty Ltd</h3>
+            <p>
+              A registered Australian company providing paediatric occupational
+              therapy.
+            </p>
+            <p>ABN: 91 08 46 79 39 54 14</p>
+            <p>Postal address: Suite 142, 585 Little Collins Street, Melbourne VIC</p>
+          </div>
         </div>
       </section>
     </div>
-
     </main>
 
     <!-- Footer Section -->
@@ -1267,35 +1701,28 @@
       >
         <button type="button" class="close" aria-label="Close">&times;</button>
         <h3 id="contactModalTitle">Contact Us</h3>
-        <div>
-          <p style="text-align: center; padding-bottom: 20px">
-            Ready to get going? Complete our referral form:
-          </p>
+        <div class="modal-option">
+          <p>Ready to start? Complete our referral form.</p>
           <a
             href="https://follow-me-therapy.splose.com/public-form/975d61d5-cd63-44e5-86e7-f9315fa6a5b0"
             target="_blank" rel="noopener"
             class="btn-secondary"
-            style="margin-top: 30px"
-            >Intake Form</a
+            >Make a referral</a
           >
         </div>
-        <div style="margin-top: 40px; text-align: center">
-          <p style="text-align: center; padding-bottom: 20px">
-            Need more information? Fill in our inquiry form and our team will be
-            in touch:
-          </p>
+        <div class="modal-option">
+          <p>Have a question first? Send an enquiry and we’ll be in touch.</p>
           <a
             href="https://follow-me-therapy.splose.com/public-form/e84c8756-615f-4404-a6f3-a90f3760223b"
             target="_blank" rel="noopener"
             class="btn-primary"
-            style="margin-top: 30px"
-            >Inquiry</a
+            >Send an enquiry</a
           >
-          <p style="text-align: center; padding-top: 30px">
-            For any non-client related inquiries, please email us at
-            info@followmetherapy.com.au
-          </p>
         </div>
+        <p class="modal-note">
+          Not about a client? Email
+          <a href="mailto:info@followmetherapy.com.au">info@followmetherapy.com.au</a>
+        </p>
       </div>
     </div>
 
@@ -1314,8 +1741,7 @@
           href="https://follow-me-therapy.splose.com/public-form/975d61d5-cd63-44e5-86e7-f9315fa6a5b0"
           class="btn-secondary"
           target="_blank" rel="noopener"
-          style="margin-top: 20px"
-          >Intake Form</a
+          >Make a referral</a
         >
       </div>
     </div>
@@ -1326,22 +1752,22 @@
           pediatric: {
             title: "5 Steps Forward",
             content:
-              "5 Steps Forward is a focused, short-term occupational therapy program designed to deliver targeted support over the course of 5 sessions. Ideal for returning families who need a boost of support, and new families exploring OT for the first time.",
+              "<p>A short, focused program of 5 sessions with targeted support.</p><p>Ideal for returning families who need a boost, or families trying OT for the first time.</p>",
           },
           adult: {
-            title: "Steady Steps Block Model",
+            title: "Steady Steps",
             content:
-              "A 12 session therapy block offering structured and consistent support to problem solve big goals, and develop new skills. In Steady Steps we have time to engage your wider network, and recommend a comprehensive plan of action. When required, blocks may be stacked if additional support is needed.",
+              "<p>A 12-session block of structured, consistent support to work on big goals and build new skills.</p><p>There’s time to involve your child’s wider network and put together a full plan of action. Blocks can be stacked if more support is needed.</p>",
           },
           home: {
             title: "Early Start Denver Model (ESDM)",
             content:
-              "The Early Start Denver Model (ESDM) is an evidence-based, comprehensive therapy approach designed for young children with autism and other developmental delays, up to 5 years of age. Designed by the UC Davis MIND Institute, ESDM programs integrate play-based learning with developmental and behavioural techniques to support communication, social skills, play and daily living skills, and cognitive development. Our ESDM-certified therapists work closely with children and their families to deliver: <ul><li>- 1:1 therapy sessions at home, or in the community</li> <li>- Individualised learning programs</li><li>- Coaching with those interacting with the child day to day.</li></ul>  We can assess if this model is suitable for your child during your initial assessment.",
+              "<p>An evidence-based, play-based approach for children up to 5 with autism or other developmental delays, developed by the UC Davis MIND Institute.</p><p>It supports communication, social skills, play, daily living and thinking skills. Delivered by an ESDM-certified therapist, it includes:</p><ul class='checklist'><li>1:1 sessions at home or in the community</li><li>An individualised learning program</li><li>Coaching for the people who support your child every day</li></ul><p>We’ll check whether ESDM suits your child at the initial assessment.</p>",
           },
           assessments: {
             title: "Assessments",
             content:
-              "<ul><li>NDIS Access Report</li><li>Functional Capacity Assessment (FCA)</li><li>Progress Report</li><li>Sensory Processing Assessment</li><li>Assistive Technology (AT) - suitability of AT goals to be reviewed at initial assessment</li></ul>",
+              "<ul class='checklist'><li>NDIS Access Report</li><li>Functional Capacity Assessment (FCA)</li><li>Progress Report</li><li>Sensory Processing Assessment</li><li>Assistive Technology (AT)</li></ul><p class='modal-note'>Whether AT goals are suitable is reviewed at the initial assessment.</p>",
           },
         };
 
@@ -1386,7 +1812,7 @@
         document.querySelectorAll(".service-item").forEach((item) => {
           const open = () => {
             const d = serviceDetails[item.getAttribute("data-service")];
-            serviceModalContent.innerHTML = `<h3 id="serviceModalTitle">${d.title}</h3><p>${d.content}</p>`;
+            serviceModalContent.innerHTML = `<h3 id="serviceModalTitle">${d.title}</h3><div class="modal-body">${d.content}</div>`;
             openModal(serviceModal);
           };
           item.addEventListener("click", open);
@@ -1400,10 +1826,12 @@
 
         // Contact Us button.
         const contactModal = document.getElementById("contactModal");
-        document.getElementById("contactUsButton").addEventListener("click", (e) => {
-          e.preventDefault();
-          openModal(contactModal);
-        });
+        document.querySelectorAll("#contactUsButton, [data-open-contact]").forEach((btn) =>
+          btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            openModal(contactModal);
+          })
+        );
 
         // Floating Contact Us bar slides up.
         document.querySelector("footer.fixed-footer").classList.add("show");
