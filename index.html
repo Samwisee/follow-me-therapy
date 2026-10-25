@@ -1307,43 +1307,20 @@
         position: relative;
         display: flex;
         align-items: center;
-        cursor: pointer;
-        animation: walkIn 1.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+        animation: walkIn 1.1s cubic-bezier(0.22, 1, 0.36, 1) both;
       }
       .logo-walk .logo-image {
         transform-origin: 50% 100%;
-        animation:
-          step 0.4s ease-in-out 4,
-          idle 7s ease-in-out 2.4s infinite;
+        animation: none;
       }
       .logo-walk.hop .logo-image {
         animation: hop 0.6s cubic-bezier(0.3, 1.6, 0.5, 1);
       }
-      .trail {
-        position: absolute;
-        right: 100%;
-        bottom: 6px;
-        display: flex;
-        gap: 6px;
-        margin-right: 6px;
-        pointer-events: none;
-      }
-      .trail img {
-        width: 20px;
-        height: 20px;
-        transform: rotate(90deg);
-        opacity: 0;
-        filter: invert(20%) sepia(60%) saturate(1800%) hue-rotate(240deg);
-        animation: print 2.6s ease-out forwards;
-      }
-      .trail img:nth-child(2) { animation-delay: 0.35s; margin-bottom: 8px; }
-      .trail img:nth-child(3) { animation-delay: 0.7s; }
       .site-title {
         animation: titleIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.5s both;
       }
       @keyframes walkIn {
-        from { transform: translateX(-90px); opacity: 0; }
-        20% { opacity: 1; }
+        from { transform: translateX(-40px); opacity: 0; }
         to { transform: none; opacity: 1; }
       }
       @keyframes step {
@@ -1361,11 +1338,6 @@
         35% { transform: translateY(-14px) scale(1.05) rotate(-4deg); }
         70% { transform: translateY(0) scale(0.97, 1.03); }
         100% { transform: none; }
-      }
-      @keyframes print {
-        0% { opacity: 0; transform: rotate(90deg) scale(0.6); }
-        25% { opacity: 0.7; transform: rotate(90deg) scale(1); }
-        100% { opacity: 0.45; transform: rotate(90deg) scale(1); }
       }
       @keyframes titleIn {
         from { transform: translateY(12px); opacity: 0; }
@@ -1443,47 +1415,24 @@
       @media (prefers-reduced-motion: reduce) {
         .logo-walk,
         .logo-walk .logo-image,
-        .site-title,
-        .trail img {
+        .site-title {
           animation: none !important;
-        }
-        .trail img {
-          opacity: 0.45;
         }
       }
       .title-container {
-        padding-left: 72px;
         box-sizing: border-box;
       }
       .logo-walk {
         margin-right: 12px;
       }
-      @media (min-width: 769px) {
-        .trail img {
-          width: 30px;
-          height: 30px;
-        }
-        .trail {
-          gap: 10px;
-          margin-right: 14px;
-        }
-      }
       @media (max-width: 768px) {
         .title-container {
-          padding-left: 30px;
           flex-wrap: nowrap;
         }
         .title-container .site-title {
           font-size: 6.6vw;
           padding-right: 0;
           white-space: nowrap;
-        }
-        .trail {
-          gap: 3px;
-        }
-        .trail img {
-          width: 16px;
-          height: 16px;
         }
       }
 
@@ -2154,11 +2103,6 @@
     <div class="title-and-logo" style="border-radius: 0">
       <div class="title-container" style="padding-top: 44px">
         <div class="logo-walk">
-          <span class="trail" aria-hidden="true">
-            <img src="img/footprints.svg" alt="" width="22" height="22" />
-            <img src="img/footprints.svg" alt="" width="22" height="22" />
-            <img src="img/footprints.svg" alt="" width="22" height="22" />
-          </span>
           <img
             src="img/logo.png"
             alt="Follow Me Therapy logo"
@@ -2790,13 +2734,6 @@
           li.appendChild(t);
         });
 
-        // The logo hops when tapped.
-        const logo = document.querySelector(".logo-walk");
-        logo.addEventListener("click", () => {
-          logo.classList.remove("hop");
-          void logo.offsetWidth;
-          logo.classList.add("hop");
-        });
 
         // ── Content fades in as it scrolls into view ──
         const faders = document.querySelectorAll(".fade-in-content");
