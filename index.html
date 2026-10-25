@@ -55,12 +55,52 @@
     <script>document.documentElement.classList.add("js");</script>
 
     <!-- Google Fonts: Quicksand -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preload" href="fonts/quicksand-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="fonts/fredoka-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <style>
+      @font-face {
+        font-family: "Fredoka";
+        font-weight: 500;
+        font-display: swap;
+        src: url("fonts/fredoka-latin-500-normal.woff2") format("woff2");
+      }
+      @font-face {
+        font-family: "Fredoka";
+        font-weight: 600;
+        font-display: swap;
+        src: url("fonts/fredoka-latin-600-normal.woff2") format("woff2");
+      }
+      @font-face {
+        font-family: "Fredoka";
+        font-weight: 700;
+        font-display: swap;
+        src: url("fonts/fredoka-latin-700-normal.woff2") format("woff2");
+      }
+      @font-face {
+        font-family: "Quicksand";
+        font-weight: 400;
+        font-display: swap;
+        src: url("fonts/quicksand-latin-400-normal.woff2") format("woff2");
+      }
+      @font-face {
+        font-family: "Quicksand";
+        font-weight: 500;
+        font-display: swap;
+        src: url("fonts/quicksand-latin-500-normal.woff2") format("woff2");
+      }
+      @font-face {
+        font-family: "Quicksand";
+        font-weight: 600;
+        font-display: swap;
+        src: url("fonts/quicksand-latin-600-normal.woff2") format("woff2");
+      }
+      @font-face {
+        font-family: "Quicksand";
+        font-weight: 700;
+        font-display: swap;
+        src: url("fonts/quicksand-latin-700-normal.woff2") format("woff2");
+      }
+    </style>
 
     <style>
       /* Global Styles */
@@ -415,51 +455,6 @@
         text-decoration: none;
         color: black;
         border-radius: 5px;
-      }
-
-      /* Initially hide the footer by positioning it off-screen */
-      footer.fixed-footer {
-        position: fixed;
-        bottom: -100px; /* Move it off-screen */
-        width: 100%;
-        max-width: 300px;
-        left: 50%;
-        transform: translateX(-50%);
-        background-color: rgba(255, 255, 255, 0.9);
-        backdrop-filter: blur(4px);
-        color: white;
-        padding: 20px 20px;
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-        border-radius: 10px 10px 0 0;
-        z-index: 1000;
-        transition: bottom 0.5s ease; /* Smooth animation */
-      }
-
-      footer.fixed-footer.show {
-        bottom: 0; /* Bring it into view */
-      }
-
-      footer.fixed-footer a {
-        padding: 10px 20px;
-        text-decoration: none;
-        color: white;
-        background-color: rgb(23, 117, 118);
-        border-radius: 5px;
-      }
-
-      footer.fixed-footer a:hover {
-        background-color: rgb(14, 103, 104);
-      }
-
-      footer.fixed-footer .btn-secondary {
-        background-color: #6b4ef0;
-      }
-
-      footer.fixed-footer .btn-secondary:hover {
-        background-color: #5a3fd6;
       }
 
       /* Footer Section */
@@ -867,22 +862,1319 @@
             50% calc(50% + var(--s) / 2 + var(--b) / 2) / calc(4 * var(--s))
             calc(var(--s) + var(--b)) repeat-x;
       }
+
+      /* ════ Lighter layout: more air, less text per block ════ */
+      section {
+        padding: 72px 24px;
+      }
+      p {
+        font-size: 1.1em;
+        line-height: 1.7;
+        max-width: 680px;
+      }
+      h2 {
+        margin-bottom: 28px;
+        padding-bottom: 18px;
+      }
+      h2::after {
+        width: 64px;
+        height: 3px;
+        border-radius: 2px;
+        background-color: #008c9e;
+      }
+      h3 {
+        font-size: 1.35em;
+        line-height: 1.3;
+      }
+
+      /* Intro */
+      .about-content {
+        padding: 40px 32px;
+        gap: 4px;
+      }
+      .about-content p {
+        text-align: center;
+      }
+      .eyebrow {
+        font-size: 0.85em !important;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #015a66;
+        margin: 0 0 8px;
+      }
+      .lead {
+        font-size: 1.6em !important;
+        line-height: 1.35 !important;
+        font-weight: 600;
+        margin: 0 auto 24px;
+        max-width: 520px;
+      }
+      .facts {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        margin: 0 auto 24px;
+      }
+      .facts li {
+        margin: 0;
+        padding: 8px 16px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.85);
+        font-weight: 600;
+        font-size: 0.95em;
+      }
+      .badge {
+        display: inline-block;
+        margin: 0 auto 28px !important;
+        padding: 6px 14px;
+        border-radius: 999px;
+        background: #6b4ef0;
+        color: white;
+        font-weight: 700;
+        font-size: 0.95em !important;
+      }
+      .cta-text {
+        margin: 0;
+      }
+      .cta-emphasis {
+        margin: 0 0 20px;
+      }
+      .hero-btn {
+        display: inline-block;
+        margin: 0;
+      }
+
+      /* Lists */
+      .list-label {
+        font-weight: 700;
+        margin: 28px auto 12px;
+      }
+      .checklist {
+        margin-top: 0;
+      }
+      .checklist li {
+        position: relative;
+        padding-left: 30px;
+        margin-bottom: 12px;
+        line-height: 1.5;
+        font-size: 1.05em;
+      }
+      .checklist li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.3em;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: #008c9e
+          url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4 8-9' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
+          center/12px no-repeat;
+      }
+      .flex-container {
+        gap: 40px;
+        align-items: center;
+        margin-bottom: 12px;
+      }
+      .flex-container img {
+        border-radius: 16px;
+      }
+      .callout {
+        margin-top: 36px;
+        padding: 20px 24px;
+        border-left: 4px solid #008c9e;
+        background: rgba(255, 255, 255, 0.6);
+        border-radius: 0 12px 12px 0;
+      }
+
+      /* Service cards */
+      .services-grid {
+        gap: 24px;
+        margin-top: 28px;
+      }
+      .service-item {
+        padding: 28px 24px;
+        border-radius: 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .service-item h3 {
+        text-align: center;
+        margin-bottom: 8px;
+      }
+      .service-item p {
+        text-align: center;
+        font-size: 1em;
+        margin: 0 0 16px;
+      }
+      .service-item img {
+        width: 64px;
+        height: 64px;
+        margin-bottom: 14px;
+      }
+      .service-item .more {
+        margin-top: auto;
+        font-weight: 700;
+        color: #007a8a;
+      }
+
+      /* Telehealth */
+      .telehealth-content {
+        padding: 0;
+        margin-top: 0;
+      }
+      .telehealth-content p:first-of-type {
+        margin-top: 0;
+      }
+      .telehealth-image {
+        width: 280px;
+        margin: 0 32px 16px 0;
+        border-radius: 16px;
+      }
+      .teams-note {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: 20px;
+        font-weight: 600;
+        clear: both;
+      }
+      .telehealth-content .teams-note img {
+        width: 40px;
+        height: 40px;
+        margin: 0;
+        display: block;
+        float: none;
+      }
+
+      /* Funding */
+      .funding-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+      .funding-card {
+        background: white;
+        border-radius: 16px;
+        padding: 24px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      }
+      .funding-card h3 {
+        margin-bottom: 8px;
+        color: #6b4ef0;
+      }
+      .funding-card p {
+        font-size: 1em;
+        margin: 0;
+      }
+
+      /* Team */
+      .about-simone-content {
+        padding: 32px;
+        border-radius: 20px;
+      }
+      .about-simone-content::after {
+        content: "";
+        display: block;
+        clear: both;
+      }
+      .simone-image {
+        width: 260px;
+        margin: 0 28px 16px 0;
+        border-radius: 16px;
+      }
+      .person-name {
+        margin-bottom: 4px;
+      }
+      .person-role {
+        font-size: 0.95em !important;
+        color: #555;
+        margin-top: 0;
+      }
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        clear: both;
+        max-width: none;
+      }
+      .chips li {
+        margin: 0;
+        padding: 6px 14px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        font-size: 0.95em;
+        font-weight: 600;
+      }
+
+      /* Contact */
+      .contact-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+      .contact-card {
+        background: white;
+        border-radius: 16px;
+        padding: 28px 24px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .contact-card h3 {
+        margin-bottom: 6px;
+      }
+      .contact-card p {
+        text-align: center;
+        font-size: 1em;
+        margin: 0 0 20px;
+      }
+      .contact-card a {
+        margin: auto 0 0;
+        display: inline-block;
+        font-size: 1.05em;
+      }
+      .contact-direct {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px 32px;
+        margin-top: 36px;
+      }
+      .contact-link {
+        margin: 0;
+        font-size: 1.15em;
+        color: #015a66;
+        font-weight: 600;
+      }
+
+      /* Company footer */
+      .company p {
+        font-size: 0.95em;
+        color: rgba(255, 255, 255, 0.8);
+      }
+      .flags {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+        margin-bottom: 28px;
+      }
+      .flags img {
+        width: 72px;
+        height: auto;
+      }
+      .company-details {
+        margin-top: 36px;
+        padding-top: 24px;
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+      }
+      .company-details h3 {
+        color: white;
+        font-size: 1.1em;
+      }
+      .company-details p {
+        font-size: 0.85em;
+        margin: 4px 0;
+        max-width: none;
+      }
+
+      /* Modals */
+      .modal-content {
+        padding: 40px 28px 32px;
+      }
+      .modal-content h3 {
+        margin: 0 32px 16px;
+      }
+      .modal-body {
+        text-align: left;
+      }
+      .modal-body p,
+      .modal-option p {
+        font-size: 1.02em;
+        margin: 0 0 14px;
+      }
+      .modal-option {
+        margin-top: 24px;
+      }
+      .modal-option p {
+        text-align: center;
+      }
+      .modal .btn-primary,
+      .modal .btn-secondary {
+        margin: 0 0 8px;
+      }
+      #serviceModal .btn-secondary {
+        margin-top: 16px;
+      }
+      .modal-note {
+        font-size: 0.9em !important;
+        color: #666;
+        text-align: center;
+        margin-top: 24px !important;
+      }
+
+      @media (max-width: 650px) {
+        section {
+          padding: 56px 20px;
+        }
+        .about-content {
+          padding: 28px 20px;
+        }
+        .lead {
+          font-size: 1.35em !important;
+        }
+        .funding-grid,
+        .contact-actions {
+          grid-template-columns: 1fr;
+        }
+        .telehealth-content {
+          text-align: left;
+        }
+        .simone-image {
+          margin: 0 auto 20px;
+        }
+        .about-simone-content {
+          padding: 24px 20px;
+        }
+        .about-simone-content p,
+        .person-name {
+          text-align: left;
+        }
+        .contact-direct {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+      @media (max-width: 480px) {
+        p {
+          padding: 0;
+        }
+        .about-content {
+          padding: 24px 16px;
+        }
+      }
+
+      /* Image beside text, stacking on phones */
+      .split {
+        display: flex;
+        gap: 32px;
+        align-items: flex-start;
+      }
+      .split > img {
+        flex: 0 0 260px;
+        float: none !important;
+        margin: 0 !important;
+        max-width: 260px;
+        height: auto;
+      }
+      .split-text {
+        flex: 1;
+        min-width: 0;
+      }
+      .split-text p,
+      .split-text ul {
+        margin-left: 0;
+        margin-right: 0;
+      }
+      .split-text > p:first-child,
+      .split-text > h3:first-child {
+        margin-top: 0;
+      }
+      .flex-container img {
+        flex: 0 0 44%;
+        max-width: 44%;
+        height: auto;
+        aspect-ratio: 3 / 2;
+        object-fit: cover;
+      }
+      @media (max-width: 650px) {
+        .split {
+          flex-direction: column;
+          gap: 20px;
+        }
+        .split > img {
+          flex: none;
+          width: 100% !important;
+          max-width: 100%;
+        }
+        .flex-container img {
+          max-width: 100%;
+          width: 100%;
+        }
+        .telehealth-content .split > img {
+          aspect-ratio: 4 / 3;
+          object-fit: cover;
+          object-position: center 30%;
+        }
+      }
+      .about-simone-content > .list-label {
+        margin-left: 0;
+      }
+
+      /* ════ Logo: walks in leaving footprints, then idles ════ */
+      .logo-walk {
+        position: relative;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        animation: walkIn 1.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+      }
+      .logo-walk .logo-image {
+        transform-origin: 50% 100%;
+        animation:
+          step 0.4s ease-in-out 4,
+          idle 7s ease-in-out 2.4s infinite;
+      }
+      .logo-walk.hop .logo-image {
+        animation: hop 0.6s cubic-bezier(0.3, 1.6, 0.5, 1);
+      }
+      .trail {
+        position: absolute;
+        right: 100%;
+        bottom: 6px;
+        display: flex;
+        gap: 6px;
+        margin-right: 6px;
+        pointer-events: none;
+      }
+      .trail img {
+        width: 20px;
+        height: 20px;
+        transform: rotate(90deg);
+        opacity: 0;
+        filter: invert(20%) sepia(60%) saturate(1800%) hue-rotate(240deg);
+        animation: print 2.6s ease-out forwards;
+      }
+      .trail img:nth-child(2) { animation-delay: 0.35s; margin-bottom: 8px; }
+      .trail img:nth-child(3) { animation-delay: 0.7s; }
+      .site-title {
+        animation: titleIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.5s both;
+      }
+      @keyframes walkIn {
+        from { transform: translateX(-90px); opacity: 0; }
+        20% { opacity: 1; }
+        to { transform: none; opacity: 1; }
+      }
+      @keyframes step {
+        0%, 100% { transform: translateY(0) rotate(0); }
+        25% { transform: translateY(-5px) rotate(-3deg); }
+        75% { transform: translateY(-5px) rotate(3deg); }
+      }
+      @keyframes idle {
+        0%, 88%, 100% { transform: none; }
+        92% { transform: translateY(-6px) rotate(-2deg); }
+        96% { transform: translateY(0) rotate(1.5deg); }
+      }
+      @keyframes hop {
+        0% { transform: none; }
+        35% { transform: translateY(-14px) scale(1.05) rotate(-4deg); }
+        70% { transform: translateY(0) scale(0.97, 1.03); }
+        100% { transform: none; }
+      }
+      @keyframes print {
+        0% { opacity: 0; transform: rotate(90deg) scale(0.6); }
+        25% { opacity: 0.7; transform: rotate(90deg) scale(1); }
+        100% { opacity: 0.45; transform: rotate(90deg) scale(1); }
+      }
+      @keyframes titleIn {
+        from { transform: translateY(12px); opacity: 0; }
+        to { transform: none; opacity: 1; }
+      }
+
+      /* ════ Floating Contact button ════ */
+      .fab {
+        position: fixed;
+        right: 20px;
+        bottom: calc(20px + env(safe-area-inset-bottom));
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        height: 60px;
+        padding: 0 22px 0 18px;
+        border-radius: 30px;
+        background: #6b4ef0;
+        color: white;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 1.05em;
+        box-shadow: 0 8px 24px rgba(107, 78, 240, 0.4);
+        opacity: 0;
+        transform: translateY(24px) scale(0.6);
+        pointer-events: none;
+        transition:
+          opacity 0.35s ease,
+          transform 0.5s cubic-bezier(0.3, 1.5, 0.5, 1),
+          padding 0.35s ease,
+          gap 0.35s ease,
+          background-color 0.2s ease;
+      }
+      .fab.show {
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
+      }
+      .fab.show.tucked {
+        opacity: 0;
+        transform: translateY(24px) scale(0.6);
+        pointer-events: none;
+      }
+      .fab:hover {
+        background: #5a3fd6;
+      }
+      .fab:active {
+        transform: scale(0.92);
+      }
+      .fab svg {
+        width: 26px;
+        height: 26px;
+        flex: none;
+      }
+      .fab-label {
+        max-width: 120px;
+        overflow: hidden;
+        white-space: nowrap;
+        transition: max-width 0.35s ease, opacity 0.25s ease;
+      }
+      .fab.compact {
+        padding: 0 17px;
+        gap: 0;
+      }
+      .fab.compact .fab-label {
+        max-width: 0;
+        opacity: 0;
+      }
+      .fab:focus-visible {
+        outline: 3px solid #ffe8ba;
+        outline-offset: 3px;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .logo-walk,
+        .logo-walk .logo-image,
+        .site-title,
+        .trail img {
+          animation: none !important;
+        }
+        .trail img {
+          opacity: 0.45;
+        }
+      }
+      .title-container {
+        padding-left: 72px;
+        box-sizing: border-box;
+      }
+      .logo-walk {
+        margin-right: 12px;
+      }
+      @media (min-width: 769px) {
+        .trail img {
+          width: 30px;
+          height: 30px;
+        }
+        .trail {
+          gap: 10px;
+          margin-right: 14px;
+        }
+      }
+      @media (max-width: 768px) {
+        .title-container {
+          padding-left: 30px;
+          flex-wrap: nowrap;
+        }
+        .title-container h1 {
+          font-size: 6.6vw;
+          padding-right: 0;
+          white-space: nowrap;
+        }
+        .trail {
+          gap: 3px;
+        }
+        .trail img {
+          width: 16px;
+          height: 16px;
+        }
+      }
+
+      /* ═══════════════════════════════════════════════
+         THEME: one palette, friendly type, soft shapes
+      ═══════════════════════════════════════════════ */
+      :root {
+        --purple: #6b4ef0;
+        --purple-dark: #5a3fd6;
+        --purple-tint: #efe9ff;
+        --teal: #007a8a;
+        --teal-tint: #e3f4f5;
+        --butter: #fff4dc;
+        --sun: #f2a516;
+        --pink: #e0457b;
+        --pink-tint: #ffe6ef;
+        --ink: #2b2540;
+        --ink-soft: #5b556b;
+        --deep: #2e2363;
+        --display: "Fredoka", "Quicksand", system-ui, sans-serif;
+      }
+      html,
+      body {
+        background: #fff;
+        color: var(--ink-soft);
+        font-weight: 500;
+      }
+      h1,
+      h2,
+      h3,
+      .site-title,
+      .cta-emphasis,
+      .lead,
+      .step-num {
+        font-family: var(--display);
+        color: var(--ink);
+      }
+      h2 {
+        font-weight: 600;
+        letter-spacing: -0.01em;
+      }
+      h2::after {
+        width: 26px;
+        height: 19px;
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 26'%3E%3Cg fill='%236b4ef0'%3E%3Cg transform='translate%281 3%29 rotate%28-8 8 12%29 scale%28.92%29'%3E%3Ccircle cx='3.2' cy='3.6' r='1.9'/%3E%3Ccircle cx='6.6' cy='2' r='1.8'/%3E%3Ccircle cx='10' cy='2.2' r='1.6'/%3E%3Ccircle cx='12.8' cy='3.8' r='1.4'/%3E%3Cpath d='M8 5.6c3.6 0 5.4 2.6 5.2 5.8-.2 2.8-1.6 4.4-2.4 5.6H5.2C4.4 15.6 2.8 14 2.8 11.2 2.8 8 4.4 5.6 8 5.6z'/%3E%3Cellipse cx='8' cy='20.4' rx='3' ry='3.2'/%3E%3C/g%3E%3Cg transform='translate%2819 0%29 rotate%288 8 12%29 scale%28.92%29'%3E%3Ccircle cx='3.2' cy='3.6' r='1.9'/%3E%3Ccircle cx='6.6' cy='2' r='1.8'/%3E%3Ccircle cx='10' cy='2.2' r='1.6'/%3E%3Ccircle cx='12.8' cy='3.8' r='1.4'/%3E%3Cpath d='M8 5.6c3.6 0 5.4 2.6 5.2 5.8-.2 2.8-1.6 4.4-2.4 5.6H5.2C4.4 15.6 2.8 14 2.8 11.2 2.8 8 4.4 5.6 8 5.6z'/%3E%3Cellipse cx='8' cy='20.4' rx='3' ry='3.2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") center / contain no-repeat;
+      }
+      h3 {
+        font-weight: 500;
+      }
+      b,
+      strong {
+        color: var(--ink);
+      }
+
+      /* Section tones */
+      .tone-lilac { background-color: var(--purple-tint) !important; }
+      .tone-cream { background-color: var(--butter) !important; }
+      .tone-white { background-color: #fff !important; }
+      .tone-mint { background-color: var(--teal-tint) !important; }
+      .tone-deep { background-color: var(--deep) !important; }
+
+      /* Soft wave where one colour meets the next */
+      .wave-top {
+        position: relative;
+      }
+      .wave-top::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: -39px;
+        height: 40px;
+        background: inherit;
+        -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 40' preserveAspectRatio='none'%3E%3Cpath d='M0 40V22C40 6 80 6 120 22S200 38 240 22V40Z'/%3E%3C/svg%3E") 0 0 / 480px 40px repeat-x;
+        mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 40' preserveAspectRatio='none'%3E%3Cpath d='M0 40V22C40 6 80 6 120 22S200 38 240 22V40Z'/%3E%3C/svg%3E") 0 0 / 480px 40px repeat-x;
+        pointer-events: none;
+        z-index: 1;
+      }
+      .tone-deep.wave-top::before {
+        background: var(--deep);
+      }
+
+      /* Title bar and intro share one soft lilac */
+      .title-and-logo {
+        background-color: var(--purple-tint) !important;
+      }
+      .site-title {
+        font-weight: 600 !important;
+        color: var(--ink) !important;
+        letter-spacing: -0.01em;
+      }
+      .about-wrapper {
+        position: relative;
+        overflow: hidden;
+      }
+      .about-wrapper::before,
+      .about-wrapper::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        pointer-events: none;
+      }
+      .about-wrapper::before {
+        width: 320px;
+        height: 320px;
+        left: -120px;
+        bottom: -140px;
+        background: #fde3a7;
+        opacity: 0.6;
+      }
+      .about-wrapper::after {
+        width: 220px;
+        height: 220px;
+        right: -70px;
+        top: 10px;
+        background: #c9f0ec;
+        opacity: 0.7;
+      }
+      .about-wrapper section {
+        position: relative;
+        z-index: 1;
+        padding-top: 32px;
+      }
+      .about-content {
+        background: #fff;
+        backdrop-filter: none;
+        border-radius: 28px;
+        box-shadow: 0 18px 40px rgba(75, 52, 170, 0.12);
+      }
+      .eyebrow {
+        color: var(--teal) !important;
+      }
+      .facts li {
+        background: var(--purple-tint);
+        color: var(--ink);
+      }
+      .badge {
+        background: var(--teal-tint) !important;
+        color: var(--teal) !important;
+      }
+      .badge::before {
+        content: "";
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        margin-right: 8px;
+        border-radius: 50%;
+        background: #19b37a;
+        box-shadow: 0 0 0 0 rgba(25, 179, 122, 0.6);
+        animation: pulse 2s infinite;
+        vertical-align: 1px;
+      }
+      @keyframes pulse {
+        70% { box-shadow: 0 0 0 8px rgba(25, 179, 122, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(25, 179, 122, 0); }
+      }
+      .cta-text {
+        color: var(--ink-soft);
+      }
+      .cta-emphasis {
+        color: var(--purple) !important;
+        font-weight: 700;
+      }
+      .cta-emphasis em {
+        font-style: normal;
+      }
+
+      /* One button style, with a squish */
+      .btn-primary,
+      .btn-secondary,
+      .btn-outline {
+        display: inline-block;
+        font-family: var(--display);
+        font-weight: 500;
+        font-size: 1.1em;
+        padding: 14px 28px;
+        border-radius: 999px;
+        border: 2px solid var(--purple);
+        background: var(--purple);
+        color: #fff;
+        text-decoration: none;
+        cursor: pointer;
+        box-shadow: 0 6px 16px rgba(107, 78, 240, 0.25);
+        transition:
+          transform 0.25s cubic-bezier(0.3, 1.6, 0.5, 1),
+          background-color 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+      .btn-primary:hover,
+      .btn-secondary:hover {
+        background: var(--purple-dark);
+        border-color: var(--purple-dark);
+        transform: translateY(-2px);
+      }
+      .btn-outline {
+        background: #fff;
+        color: var(--purple);
+        box-shadow: none;
+      }
+      .btn-outline:hover {
+        background: var(--purple-tint);
+        transform: translateY(-2px);
+      }
+      .btn-primary:active,
+      .btn-secondary:active,
+      .btn-outline:active {
+        transform: scale(0.94);
+      }
+
+      /* Ticks pop in one by one */
+      .checklist li::before {
+        background-color: var(--teal);
+      }
+      .js .fade-in-content .checklist li {
+        opacity: 0;
+        transform: translateX(-8px);
+      }
+      .js .fade-in-content.is-visible .checklist li {
+        animation: tickIn 0.45s cubic-bezier(0.3, 1.4, 0.5, 1) forwards;
+      }
+      .js .fade-in-content.is-visible .checklist li::before {
+        animation: tickPop 0.5s cubic-bezier(0.3, 1.8, 0.5, 1) both;
+        animation-delay: inherit;
+      }
+      .checklist li:nth-child(2) { animation-delay: 0.08s !important; }
+      .checklist li:nth-child(3) { animation-delay: 0.16s !important; }
+      .checklist li:nth-child(4) { animation-delay: 0.24s !important; }
+      .checklist li:nth-child(5) { animation-delay: 0.32s !important; }
+      .checklist li:nth-child(6) { animation-delay: 0.4s !important; }
+      .checklist li:nth-child(7) { animation-delay: 0.48s !important; }
+      @keyframes tickIn {
+        to { opacity: 1; transform: none; }
+      }
+      @keyframes tickPop {
+        from { transform: scale(0); }
+        to { transform: scale(1); }
+      }
+      .callout {
+        border-left: none;
+        border-radius: 20px;
+        background: #fff;
+        position: relative;
+        padding-left: 64px;
+      }
+      .callout::before {
+        content: "";
+        position: absolute;
+        left: 22px;
+        top: 50%;
+        width: 24px;
+        height: 18px;
+        margin-top: -9px;
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 26'%3E%3Cg fill='%236b4ef0'%3E%3Cg transform='translate%281 3%29 rotate%28-8 8 12%29 scale%28.92%29'%3E%3Ccircle cx='3.2' cy='3.6' r='1.9'/%3E%3Ccircle cx='6.6' cy='2' r='1.8'/%3E%3Ccircle cx='10' cy='2.2' r='1.6'/%3E%3Ccircle cx='12.8' cy='3.8' r='1.4'/%3E%3Cpath d='M8 5.6c3.6 0 5.4 2.6 5.2 5.8-.2 2.8-1.6 4.4-2.4 5.6H5.2C4.4 15.6 2.8 14 2.8 11.2 2.8 8 4.4 5.6 8 5.6z'/%3E%3Cellipse cx='8' cy='20.4' rx='3' ry='3.2'/%3E%3C/g%3E%3Cg transform='translate%2819 0%29 rotate%288 8 12%29 scale%28.92%29'%3E%3Ccircle cx='3.2' cy='3.6' r='1.9'/%3E%3Ccircle cx='6.6' cy='2' r='1.8'/%3E%3Ccircle cx='10' cy='2.2' r='1.6'/%3E%3Ccircle cx='12.8' cy='3.8' r='1.4'/%3E%3Cpath d='M8 5.6c3.6 0 5.4 2.6 5.2 5.8-.2 2.8-1.6 4.4-2.4 5.6H5.2C4.4 15.6 2.8 14 2.8 11.2 2.8 8 4.4 5.6 8 5.6z'/%3E%3Cellipse cx='8' cy='20.4' rx='3' ry='3.2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") center / contain no-repeat;
+      }
+
+      /* Service cards: coloured icons, playful tilt */
+      .service-item {
+        border-radius: 24px;
+        box-shadow: 0 8px 24px rgba(43, 37, 64, 0.07);
+        transition:
+          transform 0.35s cubic-bezier(0.3, 1.5, 0.5, 1),
+          box-shadow 0.3s ease;
+      }
+      .service-item:hover,
+      .service-item:focus-visible {
+        transform: translateY(-6px) rotate(-1.2deg);
+        box-shadow: 0 16px 32px rgba(43, 37, 64, 0.12);
+      }
+      .service-item:nth-child(even):hover,
+      .service-item:nth-child(even):focus-visible {
+        transform: translateY(-6px) rotate(1.2deg);
+      }
+      .service-item:active {
+        transform: scale(0.97);
+      }
+      .svc-icon {
+        display: grid;
+        place-items: center;
+        width: 76px;
+        height: 76px;
+        border-radius: 24px;
+        margin-bottom: 16px;
+        transition: transform 0.4s cubic-bezier(0.3, 1.6, 0.5, 1);
+      }
+      .service-item:hover .svc-icon {
+        transform: rotate(-8deg) scale(1.08);
+      }
+      .svc-icon svg {
+        width: 44px;
+        height: 44px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 2.6;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .svc-footprints { background: var(--purple-tint); color: var(--purple); }
+      .svc-footprints svg { fill: currentColor; stroke: none; }
+      .svc-stairs { background: var(--teal-tint); color: var(--teal); }
+      .svc-esdm { background: #fff0cc; color: #c77c00; }
+      .svc-assessments { background: var(--pink-tint); color: var(--pink); }
+      .service-item .more {
+        color: var(--purple);
+        font-family: var(--display);
+        font-weight: 500;
+      }
+      .services-section {
+        padding-bottom: 96px;
+      }
+
+      /* How it works */
+      .steps {
+        list-style: none;
+        padding: 0;
+        margin: 12px 0 0;
+        max-width: none;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+        counter-reset: none;
+      }
+      .steps li {
+        position: relative;
+        margin: 0;
+        text-align: center;
+        padding: 0 8px;
+      }
+      .step-num {
+        display: inline-grid;
+        place-items: center;
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background: var(--purple);
+        color: #fff !important;
+        font-size: 1.5em;
+        font-weight: 600;
+        margin-bottom: 14px;
+        box-shadow: 0 8px 18px rgba(107, 78, 240, 0.3);
+      }
+      .steps li:nth-child(2) .step-num { background: var(--teal); box-shadow: 0 8px 18px rgba(0, 122, 138, 0.3); }
+      .steps li:nth-child(3) .step-num { background: var(--sun); box-shadow: 0 8px 18px rgba(242, 165, 22, 0.35); }
+      .steps h3 {
+        margin-bottom: 6px;
+      }
+      .steps p {
+        text-align: center;
+        font-size: 1em;
+        margin: 0;
+      }
+
+      /* Telehealth & funding */
+      .telehealth-image,
+      .simone-image,
+      .flex-container img {
+        border-radius: 24px !important;
+      }
+      .funding-card {
+        border-radius: 24px;
+        border-top: 6px solid var(--purple);
+      }
+      .funding-card:nth-child(2) { border-top-color: var(--teal); }
+      .funding-card:nth-child(3) { border-top-color: var(--sun); }
+      .funding-card h3 {
+        color: var(--ink);
+      }
+
+      /* Team: no more flower photo */
+      .about-simone-wrapper {
+        background-image: none !important;
+      }
+      .about-simone-wrapper::before {
+        display: none;
+      }
+      .about-simone-content {
+        background: #fff;
+        backdrop-filter: none;
+        border-radius: 28px;
+        box-shadow: 0 12px 32px rgba(0, 90, 100, 0.08);
+      }
+      .person-role {
+        color: var(--teal) !important;
+        font-weight: 600;
+      }
+      .chips li {
+        background: var(--teal-tint);
+        border: none;
+        color: #035560;
+      }
+
+      /* Contact */
+      .contact-card {
+        border-radius: 24px;
+        box-shadow: 0 8px 24px rgba(43, 37, 64, 0.07);
+      }
+      .contact-link {
+        color: var(--purple);
+        text-decoration: none;
+      }
+      .contact-link:hover {
+        text-decoration: underline;
+      }
+
+      /* Footer: deep purple instead of near-black */
+      .company p {
+        color: rgba(255, 255, 255, 0.82);
+      }
+      .company-details {
+        border-top-color: rgba(255, 255, 255, 0.18);
+      }
+
+      /* Menu: pill, mini logo, current section highlighted */
+      body header.fixed-header {
+        align-items: center;
+        top: 10px;
+        border-radius: 999px;
+        width: calc(100% - 20px);
+        max-width: 620px;
+        padding: 6px 8px;
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 6px 20px rgba(43, 37, 64, 0.1);
+      }
+      body header.fixed-header a {
+        font-family: var(--display);
+        font-weight: 500;
+        color: var(--ink);
+        padding: 7px 12px;
+        border-radius: 999px;
+        transition: background-color 0.25s ease, color 0.25s ease;
+      }
+      body header.fixed-header a:hover {
+        background: var(--purple-tint);
+      }
+      body header.fixed-header a.active {
+        background: var(--purple);
+        color: #fff;
+      }
+      body header.fixed-header .nav-logo {
+        display: none;
+        padding: 2px 8px;
+      }
+      .nav-logo img {
+        height: 30px;
+        width: auto;
+        display: block;
+      }
+      body header.fixed-header .nav-logo:hover,
+      body header.fixed-header .nav-logo.active {
+        background: none;
+      }
+      @media (min-width: 769px) {
+        body header.fixed-header .nav-logo {
+          display: block;
+        }
+      }
+      .title-container {
+        padding-top: 64px !important;
+      }
+      section[id] {
+        scroll-margin-top: 70px;
+      }
+
+      /* Modal polish */
+      .modal {
+        background-color: rgba(46, 35, 99, 0.55);
+        backdrop-filter: blur(3px);
+      }
+      .modal-content {
+        border-radius: 28px;
+      }
+
+      @media (max-width: 650px) {
+        .steps {
+          grid-template-columns: 1fr;
+          gap: 34px;
+        }
+        .steps p {
+          max-width: 300px;
+          margin: 0 auto;
+        }
+      }
+      @media (max-width: 480px) {
+        body header.fixed-header {
+          width: calc(100% - 12px);
+          top: 6px;
+          padding: 4px;
+          gap: 0;
+          border-radius: 999px;
+        }
+        body header.fixed-header a {
+          padding: 7px 8px;
+          font-size: 14.5px;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .js .fade-in-content .checklist li {
+          opacity: 1;
+          transform: none;
+        }
+        .badge::before {
+          animation: none;
+        }
+      }
+
+      /* ════ Footsteps that walk down the page with you ════ */
+      .walk-print {
+        position: absolute;
+        width: 16px;
+        height: 24px;
+        pointer-events: none;
+        z-index: 5;
+        opacity: 0;
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 24'%3E%3Cg fill='%236b4ef0'%3E%3Ccircle cx='3.2' cy='3.6' r='1.9'/%3E%3Ccircle cx='6.6' cy='2' r='1.8'/%3E%3Ccircle cx='10' cy='2.2' r='1.6'/%3E%3Ccircle cx='12.8' cy='3.8' r='1.4'/%3E%3Cpath d='M8 5.6c3.6 0 5.4 2.6 5.2 5.8-.2 2.8-1.6 4.4-2.4 5.6H5.2C4.4 15.6 2.8 14 2.8 11.2 2.8 8 4.4 5.6 8 5.6z'/%3E%3Cellipse cx='8' cy='20.4' rx='3' ry='3.2'/%3E%3C/g%3E%3C/svg%3E")
+          center / contain no-repeat;
+        animation: walkPrint 2.8s ease-out forwards;
+      }
+      @keyframes walkPrint {
+        0% { opacity: 0; scale: 0.5; }
+        12% { opacity: 0.4; scale: 1.08; }
+        22% { scale: 1; }
+        60% { opacity: 0.25; }
+        100% { opacity: 0; }
+      }
+      @media (max-width: 650px) {
+        .walk-print { width: 10px; height: 15px; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .walk-print { display: none; }
+      }
+
+      /* ════ How it works: footsteps walk from step to step ════ */
+      .steps li {
+        z-index: 1;
+      }
+      .step-trail {
+        position: absolute;
+        pointer-events: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        top: 21px;
+        left: calc(50% + 40px);
+        width: calc(100% - 52px);
+        height: 26px;
+      }
+      .step-trail i {
+        width: 12px;
+        height: 18px;
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 24'%3E%3Cg fill='%236b4ef0'%3E%3Ccircle cx='3.2' cy='3.6' r='1.9'/%3E%3Ccircle cx='6.6' cy='2' r='1.8'/%3E%3Ccircle cx='10' cy='2.2' r='1.6'/%3E%3Ccircle cx='12.8' cy='3.8' r='1.4'/%3E%3Cpath d='M8 5.6c3.6 0 5.4 2.6 5.2 5.8-.2 2.8-1.6 4.4-2.4 5.6H5.2C4.4 15.6 2.8 14 2.8 11.2 2.8 8 4.4 5.6 8 5.6z'/%3E%3Cellipse cx='8' cy='20.4' rx='3' ry='3.2'/%3E%3C/g%3E%3C/svg%3E") center / contain no-repeat;
+        opacity: 0;
+        transform: rotate(90deg) translateX(-5px);
+      }
+      .step-trail i:nth-child(even) {
+        transform: rotate(90deg) translateX(5px);
+      }
+      .is-visible .step-trail i {
+        animation: trailStep 3.2s ease-in-out infinite;
+      }
+      .step-trail i:nth-child(1) { animation-delay: 0s !important; }
+      .step-trail i:nth-child(2) { animation-delay: 0.25s !important; }
+      .step-trail i:nth-child(3) { animation-delay: 0.5s !important; }
+      .step-trail i:nth-child(4) { animation-delay: 0.75s !important; }
+      .steps li:nth-child(2) .step-trail i { animation-name: trailStep2; }
+      @keyframes trailStep {
+        0% { opacity: 0; scale: 0.4; }
+        8% { opacity: 0.75; scale: 1.1; }
+        14% { scale: 1; }
+        55% { opacity: 0.6; }
+        80%, 100% { opacity: 0; }
+      }
+      @keyframes trailStep2 {
+        0%, 30% { opacity: 0; scale: 0.4; }
+        38% { opacity: 0.75; scale: 1.1; }
+        44% { scale: 1; }
+        80% { opacity: 0.6; }
+        100% { opacity: 0; }
+      }
+      @media (max-width: 650px) {
+        .step-trail {
+          flex-direction: column;
+          top: auto;
+          bottom: -34px;
+          left: 50%;
+          width: 26px;
+          height: 34px;
+          margin-left: -13px;
+          justify-content: space-between;
+        }
+        .step-trail i {
+          width: 9px;
+          height: 13px;
+          transform: rotate(180deg) translateX(-5px);
+        }
+        .step-trail i:nth-child(even) {
+          transform: rotate(180deg) translateX(5px);
+        }
+        .step-trail i:nth-child(n + 3) {
+          display: none;
+        }
+        .steps {
+          gap: 44px;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .is-visible .step-trail i {
+          animation: none;
+          opacity: 0.5;
+        }
+      }
+
+      /* The page trail passes under cards and photos, over open background */
+      .service-item,
+      .funding-card,
+      .contact-card,
+      .about-content,
+      .about-simone-content,
+      .callout,
+      .flex-container img,
+      .split > img {
+        position: relative;
+        z-index: 1;
+      }
+      .walk-print {
+        z-index: 0;
+      }
+
+      .evidence {
+        font-size: 0.95em !important;
+        margin-top: 20px !important;
+        padding: 14px 18px;
+        background: rgba(255, 255, 255, 0.7);
+        border-radius: 16px;
+        clear: both;
+      }
+      .evidence a,
+      .privacy-note a {
+        color: var(--purple);
+        font-weight: 600;
+      }
+      .privacy-note {
+        text-align: center;
+        font-size: 0.92em !important;
+        margin: 20px auto 0 !important;
+      }
+      .footer-link {
+        color: #fff;
+        font-weight: 600;
+      }
     </style>
   </head>
   <body>
     <div class="title-and-logo" style="border-radius: 0">
       <div class="title-container" style="padding-top: 44px">
-        <img
-          src="img/logo.png"
-          alt="Follow Me Therapy logo"
-          class="logo-image"
-          width="271"
-          height="300"
-        />
-        <h1 style="font-weight: 500">Follow Me Therapy</h1>
+        <div class="logo-walk">
+          <span class="trail" aria-hidden="true">
+            <img src="img/footprints.svg" alt="" width="22" height="22" />
+            <img src="img/footprints.svg" alt="" width="22" height="22" />
+            <img src="img/footprints.svg" alt="" width="22" height="22" />
+          </span>
+          <img
+            src="img/logo.png"
+            alt="Follow Me Therapy logo"
+            class="logo-image"
+            width="271"
+            height="300"
+          />
+        </div>
+        <h1 class="site-title" style="font-weight: 500">Follow Me Therapy</h1>
       </div>
     </div>
     <header class="fixed-header" aria-label="Main menu">
+      <a href="#about" class="nav-logo" aria-label="Back to top"
+        ><img src="img/logo.png" alt="" width="27" height="30"
+      /></a>
       <a href="#ot-services">Services</a>
       <a href="#telehealth">Telehealth</a>
       <a href="#funding">Funding</a>
@@ -891,33 +2183,32 @@
     </header>
 
     <main>
-    <div class="section-wrapper about-wrapper">
+    <div class="section-wrapper about-wrapper tone-lilac">
       <section id="about" class="content-section">
         <div class="fade-in-content">
           <div class="content-wrapper about-content">
-            <p>
-              We are a <b>paediatric occupational therapy</b> provider
-              empowering children, young people, and their families to live
-              their fullest life! Our services cater to individuals
-              <b>0-18 years</b> of age, with a wide range of support needs. As a
-              mobile service, we offer <b>Telehealth</b> Australia-wide, and
-              <b>Community-based</b> sessions in the North-Western Melbourne
-              area.
+            <p class="eyebrow">Paediatric Occupational Therapy</p>
+            <p class="lead">
+              Helping children, young people and their families live their
+              fullest lives.
             </p>
-            <p class="cta-text" style="text-align: center; margin-top: -1px">
-              <u
-                >We have capacity for <em><b>Telehealth</b></em></u
-              >.
-            </p>
+            <ul class="facts">
+              <li>Ages 0–18</li>
+              <li>Telehealth Australia-wide</li>
+              <li>Community sessions in North-Western Melbourne</li>
+            </ul>
+            <p class="badge">Telehealth spots available now</p>
             <p class="cta-text">So, what are you waiting for?</p>
             <p class="cta-emphasis"><em>Follow Me!</em></p>
+            <a href="#contact" class="btn-secondary hero-btn" data-open-contact
+              >Get started</a
+            >
           </div>
         </div>
       </section>
     </div>
 
-    <div class="section-wrapper" style="background-color: #ffe8ba">
-      <div class="wavy-line-horizontal"></div>
+    <div class="section-wrapper tone-cream wave-top">
 
       <section id="ot-services" class="content-section">
         <div class="fade-in-content">
@@ -927,23 +2218,20 @@
             what brings us joy, and the journey to becoming you.
           </p>
           <p>
-            We help children and young people to recover, develop, and maintain
-            the skills for independence and community involvement. Our services
-            are personalized to meet each individual's unique needs.
+            We help children and young people build the skills for independence
+            and everyday life, with therapy shaped around each child.
           </p>
-          <p>Our Occupational therapists can help you to:</p>
           <div class="flex-container">
             <div>
-              <ul>
-                <li>— Improve fine and gross motor skills</li>
-                <li>— Understand your sensory systems</li>
-                <li>— Develop play and engagement skills</li>
-                <li>— Support emotional regulation</li>
-                <li>— Build self-care and independence</li>
-                <li>— Prepare for school readiness</li>
-                <li style="margin-bottom: -15px">
-                  — Address fussy eating and mealtime skills
-                </li>
+              <p class="list-label">OT can help your child:</p>
+              <ul class="checklist">
+                <li>Improve fine and gross motor skills</li>
+                <li>Understand their sensory systems</li>
+                <li>Develop play and engagement skills</li>
+                <li>Regulate their emotions</li>
+                <li>Build self-care and independence</li>
+                <li>Get ready for school</li>
+                <li>Enjoy mealtimes and manage fussy eating</li>
               </ul>
             </div>
             <img
@@ -954,68 +2242,46 @@
               height="667"
               loading="lazy"
               decoding="async"
-              style="margin-top: 20px"
             />
           </div>
-          <p style="margin-top: 40px">
-            The aim of a Follow Me Therapy OT session is to create a space for
-            real-life problem solving. We empower the individual and their
-            family to take control of their therapy journey.
+          <p class="callout">
+            Every session is a space for real-life problem solving, so you and
+            your family feel in control of the therapy journey.
           </p>
         </div>
       </section>
     </div>
 
-    <div
-      class="section-wrapper"
-      style="background-color: #ffe8ba; padding-bottom: 100px"
-    >
-      <section
-        id="services"
-        class="content-section services-section"
-        style="padding-bottom: 50px"
-      >
+    <div class="section-wrapper tone-cream">
+      <section id="services" class="content-section services-section">
         <div class="fade-in-content">
           <div class="content-wrapper">
             <h2>Our Services</h2>
-            <p>Click on individual services to find out more:</p>
+            <p>Tap a service to find out more.</p>
             <div class="services-grid">
               <div class="service-item" data-service="pediatric" role="button" tabindex="0" aria-haspopup="dialog">
-                <img src="img/footprints.svg" alt="" width="80" height="80" />
-                <h3 style="text-align: center">5 Steps Forward</h3>
-                <p>
-                  A focused 5-session program designed to address specific
-                  therapy goals.
-                </p>
+                <span class="svc-icon svc-footprints"><svg viewBox="0 0 40 40" aria-hidden="true"><ellipse cx="14" cy="16" rx="4.5" ry="7"/><ellipse cx="14" cy="28" rx="3" ry="2.5"/><ellipse cx="26" cy="12" rx="4.5" ry="7" transform="translate(0 6)"/><ellipse cx="26" cy="31" rx="3" ry="2.5" transform="translate(0 -1)"/></svg></span>
+                <h3>5 Steps Forward</h3>
+                <p>A focused 5-session program for specific goals.</p>
+                <span class="more">Learn more →</span>
               </div>
               <div class="service-item" data-service="adult" role="button" tabindex="0" aria-haspopup="dialog">
-                <img src="img/stairs.svg" alt="" width="80" height="80" />
-                <h3 style="text-align: center">Steady Steps</h3>
-                <p>
-                  12 session structured therapy block for building key skills
-                  through consistent, ongoing support.
-                </p>
+                <span class="svc-icon svc-stairs"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M6 33h8v-7h7v-7h7v-7h6"/><path d="M30 12V5l5 2.5-5 2.5"/></svg></span>
+                <h3>Steady Steps</h3>
+                <p>A 12-session block of steady, ongoing support to build key skills.</p>
+                <span class="more">Learn more →</span>
               </div>
               <div class="service-item" data-service="home" role="button" tabindex="0" aria-haspopup="dialog">
-                <img src="img/esdm.svg" alt="" width="80" height="80" />
-                <h3 style="text-align: center">
-                  Early Start Denver Model (ESDM)
-                </h3>
-                <p>
-                  An evidence-based, play-based therapy designed for young
-                  children with autism, and other developmental delays.
-                </p>
+                <span class="svc-icon svc-esdm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="6" y="22" width="12" height="12" rx="2.5"/><rect x="22" y="22" width="12" height="12" rx="2.5"/><rect x="14" y="7" width="12" height="12" rx="2.5" transform="rotate(8 20 13)"/></svg></span>
+                <h3>Early Start Denver Model (ESDM)</h3>
+                <p>Play-based therapy for young children with autism or developmental delays.</p>
+                <span class="more">Learn more →</span>
               </div>
               <div class="service-item" data-service="assessments" role="button" tabindex="0" aria-haspopup="dialog">
-                <img src="img/assessments.svg" alt="" width="80" height="80" />
-                <h3 style="text-align: center">Assessments</h3>
-                <ul>
-                  <li>NDIS Access Report</li>
-                  <li>Functional Capacity Assessment (FCA)</li>
-                  <li>Progress Report</li>
-                  <li>Sensory Processing Assessment</li>
-                  <li>Assistive Technology (AT)</li>
-                </ul>
+                <span class="svc-icon svc-assessments"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="9" y="7" width="22" height="28" rx="4"/><rect x="15" y="4" width="10" height="6" rx="2"/><path d="M15 22l4 4 7-8"/></svg></span>
+                <h3>Assessments</h3>
+                <p>NDIS access, functional capacity, progress, sensory and assistive technology reports.</p>
+                <span class="more">Learn more →</span>
               </div>
             </div>
           </div>
@@ -1023,16 +2289,40 @@
       </section>
     </div>
 
-    <div class="wave"></div>
+    <div class="section-wrapper tone-white wave-top">
+      <section id="how" class="content-section">
+        <div class="fade-in-content">
+          <h2>How it works</h2>
+          <ol class="steps">
+            <li>
+              <span class="step-num">1</span>
+              <h3>Referral</h3>
+              <p>
+                Complete our referral form, or send an enquiry if you have
+                questions first.
+              </p>
+            </li>
+            <li>
+              <span class="step-num">2</span>
+              <h3>Initial assessment</h3>
+              <p>We get to know your child and family, and set goals together.</p>
+            </li>
+            <li>
+              <span class="step-num">3</span>
+              <h3>Therapy</h3>
+              <p>Telehealth or community sessions, tailored to your goals.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+    </div>
 
-    <div
-      class="section-wrapper telehealth-wrapper"
-      style="background-color: #e7d7f8"
-    >
+    <div class="section-wrapper telehealth-wrapper tone-lilac wave-top">
       <section id="telehealth" class="content-section">
         <div class="fade-in-content">
-          <h2>Telehealth Services</h2>
+          <h2>Telehealth</h2>
           <div class="content-wrapper telehealth-content">
+            <div class="split">
             <img
               src="img/telehealth.jpg"
               alt="A telehealth session on a laptop"
@@ -1042,87 +2332,81 @@
               loading="lazy"
               decoding="async"
             />
-            <p style="margin-top: 0px">
-              Families can connect with their therapist virtually via video or
-              phone call without the need for travel. Telepractices save
-              valuable time and make therapy more accessible, including for
-              those in rural or underserved areas. With telehealth seamlessly
-              integrated into the family routine, you’ll receive the consistent
-              support your child needs for development and skill-building.
-              Telehealth can be utilised to go beyond the home to support you in
-              a variety of settings. Whether it be a coaching call with
-              grandparents, developing a skill building program for your support
-              workers, or collaborating with the classroom teacher. Telehealth
-              can be a long term solution to accessing professional support from
-              anywhere in Australia. Or an interim solution to extensive wait
-              times.
+              <div class="split-text">
+            <p>
+              Meet your therapist by video or phone, with no travel. Telehealth
+              fits into your family routine and brings therapy to you anywhere
+              in Australia, including rural and regional areas.
             </p>
-            <div
-              class="telehealth-logo"
-              style="display: flex; align-items: center; gap: 10px"
-            >
-              <p style="margin: 0">
-                Our telehealth sessions are conducted via Teams:
-              </p>
+            <p class="list-label">It also reaches beyond the home:</p>
+            <ul class="checklist">
+              <li>Coaching calls with grandparents or carers</li>
+              <li>Skill-building programs for support workers</li>
+              <li>Working with your child’s teacher</li>
+              <li>Support while you wait for face-to-face services</li>
+            </ul>
+              </div>
+            </div>
+            <div class="teams-note">
               <img
                 src="img/teams-logo.webp"
-                alt="Microsoft Teams"
-                width="130"
-                height="130"
+                alt=""
+                width="48"
+                height="48"
                 loading="lazy"
-                style="width: 130px; height: auto"
               />
+              <span>Sessions run on Microsoft Teams.</span>
+            </div>
+            <p class="evidence">
+              Research backs it up: a 2023 review of 18 trials found telehealth
+              OT for children works well alongside face-to-face therapy, and
+              families were happy with it.
+              <a
+                href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10134098/"
+                target="_blank"
+                rel="noopener"
+                >Read the review</a
+              >
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="section-wrapper telehealth-wrapper tone-lilac">
+      <section id="funding" class="content-section">
+        <div class="fade-in-content">
+          <h2>Funding Options</h2>
+          <div class="funding-grid">
+            <div class="funding-card">
+              <h3>NDIS</h3>
+              <p>
+                For self-managed and plan-managed participants, with therapy
+                plans built around your goals.
+              </p>
+            </div>
+            <div class="funding-card">
+              <h3>Private</h3>
+              <p>
+                Short or long-term support. You may be able to claim a rebate
+                through your private health insurance.
+              </p>
+            </div>
+            <div class="funding-card">
+              <h3>Medicare</h3>
+              <p>Have a referral? Get in touch to talk through your options.</p>
             </div>
           </div>
         </div>
       </section>
     </div>
 
-    <div class="section-wrapper" style="background-color: #e7d7f8">
-      <section
-        id="funding"
-        class="content-section"
-        style="padding-bottom: 50px"
-      >
-        <div class="fade-in-content">
-          <div class="content-wrapper">
-            <h2>Funding Options</h2>
-            <p>
-              <b>NDIS</b> – We service Self-Managed and Plan managed NDIS
-              participants. We tailor therapy plans to meet your goals.
-            </p>
-            <p>
-              <b>Private</b> – Flexible options are available, including short
-              and long-term support. You may also be eligible for a rebate with
-              your private health insurance.
-            </p>
-            <p>
-              <b>Medicare referral</b> – Contact us to explore Medicare options
-              for occupational therapy services.
-            </p>
-          </div>
-          <div
-            class="telehealth-logo"
-            style="text-align: center; margin-top: 50px"
-          >
-            <img
-              src="img/medicare-logo.png"
-              alt="Medicare"
-              width="200"
-              height="52"
-              loading="lazy"
-              style="width: 200px; height: auto; display: inline-block"
-            />
-          </div>
-        </div>
-      </section>
-    </div>
-
-    <div class="section-wrapper about-simone-wrapper">
+    <div class="section-wrapper about-simone-wrapper tone-mint wave-top">
       <section id="about-simone" class="content-section">
         <div class="fade-in-content">
           <h2>Meet the Team</h2>
           <div class="content-wrapper about-simone-content">
+            <div class="split">
             <img
               src="img/simone.jpg"
               alt="Simone Gabriele, occupational therapist"
@@ -1132,50 +2416,85 @@
               loading="lazy"
               decoding="async"
             />
-            <p style="margin-top: 0px">
-              Simone Gabriele holds a Master of Occupational Therapy from La
-              Trobe University before launching her career in early intervention
-              supports, and later moving into neurodevelopmental community
-              services. Simone has worked in team leader roles, and provided
-              clinical supervision to the next generation of occupational
-              therapists. She’s passionate about using strength-based and
-              neurodiverse affirming practice to centre her clients. Simone
-              believes therapy should be fun, engaging, and practical in the
-              context of our busy lives!
+              <div class="split-text">
+            <h3 class="person-name">Simone Gabriele</h3>
+            <p class="person-role">
+              Occupational Therapist · Master of Occupational Therapy, La Trobe
+              University
             </p>
             <p>
-              Simone has experience working with autism spectrum disorder (ASD),
-              attention deficit hyperactivity disorder (ADHD), behavioural
-              support needs, global developmental delays, and neurodevelopmental
-              and genetic disabilities, including cerebral palsy, Down syndrome,
-              and motor or coordination impairments.
+              Simone began her career in early intervention before moving into
+              neurodevelopmental community services, where she led teams and
+              supervised the next generation of OTs.
             </p>
+            <p>
+              Her practice is strength-based and neurodiversity-affirming, with
+              each child at the centre. She believes therapy should be fun,
+              engaging and practical for busy families.
+            </p>
+              </div>
+            </div>
+            <p class="list-label">Experience with:</p>
+            <ul class="chips">
+              <li>Autism (ASD)</li>
+              <li>ADHD</li>
+              <li>Behaviour support needs</li>
+              <li>Global developmental delay</li>
+              <li>Cerebral palsy</li>
+              <li>Down syndrome</li>
+              <li>Genetic and neurodevelopmental disabilities</li>
+              <li>Motor and coordination difficulties</li>
+            </ul>
           </div>
         </div>
       </section>
     </div>
 
-    <div class="section-wrapper" style="background-color: #e7d7f8">
+    <div class="section-wrapper tone-cream wave-top">
       <section
         id="contact"
         class="content-section contact-section"
-        style="padding-bottom: 100px"
+        style="padding-bottom: 90px"
       >
         <div class="fade-in-content">
           <div class="content-wrapper">
             <h2>Get in Touch</h2>
-            <p class="centered-text">
-              Fill in the “Contact Us” form below, or get in touch directly to
-              find out more:
+            <div class="contact-actions">
+              <div class="contact-card">
+                <h3>Ready to start?</h3>
+                <p>Complete our referral form and we’ll take it from there.</p>
+                <a
+                  href="https://follow-me-therapy.splose.com/public-form/975d61d5-cd63-44e5-86e7-f9315fa6a5b0"
+                  target="_blank"
+                  rel="noopener"
+                  class="btn-secondary"
+                  >Make a referral</a
+                >
+              </div>
+              <div class="contact-card">
+                <h3>Have a question?</h3>
+                <p>Send us an enquiry and our team will be in touch.</p>
+                <a
+                  href="https://follow-me-therapy.splose.com/public-form/e84c8756-615f-4404-a6f3-a90f3760223b"
+                  target="_blank"
+                  rel="noopener"
+                  class="btn-outline"
+                  >Send an enquiry</a
+                >
+              </div>
+            </div>
+            <p class="privacy-note">
+              Forms are confidential.
+              <a href="privacy.html">How we handle your information</a>
             </p>
-            <div style="text-align: center">
-              <a href="mailto:info@followmetherapy.com.au" class="contact-link">
-                <img src="img/mail.svg" alt="" width="24" height="24" />
-                info@followmetherapy.com.au
-              </a>
+            <div class="contact-direct">
               <a href="tel:+61435076683" class="contact-link">
                 <img src="img/phone.svg" alt="" width="24" height="24" />
                 0435 076 683
+              </a>
+              <a href="mailto:info@followmetherapy.com.au" class="contact-link">
+                <img src="img/mail.svg" alt="" width="24" height="24" />
+                info@followmetherapy.com.au
               </a>
             </div>
           </div>
@@ -1183,78 +2502,64 @@
       </section>
     </div>
 
-    <div class="section-wrapper" style="background-color: #282828">
+    <div class="section-wrapper tone-deep wave-top">
       <section
         id="company"
         class="content-section"
-        style="padding: 50px 20px 120px; color: white"
+        style="padding: 56px 20px 110px; color: white"
       >
-        <div class="content-wrapper">
-          <h3 style="color: white">Follow Me Therapy Pty Ltd</h3>
-
-          <div
-            style="
-              display: flex;
-              flex-wrap: wrap;
-              justify-content: center;
-              gap: 15px;
-              margin-top: 30px;
-            "
-          >
-            <img src="img/flag-1.png" alt="Aboriginal flag" width="100" height="60" loading="lazy" style="width: 100px; height: auto" />
-            <img src="img/flag-2.png" alt="Torres Strait Islander flag" width="100" height="60" loading="lazy" style="width: 100px; height: auto" />
-            <img src="img/flag-3.png" alt="Intersex-inclusive Progress Pride flag" width="100" height="60" loading="lazy" style="width: 100px; height: auto" />
-            <img src="img/flag-4.png" alt="Australian flag" width="100" height="60" loading="lazy" style="width: 100px; height: auto" />
+        <div class="content-wrapper company">
+          <div class="flags">
+            <img src="img/flag-1.png" alt="Aboriginal flag" width="100" height="60" loading="lazy" />
+            <img src="img/flag-2.png" alt="Torres Strait Islander flag" width="100" height="60" loading="lazy" />
+            <img src="img/flag-3.png" alt="Intersex-inclusive Progress Pride flag" width="100" height="60" loading="lazy" />
+            <img src="img/flag-4.png" alt="Australian flag" width="100" height="60" loading="lazy" />
           </div>
-
           <p>
-            We acknowledge the Traditional Custodians of the lands, seas, and
-            communities across Australia, and to the Wurundjeri people upon
-            where our services are provided. We recognise their enduring
-            connection to Country. We pay our respects to Elders past and
-            present and extend that respect to all Aboriginal and Torres Strait
-            Islander peoples today. We honour the resilience, strength, and
-            cultural pride of Aboriginal and Torres Strait Islander communities,
-            and extend such to all including the LGBTQIA+ community. All are
-            welcome at Follow Me Therapy
+            We acknowledge the Traditional Custodians of the lands, seas and
+            communities across Australia, and the Wurundjeri people, on whose
+            land we provide our services. We recognise their continuing
+            connection to Country and pay our respects to Elders past and
+            present, and to all Aboriginal and Torres Strait Islander peoples
+            today.
           </p>
-
-          <p
-            style="
-              text-align: start;
-              font-size: 0.8em;
-              max-width: 800px;
-              margin-left: auto;
-              margin-right: auto;
-            "
-          >
-            Follow Me Therapy Pty Ltd is a registered Australian company
-            providing high-quality paediatric occupational therapy services. We
-            are committed to empowering children and families through tailored
-            intervention programs and support.
+          <p>
+            We honour the resilience, strength and cultural pride of Aboriginal
+            and Torres Strait Islander communities, and extend that respect to
+            everyone, including the LGBTQIA+ community. All are welcome at
+            Follow Me Therapy.
           </p>
-          <p style="text-align: start; font-size: 1.1em; margin-bottom: 40px">
-            ABN: 91 08 46 79 39 54 14
-          </p>
-          <p style="text-align: start; font-size: 1.1em; margin-bottom: 40px">
-            Postal Address: Suite 142, 585 Little Collins Street, Melbourne VIC
-          </p>
+          <div class="company-details">
+            <h3>Follow Me Therapy Pty Ltd</h3>
+            <p>
+              A registered Australian company providing paediatric occupational
+              therapy.
+            </p>
+            <p>ABN: 91 08 46 79 39 54 14</p>
+            <p>Postal address: Suite 142, 585 Little Collins Street, Melbourne VIC</p>
+            <p><a href="privacy.html" class="footer-link">Privacy policy</a></p>
+          </div>
         </div>
       </section>
     </div>
-
     </main>
 
     <!-- Footer Section -->
-    <footer class="fixed-footer">
-      <a
-        href="#contact"
-        class="btn-primary"
-        style="width: 100%; text-align: center; margin: 0 10px"
-        id="contactUsButton"
-        >Contact Us</a
-      >
-    </footer>
+    <a href="#contact" class="fab" id="contactUsButton" aria-label="Contact us">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          d="M4 5h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H9l-4 3v-3H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linejoin="round"
+        />
+        <circle cx="8.5" cy="11" r="1.2" fill="currentColor" />
+        <circle cx="12" cy="11" r="1.2" fill="currentColor" />
+        <circle cx="15.5" cy="11" r="1.2" fill="currentColor" />
+      </svg>
+      <span class="fab-label">Contact us</span>
+    </a>
 
     <!-- Contact Us Modal Structure -->
     <div id="contactModal" class="modal contact-modal">
@@ -1267,35 +2572,28 @@
       >
         <button type="button" class="close" aria-label="Close">&times;</button>
         <h3 id="contactModalTitle">Contact Us</h3>
-        <div>
-          <p style="text-align: center; padding-bottom: 20px">
-            Ready to get going? Complete our referral form:
-          </p>
+        <div class="modal-option">
+          <p>Ready to start? Complete our referral form.</p>
           <a
             href="https://follow-me-therapy.splose.com/public-form/975d61d5-cd63-44e5-86e7-f9315fa6a5b0"
             target="_blank" rel="noopener"
             class="btn-secondary"
-            style="margin-top: 30px"
-            >Intake Form</a
+            >Make a referral</a
           >
         </div>
-        <div style="margin-top: 40px; text-align: center">
-          <p style="text-align: center; padding-bottom: 20px">
-            Need more information? Fill in our inquiry form and our team will be
-            in touch:
-          </p>
+        <div class="modal-option">
+          <p>Have a question first? Send an enquiry and we’ll be in touch.</p>
           <a
             href="https://follow-me-therapy.splose.com/public-form/e84c8756-615f-4404-a6f3-a90f3760223b"
             target="_blank" rel="noopener"
-            class="btn-primary"
-            style="margin-top: 30px"
-            >Inquiry</a
+            class="btn-outline"
+            >Send an enquiry</a
           >
-          <p style="text-align: center; padding-top: 30px">
-            For any non-client related inquiries, please email us at
-            info@followmetherapy.com.au
-          </p>
         </div>
+        <p class="modal-note">
+          Not about a client? Email
+          <a href="mailto:info@followmetherapy.com.au">info@followmetherapy.com.au</a>
+        </p>
       </div>
     </div>
 
@@ -1314,8 +2612,7 @@
           href="https://follow-me-therapy.splose.com/public-form/975d61d5-cd63-44e5-86e7-f9315fa6a5b0"
           class="btn-secondary"
           target="_blank" rel="noopener"
-          style="margin-top: 20px"
-          >Intake Form</a
+          >Make a referral</a
         >
       </div>
     </div>
@@ -1326,22 +2623,22 @@
           pediatric: {
             title: "5 Steps Forward",
             content:
-              "5 Steps Forward is a focused, short-term occupational therapy program designed to deliver targeted support over the course of 5 sessions. Ideal for returning families who need a boost of support, and new families exploring OT for the first time.",
+              "<p>A short, focused program of 5 sessions with targeted support.</p><p>Ideal for returning families who need a boost, or families trying OT for the first time.</p>",
           },
           adult: {
-            title: "Steady Steps Block Model",
+            title: "Steady Steps",
             content:
-              "A 12 session therapy block offering structured and consistent support to problem solve big goals, and develop new skills. In Steady Steps we have time to engage your wider network, and recommend a comprehensive plan of action. When required, blocks may be stacked if additional support is needed.",
+              "<p>A 12-session block of structured, consistent support to work on big goals and build new skills.</p><p>There’s time to involve your child’s wider network and put together a full plan of action. Blocks can be stacked if more support is needed.</p>",
           },
           home: {
             title: "Early Start Denver Model (ESDM)",
             content:
-              "The Early Start Denver Model (ESDM) is an evidence-based, comprehensive therapy approach designed for young children with autism and other developmental delays, up to 5 years of age. Designed by the UC Davis MIND Institute, ESDM programs integrate play-based learning with developmental and behavioural techniques to support communication, social skills, play and daily living skills, and cognitive development. Our ESDM-certified therapists work closely with children and their families to deliver: <ul><li>- 1:1 therapy sessions at home, or in the community</li> <li>- Individualised learning programs</li><li>- Coaching with those interacting with the child day to day.</li></ul>  We can assess if this model is suitable for your child during your initial assessment.",
+              "<p>An evidence-based, play-based approach for children up to 5 with autism or other developmental delays, developed by the UC Davis MIND Institute.</p><p>It supports communication, social skills, play, daily living and thinking skills. Delivered by an ESDM-certified therapist, it includes:</p><ul class='checklist'><li>1:1 sessions at home or in the community</li><li>An individualised learning program</li><li>Coaching for the people who support your child every day</li></ul><p>We’ll check whether ESDM suits your child at the initial assessment.</p>",
           },
           assessments: {
             title: "Assessments",
             content:
-              "<ul><li>NDIS Access Report</li><li>Functional Capacity Assessment (FCA)</li><li>Progress Report</li><li>Sensory Processing Assessment</li><li>Assistive Technology (AT) - suitability of AT goals to be reviewed at initial assessment</li></ul>",
+              "<ul class='checklist'><li>NDIS Access Report</li><li>Functional Capacity Assessment (FCA)</li><li>Progress Report</li><li>Sensory Processing Assessment</li><li>Assistive Technology (AT)</li></ul><p class='modal-note'>Whether AT goals are suitable is reviewed at the initial assessment.</p>",
           },
         };
 
@@ -1386,7 +2683,7 @@
         document.querySelectorAll(".service-item").forEach((item) => {
           const open = () => {
             const d = serviceDetails[item.getAttribute("data-service")];
-            serviceModalContent.innerHTML = `<h3 id="serviceModalTitle">${d.title}</h3><p>${d.content}</p>`;
+            serviceModalContent.innerHTML = `<h3 id="serviceModalTitle">${d.title}</h3><div class="modal-body">${d.content}</div>`;
             openModal(serviceModal);
           };
           item.addEventListener("click", open);
@@ -1400,13 +2697,110 @@
 
         // Contact Us button.
         const contactModal = document.getElementById("contactModal");
-        document.getElementById("contactUsButton").addEventListener("click", (e) => {
-          e.preventDefault();
-          openModal(contactModal);
+        document.querySelectorAll("#contactUsButton, [data-open-contact]").forEach((btn) =>
+          btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            openModal(contactModal);
+          })
+        );
+
+        // Floating Contact button: pops in, shrinks to a circle once you
+        // scroll, and steps aside while the contact section is on screen.
+        const fab = document.getElementById("contactUsButton");
+        setTimeout(() => fab.classList.add("show"), 900);
+        const onScroll = () => fab.classList.toggle("compact", window.scrollY > 240);
+        window.addEventListener("scroll", onScroll, { passive: true });
+        onScroll();
+        if ("IntersectionObserver" in window) {
+          new IntersectionObserver(
+            ([e]) => fab.classList.toggle("tucked", e.isIntersecting),
+            { threshold: 0.25 }
+          ).observe(document.getElementById("contact"));
+        }
+
+        // Highlight the menu link for the section on screen.
+        if ("IntersectionObserver" in window) {
+          const links = {};
+          document.querySelectorAll("header.fixed-header a[href^='#']").forEach((a) => {
+            links[a.getAttribute("href").slice(1)] = a;
+          });
+          const map = { services: "ot-services", how: "ot-services", funding: "funding" };
+          const spy = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((e) => {
+                if (!e.isIntersecting) return;
+                const id = map[e.target.id] || e.target.id;
+                Object.values(links).forEach((a) => a.classList.remove("active"));
+                if (links[id] && id !== "about") links[id].classList.add("active");
+              });
+            },
+            { rootMargin: "-45% 0px -50% 0px" }
+          );
+          document.querySelectorAll("main section[id]").forEach((sec) => spy.observe(sec));
+        }
+
+        // Footsteps wander left and right across the page as you scroll,
+        // pointing the way you're going.
+        if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          let lastY = window.scrollY, travelled = 0, left = true;
+          const STRIDE = 90;
+          const pathX = (y) => {
+            const w = document.documentElement.clientWidth;
+            const pad = Math.min(60, w * 0.08);
+            const period = window.innerHeight * 1.6;
+            return pad + (w - 2 * pad) * (0.5 + 0.45 * Math.sin((y / period) * Math.PI * 2));
+          };
+          const stepAt = (down) => {
+            const y = window.scrollY + window.innerHeight * 0.55;
+            const x = pathX(y);
+            const dy = down ? STRIDE : -STRIDE;
+            const dx = pathX(y + dy) - x;
+            const angle = (Math.atan2(dx, -dy) * 180) / Math.PI;
+            // Offset each foot sideways from the path, like real steps.
+            const len = Math.hypot(dx, dy) || 1;
+            const side = left ? -7 : 7;
+            const el = document.createElement("span");
+            el.className = "walk-print";
+            el.setAttribute("aria-hidden", "true");
+            el.style.left = x + (side * -dy) / len - 8 + "px";
+            el.style.top = y + (side * dx) / len - 12 + "px";
+            el.style.transform = "rotate(" + angle + "deg)";
+            document.body.appendChild(el);
+            el.addEventListener("animationend", () => el.remove());
+            left = !left;
+          };
+          window.addEventListener(
+            "scroll",
+            () => {
+              const y = window.scrollY;
+              const dy = y - lastY;
+              lastY = y;
+              travelled += Math.abs(dy);
+              if (travelled >= STRIDE) {
+                travelled = 0;
+                stepAt(dy > 0);
+              }
+            },
+            { passive: true }
+          );
+        }
+
+        // Footstep trails between the How it works steps.
+        document.querySelectorAll(".steps li:not(:last-child)").forEach((li) => {
+          const t = document.createElement("span");
+          t.className = "step-trail";
+          t.setAttribute("aria-hidden", "true");
+          t.innerHTML = "<i></i><i></i><i></i><i></i>";
+          li.appendChild(t);
         });
 
-        // Floating Contact Us bar slides up.
-        document.querySelector("footer.fixed-footer").classList.add("show");
+        // The logo hops when tapped.
+        const logo = document.querySelector(".logo-walk");
+        logo.addEventListener("click", () => {
+          logo.classList.remove("hop");
+          void logo.offsetWidth;
+          logo.classList.add("hop");
+        });
 
         // ── Content fades in as it scrolls into view ──
         const faders = document.querySelectorAll(".fade-in-content");
