@@ -1983,6 +1983,32 @@
           animation: none;
         }
       }
+
+      /* ════ Footsteps that walk down the page with you ════ */
+      .walk-print {
+        position: absolute;
+        width: 16px;
+        height: 24px;
+        pointer-events: none;
+        z-index: 5;
+        opacity: 0;
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 24'%3E%3Cg fill='%236b4ef0'%3E%3Ccircle cx='3.2' cy='3.6' r='1.9'/%3E%3Ccircle cx='6.6' cy='2' r='1.8'/%3E%3Ccircle cx='10' cy='2.2' r='1.6'/%3E%3Ccircle cx='12.8' cy='3.8' r='1.4'/%3E%3Cpath d='M8 5.6c3.6 0 5.4 2.6 5.2 5.8-.2 2.8-1.6 4.4-2.4 5.6H5.2C4.4 15.6 2.8 14 2.8 11.2 2.8 8 4.4 5.6 8 5.6z'/%3E%3Cellipse cx='8' cy='20.4' rx='3' ry='3.2'/%3E%3C/g%3E%3C/svg%3E")
+          center / contain no-repeat;
+        animation: walkPrint 2.8s ease-out forwards;
+      }
+      @keyframes walkPrint {
+        0% { opacity: 0; scale: 0.5; }
+        12% { opacity: 0.55; scale: 1.08; }
+        22% { scale: 1; }
+        60% { opacity: 0.35; }
+        100% { opacity: 0; }
+      }
+      @media (max-width: 650px) {
+        .walk-print { width: 10px; height: 15px; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .walk-print { display: none; }
+      }
     </style>
   </head>
   <body>
@@ -2565,6 +2591,40 @@
             { rootMargin: "-45% 0px -50% 0px" }
           );
           document.querySelectorAll("main section[id]").forEach((sec) => spy.observe(sec));
+        }
+
+        // Footsteps walk down (or back up) the page as you scroll.
+        if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          let lastY = window.scrollY, travelled = 0, left = true;
+          const STRIDE = 110;
+          const stepAt = (down) => {
+            const contentLeft = (document.documentElement.clientWidth - 800) / 2;
+            const wide = contentLeft > 140;
+            const lane = wide ? contentLeft - 70 : 2;
+            const el = document.createElement("span");
+            el.className = "walk-print";
+            el.setAttribute("aria-hidden", "true");
+            el.style.left = lane + (left ? 0 : wide ? 20 : 8) + "px";
+            el.style.top = window.scrollY + window.innerHeight * 0.55 + "px";
+            el.style.transform = "rotate(" + ((down ? 180 : 0) + (left ? -8 : 8)) + "deg)";
+            document.body.appendChild(el);
+            el.addEventListener("animationend", () => el.remove());
+            left = !left;
+          };
+          window.addEventListener(
+            "scroll",
+            () => {
+              const y = window.scrollY;
+              const dy = y - lastY;
+              lastY = y;
+              travelled += Math.abs(dy);
+              if (travelled >= STRIDE) {
+                travelled = 0;
+                stepAt(dy > 0);
+              }
+            },
+            { passive: true }
+          );
         }
 
         // The logo hops when tapped.
