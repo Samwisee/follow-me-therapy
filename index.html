@@ -8,9 +8,55 @@
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Follow Me Therapy | Occupational Therapy by Simone Gabriele</title>
-    <link rel="icon" href="Follow Me Icon.png" type="image/png" />
+    <meta
+      name="description"
+      content="Paediatric occupational therapy for children and young people aged 0-18. Telehealth Australia-wide and community-based sessions in North-Western Melbourne. NDIS, private and Medicare referral options."
+    />
+    <link rel="canonical" href="https://followmetherapy.com.au/" />
+    <meta name="theme-color" content="#d9b5ff" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Follow Me Therapy" />
+    <meta property="og:title" content="Follow Me Therapy | Paediatric Occupational Therapy" />
+    <meta
+      property="og:description"
+      content="Paediatric OT for ages 0-18. Telehealth Australia-wide and community-based sessions in North-Western Melbourne."
+    />
+    <meta property="og:url" content="https://followmetherapy.com.au/" />
+    <meta property="og:image" content="https://followmetherapy.com.au/img/og.jpg" />
+    <meta property="og:locale" content="en_AU" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="img/icon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="img/icon-180.png" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "MedicalBusiness",
+        "name": "Follow Me Therapy",
+        "legalName": "Follow Me Therapy Pty Ltd",
+        "description": "Paediatric occupational therapy for children and young people aged 0-18, via telehealth Australia-wide and community-based sessions in North-Western Melbourne.",
+        "url": "https://followmetherapy.com.au/",
+        "logo": "https://followmetherapy.com.au/img/logo.png",
+        "image": "https://followmetherapy.com.au/img/og.jpg",
+        "email": "info@followmetherapy.com.au",
+        "telephone": "+61435076683",
+        "medicalSpecialty": "Occupational therapy",
+        "areaServed": [
+          { "@type": "Country", "name": "Australia" },
+          { "@type": "City", "name": "Melbourne" }
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Melbourne",
+          "addressRegion": "VIC",
+          "addressCountry": "AU"
+        }
+      }
+    </script>
+    <script>document.documentElement.classList.add("js");</script>
 
     <!-- Google Fonts: Quicksand -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
@@ -114,7 +160,6 @@
       /* Hero Section */
       .hero-section {
         position: relative;
-        background: url("main.png") no-repeat center center/cover;
         height: 60vh;
         display: flex;
         align-items: center;
@@ -134,7 +179,7 @@
       /* Buttons */
       .btn-primary,
       .btn-secondary {
-        background-color: #008c9e;
+        background-color: #007a8a;
         color: white;
         padding: 15px 30px;
         border: none;
@@ -147,7 +192,7 @@
       }
 
       .btn-secondary {
-        background-color: #7b61ff;
+        background-color: #6b4ef0;
       }
 
       .btn-primary:hover,
@@ -160,7 +205,7 @@
       }
 
       .btn-secondary:hover {
-        background-color: #6953e0;
+        background-color: #5a3fd6;
       }
 
       /* Service Grid */
@@ -196,7 +241,7 @@
       .modal {
         display: none;
         position: fixed;
-        z-index: 1000;
+        z-index: 1100;
         left: 0;
         top: 0;
         width: 100%;
@@ -250,9 +295,80 @@
       .modal .close {
         position: absolute;
         top: 10px;
-        right: 20px;
+        right: 14px;
         font-size: 28px;
+        line-height: 1;
+        width: 44px;
+        height: 44px;
+        border: none;
+        background: none;
+        color: #333;
+        border-radius: 50%;
         cursor: pointer;
+      }
+      .modal .close:hover {
+        background: rgba(0, 0, 0, 0.06);
+      }
+      .modal-content {
+        max-height: calc(100dvh - 40px);
+        overflow-y: auto;
+        box-sizing: border-box;
+      }
+      .modal .btn-primary,
+      .modal .btn-secondary {
+        display: block;
+        box-sizing: border-box;
+      }
+
+      /* Five menu links fit on a phone */
+      body header.fixed-header {
+        max-width: 480px;
+        gap: 4px;
+        justify-content: space-around;
+        box-sizing: border-box;
+        padding: 10px 8px;
+      }
+      @media (max-width: 480px) {
+        body header.fixed-header {
+          border-radius: 0;
+        }
+        body header.fixed-header a {
+          padding: 0 4px;
+          font-size: 15px;
+        }
+      }
+
+      /* Sections land below the fixed menu when jumped to */
+      section[id] {
+        scroll-margin-top: 56px;
+      }
+
+      /* Service cards are keyboard-operable */
+      .service-item:focus-visible,
+      .modal .close:focus-visible,
+      a:focus-visible {
+        outline: 3px solid #6b4ef0;
+        outline-offset: 3px;
+      }
+
+      img {
+        max-width: 100%;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          transition-duration: 0.01ms !important;
+        }
+        .js .fade-in-content {
+          opacity: 1;
+          transform: none;
+        }
       }
 
       .modal .btn-primary,
@@ -263,13 +379,13 @@
       }
 
       /* Fade-in Animation for Content */
-      .fade-in-content {
+      .js .fade-in-content {
         opacity: 0;
         transform: translateY(30px);
         transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
       }
 
-      .fade-in-content.is-visible {
+      .js .fade-in-content.is-visible {
         opacity: 1;
         transform: none;
       }
@@ -339,11 +455,11 @@
       }
 
       footer.fixed-footer .btn-secondary {
-        background-color: #7b61ff;
+        background-color: #6b4ef0;
       }
 
       footer.fixed-footer .btn-secondary:hover {
-        background-color: #6953e0;
+        background-color: #5a3fd6;
       }
 
       /* Footer Section */
@@ -383,7 +499,7 @@
 
       .about-simone-wrapper {
         position: relative;
-        background: url("back.jpg") no-repeat center center/cover;
+        background: url("img/team-bg.jpg") no-repeat center center/cover;
       }
 
       .about-simone-wrapper::before {
@@ -755,22 +871,26 @@
   </head>
   <body>
     <div class="title-and-logo" style="border-radius: 0">
-      <div class="title-container" style="padding-top: 10px">
+      <div class="title-container" style="padding-top: 44px">
         <img
-          src="Follow Me Icon Clear.png"
-          alt="Follow me logo"
+          src="img/logo.png"
+          alt="Follow Me Therapy logo"
           class="logo-image"
+          width="271"
+          height="300"
         />
         <h1 style="font-weight: 500">Follow Me Therapy</h1>
       </div>
     </div>
-    <header class="fixed-header">
+    <header class="fixed-header" aria-label="Main menu">
       <a href="#ot-services">Services</a>
       <a href="#telehealth">Telehealth</a>
       <a href="#funding">Funding</a>
       <a href="#about-simone">Team</a>
+      <a href="#contact">Contact</a>
     </header>
 
+    <main>
     <div class="section-wrapper about-wrapper">
       <section id="about" class="content-section">
         <div class="fade-in-content">
@@ -827,9 +947,13 @@
               </ul>
             </div>
             <img
-              src="kids-playing.jpg"
-              alt="Occupational Therapy Services"
+              src="img/kids-playing.jpg"
+              alt="Children playing together"
               class="responsive-image"
+              width="1000"
+              height="667"
+              loading="lazy"
+              decoding="async"
               style="margin-top: 20px"
             />
           </div>
@@ -856,24 +980,24 @@
             <h2>Our Services</h2>
             <p>Click on individual services to find out more:</p>
             <div class="services-grid">
-              <div class="service-item" data-service="pediatric">
-                <img src="footprints.svg" alt="Footsteps icon" />
+              <div class="service-item" data-service="pediatric" role="button" tabindex="0" aria-haspopup="dialog">
+                <img src="img/footprints.svg" alt="" width="80" height="80" />
                 <h3 style="text-align: center">5 Steps Forward</h3>
                 <p>
                   A focused 5-session program designed to address specific
                   therapy goals.
                 </p>
               </div>
-              <div class="service-item" data-service="adult">
-                <img src="stairs.svg" alt="Stairs icon" />
+              <div class="service-item" data-service="adult" role="button" tabindex="0" aria-haspopup="dialog">
+                <img src="img/stairs.svg" alt="" width="80" height="80" />
                 <h3 style="text-align: center">Steady Steps</h3>
                 <p>
                   12 session structured therapy block for building key skills
                   through consistent, ongoing support.
                 </p>
               </div>
-              <div class="service-item" data-service="home">
-                <img src="esdm.svg" alt="Early Start Denver Model icon" />
+              <div class="service-item" data-service="home" role="button" tabindex="0" aria-haspopup="dialog">
+                <img src="img/esdm.svg" alt="" width="80" height="80" />
                 <h3 style="text-align: center">
                   Early Start Denver Model (ESDM)
                 </h3>
@@ -882,8 +1006,8 @@
                   children with autism, and other developmental delays.
                 </p>
               </div>
-              <div class="service-item" data-service="assessments">
-                <img src="assessments.svg" alt="Assessments icon" />
+              <div class="service-item" data-service="assessments" role="button" tabindex="0" aria-haspopup="dialog">
+                <img src="img/assessments.svg" alt="" width="80" height="80" />
                 <h3 style="text-align: center">Assessments</h3>
                 <ul>
                   <li>NDIS Access Report</li>
@@ -910,9 +1034,13 @@
           <h2>Telehealth Services</h2>
           <div class="content-wrapper telehealth-content">
             <img
-              src="coord.jpg"
-              alt="Telehealth Coordination"
+              src="img/telehealth.jpg"
+              alt="A telehealth session on a laptop"
               class="telehealth-image"
+              width="800"
+              height="1199"
+              loading="lazy"
+              decoding="async"
             />
             <p style="margin-top: 0px">
               Families can connect with their therapist virtually via video or
@@ -937,9 +1065,12 @@
                 Our telehealth sessions are conducted via Teams:
               </p>
               <img
-                src="teams-logo.webp"
-                alt="Microsoft Teams Logo"
-                style="width: 130px"
+                src="img/teams-logo.webp"
+                alt="Microsoft Teams"
+                width="130"
+                height="130"
+                loading="lazy"
+                style="width: 130px; height: auto"
               />
             </div>
           </div>
@@ -974,13 +1105,14 @@
             class="telehealth-logo"
             style="text-align: center; margin-top: 50px"
           >
-            <a href="#funding">
-              <img
-                src="medicare-logo.png"
-                alt="Medicare Logo"
-                style="width: 200px; display: inline-block"
-              />
-            </a>
+            <img
+              src="img/medicare-logo.png"
+              alt="Medicare"
+              width="200"
+              height="52"
+              loading="lazy"
+              style="width: 200px; height: auto; display: inline-block"
+            />
           </div>
         </div>
       </section>
@@ -991,7 +1123,15 @@
         <div class="fade-in-content">
           <h2>Meet the Team</h2>
           <div class="content-wrapper about-simone-content">
-            <img src="simone.png" alt="Simone Gabriele" class="simone-image" />
+            <img
+              src="img/simone.jpg"
+              alt="Simone Gabriele, occupational therapist"
+              class="simone-image"
+              width="700"
+              height="701"
+              loading="lazy"
+              decoding="async"
+            />
             <p style="margin-top: 0px">
               Simone Gabriele holds a Master of Occupational Therapy from La
               Trobe University before launching her career in early intervention
@@ -1030,11 +1170,11 @@
             </p>
             <div style="text-align: center">
               <a href="mailto:info@followmetherapy.com.au" class="contact-link">
-                <img src="mail.svg" alt="Mail icon" />
+                <img src="img/mail.svg" alt="" width="24" height="24" />
                 info@followmetherapy.com.au
               </a>
               <a href="tel:+61435076683" class="contact-link">
-                <img src="phone.svg" alt="Phone icon" />
+                <img src="img/phone.svg" alt="" width="24" height="24" />
                 0435 076 683
               </a>
             </div>
@@ -1047,7 +1187,7 @@
       <section
         id="company"
         class="content-section"
-        style="padding: 50px 20px; color: white"
+        style="padding: 50px 20px 120px; color: white"
       >
         <div class="content-wrapper">
           <h3 style="color: white">Follow Me Therapy Pty Ltd</h3>
@@ -1061,10 +1201,10 @@
               margin-top: 30px;
             "
           >
-            <img src="flag 1.png" alt="Flag 1" style="width: 100px" />
-            <img src="flag 2.png" alt="Flag 2" style="width: 100px" />
-            <img src="flag 3.png" alt="Flag 3" style="width: 100px" />
-            <img src="flag 4.png" alt="Flag 4" style="width: 100px" />
+            <img src="img/flag-1.png" alt="Aboriginal flag" width="100" height="60" loading="lazy" style="width: 100px; height: auto" />
+            <img src="img/flag-2.png" alt="Torres Strait Islander flag" width="100" height="60" loading="lazy" style="width: 100px; height: auto" />
+            <img src="img/flag-3.png" alt="Intersex-inclusive Progress Pride flag" width="100" height="60" loading="lazy" style="width: 100px; height: auto" />
+            <img src="img/flag-4.png" alt="Australian flag" width="100" height="60" loading="lazy" style="width: 100px; height: auto" />
           </div>
 
           <p>
@@ -1103,10 +1243,12 @@
       </section>
     </div>
 
+    </main>
+
     <!-- Footer Section -->
     <footer class="fixed-footer">
       <a
-        href="#"
+        href="#contact"
         class="btn-primary"
         style="width: 100%; text-align: center; margin: 0 10px"
         id="contactUsButton"
@@ -1116,16 +1258,22 @@
 
     <!-- Contact Us Modal Structure -->
     <div id="contactModal" class="modal contact-modal">
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <h3>Contact Us</h3>
+      <div
+        class="modal-content"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="contactModalTitle"
+        tabindex="-1"
+      >
+        <button type="button" class="close" aria-label="Close">&times;</button>
+        <h3 id="contactModalTitle">Contact Us</h3>
         <div>
           <p style="text-align: center; padding-bottom: 20px">
             Ready to get going? Complete our referral form:
           </p>
           <a
             href="https://follow-me-therapy.splose.com/public-form/975d61d5-cd63-44e5-86e7-f9315fa6a5b0"
-            target="_blank"
+            target="_blank" rel="noopener"
             class="btn-secondary"
             style="margin-top: 30px"
             >Intake Form</a
@@ -1138,7 +1286,7 @@
           </p>
           <a
             href="https://follow-me-therapy.splose.com/public-form/e84c8756-615f-4404-a6f3-a90f3760223b"
-            target="_blank"
+            target="_blank" rel="noopener"
             class="btn-primary"
             style="margin-top: 30px"
             >Inquiry</a
@@ -1153,13 +1301,19 @@
 
     <!-- Existing Service Modal Structure -->
     <div id="serviceModal" class="modal service-modal">
-      <div class="modal-content">
-        <span class="close">&times;</span>
+      <div
+        class="modal-content"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="serviceModalTitle"
+        tabindex="-1"
+      >
+        <button type="button" class="close" aria-label="Close">&times;</button>
         <div id="modalContent"></div>
         <a
           href="https://follow-me-therapy.splose.com/public-form/975d61d5-cd63-44e5-86e7-f9315fa6a5b0"
           class="btn-secondary"
-          target="_blank"
+          target="_blank" rel="noopener"
           style="margin-top: 20px"
           >Intake Form</a
         >
@@ -1168,101 +1322,6 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        // Existing Service Modal logic
-        const serviceItems = document.querySelectorAll(".service-item");
-        const serviceModal = document.getElementById("serviceModal");
-        const serviceModalContent = document.getElementById("modalContent");
-        const closeServiceModal = document.querySelector(
-          "#serviceModal .close"
-        );
-
-        const serviceDetails = {
-          pediatric: {
-            title: "5 Steps Forward",
-            content:
-              "5 Steps Forward is a focused, short-term occupational therapy program...",
-          },
-          // other service details...
-        };
-
-        serviceItems.forEach((item) => {
-          item.addEventListener("click", function () {
-            const serviceType = this.getAttribute("data-service");
-            serviceModalContent.innerHTML = `<h3>${serviceDetails[serviceType].title}</h3><p>${serviceDetails[serviceType].content}</p>`;
-            serviceModal.classList.add("show");
-          });
-        });
-
-        closeServiceModal.addEventListener("click", function () {
-          serviceModal.classList.remove("show");
-        });
-
-        window.addEventListener("click", function (event) {
-          if (event.target == serviceModal) {
-            serviceModal.classList.remove("show");
-          }
-        });
-
-        // Contact Us Modal logic
-        const contactUsButton = document.getElementById("contactUsButton");
-        const contactModal = document.getElementById("contactModal");
-        const closeContactModal = document.querySelector(
-          "#contactModal .close"
-        );
-
-        contactUsButton.addEventListener("click", function (e) {
-          e.preventDefault();
-          contactModal.classList.add("show");
-        });
-
-        closeContactModal.addEventListener("click", function () {
-          contactModal.classList.remove("show");
-        });
-
-        window.addEventListener("click", function (event) {
-          if (event.target == contactModal) {
-            contactModal.classList.remove("show");
-          }
-        });
-      });
-      document.addEventListener("DOMContentLoaded", function () {
-        const links = document.querySelectorAll('a[href^="#"]');
-        const body = document.body;
-
-        // Function to temporarily disable fade-in animations
-        const disableFadeIn = () => {
-          body.classList.add("disable-fade-in");
-          setTimeout(() => {
-            body.classList.remove("disable-fade-in");
-          }, 1000); // Adjust based on how long you want to keep it disabled
-        };
-
-        // Disable smooth scrolling and fade-in for navigation links
-        links.forEach((anchor) => {
-          anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-
-            // Disable fade-in animations
-            disableFadeIn();
-
-            // Use 'auto' scroll behavior to instantly scroll to the target
-            const target = document.querySelector(this.getAttribute("href"));
-            target.scrollIntoView({ behavior: "auto" });
-          });
-        });
-
-        // Footer scroll detection and animation
-        const footer = document.querySelector("footer.fixed-footer");
-        const scrollThreshold = 0; // Adjust based on when you want to show the footer
-
-        footer.classList.add("show");
-
-        // Modal functionality
-        const serviceItems = document.querySelectorAll(".service-item");
-        const modal = document.getElementById("serviceModal");
-        const modalContent = document.getElementById("modalContent");
-        const closeModal = document.querySelector(".modal .close");
-
         const serviceDetails = {
           pediatric: {
             title: "5 Steps Forward",
@@ -1286,55 +1345,86 @@
           },
         };
 
-        serviceItems.forEach((item) => {
-          item.addEventListener("click", function () {
-            const serviceType = this.getAttribute("data-service");
-            modalContent.innerHTML = `<h3>${serviceDetails[serviceType].title}</h3><p>${serviceDetails[serviceType].content}</p>`;
-            modal.classList.add("show");
+        // ── Modals ─────────────────────────────────
+        let lastFocus = null;
+        const openModal = (modal) => {
+          lastFocus = document.activeElement;
+          modal.classList.add("show");
+          document.body.style.overflow = "hidden";
+          modal.querySelector(".modal-content").focus({ preventScroll: true });
+        };
+        const closeModal = (modal) => {
+          modal.classList.remove("show");
+          document.body.style.overflow = "";
+          if (lastFocus) lastFocus.focus({ preventScroll: true });
+        };
+        document.querySelectorAll(".modal").forEach((modal) => {
+          modal.querySelector(".close").addEventListener("click", () => closeModal(modal));
+          modal.addEventListener("click", (e) => {
+            if (e.target === modal) closeModal(modal);
           });
         });
-
-        closeModal.addEventListener("click", function () {
-          modal.classList.remove("show");
-        });
-
-        window.addEventListener("click", function (event) {
-          if (event.target == modal) {
-            modal.classList.remove("show");
+        document.addEventListener("keydown", (e) => {
+          const open = document.querySelector(".modal.show");
+          if (!open) return;
+          if (e.key === "Escape") closeModal(open);
+          // Keep Tab inside the open modal.
+          if (e.key === "Tab") {
+            const items = open.querySelectorAll("button, a[href]");
+            const first = items[0], last = items[items.length - 1];
+            if (e.shiftKey && document.activeElement === first) {
+              e.preventDefault(); last.focus();
+            } else if (!e.shiftKey && document.activeElement === last) {
+              e.preventDefault(); first.focus();
+            }
           }
         });
 
-        // Fade-in effect for content
-        const faders = document.querySelectorAll(".fade-in-content");
-        const appearOptions = {
-          threshold: 0.01,
-          rootMargin: "0px 0px 0px 0px",
-        };
-
-        const appearOnScroll = new IntersectionObserver(function (
-          entries,
-          observer
-        ) {
-          entries.forEach((entry) => {
-            if (!entry.isIntersecting) {
-              return;
-            } else {
-              if (!body.classList.contains("disable-fade-in")) {
-                entry.target.classList.add("is-visible");
-              } else {
-                // Instantly show content if fade-in is disabled
-                entry.target.style.opacity = 1;
-                entry.target.style.transform = "none";
-              }
-              observer.unobserve(entry.target);
+        // Service cards open their details (click, Enter or Space).
+        const serviceModal = document.getElementById("serviceModal");
+        const serviceModalContent = document.getElementById("modalContent");
+        document.querySelectorAll(".service-item").forEach((item) => {
+          const open = () => {
+            const d = serviceDetails[item.getAttribute("data-service")];
+            serviceModalContent.innerHTML = `<h3 id="serviceModalTitle">${d.title}</h3><p>${d.content}</p>`;
+            openModal(serviceModal);
+          };
+          item.addEventListener("click", open);
+          item.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              open();
             }
           });
-        },
-        appearOptions);
-
-        faders.forEach((fader) => {
-          appearOnScroll.observe(fader);
         });
+
+        // Contact Us button.
+        const contactModal = document.getElementById("contactModal");
+        document.getElementById("contactUsButton").addEventListener("click", (e) => {
+          e.preventDefault();
+          openModal(contactModal);
+        });
+
+        // Floating Contact Us bar slides up.
+        document.querySelector("footer.fixed-footer").classList.add("show");
+
+        // ── Content fades in as it scrolls into view ──
+        const faders = document.querySelectorAll(".fade-in-content");
+        if (!("IntersectionObserver" in window)) {
+          faders.forEach((f) => f.classList.add("is-visible"));
+          return;
+        }
+        const appearOnScroll = new IntersectionObserver(
+          (entries, observer) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            });
+          },
+          { threshold: 0.01 }
+        );
+        faders.forEach((f) => appearOnScroll.observe(f));
       });
     </script>
   </body>
