@@ -159,7 +159,8 @@ p {
   position: relative;
   padding: 64px 0;
 }
-.band + .band::before {
+.band + .band::before,
+.site-foot::before {
   content: "";
   position: absolute;
   left: 0;
@@ -378,4 +379,13 @@ p {
   .band {
     padding: 52px 0;
   }
+}
+
+/* Footer joins with a wave too */
+.site-foot {
+  position: relative;
+}
+.site-foot a,
+.site-foot a:visited {
+  color: #fff;
 }
