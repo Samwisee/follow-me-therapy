@@ -58,7 +58,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
 
@@ -1462,6 +1462,527 @@
           height: 16px;
         }
       }
+
+      /* ═══════════════════════════════════════════════
+         THEME: one palette, friendly type, soft shapes
+      ═══════════════════════════════════════════════ */
+      :root {
+        --purple: #6b4ef0;
+        --purple-dark: #5a3fd6;
+        --purple-tint: #efe9ff;
+        --teal: #007a8a;
+        --teal-tint: #e3f4f5;
+        --butter: #fff4dc;
+        --sun: #f2a516;
+        --pink: #e0457b;
+        --pink-tint: #ffe6ef;
+        --ink: #2b2540;
+        --ink-soft: #5b556b;
+        --deep: #2e2363;
+        --display: "Fredoka", "Quicksand", system-ui, sans-serif;
+      }
+      html,
+      body {
+        background: #fff;
+        color: var(--ink-soft);
+        font-weight: 500;
+      }
+      h1,
+      h2,
+      h3,
+      .site-title,
+      .cta-emphasis,
+      .lead,
+      .step-num {
+        font-family: var(--display);
+        color: var(--ink);
+      }
+      h2 {
+        font-weight: 600;
+        letter-spacing: -0.01em;
+      }
+      h2::after {
+        width: 30px;
+        height: 14px;
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 14'%3E%3Cg fill='%236b4ef0'%3E%3Cellipse cx='4' cy='9' rx='2.6' ry='4'/%3E%3Cellipse cx='15' cy='5' rx='2.6' ry='4'/%3E%3Cellipse cx='26' cy='9' rx='2.6' ry='4'/%3E%3C/g%3E%3C/svg%3E") center / contain no-repeat;
+      }
+      h3 {
+        font-weight: 500;
+      }
+      b,
+      strong {
+        color: var(--ink);
+      }
+
+      /* Section tones */
+      .tone-lilac { background-color: var(--purple-tint) !important; }
+      .tone-cream { background-color: var(--butter) !important; }
+      .tone-white { background-color: #fff !important; }
+      .tone-mint { background-color: var(--teal-tint) !important; }
+      .tone-deep { background-color: var(--deep) !important; }
+
+      /* Soft wave where one colour meets the next */
+      .wave-top {
+        position: relative;
+      }
+      .wave-top::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: -39px;
+        height: 40px;
+        background: inherit;
+        -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 40' preserveAspectRatio='none'%3E%3Cpath d='M0 40V22C40 6 80 6 120 22S200 38 240 22V40Z'/%3E%3C/svg%3E") 0 0 / 480px 40px repeat-x;
+        mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 40' preserveAspectRatio='none'%3E%3Cpath d='M0 40V22C40 6 80 6 120 22S200 38 240 22V40Z'/%3E%3C/svg%3E") 0 0 / 480px 40px repeat-x;
+        pointer-events: none;
+        z-index: 1;
+      }
+      .tone-deep.wave-top::before {
+        background: var(--deep);
+      }
+
+      /* Title bar and intro share one soft lilac */
+      .title-and-logo {
+        background-color: var(--purple-tint) !important;
+      }
+      .site-title {
+        font-weight: 600 !important;
+        color: var(--ink) !important;
+        letter-spacing: -0.01em;
+      }
+      .about-wrapper {
+        position: relative;
+        overflow: hidden;
+      }
+      .about-wrapper::before,
+      .about-wrapper::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        pointer-events: none;
+      }
+      .about-wrapper::before {
+        width: 320px;
+        height: 320px;
+        left: -120px;
+        bottom: -140px;
+        background: #fde3a7;
+        opacity: 0.6;
+      }
+      .about-wrapper::after {
+        width: 220px;
+        height: 220px;
+        right: -70px;
+        top: 10px;
+        background: #c9f0ec;
+        opacity: 0.7;
+      }
+      .about-wrapper section {
+        position: relative;
+        z-index: 1;
+        padding-top: 32px;
+      }
+      .about-content {
+        background: #fff;
+        backdrop-filter: none;
+        border-radius: 28px;
+        box-shadow: 0 18px 40px rgba(75, 52, 170, 0.12);
+      }
+      .eyebrow {
+        color: var(--teal) !important;
+      }
+      .facts li {
+        background: var(--purple-tint);
+        color: var(--ink);
+      }
+      .badge {
+        background: var(--teal-tint) !important;
+        color: var(--teal) !important;
+      }
+      .badge::before {
+        content: "";
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        margin-right: 8px;
+        border-radius: 50%;
+        background: #19b37a;
+        box-shadow: 0 0 0 0 rgba(25, 179, 122, 0.6);
+        animation: pulse 2s infinite;
+        vertical-align: 1px;
+      }
+      @keyframes pulse {
+        70% { box-shadow: 0 0 0 8px rgba(25, 179, 122, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(25, 179, 122, 0); }
+      }
+      .cta-text {
+        color: var(--ink-soft);
+      }
+      .cta-emphasis {
+        color: var(--purple) !important;
+        font-weight: 700;
+      }
+      .cta-emphasis em {
+        font-style: normal;
+      }
+
+      /* One button style, with a squish */
+      .btn-primary,
+      .btn-secondary,
+      .btn-outline {
+        display: inline-block;
+        font-family: var(--display);
+        font-weight: 500;
+        font-size: 1.1em;
+        padding: 14px 28px;
+        border-radius: 999px;
+        border: 2px solid var(--purple);
+        background: var(--purple);
+        color: #fff;
+        text-decoration: none;
+        cursor: pointer;
+        box-shadow: 0 6px 16px rgba(107, 78, 240, 0.25);
+        transition:
+          transform 0.25s cubic-bezier(0.3, 1.6, 0.5, 1),
+          background-color 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+      .btn-primary:hover,
+      .btn-secondary:hover {
+        background: var(--purple-dark);
+        border-color: var(--purple-dark);
+        transform: translateY(-2px);
+      }
+      .btn-outline {
+        background: #fff;
+        color: var(--purple);
+        box-shadow: none;
+      }
+      .btn-outline:hover {
+        background: var(--purple-tint);
+        transform: translateY(-2px);
+      }
+      .btn-primary:active,
+      .btn-secondary:active,
+      .btn-outline:active {
+        transform: scale(0.94);
+      }
+
+      /* Ticks pop in one by one */
+      .checklist li::before {
+        background-color: var(--teal);
+      }
+      .js .fade-in-content .checklist li {
+        opacity: 0;
+        transform: translateX(-8px);
+      }
+      .js .fade-in-content.is-visible .checklist li {
+        animation: tickIn 0.45s cubic-bezier(0.3, 1.4, 0.5, 1) forwards;
+      }
+      .js .fade-in-content.is-visible .checklist li::before {
+        animation: tickPop 0.5s cubic-bezier(0.3, 1.8, 0.5, 1) both;
+        animation-delay: inherit;
+      }
+      .checklist li:nth-child(2) { animation-delay: 0.08s !important; }
+      .checklist li:nth-child(3) { animation-delay: 0.16s !important; }
+      .checklist li:nth-child(4) { animation-delay: 0.24s !important; }
+      .checklist li:nth-child(5) { animation-delay: 0.32s !important; }
+      .checklist li:nth-child(6) { animation-delay: 0.4s !important; }
+      .checklist li:nth-child(7) { animation-delay: 0.48s !important; }
+      @keyframes tickIn {
+        to { opacity: 1; transform: none; }
+      }
+      @keyframes tickPop {
+        from { transform: scale(0); }
+        to { transform: scale(1); }
+      }
+      .callout {
+        border-left: none;
+        border-radius: 20px;
+        background: #fff;
+        position: relative;
+        padding-left: 64px;
+      }
+      .callout::before {
+        content: "";
+        position: absolute;
+        left: 22px;
+        top: 50%;
+        width: 28px;
+        height: 14px;
+        margin-top: -7px;
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 14'%3E%3Cg fill='%236b4ef0'%3E%3Cellipse cx='4' cy='9' rx='2.6' ry='4'/%3E%3Cellipse cx='15' cy='5' rx='2.6' ry='4'/%3E%3Cellipse cx='26' cy='9' rx='2.6' ry='4'/%3E%3C/g%3E%3C/svg%3E") center / contain no-repeat;
+      }
+
+      /* Service cards: coloured icons, playful tilt */
+      .service-item {
+        border-radius: 24px;
+        box-shadow: 0 8px 24px rgba(43, 37, 64, 0.07);
+        transition:
+          transform 0.35s cubic-bezier(0.3, 1.5, 0.5, 1),
+          box-shadow 0.3s ease;
+      }
+      .service-item:hover,
+      .service-item:focus-visible {
+        transform: translateY(-6px) rotate(-1.2deg);
+        box-shadow: 0 16px 32px rgba(43, 37, 64, 0.12);
+      }
+      .service-item:nth-child(even):hover,
+      .service-item:nth-child(even):focus-visible {
+        transform: translateY(-6px) rotate(1.2deg);
+      }
+      .service-item:active {
+        transform: scale(0.97);
+      }
+      .svc-icon {
+        display: grid;
+        place-items: center;
+        width: 76px;
+        height: 76px;
+        border-radius: 24px;
+        margin-bottom: 16px;
+        transition: transform 0.4s cubic-bezier(0.3, 1.6, 0.5, 1);
+      }
+      .service-item:hover .svc-icon {
+        transform: rotate(-8deg) scale(1.08);
+      }
+      .svc-icon svg {
+        width: 44px;
+        height: 44px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 2.6;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .svc-footprints { background: var(--purple-tint); color: var(--purple); }
+      .svc-footprints svg { fill: currentColor; stroke: none; }
+      .svc-stairs { background: var(--teal-tint); color: var(--teal); }
+      .svc-esdm { background: #fff0cc; color: #c77c00; }
+      .svc-assessments { background: var(--pink-tint); color: var(--pink); }
+      .service-item .more {
+        color: var(--purple);
+        font-family: var(--display);
+        font-weight: 500;
+      }
+      .services-section {
+        padding-bottom: 96px;
+      }
+
+      /* How it works */
+      .steps {
+        list-style: none;
+        padding: 0;
+        margin: 12px 0 0;
+        max-width: none;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+        counter-reset: none;
+      }
+      .steps li {
+        position: relative;
+        margin: 0;
+        text-align: center;
+        padding: 0 8px;
+      }
+      .steps li:not(:last-child)::after {
+        content: "";
+        position: absolute;
+        top: 26px;
+        left: calc(50% + 40px);
+        width: calc(100% - 52px);
+        height: 14px;
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 14'%3E%3Cg fill='%236b4ef0'%3E%3Cellipse cx='4' cy='9' rx='2.6' ry='4'/%3E%3Cellipse cx='15' cy='5' rx='2.6' ry='4'/%3E%3Cellipse cx='26' cy='9' rx='2.6' ry='4'/%3E%3C/g%3E%3C/svg%3E") 0 0 / 30px 14px repeat-x;
+        opacity: 0.35;
+        transform: rotate(0deg);
+      }
+      .step-num {
+        display: inline-grid;
+        place-items: center;
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background: var(--purple);
+        color: #fff !important;
+        font-size: 1.5em;
+        font-weight: 600;
+        margin-bottom: 14px;
+        box-shadow: 0 8px 18px rgba(107, 78, 240, 0.3);
+      }
+      .steps li:nth-child(2) .step-num { background: var(--teal); box-shadow: 0 8px 18px rgba(0, 122, 138, 0.3); }
+      .steps li:nth-child(3) .step-num { background: var(--sun); box-shadow: 0 8px 18px rgba(242, 165, 22, 0.35); }
+      .steps h3 {
+        margin-bottom: 6px;
+      }
+      .steps p {
+        text-align: center;
+        font-size: 1em;
+        margin: 0;
+      }
+
+      /* Telehealth & funding */
+      .telehealth-image,
+      .simone-image,
+      .flex-container img {
+        border-radius: 24px !important;
+      }
+      .funding-card {
+        border-radius: 24px;
+        border-top: 6px solid var(--purple);
+      }
+      .funding-card:nth-child(2) { border-top-color: var(--teal); }
+      .funding-card:nth-child(3) { border-top-color: var(--sun); }
+      .funding-card h3 {
+        color: var(--ink);
+      }
+
+      /* Team: no more flower photo */
+      .about-simone-wrapper {
+        background-image: none !important;
+      }
+      .about-simone-wrapper::before {
+        display: none;
+      }
+      .about-simone-content {
+        background: #fff;
+        backdrop-filter: none;
+        border-radius: 28px;
+        box-shadow: 0 12px 32px rgba(0, 90, 100, 0.08);
+      }
+      .person-role {
+        color: var(--teal) !important;
+        font-weight: 600;
+      }
+      .chips li {
+        background: var(--teal-tint);
+        border: none;
+        color: #035560;
+      }
+
+      /* Contact */
+      .contact-card {
+        border-radius: 24px;
+        box-shadow: 0 8px 24px rgba(43, 37, 64, 0.07);
+      }
+      .contact-link {
+        color: var(--purple);
+        text-decoration: none;
+      }
+      .contact-link:hover {
+        text-decoration: underline;
+      }
+
+      /* Footer: deep purple instead of near-black */
+      .company p {
+        color: rgba(255, 255, 255, 0.82);
+      }
+      .company-details {
+        border-top-color: rgba(255, 255, 255, 0.18);
+      }
+
+      /* Menu: pill, mini logo, current section highlighted */
+      body header.fixed-header {
+        align-items: center;
+        top: 10px;
+        border-radius: 999px;
+        width: calc(100% - 20px);
+        max-width: 620px;
+        padding: 6px 8px;
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 6px 20px rgba(43, 37, 64, 0.1);
+      }
+      body header.fixed-header a {
+        font-family: var(--display);
+        font-weight: 500;
+        color: var(--ink);
+        padding: 7px 12px;
+        border-radius: 999px;
+        transition: background-color 0.25s ease, color 0.25s ease;
+      }
+      body header.fixed-header a:hover {
+        background: var(--purple-tint);
+      }
+      body header.fixed-header a.active {
+        background: var(--purple);
+        color: #fff;
+      }
+      body header.fixed-header .nav-logo {
+        display: none;
+        padding: 2px 8px;
+      }
+      .nav-logo img {
+        height: 30px;
+        width: auto;
+        display: block;
+      }
+      body header.fixed-header .nav-logo:hover,
+      body header.fixed-header .nav-logo.active {
+        background: none;
+      }
+      @media (min-width: 769px) {
+        body header.fixed-header .nav-logo {
+          display: block;
+        }
+      }
+      .title-container {
+        padding-top: 64px !important;
+      }
+      section[id] {
+        scroll-margin-top: 70px;
+      }
+
+      /* Modal polish */
+      .modal {
+        background-color: rgba(46, 35, 99, 0.55);
+        backdrop-filter: blur(3px);
+      }
+      .modal-content {
+        border-radius: 28px;
+      }
+
+      @media (max-width: 650px) {
+        .steps {
+          grid-template-columns: 1fr;
+          gap: 34px;
+        }
+        .steps li:not(:last-child)::after {
+          top: auto;
+          bottom: -26px;
+          left: 50%;
+          width: 30px;
+          margin-left: -15px;
+          transform: rotate(90deg);
+        }
+        .steps p {
+          max-width: 300px;
+          margin: 0 auto;
+        }
+      }
+      @media (max-width: 480px) {
+        body header.fixed-header {
+          width: calc(100% - 12px);
+          top: 6px;
+          padding: 4px;
+          gap: 0;
+          border-radius: 999px;
+        }
+        body header.fixed-header a {
+          padding: 7px 8px;
+          font-size: 14.5px;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .js .fade-in-content .checklist li {
+          opacity: 1;
+          transform: none;
+        }
+        .badge::before {
+          animation: none;
+        }
+      }
     </style>
   </head>
   <body>
@@ -1485,6 +2006,9 @@
       </div>
     </div>
     <header class="fixed-header" aria-label="Main menu">
+      <a href="#about" class="nav-logo" aria-label="Back to top"
+        ><img src="img/logo.png" alt="" width="27" height="30"
+      /></a>
       <a href="#ot-services">Services</a>
       <a href="#telehealth">Telehealth</a>
       <a href="#funding">Funding</a>
@@ -1493,7 +2017,7 @@
     </header>
 
     <main>
-    <div class="section-wrapper about-wrapper">
+    <div class="section-wrapper about-wrapper tone-lilac">
       <section id="about" class="content-section">
         <div class="fade-in-content">
           <div class="content-wrapper about-content">
@@ -1518,8 +2042,7 @@
       </section>
     </div>
 
-    <div class="section-wrapper" style="background-color: #ffe8ba">
-      <div class="wavy-line-horizontal"></div>
+    <div class="section-wrapper tone-cream wave-top">
 
       <section id="ot-services" class="content-section">
         <div class="fade-in-content">
@@ -1563,10 +2086,7 @@
       </section>
     </div>
 
-    <div
-      class="section-wrapper"
-      style="background-color: #ffe8ba; padding-bottom: 100px"
-    >
+    <div class="section-wrapper tone-cream">
       <section id="services" class="content-section services-section">
         <div class="fade-in-content">
           <div class="content-wrapper">
@@ -1574,25 +2094,25 @@
             <p>Tap a service to find out more.</p>
             <div class="services-grid">
               <div class="service-item" data-service="pediatric" role="button" tabindex="0" aria-haspopup="dialog">
-                <img src="img/footprints.svg" alt="" width="80" height="80" />
+                <span class="svc-icon svc-footprints"><svg viewBox="0 0 40 40" aria-hidden="true"><ellipse cx="14" cy="16" rx="4.5" ry="7"/><ellipse cx="14" cy="28" rx="3" ry="2.5"/><ellipse cx="26" cy="12" rx="4.5" ry="7" transform="translate(0 6)"/><ellipse cx="26" cy="31" rx="3" ry="2.5" transform="translate(0 -1)"/></svg></span>
                 <h3>5 Steps Forward</h3>
                 <p>A focused 5-session program for specific goals.</p>
                 <span class="more">Learn more →</span>
               </div>
               <div class="service-item" data-service="adult" role="button" tabindex="0" aria-haspopup="dialog">
-                <img src="img/stairs.svg" alt="" width="80" height="80" />
+                <span class="svc-icon svc-stairs"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M6 33h8v-7h7v-7h7v-7h6"/><path d="M30 12V5l5 2.5-5 2.5"/></svg></span>
                 <h3>Steady Steps</h3>
                 <p>A 12-session block of steady, ongoing support to build key skills.</p>
                 <span class="more">Learn more →</span>
               </div>
               <div class="service-item" data-service="home" role="button" tabindex="0" aria-haspopup="dialog">
-                <img src="img/esdm.svg" alt="" width="80" height="80" />
+                <span class="svc-icon svc-esdm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="6" y="22" width="12" height="12" rx="2.5"/><rect x="22" y="22" width="12" height="12" rx="2.5"/><rect x="14" y="7" width="12" height="12" rx="2.5" transform="rotate(8 20 13)"/></svg></span>
                 <h3>Early Start Denver Model (ESDM)</h3>
                 <p>Play-based therapy for young children with autism or developmental delays.</p>
                 <span class="more">Learn more →</span>
               </div>
               <div class="service-item" data-service="assessments" role="button" tabindex="0" aria-haspopup="dialog">
-                <img src="img/assessments.svg" alt="" width="80" height="80" />
+                <span class="svc-icon svc-assessments"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="9" y="7" width="22" height="28" rx="4"/><rect x="15" y="4" width="10" height="6" rx="2"/><path d="M15 22l4 4 7-8"/></svg></span>
                 <h3>Assessments</h3>
                 <p>NDIS access, functional capacity, progress, sensory and assistive technology reports.</p>
                 <span class="more">Learn more →</span>
@@ -1603,9 +2123,35 @@
       </section>
     </div>
 
-    <div class="wave"></div>
+    <div class="section-wrapper tone-white wave-top">
+      <section id="how" class="content-section">
+        <div class="fade-in-content">
+          <h2>How it works</h2>
+          <ol class="steps">
+            <li>
+              <span class="step-num">1</span>
+              <h3>Referral</h3>
+              <p>
+                Complete our referral form, or send an enquiry if you have
+                questions first.
+              </p>
+            </li>
+            <li>
+              <span class="step-num">2</span>
+              <h3>Initial assessment</h3>
+              <p>We get to know your child and family, and set goals together.</p>
+            </li>
+            <li>
+              <span class="step-num">3</span>
+              <h3>Therapy</h3>
+              <p>Telehealth or community sessions, tailored to your goals.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+    </div>
 
-    <div class="section-wrapper telehealth-wrapper">
+    <div class="section-wrapper telehealth-wrapper tone-lilac wave-top">
       <section id="telehealth" class="content-section">
         <div class="fade-in-content">
           <h2>Telehealth</h2>
@@ -1650,7 +2196,7 @@
       </section>
     </div>
 
-    <div class="section-wrapper telehealth-wrapper">
+    <div class="section-wrapper telehealth-wrapper tone-lilac">
       <section id="funding" class="content-section">
         <div class="fade-in-content">
           <h2>Funding Options</h2>
@@ -1688,7 +2234,7 @@
       </section>
     </div>
 
-    <div class="section-wrapper about-simone-wrapper">
+    <div class="section-wrapper about-simone-wrapper tone-mint wave-top">
       <section id="about-simone" class="content-section">
         <div class="fade-in-content">
           <h2>Meet the Team</h2>
@@ -1737,7 +2283,7 @@
       </section>
     </div>
 
-    <div class="section-wrapper" style="background-color: #e7d7f8">
+    <div class="section-wrapper tone-cream wave-top">
       <section
         id="contact"
         class="content-section contact-section"
@@ -1765,7 +2311,7 @@
                   href="https://follow-me-therapy.splose.com/public-form/e84c8756-615f-4404-a6f3-a90f3760223b"
                   target="_blank"
                   rel="noopener"
-                  class="btn-primary"
+                  class="btn-outline"
                   >Send an enquiry</a
                 >
               </div>
@@ -1785,7 +2331,7 @@
       </section>
     </div>
 
-    <div class="section-wrapper" style="background-color: #282828">
+    <div class="section-wrapper tone-deep wave-top">
       <section
         id="company"
         class="content-section"
@@ -1868,7 +2414,7 @@
           <a
             href="https://follow-me-therapy.splose.com/public-form/e84c8756-615f-4404-a6f3-a90f3760223b"
             target="_blank" rel="noopener"
-            class="btn-primary"
+            class="btn-outline"
             >Send an enquiry</a
           >
         </div>
@@ -1998,6 +2544,27 @@
             ([e]) => fab.classList.toggle("tucked", e.isIntersecting),
             { threshold: 0.25 }
           ).observe(document.getElementById("contact"));
+        }
+
+        // Highlight the menu link for the section on screen.
+        if ("IntersectionObserver" in window) {
+          const links = {};
+          document.querySelectorAll("header.fixed-header a[href^='#']").forEach((a) => {
+            links[a.getAttribute("href").slice(1)] = a;
+          });
+          const map = { services: "ot-services", how: "ot-services", funding: "funding" };
+          const spy = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((e) => {
+                if (!e.isIntersecting) return;
+                const id = map[e.target.id] || e.target.id;
+                Object.values(links).forEach((a) => a.classList.remove("active"));
+                if (links[id] && id !== "about") links[id].classList.add("active");
+              });
+            },
+            { rootMargin: "-45% 0px -50% 0px" }
+          );
+          document.querySelectorAll("main section[id]").forEach((sec) => spy.observe(sec));
         }
 
         // The logo hops when tapped.
