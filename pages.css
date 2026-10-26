@@ -786,3 +786,11 @@ h2::after {
 .modal-content:focus-visible {
   outline: none;
 }
+
+/* Hold the first paint until fonts are ready (max 0.7s), so text doesn't jump */
+html.js:not(.fonts-ready) body {
+  opacity: 0;
+}
+body {
+  transition: opacity 0.35s ease;
+}
