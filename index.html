@@ -2473,6 +2473,164 @@
       .step-trail i:nth-child(even) {
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 24'%3E%3Cg fill='%236b4ef0'%3E%3Cg transform='translate%2816 0%29 scale%28-1 1%29'%3E%3Cellipse cx='11.5' cy='3.1' rx='2.05' ry='2.55'/%3E%3Ccircle cx='8.15' cy='2.25' r='1.35'/%3E%3Ccircle cx='5.85' cy='2.9' r='1.2'/%3E%3Ccircle cx='3.95' cy='4.15' r='1.05'/%3E%3Ccircle cx='2.55' cy='5.85' r='0.9'/%3E%3Cpath d='M7.6 6.6C11.2 6.2 13.9 7.8 13.6 10.8 13.4 12.8 11.4 14 10.9 16.2 10.5 18 11.6 19.4 11.2 21.2 10.8 23.2 9.3 24 7.7 24 5.6 24 4.3 22.7 4.3 20.6 4.3 17.6 3 15.8 2.8 12.8 2.5 9.2 4.4 6.9 7.6 6.6Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
       }
+
+      /* ════ Contact pop-up, built to convert ════ */
+      .modal-content:focus,
+      .modal-content:focus-visible {
+        outline: none;
+      }
+      #contactModal .modal-content {
+        max-width: 480px;
+        padding: 36px 24px 26px;
+      }
+      #contactModal h3 {
+        font-size: 1.6em;
+        margin: 0 36px 6px;
+      }
+      .modal-sub {
+        text-align: center;
+        margin: 0 auto 14px !important;
+        font-size: 1em !important;
+      }
+      .modal-chips {
+        list-style: none;
+        padding: 0;
+        margin: 0 auto 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+        max-width: none;
+      }
+      .modal-chips li {
+        margin: 0;
+        padding: 5px 12px;
+        border-radius: 999px;
+        background: var(--teal-tint);
+        color: #035560;
+        font-weight: 700;
+        font-size: 0.82em;
+      }
+      .modal-choice {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 14px 16px;
+        margin-bottom: 10px;
+        border-radius: 20px;
+        border: 2px solid #e6e0fb;
+        background: #fff;
+        color: var(--ink);
+        text-decoration: none;
+        text-align: left;
+        transition:
+          transform 0.25s cubic-bezier(0.3, 1.6, 0.5, 1),
+          border-color 0.2s,
+          background-color 0.2s,
+          box-shadow 0.2s;
+      }
+      .modal-choice:hover {
+        border-color: var(--purple);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 18px rgba(107, 78, 240, 0.15);
+      }
+      .modal-choice:active {
+        transform: scale(0.97);
+      }
+      .modal-choice.primary {
+        background: var(--purple);
+        border-color: var(--purple);
+        color: #fff;
+        box-shadow: 0 8px 20px rgba(107, 78, 240, 0.3);
+      }
+      .modal-choice.primary:hover {
+        background: var(--purple-dark);
+        border-color: var(--purple-dark);
+      }
+      .mc-icon {
+        flex: none;
+        width: 44px;
+        height: 44px;
+        border-radius: 14px;
+        display: grid;
+        place-items: center;
+        background: var(--purple-tint);
+        color: var(--purple);
+      }
+      .modal-choice.primary .mc-icon {
+        background: rgba(255, 255, 255, 0.18);
+        color: #fff;
+      }
+      .mc-icon svg {
+        width: 24px;
+        height: 24px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .mc-text {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        line-height: 1.3;
+      }
+      .mc-text b {
+        font-family: var(--display);
+        font-weight: 600;
+        font-size: 1.1em;
+      }
+      .modal-choice b {
+        color: inherit !important;
+      }
+      .mc-text small {
+        font-size: 0.88em;
+        opacity: 0.85;
+        margin-top: 2px;
+      }
+      .mc-link {
+        text-decoration: underline;
+        font-weight: 700;
+        color: var(--purple);
+        cursor: pointer;
+      }
+      .mc-arrow {
+        font-size: 1.3em;
+        transition: transform 0.25s ease;
+      }
+      .modal-choice:hover .mc-arrow {
+        transform: translateX(4px);
+      }
+      #contactModal .modal-note a {
+        color: var(--purple);
+        font-weight: 700;
+      }
+      #serviceModal .btn-secondary {
+        width: 100%;
+        text-align: center;
+      }
+
+      /* ════ Illustrations float gently ════ */
+      @media (prefers-reduced-motion: no-preference) {
+        .is-visible img.illus {
+          animation:
+            illusIn 0.9s cubic-bezier(0.3, 1.4, 0.5, 1) backwards,
+            illusFloat 6s ease-in-out 1s infinite !important;
+          transform-origin: 50% 90%;
+        }
+        .is-visible .telehealth-image.illus {
+          animation-duration: 0.9s, 7s !important;
+          animation-delay: 0s, 1.6s !important;
+        }
+        @keyframes illusFloat {
+          0%, 100% { transform: translateY(0) rotate(0); }
+          50% { transform: translateY(-8px) rotate(-0.8deg); }
+        }
+        img.illus:hover {
+          animation-play-state: paused;
+        }
+      }
     </style>
   </head>
   <body>
@@ -2686,7 +2844,7 @@
               target="_blank"
               rel="noopener"
               class="btn-secondary"
-              >Start with a referral</a
+              >Start a referral</a
             >
           </div>
         </div>
@@ -2791,7 +2949,7 @@
           <div class="content-wrapper">
             <h2>Get in touch</h2>
             <p class="contact-lead">
-              Taking the first step is easy. Make a referral, or ask us anything
+              Taking the first step is easy. Start a referral, or ask us anything
               first.
             </p>
             <div class="contact-actions stagger">
@@ -2803,18 +2961,18 @@
                   target="_blank"
                   rel="noopener"
                   class="btn-secondary"
-                  >Make a referral</a
+                  >Start a referral</a
                 >
               </div>
               <div class="contact-card">
                 <h3>Have a question?</h3>
-                <p>Send us an enquiry and our team will be in touch.</p>
+                <p>Not sure yet? Send us a quick message and we’ll be in touch.</p>
                 <a
                   href="https://follow-me-therapy.splose.com/public-form/e84c8756-615f-4404-a6f3-a90f3760223b"
                   target="_blank"
                   rel="noopener"
                   class="btn-outline"
-                  >Send an enquiry</a
+                  >Ask a question</a
                 >
               </div>
             </div>
@@ -2942,25 +3100,33 @@
         tabindex="-1"
       >
         <button type="button" class="close" aria-label="Close">&times;</button>
-        <h3 id="contactModalTitle">Contact Us</h3>
-        <div class="modal-option">
-          <p>Ready to start? Complete our referral form.</p>
-          <a
-            href="https://follow-me-therapy.splose.com/public-form/975d61d5-cd63-44e5-86e7-f9315fa6a5b0"
-            target="_blank" rel="noopener"
-            class="btn-secondary"
-            >Make a referral</a
-          >
-        </div>
-        <div class="modal-option">
-          <p>Have a question first? Send an enquiry and we’ll be in touch.</p>
-          <a
-            href="https://follow-me-therapy.splose.com/public-form/e84c8756-615f-4404-a6f3-a90f3760223b"
-            target="_blank" rel="noopener"
-            class="btn-outline"
-            >Send an enquiry</a
-          >
-        </div>
+        <h3 id="contactModalTitle">Let’s get started</h3>
+        <p class="modal-sub">Pick whatever suits you. We’ll take it from there.</p>
+        <ul class="modal-chips">
+          <li>Telehealth spots available now</li>
+          <li>NDIS · Medicare · Private</li>
+        </ul>
+        <a href="https://follow-me-therapy.splose.com/public-form/975d61d5-cd63-44e5-86e7-f9315fa6a5b0" target="_blank" rel="noopener" class="modal-choice primary">
+          <span class="mc-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M7 4h7l4 4v12H7z" /><path d="M14 4v4h4M10 13h5M10 16h5" /></svg>
+          </span>
+          <span class="mc-text"><b>Start a referral</b><small>New to Follow Me Therapy? Begin here.</small></span>
+          <span class="mc-arrow" aria-hidden="true">→</span>
+        </a>
+        <a href="https://follow-me-therapy.splose.com/public-form/e84c8756-615f-4404-a6f3-a90f3760223b" target="_blank" rel="noopener" class="modal-choice">
+          <span class="mc-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-4 3v-3H4z" /><path d="M10 9.5a2 2 0 1 1 2.6 1.9c-.4.2-.6.5-.6.9M12 14h.01" /></svg>
+          </span>
+          <span class="mc-text"><b>Ask a question</b><small>Not sure yet? Send us a quick message.</small></span>
+          <span class="mc-arrow" aria-hidden="true">→</span>
+        </a>
+        <a href="tel:+61435076683" class="modal-choice">
+          <span class="mc-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M6 3h3l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 4 5a2 2 0 0 1 2-2z" /></svg>
+          </span>
+          <span class="mc-text"><b>Call 0435 076 683</b><small>Or <span class="mc-link" data-callback>request a call back</span></small></span>
+          <span class="mc-arrow" aria-hidden="true">→</span>
+        </a>
         <p class="modal-note">
           Not about a client? Email
           <a href="mailto:info@followmetherapy.com.au">info@followmetherapy.com.au</a>
@@ -2983,7 +3149,7 @@
           href="https://follow-me-therapy.splose.com/public-form/975d61d5-cd63-44e5-86e7-f9315fa6a5b0"
           class="btn-secondary"
           target="_blank" rel="noopener"
-          >Make a referral</a
+          >Start a referral</a
         >
       </div>
     </div>
@@ -3142,6 +3308,18 @@
             }
           });
         }
+
+        // "Request a call back" in the contact pop-up jumps to the form.
+        document.querySelectorAll("[data-callback]").forEach((el) =>
+          el.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            closeModal(document.getElementById("contactModal"));
+            const f = document.getElementById("callback");
+            f.scrollIntoView({ behavior: "smooth", block: "center" });
+            setTimeout(() => f.querySelector("input").focus({ preventScroll: true }), 600);
+          })
+        );
 
         // Contact Us button.
         const contactModal = document.getElementById("contactModal");
