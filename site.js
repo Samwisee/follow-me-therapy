@@ -1,0 +1,100 @@
+// Shared behaviour for Follow Me Therapy's inner pages:
+// clickable service and funding cards, the details pop-up,
+// footstep trails between steps, and entrance animations.
+document.documentElement.classList.add("js");
+document.addEventListener("DOMContentLoaded", function () {
+        const serviceDetails = {
+          pediatric: {
+            title: "5 Steps Forward",
+            content:
+              "<p>A short, focused program of 5 sessions with targeted support.</p><p>Ideal for returning families who need a boost, or families trying OT for the first time.</p>",
+          },
+          adult: {
+            title: "Steady Steps",
+            content:
+              "<p>A 12-session block of structured, consistent support to work on big goals and build new skills.</p><p>There’s time to involve your child’s wider network and put together a full plan of action. Blocks can be stacked if more support is needed.</p>",
+          },
+          home: {
+            title: "Early Start Denver Model (ESDM)",
+            content:
+              "<p>An evidence-based, play-based approach for children up to 5 with autism or other developmental delays, developed by the UC Davis MIND Institute.</p><p>It supports communication, social skills, play, daily living and thinking skills. Delivered by an ESDM-certified therapist, it includes:</p><ul class='checklist'><li>1:1 sessions at home or in the community</li><li>An individualised learning program</li><li>Coaching for the people who support your child every day</li></ul><p>We’ll check whether ESDM suits your child at the initial assessment.</p><p><a href='esdm-melbourne.html'>More about ESDM in Melbourne →</a></p>",
+          },
+          assessments: {
+            title: "Assessments",
+            content:
+              "<ul class='checklist'><li>NDIS Access Report</li><li>Functional Capacity Assessment (FCA)</li><li>Progress Report</li><li>Sensory Processing Assessment</li><li>Assistive Technology (AT)</li></ul><p class='modal-note'>Whether AT goals are suitable is reviewed at the initial assessment.</p>",
+          },
+        };
+        const fundingDetails = {
+          ndis: {
+            title: "NDIS",
+            content:
+              "<ul class='checklist'><li>We support self-managed and plan-managed NDIS participants.</li><li>Bring your plan goals to the initial assessment and we’ll build therapy around them.</li><li>We can write reports for plan reviews and NDIS access requests.</li></ul><p class='modal-note'>Is your plan NDIA-managed? Get in touch and we’ll talk through your options.</p><p><a href='ndis-occupational-therapy.html'>More about NDIS OT →</a></p>",
+          },
+          medicare: {
+            title: "Medicare",
+            content:
+              "<ul class='checklist'><li><b>Chronic condition plan:</b> your GP can write a plan that gives Medicare rebates for up to 5 allied health sessions a year.</li><li><b>Neurodevelopmental plan:</b> children and young people under 25 with an eligible diagnosis, such as autism, may access up to 20 sessions through a referral from a paediatrician or psychiatrist.</li></ul><p class='modal-note'>Not sure if you’re eligible? Ask us or your doctor.</p>",
+          },
+          private: {
+            title: "Private",
+            content:
+              "<ul class='checklist'><li>No plan or referral needed to get started.</li><li>Short programs or long-term support, whatever suits your family.</li><li>If your private health extras cover includes OT, you may be able to claim a rebate. Check with your fund.</li></ul>",
+          },
+        };
+
+  const modal = document.getElementById("detailModal");
+  const body = document.getElementById("detailBody");
+  let lastFocus = null;
+  const open = (d) => {
+    lastFocus = document.activeElement;
+    body.innerHTML = `<h3 id="detailTitle">${d.title}</h3><div class="modal-body">${d.content}</div>`;
+    modal.classList.add("show");
+    document.body.style.overflow = "hidden";
+    modal.querySelector(".modal-content").focus({ preventScroll: true });
+  };
+  const close = () => {
+    modal.classList.remove("show");
+    document.body.style.overflow = "";
+    if (lastFocus) lastFocus.focus({ preventScroll: true });
+  };
+  modal.querySelector(".close").addEventListener("click", close);
+  modal.addEventListener("click", (e) => { if (e.target === modal) close(); });
+  document.addEventListener("keydown", (e) => {
+    if (!modal.classList.contains("show")) return;
+    if (e.key === "Escape") close();
+    if (e.key === "Tab") {
+      const items = modal.querySelectorAll("button, a[href]");
+      const first = items[0], last = items[items.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
+  const wire = (sel, attr, data) =>
+    document.querySelectorAll(sel).forEach((card) => {
+      const go = () => open(data[card.getAttribute(attr)]);
+      card.addEventListener("click", go);
+      card.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); }
+      });
+    });
+  wire(".service-item", "data-service", serviceDetails);
+  wire(".funding-card", "data-funding", fundingDetails);
+
+  // Footstep trails between steps.
+  document.querySelectorAll(".steps-row li:not(:last-child)").forEach((li) => {
+    const t = document.createElement("span");
+    t.className = "step-trail";
+    t.setAttribute("aria-hidden", "true");
+    t.innerHTML = "<i></i><i></i><i></i><i></i>";
+    li.appendChild(t);
+  });
+
+  // Sections animate in as they scroll into view.
+  const bands = document.querySelectorAll(".band");
+  if (!("IntersectionObserver" in window)) { bands.forEach((b) => b.classList.add("in")); return; }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  bands.forEach((b) => io.observe(b));
+});

@@ -47,33 +47,53 @@
         <div class="wrap">
           <h2>Who telehealth suits</h2>
           <p>Telehealth works for many families, including:</p>
-          <ul class="checklist"><li>Families in rural and regional areas</li><li>Busy families who want to skip the travel</li><li>Children who feel more settled at home</li><li>Families waiting for face-to-face services</li></ul>
+          <ul class="checklist pop"><li>Families in rural and regional areas</li><li>Busy families who want to skip the travel</li><li>Children who feel more settled at home</li><li>Families waiting for face-to-face services</li></ul>
         </div>
       </section>
       <section class="band tone-white">
         <div class="wrap">
           <h2>What a session looks like</h2>
-          <ol class="steps"><li><h3>Join from home</h3><p>Connect on Microsoft Teams from a laptop, tablet or phone.</p></li><li><h3>Work on real goals</h3><p>Your therapist works with you and your child using everyday activities and things you already have at home.</p></li><li><h3>Keep it going</h3><p>You get practical strategies to use between sessions, so progress continues all week.</p></li></ol>
+          <ol class="steps-row pop"><li><span class="step-num">1</span><h3>Join from home</h3><p>Connect on Microsoft Teams from a laptop, tablet or phone.</p></li><li><span class="step-num">2</span><h3>Work on real goals</h3><p>Your therapist works with you and your child using everyday activities and things you already have at home.</p></li><li><span class="step-num">3</span><h3>Keep it going</h3><p>You get practical strategies to use between sessions, so progress continues all week.</p></li></ol>
         </div>
       </section>
       <section class="band tone-mint">
         <div class="wrap">
           <h2>Telehealth goes beyond the home</h2>
-          <ul class="checklist"><li>Coaching calls with grandparents or carers</li><li>Skill-building programs for support workers</li><li>Working with your child’s teacher</li><li>Support while you wait for face-to-face services</li></ul>
+          <ul class="checklist pop"><li>Coaching calls with grandparents or carers</li><li>Skill-building programs for support workers</li><li>Working with your child’s teacher</li><li>Support while you wait for face-to-face services</li></ul>
           <p class="note">Research backs it up: a 2023 review of 18 trials found telehealth OT for children works well alongside face-to-face therapy, and families were happy with it. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10134098/" target="_blank" rel="noopener">Read the review</a></p>
         </div>
       </section>
       <section class="band tone-cream">
         <div class="wrap">
           <h2>What you’ll need</h2>
-          <ul class="checklist"><li>A device with a camera and microphone</li><li>A reliable internet connection</li><li>A quiet space with room to move</li><li>Microsoft Teams (free to use)</li></ul>
+          <ul class="checklist pop"><li>A device with a camera and microphone</li><li>A reliable internet connection</li><li>A quiet space with room to move</li><li>Microsoft Teams (free to use)</li></ul>
         </div>
       </section>
       <section class="band tone-white">
         <div class="wrap">
           <h2>Funding for telehealth</h2>
           <p>Telehealth sessions can be funded the same way as in-person sessions.</p>
-          <div class="cards"><div class="card"><h3>NDIS</h3><p>For self-managed and plan-managed participants. <a href="ndis-occupational-therapy.html">NDIS OT</a></p></div><div class="card"><h3>Medicare</h3><p>Rebates may be available with an eligible plan from your GP, paediatrician or psychiatrist.</p></div><div class="card"><h3>Private</h3><p>Flexible support. If your extras cover includes OT, you may be able to claim a rebate.</p></div></div>
+          <div class="fund-grid pop">
+            <div class="funding-card" data-funding="ndis" role="button" tabindex="0" aria-haspopup="dialog">
+              <span class="svc-icon svc-footprints fund-svg"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="12" r="5"/><path d="M9 34c0-7 5-12 11-12s11 5 11 12"/><path d="M27 18l3-3m-17 3l-3-3"/></svg></span>
+              <h3>NDIS</h3>
+              <p>For self-managed and plan-managed participants.</p>
+              <span class="more">How it works →</span>
+            </div>
+            <div class="funding-card" data-funding="medicare" role="button" tabindex="0" aria-haspopup="dialog">
+              <span class="svc-icon svc-stairs fund-svg"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="7" y="7" width="26" height="26" rx="7"/><path d="M20 13v14M13 20h14"/></svg></span>
+              <h3>Medicare</h3>
+              <p>Rebates with an eligible plan from your doctor.</p>
+              <span class="more">How it works →</span>
+            </div>
+            <div class="funding-card" data-funding="private" role="button" tabindex="0" aria-haspopup="dialog">
+              <span class="svc-icon svc-esdm fund-svg"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 5l12 5v9c0 8-5 13-12 16C13 32 8 27 8 19v-9z"/><path d="M15 20l4 4 7-8"/></svg></span>
+              <h3>Private</h3>
+              <p>Flexible short or long-term support, with possible health fund rebates.</p>
+              <span class="more">How it works →</span>
+            </div>
+          </div>
+
         </div>
       </section>
       <section class="band tone-lilac cta">
@@ -96,5 +116,13 @@
         <p class="foot-small">We acknowledge the Traditional Custodians of the lands across Australia, and the Wurundjeri people, on whose land we provide our services. We pay our respects to Elders past and present. All are welcome at Follow Me Therapy.</p>
       </div>
     </footer>
+    <div id="detailModal" class="modal">
+      <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="detailTitle" tabindex="-1">
+        <button type="button" class="close" aria-label="Close">&times;</button>
+        <div id="detailBody"></div>
+        <a class="btn" href="https://follow-me-therapy.splose.com/public-form/975d61d5-cd63-44e5-86e7-f9315fa6a5b0" target="_blank" rel="noopener">Make a referral</a>
+      </div>
+    </div>
+    <script src="site.js" defer></script>
   </body>
 </html>
