@@ -1,5 +1,22 @@
 /* Shared styles for Follow Me Therapy's inner pages */
 @font-face {
+  font-family: "QS Fallback";
+  src: local("Arial"), local("Helvetica"), local("Liberation Sans");
+  size-adjust: 102.2%;
+  ascent-override: 97.8%;
+  descent-override: 24.5%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "Fredoka Fallback";
+  src: local("Arial Bold"), local("Arial-BoldMT"), local("Helvetica Bold"), local("Liberation Sans Bold");
+  font-weight: 600;
+  size-adjust: 94.2%;
+  ascent-override: 103.4%;
+  descent-override: 25.1%;
+  line-gap-override: 0%;
+}
+@font-face {
   font-family: "Fredoka";
   font-weight: 600;
   font-display: swap;
@@ -33,7 +50,7 @@
   --ink: #2b2540;
   --ink-soft: #5b556b;
   --deep: #2e2363;
-  --display: "Fredoka", "Quicksand", system-ui, sans-serif;
+  --display: "Fredoka", "Fredoka Fallback", system-ui, sans-serif;
 }
 * {
   box-sizing: border-box;
@@ -43,7 +60,7 @@ html {
 }
 body {
   margin: 0;
-  font-family: "Quicksand", system-ui, sans-serif;
+  font-family: "Quicksand", "QS Fallback", system-ui, sans-serif;
   font-weight: 500;
   font-size: 17px;
   line-height: 1.7;
@@ -787,10 +804,3 @@ h2::after {
   outline: none;
 }
 
-/* Hold the first paint until fonts are ready (max 0.7s), so text doesn't jump */
-html.js:not(.fonts-ready) body {
-  opacity: 0;
-}
-body {
-  transition: opacity 0.35s ease;
-}
