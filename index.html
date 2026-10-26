@@ -2357,6 +2357,69 @@
         }
       }
 
+
+      /* Illustrations instead of stock photos */
+      img.illus {
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        aspect-ratio: auto !important;
+        object-fit: contain !important;
+        height: auto !important;
+        background: none !important;
+      }
+      .is-visible img.illus.reveal-img {
+        animation: illusIn 0.9s cubic-bezier(0.3, 1.4, 0.5, 1) backwards;
+      }
+      @keyframes illusIn {
+        from { opacity: 0; transform: translateY(20px) scale(0.92); }
+      }
+      .telehealth-content .split > img.illus {
+        flex-basis: 280px;
+        max-width: 280px;
+        align-self: center;
+      }
+      @media (max-width: 650px) {
+        .telehealth-content .split > img.illus {
+          max-width: 300px !important;
+          margin: 0 auto !important;
+        }
+      }
+
+      /* Simone: cut-out on a brand-colour circle */
+      .bio-photo {
+        float: left;
+        width: 44%;
+        max-width: 280px;
+        aspect-ratio: 1 / 1;
+        margin: 4px 28px 14px 0;
+        border-radius: 16px !important;
+        background:
+          radial-gradient(circle at 50% 60%, #fde3a7 0 44%, transparent 44.5%),
+          var(--teal-tint);
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        overflow: hidden;
+        shape-outside: inset(0 round 16px);
+      }
+      .bio-photo img,
+      #about-simone .content-wrapper .bio-photo img {
+        height: 94% !important;
+        width: auto !important;
+        max-width: none !important;
+        margin: 0 !important;
+        float: none !important;
+        display: block;
+      }
+      @media (max-width: 520px) {
+        .bio-photo {
+          float: none;
+          width: 100%;
+          max-width: none;
+          margin: 0 0 18px;
+          border-radius: 18px !important;
+        }
+      }
     </style>
   </head>
   <body>
@@ -2439,11 +2502,11 @@
               </ul>
             </div>
             <img
-              src="img/kids-playing.jpg"
-              alt="Two young children playing with blocks at a table"
-              class="responsive-image reveal-img"
-              width="1000"
-              height="667"
+              src="img/illus-ot.svg"
+              alt="Illustration of a parent helping a child balance on a skateboard"
+              class="responsive-image reveal-img illus"
+              width="1097"
+              height="791"
               loading="lazy"
               decoding="async"
             />
@@ -2498,15 +2561,16 @@
         <div class="fade-in-content">
           <h2>Meet Simone</h2>
           <div class="content-wrapper about-simone-content bio">
-            <img
-              src="img/simone.jpg"
-              alt="Simone Gabriele, paediatric occupational therapist"
-              class="bio-photo"
-              width="700"
-              height="701"
-              loading="lazy"
-              decoding="async"
-            />
+            <div class="bio-photo">
+              <img
+                src="img/simone-cutout.webp"
+                alt="Simone Gabriele, paediatric occupational therapist"
+                width="367"
+                height="700"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
             <h3 class="person-name">Simone Gabriele</h3>
             <p class="person-role">
               Paediatric Occupational Therapist<br />Master of Occupational
@@ -2612,11 +2676,11 @@
           <div class="content-wrapper telehealth-content">
             <div class="split">
             <img
-              src="img/telehealth.jpg"
-              alt="A parent and child at a computer during a telehealth session"
-              class="telehealth-image reveal-img"
-              width="800"
-              height="1199"
+              src="img/illus-telehealth.svg"
+              alt="Illustration of a video call between a therapist and a family"
+              class="telehealth-image reveal-img illus"
+              width="874"
+              height="734"
               loading="lazy"
               decoding="async"
             />
