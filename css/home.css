@@ -1551,21 +1551,7 @@ strong {
 }
 .callout {
   border-left: none;
-  border-radius: 20px;
-  background: #fff;
   position: relative;
-  padding-left: 64px;
-}
-.callout::before {
-  content: "";
-  position: absolute;
-  left: 22px;
-  top: 50%;
-  width: 24px;
-  height: 18px;
-  margin-top: -9px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 26'%3E%3Cg fill='%236b4ef0'%3E%3Cg transform='translate%281 2%29 rotate%28-6 8 12%29 scale%28.92%29'%3E%3Cellipse cx='11.5' cy='3.1' rx='2.05' ry='2.55'/%3E%3Ccircle cx='8.15' cy='2.25' r='1.35'/%3E%3Ccircle cx='5.85' cy='2.9' r='1.2'/%3E%3Ccircle cx='3.95' cy='4.15' r='1.05'/%3E%3Ccircle cx='2.55' cy='5.85' r='0.9'/%3E%3Cpath d='M7.6 6.6C11.2 6.2 13.9 7.8 13.6 10.8 13.4 12.8 11.4 14 10.9 16.2 10.5 18 11.6 19.4 11.2 21.2 10.8 23.2 9.3 24 7.7 24 5.6 24 4.3 22.7 4.3 20.6 4.3 17.6 3 15.8 2.8 12.8 2.5 9.2 4.4 6.9 7.6 6.6Z'/%3E%3C/g%3E%3Cg transform='translate%2819 0%29 rotate%286 8 12%29 scale%28.92%29'%3E%3Cg transform='translate%2816 0%29 scale%28-1 1%29'%3E%3Cellipse cx='11.5' cy='3.1' rx='2.05' ry='2.55'/%3E%3Ccircle cx='8.15' cy='2.25' r='1.35'/%3E%3Ccircle cx='5.85' cy='2.9' r='1.2'/%3E%3Ccircle cx='3.95' cy='4.15' r='1.05'/%3E%3Ccircle cx='2.55' cy='5.85' r='0.9'/%3E%3Cpath d='M7.6 6.6C11.2 6.2 13.9 7.8 13.6 10.8 13.4 12.8 11.4 14 10.9 16.2 10.5 18 11.6 19.4 11.2 21.2 10.8 23.2 9.3 24 7.7 24 5.6 24 4.3 22.7 4.3 20.6 4.3 17.6 3 15.8 2.8 12.8 2.5 9.2 4.4 6.9 7.6 6.6Z'/%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E")
-    center/contain no-repeat;
 }
 .service-item {
   border-radius: 24px;
@@ -2766,5 +2752,76 @@ html.fonts-ready .title-container {
 @media (prefers-reduced-motion: reduce) {
   html.fonts-ready .title-container {
     animation: none;
+  }
+}
+
+/* ── "Every session…" sits in a soft, floating cloud ── */
+.callout {
+  isolation: isolate;
+  background: #fff;
+  border-radius: 56px;
+  padding: 26px 34px !important;
+  margin: 72px auto 8px !important;
+  max-width: 640px;
+  text-align: center !important;
+  filter: drop-shadow(0 12px 22px rgba(43, 37, 64, 0.08));
+}
+.callout::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  right: 0;
+  top: -80px;
+  height: 120px;
+  background:
+    radial-gradient(circle at 20% 100%, #fff 0 58px, transparent 59px),
+    radial-gradient(circle at 39% 100%, #fff 0 84px, transparent 85px),
+    radial-gradient(circle at 60% 100%, #fff 0 68px, transparent 69px),
+    radial-gradient(circle at 78% 100%, #fff 0 50px, transparent 51px);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .is-visible .callout {
+    animation: cloudFloat 7s ease-in-out infinite;
+  }
+  @keyframes cloudFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+}
+@media (max-width: 480px) {
+  .callout {
+    padding: 24px 22px !important;
+    border-radius: 44px;
+  }
+  .callout::before {
+    top: -58px;
+    height: 90px;
+    background:
+      radial-gradient(circle at 22% 100%, #fff 0 42px, transparent 43px),
+      radial-gradient(circle at 46% 100%, #fff 0 60px, transparent 61px),
+      radial-gradient(circle at 72% 100%, #fff 0 46px, transparent 47px);
+  }
+}
+
+/* ── Tighter vertical spacing around the logo and title ── */
+.title-and-logo {
+  padding: 0 20px !important;
+}
+.title-container {
+  margin-top: 0 !important;
+  padding-top: 76px !important;
+  padding-bottom: 0 !important;
+}
+.about-wrapper section {
+  padding-top: 18px !important;
+}
+@media (max-width: 600px) {
+  .title-container {
+    padding-top: 70px !important;
+    gap: 4px !important;
+  }
+  .title-container .logo-image {
+    height: 68px !important;
   }
 }
