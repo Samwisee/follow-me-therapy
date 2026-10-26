@@ -89,6 +89,14 @@ document.addEventListener("DOMContentLoaded", function () {
     t.innerHTML = "<i></i><i></i><i></i><i></i>";
     li.appendChild(t);
   });
+  document.querySelectorAll(".steps-row").forEach((ol) => {
+    const trails = ol.querySelectorAll(".step-trail");
+    ol.classList.add("trails-" + trails.length);
+    trails.forEach((t, k) => {
+      t.style.setProperty("--k", k);
+      t.querySelectorAll("i").forEach((f, n) => f.style.setProperty("--f", n));
+    });
+  });
 
   // Sections animate in as they scroll into view.
   const bands = document.querySelectorAll(".band");

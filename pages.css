@@ -743,3 +743,37 @@ h2::after {
     grid-template-columns: 1fr;
   }
 }
+
+/* Heading marks removed */
+h2::after {
+  display: none !important;
+}
+/* Footsteps walk one trail at a time */
+.in .step-trail i {
+  animation: walkSlot2 5s ease-out infinite !important;
+  animation-delay: calc(var(--k, 0) * 2.5s + var(--f, 0) * 0.22s) !important;
+}
+.trails-3 .step-trail i {
+  animation-name: walkSlot3 !important;
+  animation-duration: 7.5s !important;
+}
+@keyframes walkSlot2 {
+  0% { opacity: 0; scale: 0.4; }
+  4% { opacity: 0.8; scale: 1.1; }
+  7% { scale: 1; }
+  28% { opacity: 0.7; }
+  38%, 100% { opacity: 0; }
+}
+@keyframes walkSlot3 {
+  0% { opacity: 0; scale: 0.4; }
+  3% { opacity: 0.8; scale: 1.1; }
+  5% { scale: 1; }
+  19% { opacity: 0.7; }
+  26%, 100% { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .in .step-trail i {
+    animation: none !important;
+    opacity: 0.5;
+  }
+}

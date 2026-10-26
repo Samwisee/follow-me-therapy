@@ -2420,6 +2420,56 @@
           border-radius: 18px !important;
         }
       }
+
+      /* Heading marks removed */
+      h2::after,
+      .is-visible h2::after {
+        display: none !important;
+      }
+      h2 {
+        padding-bottom: 0 !important;
+        margin-bottom: 22px !important;
+      }
+
+      /* "Follow Me!" back in its original Quicksand italic */
+      .cta-emphasis {
+        font-family: "Quicksand", sans-serif !important;
+        font-weight: 700 !important;
+      }
+      .cta-emphasis em {
+        font-style: italic !important;
+      }
+
+      /* Footsteps walk one trail at a time: 1 → 2, pause, 2 → 3 */
+      .is-visible .step-trail i {
+        animation: walkSlot2 5s ease-out infinite !important;
+        animation-delay: calc(var(--k, 0) * 2.5s + var(--f, 0) * 0.22s) !important;
+      }
+      .trails-3 .step-trail i {
+        animation-name: walkSlot3 !important;
+        animation-duration: 7.5s !important;
+      }
+      @keyframes walkSlot2 {
+        0% { opacity: 0; scale: 0.4; }
+        4% { opacity: 0.8; scale: 1.1; }
+        7% { scale: 1; }
+        28% { opacity: 0.7; }
+        38%, 100% { opacity: 0; }
+      }
+      @keyframes walkSlot3 {
+        0% { opacity: 0; scale: 0.4; }
+        3% { opacity: 0.8; scale: 1.1; }
+        5% { scale: 1; }
+        19% { opacity: 0.7; }
+        26%, 100% { opacity: 0; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .is-visible .step-trail i {
+          animation: none !important;
+          opacity: 0.5;
+        }
+      }
     </style>
   </head>
   <body>
@@ -2480,8 +2530,8 @@
           <h2>What is Occupational Therapy?</h2>
           <blockquote class="ot-quote">
             <p class="large-italic-centered">
-              “OT is about the activities we do each day, what brings us joy,
-              and the journey to becoming you.”
+              “Occupational Therapy (OT) is about the activities we do each
+              day, what brings us joy, and the journey to becoming you.”
             </p>
           </blockquote>
           <p>
@@ -2503,10 +2553,10 @@
             </div>
             <img
               src="img/illus-ot.svg"
-              alt="Illustration of a parent helping a child balance on a skateboard"
+              alt="Illustration of a woman kneeling to help a child get ready for school"
               class="responsive-image reveal-img illus"
               width="1097"
-              height="791"
+              height="821"
               loading="lazy"
               decoding="async"
             />
@@ -3141,6 +3191,15 @@
           t.setAttribute("aria-hidden", "true");
           t.innerHTML = "<i></i><i></i><i></i><i></i>";
           li.appendChild(t);
+        });
+        // Trails walk one after another: 1 → 2, pause, 2 → 3.
+        document.querySelectorAll(".steps").forEach((ol) => {
+          const trails = ol.querySelectorAll(".step-trail");
+          ol.classList.add("trails-" + trails.length);
+          trails.forEach((t, k) => {
+            t.style.setProperty("--k", k);
+            t.querySelectorAll("i").forEach((f, n) => f.style.setProperty("--f", n));
+          });
         });
 
 
