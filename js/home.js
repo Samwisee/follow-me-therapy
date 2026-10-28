@@ -185,7 +185,7 @@ document.addEventListener("DOMContentLoaded", function () {
   );
 
   // Floating Contact button: hidden until you reach Meet Simone, then it
-  // pops in saying "Contact me!", shrinks to a circle after 2 seconds, and
+  // pops in saying "Contact me", shrinks to a circle after 3 seconds, and
   // steps aside while the contact section is on screen. While hidden it
   // can't be reached with the keyboard either (inert).
   const fab = document.getElementById("contactUsButton");
@@ -198,7 +198,7 @@ document.addEventListener("DOMContentLoaded", function () {
     clearTimeout(collapse);
     if (on) {
       fab.classList.remove("compact");
-      collapse = setTimeout(() => fab.classList.add("compact"), 2000);
+      collapse = setTimeout(() => fab.classList.add("compact"), 3000);
     }
   };
   const onScroll = () =>
