@@ -194,14 +194,20 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll(".fixed-header a[href^='#']").forEach((a) => {
       links[a.getAttribute("href").slice(1)] = a;
     });
-    const map = { "ot-services": "services", how: "about-simone" };
+    // Sections without their own link light up the one they belong to.
+    const map = { how: "services" };
+    const order = Object.keys(links);
     const spy = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
           if (!e.isIntersecting) return;
           const id = map[e.target.id] || e.target.id;
-          Object.values(links).forEach((a) => a.classList.remove("active"));
-          if (links[id] && id !== "about") links[id].classList.add("active");
+          Object.values(links).forEach((a) => a.classList.remove("active", "passed"));
+          if (links[id] && id !== "about") {
+            links[id].classList.add("active");
+            // On the side rail, the line fills up to the section you're in.
+            order.slice(0, order.indexOf(id)).forEach((k) => links[k].classList.add("passed"));
+          }
         });
       },
       { rootMargin: "-45% 0px -50% 0px" }

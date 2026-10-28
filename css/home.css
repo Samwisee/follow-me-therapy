@@ -3245,3 +3245,88 @@ a:hover > .chev-back {
   justify-content: flex-start !important;
   margin-left: 0 !important;
 }
+
+/* ── Wide screens: the menu becomes a rail down the left ──
+   The same menu, standing upright beside the page: a dot for each section
+   joined by a line that fills in as you scroll down, the current section
+   highlighted with a footprint. The browser's own scrollbar stays. Below
+   1300px it's the floating bar along the top, as before. */
+@media (min-width: 1300px) {
+  body .fixed-header {
+    top: 50% !important;
+    left: 24px !important;
+    transform: translateY(-50%) !important;
+    width: auto !important;
+    max-width: none !important;
+    flex-direction: column;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+    gap: 0 !important;
+    padding: 14px 10px 12px !important;
+    border-radius: 28px !important;
+  }
+  body .fixed-header .nav-logo {
+    align-self: center;
+    margin-bottom: 8px;
+    padding: 4px 8px !important;
+  }
+  body .fixed-header a:not(.nav-logo) {
+    position: relative;
+    padding: 9px 16px 9px 34px !important;
+    border-radius: 999px;
+    text-align: left;
+  }
+  /* The dot for each section. */
+  body .fixed-header a:not(.nav-logo)::before {
+    content: "";
+    position: absolute;
+    left: 13px;
+    top: 50%;
+    width: 10px;
+    height: 10px;
+    margin-top: -5px;
+    border-radius: 50%;
+    background: #fff;
+    border: 2px solid #c7bbff;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+  }
+  /* The line down to the next dot; filled once you've passed it. */
+  body .fixed-header a:not(.nav-logo):not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: 17px;
+    top: calc(50% + 5px);
+    width: 2px;
+    height: calc(100% - 10px);
+    background: #e2dbff;
+    transition: background-color 0.4s ease;
+  }
+  body .fixed-header a.passed::before {
+    background: #6b4ef0;
+    border-color: #6b4ef0;
+  }
+  body .fixed-header a.passed::after,
+  body .fixed-header a.active::after {
+    background: linear-gradient(#6b4ef0, #c7bbff) !important;
+  }
+  body .fixed-header a.passed::after {
+    background: #6b4ef0 !important;
+  }
+  /* Where you are: a little footprint in place of the dot. */
+  body .fixed-header a.active::before {
+    width: 12px;
+    height: 18px;
+    margin-top: -9px;
+    left: 12px;
+    border: 0;
+    border-radius: 0;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 24'%3E%3Cg fill='%236b4ef0'%3E%3Cellipse cx='11.5' cy='3.1' rx='2.05' ry='2.55'/%3E%3Ccircle cx='8.15' cy='2.25' r='1.35'/%3E%3Ccircle cx='5.85' cy='2.9' r='1.2'/%3E%3Ccircle cx='3.95' cy='4.15' r='1.05'/%3E%3Ccircle cx='2.55' cy='5.85' r='0.9'/%3E%3Cpath d='M7.6 6.6C11.2 6.2 13.9 7.8 13.6 10.8 13.4 12.8 11.4 14 10.9 16.2 10.5 18 11.6 19.4 11.2 21.2 10.8 23.2 9.3 24 7.7 24 5.6 24 4.3 22.7 4.3 20.6 4.3 17.6 3 15.8 2.8 12.8 2.5 9.2 4.4 6.9 7.6 6.6Z'/%3E%3C/g%3E%3C/svg%3E") center / contain no-repeat;
+    filter: brightness(0) invert(1);
+  }
+}
+@media (min-width: 1300px) {
+  body .fixed-header .nav-logo {
+    display: block !important;
+  }
+}
