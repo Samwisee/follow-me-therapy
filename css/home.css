@@ -3313,20 +3313,33 @@ a:hover > .chev-back {
   body .fixed-header a.passed::after {
     background: #6b4ef0 !important;
   }
-  /* Where you are: a little footprint in place of the dot. */
+  /* Where you are: the pip fills in white on the purple pill. */
   body .fixed-header a.active::before {
-    width: 12px;
-    height: 18px;
-    margin-top: -9px;
-    left: 12px;
-    border: 0;
-    border-radius: 0;
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 24'%3E%3Cg fill='%236b4ef0'%3E%3Cellipse cx='11.5' cy='3.1' rx='2.05' ry='2.55'/%3E%3Ccircle cx='8.15' cy='2.25' r='1.35'/%3E%3Ccircle cx='5.85' cy='2.9' r='1.2'/%3E%3Ccircle cx='3.95' cy='4.15' r='1.05'/%3E%3Ccircle cx='2.55' cy='5.85' r='0.9'/%3E%3Cpath d='M7.6 6.6C11.2 6.2 13.9 7.8 13.6 10.8 13.4 12.8 11.4 14 10.9 16.2 10.5 18 11.6 19.4 11.2 21.2 10.8 23.2 9.3 24 7.7 24 5.6 24 4.3 22.7 4.3 20.6 4.3 17.6 3 15.8 2.8 12.8 2.5 9.2 4.4 6.9 7.6 6.6Z'/%3E%3C/g%3E%3C/svg%3E") center / contain no-repeat;
-    filter: brightness(0) invert(1);
+    background: #fff;
+    border-color: #fff;
+    transform: scale(1.15);
   }
 }
 @media (min-width: 1300px) {
   body .fixed-header .nav-logo {
     display: block !important;
+  }
+}
+
+/* The rail: a little narrower, with bigger labels. */
+@media (min-width: 1300px) {
+  body .fixed-header {
+    padding: 12px 6px 10px !important;
+    left: 20px !important;
+  }
+  body .fixed-header a:not(.nav-logo) {
+    padding: 9px 14px 9px 30px !important;
+    font-size: 1.08rem;
+  }
+  body .fixed-header a:not(.nav-logo)::before {
+    left: 11px;
+  }
+  body .fixed-header a:not(.nav-logo):not(:last-child)::after {
+    left: 15px;
   }
 }

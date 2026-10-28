@@ -78,7 +78,7 @@
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
-    <header class="title-and-logo" style="border-radius: 0">
+    <header class="title-and-logo" id="top" style="border-radius: 0">
       <div class="title-container" style="padding-top: 44px">
         <div class="logo-walk">
           <img
@@ -93,10 +93,10 @@
       </div>
     </header>
     <nav class="fixed-header" aria-label="Main menu">
-      <a href="#about" class="nav-logo" aria-label="Back to top"
+      <a href="#top" class="nav-logo" aria-label="Back to top"
         ><img src="img/logo-sm.png" alt="" width="27" height="30"
       /></a>
-      <a href="#about-simone">About</a>
+      <a href="#about-simone">Simone</a>
       <a href="#services">Services</a>
       <a href="#funding">Funding</a>
       <a href="#telehealth">Telehealth</a>
@@ -477,7 +477,7 @@
         </div>
       </section>
     </div>
-    <a href="#contact" class="fab" id="contactUsButton" aria-label="Contact me">
+    <a href="#contact" class="fab" id="contactUsButton" aria-label="Contact me" inert>
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <path
           d="M4 5h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H9l-4 3v-3H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"
@@ -490,7 +490,7 @@
         <circle cx="12" cy="11" r="1.2" fill="currentColor" />
         <circle cx="15.5" cy="11" r="1.2" fill="currentColor" />
       </svg>
-      <span class="fab-label">Contact me</span>
+      <span class="fab-label">Contact me!</span>
     </a>
     </main>
 

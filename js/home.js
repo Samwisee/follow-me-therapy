@@ -165,6 +165,16 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+  // The menu's logo goes back to the very top of the page.
+  document.querySelectorAll('a[href="#top"]').forEach((a) =>
+    a.addEventListener("click", (e) => {
+      e.preventDefault();
+      const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+      window.scrollTo({ top: 0, behavior: still ? "auto" : "smooth" });
+      history.replaceState(null, "", location.pathname + location.search);
+    })
+  );
+
   // Contact Us button.
   const contactModal = document.getElementById("contactModal");
   document.querySelectorAll("#contactUsButton, [data-open-contact]").forEach((btn) =>
@@ -174,11 +184,25 @@ document.addEventListener("DOMContentLoaded", function () {
     })
   );
 
-  // Floating Contact button: pops in, shrinks to a circle once you
-  // scroll, and steps aside while the contact section is on screen.
+  // Floating Contact button: hidden until you reach Meet Simone, then it
+  // pops in saying "Contact me!", shrinks to a circle after 2 seconds, and
+  // steps aside while the contact section is on screen. While hidden it
+  // can't be reached with the keyboard either (inert).
   const fab = document.getElementById("contactUsButton");
-  setTimeout(() => fab.classList.add("show"), 900);
-  const onScroll = () => fab.classList.toggle("compact", window.scrollY > 240);
+  const simone = document.getElementById("about-simone");
+  let collapse = null;
+  const reveal = (on) => {
+    if (on === fab.classList.contains("show")) return;
+    fab.classList.toggle("show", on);
+    fab.inert = !on;
+    clearTimeout(collapse);
+    if (on) {
+      fab.classList.remove("compact");
+      collapse = setTimeout(() => fab.classList.add("compact"), 2000);
+    }
+  };
+  const onScroll = () =>
+    reveal(!!simone && simone.getBoundingClientRect().top < window.innerHeight * 0.6);
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
   if ("IntersectionObserver" in window) {
