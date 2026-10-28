@@ -2674,59 +2674,6 @@ html.fonts-ready .title-container {
   }
 }
 
-/* ── "Every session…": a soft white card with a little cloud on top ──
-   A plain rounded card that holds any length of text at any width, with a
-   small cloud (img/cloud-wide.svg, at its own proportions) resting on its
-   top edge, and room to breathe around it on phones. */
-.callout {
-  isolation: isolate;
-  background: #fff !important;
-  border-radius: 32px !important;
-  padding: 44px 40px 34px !important;
-  margin: 72px auto 16px !important;
-  max-width: 640px;
-  text-align: center !important;
-  box-shadow: 0 14px 32px rgba(43, 37, 64, 0.08);
-  filter: none;
-}
-.callout::before {
-  content: "" !important;
-  position: absolute;
-  z-index: -1;
-  left: 50%;
-  top: -34px;
-  width: 150px;
-  height: 50px;
-  transform: translateX(-50%);
-  background: url("../img/cloud-wide.svg") center / 100% 100% no-repeat !important;
-  filter: drop-shadow(0 -4px 6px rgba(43, 37, 64, 0.05));
-}
-.callout::after {
-  content: none !important;
-}
-@media (prefers-reduced-motion: no-preference) {
-  .is-visible .callout {
-    animation: cloudFloat 7s ease-in-out infinite;
-  }
-  @keyframes cloudFloat {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
-  }
-}
-@media (max-width: 600px) {
-  .callout {
-    padding: 40px 24px 28px !important;
-    margin: 64px 8px 28px !important;
-    border-radius: 28px !important;
-    line-height: 1.7;
-  }
-  .callout::before {
-    width: 120px;
-    height: 40px;
-    top: -27px;
-  }
-}
-
 /* ── Tighter vertical spacing around the logo and title ── */
 .title-and-logo {
   padding: 0 20px !important;
@@ -2852,4 +2799,94 @@ html.fonts-ready .title-container {
    nothing shifts sideways as it opens. */
 html {
   scrollbar-gutter: stable;
+}
+
+/* ── Room to breathe ──
+   More space between sections, under headings and between cards, so the
+   page reads calmly. The hero and the footer keep their own spacing. */
+.section-wrapper > section.content-section:not(#about):not(#company) {
+  padding-top: 116px !important;
+  padding-bottom: 116px !important;
+}
+.content-section h2 {
+  margin-bottom: 30px !important;
+}
+.content-section h2 + p {
+  margin-bottom: 8px;
+}
+.services-grid,
+.funding-grid {
+  gap: 28px !important;
+  margin-top: 36px !important;
+}
+.steps {
+  gap: 40px !important;
+  margin-top: 28px !important;
+}
+.checklist li {
+  margin-bottom: 14px;
+}
+.contact-actions {
+  gap: 24px !important;
+  margin-top: 32px !important;
+}
+#ot-services .flex-container {
+  margin-top: 36px;
+}
+@media (max-width: 650px) {
+  .section-wrapper > section.content-section:not(#about):not(#company) {
+    padding-top: 88px !important;
+    padding-bottom: 88px !important;
+  }
+  .services-grid,
+  .funding-grid {
+    gap: 22px !important;
+    margin-top: 28px !important;
+  }
+}
+
+/* ── Meet Simone: her role, then each credential on its own line with a
+   small icon, in the body colour so they're easy to read. ── */
+.bio .person-role {
+  margin: 4px 0 12px !important;
+  font-size: 1.05em;
+}
+.creds {
+  list-style: none;
+  padding: 0 !important;
+  margin: 0 0 22px !important;
+  display: grid;
+  gap: 8px;
+}
+.creds li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 !important;
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 0.95em;
+  line-height: 1.35;
+}
+.creds svg {
+  flex: none;
+  width: 30px;
+  height: 30px;
+  padding: 6px;
+  border-radius: 10px;
+  background: var(--teal-tint);
+  color: var(--teal);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  box-sizing: border-box;
+}
+/* A wider photo beside the bio. */
+.about-simone-content.bio {
+  grid-template-columns: minmax(200px, 44%) 1fr !important;
+}
+.bio > .bio-photo {
+  grid-row: 1 / span 5 !important;
 }

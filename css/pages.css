@@ -977,3 +977,32 @@ h2::after {
 html {
   scrollbar-gutter: stable;
 }
+
+/* Room to breathe between the bands and between cards. */
+.band {
+  padding: 92px 0 !important;
+}
+.band.hero {
+  padding-top: 56px !important;
+}
+.band h2 {
+  margin-bottom: 22px;
+}
+.fund-grid,
+.svc-grid,
+.cards {
+  gap: 26px !important;
+}
+.wrap > p + .cards,
+.wrap > p + .fund-grid,
+.wrap > p + .svc-grid {
+  margin-top: 30px !important;
+}
+@media (max-width: 520px) {
+  .band {
+    padding: 72px 0 !important;
+  }
+  .band.hero {
+    padding-top: 40px !important;
+  }
+}

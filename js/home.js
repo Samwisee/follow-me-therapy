@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
     home: {
       title: "Early Start Denver Model (ESDM)", tag: "Up to age 5",
       content:
-        "<p>An evidence-based, play-based approach for children up to 5 with autism or other developmental delays, developed by the UC Davis MIND Institute.</p><p>It supports communication, social skills, play, daily living and thinking skills. Delivered by an ESDM-certified therapist, it includes:</p><ul class='checklist'><li>1:1 sessions at home or in the community</li><li>An individualised learning program</li><li>Coaching for the people who support your child every day</li></ul><p>We’ll check whether ESDM suits your child at the initial assessment.</p><p><a href='esdm-melbourne.html'>More about ESDM in Melbourne →</a></p>",
+        "<p>An evidence-based, play-based approach for children up to 5 with autism or other developmental delays, developed by the UC Davis MIND Institute.</p><p>It supports communication, social skills, play, daily living and thinking skills. Delivered by an ESDM-certified therapist, it includes:</p><ul class='checklist'><li>1:1 sessions at home or in the community</li><li>An individualised learning program</li><li>Coaching for the people who support your child every day</li></ul><p class='modal-note'>We’ll check whether ESDM suits your child at the initial assessment. <a href='esdm-melbourne.html'>More about ESDM →</a></p>",
     },
     assessments: {
       title: "Assessments", tag: "Reports",

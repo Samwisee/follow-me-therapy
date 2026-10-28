@@ -242,3 +242,219 @@
   stroke-linecap: round;
   stroke-linejoin: round;
 }
+
+/* ── Pop-ups fit the screen without scrolling ──
+   On phones and short windows everything tightens a little: a smaller
+   icon, closer lines, slimmer rows and button. */
+@media (max-width: 600px), (max-height: 760px) {
+  .modal .modal-content {
+    width: calc(100% - 24px) !important;
+    padding: 26px 18px 18px !important;
+    max-height: calc(100dvh - 24px) !important;
+  }
+  .modal-hero {
+    gap: 4px;
+    margin-bottom: 10px;
+  }
+  .modal-icon {
+    width: 54px;
+    height: 54px;
+    border-radius: 18px;
+  }
+  .modal-icon svg {
+    width: 32px;
+    height: 32px;
+  }
+  .modal-tag {
+    font-size: 0.78em;
+    padding: 3px 10px;
+  }
+  .modal-hero h3 {
+    font-size: 1.3em;
+    margin: 0 30px !important;
+  }
+  .modal-body p,
+  .modal-lead {
+    font-size: 0.95em !important;
+    line-height: 1.45 !important;
+    margin: 0 0 8px !important;
+  }
+  .modal-body .checklist {
+    margin: 0 0 8px !important;
+  }
+  .modal-body .checklist li {
+    font-size: 0.93em !important;
+    line-height: 1.4 !important;
+    padding: 7px 10px 7px 34px;
+    margin-bottom: 6px !important;
+    border-radius: 12px;
+  }
+  .modal-body .checklist li::before {
+    left: 10px !important;
+    top: 9px !important;
+    width: 16px;
+    height: 16px;
+  }
+  .modal-note {
+    font-size: 0.88em !important;
+    margin: 4px 0 8px !important;
+  }
+  .modal .btn-secondary,
+  .modal .btn {
+    padding-top: 11px !important;
+    padding-bottom: 11px !important;
+    margin-top: 6px !important;
+  }
+  .modal .close {
+    top: 6px !important;
+    right: 8px !important;
+  }
+}
+/* Very short screens (an iPhone SE): the icon tile gives way, so even the
+   longest pop-up fits. The band, tint and tag still carry its colour. */
+@media (max-height: 700px) {
+  .modal-icon {
+    display: none !important;
+  }
+  .modal .modal-content {
+    padding-top: 20px !important;
+    padding-bottom: 14px !important;
+  }
+  .modal-hero {
+    margin-bottom: 6px;
+  }
+  .modal-body .checklist li {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  .modal-body .checklist li::before {
+    top: 7px !important;
+  }
+}
+@media (max-height: 700px) {
+  .modal .modal-content {
+    font-size: 15px !important;
+  }
+  .modal .modal-content h3 {
+    font-size: 1.25rem !important;
+  }
+  .modal-body p,
+  .modal-body .checklist li,
+  .modal-lead {
+    font-size: 0.95rem !important;
+  }
+}
+@media (max-height: 660px) {
+  .modal-tag {
+    display: none !important;
+  }
+  .modal .modal-content {
+    padding: 16px 16px 12px !important;
+  }
+  .modal-body .checklist li {
+    margin-bottom: 4px !important;
+  }
+}
+@media (max-height: 660px) {
+  .modal-hero h3 {
+    font-size: 1.15rem !important;
+  }
+  .modal-body p,
+  .modal-lead,
+  .modal-body .checklist li {
+    line-height: 1.35 !important;
+  }
+}
+
+/* ── Information notes ──
+   The "Every session…" line, the research note and the notes on the inner
+   pages: a soft tinted strip with a round coloured badge on the left
+   holding an icon (a heart, a book, an "i"), and the words beside it. No
+   card, no shadow, no shapes to stretch: it holds any length of text at
+   any width. */
+.info-note {
+  display: flex !important;
+  align-items: center;
+  gap: 18px;
+  text-align: left !important;
+  max-width: 720px !important;
+  margin: 40px auto 0 !important;
+  padding: 20px 24px !important;
+  border: 0 !important;
+  border-radius: 22px !important;
+  background: var(--note-tint, #efe9ff) !important;
+  box-shadow: none !important;
+  filter: none !important;
+  animation: none !important;
+  transform: none !important;
+  font-size: 1rem !important;
+  line-height: 1.6 !important;
+}
+.info-note::before {
+  content: "" !important;
+  position: static !important;
+  flex: none;
+  width: 52px !important;
+  height: 52px !important;
+  border-radius: 50%;
+  transform: none !important;
+  filter: none !important;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 11v5.5'/%3E%3Cpath d='M12 7.6v.1'/%3E%3C/svg%3E") center / 26px 26px no-repeat, var(--note-ink, #6b4ef0) !important;
+  box-shadow: 0 6px 14px rgba(43, 37, 64, 0.12);
+}
+.info-note::after {
+  content: none !important;
+}
+.info-note > span {
+  flex: 1;
+  min-width: 0;
+}
+/* The "Every session…" line: the practice's promise, so it's larger and
+   in the heading face, with a heart. */
+.callout.info-note {
+  --note-tint: #fff;
+  --note-ink: #6b4ef0;
+  font-family: "Fredoka", "Quicksand", sans-serif;
+  font-weight: 500;
+  font-size: 1.2rem !important;
+  color: #2b2540;
+  padding: 24px 28px !important;
+  margin-top: 56px !important;
+  margin-bottom: 8px !important;
+}
+.callout.info-note::before {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z'/%3E%3C/svg%3E") center / 26px 26px no-repeat, var(--note-ink) !important;
+}
+/* The research behind telehealth: a book, in teal. */
+.evidence.info-note {
+  --note-tint: #e3f4f5;
+  --note-ink: #007a8a;
+}
+.evidence.info-note::before {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 5.5c3-1.3 6-1.3 9 .5 3-1.8 6-1.8 9-.5V19c-3-1.3-6-1.3-9 .5-3-1.8-6-1.8-9-.5z'/%3E%3Cpath d='M12 6v13.5'/%3E%3C/svg%3E") center / 26px 26px no-repeat, var(--note-ink) !important;
+}
+@media (max-width: 600px) {
+  .info-note {
+    align-items: flex-start;
+    gap: 14px;
+    padding: 18px !important;
+    margin-top: 32px !important;
+  }
+  .info-note::before {
+    width: 44px !important;
+    height: 44px !important;
+    background-size: 22px 22px, auto !important;
+  }
+  .callout.info-note {
+    font-size: 1.08rem !important;
+    padding: 20px !important;
+    margin: 44px 4px 8px !important;
+  }
+}
+
+/* Funding icons are always drawn in lines (the footprints' solid fill is
+   only for the 5 Steps Forward card). */
+.fund-svg svg {
+  fill: none !important;
+  stroke: currentColor !important;
+}
