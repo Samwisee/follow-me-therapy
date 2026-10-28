@@ -3193,20 +3193,29 @@ a:hover > .chev-back {
   color: #0f7a52;
 }
 .live-dot {
+  position: relative;
   width: 8px;
   height: 8px;
   margin-left: 4px;
   border-radius: 50%;
   background: #2fbf71;
-  box-shadow: 0 0 0 3px rgba(47, 191, 113, 0.2);
+}
+/* Its glow is a ring that grows and fades (scale and opacity only, so it's
+   cheap for the browser to animate). */
+.live-dot::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: rgba(47, 191, 113, 0.25);
 }
 @media (prefers-reduced-motion: no-preference) {
-  .is-visible .live-dot {
+  .is-visible .live-dot::after {
     animation: liveGlow 2.4s ease-in-out infinite;
   }
   @keyframes liveGlow {
-    0%, 100% { box-shadow: 0 0 0 3px rgba(47, 191, 113, 0.2); }
-    50% { box-shadow: 0 0 0 6px rgba(47, 191, 113, 0.05); }
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.8); opacity: 0; }
   }
 }
 
