@@ -20,7 +20,8 @@
     <link rel="preload" href="fonts/fredoka-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="fonts/quicksand-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="css/pages.css" />
-    <link rel="stylesheet" href="css/cards.css" />
+    <link rel="stylesheet" href="css/cards.css" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="css/cards.css" /></noscript>
     <script>
       (function () {
         var d = document.documentElement;
@@ -35,6 +36,7 @@
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Telehealth Occupational Therapy for Children | Follow Me Therapy", "description": "Paediatric occupational therapy by video, anywhere in Australia. Telehealth OT for children aged 0\u201318, with NDIS, Medicare and private options.", "url": "https://followmetherapy.com.au/telehealth-occupational-therapy.html", "isPartOf": {"@type": "WebSite", "name": "Follow Me Therapy", "url": "https://followmetherapy.com.au/"}, "breadcrumb": {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://followmetherapy.com.au/"}, {"@type": "ListItem", "position": 2, "name": "Telehealth OT", "item": "https://followmetherapy.com.au/telehealth-occupational-therapy.html"}]}}</script>
   </head>
   <body>
+    <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-head">
       <div class="wrap">
         <div class="head-left">
@@ -48,7 +50,7 @@
         <a class="btn btn-small" href="https://follow-me-therapy.splose.com/public-form/975d61d5-cd63-44e5-86e7-f9315fa6a5b0" target="_blank" rel="noopener">Start a referral</a>
       </div>
     </header>
-    <main>
+    <main id="main">
       <section class="band tone-lilac hero">
         <div class="wrap">
           <p class="crumbs rise"><a href="index.html">Home</a> › Telehealth OT</p>
@@ -96,19 +98,19 @@
               <span class="svc-icon svc-footprints fund-svg"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 21c-4.2-3-7-5.6-7-8.6a3.6 3.6 0 0 1 7-1.3 3.6 3.6 0 0 1 7 1.3c0 3-2.8 5.6-7 8.6z"/><path d="M5 26h5.5l6 3.5h6.5a2.4 2.4 0 0 0 0-4.8h-4.5"/><path d="M10.5 33h11l11-6.6a2.3 2.3 0 0 0-2.6-3.7L24 25.7"/><path d="M5 23v13"/></svg></span>
               <h3>NDIS</h3>
               <p>For self-managed and plan-managed participants.</p>
-              <span class="more">How it works →</span>
+              <span class="more">How it works<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg></span>
             </div>
             <div class="funding-card" data-funding="medicare" role="button" tabindex="0" aria-haspopup="dialog">
               <span class="svc-icon svc-stairs fund-svg"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="7" y="7" width="26" height="26" rx="7"/><path d="M20 13v14M13 20h14"/></svg></span>
               <h3>Medicare</h3>
               <p>Rebates with an eligible plan from your doctor.</p>
-              <span class="more">How it works →</span>
+              <span class="more">How it works<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg></span>
             </div>
             <div class="funding-card" data-funding="private" role="button" tabindex="0" aria-haspopup="dialog">
               <span class="svc-icon svc-esdm fund-svg"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 5l12 5v9c0 8-5 13-12 16C13 32 8 27 8 19v-9z"/><path d="M15 20l4 4 7-8"/></svg></span>
               <h3>Private</h3>
               <p>Flexible short or long-term support, with possible health fund rebates.</p>
-              <span class="more">How it works →</span>
+              <span class="more">How it works<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg></span>
             </div>
           </div>
 

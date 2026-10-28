@@ -68,14 +68,17 @@
     <!-- Google Fonts: Quicksand -->
     <link rel="preload" href="fonts/quicksand-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="fonts/fredoka-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="fonts/fredoka-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="fonts/quicksand-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="fonts/quicksand-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="css/home.css" />
-    <link rel="stylesheet" href="css/cards.css" />
+    <link rel="stylesheet" href="css/cards.css" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="css/cards.css" /></noscript>
 
   </head>
   <body>
-    <div class="title-and-logo" style="border-radius: 0">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="title-and-logo" style="border-radius: 0">
       <div class="title-container" style="padding-top: 44px">
         <div class="logo-walk">
           <img
@@ -88,8 +91,8 @@
         </div>
         <p class="site-title" style="font-weight: 500">Follow Me Therapy</p>
       </div>
-    </div>
-    <header class="fixed-header" aria-label="Main menu">
+    </header>
+    <nav class="fixed-header" aria-label="Main menu">
       <a href="#about" class="nav-logo" aria-label="Back to top"
         ><img src="img/logo-sm.png" alt="" width="27" height="30"
       /></a>
@@ -98,9 +101,9 @@
       <a href="#funding">Funding</a>
       <a href="#telehealth">Telehealth</a>
       <a href="#contact">Contact</a>
-    </header>
+    </nav>
 
-    <main>
+    <main id="main">
     <div class="section-wrapper about-wrapper tone-lilac">
       <section id="about" class="content-section">
         <div class="fade-in-content">
@@ -117,9 +120,9 @@
             </ul>
             <p class="badge">Telehealth spots available now</p>
             <p class="cta-text">So, what are you waiting for?</p>
-            <p class="cta-emphasis"><em>Follow Me!</em></p>
-            <a href="#contact" class="btn-secondary hero-btn" data-open-contact
-              >Get started</a
+            <a href="#contact" class="btn-secondary hero-btn follow-btn" data-open-contact
+              ><em>Follow Me!</em
+              ><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg></a
             >
           </div>
         </div>
@@ -174,25 +177,25 @@
                 <span class="svc-icon svc-footprints"><svg viewBox="0 0 40 40" aria-hidden="true"><g transform="translate(6 7) rotate(-6 8 12) scale(.95)"><ellipse cx="11.5" cy="3.1" rx="2.05" ry="2.55"/><circle cx="8.15" cy="2.25" r="1.35"/><circle cx="5.85" cy="2.9" r="1.2"/><circle cx="3.95" cy="4.15" r="1.05"/><circle cx="2.55" cy="5.85" r="0.9"/><path d="M7.6 6.6C11.2 6.2 13.9 7.8 13.6 10.8 13.4 12.8 11.4 14 10.9 16.2 10.5 18 11.6 19.4 11.2 21.2 10.8 23.2 9.3 24 7.7 24 5.6 24 4.3 22.7 4.3 20.6 4.3 17.6 3 15.8 2.8 12.8 2.5 9.2 4.4 6.9 7.6 6.6Z"/></g><g transform="translate(19 4) rotate(6 8 12) scale(.95)"><g transform="translate(16 0) scale(-1 1)"><ellipse cx="11.5" cy="3.1" rx="2.05" ry="2.55"/><circle cx="8.15" cy="2.25" r="1.35"/><circle cx="5.85" cy="2.9" r="1.2"/><circle cx="3.95" cy="4.15" r="1.05"/><circle cx="2.55" cy="5.85" r="0.9"/><path d="M7.6 6.6C11.2 6.2 13.9 7.8 13.6 10.8 13.4 12.8 11.4 14 10.9 16.2 10.5 18 11.6 19.4 11.2 21.2 10.8 23.2 9.3 24 7.7 24 5.6 24 4.3 22.7 4.3 20.6 4.3 17.6 3 15.8 2.8 12.8 2.5 9.2 4.4 6.9 7.6 6.6Z"/></g></g></svg></span>
                 <h3>5 Steps Forward</h3>
                 <p>A focused 5-session program for specific goals.</p>
-                <span class="more">Learn more →</span>
+                <span class="more">Learn more<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg></span>
               </div>
               <div class="service-item" data-service="adult" role="button" tabindex="0" aria-haspopup="dialog">
                 <span class="svc-icon svc-stairs"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M6 33h8v-7h7v-7h7v-7h6"/><path d="M30 12V5l5 2.5-5 2.5"/></svg></span>
                 <h3>Steady Steps</h3>
                 <p>A 12-session block of steady, ongoing support to build key skills.</p>
-                <span class="more">Learn more →</span>
+                <span class="more">Learn more<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg></span>
               </div>
               <div class="service-item" data-service="home" role="button" tabindex="0" aria-haspopup="dialog">
                 <span class="svc-icon svc-esdm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="6" y="22" width="12" height="12" rx="2.5"/><rect x="22" y="22" width="12" height="12" rx="2.5"/><rect x="14" y="7" width="12" height="12" rx="2.5" transform="rotate(8 20 13)"/></svg></span>
                 <h3>Early Start Denver Model (ESDM)</h3>
                 <p>Play-based therapy for young children with autism or developmental delays.</p>
-                <span class="more">Learn more →</span>
+                <span class="more">Learn more<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg></span>
               </div>
               <div class="service-item" data-service="assessments" role="button" tabindex="0" aria-haspopup="dialog">
                 <span class="svc-icon svc-assessments"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="9" y="7" width="22" height="28" rx="4"/><rect x="15" y="4" width="10" height="6" rx="2"/><path d="M15 22l4 4 7-8"/></svg></span>
                 <h3>Assessments</h3>
                 <p>NDIS access, functional capacity, progress, sensory and assistive technology reports.</p>
-                <span class="more">Learn more →</span>
+                <span class="more">Learn more<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg></span>
               </div>
             </div>
           </div>
@@ -218,7 +221,7 @@
             <h3 class="person-name">Simone Gabriele</h3>
             <p class="person-role">Paediatric Occupational Therapist</p>
             <ul class="creds">
-              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z" /><path d="M6 11v5c3 2.5 9 2.5 12 0v-5" /></svg>Master of Occupational Therapy, La Trobe University</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z" /><path d="M6 11v5c3 2.5 9 2.5 12 0v-5" /></svg><span>Master of Occupational Therapy,<br />La Trobe University</span></li>
               <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3.5v5.5c0 4.5-3.4 8-8 9.5-4.6-1.5-8-5-8-9.5V6.5z" /><path d="M8.5 12l2.5 2.5 4.5-5" /></svg>AHPRA registered</li>
               <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z" /></svg>Member of Occupational Therapy Australia</li>
             </ul>
@@ -296,19 +299,19 @@
               <span class="svc-icon svc-footprints fund-svg"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 21c-4.2-3-7-5.6-7-8.6a3.6 3.6 0 0 1 7-1.3 3.6 3.6 0 0 1 7 1.3c0 3-2.8 5.6-7 8.6z"/><path d="M5 26h5.5l6 3.5h6.5a2.4 2.4 0 0 0 0-4.8h-4.5"/><path d="M10.5 33h11l11-6.6a2.3 2.3 0 0 0-2.6-3.7L24 25.7"/><path d="M5 23v13"/></svg></span>
               <h3>NDIS</h3>
               <p>For self-managed and plan-managed participants.</p>
-              <span class="more">How it works →</span>
+              <span class="more">How it works<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg></span>
             </div>
             <div class="funding-card" data-funding="medicare" role="button" tabindex="0" aria-haspopup="dialog">
               <span class="svc-icon svc-stairs fund-svg"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="7" y="7" width="26" height="26" rx="7"/><path d="M20 13v14M13 20h14"/></svg></span>
               <h3>Medicare</h3>
               <p>Rebates with an eligible plan from your doctor.</p>
-              <span class="more">How it works →</span>
+              <span class="more">How it works<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg></span>
             </div>
             <div class="funding-card" data-funding="private" role="button" tabindex="0" aria-haspopup="dialog">
               <span class="svc-icon svc-esdm fund-svg"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 5l12 5v9c0 8-5 13-12 16C13 32 8 27 8 19v-9z"/><path d="M15 20l4 4 7-8"/></svg></span>
               <h3>Private</h3>
               <p>Flexible short or long-term support, with possible health fund rebates.</p>
-              <span class="more">How it works →</span>
+              <span class="more">How it works<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg></span>
             </div>
           </div>
         </div>
@@ -321,7 +324,7 @@
           <h2>Telehealth across Australia</h2>
           <div class="content-wrapper telehealth-content">
             <div class="split">
-            <svg class="illus-svg illus-th" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 874.11 733.63" role="img" aria-label="Illustration of a video call between a therapist and two family members"><defs><linearGradient id="th-a" x1="875.04" x2="303.77" y1="475.49" y2="474.73" gradientTransform="matrix(0 1 -1.02 0 1081.62 -103.54)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="gray" stop-opacity=".25"></stop><stop offset=".54" stop-color="gray" stop-opacity=".12"></stop><stop offset="1" stop-color="gray" stop-opacity=".1"></stop></linearGradient><linearGradient id="th-b" x1="590.41" x2="590.41" y1="841.63" y2="111.52" gradientTransform="matrix(0 1 -1.02 0 1082.43 -102.87)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-opacity=".09"></stop><stop offset=".55" stop-opacity=".07"></stop><stop offset="1" stop-opacity=".02"></stop></linearGradient><linearGradient xlink:href="#th-a" id="th-c" x1="837.64" x2="837.64" y1="295.46" y2="83.19"></linearGradient><linearGradient xlink:href="#th-a" id="th-d" x1="305.44" x2="305.44" y1="442.78" y2="230.5"></linearGradient><linearGradient xlink:href="#th-a" id="th-e" x1="-537.55" x2="-537.55" y1="760.23" y2="547.95" gradientTransform="matrix(-1 0 0 1 48 0)"></linearGradient><linearGradient xlink:href="#th-a" id="th-f" x1="137.34" x2="137.34" y1="416.18" y2="343.15"></linearGradient><linearGradient xlink:href="#th-a" id="th-g" x1="677.83" x2="677.83" y1="259.53" y2="186.5"></linearGradient><linearGradient xlink:href="#th-a" id="th-h" x1="425.74" x2="425.74" y1="733.63" y2="660.6"></linearGradient></defs><path fill="url(#th-a)" d="M163.68 752.21 162.94 222a20 20 0 0 1 20-20l833.41-1.11a20 20 0 0 1 20 20l.73 530.21a20 20 0 0 1-20 20l-833.41 1.11a20 20 0 0 1-19.99-20" opacity=".5" transform="translate(-162.94 -83.19)"></path><path fill="url(#th-b)" d="M227.85 241.33h741.32v492.4H227.85z" transform="rotate(-.08 -59067.805 117142.994)"></path><rect width="843.16" height="535.49" x="180.15" y="218.77" fill="#fff" rx="12.68" ry="12.68" transform="rotate(-.08 -59067.8 117135.832)"></rect><path fill="#6b4ef0" d="M795.12 172.38v462.44H87.93V172.38z" opacity=".2"></path><ellipse cx="216.59" cy="489.24" fill="#dbdbdb" rx="19.52" ry="19.06" transform="translate(-163.62 -82.89)"></ellipse><ellipse cx="989.37" cy="406.92" fill="#dbdbdb" rx="6.51" ry="6.35" transform="translate(-163.5 -81.82)"></ellipse><rect width="82.58" height="6.51" x="948.83" y="476.71" fill="#dbdbdb" rx=".76" ry=".76" transform="rotate(89.92 950.305 356.802)"></rect><path fill="url(#th-c)" d="M943.46 189a105.82 105.82 0 1 0-164.86 87.83l.07.47a36.2 36.2 0 0 0 12 7.64l.14-.47c5 4.25 25.81 11.05 49.79 11h.52c15.18 0 31.66-2.68 46.16-10.52 0 0 .13-.28.33-.8a37.7 37.7 0 0 0 10-6.83q.09-.61.17-1.2A105.7 105.7 0 0 0 943.46 189" opacity=".5" transform="translate(-162.94 -83.19)"></path><circle cx="674.7" cy="105.83" r="102.64" fill="#f5f5f5"></circle><path fill="#fda57d" d="M635.49 148.03s-24.46 2-18 46.56a35.1 35.1 0 0 0 11.64 7.41l13.76-46.56ZM714.85 148.03s24.46 2 18 46.56a35.1 35.1 0 0 1-11.64 7.41l-13.76-46.56Z"></path><path fill="#333" d="M636.55 75.01s-11.64 33.86-18 30.69c0 0 61.26 52.91 115.34 0 0 0-9.52-16.93-23.28-30.69Z" class="a-headA"></path><circle cx="675.81" cy="71.84" r="45.5" fill="#333" class="a-headA"></circle><path d="M714.38 148.03h-79.32l-7.45 31.78s-4.35 14.7 1.06 21.16 56 21.16 93.12 1.06a41.4 41.4 0 0 0 1.06-26.45c-4.23-14.81-1.06-1.06-1.06-1.06Z" opacity=".1"></path><path d="M715.44 148.03h-79.38l-7.39 31.78s-4.35 14.7 1.06 21.16 56 21.16 93.12 1.06a41.4 41.4 0 0 0 1.06-26.45c-4.23-14.81-1.06-1.06-1.06-1.06Z" opacity=".1"></path><path fill="#6b4ef0" d="M714.85 148.03h-79.36l-7.43 31.78s-4.35 14.7 1.06 21.16 56 21.16 93.12 1.06a41.4 41.4 0 0 0 1.06-26.45c-4.23-14.81-1.06-1.06-1.06-1.06Z"></path><path d="M659.82 121.7h31.75v26a15.3 15.3 0 0 1-15.3 15.3h-1.15a15.3 15.3 0 0 1-15.3-15.3z" opacity=".1"></path><path fill="#fda57d" d="M659.82 120.52h31.75v26a15.3 15.3 0 0 1-15.3 15.3h-1.15a15.3 15.3 0 0 1-15.3-15.3z"></path><path d="M659.89 125.09a45.7 45.7 0 0 0 31.75.09v-3.9h-31.75Z" opacity=".1"></path><circle cx="675.81" cy="81.72" r="45.5" fill="#fda57d" class="a-headA"></circle><path fill="#333" d="M632.31 64.43h86.75s-7.41-35-40.21-32.8-46.54 32.8-46.54 32.8" class="a-headA"></path><ellipse cx="631.25" cy="79.78" fill="#fda57d" rx="4.23" ry="7.94" class="a-headA"></ellipse><ellipse cx="720.14" cy="79.78" fill="#fda57d" rx="4.23" ry="7.94" class="a-headA"></ellipse><path d="M632.31 65.61h86.75s-7.41-35-40.21-32.8-46.54 32.8-46.54 32.8" opacity=".1" class="a-headA"></path><path fill="url(#th-d)" d="M411.26 336.32a105.82 105.82 0 1 0-164.85 87.83l.07.47a36.2 36.2 0 0 0 12 7.64l.14-.47c5 4.25 25.81 11.05 49.79 11h.52c15.18 0 31.66-2.68 46.16-10.52 0 0 .13-.28.33-.8a37.7 37.7 0 0 0 10-6.83q.09-.61.17-1.2a105.7 105.7 0 0 0 45.67-87.12" opacity=".5" transform="translate(-162.94 -83.19)"></path><circle cx="142.5" cy="253.14" r="102.64" fill="#f5f5f5"></circle><path fill="#6b4ef0" d="M98.06 293.27s-24.46 2-18 46.56a35.1 35.1 0 0 0 11.64 7.41l13.76-46.56ZM177.47 293.27s24.46 2 18 46.56a35.1 35.1 0 0 1-11.64 7.41l-13.77-46.57Z"></path><circle cx="138.43" cy="217.08" r="45.5" fill="#333" class="a-headB"></circle><path fill="#4d8af0" d="M177 293.27H97.63l-7.41 31.75s-4.35 14.7 1.06 21.16 56 21.16 93.12 1.06a41.4 41.4 0 0 0 1.06-26.43c-4.23-14.81-1.06-1.06-1.06-1.06Z" class="a-shirtB"></path><path fill="#4d8af0" d="M178.06 293.27H98.69l-7.41 31.75s-4.35 14.7 1.06 21.16 56 21.16 93.12 1.06a41.4 41.4 0 0 0 1.06-26.43c-4.23-14.81-1.06-1.06-1.06-1.06Z" class="a-shirtB"></path><path fill="#6b4ef0" d="M177.47 293.27H98.06l-7.41 31.75s-4.35 14.7 1.06 21.16 56 21.16 93.12 1.06a41.4 41.4 0 0 0 1.1-26.43c-4.23-14.81-1.06-1.06-1.06-1.06Z"></path><path d="M122.44 266.93h31.75v26a15.3 15.3 0 0 1-15.3 15.3h-1.15a15.3 15.3 0 0 1-15.3-15.3z" opacity=".1"></path><path fill="#fdb797" d="M122.44 265.76h31.75v26a15.3 15.3 0 0 1-15.3 15.3h-1.15a15.3 15.3 0 0 1-15.3-15.3z"></path><path d="M122.5 270.33a45.7 45.7 0 0 0 31.75.09v-3.9H122.5Z" opacity=".1"></path><circle cx="138.43" cy="226.96" r="45.5" fill="#fdb797" class="a-headB"></circle><path d="M94.93 210.81h86.77s-7.41-35-40.21-32.8-46.56 32.8-46.56 32.8" opacity=".1" class="a-headB"></path><path fill="#333" d="M94.93 209.67h86.77s-7.41-35-40.21-32.8-46.56 32.8-46.56 32.8" class="a-headB"></path><ellipse cx="93.87" cy="225.02" fill="#fdb797" rx="4.23" ry="7.94" class="a-headB"></ellipse><ellipse cx="182.75" cy="225.02" fill="#fdb797" rx="4.23" ry="7.94" class="a-headB"></ellipse><path fill="#333" d="M101.67 186.46a16.13 16.13 0 0 1 5.85-8.67c2.22-1.54 4.87-2.28 7.41-3.18a56.7 56.7 0 0 0 10.78-5.15c3.86-2.38 7.48-5.24 11.73-6.81 7.31-2.7 15.45-1.24 23 .7a19.4 19.4 0 0 1 5.38 2 20.4 20.4 0 0 1 4.77 4.62l12 14.45a23 23 0 0 1 3 4.19 14.4 14.4 0 0 1 1.36 4.73 12.38 12.38 0 0 1-1.28 7.76c-2 3.46-6.2 5.2-10.2 5.36s-7.93-1-11.78-2.13c-12.4-3.63-25-7-37.82-8.52a106.7 106.7 0 0 0-19.24-.62c-2 .13-4.68 1.06-5.9-1-1.11-1.79.39-5.95.94-7.73" class="a-headB"></path><path fill="url(#th-e)" d="M479.73 653.77a105.82 105.82 0 1 1 164.85 87.83l-.07.47a36.2 36.2 0 0 1-12 7.64l-.14-.47c-5 4.25-25.81 11.05-49.79 11h-.52c-15.18 0-31.66-2.68-46.16-10.52 0 0-.13-.28-.33-.8a37.7 37.7 0 0 1-10-6.83q-.09-.61-.17-1.2a105.7 105.7 0 0 1-45.67-87.12" opacity=".5" transform="translate(-162.94 -83.19)"></path><circle cx="422.6" cy="570.59" r="102.64" fill="#f5f5f5"></circle><path fill="#be7c5e" d="M382.36 609.68s-24.46 2-18 46.56a35.1 35.1 0 0 0 11.64 7.41l13.76-46.56ZM461.72 609.68s24.46 2 18 46.56a35.1 35.1 0 0 1-11.66 7.41l-13.76-46.56Z"></path><path fill="#333" d="M383.42 536.67s-1.88 5.48-4.55 11.82c-5.82 13.87.82 67.13 14.75 72.8 15.63 6.37 36.18 10.45 57.53 2.66 18.56-6.77 24.28-67.39 11.16-82.16-1.54-1.73-3.15-3.45-4.83-5.13Z" class="a-headC"></path><circle cx="422.68" cy="533.5" r="45.5" fill="#333" class="a-headC"></circle><path d="M461.25 609.68h-79.36l-7.41 31.75s-4.35 14.7 1.06 21.16 56 21.16 93.12 1.06a41.4 41.4 0 0 0 1.06-26.45c-4.23-14.81-1.06-1.06-1.06-1.06Z" opacity=".1"></path><path d="M462.31 609.68h-79.36l-7.41 31.75s-4.35 14.7 1.06 21.16 56 21.16 93.12 1.06a41.4 41.4 0 0 0 1.06-26.45c-4.23-14.81-1.06-1.06-1.06-1.06Z" opacity=".1"></path><path fill="#6b4ef0" d="M461.72 609.68h-79.36l-7.41 31.75s-4.35 14.7 1.06 21.16 56 21.16 93.12 1.06a41.4 41.4 0 0 0 1.06-26.45c-4.23-14.81-1.06-1.06-1.06-1.06Z"></path><path d="M406.69 583.35h31.75v26a15.3 15.3 0 0 1-15.3 15.3H422a15.3 15.3 0 0 1-15.3-15.3v-26z" opacity=".1"></path><path fill="#be7c5e" d="M406.69 582.17h31.75v26a15.3 15.3 0 0 1-15.3 15.3H422a15.3 15.3 0 0 1-15.3-15.3v-26z"></path><path d="M406.76 586.74a45.7 45.7 0 0 0 31.75.09v-3.9h-31.75Z" opacity=".1"></path><circle cx="422.68" cy="543.37" r="45.5" fill="#be7c5e" class="a-headC"></circle><path fill="#333" d="M379.18 526.09h86.77s-7.41-35-40.21-32.8-46.56 32.8-46.56 32.8" class="a-headC"></path><ellipse cx="378.12" cy="541.43" fill="#be7c5e" rx="4.23" ry="7.94" class="a-headC"></ellipse><ellipse cx="467.01" cy="541.43" fill="#be7c5e" rx="4.23" ry="7.94" class="a-headC"></ellipse><path d="M379.18 527.26h86.77s-7.41-35-40.21-32.8-46.56 32.8-46.56 32.8" opacity=".1" class="a-headC"></path><path fill="none" stroke="#6c63ff" stroke-dasharray="12" stroke-miterlimit="10" stroke-width="2" d="M672.1 240.44v382.81H569.4M139.91 380.49v242.76h149.38" class="a-dash"></path><circle cx="137.34" cy="379.66" r="36.52" fill="url(#th-f)" opacity=".5" class="a-checkB"></circle><circle cx="137.34" cy="379.66" r="34.37" fill="#69f0ae" class="a-checkB"></circle><path fill="#fff" d="m122.42 375.08 12.89 11.81 18.25-26.85 6.45 5.37-24.7 32.22-18.26-20.4z" class="a-checkB"></path><circle cx="677.83" cy="223.01" r="36.52" fill="url(#th-g)" opacity=".5" class="a-checkA"></circle><circle cx="677.83" cy="223.01" r="34.37" fill="#69f0ae" class="a-checkA"></circle><path fill="#fff" d="m662.91 218.43 12.89 11.81 18.26-26.85 6.44 5.37-24.7 32.22-18.26-20.41z" class="a-checkA"></path><circle cx="425.74" cy="697.11" r="36.52" fill="url(#th-h)" opacity=".5" class="a-checkC"></circle><circle cx="425.74" cy="697.11" r="34.37" fill="#69f0ae" class="a-checkC"></circle><path fill="#fff" d="m410.82 692.53 12.89 11.81 18.26-26.85 6.44 5.37-24.7 32.22-18.26-20.4z" class="a-checkC"></path></svg>
+            <svg class="illus-svg illus-th illus-tablet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 600 880" role="img" aria-label="Illustration of a tablet on a video call between a therapist and two family members"><defs><linearGradient id="th-a" x1="875.04" x2="303.77" y1="475.49" y2="474.73" gradientTransform="matrix(0 1 -1.02 0 1081.62 -103.54)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="gray" stop-opacity=".25"></stop><stop offset=".54" stop-color="gray" stop-opacity=".12"></stop><stop offset="1" stop-color="gray" stop-opacity=".1"></stop></linearGradient><linearGradient id="th-b" x1="590.41" x2="590.41" y1="841.63" y2="111.52" gradientTransform="matrix(0 1 -1.02 0 1082.43 -102.87)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-opacity=".09"></stop><stop offset=".55" stop-opacity=".07"></stop><stop offset="1" stop-opacity=".02"></stop></linearGradient><linearGradient xlink:href="#th-a" id="th-c" x1="837.64" x2="837.64" y1="295.46" y2="83.19"></linearGradient><linearGradient xlink:href="#th-a" id="th-d" x1="305.44" x2="305.44" y1="442.78" y2="230.5"></linearGradient><linearGradient xlink:href="#th-a" id="th-e" x1="-537.55" x2="-537.55" y1="760.23" y2="547.95" gradientTransform="matrix(-1 0 0 1 48 0)"></linearGradient><linearGradient xlink:href="#th-a" id="th-f" x1="137.34" x2="137.34" y1="416.18" y2="343.15"></linearGradient><linearGradient xlink:href="#th-a" id="th-g" x1="677.83" x2="677.83" y1="259.53" y2="186.5"></linearGradient><linearGradient xlink:href="#th-a" id="th-h" x1="425.74" x2="425.74" y1="733.63" y2="660.6"></linearGradient><linearGradient id="tv-frame" x1="0" x2="0" y1="1" y2="0"><stop offset="0" stop-color="gray" stop-opacity=".25"/><stop offset=".54" stop-color="gray" stop-opacity=".12"/><stop offset="1" stop-color="gray" stop-opacity=".1"/></linearGradient></defs><rect x="72" y="64" width="436" height="772" rx="22" fill="url(#tv-frame)"/><rect x="88" y="80" width="404" height="740" rx="12.68" fill="#fff"/><rect x="110" y="132" width="360" height="620" fill="#6b4ef0" opacity=".2"/><ellipse cx="290" cy="106" rx="6.51" ry="6.35" fill="#dbdbdb"/><rect x="249" y="100" width="20" height="0" fill="none"/><ellipse cx="290" cy="786" rx="19.52" ry="19.06" fill="#dbdbdb"/><path fill="none" stroke="#6c63ff" stroke-dasharray="12" stroke-miterlimit="10" stroke-width="2" d="M392 292V412H268M157 576V694H306" class="a-dash"/><g transform="translate(-282.70 44.17)"><path fill="url(#th-c)" d="M943.46 189a105.82 105.82 0 1 0-164.86 87.83l.07.47a36.2 36.2 0 0 0 12 7.64l.14-.47c5 4.25 25.81 11.05 49.79 11h.52c15.18 0 31.66-2.68 46.16-10.52 0 0 .13-.28.33-.8a37.7 37.7 0 0 0 10-6.83q.09-.61.17-1.2A105.7 105.7 0 0 0 943.46 189" opacity=".5" transform="translate(-162.94 -83.19)"></path><circle cx="674.7" cy="105.83" r="102.64" fill="#f5f5f5"></circle><path fill="#fda57d" d="M635.49 148.03s-24.46 2-18 46.56a35.1 35.1 0 0 0 11.64 7.41l13.76-46.56ZM714.85 148.03s24.46 2 18 46.56a35.1 35.1 0 0 1-11.64 7.41l-13.76-46.56Z"></path><path fill="#333" d="M636.55 75.01s-11.64 33.86-18 30.69c0 0 61.26 52.91 115.34 0 0 0-9.52-16.93-23.28-30.69Z" class="a-headA"></path><circle cx="675.81" cy="71.84" r="45.5" fill="#333" class="a-headA"></circle><path d="M714.38 148.03h-79.32l-7.45 31.78s-4.35 14.7 1.06 21.16 56 21.16 93.12 1.06a41.4 41.4 0 0 0 1.06-26.45c-4.23-14.81-1.06-1.06-1.06-1.06Z" opacity=".1"></path><path d="M715.44 148.03h-79.38l-7.39 31.78s-4.35 14.7 1.06 21.16 56 21.16 93.12 1.06a41.4 41.4 0 0 0 1.06-26.45c-4.23-14.81-1.06-1.06-1.06-1.06Z" opacity=".1"></path><path fill="#6b4ef0" d="M714.85 148.03h-79.36l-7.43 31.78s-4.35 14.7 1.06 21.16 56 21.16 93.12 1.06a41.4 41.4 0 0 0 1.06-26.45c-4.23-14.81-1.06-1.06-1.06-1.06Z"></path><path d="M659.82 121.7h31.75v26a15.3 15.3 0 0 1-15.3 15.3h-1.15a15.3 15.3 0 0 1-15.3-15.3z" opacity=".1"></path><path fill="#fda57d" d="M659.82 120.52h31.75v26a15.3 15.3 0 0 1-15.3 15.3h-1.15a15.3 15.3 0 0 1-15.3-15.3z"></path><path d="M659.89 125.09a45.7 45.7 0 0 0 31.75.09v-3.9h-31.75Z" opacity=".1"></path><circle cx="675.81" cy="81.72" r="45.5" fill="#fda57d" class="a-headA"></circle><path fill="#333" d="M632.31 64.43h86.75s-7.41-35-40.21-32.8-46.54 32.8-46.54 32.8" class="a-headA"></path><ellipse cx="631.25" cy="79.78" fill="#fda57d" rx="4.23" ry="7.94" class="a-headA"></ellipse><ellipse cx="720.14" cy="79.78" fill="#fda57d" rx="4.23" ry="7.94" class="a-headA"></ellipse><path d="M632.31 65.61h86.75s-7.41-35-40.21-32.8-46.54 32.8-46.54 32.8" opacity=".1" class="a-headA"></path><circle cx="677.83" cy="223.01" r="36.52" fill="url(#th-g)" opacity=".5" class="a-checkA"></circle><circle cx="677.83" cy="223.01" r="34.37" fill="#69f0ae" class="a-checkA"></circle><path fill="#fff" d="m662.91 218.43 12.89 11.81 18.26-26.85 6.44 5.37-24.7 32.22-18.26-20.41z" class="a-checkA"></path></g><g transform="translate(17.50 158.86)"><path fill="url(#th-d)" d="M411.26 336.32a105.82 105.82 0 1 0-164.85 87.83l.07.47a36.2 36.2 0 0 0 12 7.64l.14-.47c5 4.25 25.81 11.05 49.79 11h.52c15.18 0 31.66-2.68 46.16-10.52 0 0 .13-.28.33-.8a37.7 37.7 0 0 0 10-6.83q.09-.61.17-1.2a105.7 105.7 0 0 0 45.67-87.12" opacity=".5" transform="translate(-162.94 -83.19)"></path><circle cx="142.5" cy="253.14" r="102.64" fill="#f5f5f5"></circle><path fill="#6b4ef0" d="M98.06 293.27s-24.46 2-18 46.56a35.1 35.1 0 0 0 11.64 7.41l13.76-46.56ZM177.47 293.27s24.46 2 18 46.56a35.1 35.1 0 0 1-11.64 7.41l-13.77-46.57Z"></path><circle cx="138.43" cy="217.08" r="45.5" fill="#333" class="a-headB"></circle><path fill="#4d8af0" d="M177 293.27H97.63l-7.41 31.75s-4.35 14.7 1.06 21.16 56 21.16 93.12 1.06a41.4 41.4 0 0 0 1.06-26.43c-4.23-14.81-1.06-1.06-1.06-1.06Z" class="a-shirtB"></path><path fill="#4d8af0" d="M178.06 293.27H98.69l-7.41 31.75s-4.35 14.7 1.06 21.16 56 21.16 93.12 1.06a41.4 41.4 0 0 0 1.06-26.43c-4.23-14.81-1.06-1.06-1.06-1.06Z" class="a-shirtB"></path><path fill="#6b4ef0" d="M177.47 293.27H98.06l-7.41 31.75s-4.35 14.7 1.06 21.16 56 21.16 93.12 1.06a41.4 41.4 0 0 0 1.1-26.43c-4.23-14.81-1.06-1.06-1.06-1.06Z"></path><path d="M122.44 266.93h31.75v26a15.3 15.3 0 0 1-15.3 15.3h-1.15a15.3 15.3 0 0 1-15.3-15.3z" opacity=".1"></path><path fill="#fdb797" d="M122.44 265.76h31.75v26a15.3 15.3 0 0 1-15.3 15.3h-1.15a15.3 15.3 0 0 1-15.3-15.3z"></path><path d="M122.5 270.33a45.7 45.7 0 0 0 31.75.09v-3.9H122.5Z" opacity=".1"></path><circle cx="138.43" cy="226.96" r="45.5" fill="#fdb797" class="a-headB"></circle><path d="M94.93 210.81h86.77s-7.41-35-40.21-32.8-46.56 32.8-46.56 32.8" opacity=".1" class="a-headB"></path><path fill="#333" d="M94.93 209.67h86.77s-7.41-35-40.21-32.8-46.56 32.8-46.56 32.8" class="a-headB"></path><ellipse cx="93.87" cy="225.02" fill="#fdb797" rx="4.23" ry="7.94" class="a-headB"></ellipse><ellipse cx="182.75" cy="225.02" fill="#fdb797" rx="4.23" ry="7.94" class="a-headB"></ellipse><path fill="#333" d="M101.67 186.46a16.13 16.13 0 0 1 5.85-8.67c2.22-1.54 4.87-2.28 7.41-3.18a56.7 56.7 0 0 0 10.78-5.15c3.86-2.38 7.48-5.24 11.73-6.81 7.31-2.7 15.45-1.24 23 .7a19.4 19.4 0 0 1 5.38 2 20.4 20.4 0 0 1 4.77 4.62l12 14.45a23 23 0 0 1 3 4.19 14.4 14.4 0 0 1 1.36 4.73 12.38 12.38 0 0 1-1.28 7.76c-2 3.46-6.2 5.2-10.2 5.36s-7.93-1-11.78-2.13c-12.4-3.63-25-7-37.82-8.52a106.7 106.7 0 0 0-19.24-.62c-2 .13-4.68 1.06-5.9-1-1.11-1.79.39-5.95.94-7.73" class="a-headB"></path><circle cx="137.34" cy="379.66" r="36.52" fill="url(#th-f)" opacity=".5" class="a-checkB"></circle><circle cx="137.34" cy="379.66" r="34.37" fill="#69f0ae" class="a-checkB"></circle><path fill="#fff" d="m122.42 375.08 12.89 11.81 18.25-26.85 6.45 5.37-24.7 32.22-18.26-20.4z" class="a-checkB"></path></g><g transform="translate(-12.60 119.41)"><path fill="url(#th-e)" d="M479.73 653.77a105.82 105.82 0 1 1 164.85 87.83l-.07.47a36.2 36.2 0 0 1-12 7.64l-.14-.47c-5 4.25-25.81 11.05-49.79 11h-.52c-15.18 0-31.66-2.68-46.16-10.52 0 0-.13-.28-.33-.8a37.7 37.7 0 0 1-10-6.83q-.09-.61-.17-1.2a105.7 105.7 0 0 1-45.67-87.12" opacity=".5" transform="translate(-162.94 -83.19)"></path><circle cx="422.6" cy="570.59" r="102.64" fill="#f5f5f5"></circle><path fill="#be7c5e" d="M382.36 609.68s-24.46 2-18 46.56a35.1 35.1 0 0 0 11.64 7.41l13.76-46.56ZM461.72 609.68s24.46 2 18 46.56a35.1 35.1 0 0 1-11.66 7.41l-13.76-46.56Z"></path><path fill="#333" d="M383.42 536.67s-1.88 5.48-4.55 11.82c-5.82 13.87.82 67.13 14.75 72.8 15.63 6.37 36.18 10.45 57.53 2.66 18.56-6.77 24.28-67.39 11.16-82.16-1.54-1.73-3.15-3.45-4.83-5.13Z" class="a-headC"></path><circle cx="422.68" cy="533.5" r="45.5" fill="#333" class="a-headC"></circle><path d="M461.25 609.68h-79.36l-7.41 31.75s-4.35 14.7 1.06 21.16 56 21.16 93.12 1.06a41.4 41.4 0 0 0 1.06-26.45c-4.23-14.81-1.06-1.06-1.06-1.06Z" opacity=".1"></path><path d="M462.31 609.68h-79.36l-7.41 31.75s-4.35 14.7 1.06 21.16 56 21.16 93.12 1.06a41.4 41.4 0 0 0 1.06-26.45c-4.23-14.81-1.06-1.06-1.06-1.06Z" opacity=".1"></path><path fill="#6b4ef0" d="M461.72 609.68h-79.36l-7.41 31.75s-4.35 14.7 1.06 21.16 56 21.16 93.12 1.06a41.4 41.4 0 0 0 1.06-26.45c-4.23-14.81-1.06-1.06-1.06-1.06Z"></path><path d="M406.69 583.35h31.75v26a15.3 15.3 0 0 1-15.3 15.3H422a15.3 15.3 0 0 1-15.3-15.3v-26z" opacity=".1"></path><path fill="#be7c5e" d="M406.69 582.17h31.75v26a15.3 15.3 0 0 1-15.3 15.3H422a15.3 15.3 0 0 1-15.3-15.3v-26z"></path><path d="M406.76 586.74a45.7 45.7 0 0 0 31.75.09v-3.9h-31.75Z" opacity=".1"></path><circle cx="422.68" cy="543.37" r="45.5" fill="#be7c5e" class="a-headC"></circle><path fill="#333" d="M379.18 526.09h86.77s-7.41-35-40.21-32.8-46.56 32.8-46.56 32.8" class="a-headC"></path><ellipse cx="378.12" cy="541.43" fill="#be7c5e" rx="4.23" ry="7.94" class="a-headC"></ellipse><ellipse cx="467.01" cy="541.43" fill="#be7c5e" rx="4.23" ry="7.94" class="a-headC"></ellipse><path d="M379.18 527.26h86.77s-7.41-35-40.21-32.8-46.56 32.8-46.56 32.8" opacity=".1" class="a-headC"></path><circle cx="425.74" cy="697.11" r="36.52" fill="url(#th-h)" opacity=".5" class="a-checkC"></circle><circle cx="425.74" cy="697.11" r="34.37" fill="#69f0ae" class="a-checkC"></circle><path fill="#fff" d="m410.82 692.53 12.89 11.81 18.26-26.85 6.44 5.37-24.7 32.22-18.26-20.4z" class="a-checkC"></path></g></svg>
               <div class="split-text">
             <p>
               See your therapist by video or phone, with no travel. Therapy fits
@@ -359,7 +362,7 @@
               ></span>
             </p>
             <p class="more-link">
-              <a href="telehealth-occupational-therapy.html">More about telehealth OT →</a>
+              <a href="telehealth-occupational-therapy.html">More about telehealth OT<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg></a>
             </p>
           </div>
         </div>
@@ -468,9 +471,6 @@
         </div>
       </section>
     </div>
-    </main>
-
-    <!-- Footer Section -->
     <a href="#contact" class="fab" id="contactUsButton" aria-label="Contact us">
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <path
@@ -486,6 +486,10 @@
       </svg>
       <span class="fab-label">Contact us</span>
     </a>
+    </main>
+
+    <!-- Footer Section -->
+
 
     <!-- Contact Us Modal Structure -->
     <div id="contactModal" class="modal contact-modal">

@@ -4,22 +4,22 @@ document.addEventListener("DOMContentLoaded", function () {
     pediatric: {
       title: "5 Steps Forward", tag: "5 sessions",
       content:
-        "<p class='modal-lead'>A short, focused program of 5 sessions with targeted support.</p><p class='list-label'>Ideal for:</p><ul class='checklist'><li>Returning families who need a boost</li><li>Families trying OT for the first time</li></ul>",
+        "<p class='modal-lead'>A short, focused program of 5 sessions with targeted support.</p><p class='list-label'>Ideal for:</p><ul class='checklist'><li>Returning families who need a boost</li><li>Families trying OT for the first time</li></ul><div class='modal-links'><a class='modal-link' href='telehealth-occupational-therapy.html'><span>Telehealth sessions</span><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M9 5l7 7-7 7'/></svg></a><a class='modal-link' href='occupational-therapy-north-western-melbourne.html'><span>Community sessions in North-Western Melbourne</span><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M9 5l7 7-7 7'/></svg></a></div>",
     },
     adult: {
       title: "Steady Steps", tag: "12 sessions",
       content:
-        "<p class='modal-lead'>A 12-session block of structured, consistent support to work on big goals and build new skills.</p><ul class='checklist'><li>Time to involve your child’s wider network</li><li>A full plan of action, put together with you</li><li>Blocks can be stacked if more support is needed</li></ul>",
+        "<p class='modal-lead'>A 12-session block of structured, consistent support to work on big goals and build new skills.</p><ul class='checklist'><li>Time to involve your child’s wider network</li><li>A full plan of action, put together with you</li><li>Blocks can be stacked if more support is needed</li></ul><div class='modal-links'><a class='modal-link' href='telehealth-occupational-therapy.html'><span>Telehealth sessions</span><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M9 5l7 7-7 7'/></svg></a><a class='modal-link' href='occupational-therapy-north-western-melbourne.html'><span>Community sessions in North-Western Melbourne</span><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M9 5l7 7-7 7'/></svg></a></div>",
     },
     home: {
       title: "Early Start Denver Model (ESDM)", tag: "Up to age 5",
       content:
-        "<p>An evidence-based, play-based approach for children up to 5 with autism or other developmental delays, developed by the UC Davis MIND Institute.</p><p>It supports communication, social skills, play, daily living and thinking skills. Delivered by an ESDM-certified therapist, it includes:</p><ul class='checklist'><li>1:1 sessions at home or in the community</li><li>An individualised learning program</li><li>Coaching for the people who support your child every day</li></ul><p class='modal-note'>We’ll check whether ESDM suits your child at the initial assessment. <a href='esdm-melbourne.html'>More about ESDM →</a></p>",
+        "<p>An evidence-based, play-based approach for children up to 5 with autism or other developmental delays, developed by the UC Davis MIND Institute.</p><p>It supports communication, social skills, play, daily living and thinking skills. Delivered by an ESDM-certified therapist, it includes:</p><ul class='checklist'><li>1:1 sessions at home or in the community</li><li>An individualised learning program</li><li>Coaching for the people who support your child every day</li></ul><p class='modal-note'>We’ll check whether ESDM suits your child at the initial assessment.</p><div class='modal-links'><a class='modal-link' href='esdm-melbourne.html'><span>ESDM in Melbourne</span><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M9 5l7 7-7 7'/></svg></a></div>",
     },
     assessments: {
       title: "Assessments", tag: "Reports",
       content:
-        "<ul class='checklist'><li>NDIS Access Report</li><li>Functional Capacity Assessment (FCA)</li><li>Progress Report</li><li>Sensory Processing Assessment</li><li>Assistive Technology (AT)</li></ul><p class='modal-note'>Whether AT goals are suitable is reviewed at the initial assessment.</p>",
+        "<ul class='checklist'><li>NDIS Access Report</li><li>Functional Capacity Assessment (FCA)</li><li>Progress Report</li><li>Sensory Processing Assessment</li><li>Assistive Technology (AT)</li></ul><p class='modal-note'>Whether AT goals are suitable is reviewed at the initial assessment.</p><div class='modal-links'><a class='modal-link' href='ndis-occupational-therapy.html'><span>NDIS reports and assessments</span><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M9 5l7 7-7 7'/></svg></a></div>",
     },
   };
 
@@ -107,12 +107,12 @@ document.addEventListener("DOMContentLoaded", function () {
     ndis: {
       title: "NDIS", tag: "Self or plan-managed",
       content:
-        "<ul class='checklist'><li>We support self-managed and plan-managed NDIS participants.</li><li>Bring your plan goals to the initial assessment and we’ll build therapy around them.</li><li>We can write reports for plan reviews and NDIS access requests.</li></ul><p class='modal-note'>Is your plan NDIA-managed? Get in touch and we’ll talk through your options.</p><p><a href='ndis-occupational-therapy.html'>More about NDIS OT →</a></p>",
+        "<ul class='checklist'><li>We support self-managed and plan-managed NDIS participants.</li><li>Bring your plan goals to the initial assessment and we’ll build therapy around them.</li><li>We can write reports for plan reviews and NDIS access requests.</li></ul><p class='modal-note'>Is your plan NDIA-managed? Get in touch and we’ll talk through your options.</p><div class='modal-links'><a class='modal-link' href='ndis-occupational-therapy.html'><span>More about NDIS OT</span><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M9 5l7 7-7 7'/></svg></a></div>",
     },
     medicare: {
       title: "Medicare", tag: "With a GP plan",
       content:
-        "<ul class='checklist'><li><b>Chronic condition plan:</b> your GP can write a plan that gives Medicare rebates for up to 5 allied health sessions a year.</li><li><b>Neurodevelopmental plan:</b> children and young people under 25 with an eligible diagnosis, such as autism, may access up to 20 sessions through a referral from a paediatrician or psychiatrist.</li></ul><p class='modal-note'>Not sure if you’re eligible? Ask us or your doctor.</p>",
+        "<ul class='checklist'><li><b>Chronic condition plan:</b> your GP can write a plan that gives Medicare rebates for up to 5 allied health sessions a year.</li><li><b>Neurodevelopmental plan:</b> children and young people under 25 with an eligible diagnosis, such as autism, may access up to 20 sessions through a referral from a paediatrician or psychiatrist.</li></ul><p class='modal-note'>Not sure if you’re eligible? Ask us or your doctor.</p><div class='modal-links'><a class='modal-link' href='https://follow-me-therapy.splose.com/public-form/e84c8756-615f-4404-a6f3-a90f3760223b' target='_blank' rel='noopener'><span>Ask us about eligibility</span><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M9 5l7 7-7 7'/></svg></a></div>",
     },
     private: {
       title: "Private", tag: "No referral needed",
@@ -162,7 +162,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Highlight the menu link for the section on screen.
   if ("IntersectionObserver" in window) {
     const links = {};
-    document.querySelectorAll("header.fixed-header a[href^='#']").forEach((a) => {
+    document.querySelectorAll(".fixed-header a[href^='#']").forEach((a) => {
       links[a.getAttribute("href").slice(1)] = a;
     });
     const map = { "ot-services": "services", how: "about-simone" };
@@ -188,7 +188,7 @@ document.addEventListener("DOMContentLoaded", function () {
     t.innerHTML = "<i></i><i></i><i></i><i></i>";
     li.appendChild(t);
   });
-  // Trails walk one after another: 1 → 2, pause, 2 → 3.
+  // Trails walk one after another: 1 to 2, pause, 2 to 3.
   document.querySelectorAll(".steps").forEach((ol) => {
     const trails = ol.querySelectorAll(".step-trail");
     ol.classList.add("trails-" + trails.length);

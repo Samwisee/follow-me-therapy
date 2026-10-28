@@ -1006,3 +1006,49 @@ html {
     padding-top: 40px !important;
   }
 }
+
+/* "Skip to content": the first thing a keyboard reaches, shown only when
+   it has focus. */
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: -60px;
+  z-index: 1000;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: #6b4ef0;
+  color: #fff !important;
+  font-weight: 700;
+  text-decoration: none;
+  transition: top 0.15s ease;
+}
+.skip-link:focus {
+  top: 12px;
+}
+
+/* Chevrons after "Learn more", "How it works" and other links (and
+   before "Back"), in the link's colour, nudging along on hover. */
+.chev {
+  display: inline-block;
+  width: 0.85em;
+  height: 0.85em;
+  margin-left: 0.2em;
+  vertical-align: -0.08em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.2s ease;
+}
+.chev-back {
+  margin: 0 0.2em 0 0;
+}
+a:hover > .chev:not(.chev-back),
+.service-item:hover .chev,
+.funding-card:hover .chev {
+  transform: translateX(3px);
+}
+a:hover > .chev-back {
+  transform: translateX(-3px);
+}

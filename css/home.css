@@ -451,16 +451,16 @@ section {
   display: block;
   box-sizing: border-box;
 }
-body header.fixed-header {
+body .fixed-header {
   gap: 4px;
   justify-content: space-around;
   box-sizing: border-box;
 }
 @media (max-width: 480px) {
-  body header.fixed-header {
+  body .fixed-header {
     border-radius: 0;
   }
-  body header.fixed-header a {
+  body .fixed-header a {
     padding: 0 4px;
     font-size: 15px;
   }
@@ -505,7 +505,7 @@ img {
   opacity: 1;
   transform: none;
 }
-header.fixed-header {
+.fixed-header {
   position: fixed;
   top: 0;
   width: 100%;
@@ -523,7 +523,7 @@ header.fixed-header {
   border-radius: 0 0 10px 10px;
   z-index: 1000;
 }
-header.fixed-header a {
+.fixed-header a {
   padding: 0 10px;
   text-decoration: none;
   color: #000;
@@ -1719,7 +1719,7 @@ strong {
 .company-details {
   border-top-color: rgba(255, 255, 255, 0.18);
 }
-body header.fixed-header {
+body .fixed-header {
   align-items: center;
   top: 10px;
   border-radius: 999px;
@@ -1730,7 +1730,7 @@ body header.fixed-header {
   backdrop-filter: blur(10px);
   box-shadow: 0 6px 20px rgba(43, 37, 64, 0.1);
 }
-body header.fixed-header a {
+body .fixed-header a {
   font-family: var(--display);
   font-weight: 500;
   color: var(--ink);
@@ -1740,14 +1740,14 @@ body header.fixed-header a {
     background-color 0.25s ease,
     color 0.25s ease;
 }
-body header.fixed-header a:hover {
+body .fixed-header a:hover {
   background: var(--purple-tint);
 }
-body header.fixed-header a.active {
+body .fixed-header a.active {
   background: var(--purple);
   color: #fff;
 }
-body header.fixed-header .nav-logo {
+body .fixed-header .nav-logo {
   display: none;
   padding: 2px 8px;
 }
@@ -1756,12 +1756,12 @@ body header.fixed-header .nav-logo {
   width: auto;
   display: block;
 }
-body header.fixed-header .nav-logo.active,
-body header.fixed-header .nav-logo:hover {
+body .fixed-header .nav-logo.active,
+body .fixed-header .nav-logo:hover {
   background: 0 0;
 }
 @media (min-width: 769px) {
-  body header.fixed-header .nav-logo {
+  body .fixed-header .nav-logo {
     display: block;
   }
 }
@@ -1789,14 +1789,14 @@ section[id] {
   }
 }
 @media (max-width: 480px) {
-  body header.fixed-header {
+  body .fixed-header {
     width: calc(100% - 12px);
     top: 6px;
     padding: 4px;
     gap: 0;
     border-radius: 999px;
   }
-  body header.fixed-header a {
+  body .fixed-header a {
     padding: 7px 8px;
     font-size: 14.5px;
   }
@@ -2889,4 +2889,128 @@ html {
 }
 .bio > .bio-photo {
   grid-row: 1 / span 5 !important;
+}
+
+/* ── Telehealth: the portrait tablet on a video call ──
+   The same people, ticks and dashed line as before (and the same head-nod,
+   tick and dash animations), on an upright tablet. */
+.split > .illus-th.illus-tablet {
+  flex: 0 0 240px !important;
+  width: 240px !important;
+}
+@media (max-width: 650px) {
+  .split > .illus-th.illus-tablet {
+    width: 230px !important;
+    max-width: 64% !important;
+    margin: 0 auto 8px !important;
+  }
+}
+
+/* Breathing room: under the Get started title, and under the Teams line. */
+#contactModalTitle {
+  margin-bottom: 14px !important;
+}
+#contactModal .modal-chips {
+  margin-bottom: 24px !important;
+}
+.telehealth-content .teams-note {
+  margin-bottom: 28px !important;
+}
+
+/* "Skip to content": the first thing a keyboard reaches, shown only when
+   it has focus. */
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: -60px;
+  z-index: 1000;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: #6b4ef0;
+  color: #fff !important;
+  font-weight: 700;
+  text-decoration: none;
+  transition: top 0.15s ease;
+}
+.skip-link:focus {
+  top: 12px;
+}
+
+/* "Follow Me!" is the button: the hero's call to action in one. */
+.follow-btn {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 10px;
+  margin-top: 6px !important;
+  padding: 16px 30px 16px 34px !important;
+  font-size: 1.6rem !important;
+}
+.follow-btn em {
+  font-style: italic;
+  font-family: var(--display);
+  font-weight: 600;
+}
+.follow-btn svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.25s ease;
+}
+.follow-btn:hover svg,
+.follow-btn:focus-visible svg {
+  transform: translateX(4px);
+}
+.cta-text {
+  margin-bottom: 18px !important;
+}
+
+/* Meet Simone: the same space all the way round the card, so its corners
+   curve round the photo and the chips evenly (card radius = gap + the
+   chips' and photo's own radius). */
+.about-simone-content.bio {
+  padding: 24px !important;
+  border-radius: 40px !important;
+}
+.bio > .chips {
+  margin: 0 !important;
+}
+.bio > .chips li {
+  margin: 0 !important;
+}
+@media (max-width: 520px) {
+  .about-simone-content.bio {
+    padding: 18px !important;
+    border-radius: 34px !important;
+  }
+}
+
+/* Chevrons after "Learn more", "How it works" and other links (and
+   before "Back"), in the link's colour, nudging along on hover. */
+.chev {
+  display: inline-block;
+  width: 0.85em;
+  height: 0.85em;
+  margin-left: 0.2em;
+  vertical-align: -0.08em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.2s ease;
+}
+.chev-back {
+  margin: 0 0.2em 0 0;
+}
+a:hover > .chev:not(.chev-back),
+.service-item:hover .chev,
+.funding-card:hover .chev {
+  transform: translateX(3px);
+}
+a:hover > .chev-back {
+  transform: translateX(-3px);
 }

@@ -171,6 +171,22 @@
           display: none;
         }
       }
+      .skip-link {
+        position: absolute;
+        left: 12px;
+        top: -60px;
+        z-index: 100;
+        padding: 10px 16px;
+        border-radius: 999px;
+        background: var(--purple);
+        color: #fff;
+        font-weight: 700;
+        text-decoration: none;
+      }
+      .skip-link:focus {
+        top: 12px;
+      }
+      .chev{display:inline-block;width:.85em;height:.85em;vertical-align:-.08em;fill:none;stroke:currentColor;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;margin-right:.2em}
     </style>
     <script>
       document.addEventListener("click", function (e) {
@@ -184,7 +200,8 @@
     </script>
   </head>
   <body>
-    <div class="top-row">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="top-row">
       <a class="back-btn" href="index.html" data-back aria-label="Back"
         ><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg><span>Back</span></a
       >
@@ -192,8 +209,8 @@
         <img src="img/logo-sm.png" alt="" width="226" height="250" />
         <span>Follow Me Therapy</span>
       </a>
-    </div>
-    <main>
+    </header>
+    <main id="main">
       <h1>Privacy Policy</h1>
       <p class="updated">Last updated: October 2026</p>
 
@@ -295,7 +312,7 @@
         on 1300 363 992.
       </p>
 
-      <a class="back" href="index.html">← Back to Follow Me Therapy</a>
+      <a class="back" href="index.html"><svg class="chev chev-back" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg>Back to Follow Me Therapy</a>
     </main>
   </body>
 </html>
