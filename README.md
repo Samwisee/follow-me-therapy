@@ -19,6 +19,7 @@ Static site for [followmetherapy.com.au](https://followmetherapy.com.au), hosted
 
 - **Home page copy:** edit `index.html`. Service and funding pop-up text lives in `js/home.js` (`serviceDetails`, `fundingDetails`) and is mirrored in `js/pages.js`.
 - **Landing pages:** edit the content in `tools/build_pages.py`, then run `python3 tools/build_pages.py`. Don't edit the generated HTML by hand.
+- **Cloud callout:** the shape is `img/cloud-wide.svg` and `img/cloud-tall.svg` (phones), drawn by `python3 tools/make_cloud.py` from circles blended into one smooth outline. Change the puffs there and re-run.
 - **Illustrations:** from unDraw's MIT-licensed set, recoloured and inlined in `index.html`. Animated parts are tagged with `a-*` classes.
 
 ## Workflow

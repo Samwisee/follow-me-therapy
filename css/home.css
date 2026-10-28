@@ -2675,34 +2675,23 @@ html.fonts-ready .title-container {
 }
 
 /* ── "Every session…" sits in a soft, floating cloud ──
-   A pill-shaped body with three big puffs rising from its top. The puffs
-   overlap each other and run out into the rounded ends, so the outline
-   is one billowing curve, and the drop shadow follows the whole shape. */
+   The cloud is a drawn shape (img/cloud-*.svg, made by tools/make_cloud.py):
+   puffs blended smoothly into one outline, with no notches or flat
+   shelves. A wide one on bigger screens, a rounder one on phones. The
+   padding keeps the words inside the body of the cloud. */
 .callout {
   isolation: isolate;
-  background: #fff;
-  border-radius: 999px;
-  padding: 30px 56px !important;
-  margin: 96px auto 24px !important;
-  max-width: 660px;
+  background: url("../img/cloud-wide.svg") center / 100% 100% no-repeat !important;
+  border-radius: 0 !important;
+  padding: 116px 100px 66px !important;
+  margin: 24px auto 8px !important;
+  max-width: 760px;
   text-align: center !important;
-  filter: drop-shadow(0 14px 24px rgba(43, 37, 64, 0.09));
+  filter: drop-shadow(0 14px 22px rgba(43, 37, 64, 0.1));
 }
-.callout::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  pointer-events: none;
-  left: 0;
-  right: 0;
-  top: -78px;
-  height: 140px;
-  background:
-    radial-gradient(circle at 10% 116px, #fff 0 50px, transparent 51px),
-    radial-gradient(circle at 27% 100%, #fff 0 92px, transparent 93px),
-    radial-gradient(circle at 50% 100%, #fff 0 128px, transparent 129px),
-    radial-gradient(circle at 73% 100%, #fff 0 100px, transparent 101px),
-    radial-gradient(circle at 90% 116px, #fff 0 54px, transparent 55px);
+.callout::before,
+.callout::after {
+  content: none !important;
 }
 @media (prefers-reduced-motion: no-preference) {
   .is-visible .callout {
@@ -2713,18 +2702,12 @@ html.fonts-ready .title-container {
     50% { transform: translateY(-6px); }
   }
 }
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .callout {
-    padding: 26px 28px !important;
-    margin: 72px auto 20px !important;
-  }
-  .callout::before {
-    top: -56px;
-    height: 104px;
-    background:
-      radial-gradient(circle at 25% 100%, #fff 0 66px, transparent 67px),
-      radial-gradient(circle at 52% 100%, #fff 0 88px, transparent 89px),
-      radial-gradient(circle at 77% 100%, #fff 0 70px, transparent 71px);
+    background-image: url("../img/cloud-tall.svg") !important;
+    padding: 106px 36px 52px !important;
+    margin: 24px auto 0 !important;
+    max-width: 420px;
   }
 }
 
