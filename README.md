@@ -34,4 +34,3 @@ Use a commit hash, not the branch name, as raw.githack caches branch links. Merg
 ## Forms
 
 - Referral and enquiry forms are hosted by Splose.
-- The call-back form posts to FormSubmit (`info@followmetherapy.com.au`). The first submission sends a one-off activation email that must be confirmed.

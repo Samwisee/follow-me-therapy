@@ -877,3 +877,54 @@ h2::after {
 .modal-content:focus-visible {
   outline: 0;
 }
+
+/* Back, at the top of every inner page: to wherever you came from on
+   the site, or home. */
+.head-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex: none;
+  padding: 8px 14px 8px 10px;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--purple);
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 1rem;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(43, 37, 64, 0.08);
+  transition: transform 0.25s cubic-bezier(0.3, 1.5, 0.5, 1), box-shadow 0.25s ease;
+}
+.back-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.back-btn:hover,
+.back-btn:focus-visible {
+  transform: translateX(-3px);
+  box-shadow: 0 8px 18px rgba(43, 37, 64, 0.12);
+}
+.back-btn:focus-visible {
+  outline: 3px solid var(--purple);
+  outline-offset: 3px;
+}
+@media (max-width: 520px) {
+  .back-btn {
+    padding: 8px;
+  }
+  .back-btn span {
+    display: none;
+  }
+}

@@ -120,62 +120,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Call-back form: sends a short email to the practice inbox.
-  const cb = document.getElementById("callback");
-  if (cb) {
-    cb.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const status = cb.querySelector(".cb-status");
-      const btn = cb.querySelector("button[type=submit]");
-      const data = Object.fromEntries(new FormData(cb));
-      if (data._honey) return;
-      if (!data.name || !data.phone || !data.child_age) {
-        status.textContent = "Please add your name, phone and your child’s age.";
-        status.className = "cb-status err";
-        return;
-      }
-      btn.disabled = true;
-      btn.textContent = "Sending…";
-      try {
-        const res = await fetch("https://formsubmit.co/ajax/info@followmetherapy.com.au", {
-          method: "POST",
-          headers: { "Content-Type": "application/json", Accept: "application/json" },
-          body: JSON.stringify({
-            _subject: "Call-back request from the website",
-            _template: "table",
-            _captcha: "false",
-            Name: data.name,
-            Phone: data.phone,
-            "Child's age": data.child_age,
-            "Best time": data.best_time,
-          }),
-        });
-        if (!res.ok) throw new Error();
-        cb.reset();
-        status.textContent = "Thanks! We’ll give you a call soon.";
-        status.className = "cb-status ok";
-        btn.textContent = "Sent ✓";
-      } catch (err) {
-        status.textContent = "Sorry, that didn’t send. Please call 0435 076 683 or email info@followmetherapy.com.au.";
-        status.className = "cb-status err";
-        btn.disabled = false;
-        btn.textContent = "Request a call";
-      }
-    });
-  }
-
-  // "Request a call back" in the contact pop-up jumps to the form.
-  document.querySelectorAll("[data-callback]").forEach((el) =>
-    el.addEventListener("click", (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      closeModal(document.getElementById("contactModal"));
-      const f = document.getElementById("callback");
-      f.scrollIntoView({ behavior: "smooth", block: "center" });
-      setTimeout(() => f.querySelector("input").focus({ preventScroll: true }), 600);
-    })
-  );
-
   // Contact Us button.
   const contactModal = document.getElementById("contactModal");
   document.querySelectorAll("#contactUsButton, [data-open-contact]").forEach((btn) =>

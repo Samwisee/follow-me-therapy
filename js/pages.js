@@ -2,6 +2,16 @@
 // clickable service and funding cards, the details pop-up,
 // footstep trails between steps, and entrance animations.
 document.documentElement.classList.add("js");
+// Back: return to the page you came from on this site; otherwise home.
+document.addEventListener("click", function (e) {
+  var back = e.target.closest && e.target.closest("[data-back]");
+  if (!back) return;
+  var fromHere = document.referrer && document.referrer.indexOf(location.origin) === 0;
+  if (fromHere && history.length > 1) {
+    e.preventDefault();
+    history.back();
+  }
+});
 document.addEventListener("DOMContentLoaded", function () {
         const serviceDetails = {
           pediatric: {

@@ -112,13 +112,76 @@
         display: inline-block;
         margin-top: 28px;
       }
+      /* Back, at the top: as on the other inner pages. */
+      .top-row {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      .top-row .top {
+        margin: 0;
+        padding: 24px 0;
+      }
+      .back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        flex: none;
+        padding: 8px 14px 8px 10px;
+        border-radius: 999px;
+        background: #fff;
+        color: var(--purple);
+        font-family: "Fredoka", sans-serif;
+        font-weight: 500;
+        text-decoration: none;
+        box-shadow: 0 4px 12px rgba(43, 37, 64, 0.08);
+        transition: transform 0.25s ease;
+      }
+      .back-btn svg {
+        width: 20px;
+        height: 20px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 2.6;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .back-btn:hover {
+        transform: translateX(-3px);
+      }
+      @media (max-width: 520px) {
+        .back-btn {
+          padding: 8px;
+        }
+        .back-btn span {
+          display: none;
+        }
+      }
     </style>
+    <script>
+      document.addEventListener("click", function (e) {
+        var back = e.target.closest && e.target.closest("[data-back]");
+        if (!back) return;
+        if (document.referrer.indexOf(location.origin) === 0 && history.length > 1) {
+          e.preventDefault();
+          history.back();
+        }
+      });
+    </script>
   </head>
   <body>
-    <a class="top" href="index.html">
-      <img src="img/logo-sm.png" alt="" width="226" height="250" />
-      <span>Follow Me Therapy</span>
-    </a>
+    <div class="top-row">
+      <a class="back-btn" href="index.html" data-back aria-label="Back"
+        ><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg><span>Back</span></a
+      >
+      <a class="top" href="index.html">
+        <img src="img/logo-sm.png" alt="" width="226" height="250" />
+        <span>Follow Me Therapy</span>
+      </a>
+    </div>
     <main>
       <h1>Privacy Policy</h1>
       <p class="updated">Last updated: October 2026</p>
@@ -198,10 +261,7 @@
       <p>
         This website does not use advertising or tracking cookies. Our referral
         and enquiry forms are provided by Splose, and the information you enter
-        goes directly into our practice records. The “call back” form on our
-        home page sends your name, phone number, child’s age range and preferred
-        call time to our inbox by email, using a form service (FormSubmit). It
-        does not ask for health information.
+        goes directly into our practice records.
       </p>
 
       <h2>Accessing or correcting your information</h2>
