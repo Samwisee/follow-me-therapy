@@ -2895,14 +2895,19 @@ html {
    The same people, ticks and dashed line as before (and the same head-nod,
    tick and dash animations), on an upright tablet. */
 .split > .illus-th.illus-tablet {
-  flex: 0 0 240px !important;
-  width: 240px !important;
+  flex: none !important;
+  width: 240px;
+  align-self: flex-start !important;
+}
+.split:has(> .illus-tablet) {
+  align-items: flex-start !important;
 }
 @media (max-width: 650px) {
   .split > .illus-th.illus-tablet {
-    width: 230px !important;
-    max-width: 64% !important;
-    margin: 0 auto 8px !important;
+    width: 210px !important;
+    height: auto !important;
+    max-width: 60% !important;
+    margin: 0 auto 12px !important;
   }
 }
 
@@ -3013,4 +3018,171 @@ a:hover > .chev:not(.chev-back),
 }
 a:hover > .chev-back {
   transform: translateX(-3px);
+}
+
+/* ── The hero, with a bit more fun ──
+   A wavy yellow underline under "fullest lives", each fact in its own
+   colour with a little icon, a few doodles bobbing round the card, and a
+   trail of footprints walking up to the Follow Me! button. All still for
+   reduced motion. */
+.about-content {
+  position: relative;
+  overflow: visible;
+}
+.swash {
+  white-space: nowrap;
+  padding-bottom: 6px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 12' preserveAspectRatio='none'%3E%3Cpath d='M2 8c12-6 22 4 34-1s22-5 34 0 22 4 34-1 12-3 14-2' fill='none' stroke='%23f2a516' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E") left bottom / 100% 12px no-repeat;
+}
+.facts li {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 8px;
+  border: 2px solid transparent;
+  transition: transform 0.3s cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+.facts li svg {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.facts li.fact-age { background: #efe9ff !important; color: #4b34c9 !important; }
+.facts li.fact-tele { background: #e3f4f5 !important; color: #00606d !important; }
+.facts li.fact-place { background: #fff0cc !important; color: #7a4a00 !important; }
+.facts li:nth-child(1):hover { transform: rotate(-3deg) scale(1.04); }
+.facts li:nth-child(2):hover { transform: rotate(2deg) scale(1.04); }
+.facts li:nth-child(3):hover { transform: rotate(-2deg) scale(1.04); }
+.doodle {
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  fill: none;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+.doodle-star { top: 22px; left: 26px; stroke: #f2a516; fill: #fff0cc; }
+.doodle-heart { top: 30px; right: 30px; stroke: #d6457a; fill: #fde7ef; width: 30px; height: 30px; }
+.doodle-squiggle { bottom: 44px; left: 30px; width: 58px; height: 20px; stroke: #007a8a; }
+.doodle-dots { bottom: 40px; right: 34px; fill: #6b4ef0; stroke: none; opacity: 0.5; }
+.follow-row {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-trail {
+  position: absolute;
+  right: calc(100% + 14px);
+  top: 50%;
+  display: flex;
+  gap: 8px;
+  transform: translateY(-50%);
+}
+.hero-trail i {
+  width: 12px;
+  height: 18px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 24'%3E%3Cg fill='%236b4ef0'%3E%3Cellipse cx='11.5' cy='3.1' rx='2.05' ry='2.55'/%3E%3Ccircle cx='8.15' cy='2.25' r='1.35'/%3E%3Ccircle cx='5.85' cy='2.9' r='1.2'/%3E%3Ccircle cx='3.95' cy='4.15' r='1.05'/%3E%3Ccircle cx='2.55' cy='5.85' r='0.9'/%3E%3Cpath d='M7.6 6.6C11.2 6.2 13.9 7.8 13.6 10.8 13.4 12.8 11.4 14 10.9 16.2 10.5 18 11.6 19.4 11.2 21.2 10.8 23.2 9.3 24 7.7 24 5.6 24 4.3 22.7 4.3 20.6 4.3 17.6 3 15.8 2.8 12.8 2.5 9.2 4.4 6.9 7.6 6.6Z'/%3E%3C/g%3E%3C/svg%3E") center / contain no-repeat;
+  transform: rotate(90deg) translateX(-5px);
+  opacity: 0.35;
+}
+.hero-trail i:nth-child(even) {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 24'%3E%3Cg fill='%236b4ef0'%3E%3Cg transform='translate%2816 0%29 scale%28-1 1%29'%3E%3Cellipse cx='11.5' cy='3.1' rx='2.05' ry='2.55'/%3E%3Ccircle cx='8.15' cy='2.25' r='1.35'/%3E%3Ccircle cx='5.85' cy='2.9' r='1.2'/%3E%3Ccircle cx='3.95' cy='4.15' r='1.05'/%3E%3Ccircle cx='2.55' cy='5.85' r='0.9'/%3E%3Cpath d='M7.6 6.6C11.2 6.2 13.9 7.8 13.6 10.8 13.4 12.8 11.4 14 10.9 16.2 10.5 18 11.6 19.4 11.2 21.2 10.8 23.2 9.3 24 7.7 24 5.6 24 4.3 22.7 4.3 20.6 4.3 17.6 3 15.8 2.8 12.8 2.5 9.2 4.4 6.9 7.6 6.6Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  transform: rotate(90deg) translateX(5px);
+}
+@media (max-width: 600px) {
+  .hero-trail { display: none; }
+  .doodle-star { top: 14px; left: 14px; width: 26px; height: 26px; }
+  .doodle-heart { top: 16px; right: 16px; width: 24px; height: 24px; }
+  .doodle-squiggle, .doodle-dots { display: none; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .is-visible .doodle {
+    animation: doodleBob 5s ease-in-out infinite;
+  }
+  .is-visible .doodle-heart { animation-delay: -1.2s; animation-duration: 4.2s; }
+  .is-visible .doodle-squiggle { animation-delay: -2.4s; animation-duration: 6s; }
+  .is-visible .doodle-dots { animation-delay: -3.1s; }
+  .is-visible .hero-trail i {
+    animation: heroStep 3s ease-in-out infinite;
+  }
+  .is-visible .hero-trail i:nth-child(2) { animation-delay: 0.25s; }
+  .is-visible .hero-trail i:nth-child(3) { animation-delay: 0.5s; }
+  .is-visible .hero-trail i:nth-child(4) { animation-delay: 0.75s; }
+  .is-visible .hero-trail i:nth-child(5) { animation-delay: 1s; }
+  .is-visible .follow-btn {
+    animation: followNudge 3s ease-in-out 1.2s infinite;
+  }
+  .follow-btn:hover {
+    animation: none;
+  }
+  @keyframes doodleBob {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-6px) rotate(8deg); }
+  }
+  @keyframes heroStep {
+    0%, 100% { opacity: 0.1; }
+    30% { opacity: 0.9; }
+    60% { opacity: 0.25; }
+  }
+  @keyframes followNudge {
+    0%, 70%, 100% { transform: translateX(0); }
+    78% { transform: translateX(5px); }
+    86% { transform: translateX(-2px); }
+    92% { transform: translateX(3px); }
+  }
+}
+
+/* Words only screen readers hear. */
+.sr-only {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Teams sits close under the list it belongs to, with clear space before
+   the research note. */
+.telehealth-content .split {
+  margin-bottom: 0 !important;
+}
+.telehealth-content .split-text > :last-child {
+  margin-bottom: 0 !important;
+}
+.telehealth-content .teams-note {
+  margin-top: 20px !important;
+  margin-bottom: 0 !important;
+}
+.telehealth-content .evidence.info-note {
+  margin-top: 48px !important;
+}
+@media (max-width: 600px) {
+  .doodle-star {
+    top: auto !important;
+    bottom: 22px;
+    left: 14px !important;
+  }
+  .doodle-heart {
+    top: auto !important;
+    bottom: 26px;
+    right: 16px !important;
+  }
+}
+/* The chips start exactly at the card's left edge, in line with the
+   label above them, on every screen. */
+.bio > .chips,
+.chips {
+  padding-left: 0 !important;
+  margin-left: 0 !important;
 }

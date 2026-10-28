@@ -248,7 +248,7 @@
    icon, closer lines, slimmer rows and button. */
 @media (max-width: 600px), (max-height: 820px) {
   .modal .modal-content {
-    width: calc(100% - 24px) !important;
+    width: min(600px, calc(100% - 24px)) !important;
     padding: 26px 18px 18px !important;
     max-height: calc(100dvh - 24px) !important;
   }
@@ -551,4 +551,11 @@
     border-radius: 14px !important;
     background-size: 22px 22px, auto !important;
   }
+}
+
+/* A link that leaves the site (to the NDIS or Services Australia) shows an
+   "open outside" mark instead of a chevron. */
+.modal-link.is-external {
+  background: #fff;
+  border: 2px solid var(--tone-tint, #efe9ff);
 }

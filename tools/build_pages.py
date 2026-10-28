@@ -6,7 +6,7 @@ ROOT=os.path.join(os.path.dirname(os.path.abspath(__file__)), '..') + os.sep
 REF='https://follow-me-therapy.splose.com/public-form/975d61d5-cd63-44e5-86e7-f9315fa6a5b0'
 ENQ='https://follow-me-therapy.splose.com/public-form/e84c8756-615f-4404-a6f3-a90f3760223b'
 SITE='https://followmetherapy.com.au/'
-LINKS=[('telehealth-occupational-therapy.html','Telehealth OT'),('ndis-occupational-therapy.html','NDIS OT'),('esdm-melbourne.html','ESDM in Melbourne'),('occupational-therapy-north-western-melbourne.html','North-Western Melbourne'),('privacy.html','Privacy policy')]
+LINKS=[('telehealth-occupational-therapy.html','Telehealth OT'),('ndis-occupational-therapy.html','NDIS OT'),('esdm-melbourne.html','ESDM in Melbourne'),('occupational-therapy-north-western-melbourne.html','OT in North-Western Melbourne'),('privacy.html','Privacy policy')]
 
 def page(slug,title,desc,crumb,h1,lead,chips,bands):
     foot=''.join(f'<li><a href="{h}">{t}</a></li>' for h,t in [('index.html','Home')]+LINKS if h!=slug)

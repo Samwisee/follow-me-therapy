@@ -1,15 +1,23 @@
 // Follow Me Therapy: home page behaviour (pop-ups, cards, form, animations).
 document.addEventListener("DOMContentLoaded", function () {
+  // Links that open a new tab say so to screen readers.
+  const markNewTab = (root) =>
+    root.querySelectorAll('a[target="_blank"]:not([data-newtab])').forEach((a) => {
+      a.setAttribute("data-newtab", "");
+      a.insertAdjacentHTML("beforeend", '<span class="sr-only"> (opens in a new tab)</span>');
+    });
+  markNewTab(document);
+  new MutationObserver(() => markNewTab(document)).observe(document.body, { childList: true, subtree: true });
   const serviceDetails = {
     pediatric: {
       title: "5 Steps Forward", tag: "5 sessions",
       content:
-        "<p class='modal-lead'>A short, focused program of 5 sessions with targeted support.</p><p class='list-label'>Ideal for:</p><ul class='checklist'><li>Returning families who need a boost</li><li>Families trying OT for the first time</li></ul><div class='modal-links'><a class='modal-link' href='telehealth-occupational-therapy.html'><span>Telehealth sessions</span><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M9 5l7 7-7 7'/></svg></a><a class='modal-link' href='occupational-therapy-north-western-melbourne.html'><span>Community sessions in North-Western Melbourne</span><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M9 5l7 7-7 7'/></svg></a></div>",
+        "<p class='modal-lead'>A short, focused program of 5 sessions with targeted support.</p><p class='list-label'>Ideal for:</p><ul class='checklist'><li>Returning families who need a boost</li><li>Families trying OT for the first time</li></ul><div class='modal-links'><a class='modal-link' href='telehealth-occupational-therapy.html'><span>Telehealth OT</span><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M9 5l7 7-7 7'/></svg></a><a class='modal-link' href='occupational-therapy-north-western-melbourne.html'><span>OT in North-Western Melbourne</span><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M9 5l7 7-7 7'/></svg></a></div>",
     },
     adult: {
       title: "Steady Steps", tag: "12 sessions",
       content:
-        "<p class='modal-lead'>A 12-session block of structured, consistent support to work on big goals and build new skills.</p><ul class='checklist'><li>Time to involve your child’s wider network</li><li>A full plan of action, put together with you</li><li>Blocks can be stacked if more support is needed</li></ul><div class='modal-links'><a class='modal-link' href='telehealth-occupational-therapy.html'><span>Telehealth sessions</span><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M9 5l7 7-7 7'/></svg></a><a class='modal-link' href='occupational-therapy-north-western-melbourne.html'><span>Community sessions in North-Western Melbourne</span><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M9 5l7 7-7 7'/></svg></a></div>",
+        "<p class='modal-lead'>A 12-session block of structured, consistent support to work on big goals and build new skills.</p><ul class='checklist'><li>Time to involve your child’s wider network</li><li>A full plan of action, put together with you</li><li>Blocks can be stacked if more support is needed</li></ul><div class='modal-links'><a class='modal-link' href='telehealth-occupational-therapy.html'><span>Telehealth OT</span><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M9 5l7 7-7 7'/></svg></a><a class='modal-link' href='occupational-therapy-north-western-melbourne.html'><span>OT in North-Western Melbourne</span><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M9 5l7 7-7 7'/></svg></a></div>",
     },
     home: {
       title: "Early Start Denver Model (ESDM)", tag: "Up to age 5",
@@ -19,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
     assessments: {
       title: "Assessments", tag: "Reports",
       content:
-        "<ul class='checklist'><li>NDIS Access Report</li><li>Functional Capacity Assessment (FCA)</li><li>Progress Report</li><li>Sensory Processing Assessment</li><li>Assistive Technology (AT)</li></ul><p class='modal-note'>Whether AT goals are suitable is reviewed at the initial assessment.</p><div class='modal-links'><a class='modal-link' href='ndis-occupational-therapy.html'><span>NDIS reports and assessments</span><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M9 5l7 7-7 7'/></svg></a></div>",
+        "<ul class='checklist'><li>NDIS Access Report</li><li>Functional Capacity Assessment (FCA)</li><li>Progress Report</li><li>Sensory Processing Assessment</li><li>Assistive Technology (AT)</li></ul><p class='modal-note'>Whether AT goals are suitable is reviewed at the initial assessment.</p><div class='modal-links'><a class='modal-link' href='ndis-occupational-therapy.html'><span>NDIS OT</span><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M9 5l7 7-7 7'/></svg></a><a class='modal-link is-external' href='https://www.ndis.gov.au/participants/home-equipment-and-supports/assistive-technology-explained' target='_blank' rel='noopener'><span>NDIS: assistive technology explained</span><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M14 4h6v6'/><path d='M20 4l-9 9'/><path d='M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4'/></svg></a></div>",
     },
   };
 
@@ -72,6 +80,27 @@ document.addEventListener("DOMContentLoaded", function () {
     const tag = d.tag ? `<span class="modal-tag">${d.tag}</span>` : "";
     return `<div class="modal-hero">${art}${tag}<h3 id="serviceModalTitle">${d.title}</h3></div><div class="modal-body">${d.content}</div>`;
   };
+  // The telehealth drawing is exactly as tall as the words beside it, so
+  // its top and bottom line up with theirs. (Stacked on phones, it just
+  // takes its own size.)
+  const tablet = document.querySelector(".illus-tablet");
+  if (tablet && tablet.nextElementSibling && "ResizeObserver" in window) {
+    const words = tablet.nextElementSibling;
+    const fit = () => {
+      const side = getComputedStyle(tablet.parentElement).flexDirection !== "column" && innerWidth > 650;
+      // From the top of the first line to the bottom of the last one
+      // (margins don't count).
+      const lines = [...words.querySelectorAll("p, li, h3")];
+      const top = Math.min(...lines.map((l) => l.getBoundingClientRect().top));
+      const bottom = Math.max(...lines.map((l) => l.getBoundingClientRect().bottom));
+      tablet.style.height = side ? bottom - top + "px" : "";
+      tablet.style.width = side ? "auto" : "";
+    };
+    new ResizeObserver(fit).observe(words);
+    addEventListener("resize", fit);
+    fit();
+  }
+
   // Service cards open their details (click, Enter or Space).
   const serviceModal = document.getElementById("serviceModal");
   const serviceModalContent = document.getElementById("modalContent");
@@ -107,12 +136,12 @@ document.addEventListener("DOMContentLoaded", function () {
     ndis: {
       title: "NDIS", tag: "Self or plan-managed",
       content:
-        "<ul class='checklist'><li>We support self-managed and plan-managed NDIS participants.</li><li>Bring your plan goals to the initial assessment and we’ll build therapy around them.</li><li>We can write reports for plan reviews and NDIS access requests.</li></ul><p class='modal-note'>Is your plan NDIA-managed? Get in touch and we’ll talk through your options.</p><div class='modal-links'><a class='modal-link' href='ndis-occupational-therapy.html'><span>More about NDIS OT</span><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M9 5l7 7-7 7'/></svg></a></div>",
+        "<ul class='checklist'><li>We support self-managed and plan-managed NDIS participants.</li><li>Bring your plan goals to the initial assessment and we’ll build therapy around them.</li><li>We can write reports for plan reviews and NDIS access requests.</li></ul><p class='modal-note'>Is your plan NDIA-managed? Get in touch and we’ll talk through your options.</p><div class='modal-links'><a class='modal-link' href='ndis-occupational-therapy.html'><span>NDIS OT</span><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M9 5l7 7-7 7'/></svg></a><a class='modal-link is-external' href='https://www.ndis.gov.au/how-apply-ndis/what-access-request-form' target='_blank' rel='noopener'><span>NDIS: applying for the NDIS</span><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M14 4h6v6'/><path d='M20 4l-9 9'/><path d='M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4'/></svg></a></div>",
     },
     medicare: {
       title: "Medicare", tag: "With a GP plan",
       content:
-        "<ul class='checklist'><li><b>Chronic condition plan:</b> your GP can write a plan that gives Medicare rebates for up to 5 allied health sessions a year.</li><li><b>Neurodevelopmental plan:</b> children and young people under 25 with an eligible diagnosis, such as autism, may access up to 20 sessions through a referral from a paediatrician or psychiatrist.</li></ul><p class='modal-note'>Not sure if you’re eligible? Ask us or your doctor.</p><div class='modal-links'><a class='modal-link' href='https://follow-me-therapy.splose.com/public-form/e84c8756-615f-4404-a6f3-a90f3760223b' target='_blank' rel='noopener'><span>Ask us about eligibility</span><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M9 5l7 7-7 7'/></svg></a></div>",
+        "<ul class='checklist'><li><b>Chronic condition plan:</b> your GP can write a plan that gives Medicare rebates for up to 5 allied health sessions a year.</li><li><b>Neurodevelopmental plan:</b> children and young people under 25 with an eligible diagnosis, such as autism, may access up to 20 sessions through a referral from a paediatrician or psychiatrist.</li></ul><p class='modal-note'>Not sure if you’re eligible? Ask us or your doctor.</p><div class='modal-links'><a class='modal-link' href='https://follow-me-therapy.splose.com/public-form/e84c8756-615f-4404-a6f3-a90f3760223b' target='_blank' rel='noopener'><span>Ask us about eligibility</span><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M9 5l7 7-7 7'/></svg></a><a class='modal-link is-external' href='https://www.servicesaustralia.gov.au/services-available-under-gp-chronic-condition-management-plan' target='_blank' rel='noopener'><span>Services Australia: GP chronic condition plans</span><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M14 4h6v6'/><path d='M20 4l-9 9'/><path d='M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4'/></svg></a></div>",
     },
     private: {
       title: "Private", tag: "No referral needed",
