@@ -3352,3 +3352,12 @@ a:hover > .chev-back {
     left: 15px;
   }
 }
+
+/* Phones: the opening paragraph first, then the tablet drawing, then the
+   rest of the text. */
+@media (max-width: 650px) {
+  .telehealth-content .split:has(> .illus-tablet) { gap: 0 !important; }
+  .telehealth-content .split:has(> .illus-tablet) > .split-text { display: contents; }
+  .telehealth-content .split-text > p:first-child { order: -1; margin-bottom: 24px !important; }
+  .split > .illus-th.illus-tablet { margin: 0 auto 24px !important; }
+}
