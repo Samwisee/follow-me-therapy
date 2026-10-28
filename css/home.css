@@ -2783,3 +2783,166 @@ html.fonts-ready .title-container {
   justify-content: center;
   text-align: center;
 }
+
+/* ── Service and funding pop-ups ──
+   A band and a soft wash of the card's colour across the top, the card's
+   icon (which bobs in), a short tag, then the details, each line arriving
+   in turn. */
+.modal[data-tone] .modal-content {
+  --tone: var(--purple);
+  --tone-tint: var(--purple-tint);
+  border-top: 8px solid var(--tone);
+  background: linear-gradient(180deg, var(--tone-tint) 0, #fff 150px) #fff !important;
+}
+.modal[data-tone="teal"] .modal-content { --tone: var(--teal); --tone-tint: var(--teal-tint); }
+.modal[data-tone="sun"] .modal-content { --tone: #c77c00; --tone-tint: #fff0cc; }
+.modal[data-tone="pink"] .modal-content { --tone: var(--pink); --tone-tint: var(--pink-tint); }
+.modal-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.modal-hero h3 {
+  margin: 0 32px !important;
+  font-size: 1.6em;
+}
+.modal-icon {
+  display: grid;
+  place-items: center;
+  width: 76px;
+  height: 76px;
+  border-radius: 24px;
+  background: #fff;
+  color: var(--tone);
+  box-shadow: 0 8px 20px rgba(43, 37, 64, 0.1);
+}
+.modal-icon svg {
+  width: 44px;
+  height: 44px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.modal-icon.is-fill svg {
+  fill: currentColor;
+  stroke: none;
+}
+.modal-body .checklist li::before {
+  left: 14px !important;
+  top: 12px !important;
+}
+.modal-tag {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--tone);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.85em;
+  letter-spacing: 0.02em;
+}
+.modal-lead {
+  font-size: 1.1em !important;
+  font-weight: 600;
+  color: var(--ink);
+  text-align: center;
+}
+.modal-body .list-label {
+  margin: 4px 0 8px !important;
+}
+.modal-body .checklist li {
+  background: #fff;
+  border: 2px solid var(--tone-tint);
+  border-radius: 16px;
+  padding: 10px 14px 10px 44px;
+  margin-bottom: 10px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .modal.show .modal-icon {
+    animation: iconBob 0.7s cubic-bezier(0.3, 1.6, 0.5, 1) both 0.1s;
+  }
+  .modal.show .modal-body > * {
+    animation: lineIn 0.45s ease-out both;
+  }
+  .modal.show .modal-body > *:nth-child(2) { animation-delay: 0.08s; }
+  .modal.show .modal-body > *:nth-child(3) { animation-delay: 0.16s; }
+  .modal.show .modal-body .checklist li { animation: lineIn 0.45s ease-out both; }
+  .modal.show .modal-body .checklist li:nth-child(1) { animation-delay: 0.18s; }
+  .modal.show .modal-body .checklist li:nth-child(2) { animation-delay: 0.26s; }
+  .modal.show .modal-body .checklist li:nth-child(3) { animation-delay: 0.34s; }
+  .modal.show .modal-body .checklist li:nth-child(4) { animation-delay: 0.42s; }
+  .modal.show .modal-body .checklist li:nth-child(5) { animation-delay: 0.5s; }
+  @keyframes iconBob {
+    0% { transform: scale(0.4) rotate(-14deg); opacity: 0; }
+    100% { transform: none; opacity: 1; }
+  }
+  @keyframes lineIn {
+    0% { transform: translateY(10px); opacity: 0; }
+    100% { transform: none; opacity: 1; }
+  }
+}
+
+/* ── Meet Simone: the photo beside the words ──
+   A two-column grid, so the words never wrap under the photo and leave a
+   line on its own; the photo scales with the card. Below 720px it stacks. */
+.about-simone-content.bio {
+  display: grid !important;
+  grid-template-columns: minmax(180px, 36%) 1fr;
+  column-gap: 32px;
+  align-items: start;
+}
+.bio > * {
+  grid-column: 2;
+}
+.bio > .bio-photo {
+  grid-column: 1;
+  grid-row: 1 / span 4;
+  float: none !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  aspect-ratio: 1 / 1;
+}
+.bio > .bio-clear,
+.bio > .list-label,
+.bio > .chips {
+  grid-column: 1 / -1;
+}
+.bio > .list-label {
+  margin-top: 28px !important;
+}
+@media (max-width: 720px) {
+  .about-simone-content.bio {
+    display: block !important;
+  }
+  .bio > .bio-photo {
+    max-width: 380px !important;
+    margin: 0 auto 20px !important;
+  }
+}
+
+/* ── Telehealth: the Teams note and the link to more, centred ── */
+.teams-note {
+  justify-content: center;
+  gap: 12px !important;
+  margin: 28px auto 4px !important;
+  font-size: 1.1em;
+}
+.telehealth-content .teams-note img {
+  width: 84px !important;
+  height: 84px !important;
+}
+.telehealth-content .more-link {
+  text-align: center !important;
+  margin-top: 20px !important;
+}
+
+/* Keep the scrollbar's room when a pop-up stops the page scrolling, so
+   nothing shifts sideways as it opens. */
+html {
+  scrollbar-gutter: stable;
+}

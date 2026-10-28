@@ -38,6 +38,9 @@
       * {
         box-sizing: border-box;
       }
+      html {
+        scrollbar-gutter: stable;
+      }
       body {
         margin: 0;
         font-family: "Quicksand", system-ui, sans-serif;
@@ -113,13 +116,21 @@
         margin-top: 28px;
       }
       /* Back, at the top: as on the other inner pages. */
+      /* Back lines up with the white page below; the name is centred. */
       .top-row {
-        display: flex;
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
         align-items: center;
-        gap: 6px;
         max-width: 760px;
         margin: 0 auto;
-        padding: 0 20px;
+      }
+      .top-row .back-btn {
+        justify-self: start;
+      }
+      @media (max-width: 600px) {
+        .top-row {
+          margin: 0 12px;
+        }
       }
       .top-row .top {
         margin: 0;
