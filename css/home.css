@@ -3361,3 +3361,23 @@ a:hover > .chev-back {
   .telehealth-content .split-text > p:first-child { order: -1; margin-bottom: 24px !important; }
   .split > .illus-th.illus-tablet { margin: 0 auto 24px !important; }
 }
+
+/* The rail moves smoothly: the purple pill fades between sections and each
+   line fills downwards rather than snapping on. */
+@media (min-width: 1300px) {
+  body .fixed-header a:not(.nav-logo) {
+    transition: background-color 0.35s ease, color 0.35s ease;
+  }
+  body .fixed-header a:not(.nav-logo):not(:last-child)::after,
+  body .fixed-header a.passed:not(:last-child)::after,
+  body .fixed-header a.active:not(:last-child)::after {
+    background: #e2dbff linear-gradient(#6b4ef0, #6b4ef0) no-repeat top / 100% 0 !important;
+    transition: background-size 0.4s ease !important;
+  }
+  body .fixed-header a.active:not(:last-child)::after {
+    background-size: 100% 35% !important;
+  }
+  body .fixed-header a.passed:not(:last-child)::after {
+    background-size: 100% 100% !important;
+  }
+}

@@ -212,31 +212,59 @@ document.addEventListener("DOMContentLoaded", function () {
     ).observe(document.getElementById("contact"));
   }
 
-  // Highlight the menu link for the section on screen.
-  if ("IntersectionObserver" in window) {
+  // Highlight the menu link for the section on screen. Worked out from the
+  // scroll position (the section crossing 45% down the screen), and only
+  // touched when it actually changes. While a menu link is scrolling the page,
+  // the link you tapped stays lit instead of every section flashing past.
+  {
     const links = {};
     document.querySelectorAll(".fixed-header a[href^='#']").forEach((a) => {
       links[a.getAttribute("href").slice(1)] = a;
     });
     // Sections without their own link light up the one they belong to.
-    const map = { how: "services" };
+    const map = { how: "services", company: "contact" };
     const order = Object.keys(links);
-    const spy = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (!e.isIntersecting) return;
-          const id = map[e.target.id] || e.target.id;
-          Object.values(links).forEach((a) => a.classList.remove("active", "passed"));
-          if (links[id] && id !== "about") {
-            links[id].classList.add("active");
-            // On the side rail, the line fills up to the section you're in.
-            order.slice(0, order.indexOf(id)).forEach((k) => links[k].classList.add("passed"));
-          }
-        });
-      },
-      { rootMargin: "-45% 0px -50% 0px" }
-    );
-    document.querySelectorAll("main section[id]").forEach((sec) => spy.observe(sec));
+    const sections = [...document.querySelectorAll("main section[id], footer section[id]")];
+    let current = null;
+    let lockUntil = 0;
+    const show = (id) => {
+      if (id === current) return;
+      current = id;
+      const at = id ? order.indexOf(id) : -1;
+      order.forEach((k, i) => {
+        links[k].classList.toggle("active", i === at && k !== "top");
+        links[k].classList.toggle("passed", at > 0 && i < at);
+      });
+    };
+    const measure = () => {
+      if (performance.now() < lockUntil) return;
+      const line = innerHeight * 0.45;
+      let id = null;
+      sections.forEach((sec) => {
+        if (sec.getBoundingClientRect().top <= line) id = map[sec.id] || sec.id;
+      });
+      show(links[id] && id !== "top" ? id : null);
+    };
+    let queued = false;
+    addEventListener("scroll", () => {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(() => { queued = false; measure(); });
+    }, { passive: true });
+    addEventListener("resize", measure);
+    // A tapped link lights up straight away and holds until the scroll ends.
+    let settle;
+    const release = () => { lockUntil = 0; measure(); };
+    order.forEach((k) => links[k].addEventListener("click", () => {
+      show(k === "top" ? null : k);
+      lockUntil = performance.now() + 2000;
+    }));
+    addEventListener("scroll", () => {
+      if (!lockUntil) return;
+      clearTimeout(settle);
+      settle = setTimeout(release, 140);
+    }, { passive: true });
+    measure();
   }
 
   // Footstep trails between the How it works steps.
