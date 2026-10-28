@@ -1,0 +1,244 @@
+/* Follow Me Therapy: the cards and pop-ups shared by every page.
+   Loaded after home.css or pages.css, so the home page and the inner pages
+   show the same service and funding cards, the same pop-ups and the same
+   Get started choices. Each card takes the colour of its icon. */
+
+:root {
+  --card-purple: #6b4ef0;
+  --card-purple-tint: #efe9ff;
+  --card-teal: #007a8a;
+  --card-teal-tint: #e3f4f5;
+  --card-sun: #c77c00;
+  --card-sun-band: #f2a516;
+  --card-sun-tint: #fff0cc;
+  --card-pink: #d6457a;
+  --card-pink-tint: #fde7ef;
+}
+
+/* ── Service and funding cards ──
+   Left-aligned, a coloured band along the top in the icon's colour, an
+   icon tile, and a lift and tilt on hover. */
+.service-item,
+.funding-card {
+  --band: var(--card-purple);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start !important;
+  text-align: left !important;
+  padding: 24px !important;
+  background: #fff;
+  border-radius: 24px !important;
+  border-top: 6px solid var(--band) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06) !important;
+  cursor: pointer;
+  transition:
+    transform 0.35s cubic-bezier(0.3, 1.5, 0.5, 1),
+    box-shadow 0.3s ease;
+}
+.service-item:has(.svc-stairs),
+.funding-card:has(.svc-stairs) {
+  --band: var(--card-teal);
+}
+.service-item:has(.svc-esdm),
+.funding-card:has(.svc-esdm) {
+  --band: var(--card-sun-band);
+}
+.service-item:has(.svc-assessments),
+.funding-card:has(.svc-assessments) {
+  --band: var(--card-pink);
+}
+.service-item h3,
+.service-item p,
+.funding-card h3,
+.funding-card p {
+  text-align: left !important;
+}
+.service-item h3,
+.funding-card h3 {
+  margin: 0 0 8px !important;
+}
+.service-item p,
+.funding-card p {
+  margin: 0 0 14px !important;
+}
+.service-item .svc-icon,
+.funding-card .svc-icon {
+  width: 60px !important;
+  height: 60px !important;
+  border-radius: 18px !important;
+  margin-bottom: 12px !important;
+}
+.service-item .svc-icon svg,
+.funding-card .svc-icon svg {
+  width: 34px !important;
+  height: 34px !important;
+}
+.service-item .more,
+.funding-card .more {
+  margin-top: auto;
+}
+.service-item:focus-visible,
+.service-item:hover,
+.funding-card:focus-visible,
+.funding-card:hover {
+  transform: translateY(-6px) rotate(1deg);
+  box-shadow: 0 16px 32px rgba(43, 37, 64, 0.12) !important;
+}
+.service-item:nth-child(even):focus-visible,
+.service-item:nth-child(even):hover,
+.funding-card:nth-child(even):focus-visible,
+.funding-card:nth-child(even):hover {
+  transform: translateY(-6px) rotate(-1deg);
+}
+.service-item:active,
+.funding-card:active {
+  transform: scale(0.97);
+}
+
+/* ── Service and funding pop-ups ──
+   A band and a soft wash of the card's colour across the top, the card's
+   icon (which bobs in), a short tag, then the details, each line arriving
+   in turn. */
+.modal[data-tone] .modal-content {
+  --tone: var(--card-purple);
+  --tone-tint: var(--card-purple-tint);
+  border-top: 8px solid var(--tone);
+  background: linear-gradient(180deg, var(--tone-tint) 0, #fff 150px) #fff !important;
+}
+.modal[data-tone="teal"] .modal-content { --tone: var(--card-teal); --tone-tint: var(--card-teal-tint); }
+.modal[data-tone="sun"] .modal-content { --tone: var(--card-sun); --tone-tint: var(--card-sun-tint); }
+.modal[data-tone="pink"] .modal-content { --tone: var(--card-pink); --tone-tint: var(--card-pink-tint); }
+.modal-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.modal-hero h3 {
+  margin: 0 32px !important;
+  font-size: 1.6em;
+}
+.modal-icon {
+  display: grid;
+  place-items: center;
+  width: 76px;
+  height: 76px;
+  border-radius: 24px;
+  background: #fff;
+  color: var(--tone);
+  box-shadow: 0 8px 20px rgba(43, 37, 64, 0.1);
+}
+.modal-icon svg {
+  width: 44px;
+  height: 44px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.modal-icon.is-fill svg {
+  fill: currentColor;
+  stroke: none;
+}
+.modal-tag {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--tone);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.85em;
+  letter-spacing: 0.02em;
+}
+.modal-lead {
+  font-size: 1.1em !important;
+  font-weight: 600;
+  color: #2b2540;
+  text-align: center;
+}
+.modal-body .list-label {
+  margin: 4px 0 8px !important;
+}
+.modal-body .checklist li {
+  background: #fff;
+  border: 2px solid var(--tone-tint);
+  border-radius: 16px;
+  padding: 10px 14px 10px 44px;
+  margin-bottom: 10px;
+}
+.modal-body .checklist li::before {
+  left: 14px !important;
+  top: 12px !important;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .modal.show .modal-icon {
+    animation: iconBob 0.7s cubic-bezier(0.3, 1.6, 0.5, 1) both 0.1s;
+  }
+  .modal.show .modal-body > * {
+    animation: lineIn 0.45s ease-out both;
+  }
+  .modal.show .modal-body > *:nth-child(2) { animation-delay: 0.08s; }
+  .modal.show .modal-body > *:nth-child(3) { animation-delay: 0.16s; }
+  .modal.show .modal-body .checklist li { animation: lineIn 0.45s ease-out both; }
+  .modal.show .modal-body .checklist li:nth-child(1) { animation-delay: 0.18s; }
+  .modal.show .modal-body .checklist li:nth-child(2) { animation-delay: 0.26s; }
+  .modal.show .modal-body .checklist li:nth-child(3) { animation-delay: 0.34s; }
+  .modal.show .modal-body .checklist li:nth-child(4) { animation-delay: 0.42s; }
+  .modal.show .modal-body .checklist li:nth-child(5) { animation-delay: 0.5s; }
+  @keyframes iconBob {
+    0% { transform: scale(0.4) rotate(-14deg); opacity: 0; }
+    100% { transform: none; opacity: 1; }
+  }
+  @keyframes lineIn {
+    0% { transform: translateY(10px); opacity: 0; }
+    100% { transform: none; opacity: 1; }
+  }
+}
+
+/* ── Get started choices ──
+   White cards with the same coloured band along the top as the service
+   cards: purple for a referral, teal for a question; a chevron to go. */
+.modal-choice,
+.modal-choice.primary {
+  --band: var(--card-purple);
+  --tint: var(--card-purple-tint);
+  background: #fff !important;
+  color: #2b2540 !important;
+  border: 2px solid #ece8fb !important;
+  border-top: 6px solid var(--band) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06) !important;
+}
+.modal-choice:not(.primary) {
+  --band: var(--card-teal);
+  --tint: var(--card-teal-tint);
+}
+.modal-choice:hover,
+.modal-choice.primary:hover {
+  background: #fff !important;
+  border-color: #ece8fb !important;
+  border-top-color: var(--band) !important;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgba(43, 37, 64, 0.12) !important;
+}
+.modal-choice .mc-icon,
+.modal-choice.primary .mc-icon {
+  background: var(--tint) !important;
+  color: var(--band) !important;
+}
+.mc-arrow {
+  display: grid;
+  place-items: center;
+  color: var(--band);
+}
+.mc-arrow svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}

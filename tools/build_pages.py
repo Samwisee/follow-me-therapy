@@ -37,6 +37,7 @@ def page(slug,title,desc,crumb,h1,lead,chips,bands):
     <link rel="preload" href="fonts/fredoka-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="fonts/quicksand-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="css/pages.css" />
+    <link rel="stylesheet" href="css/cards.css" />
     <script>
       (function () {{
         var d = document.documentElement;

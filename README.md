@@ -10,6 +10,7 @@ Static site for [followmetherapy.com.au](https://followmetherapy.com.au), hosted
 | `css/home.css`, `js/home.js` | Home page styles and behaviour |
 | `*-occupational-therapy.html`, `esdm-melbourne.html`, `occupational-therapy-north-western-melbourne.html` | Landing pages, **generated** by `tools/build_pages.py` |
 | `css/pages.css`, `js/pages.js` | Shared styles and behaviour for the landing pages and 404 |
+| `css/cards.css` | The service and funding cards, their pop-ups and the Get started choices: one stylesheet loaded by every page, so they look the same everywhere |
 | `privacy.html`, `404.html` | Privacy policy and not-found page |
 | `fonts/` | Self-hosted Fredoka and Quicksand (OFL) |
 | `img/` | Logo, icons, flags, Simone's cut-out, share image (`og.jpg`) |
@@ -19,7 +20,7 @@ Static site for [followmetherapy.com.au](https://followmetherapy.com.au), hosted
 
 - **Home page copy:** edit `index.html`. Service and funding pop-up text lives in `js/home.js` (`serviceDetails`, `fundingDetails`) and is mirrored in `js/pages.js`.
 - **Landing pages:** edit the content in `tools/build_pages.py`, then run `python3 tools/build_pages.py`. Don't edit the generated HTML by hand.
-- **Cloud callout:** the shape is `img/cloud-wide.svg` and `img/cloud-tall.svg` (phones), drawn by `python3 tools/make_cloud.py` from circles blended into one smooth outline. Change the puffs there and re-run.
+- **Callout:** the “Every session…” card wears a small cloud (`img/cloud-wide.svg`, drawn by `python3 tools/make_cloud.py`).
 - **Illustrations:** from unDraw's MIT-licensed set, recoloured and inlined in `index.html`. Animated parts are tagged with `a-*` classes.
 
 ## Workflow

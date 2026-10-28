@@ -2674,22 +2674,33 @@ html.fonts-ready .title-container {
   }
 }
 
-/* ── "Every session…" sits in a soft, floating cloud ──
-   The cloud is a drawn shape (img/cloud-*.svg, made by tools/make_cloud.py):
-   puffs blended smoothly into one outline, with no notches or flat
-   shelves. A wide one on bigger screens, a rounder one on phones. The
-   padding keeps the words inside the body of the cloud. */
+/* ── "Every session…": a soft white card with a little cloud on top ──
+   A plain rounded card that holds any length of text at any width, with a
+   small cloud (img/cloud-wide.svg, at its own proportions) resting on its
+   top edge, and room to breathe around it on phones. */
 .callout {
   isolation: isolate;
-  background: url("../img/cloud-wide.svg") center / 100% 100% no-repeat !important;
-  border-radius: 0 !important;
-  padding: 116px 100px 66px !important;
-  margin: 24px auto 8px !important;
-  max-width: 760px;
+  background: #fff !important;
+  border-radius: 32px !important;
+  padding: 44px 40px 34px !important;
+  margin: 72px auto 16px !important;
+  max-width: 640px;
   text-align: center !important;
-  filter: drop-shadow(0 14px 22px rgba(43, 37, 64, 0.1));
+  box-shadow: 0 14px 32px rgba(43, 37, 64, 0.08);
+  filter: none;
 }
-.callout::before,
+.callout::before {
+  content: "" !important;
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  top: -34px;
+  width: 150px;
+  height: 50px;
+  transform: translateX(-50%);
+  background: url("../img/cloud-wide.svg") center / 100% 100% no-repeat !important;
+  filter: drop-shadow(0 -4px 6px rgba(43, 37, 64, 0.05));
+}
 .callout::after {
   content: none !important;
 }
@@ -2699,15 +2710,20 @@ html.fonts-ready .title-container {
   }
   @keyframes cloudFloat {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-6px); }
+    50% { transform: translateY(-5px); }
   }
 }
 @media (max-width: 600px) {
   .callout {
-    background-image: url("../img/cloud-tall.svg") !important;
-    padding: 106px 36px 52px !important;
-    margin: 24px auto 0 !important;
-    max-width: 420px;
+    padding: 40px 24px 28px !important;
+    margin: 64px 8px 28px !important;
+    border-radius: 28px !important;
+    line-height: 1.7;
+  }
+  .callout::before {
+    width: 120px;
+    height: 40px;
+    top: -27px;
   }
 }
 
@@ -2733,47 +2749,6 @@ html.fonts-ready .title-container {
   }
 }
 
-/* ── Services: the same cards as the funding options ──
-   Left-aligned, a coloured band along the top in the icon's colour, the
-   smaller icon tile, and the same lift and tilt on hover. */
-.service-item {
-  align-items: flex-start;
-  text-align: left;
-  padding: 24px !important;
-  border-radius: 24px;
-  border-top: 6px solid var(--purple);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-}
-.service-item:nth-child(2) { border-top-color: var(--teal); }
-.service-item:nth-child(3) { border-top-color: var(--sun); }
-.service-item:nth-child(4) { border-top-color: var(--pink); }
-.service-item h3,
-.service-item p {
-  text-align: left !important;
-}
-.service-item p {
-  margin: 0 0 14px !important;
-}
-.service-item .svc-icon {
-  width: 60px;
-  height: 60px;
-  border-radius: 18px;
-  margin-bottom: 12px;
-}
-.service-item .svc-icon svg {
-  width: 34px;
-  height: 34px;
-}
-.service-item:focus-visible,
-.service-item:hover {
-  transform: translateY(-6px) rotate(1deg);
-  box-shadow: 0 16px 32px rgba(43, 37, 64, 0.12);
-}
-.service-item:nth-child(even):focus-visible,
-.service-item:nth-child(even):hover {
-  transform: translateY(-6px) rotate(-1deg);
-}
-
 /* ── Centred: the OT heading, and each fact in its chip ── */
 #ot-services h2 {
   display: block;
@@ -2782,108 +2757,6 @@ html.fonts-ready .title-container {
 .facts li {
   justify-content: center;
   text-align: center;
-}
-
-/* ── Service and funding pop-ups ──
-   A band and a soft wash of the card's colour across the top, the card's
-   icon (which bobs in), a short tag, then the details, each line arriving
-   in turn. */
-.modal[data-tone] .modal-content {
-  --tone: var(--purple);
-  --tone-tint: var(--purple-tint);
-  border-top: 8px solid var(--tone);
-  background: linear-gradient(180deg, var(--tone-tint) 0, #fff 150px) #fff !important;
-}
-.modal[data-tone="teal"] .modal-content { --tone: var(--teal); --tone-tint: var(--teal-tint); }
-.modal[data-tone="sun"] .modal-content { --tone: #c77c00; --tone-tint: #fff0cc; }
-.modal[data-tone="pink"] .modal-content { --tone: var(--pink); --tone-tint: var(--pink-tint); }
-.modal-hero {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 16px;
-}
-.modal-hero h3 {
-  margin: 0 32px !important;
-  font-size: 1.6em;
-}
-.modal-icon {
-  display: grid;
-  place-items: center;
-  width: 76px;
-  height: 76px;
-  border-radius: 24px;
-  background: #fff;
-  color: var(--tone);
-  box-shadow: 0 8px 20px rgba(43, 37, 64, 0.1);
-}
-.modal-icon svg {
-  width: 44px;
-  height: 44px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2.6;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-.modal-icon.is-fill svg {
-  fill: currentColor;
-  stroke: none;
-}
-.modal-body .checklist li::before {
-  left: 14px !important;
-  top: 12px !important;
-}
-.modal-tag {
-  display: inline-block;
-  padding: 4px 12px;
-  border-radius: 999px;
-  background: var(--tone);
-  color: #fff;
-  font-weight: 700;
-  font-size: 0.85em;
-  letter-spacing: 0.02em;
-}
-.modal-lead {
-  font-size: 1.1em !important;
-  font-weight: 600;
-  color: var(--ink);
-  text-align: center;
-}
-.modal-body .list-label {
-  margin: 4px 0 8px !important;
-}
-.modal-body .checklist li {
-  background: #fff;
-  border: 2px solid var(--tone-tint);
-  border-radius: 16px;
-  padding: 10px 14px 10px 44px;
-  margin-bottom: 10px;
-}
-@media (prefers-reduced-motion: no-preference) {
-  .modal.show .modal-icon {
-    animation: iconBob 0.7s cubic-bezier(0.3, 1.6, 0.5, 1) both 0.1s;
-  }
-  .modal.show .modal-body > * {
-    animation: lineIn 0.45s ease-out both;
-  }
-  .modal.show .modal-body > *:nth-child(2) { animation-delay: 0.08s; }
-  .modal.show .modal-body > *:nth-child(3) { animation-delay: 0.16s; }
-  .modal.show .modal-body .checklist li { animation: lineIn 0.45s ease-out both; }
-  .modal.show .modal-body .checklist li:nth-child(1) { animation-delay: 0.18s; }
-  .modal.show .modal-body .checklist li:nth-child(2) { animation-delay: 0.26s; }
-  .modal.show .modal-body .checklist li:nth-child(3) { animation-delay: 0.34s; }
-  .modal.show .modal-body .checklist li:nth-child(4) { animation-delay: 0.42s; }
-  .modal.show .modal-body .checklist li:nth-child(5) { animation-delay: 0.5s; }
-  @keyframes iconBob {
-    0% { transform: scale(0.4) rotate(-14deg); opacity: 0; }
-    100% { transform: none; opacity: 1; }
-  }
-  @keyframes lineIn {
-    0% { transform: translateY(10px); opacity: 0; }
-    100% { transform: none; opacity: 1; }
-  }
 }
 
 /* ── Meet Simone: the photo beside the words ──
@@ -2905,7 +2778,34 @@ html.fonts-ready .title-container {
   width: 100% !important;
   max-width: none !important;
   margin: 0 !important;
-  aspect-ratio: 1 / 1;
+  /* As tall as the name, role and bio beside it: the grid stretches it
+     to the bottom of the text, whatever the width, and Simone stands at
+     the bottom of it. */
+  align-self: stretch;
+  aspect-ratio: auto;
+  height: auto !important;
+  min-height: 260px;
+}
+/* The photo takes no room of its own: it fills the box, standing at the
+   bottom, so only the words decide how tall the row is. */
+.bio > .bio-photo {
+  position: relative;
+}
+#about-simone .bio > .bio-photo img {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100% !important;
+  height: 94% !important;
+  max-width: none !important;
+  object-fit: contain;
+  object-position: 50% 100%;
+}
+@media (max-width: 720px) {
+  #about-simone .bio > .bio-photo img {
+    position: static;
+    width: auto !important;
+  }
 }
 .bio > .bio-clear,
 .bio > .list-label,
@@ -2922,19 +2822,26 @@ html.fonts-ready .title-container {
   .bio > .bio-photo {
     max-width: 380px !important;
     margin: 0 auto 20px !important;
+    aspect-ratio: 1 / 1;
   }
 }
 
-/* ── Telehealth: the Teams note and the link to more, centred ── */
+/* ── Telehealth: the Teams logo above its line, and the link to more,
+   centred ── */
 .teams-note {
+  flex-direction: column;
   justify-content: center;
-  gap: 12px !important;
-  margin: 28px auto 4px !important;
+  gap: 6px !important;
+  margin: 32px auto 8px !important;
   font-size: 1.1em;
+  text-align: center;
 }
 .telehealth-content .teams-note img {
-  width: 84px !important;
-  height: 84px !important;
+  width: 104px !important;
+  height: 104px !important;
+}
+.telehealth-content .teams-note img {
+  margin: 0 0 -10px !important;
 }
 .telehealth-content .more-link {
   text-align: center !important;
