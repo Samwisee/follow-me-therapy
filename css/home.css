@@ -3381,3 +3381,9 @@ a:hover > .chev-back {
     background-size: 100% 100% !important;
   }
 }
+
+/* Menu jumps land with the section title near the top of the screen (just
+   under the bar on smaller screens), so the content below it is in view. */
+main section[id] { scroll-margin-top: -36px; }
+@media (min-width: 1300px) { main section[id] { scroll-margin-top: -76px; } }
+@media (max-width: 650px) { main section[id] { scroll-margin-top: -20px; } }
