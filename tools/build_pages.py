@@ -163,7 +163,7 @@ page('ndis-occupational-therapy.html',
    ('Start a referral','Complete the referral form and include your plan details.'),
    ('Initial assessment','I get to know your child and family, and set goals that link to your plan.'),
    ('Therapy','Telehealth or community sessions, tailored to those goals.'),
-   ('Reports','Progress reports help at plan reviews.')])+'\n          <p class="note info-note"><span>Is your plan NDIA-managed? <a href="'+ENQ+'" target="_blank" rel="noopener">Get in touch</a> and I’ll talk through your options.</span></p>')])
+   ('Reports','Progress reports help at plan reviews.')])+'\n          <p class="note info-note"><span>I’m not NDIS-registered, so I can’t claim from NDIA-managed plans. If yours is, you can ask the NDIA to switch to plan management. <a href="'+ENQ+'" target="_blank" rel="noopener">Get in touch</a> and I’ll talk you through it.</span></p>')])
 
 page('esdm-melbourne.html',
  'Early Start Denver Model (ESDM) in Melbourne | Follow Me Therapy',
