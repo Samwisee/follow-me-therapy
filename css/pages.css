@@ -1065,3 +1065,10 @@ a:hover > .chev-back {
   white-space: nowrap;
   border: 0;
 }
+
+/* "Tap a service…" and "Tap an option…": centred over their cards. */
+.tap-hint {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}

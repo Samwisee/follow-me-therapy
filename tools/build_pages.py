@@ -84,7 +84,7 @@ def page(slug,title,desc,crumb,h1,lead,chips,bands):
       <section class="band tone-lilac cta">
         <div class="wrap">
           <h2>Ready to take the first step?</h2>
-          <p>Start a referral and we’ll be in touch, or ask us anything first. You can also call <a href="tel:+61435076683">0435 076 683</a>.</p>
+          <p>Start a referral and I’ll be in touch, or ask me anything first. You can also call <a href="tel:+61435076683">0435 076 683</a>.</p>
           <div class="hero-actions">
             <a class="btn" href="{REF}" target="_blank" rel="noopener">Start a referral</a>
             <a class="btn btn-outline" href="{ENQ}" target="_blank" rel="noopener">Ask a question</a>
@@ -98,7 +98,7 @@ def page(slug,title,desc,crumb,h1,lead,chips,bands):
         <ul class="foot-links">{foot}</ul>
         <p>Paediatric occupational therapy for children and young people aged 0–18. Telehealth Australia-wide and community sessions in North-Western Melbourne.</p>
         <p><a href="mailto:info@followmetherapy.com.au">info@followmetherapy.com.au</a> · <a href="tel:+61435076683">0435 076 683</a></p>
-        <p class="foot-small">We acknowledge the Traditional Custodians of the lands across Australia, and the Wurundjeri people, on whose land we provide our services. We pay our respects to Elders past and present. All are welcome at Follow Me Therapy.</p>
+        <p class="foot-small">I acknowledge the Traditional Custodians of the lands across Australia, and the Wurundjeri people, on whose land I provide my services. I pay my respects to Elders past and present. All are welcome at Follow Me Therapy.</p>
       </div>
     </footer>
     <div id="detailModal" class="modal">
@@ -138,7 +138,7 @@ page('telehealth-occupational-therapy.html',
  'Paediatric occupational therapy by video, anywhere in Australia. Telehealth OT for children aged 0–18, with NDIS, Medicare and private options.',
  'Telehealth OT','Telehealth Occupational Therapy for children, anywhere in Australia',
  'Paediatric OT by video or phone, with no travel. Therapy fits around your family, wherever you live.',
- ['Ages 0–18','Australia-wide','Microsoft Teams','Telehealth spots available now'],
+ ['Ages 0–18','Australia-wide, spots available now','Microsoft Teams'],
  [band('tone-cream','Who telehealth suits', p('Telehealth works for many families, including:')+'\n'+ul([
    'Families in rural and regional areas','Busy families who want to skip the travel','Children who feel more settled at home','Families waiting for face-to-face services'])),
   band('tone-white','What a session looks like', steps([
@@ -157,13 +157,13 @@ page('ndis-occupational-therapy.html',
  'NDIS OT','NDIS Occupational Therapy for children and young people',
  'Therapy built around your NDIS plan goals, for self-managed and plan-managed participants aged 0–18.',
  ['Self-managed','Plan-managed','Telehealth Australia-wide','North-Western Melbourne'],
- [band('tone-cream','Therapy that fits your plan', p('Tap a service to find out more.')+'\n'+svcgrid(['pediatric','adult','home','assessments'])),
+ [band('tone-cream','Therapy that fits your plan', '          <p class="tap-hint">Tap a service to find out more.</p>'+'\n'+svcgrid(['pediatric','adult','home','assessments'])),
   band('tone-white','Assessments and reports', ul(['NDIS Access Report','Functional Capacity Assessment (FCA)','Progress Report','Sensory Processing Assessment','Assistive Technology (AT), with suitability reviewed at the initial assessment'])),
   band('tone-mint','How it works', steps([
-   ('Start a referral','Complete our referral form and include your plan details.'),
-   ('Initial assessment','We get to know your child and family, and set goals that link to your plan.'),
+   ('Start a referral','Complete the referral form and include your plan details.'),
+   ('Initial assessment','I get to know your child and family, and set goals that link to your plan.'),
    ('Therapy','Telehealth or community sessions, tailored to those goals.'),
-   ('Reports','Progress reports help at plan reviews.')])+'\n          <p class="note info-note"><span>Is your plan NDIA-managed? <a href="'+ENQ+'" target="_blank" rel="noopener">Get in touch</a> and we’ll talk through your options.</span></p>')])
+   ('Reports','Progress reports help at plan reviews.')])+'\n          <p class="note info-note"><span>Is your plan NDIA-managed? <a href="'+ENQ+'" target="_blank" rel="noopener">Get in touch</a> and I’ll talk through your options.</span></p>')])
 
 page('esdm-melbourne.html',
  'Early Start Denver Model (ESDM) in Melbourne | Follow Me Therapy',
@@ -172,20 +172,20 @@ page('esdm-melbourne.html',
  'Evidence-based, play-based therapy for young children with autism and other developmental delays, up to 5 years of age.',
  ['Up to 5 years','Play-based','ESDM-certified therapist','Home or community'],
  [band('tone-cream','What is ESDM?', p('The Early Start Denver Model was developed by the UC Davis MIND Institute. It weaves learning into play and everyday routines, using developmental and behavioural techniques.')+'\n'+p('It supports:')+'\n'+ul(['Communication','Social skills','Play','Daily living skills','Thinking and learning skills'])),
-  band('tone-white','What ESDM with us includes', cards([
+  band('tone-white','What ESDM with me includes', cards([
    ('1:1 sessions','At home or in the community, in places that are part of your child’s day.'),
    ('A learning program','Goals and activities individualised for your child.'),
    ('Coaching','Support for the people who are with your child every day.')])),
-  band('tone-mint','Is ESDM right for my child?', p('We’ll check whether ESDM suits your child at the initial assessment. If another approach fits better, we’ll talk you through it.')+'\n'+FUND)])
+  band('tone-mint','Is ESDM right for my child?', p('I’ll check whether ESDM suits your child at the initial assessment. If another approach fits better, I’ll talk you through it.')+'\n'+FUND)])
 
 page('occupational-therapy-north-western-melbourne.html',
  'Paediatric Occupational Therapy, North-Western Melbourne | Follow Me Therapy',
  'Mobile paediatric OT for children aged 0–18 in North-Western Melbourne, with community-based sessions, ESDM, assessments and NDIS support.',
  'North-Western Melbourne','Paediatric Occupational Therapy in North-Western Melbourne',
  'A mobile OT service that comes to you, with community-based sessions across North-Western Melbourne.',
- ['Ages 0–18','We come to you','NDIS, Medicare & private'],
+ ['Ages 0–18','I come to you','NDIS, Medicare & private'],
  [band('tone-cream','OT where your child’s life happens', p('Therapy works best in real places. Community-based sessions take place in settings that are part of your child’s everyday life.')+'\n'+ul([
    'Improve fine and gross motor skills','Understand sensory systems','Develop play and engagement skills','Support emotional regulation','Build self-care and independence','Get ready for school','Enjoy mealtimes and manage fussy eating'])),
-  band('tone-white','Services', p('Tap a service to find out more.')+'\n'+svcgrid(['pediatric','adult','home','assessments'])),
-  band('tone-mint','Not in North-Western Melbourne?', p('We also offer <a href="telehealth-occupational-therapy.html">telehealth OT</a> anywhere in Australia.')+'\n'+FUND)])
+  band('tone-white','Services', '          <p class="tap-hint">Tap a service to find out more.</p>'+'\n'+svcgrid(['pediatric','adult','home','assessments'])),
+  band('tone-mint','Not in North-Western Melbourne?', p('I also offer <a href="telehealth-occupational-therapy.html">telehealth OT</a> anywhere in Australia.')+'\n'+FUND)])
 print('ok')

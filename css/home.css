@@ -3181,3 +3181,67 @@ a:hover > .chev-back {
 .bio > p:not(.person-role):not(.list-label) {
   margin: 0 0 14px !important;
 }
+
+/* Telehealth Australia-wide, with its "spots available now" in the same
+   chip, behind a green light that glows. */
+.facts li.fact-tele {
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.fact-now {
+  font-weight: 700;
+  color: #0f7a52;
+}
+.live-dot {
+  width: 8px;
+  height: 8px;
+  margin-left: 4px;
+  border-radius: 50%;
+  background: #2fbf71;
+  box-shadow: 0 0 0 3px rgba(47, 191, 113, 0.2);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .is-visible .live-dot {
+    animation: liveGlow 2.4s ease-in-out infinite;
+  }
+  @keyframes liveGlow {
+    0%, 100% { box-shadow: 0 0 0 3px rgba(47, 191, 113, 0.2); }
+    50% { box-shadow: 0 0 0 6px rgba(47, 191, 113, 0.05); }
+  }
+}
+
+/* "Tap a service…" and "Tap an option…": centred over their cards. */
+.tap-hint {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Text edges line up: a section's plain paragraphs start at the same left
+   edge as its lists and labels, and the notes' boxes share it too. */
+.content-section .fade-in-content > p:not([class]),
+.content-section .content-wrapper > p:not([class]) {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  max-width: 760px;
+}
+#ot-services .info-note {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  max-width: none !important;
+}
+
+/* Footer: the flags, the acknowledgement and the company details all
+   share one left edge. */
+#company p,
+#company ul {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  max-width: none !important;
+  text-align: left !important;
+}
+#company .flags,
+#company .flag-row {
+  justify-content: flex-start !important;
+  margin-left: 0 !important;
+}
