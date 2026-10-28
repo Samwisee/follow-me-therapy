@@ -2888,7 +2888,7 @@ html {
   grid-template-columns: minmax(200px, 44%) 1fr !important;
 }
 .bio > .bio-photo {
-  grid-row: 1 / span 5 !important;
+  grid-row: 1 / span 6 !important;
 }
 
 /* ── Telehealth: the portrait tablet on a video call ──
@@ -3175,4 +3175,8 @@ a:hover > .chev-back {
   .about-content {
     padding: 36px 26px 34px !important;
   }
+}
+/* Bio paragraphs: an even, gentle gap (grid items don't share margins). */
+.bio > p:not(.person-role):not(.list-label) {
+  margin: 0 0 14px !important;
 }
