@@ -1,0 +1,5 @@
+# GitHub Pages: keep the working notes and tools off the published site.
+exclude:
+  - CLAUDE.md
+  - README.md
+  - tools
