@@ -175,8 +175,8 @@
       "files": {
         "share-card.jpg": {
           "name": "share-card.jpg",
-          "blob": "ca8348e272d26d94f8baf14ba4072c92",
-          "size": 78286,
+          "blob": "5cb9c271a96e6ca96bd5ebcd6f5f9e74",
+          "size": 78428,
           "type": "image/jpeg"
         },
         "simone-cutout.webp": {
@@ -209,12 +209,25 @@
   ],
   "lastChange": {
     "by": "Sam",
-    "at": "2026-10-29T03:30:00Z",
-    "via": "GitHub \u00b7 Samwisee/follow-me-therapy@094d7b7",
-    "note": "Accessibility and identity pass: AA colour fixes, bordered chips, anatomical footprints, StepPath, focus ring."
+    "at": "2026-10-29T04:10:00Z",
+    "via": "GitHub \u00b7 Samwisee/follow-me-therapy@1d8d920",
+    "note": "WCAG 2.2 AAA colours; live React components (bundle.js) so previews render live; logo embedded in brand-ink."
   },
   "layout": "files",
-  "libraries": [],
+  "libraries": [
+    {
+      "name": "react",
+      "version": "18.3.1",
+      "global": "React",
+      "file": "components/lib/react.production.min.js"
+    },
+    {
+      "name": "react-dom",
+      "version": "18.3.1",
+      "global": "ReactDOM",
+      "file": "components/lib/react-dom.production.min.js"
+    }
+  ],
   "namespace": "FollowMeTherapy",
   "sections": {},
   "title": "Follow Me Therapy"
