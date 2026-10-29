@@ -3,6 +3,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
+<link rel="stylesheet" href="../css/tokens.css" />
 <style>
   @font-face { font-family: Fredoka; font-weight: 600; src: url(../fonts/fredoka-latin-600-normal.woff2); }
   @font-face { font-family: Fredoka; font-weight: 700; src: url(../fonts/fredoka-latin-700-normal.woff2); }
@@ -11,17 +12,17 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body { width: 1200px; height: 630px; overflow: hidden; }
   body {
-    background: #efe9ff;
+    background: var(--purple-tint);
     font-family: Quicksand, sans-serif;
-    color: #2b2540;
+    color: var(--ink);
     display: grid;
     grid-template-columns: 730px 1fr;
     position: relative;
   }
   /* soft corner blobs, like the site's waves */
   body::before, body::after { content: ""; position: absolute; border-radius: 50%; z-index: 0; }
-  body::before { width: 300px; height: 300px; left: -170px; top: -170px; background: #fff0cc; }
-  body::after  { width: 260px; height: 260px; right: -90px; top: -110px; background: #e3f4f5; }
+  body::before { width: 300px; height: 300px; left: -170px; top: -170px; background: var(--sun-tint); }
+  body::after  { width: 260px; height: 260px; right: -90px; top: -110px; background: var(--teal-tint); }
 
   .words {
     position: relative; z-index: 1;
@@ -29,8 +30,8 @@
     text-align: center; padding: 0 24px 0 48px;
   }
   .logo { width: 86px; height: auto; margin-bottom: 10px; }
-  h1 { font-family: Fredoka, sans-serif; font-weight: 700; font-size: 66px; line-height: 1; letter-spacing: -0.5px; white-space: nowrap; }
-  .sub { font-weight: 700; font-size: 24px; color: #5b556b; margin: 12px 0 30px; }
+  h1 { color: var(--brand-ink); font-family: Fredoka, sans-serif; font-weight: 700; font-size: 66px; line-height: 1; letter-spacing: -0.5px; white-space: nowrap; }
+  .sub { font-weight: 700; font-size: 24px; color: var(--ink-soft); margin: 12px 0 30px; }
 
   .facts { list-style: none; display: flex; flex-direction: column; align-items: center; gap: 12px; }
   .facts li {
@@ -38,30 +39,30 @@
     font-weight: 700; font-size: 22px; padding: 10px 26px; border-radius: 999px; white-space: nowrap;
   }
   .facts svg { width: 25px; height: 25px; flex: none; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
-  .fact-age   { background: #fff; color: #4b34c9; border: 3px solid #d9cffc; }
-  .fact-tele  { background: #e3f4f5; color: #00606d; }
-  .fact-place { flex-wrap: nowrap !important; background: #fff0cc; color: #7a4a00; }
+  .fact-age   { background: var(--paper); color: var(--purple-ink); border: 3px solid var(--purple-line); }
+  .fact-tele  { background: var(--teal-tint); color: var(--teal-ink); }
+  .fact-place { flex-wrap: nowrap !important; background: var(--sun-tint); color: var(--sun-ink); }
   .fact-tele { flex-direction: column; gap: 4px !important; padding: 10px 30px !important; border-radius: 34px !important; }
   .row { display: inline-flex; align-items: center; gap: 10px; }
-  .fact-now { display: flex; align-items: center; justify-content: center; gap: 10px; color: #0f7a52; font-size: 20px; }
-  .live-dot { width: 13px; height: 13px; border-radius: 50%; background: #2fbf71; box-shadow: 0 0 0 5px rgba(47,191,113,.25); }
+  .fact-now { display: flex; align-items: center; justify-content: center; gap: 10px; color: var(--live-ink); font-size: 20px; }
+  .live-dot { width: 13px; height: 13px; border-radius: 50%; background: var(--live); box-shadow: 0 0 0 5px color-mix(in srgb, var(--live) 25%, transparent); }
 
   .photo { position: relative; z-index: 1; display: flex; align-items: center; justify-content: center; padding: 40px 48px 40px 0; }
   .card {
-    width: 100%; height: 100%; background: #fff; border-radius: 48px; padding: 22px;
-    box-shadow: 0 16px 40px rgba(46,35,99,.12);
+    width: 100%; height: 100%; background: var(--paper); border-radius: 48px; padding: 22px;
+    box-shadow: 0 16px 40px color-mix(in srgb, var(--deep) 12%, transparent);
   }
   .frame {
-    width: 100%; height: 100%; border-radius: 30px; background: #e3f4f5;
+    width: 100%; height: 100%; border-radius: 30px; background: var(--teal-tint);
     position: relative; overflow: hidden;
   }
-  .sun { position: absolute; width: 280px; height: 280px; border-radius: 50%; background: #fbe3a6; left: 50%; top: 52%; transform: translate(-50%, -50%); }
+  .sun { position: absolute; width: 280px; height: 280px; border-radius: 50%; background: var(--sun-soft); left: 50%; top: 52%; transform: translate(-50%, -50%); }
   .sim { position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); height: 96%; }
 </style>
 </head>
 <body>
   <div class="words">
-    <img class="logo" src="../img/logo.png" alt="" />
+    <img class="logo" src="../img/brand/follow-me-therapy-mark.svg" alt="" />
     <h1>Follow Me Therapy</h1>
     <p class="sub">Paediatric occupational therapy</p>
     <ul class="facts">

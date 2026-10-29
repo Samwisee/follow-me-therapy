@@ -23,25 +23,26 @@ def page(slug,title,desc,crumb,h1,lead,chips,bands):
     <title>{title}</title>
     <meta name="description" content="{desc}" />
     <link rel="canonical" href="{SITE}{slug}" />
-    <meta name="theme-color" content="#efe9ff" />
+    <meta name="theme-color" content="#efe9ff" data-token="purple-tint" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Follow Me Therapy" />
     <meta property="og:title" content="{title}" />
     <meta property="og:description" content="{desc}" />
     <meta property="og:url" content="{SITE}{slug}" />
-    <meta property="og:image" content="{SITE}img/share-2026-10.jpg" />
-    <meta property="og:image:secure_url" content="{SITE}img/share-2026-10.jpg" />
+    <meta property="og:image" content="{SITE}img/share-2026-10-29.jpg" />
+    <meta property="og:image:secure_url" content="{SITE}img/share-2026-10-29.jpg" />
     <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Follow Me Therapy: Simone, paediatric OT. Ages 0–18, telehealth Australia-wide, community sessions in North-Western Melbourne." />
-    <meta name="twitter:image" content="{SITE}img/share-2026-10.jpg" />
+    <meta name="twitter:image" content="{SITE}img/share-2026-10-29.jpg" />
     <meta property="og:locale" content="en_AU" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="img/icon-32.png" sizes="32x32" type="image/png" />
     <link rel="apple-touch-icon" href="img/icon-180.png" />
     <link rel="preload" href="fonts/fredoka-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="fonts/quicksand-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="css/tokens.css" />
     <link rel="stylesheet" href="css/pages.css" />
     <link rel="stylesheet" href="css/cards.css" media="print" onload="this.media='all'" />
     <noscript><link rel="stylesheet" href="css/cards.css" /></noscript>
@@ -67,7 +68,7 @@ def page(slug,title,desc,crumb,h1,lead,chips,bands):
             ><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg><span>Back</span></a
           >
           <a class="brand" href="index.html"
-            ><img src="img/logo-sm.png" alt="" width="226" height="250" /><span>Follow Me Therapy</span></a
+            ><img src="img/brand/follow-me-therapy-mark.svg" alt="" width="226" height="250" /><span>Follow Me Therapy</span></a
           >
         </div>
         <a class="btn btn-small" href="{REF}" target="_blank" rel="noopener">Start a referral</a>

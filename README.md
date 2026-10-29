@@ -7,6 +7,8 @@ Static site for [followmetherapy.com.au](https://followmetherapy.com.au), hosted
 | Path | What it is |
 |---|---|
 | `index.html` | Home page (content, pop-up markup, the two animated illustrations inline) |
+| `design/tokens.json` | **The design tokens: the single source for every colour, font and size.** `tools/build_tokens.py` turns them into `css/tokens.css`, re-colours the logo and stamps the few places CSS variables can't reach. See `design/README.md`, which also covers Figma |
+| `css/tokens.css` | Generated CSS variables, loaded first on every page. Don't edit |
 | `css/home.css`, `js/home.js` | Home page styles and behaviour |
 | `*-occupational-therapy.html`, `esdm-melbourne.html`, `occupational-therapy-north-western-melbourne.html` | Landing pages, **generated** by `tools/build_pages.py` |
 | `css/pages.css`, `js/pages.js` | Shared styles and behaviour for the landing pages and 404 |

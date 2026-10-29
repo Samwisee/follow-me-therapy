@@ -1,0 +1,27 @@
+# When design/tokens.json changes on preview (an edit here, or a push from
+# Tokens Studio in Figma), rebuild everything that depends on it and commit
+# the result back to preview. Deploying to main stays a manual step.
+name: Rebuild from design tokens
+on:
+  push:
+    branches: [preview]
+    paths: [design/tokens.json]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python3 tools/build_tokens.py && python3 tools/build_pages.py
+      - name: Commit rebuilt files
+        run: |
+          if git diff --quiet; then echo "Nothing to rebuild"; exit 0; fi
+          git config user.name "Claude"
+          git config user.email "noreply@anthropic.com"
+          git commit -am "Rebuild from design tokens"
+          git push

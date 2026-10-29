@@ -11,6 +11,10 @@ Therapy on her own. See README.md for the file layout.
   `https://raw.githack.com/Samwisee/follow-me-therapy/<full-hash>/index.html`
 - Deploy = fast-forward main to preview: `git push origin origin/preview:main`,
   then wait for the "pages build and deployment" run (`gh run list -L 1`) to succeed.
+- Colours, fonts, sizes, logo colour: edit `design/tokens.json` (the single
+  source; see design/README.md), run `python3 tools/build_tokens.py`. Never
+  hardcode a colour in CSS or HTML: use `var(--token)`. A colour inside a
+  data-URI SVG gets a `/* token:<name> */` tag before `url(` instead.
 - Landing pages are generated: edit `tools/build_pages.py`, run
   `python3 tools/build_pages.py`. Pop-up text lives in `js/home.js` and is
   mirrored in `js/pages.js`; change both.
