@@ -1,7 +1,8 @@
 // Favicons and app icons, drawn from the tokens and the vector mark.
 //   python3 tools/build_tokens.py && node tools/make_icons.mjs
 // Writes img/favicon.svg, img/icon-{48,96,192,180,512}.png and favicon.ico
-// (16/32/48) at the site root, which Google and browsers look for.
+// (16/32/48) at the site root, which Google and browsers look for, and the
+// full-bleed Home Screen icons img/app-icon-{180,192,512}.png (also the app's).
 import { readFileSync, writeFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { dirname, join } from 'node:path';
@@ -28,6 +29,20 @@ const out = {};
 for (const s of [16, 32, 48, 96, 180, 192, 512]) out[s] = await png(s);
 await b.close();
 for (const s of [32, 48, 96, 180, 192, 512]) writeFileSync(join(ROOT, `img/icon-${s}.png`), out[s]);
+// Home Screen and app icons: full-bleed squares (iOS and Android cut their own
+// shape; a transparent corner turns black on an iPhone). The mark sits inside
+// the maskable safe zone (the middle 80% circle), so any mask keeps it whole.
+{
+  const h2 = S * 0.5, w2 = h2 * vb[2] / vb[3];
+  const app = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${S} ${S}"><rect width="${S}" height="${S}" fill="${ground}"/><g transform="translate(${(S - w2) / 2} ${(S - h2) / 2 + 6}) scale(${h2 / vb[3]})">${body}</g></svg>\n`;
+  const b2 = await chromium.launch(); const p2 = await b2.newPage();
+  for (const size of [180, 192, 512]) {
+    await p2.setViewportSize({ width: size, height: size });
+    await p2.setContent(`<html><body style="margin:0">${app.replace('<svg ', `<svg width="${size}" height="${size}" `)}</body></html>`);
+    writeFileSync(join(ROOT, `img/app-icon-${size}.png`), await p2.screenshot({ clip: { x: 0, y: 0, width: size, height: size } }));
+  }
+  await b2.close();
+}
 // favicon.ico holding PNG images (supported by every current browser and by Google).
 const imgs = [16, 32, 48].map((s) => [s, out[s]]);
 const head = Buffer.alloc(6 + 16 * imgs.length); head.writeUInt16LE(0, 0); head.writeUInt16LE(1, 2); head.writeUInt16LE(imgs.length, 4);
@@ -35,4 +50,4 @@ let off = head.length;
 imgs.forEach(([s, buf], i) => { const e = 6 + 16 * i; head[e] = s; head[e + 1] = s; head[e + 2] = 0; head[e + 3] = 0;
   head.writeUInt16LE(1, e + 4); head.writeUInt16LE(32, e + 6); head.writeUInt32LE(buf.length, e + 8); head.writeUInt32LE(off, e + 12); off += buf.length; });
 writeFileSync(join(ROOT, 'favicon.ico'), Buffer.concat([head, ...imgs.map(([, buf]) => buf)]));
-console.log('icons written: favicon.svg, favicon.ico, icon-32/48/96/180/192/512.png');
+console.log('icons written: favicon.svg, favicon.ico, icon-32/48/96/180/192/512.png, app-icon-180/192/512.png');
