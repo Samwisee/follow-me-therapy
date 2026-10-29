@@ -416,14 +416,14 @@ a.fmt-card:hover { transform: translateY(calc(-1 * var(--space-2))) rotate(1deg)
 /* Header: a tinted panel. The title and the Name line share the top row
    (the Name line on the title's baseline); the tag sits under the title.
    The row gap adds the swash's depth (space-3) so it clears the tag. */
-.fmt-head { --head-tint: var(--purple-tint); display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "title name" "tag ."; align-items: end; column-gap: var(--grid-gap); row-gap: calc(var(--group-gap) + var(--space-3)); padding: var(--card-pad); border-radius: calc(var(--radius-tile) + var(--card-pad)); background: var(--head-tint); }
+.fmt-head { --head-tint: var(--purple-tint); --head-line: var(--purple-line); display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "title name" "tag ."; align-items: end; column-gap: var(--grid-gap); row-gap: calc(var(--group-gap) + var(--space-3)); padding: var(--card-pad); border: var(--border-outline) solid var(--head-line); border-radius: calc(var(--radius-tile) + var(--card-pad) + var(--border-outline)); background: var(--head-tint); }
 .fmt-head > div { display: contents; }
 .fmt-head h1 { grid-area: title; }
 .fmt-head .fmt-tag { grid-area: tag; justify-self: start; }
 .fmt-head .fmt-name { grid-area: name; }
-.fmt-head.is-teal { --head-tint: var(--teal-tint); }
-.fmt-head.is-sun { --head-tint: var(--butter); }
-.fmt-head.is-pink { --head-tint: var(--pink-tint); }
+.fmt-head.is-teal { --head-tint: var(--teal-tint); --head-line: var(--teal-line); }
+.fmt-head.is-sun { --head-tint: var(--butter); --head-line: var(--sun-line); }
+.fmt-head.is-pink { --head-tint: var(--pink-tint); --head-line: var(--pink-line); }
 .fmt-name { display: flex; align-items: flex-end; gap: var(--space-2); margin: 0 0 var(--space-1); font-weight: 700; font-size: var(--text-sm); color: var(--ink); white-space: nowrap; }
 .fmt-name span { display: block; width: calc(var(--space-30) * 1.6); height: var(--space-6); border-bottom: var(--border-outline) dashed var(--rule); }
 
