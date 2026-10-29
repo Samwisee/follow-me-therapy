@@ -138,3 +138,14 @@ document.addEventListener("DOMContentLoaded", function () {
   }, { threshold: 0.12 });
   bands.forEach((b) => io.observe(b));
 });
+
+// Phones: the floating "Start a referral" button appears once the page's
+// own referral button has scrolled out of view, so the two never overlap.
+(() => {
+  const fab = document.querySelector(".ref-fab");
+  const hero = document.querySelector(".hero-actions");
+  if (!fab) return;
+  if (!hero || !("IntersectionObserver" in window)) { fab.classList.add("show"); return; }
+  new IntersectionObserver(([e]) => fab.classList.toggle("show", !e.isIntersecting && e.boundingClientRect.top < 0))
+    .observe(hero);
+})();

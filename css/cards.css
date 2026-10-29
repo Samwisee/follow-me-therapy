@@ -587,3 +587,10 @@
 
 /* The Back button on the inner pages is a pill like the chips. */
 .back-btn { border: var(--border-outline) solid var(--purple-line) !important; }
+
+/* Links: no underline at rest (bold and coloured instead); the underline
+   comes back on hover and keyboard focus. */
+a { text-decoration: none; }
+a:hover, a:focus-visible { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+.btn:hover, .btn-secondary:hover, .btn-primary:hover, .fab:hover, .ref-fab:hover, .modal-link:hover, .modal-choice:hover,
+.fixed-header a:hover, .service-item a:hover, .facts a:hover, .back-btn:hover, .brand:hover, .nav-logo:hover { text-decoration: none; }

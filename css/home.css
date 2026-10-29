@@ -3525,8 +3525,21 @@ main section[id] { scroll-margin-top: -36px; }
 /* Telehealth: the title with its "Spots available now" beside it, the
    booking button centred under the list, and the link to the full page at
    the end of the opening paragraph. */
-.th-title { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 20px; row-gap: 4px; margin-bottom: 22px; }
+.th-title { display: flex; flex-wrap: wrap; align-items: center; column-gap: 20px; row-gap: 4px; margin-bottom: 22px; }
 .th-title h2 { margin-bottom: 0 !important; }
 .telehealth-content .book-row { justify-content: center; margin: 32px 0 8px; }
-.inline-more { display: inline-flex; align-items: center; gap: 2px; color: var(--purple); font-weight: 700; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; white-space: nowrap; }
+.inline-more { display: inline-flex; align-items: center; gap: 2px; margin-left: 0.4em; color: var(--purple); font-weight: 700; text-decoration: none; white-space: nowrap; }
 .inline-more .chev { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+
+/* The title scales with the window up to the 1440px size, then stops, so a
+   wide or zoomed-out window never makes it wrap. */
+@media (min-width: 769px) {
+  .title-container .site-title { font-size: min(5vw, 72px) !important; white-space: nowrap; }
+  .title-container .logo-image { max-width: min(10vw, 144px) !important; }
+}
+
+/* How it works: the footprints keep a natural stride, grouped in the middle
+   of the gap between two steps, instead of spreading across it. */
+@media (min-width: 651px) {
+  .step-trail { justify-content: center; gap: 14px; }
+}

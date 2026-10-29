@@ -74,6 +74,10 @@ def page(slug,title,desc,crumb,h1,lead,chips,bands):
           >
         </div>
         <a class="btn btn-small" href="{REF}" target="_blank" rel="noopener">Start a referral</a>
+        <a class="ref-fab" href="{REF}" target="_blank" rel="noopener"
+          ><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="3" /><path d="M9 3h6v3H9z" /><path d="M12 10v6M9 13h6" /></svg
+          ><span>Start a referral</span><span class="sr-only"> (opens in a new tab)</span></a
+        >
       </div>
     </header>
     <main id="main">
