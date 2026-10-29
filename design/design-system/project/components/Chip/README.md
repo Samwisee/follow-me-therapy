@@ -8,6 +8,6 @@ A rounded pill with a border that states one fact: an age range, a way of workin
 - Use `is-outline` (paper fill) when the chip sits on `purple-tint`.
 - The `fmt-live` line ("spots available now") belongs only on the telehealth chip, and only on screen. Leave it off print and anything cached, such as share images.
 - Add `is-stacked` to the list to centre chips in a column, as on the hero and share card.
-- Chips are labels, not buttons. If one needs to do something, use a Button.
+- A chip may be a link (`href`): the whole chip becomes the target, the border darkens on hover, and it gets the focus ring. Link to where the fact is explained (ages › What is OT, telehealth › the telehealth section). No chevron: the chip itself is the cue. Never make a chip do anything else; actions are Buttons.
 - Keep labels to two to six words. Never put a sentence in a chip.
 - In code: `<Chips><Chip tone="teal" icon="video" live="spots available now">Telehealth</Chip></Chips>`.

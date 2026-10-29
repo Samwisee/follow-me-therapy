@@ -1,6 +1,6 @@
 # IconTile
 
-A rounded square in a tint with a 40×40 line icon in the matching colour. It marks a service, a funding type or an activity.
+A rounded square in a tint, outlined in its line colour, with a 40×40 line icon in the matching colour. It marks a service, a funding type or an activity.
 
 - Markup: `<span class="fmt-tile is-purple|is-teal|is-sun|is-pink">` around an inline `<svg viewBox="0 0 40 40">` (stroke 2.6, round caps). Add `is-small` for the 60px size. Filled icons (the footprints) take `class="is-filled"` on the svg.
 - Paste the icon's paths inline so it takes the tile colour. The uploaded SVGs in the Icons group are drawn in `ink` for use as plain images.

@@ -21,6 +21,18 @@
 .fmt-chip.is-sun    { background: var(--sun-tint); color: var(--sun-ink); border-color: var(--sun-line); }
 .fmt-chip.is-pink   { background: var(--pink-tint); color: var(--pink-deep); border-color: var(--pink-line); }
 .fmt-chip.is-outline { background: var(--paper); color: var(--purple-ink); border-color: var(--purple-line); }
+/* A chip that's a link: the whole chip is the target. */
+.fmt-chip { position: relative; }
+.fmt-chip > a { display: contents; color: inherit; text-decoration: none; }
+.fmt-chip > a::after { content: ""; position: absolute; inset: -2px; border-radius: var(--radius-pill); }
+.fmt-chip:has(> a) { cursor: pointer; transition: border-color 0.25s ease, transform 0.3s cubic-bezier(0.3, 1.6, 0.5, 1); }
+.fmt-chip:has(> a:hover) { transform: translateY(-2px); }
+.fmt-chip.is-purple:has(> a:hover), .fmt-chip.is-outline:has(> a:hover) { border-color: var(--purple); }
+.fmt-chip.is-teal:has(> a:hover) { border-color: var(--teal); }
+.fmt-chip.is-sun:has(> a:hover) { border-color: var(--sun-deep); }
+.fmt-chip.is-pink:has(> a:hover) { border-color: var(--pink-deep); }
+.fmt-chip:has(> a:focus-visible) { box-shadow: 0 0 0 2px var(--paper), 0 0 0 5px var(--focus); }
+.fmt-chip > a:focus-visible { outline: none; }
 .fmt-chip .fmt-live { flex-basis: 100%; display: flex; align-items: center; justify-content: center; gap: var(--space-2); color: var(--live-ink); }
 .fmt-chip .fmt-live::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--live); box-shadow: 0 0 0 3px color-mix(in srgb, var(--live) 25%, transparent); }
 
@@ -55,10 +67,11 @@
 .fmt-tile svg { width: 44px; height: 44px; fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
 .fmt-tile.is-small svg { width: 34px; height: 34px; }
 .fmt-tile svg.is-filled { fill: currentColor; stroke: none; }
+.fmt-tile { box-sizing: border-box; border: 2px solid var(--purple-line); }
 .fmt-tile.is-purple { background: var(--purple-tint); color: var(--purple); }
-.fmt-tile.is-teal   { background: var(--teal-tint); color: var(--teal); }
-.fmt-tile.is-sun    { background: var(--sun-tint); color: var(--sun-deep); }
-.fmt-tile.is-pink   { background: var(--pink-tint); color: var(--pink); }
+.fmt-tile.is-teal   { background: var(--teal-tint); color: var(--teal); border-color: var(--teal-line); }
+.fmt-tile.is-sun    { background: var(--sun-tint); color: var(--sun-deep); border-color: var(--sun-line); }
+.fmt-tile.is-pink   { background: var(--pink-tint); color: var(--pink); border-color: var(--pink-line); }
 
 /* ── Card ── */
 .fmt-card { display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-6); border-radius: var(--radius-card); background: var(--paper); box-shadow: var(--shadow-soft); font-family: var(--font-body); color: var(--ink-soft); }

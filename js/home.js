@@ -304,3 +304,83 @@ document.addEventListener("DOMContentLoaded", function () {
   );
   faders.forEach((f) => appearOnScroll.observe(f));
 });
+
+
+// ── The side rail (1300px and up) ──
+// Adds a pill that glides to the current section and a progress line that
+// fills smoothly with the scroll. The section logic above still decides
+// which link is .active / .passed; this only animates it.
+(() => {
+  const nav = document.querySelector(".fixed-header");
+  if (!nav) return;
+  const links = [...nav.querySelectorAll("a[href^='#']:not(.nav-logo)")];
+  if (!links.length) return;
+  const sections = links.map((a) => document.getElementById(a.getAttribute("href").slice(1)));
+  const wide = matchMedia("(min-width: 1300px)");
+  nav.classList.add("rail-v2");
+  const track = document.createElement("span");
+  track.className = "rail-track";
+  track.setAttribute("aria-hidden", "true");
+  track.innerHTML = '<span class="rail-fill"></span>';
+  const pill = document.createElement("span");
+  pill.className = "rail-pill";
+  pill.setAttribute("aria-hidden", "true");
+  nav.insertBefore(track, links[0]);
+  nav.insertBefore(pill, links[0]);
+  const fill = track.firstChild;
+  let centres = [];
+
+  const layout = () => {
+    if (!wide.matches) return;
+    centres = links.map((a) => a.offsetTop + a.offsetHeight / 2);
+    track.style.top = centres[0] + "px";
+    track.style.height = centres[centres.length - 1] - centres[0] + "px";
+    placePill();
+    progress();
+  };
+  const placePill = () => {
+    const a = links.find((l) => l.classList.contains("active"));
+    links.forEach((l) => (l === a ? l.setAttribute("aria-current", "location") : l.removeAttribute("aria-current")));
+    if (!wide.matches) return;
+    pill.classList.toggle("on", !!a);
+    if (!a) return;
+    pill.style.width = a.offsetWidth + "px";
+    pill.style.height = a.offsetHeight + "px";
+    pill.style.transform = "translate(" + (a.offsetLeft - 8) + "px," + a.offsetTop + "px)";
+  };
+  // Continuous progress: how far the reading line has travelled from one
+  // section to the next, mapped onto the gap between their dots.
+  const progress = () => {
+    if (!wide.matches || centres.length < 2) return;
+    const line = innerHeight * 0.45;
+    const tops = sections.map((s) => (s ? s.getBoundingClientRect().top : Infinity));
+    let p = -1;
+    for (let i = 0; i < tops.length; i++) {
+      if (tops[i] <= line) {
+        const next = tops[i + 1];
+        p = next === undefined ? i : i + Math.min(1, (line - tops[i]) / Math.max(1, next - tops[i]));
+      }
+    }
+    const span = centres[centres.length - 1] - centres[0];
+    let y = 0;
+    if (p >= 0) {
+      const i = Math.min(Math.floor(p), centres.length - 1);
+      const f = p - i;
+      const to = centres[Math.min(i + 1, centres.length - 1)];
+      y = centres[i] + (to - centres[i]) * f - centres[0];
+    }
+    fill.style.transform = "scaleY(" + Math.max(0, Math.min(1, y / span)) + ")";
+  };
+
+  new MutationObserver(placePill).observe(nav, { subtree: true, attributes: true, attributeFilter: ["class"] });
+  let queued = false;
+  addEventListener("scroll", () => {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(() => { queued = false; progress(); });
+  }, { passive: true });
+  addEventListener("resize", layout);
+  wide.addEventListener("change", layout);
+  if (document.fonts) document.fonts.ready.then(layout);
+  layout();
+})();

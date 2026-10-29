@@ -34,10 +34,11 @@ export function Icon({ name, label }: { name: Icon24Name; label?: string }) {
 }
 
 /* ── Chip ── */
-export interface ChipProps { tone?: Tone | 'outline'; icon?: Icon24Name; live?: string; children?: React.ReactNode }
+export interface ChipProps { tone?: Tone | 'outline'; icon?: Icon24Name; live?: string; href?: string; children?: React.ReactNode }
 /** A bordered pastel pill that states one fact. Purple = who, teal = telehealth, sun = in person, pink = reports. */
-export function Chip({ tone = 'purple', icon, live, children }: ChipProps) {
-  return <li className={cx('fmt-chip', 'is-' + tone)}>{icon && <Icon name={icon} />}{children}{live && <span className="fmt-live">{live}</span>}</li>;
+export function Chip({ tone = 'purple', icon, live, href, children }: ChipProps) {
+  const inner = <>{icon && <Icon name={icon} />}{children}{live && <span className="fmt-live">{live}</span>}</>;
+  return <li className={cx('fmt-chip', 'is-' + tone)}>{href ? <a href={href}>{inner}</a> : inner}</li>;
 }
 /** A list of chips; `stacked` centres them in a column. */
 export function Chips({ stacked, children }: { stacked?: boolean; children?: React.ReactNode }) {

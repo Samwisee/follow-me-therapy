@@ -38,7 +38,9 @@ def page(slug,title,desc,crumb,h1,lead,chips,bands):
     <meta name="twitter:image" content="{SITE}img/share-2026-10-29.jpg" />
     <meta property="og:locale" content="en_AU" />
     <meta name="twitter:card" content="summary_large_image" />
-    <link rel="icon" href="img/icon-32.png" sizes="32x32" type="image/png" />
+    <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="img/icon-192.png" sizes="192x192" type="image/png" />
     <link rel="apple-touch-icon" href="img/icon-180.png" />
     <link rel="preload" href="fonts/fredoka-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="fonts/quicksand-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin />
@@ -141,12 +143,14 @@ def p(t): return f'          <p>{t}</p>'
 FUND=FUNDHTML
 
 page('telehealth-occupational-therapy.html',
- 'Telehealth Occupational Therapy for Children | Follow Me Therapy',
- 'Paediatric occupational therapy by video, anywhere in Australia. Telehealth OT for children aged 0–18, with NDIS, Medicare and private options.',
- 'Telehealth OT','Telehealth Occupational Therapy for children, anywhere in Australia',
- 'Paediatric OT by video or phone, with no travel. Therapy fits around your family, wherever you live.',
+ 'Rural &amp; Remote Telehealth OT for Children | Follow Me Therapy',
+ 'Paediatric occupational therapy by video for children aged 0–18 in rural, regional and remote Australia. No travel, spots available now. NDIS, Medicare and private.',
+ 'Telehealth OT','Telehealth occupational therapy for children in rural, regional and remote Australia',
+ 'Paediatric OT by video or phone, with no travel. Therapy fits around your family, wherever you live, from country towns to remote communities.',
  ['Ages 0–18','Australia-wide, spots available now','Microsoft Teams'],
- [band('tone-cream','Who telehealth suits', p('Telehealth works for many families, including:')+'\n'+ul([
+ [band('tone-white','For rural, regional and remote families', p('If the nearest children’s OT is hours away, or the local waitlist is long, telehealth brings therapy to you. I work with families across every state and territory, from regional towns to remote properties and communities.')+'\n'+ul([
+   'No travel: sessions happen at home, at the kitchen table or in the backyard','Times that suit your time zone, including Western Australia and the Northern Territory','Coaching for the people around your child: parents, grandparents, teachers, distance-education supervisors and support workers','Reports and therapy plans for NDIS, Medicare and school, written for your child’s goals','A slower connection is fine: sessions can switch to phone or use activities planned ahead'])),
+  band('tone-cream','Who telehealth suits', p('Telehealth works for many families, including:')+'\n'+ul([
    'Families in rural and regional areas','Busy families who want to skip the travel','Children who feel more settled at home','Families waiting for face-to-face services'])),
   band('tone-white','What a session looks like', steps([
    ('Join from home','Connect on Microsoft Teams from a laptop, tablet or phone.'),

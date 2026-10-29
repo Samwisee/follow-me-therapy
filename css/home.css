@@ -3375,3 +3375,147 @@ a:hover > .chev-back {
 main section[id] { scroll-margin-top: -36px; }
 @media (min-width: 1300px) { main section[id] { scroll-margin-top: -76px; } }
 @media (max-width: 650px) { main section[id] { scroll-margin-top: -20px; } }
+
+
+/* ══ October 2026: outlined containers, chip links, the side rail ══ */
+
+/* Hero chips are links: the whole chip is the target. */
+.facts li { position: relative; }
+.facts li > a { display: contents; color: inherit; text-decoration: none; }
+.facts li > a::after { content: ""; position: absolute; inset: -2px; border-radius: 999px; }
+.facts li:has(> a) { cursor: pointer; transition: transform 0.3s cubic-bezier(0.3, 1.6, 0.5, 1), border-color 0.25s ease, box-shadow 0.25s ease; }
+.facts li.fact-age:has(> a:hover) { border-color: var(--purple) !important; }
+.facts li.fact-tele:has(> a:hover) { border-color: var(--teal) !important; }
+.facts li.fact-place:has(> a:hover) { border-color: var(--sun-deep) !important; }
+.facts li:has(> a:focus-visible) { box-shadow: 0 0 0 2px var(--paper), 0 0 0 5px var(--focus); }
+.facts li > a:focus-visible { outline: none; }
+
+/* Experience chips: outlined like every other chip. */
+#about-simone .chips li { border: 2px solid var(--teal-line) !important; }
+
+/* Icon containers: each tile wears a border in its own line colour. */
+.svc-icon { box-sizing: border-box; border: 2px solid var(--purple-line); }
+.svc-icon.svc-stairs { border-color: var(--teal-line); }
+.svc-icon.svc-esdm { border-color: var(--sun-line); }
+.svc-icon.svc-assessments { border-color: var(--pink-line); }
+.creds svg { border: 2px solid var(--teal-line); padding: 5px; }
+.modal-icon { border: 2px solid color-mix(in srgb, var(--tone, var(--purple)) 30%, var(--paper)); box-sizing: border-box; }
+
+/* Book telehealth, under the telehealth section. */
+.book-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px; margin: 28px 0 8px; }
+.book-row .book-btn { margin: 0 !important; }
+.book-note { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; color: var(--live-ink); }
+.book-note .live-dot { margin-left: 0; }
+
+/* The side rail (1300px and up), rebuilt.
+   One purple pill glides to the section you're in, a progress line fills
+   continuously as you scroll, and the current section is marked with a
+   white footprint. The track sits behind the pill so nothing cuts through
+   it, and every link is a 44px target. js/home.js adds .rail-v2 and the
+   pill and track; without JavaScript the older rail still works. */
+.rail-pill, .rail-track { display: none; }
+@media (min-width: 1300px) {
+  body .fixed-header.rail-v2 {
+    padding: 14px 8px !important;
+    background: var(--paper) !important;
+    border: 2px solid var(--purple-line);
+    border-radius: 34px !important;
+    box-shadow: var(--shadow-soft);
+  }
+  body .fixed-header.rail-v2 .nav-logo {
+    display: grid !important;
+    place-items: center;
+    width: 58px; height: 58px;
+    margin: 0 auto 12px;
+    padding: 0 !important;
+    border-radius: 50%;
+    background: var(--purple-tint) !important;
+    border: 2px solid var(--purple-line);
+    box-sizing: border-box;
+    transition: transform 0.45s cubic-bezier(0.3, 1.6, 0.5, 1), border-color 0.3s ease;
+  }
+  body .fixed-header.rail-v2 .nav-logo img { height: 32px; }
+  body .fixed-header.rail-v2 .nav-logo:hover { transform: rotate(-8deg) scale(1.06); border-color: var(--purple); }
+  body .fixed-header.rail-v2 .nav-logo:focus-visible,
+  body .fixed-header.rail-v2 a:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--paper), 0 0 0 5px var(--focus); }
+
+  body .fixed-header.rail-v2 a:not(.nav-logo) {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 20px 0 42px !important;
+    background: transparent !important;
+    border-radius: 999px;
+    font-size: 1.08rem;
+    transition: color 0.35s ease;
+  }
+  body .fixed-header.rail-v2 a:not(.nav-logo):not(.active):hover { color: var(--purple-dark); }
+  body .fixed-header.rail-v2 a.active { color: var(--paper); }
+  body .fixed-header.rail-v2 a:not(.nav-logo)::after { content: none !important; }
+
+  /* A dot for each section; filled once passed; a footprint where you are. */
+  body .fixed-header.rail-v2 a:not(.nav-logo)::before {
+    content: "";
+    position: absolute;
+    left: 16px; top: 50%;
+    width: 12px; height: 12px;
+    margin-top: -6px;
+    border-radius: 50%;
+    border: 2px solid var(--purple-light);
+    background: var(--paper);
+    box-sizing: border-box;
+    transform: none;
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.4s cubic-bezier(0.3, 1.6, 0.5, 1);
+  }
+  body .fixed-header.rail-v2 a:not(.nav-logo):not(.active):hover::before { transform: scale(1.3); border-color: var(--purple); }
+  body .fixed-header.rail-v2 a.passed::before { background: var(--purple); border-color: var(--purple); }
+  body .fixed-header.rail-v2 a.active::before {
+    left: 15px;
+    width: 13px; height: 19px;
+    margin-top: -9.5px;
+    border: 0;
+    border-radius: 0;
+    background: var(--paper);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 24'%3E%3Cellipse cx='11.5' cy='3.1' rx='2.05' ry='2.55'/%3E%3Ccircle cx='8.15' cy='2.25' r='1.35'/%3E%3Ccircle cx='5.85' cy='2.9' r='1.2'/%3E%3Ccircle cx='3.95' cy='4.15' r='1.05'/%3E%3Ccircle cx='2.55' cy='5.85' r='0.9'/%3E%3Cpath d='M7.6 6.6C11.2 6.2 13.9 7.8 13.6 10.8 13.4 12.8 11.4 14 10.9 16.2 10.5 18 11.6 19.4 11.2 21.2 10.8 23.2 9.3 24 7.7 24 5.6 24 4.3 22.7 4.3 20.6 4.3 17.6 3 15.8 2.8 12.8 2.5 9.2 4.4 6.9 7.6 6.6Z'/%3E%3C/svg%3E") center / contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 24'%3E%3Cellipse cx='11.5' cy='3.1' rx='2.05' ry='2.55'/%3E%3Ccircle cx='8.15' cy='2.25' r='1.35'/%3E%3Ccircle cx='5.85' cy='2.9' r='1.2'/%3E%3Ccircle cx='3.95' cy='4.15' r='1.05'/%3E%3Ccircle cx='2.55' cy='5.85' r='0.9'/%3E%3Cpath d='M7.6 6.6C11.2 6.2 13.9 7.8 13.6 10.8 13.4 12.8 11.4 14 10.9 16.2 10.5 18 11.6 19.4 11.2 21.2 10.8 23.2 9.3 24 7.7 24 5.6 24 4.3 22.7 4.3 20.6 4.3 17.6 3 15.8 2.8 12.8 2.5 9.2 4.4 6.9 7.6 6.6Z'/%3E%3C/svg%3E") center / contain no-repeat;
+    transform: rotate(12deg);
+    animation: railStep 0.45s cubic-bezier(0.3, 1.6, 0.5, 1);
+  }
+  @keyframes railStep { from { transform: rotate(12deg) translateY(6px) scale(0.4); opacity: 0; } to { transform: rotate(12deg); opacity: 1; } }
+
+  .rail-track {
+    display: block;
+    position: absolute;
+    left: 29px;
+    width: 2px;
+    border-radius: 2px;
+    background: var(--purple-pale);
+    z-index: 0;
+    pointer-events: none;
+  }
+  .rail-fill {
+    position: absolute; inset: 0;
+    border-radius: 2px;
+    background: var(--purple);
+    transform-origin: top;
+    transform: scaleY(0);
+  }
+  .rail-pill {
+    display: block;
+    position: absolute;
+    left: 8px; top: 0;
+    border-radius: 999px;
+    background: var(--purple);
+    box-shadow: 0 6px 16px color-mix(in srgb, var(--purple) 30%, transparent);
+    z-index: 1;
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.55s cubic-bezier(0.22, 1.25, 0.36, 1), width 0.4s ease, height 0.4s ease, opacity 0.3s ease;
+  }
+  .rail-pill.on { opacity: 1; }
+}
+@media (min-width: 1300px) and (prefers-reduced-motion: reduce) {
+  .rail-pill, body .fixed-header.rail-v2 a, body .fixed-header.rail-v2 a::before, body .fixed-header.rail-v2 .nav-logo { transition: none !important; animation: none !important; }
+}

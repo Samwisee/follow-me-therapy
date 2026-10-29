@@ -4,7 +4,7 @@ type Icon24Name = 'smile' | 'video' | 'pin' | 'info' | 'book' | 'heart' | 'chevr
 type Icon40Name = 'footprints' | 'stairs' | 'blocks' | 'clipboard' | 'hands-heart' | 'medicare-cross' | 'shield-tick';
 export interface IconProps { name: Icon24Name; label?: string }
 export declare function Icon(props: IconProps): React.ReactElement;
-export interface ChipProps { tone?: Tone | 'outline'; icon?: Icon24Name; live?: string; children?: React.ReactNode }
+export interface ChipProps { tone?: Tone | 'outline'; icon?: Icon24Name; live?: string; href?: string; children?: React.ReactNode }
 export declare function Chip(props: ChipProps): React.ReactElement;
 export interface ChipsProps { stacked?: boolean; children?: React.ReactNode }
 export declare function Chips(props: ChipsProps): React.ReactElement;
