@@ -486,8 +486,8 @@ a:hover > .chev,
 .funding-card {
   align-items: stretch;
   gap: var(--space-2);
-  padding: var(--space-3) var(--space-3) var(--space-4);
-  border-radius: calc(var(--radius-tile) + var(--space-3) + var(--border-outline));
+  padding: var(--card-pad) var(--card-pad) calc(var(--card-pad) - var(--space-2));
+  border-radius: calc(var(--radius-tile) + var(--card-pad) + var(--border-outline));
   text-align: center;
 }
 .funding-card > .svc-icon {
@@ -552,21 +552,21 @@ a:hover > .chev,
 .svc-assessments { background: var(--pink-tint); color: var(--pink); border-color: var(--pink-line); }
 
 /* ── 9. Notes ─────────────────────────────────────────────────────────── */
-/* A tinted strip with an icon tile on the left (an "i", a heart or a
-   book) and the words beside it. Holds any length of text at any width. */
+/* A tinted strip with an icon tile in its top corner (an "i", a heart or
+   a book). The words start level with the top of the tile and wrap round
+   it, then run the full width beneath, so a long note never squeezes into a
+   narrow column. Holds any length of text at any width. */
 .info-note {
   --note-tint: var(--purple-tint);
   --note-ink: var(--purple);
   --note-line: var(--purple-line);
-  display: flex;
-  align-items: center;
-  gap: var(--card-pad);
+  display: flow-root;
   max-width: var(--content);
   margin: var(--space-10) 0 0;
   padding: var(--card-pad);
   border: var(--border-outline) solid var(--note-line);
-  /* Nest rule: the icon tile sits in the corner (exactly, for a short note;
-     centred beside a longer one), so the note's corner runs parallel to it. */
+  /* Nest rule: the icon tile sits in the corner, so the note's corner runs
+     parallel to it. */
   border-radius: calc(var(--radius-tile) + var(--card-pad) + var(--border-outline));
   background: var(--note-tint);
   font-size: var(--text-base);
@@ -579,26 +579,16 @@ a:hover > .chev,
 }
 .info-note::before {
   content: "";
-  flex: none;
+  float: left;
+  margin: 0 var(--space-4) var(--space-2) 0;
   width: var(--size-tile-md);
   height: var(--size-tile-md);
   border: var(--border-outline) solid var(--note-line);
   border-radius: var(--radius-tile);
   background: /* token:purple */ url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23502eed' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 11v5.5'/%3E%3Cpath d='M12 7.6v.1'/%3E%3C/svg%3E") center / var(--size-icon-lg) no-repeat, var(--paper);
 }
-@media (max-width: 640px) {
-  /* Phones: the tile sits in the top corner and the words run full width
-     beneath it, instead of a narrow column beside it. */
-  .info-note {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-4);
-  }
-}
 .info-note > span {
-  flex: 1;
-  min-width: 0;
-
+  display: block;
 }
 /* A note with a link ("Read the review") is one big target: the whole
    strip is clickable, lifts on hover and takes the focus ring. */

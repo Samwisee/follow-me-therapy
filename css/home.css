@@ -863,6 +863,7 @@ html[data-nav="rail"] main section[id] {
    official one of the set (outline, padlock and link), with a padlock tile
    the size of a button, the set's radius and gap. */
 .privacy-note.info-note {
+  display: flex;
   --note-tint: var(--paper);
   --note-ink: var(--deep);
   --note-line: var(--deep);
@@ -885,6 +886,9 @@ html[data-nav="rail"] main section[id] {
   color: var(--deep);
 }
 .privacy-note.info-note::before {
+  float: none;
+  flex: none;
+  margin: 0;
   width: var(--size-button);
   height: var(--size-button);
   border-color: color-mix(in srgb, var(--deep) 30%, var(--paper));

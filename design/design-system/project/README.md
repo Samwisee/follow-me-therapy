@@ -51,7 +51,7 @@ The components are a small React library (`window.FollowMeTherapy`) built from `
 | `text-4xl` | 32 → 50px | Page titles (h1) |
 | `text-display` | 38 → 72px | The practice name in the home hero |
 
-- **The practice name** beside the logo (home hero, the inner pages' top bar) is Fredoka at `weight-brand` (340), the weight whose strokes match the logo's lines, with the logo 1.45× the text size. Fredoka is self-hosted as one variable font, so any weight from 300 to 700 is available.
+- **The practice name** beside the logo (home hero, the inner pages' top bar) is Fredoka at `weight-brand` (400), a touch bolder than the logo's lines so the two read as one weight, with the logo 1.45× the text size. Fredoka is self-hosted as one variable font, so any weight from 300 to 700 is available.
 - Line heights: `leading-tight` 1.1 (display), `leading-snug` 1.25 (headings), `leading-normal` 1.5 (UI, lists, notes), `leading-relaxed` 1.7 (running text). Tracking: `tracking-tight` on headings, `tracking-caps` on uppercase eyebrows.
 - Print: `print-title` 28pt, `print-kid` 16pt (anything a child reads, never under 14pt), `print-body` 11pt for adults, `print-small` 8.5pt minimum.
 - Highlight one or two words per title with `fmt-swash`: the same squiggle as the section titles, in `sun`, repeated along the words. One swash per page. A quote closes with the same squiggle as its section title, same colour, same spacing.
@@ -62,6 +62,7 @@ Every section opens the same way (`SectionTitle`): the title centred in `text-3x
 
 ## Shape and space
 
+- **One squircle, one padding.** Every tile and photo frame has `radius-tile` (= `radius-md`) corners and sits `card-pad` inside its container, exactly like Simone's photo in her card, so every container's corner is the same `radius-md` + `card-pad` + `border-outline`.
 - **Nest rule: corners are concentric.** A container's corner radius = the radius of whatever sits in its corner + the padding between them + the container's outline, so the two curves run parallel. Never pick a radius by eye.
   - Service and funding cards: icon tile `radius-tile` + `card-pad` + `border-outline`.
   - Contact cards and pop-ups: the full-width button at the foot is a pill, so radius = `size-button` / 2 + `card-pad` + `border-outline`.

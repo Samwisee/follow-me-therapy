@@ -65,10 +65,10 @@
 
 /* ── Info note: a tinted strip, outlined, with an icon tile ── */
 .fmt-note { --note-tint: var(--purple-tint); --note-ink: var(--purple); --note-line: var(--purple-line);
-  margin: 0; display: flex; align-items: center; gap: var(--card-pad); padding: var(--card-pad); border: var(--border-outline) solid var(--note-line); border-radius: calc(var(--radius-tile) + var(--card-pad) + var(--border-outline)); background: var(--note-tint); font-family: var(--font-body); font-weight: 500; font-size: var(--text-base); line-height: var(--leading-normal); color: var(--ink-soft); }
-.fmt-note > i { flex: none; display: grid; place-items: center; width: var(--size-tile-md); height: var(--size-tile-md); border: var(--border-outline) solid var(--note-line); border-radius: var(--radius-tile); background: var(--paper); color: var(--note-ink); }
+  margin: 0; display: flow-root; padding: var(--card-pad); border: var(--border-outline) solid var(--note-line); border-radius: calc(var(--radius-tile) + var(--card-pad) + var(--border-outline)); background: var(--note-tint); font-family: var(--font-body); font-weight: 500; font-size: var(--text-base); line-height: var(--leading-normal); color: var(--ink-soft); }
+.fmt-note > i { float: left; margin: 0 var(--space-4) var(--space-2) 0; display: grid; place-items: center; width: var(--size-tile-md); height: var(--size-tile-md); border: var(--border-outline) solid var(--note-line); border-radius: var(--radius-tile); background: var(--paper); color: var(--note-ink); }
 .fmt-note > i svg { width: var(--size-icon-lg); height: var(--size-icon-lg); fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
-.fmt-note > span { flex: 1; min-width: 0; }
+.fmt-note > span { display: block; }
 .fmt-note.is-teal { --note-tint: var(--teal-tint); --note-ink: var(--teal); --note-line: var(--teal-line); }
 .fmt-note.is-promise { --note-tint: var(--paper); font-family: var(--font-display); font-size: var(--text-lg); color: var(--ink); }
 .fmt-note.is-promise > i { background: var(--purple-tint); }

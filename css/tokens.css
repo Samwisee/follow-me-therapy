@@ -47,7 +47,7 @@
   --green-teal: #1f9e89;
   --font-display: "Fredoka", "Fredoka Fallback", "Quicksand", "QS Fallback", system-ui, sans-serif;
   --font-body: "Quicksand", "QS Fallback", system-ui, sans-serif;
-  --weight-brand: 340;
+  --weight-brand: 400;
   --text-xs: 14px;
   --text-sm: 15px;
   --text-base: clamp(16.5px, 16.1667px + 0.0926vw, 17.5px);
@@ -108,7 +108,7 @@
   --size-button: 52px;
   --radius-sm: 10px;
   --radius-md: 16px;
-  --radius-tile: 18px;
+  --radius-tile: var(--radius-md);
   --radius-note: 22px;
   --radius-card: 24px;
   --radius-frame: 28px;
