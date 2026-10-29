@@ -209,9 +209,9 @@
   ],
   "lastChange": {
     "by": "Sam",
-    "at": "2026-10-29T04:10:00Z",
-    "via": "GitHub \u00b7 Samwisee/follow-me-therapy@1d8d920",
-    "note": "WCAG 2.2 AAA colours; live React components (bundle.js) so previews render live; logo embedded in brand-ink."
+    "at": "2026-10-29T04:20:00Z",
+    "via": "GitHub \u00b7 Samwisee/follow-me-therapy@ca92257",
+    "note": "Chips can be links; icon tiles outlined in their line colour."
   },
   "layout": "files",
   "libraries": [
