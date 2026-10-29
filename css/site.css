@@ -276,17 +276,17 @@ a:hover > .chev,
 .btn,
 .btn-secondary,
 .btn-outline {
-  --glow: var(--purple);
+  --glow: var(--button-purple-fill);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: var(--space-2);
   min-height: var(--size-button);
   padding: var(--space-2) var(--space-7);
-  border: var(--border-outline) solid var(--purple);
+  border: var(--border-outline) solid var(--button-purple-line);
   border-radius: var(--radius-pill);
-  background: var(--purple);
-  color: var(--paper);
+  background: var(--button-purple-fill);
+  color: var(--button-purple-ink);
   font-family: var(--font-display);
   font-weight: 500;
   font-size: var(--text-md);
@@ -300,41 +300,43 @@ a:hover > .chev,
     border-color var(--dur-fast) var(--ease-standard);
 }
 :is(.btn, .btn-secondary):hover {
-  background: var(--purple-dark);
-  border-color: var(--purple-dark);
+  background: var(--button-purple-fill-hover);
+  border-color: var(--button-purple-fill-hover);
   transform: translateY(calc(-1 * var(--space-hair)));
 }
 .btn-outline,
 .btn.btn-outline {
-  background: var(--paper);
-  color: var(--purple);
+  background: var(--button-outline-fill);
+  color: var(--button-purple-outline-ink);
   box-shadow: none;
 }
 .btn-outline:hover {
-  background: var(--purple-tint);
+  background: var(--button-purple-outline-fill-hover);
+  color: var(--button-purple-outline-ink-hover);
   transform: translateY(calc(-1 * var(--space-hair)));
 }
 /* Teal: "Ask a question", wherever it appears (solid in a card, outlined
    beside a purple button). */
 :is(.btn, .btn-secondary, .btn-outline).is-teal {
-  --glow: var(--teal);
+  --glow: var(--button-teal-fill);
   box-shadow: var(--shadow-glow-teal);
-  border-color: var(--teal-ink);
-  background: var(--teal-ink);
-  color: var(--paper);
+  border-color: var(--button-teal-line);
+  background: var(--button-teal-fill);
+  color: var(--button-teal-ink);
 }
 :is(.btn, .btn-secondary).is-teal:hover {
-  border-color: var(--teal-deeper);
-  background: var(--teal-deeper);
+  border-color: var(--button-teal-fill-hover);
+  background: var(--button-teal-fill-hover);
 }
 .btn-outline.is-teal,
 .btn.btn-outline.is-teal {
   box-shadow: none;
-  background: var(--paper);
-  color: var(--teal-ink);
+  background: var(--button-outline-fill);
+  color: var(--button-teal-outline-ink);
 }
 .btn-outline.is-teal:hover {
-  background: var(--teal-tint);
+  background: var(--button-teal-outline-fill-hover);
+  color: var(--button-teal-outline-ink-hover);
 }
 :is(.btn, .btn-secondary, .btn-outline):active {
   transform: scale(0.96);
@@ -361,10 +363,10 @@ a:hover > .chev,
 .modal-chips li {
   margin: 0;
   padding: var(--space-1) var(--space-3);
-  border: var(--border-outline) solid var(--purple-line);
+  border: var(--border-outline) solid var(--chip-purple-line);
   border-radius: var(--radius-pill);
-  background: var(--paper);
-  color: var(--purple-ink);
+  background: var(--chip-outline-fill);
+  color: var(--chip-purple-ink);
   font-size: var(--text-sm);
   font-weight: 700;
   line-height: var(--leading-normal);
@@ -374,9 +376,9 @@ a:hover > .chev,
 }
 .modal-chips li,
 .chips.is-teal li {
-  border-color: var(--teal-line);
-  background: var(--teal-tint);
-  color: var(--teal-deeper);
+  border-color: var(--chip-teal-line);
+  background: var(--chip-teal-fill);
+  color: var(--chip-teal-ink);
 }
 
 /* ── 8. Cards and icon tiles ──────────────────────────────────────────── */
@@ -417,18 +419,18 @@ a:hover > .chev,
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  --band: var(--purple);
+  --band: var(--card-purple-line);
   padding: var(--card-pad);
   border: var(--border-outline) solid var(--band);
   /* Nest rule: concentric with the icon tile in the top corner. */
   border-radius: calc(var(--radius-tile) + var(--card-pad) + var(--border-outline));
-  background: var(--paper);
+  background: var(--card-fill);
   box-shadow: var(--shadow-rest);
   text-align: left;
 }
 /* Cards without a tile take turns through the colours, like the steps. */
-.card:nth-child(3n + 2) { --band: var(--teal); }
-.card:nth-child(3n + 3) { --band: var(--sun); }
+.card:nth-child(3n + 2) { --band: var(--card-teal-line); }
+.card:nth-child(3n + 3) { --band: var(--card-sun-line); }
 .service-item,
 .funding-card {
   cursor: pointer;
@@ -436,9 +438,9 @@ a:hover > .chev,
     transform var(--dur-slow) var(--ease-spring),
     box-shadow var(--dur-slow) var(--ease-standard);
 }
-:is(.service-item, .funding-card):has(.svc-stairs) { --band: var(--teal); }
-:is(.service-item, .funding-card):has(.svc-esdm) { --band: var(--sun); }
-:is(.service-item, .funding-card):has(.svc-assessments) { --band: var(--pink-deep); }
+:is(.service-item, .funding-card):has(.svc-stairs) { --band: var(--card-teal-line); }
+:is(.service-item, .funding-card):has(.svc-esdm) { --band: var(--card-sun-line); }
+:is(.service-item, .funding-card):has(.svc-assessments) { --band: var(--card-pink-line); }
 :is(.service-item, .funding-card):is(:hover, :focus-visible) {
   transform: translateY(calc(-1 * var(--space-2))) rotate(1deg);
   box-shadow: var(--shadow-raised);
@@ -461,7 +463,7 @@ a:hover > .chev,
 }
 :is(.service-item, .funding-card) .more {
   margin-top: auto;
-  color: var(--purple);
+  color: var(--card-more);
   font-family: var(--font-display);
   font-weight: 500;
 }
@@ -518,7 +520,7 @@ a:hover > .chev,
   text-align: center;
 }
 .contact-card:nth-child(2) {
-  --band: var(--teal);
+  --band: var(--card-teal-line);
 }
 .contact-card > :is(.btn, .btn-secondary, .btn-outline) {
   margin-top: auto;
@@ -532,10 +534,10 @@ a:hover > .chev,
   width: var(--size-tile-md);
   height: var(--size-tile-md);
   margin-bottom: var(--space-3);
-  border: var(--border-outline) solid var(--purple-line);
+  border: var(--border-outline) solid var(--tile-purple-line);
   border-radius: var(--radius-tile);
-  background: var(--purple-tint);
-  color: var(--purple);
+  background: var(--tile-purple-fill);
+  color: var(--tile-purple-icon);
   transition: transform var(--dur-slow) var(--ease-spring);
 }
 :is(.service-item, .funding-card):hover .svc-icon {
@@ -554,9 +556,9 @@ a:hover > .chev,
   fill: currentColor;
   stroke: none;
 }
-.svc-stairs { background: var(--teal-tint); color: var(--teal); border-color: var(--teal-line); }
-.svc-esdm { background: var(--sun-tint); color: var(--sun-deep); border-color: var(--sun-line); }
-.svc-assessments { background: var(--pink-tint); color: var(--pink); border-color: var(--pink-line); }
+.svc-stairs { background: var(--tile-teal-fill); color: var(--tile-teal-icon); border-color: var(--tile-teal-line); }
+.svc-esdm { background: var(--tile-sun-fill); color: var(--tile-sun-icon); border-color: var(--tile-sun-line); }
+.svc-assessments { background: var(--tile-pink-fill); color: var(--tile-pink-icon); border-color: var(--tile-pink-line); }
 
 /* ── 9. Notes ─────────────────────────────────────────────────────────── */
 /* A tinted strip with an icon tile in its top corner (an "i", a heart or
@@ -564,9 +566,9 @@ a:hover > .chev,
    it, then run the full width beneath, so a long note never squeezes into a
    narrow column. Holds any length of text at any width. */
 .info-note {
-  --note-tint: var(--purple-tint);
-  --note-ink: var(--purple);
-  --note-line: var(--purple-line);
+  --note-tint: var(--note-purple-fill);
+  --note-ink: var(--note-purple-line-hover);
+  --note-line: var(--note-purple-line);
   display: flow-root;
   max-width: var(--content);
   margin: var(--space-10) 0 0;
@@ -592,7 +594,7 @@ a:hover > .chev,
   height: var(--size-tile-md);
   border: var(--border-outline) solid var(--note-line);
   border-radius: var(--radius-tile);
-  background: /* token:purple */ url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23502eed' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 11v5.5'/%3E%3Cpath d='M12 7.6v.1'/%3E%3C/svg%3E") center / var(--size-icon-lg) no-repeat, var(--paper);
+  background: /* token:note-purple-icon */ url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23502eed' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 11v5.5'/%3E%3Cpath d='M12 7.6v.1'/%3E%3C/svg%3E") center / var(--size-icon-lg) no-repeat, var(--note-tile-fill);
 }
 .info-note > span {
   display: block;
@@ -630,24 +632,24 @@ a:hover > .chev,
 }
 /* The practice's promise: in the heading face, with a heart. */
 .callout.info-note {
-  --note-tint: var(--paper);
+  --note-tint: var(--note-promise-fill);
   font-family: var(--font-display);
   font-weight: 500;
   font-size: var(--text-lg);
-  color: var(--ink);
+  color: var(--note-promise-ink);
   margin-top: var(--space-12);
 }
 .callout.info-note::before {
-  background: /* token:purple */ url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23502eed' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z'/%3E%3C/svg%3E") center / var(--size-icon-lg) no-repeat, var(--purple-tint);
+  background: /* token:note-purple-icon */ url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23502eed' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z'/%3E%3C/svg%3E") center / var(--size-icon-lg) no-repeat, var(--note-purple-promise-tile-fill);
 }
 /* Research: a book, in teal. */
 .evidence.info-note {
-  --note-tint: var(--teal-tint);
-  --note-ink: var(--teal);
-  --note-line: var(--teal-line);
+  --note-tint: var(--note-teal-fill);
+  --note-ink: var(--note-teal-line-hover);
+  --note-line: var(--note-teal-line);
 }
 .evidence.info-note::before {
-  background: /* token:teal */ url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300626e' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 5.5c3-1.3 6-1.3 9 .5 3-1.8 6-1.8 9-.5V19c-3-1.3-6-1.3-9 .5-3-1.8-6-1.8-9-.5z'/%3E%3Cpath d='M12 6v13.5'/%3E%3C/svg%3E") center / var(--size-icon-lg) no-repeat, var(--paper);
+  background: /* token:note-teal-icon */ url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300626e' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 5.5c3-1.3 6-1.3 9 .5 3-1.8 6-1.8 9-.5V19c-3-1.3-6-1.3-9 .5-3-1.8-6-1.8-9-.5z'/%3E%3Cpath d='M12 6v13.5'/%3E%3C/svg%3E") center / var(--size-icon-lg) no-repeat, var(--note-tile-fill);
 }
 
 /* ── 10. Lists ────────────────────────────────────────────────────────── */
@@ -916,16 +918,15 @@ a:hover > .chev,
   display: inline-block;
   padding: var(--space-1) var(--space-3);
   border-radius: var(--radius-pill);
-  background: var(--tone);
-  color: var(--paper);
+  background: var(--tag-purple-fill);
+  color: var(--tag-purple-ink);
   font-size: var(--text-xs);
   font-weight: 700;
   letter-spacing: var(--tracking-wide);
 }
-.modal[data-tone="sun"] .modal-tag {
-  background: var(--sun);
-  color: var(--ink);
-}
+.modal[data-tone="teal"] .modal-tag { background: var(--tag-teal-fill); color: var(--tag-teal-ink); }
+.modal[data-tone="sun"] .modal-tag { background: var(--tag-sun-fill); color: var(--tag-sun-ink); }
+.modal[data-tone="pink"] .modal-tag { background: var(--tag-pink-fill); color: var(--tag-pink-ink); }
 .modal-body {
   text-align: left;
 }

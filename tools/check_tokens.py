@@ -153,5 +153,11 @@ for f in sorted(files):
         for h in check_decl(m.group(1), m.group(2)):
             problems += 1
             print(f"{f.relative_to(ROOT)}:{text.count(chr(10), 0, m.start()) + 1}: {h}")
-print(f"{problems} hard-coded value(s)" if problems else "Everything reads from the design tokens.")
+# Then: every product implements the components the same way (design/components.json).
+import subprocess
+app = [a for a in sys.argv[1:2]]
+comp = subprocess.run([sys.executable, str(ROOT / "tools/check_components.py"), *app], capture_output=True, text=True)
+print(comp.stdout.rstrip())
+problems += comp.returncode
+print(f"{problems} hard-coded value(s) or design-system problem(s)" if problems else "Everything reads from the design tokens.")
 sys.exit(1 if problems else 0)

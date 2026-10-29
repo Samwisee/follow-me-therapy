@@ -160,6 +160,194 @@
   --gutter-book: 15mm;
   --rule-write: 10mm;
   --rule-kid: 16mm;
+
+  /* Tones: the role each colour plays (design/tokens.json › tone). */
+  --tone-purple-tint: var(--purple-tint);
+  --tone-purple-ink: var(--purple-ink);
+  --tone-purple-line: var(--purple-line);
+  --tone-purple-solid: var(--purple);
+  --tone-purple-strong: var(--purple);
+  --tone-purple-strong-hover: var(--purple-dark);
+  --tone-purple-ground: var(--purple-tint);
+  --tone-purple-icon: var(--purple);
+  --tone-purple-on-solid: var(--paper);
+  --tone-teal-tint: var(--teal-tint);
+  --tone-teal-ink: var(--teal-ink);
+  --tone-teal-line: var(--teal-line);
+  --tone-teal-solid: var(--teal);
+  --tone-teal-strong: var(--teal-ink);
+  --tone-teal-strong-hover: var(--teal-deeper);
+  --tone-teal-ground: var(--teal-tint);
+  --tone-teal-icon: var(--teal);
+  --tone-teal-on-solid: var(--paper);
+  --tone-sun-tint: var(--sun-tint);
+  --tone-sun-ink: var(--sun-ink);
+  --tone-sun-line: var(--sun-line);
+  --tone-sun-solid: var(--sun);
+  --tone-sun-strong: var(--sun-deep);
+  --tone-sun-strong-hover: var(--sun-deep);
+  --tone-sun-ground: var(--butter);
+  --tone-sun-icon: var(--sun-deep);
+  --tone-sun-on-solid: var(--ink);
+  --tone-pink-tint: var(--pink-tint);
+  --tone-pink-ink: var(--pink-deep);
+  --tone-pink-line: var(--pink-line);
+  --tone-pink-solid: var(--pink-deep);
+  --tone-pink-strong: var(--pink-deep);
+  --tone-pink-strong-hover: var(--pink-deep);
+  --tone-pink-ground: var(--pink-tint);
+  --tone-pink-icon: var(--pink);
+  --tone-pink-on-solid: var(--paper);
+
+  /* Components: which role or value each part takes (tokens.json › component, design/components.json). */
+  --chip-purple-fill: var(--tone-purple-tint);
+  --chip-teal-fill: var(--tone-teal-tint);
+  --chip-sun-fill: var(--tone-sun-tint);
+  --chip-pink-fill: var(--tone-pink-tint);
+  --chip-purple-ink: var(--tone-purple-ink);
+  --chip-teal-ink: var(--tone-teal-ink);
+  --chip-sun-ink: var(--tone-sun-ink);
+  --chip-pink-ink: var(--tone-pink-ink);
+  --chip-purple-line: var(--tone-purple-line);
+  --chip-teal-line: var(--tone-teal-line);
+  --chip-sun-line: var(--tone-sun-line);
+  --chip-pink-line: var(--tone-pink-line);
+  --chip-purple-line-hover: var(--tone-purple-solid);
+  --chip-teal-line-hover: var(--tone-teal-solid);
+  --chip-sun-line-hover: var(--tone-sun-solid);
+  --chip-pink-line-hover: var(--tone-pink-solid);
+  --chip-fill-on-ground: var(--paper);
+  --chip-outline-fill: var(--paper);
+  --chip-live: var(--live);
+  --chip-live-ink: var(--live-ink);
+  --tag-purple-fill: var(--tone-purple-solid);
+  --tag-teal-fill: var(--tone-teal-solid);
+  --tag-sun-fill: var(--tone-sun-solid);
+  --tag-pink-fill: var(--tone-pink-solid);
+  --tag-purple-ink: var(--tone-purple-on-solid);
+  --tag-teal-ink: var(--tone-teal-on-solid);
+  --tag-sun-ink: var(--tone-sun-on-solid);
+  --tag-pink-ink: var(--tone-pink-on-solid);
+  --tile-purple-fill: var(--tone-purple-tint);
+  --tile-teal-fill: var(--tone-teal-tint);
+  --tile-sun-fill: var(--tone-sun-tint);
+  --tile-pink-fill: var(--tone-pink-tint);
+  --tile-purple-icon: var(--tone-purple-icon);
+  --tile-teal-icon: var(--tone-teal-icon);
+  --tile-sun-icon: var(--tone-sun-icon);
+  --tile-pink-icon: var(--tone-pink-icon);
+  --tile-purple-line: var(--tone-purple-line);
+  --tile-teal-line: var(--tone-teal-line);
+  --tile-sun-line: var(--tone-sun-line);
+  --tile-pink-line: var(--tone-pink-line);
+  --tile-fill-on-ground: var(--paper);
+  --note-purple-fill: var(--tone-purple-ground);
+  --note-teal-fill: var(--tone-teal-ground);
+  --note-sun-fill: var(--tone-sun-ground);
+  --note-pink-fill: var(--tone-pink-ground);
+  --note-purple-line: var(--tone-purple-line);
+  --note-teal-line: var(--tone-teal-line);
+  --note-sun-line: var(--tone-sun-line);
+  --note-pink-line: var(--tone-pink-line);
+  --note-purple-icon: var(--tone-purple-icon);
+  --note-teal-icon: var(--tone-teal-icon);
+  --note-sun-icon: var(--tone-sun-icon);
+  --note-pink-icon: var(--tone-pink-icon);
+  --note-lead-in: var(--ink);
+  --note-purple-line-hover: var(--tone-purple-solid);
+  --note-teal-line-hover: var(--tone-teal-solid);
+  --note-sun-line-hover: var(--tone-sun-solid);
+  --note-pink-line-hover: var(--tone-pink-solid);
+  --note-tile-fill: var(--paper);
+  --note-promise-fill: var(--paper);
+  --note-purple-promise-tile-fill: var(--tone-purple-tint);
+  --note-teal-promise-tile-fill: var(--tone-teal-tint);
+  --note-sun-promise-tile-fill: var(--tone-sun-tint);
+  --note-pink-promise-tile-fill: var(--tone-pink-tint);
+  --note-promise-ink: var(--ink);
+  --note-row-fill: var(--paper);
+  --note-row-line: var(--deep);
+  --note-row-ink: var(--deep);
+  --note-row-tile-fill: var(--purple-mist);
+  --head-purple-fill: var(--tone-purple-ground);
+  --head-teal-fill: var(--tone-teal-ground);
+  --head-sun-fill: var(--tone-sun-ground);
+  --head-pink-fill: var(--tone-pink-ground);
+  --head-purple-line: var(--tone-purple-line);
+  --head-teal-line: var(--tone-teal-line);
+  --head-sun-line: var(--tone-sun-line);
+  --head-pink-line: var(--tone-pink-line);
+  --card-fill: var(--paper);
+  --card-purple-line: var(--tone-purple-solid);
+  --card-teal-line: var(--tone-teal-solid);
+  --card-sun-line: var(--tone-sun-solid);
+  --card-pink-line: var(--tone-pink-solid);
+  --card-more: var(--purple);
+  --choice-fill: var(--paper);
+  --choice-purple-line: var(--tone-purple-line);
+  --choice-teal-line: var(--tone-teal-line);
+  --choice-sun-line: var(--tone-sun-line);
+  --choice-pink-line: var(--tone-pink-line);
+  --choice-purple-fill-selected: var(--tone-purple-tint);
+  --choice-teal-fill-selected: var(--tone-teal-tint);
+  --choice-sun-fill-selected: var(--tone-sun-tint);
+  --choice-pink-fill-selected: var(--tone-pink-tint);
+  --choice-purple-line-selected: var(--tone-purple-icon);
+  --choice-teal-line-selected: var(--tone-teal-icon);
+  --choice-sun-line-selected: var(--tone-sun-icon);
+  --choice-pink-line-selected: var(--tone-pink-icon);
+  --choice-purple-line-hover: var(--tone-purple-icon);
+  --choice-teal-line-hover: var(--tone-teal-icon);
+  --choice-sun-line-hover: var(--tone-sun-icon);
+  --choice-pink-line-hover: var(--tone-pink-icon);
+  --button-purple-fill: var(--tone-purple-strong);
+  --button-teal-fill: var(--tone-teal-strong);
+  --button-sun-fill: var(--tone-sun-strong);
+  --button-pink-fill: var(--tone-pink-strong);
+  --button-purple-ink: var(--tone-purple-on-solid);
+  --button-teal-ink: var(--tone-teal-on-solid);
+  --button-sun-ink: var(--tone-sun-on-solid);
+  --button-pink-ink: var(--tone-pink-on-solid);
+  --button-purple-line: var(--tone-purple-strong);
+  --button-teal-line: var(--tone-teal-strong);
+  --button-sun-line: var(--tone-sun-strong);
+  --button-pink-line: var(--tone-pink-strong);
+  --button-purple-fill-hover: var(--tone-purple-strong-hover);
+  --button-teal-fill-hover: var(--tone-teal-strong-hover);
+  --button-sun-fill-hover: var(--tone-sun-strong-hover);
+  --button-pink-fill-hover: var(--tone-pink-strong-hover);
+  --button-outline-fill: var(--paper);
+  --button-purple-outline-ink: var(--tone-purple-strong);
+  --button-teal-outline-ink: var(--tone-teal-strong);
+  --button-sun-outline-ink: var(--tone-sun-strong);
+  --button-pink-outline-ink: var(--tone-pink-strong);
+  --button-purple-outline-fill-hover: var(--tone-purple-tint);
+  --button-teal-outline-fill-hover: var(--tone-teal-tint);
+  --button-sun-outline-fill-hover: var(--tone-sun-tint);
+  --button-pink-outline-fill-hover: var(--tone-pink-tint);
+  --button-purple-outline-ink-hover: var(--tone-purple-strong-hover);
+  --button-teal-outline-ink-hover: var(--tone-teal-strong-hover);
+  --button-sun-outline-ink-hover: var(--tone-sun-strong-hover);
+  --button-pink-outline-ink-hover: var(--tone-pink-strong-hover);
+  --button-quiet-fill: var(--sun-tint);
+  --button-quiet-ink: var(--ink);
+  --button-quiet-line: var(--sun-line);
+  --button-disabled-fill: var(--paper);
+  --button-disabled-ink: var(--ink-soft);
+  --button-disabled-line: var(--purple-line);
+  --bar-fill: var(--purple-tint);
+  --bar-line: var(--purple-line);
+  --bar-ink: var(--ink);
+  --bar-brand: var(--brand-ink);
+  --bar-tab-ink: var(--ink-soft);
+  --bar-tab-ink-selected: var(--purple-ink);
+  --bar-tab-icon-selected: var(--purple);
+  --bar-wave: var(--space-4);
+  --bar-crest: var(--space-5);
+  --swash-colour: var(--sun);
+  --swash-stroke: 4px;
+  --swash-wavelength: var(--space-8);
+  --swash-height: var(--space-4);
 }
 
 /* A4 handouts: semantic tokens in print units. */
@@ -211,7 +399,7 @@
 .fmt-swash {
   white-space: nowrap;
   padding-bottom: var(--space-3);
-  background: /* token:sun */ url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 16'%3E%3Cpath d='M-17 8c6-5 11-5 17 0s11 5 17 0 11-5 17 0 11 5 17 0' fill='none' stroke='%23f2a516' stroke-width='4' stroke-linejoin='round'/%3E%3C/svg%3E") left bottom / var(--space-8) var(--space-4) round no-repeat;
+  background: /* token:swash-colour */ url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 16'%3E%3Cpath d='M-17 8c6-5 11-5 17 0s11 5 17 0 11-5 17 0 11 5 17 0' fill='none' stroke='%23f2a516' stroke-width='4' stroke-linejoin='round'/%3E%3C/svg%3E") left bottom / var(--space-8) var(--space-4) round no-repeat;
 }
 
 /* ── Section title: centred, with a short squiggle in the band's accent ── */
@@ -233,30 +421,36 @@
   font-family: var(--font-body); font-weight: 700; font-size: var(--text-sm); line-height: var(--leading-normal); text-align: center;
 }
 .fmt-chip svg { flex: none; width: var(--size-icon); height: var(--size-icon); fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
-.fmt-chip.is-purple { background: var(--purple-tint); color: var(--purple-ink); border-color: var(--purple-line); }
-.fmt-chip.is-teal   { background: var(--teal-tint); color: var(--teal-ink); border-color: var(--teal-line); }
-.fmt-chip.is-sun    { background: var(--sun-tint); color: var(--sun-ink); border-color: var(--sun-line); }
-.fmt-chip.is-pink   { background: var(--pink-tint); color: var(--pink-deep); border-color: var(--pink-line); }
-.fmt-chip.is-outline { background: var(--paper); color: var(--purple-ink); border-color: var(--purple-line); }
+.fmt-chip.is-purple { background: var(--chip-purple-fill); color: var(--chip-purple-ink); border-color: var(--chip-purple-line); }
+.fmt-chip.is-teal   { background: var(--chip-teal-fill); color: var(--chip-teal-ink); border-color: var(--chip-teal-line); }
+.fmt-chip.is-sun    { background: var(--chip-sun-fill); color: var(--chip-sun-ink); border-color: var(--chip-sun-line); }
+.fmt-chip.is-pink   { background: var(--chip-pink-fill); color: var(--chip-pink-ink); border-color: var(--chip-pink-line); }
+.fmt-chip.is-outline { background: var(--chip-outline-fill); color: var(--chip-purple-ink); border-color: var(--chip-purple-line); }
+/* On its own tone's ground (a lilac band, header or note) a chip turns paper
+   (chip.fill-on-ground), so it never vanishes into its own tint. */
+:is(.tone-lilac, .fmt-head:not(.is-teal, .is-sun, .is-pink), .fmt-note:not(.is-teal, .is-sun, .is-promise), .fmt-appbar, .fmt-on-purple) .fmt-chip.is-purple,
+:is(.tone-mint, .fmt-head.is-teal, .fmt-note.is-teal, .fmt-on-teal) .fmt-chip.is-teal,
+:is(.fmt-on-sun) .fmt-chip.is-sun,
+:is(.fmt-head.is-pink, .fmt-on-pink) .fmt-chip.is-pink { background: var(--chip-fill-on-ground); }
 /* A chip that's a link: the whole chip is the target. */
 .fmt-chip > a { display: contents; color: inherit; text-decoration: none; }
 .fmt-chip > a::after { content: ""; position: absolute; inset: calc(-1 * var(--border-outline)); border-radius: var(--radius-pill); }
 .fmt-chip:has(> a) { cursor: pointer; transition: border-color var(--dur-base) var(--ease-standard), transform var(--dur-slow) var(--ease-spring); }
 .fmt-chip:has(> a:hover) { transform: translateY(calc(-1 * var(--space-hair))); }
-.fmt-chip.is-purple:has(> a:hover), .fmt-chip.is-outline:has(> a:hover) { border-color: var(--purple); }
-.fmt-chip.is-teal:has(> a:hover) { border-color: var(--teal); }
-.fmt-chip.is-sun:has(> a:hover) { border-color: var(--sun-deep); }
-.fmt-chip.is-pink:has(> a:hover) { border-color: var(--pink-deep); }
+.fmt-chip.is-purple:has(> a:hover), .fmt-chip.is-outline:has(> a:hover) { border-color: var(--chip-purple-line-hover); }
+.fmt-chip.is-teal:has(> a:hover) { border-color: var(--chip-teal-line-hover); }
+.fmt-chip.is-sun:has(> a:hover) { border-color: var(--chip-sun-line-hover); }
+.fmt-chip.is-pink:has(> a:hover) { border-color: var(--chip-pink-line-hover); }
 .fmt-chip:has(> a:focus-visible) { outline: var(--border-focus) solid var(--focus); outline-offset: var(--border-focus); }
 .fmt-chip > a:focus-visible { outline: none; }
-.fmt-chip .fmt-live { flex-basis: 100%; display: flex; align-items: center; justify-content: center; gap: var(--space-2); color: var(--live-ink); }
-.fmt-chip .fmt-live::before { content: ""; width: var(--space-2); height: var(--space-2); border-radius: 50%; background: var(--live); outline: var(--space-hair) solid color-mix(in srgb, var(--live) 25%, transparent); }
+.fmt-chip .fmt-live { flex-basis: 100%; display: flex; align-items: center; justify-content: center; gap: var(--space-2); color: var(--chip-live-ink); }
+.fmt-chip .fmt-live::before { content: ""; width: var(--space-2); height: var(--space-2); border-radius: 50%; background: var(--chip-live); outline: var(--space-hair) solid color-mix(in srgb, var(--chip-live) 25%, transparent); }
 
 /* ── Tag: the small solid label above a pop-up or page title ── */
-.fmt-tag { display: inline-block; padding: var(--space-1) var(--space-3); border-radius: var(--radius-pill); background: var(--purple); color: var(--paper); font-family: var(--font-body); font-weight: 700; font-size: var(--text-xs); letter-spacing: var(--tracking-wide); }
-.fmt-tag.is-teal { background: var(--teal); }
-.fmt-tag.is-sun { background: var(--sun); color: var(--ink); }
-.fmt-tag.is-pink { background: var(--pink-deep); }
+.fmt-tag { display: inline-block; padding: var(--space-1) var(--space-3); border-radius: var(--radius-pill); background: var(--tag-purple-fill); color: var(--tag-purple-ink); font-family: var(--font-body); font-weight: 700; font-size: var(--text-xs); letter-spacing: var(--tracking-wide); }
+.fmt-tag.is-teal { background: var(--tag-teal-fill); color: var(--tag-teal-ink); }
+.fmt-tag.is-sun { background: var(--tag-sun-fill); color: var(--tag-sun-ink); }
+.fmt-tag.is-pink { background: var(--tag-pink-fill); color: var(--tag-pink-ink); }
 
 /* ── Tick list: plain lines, a teal tick circle each, no card ── */
 .fmt-ticks { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-3); }
@@ -270,30 +464,30 @@
 .fmt-ticks.is-blank li::before { background: var(--paper); border: var(--border-outline) solid var(--teal); border-radius: var(--radius-sm); }
 
 /* ── Info note: a tinted strip, outlined, with an icon tile ── */
-.fmt-note { --note-tint: var(--purple-tint); --note-ink: var(--purple); --note-line: var(--purple-line);
+.fmt-note { --note-tint: var(--note-purple-fill); --note-ink: var(--note-purple-icon); --note-line: var(--note-purple-line);
   margin: 0; display: flow-root; padding: var(--card-pad); border: var(--border-outline) solid var(--note-line); border-radius: calc(var(--radius-tile) + var(--card-pad) + var(--border-outline)); background: var(--note-tint); font-family: var(--font-body); font-weight: 500; font-size: var(--text-base); line-height: var(--leading-normal); color: var(--ink-soft); }
-.fmt-note > i { float: left; margin: 0 var(--space-4) var(--space-2) 0; display: grid; place-items: center; width: var(--size-tile-md); height: var(--size-tile-md); border: var(--border-outline) solid var(--note-line); border-radius: var(--radius-tile); background: var(--paper); color: var(--note-ink); }
+.fmt-note > i { float: left; margin: 0 var(--space-4) var(--space-2) 0; display: grid; place-items: center; width: var(--size-tile-md); height: var(--size-tile-md); border: var(--border-outline) solid var(--note-line); border-radius: var(--radius-tile); background: var(--note-tile-fill); color: var(--note-ink); }
 .fmt-note > i svg { width: var(--size-icon-lg); height: var(--size-icon-lg); fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
 .fmt-note > span { display: block; }
 /* Centred: for short notes (a grown-ups tip). The tile sits card-pad from the
    top, left and bottom edges and card-pad from the words, which centre beside it. */
 .fmt-note.is-centred { display: flex; align-items: center; gap: var(--card-pad); }
 .fmt-note.is-centred > i { float: none; flex: none; margin: 0; }
-.fmt-note.is-teal { --note-tint: var(--teal-tint); --note-ink: var(--teal); --note-line: var(--teal-line); }
-.fmt-note.is-sun { --note-tint: var(--butter); --note-ink: var(--sun-deep); --note-line: var(--sun-line); }
-.fmt-note.is-promise { --note-tint: var(--paper); font-family: var(--font-display); font-size: var(--text-lg); color: var(--ink); }
-.fmt-note.is-promise > i { background: var(--purple-tint); }
+.fmt-note.is-teal { --note-tint: var(--note-teal-fill); --note-ink: var(--note-teal-icon); --note-line: var(--note-teal-line); }
+.fmt-note.is-sun { --note-tint: var(--note-sun-fill); --note-ink: var(--note-sun-icon); --note-line: var(--note-sun-line); }
+.fmt-note.is-promise { --note-tint: var(--note-promise-fill); font-family: var(--font-display); font-size: var(--text-lg); color: var(--note-promise-ink); }
+.fmt-note.is-promise > i { background: var(--note-purple-promise-tile-fill); }
 
 /* ── Icon tile: a rounded square, tint ground, icon in the matching colour ── */
-.fmt-tile { box-sizing: border-box; display: inline-grid; place-items: center; width: var(--size-tile-lg); height: var(--size-tile-lg); border: var(--border-outline) solid var(--purple-line); border-radius: var(--radius-card); }
+.fmt-tile { box-sizing: border-box; display: inline-grid; place-items: center; width: var(--size-tile-lg); height: var(--size-tile-lg); border: var(--border-outline) solid var(--tile-purple-line); border-radius: var(--radius-card); }
 .fmt-tile.is-small { width: var(--size-tile-md); height: var(--size-tile-md); border-radius: var(--radius-tile); }
 .fmt-tile svg { width: var(--size-icon-xl); height: var(--size-icon-xl); fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
 .fmt-tile.is-small svg { width: var(--size-icon-lg); height: var(--size-icon-lg); }
 .fmt-tile svg.is-filled { fill: currentColor; stroke: none; }
-.fmt-tile.is-purple { background: var(--purple-tint); color: var(--purple); }
-.fmt-tile.is-teal   { background: var(--teal-tint); color: var(--teal); border-color: var(--teal-line); }
-.fmt-tile.is-sun    { background: var(--sun-tint); color: var(--sun-deep); border-color: var(--sun-line); }
-.fmt-tile.is-pink   { background: var(--pink-tint); color: var(--pink); border-color: var(--pink-line); }
+.fmt-tile.is-purple { background: var(--tile-purple-fill); color: var(--tile-purple-icon); border-color: var(--tile-purple-line); }
+.fmt-tile.is-teal   { background: var(--tile-teal-fill); color: var(--tile-teal-icon); border-color: var(--tile-teal-line); }
+.fmt-tile.is-sun    { background: var(--tile-sun-fill); color: var(--tile-sun-icon); border-color: var(--tile-sun-line); }
+.fmt-tile.is-pink   { background: var(--tile-pink-fill); color: var(--tile-pink-icon); border-color: var(--tile-pink-line); }
 
 /* ── Nest: concentric corners ──
    A container's radius = the radius of what sits in its corner + the padding
@@ -309,15 +503,23 @@
 .fmt-nest > * { border-radius: var(--nest-inner); }
 
 /* ── Card: wrapped in its colour, corners concentric with its icon tile ── */
-.fmt-card { --band: var(--purple); display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-2); padding: var(--card-pad); border: var(--border-outline) solid var(--band); border-radius: calc(var(--radius-tile) + var(--card-pad) + var(--border-outline)); background: var(--paper); box-shadow: var(--shadow-rest); font-family: var(--font-body); color: var(--ink-soft);
+.fmt-card { --band: var(--card-purple-line); display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-2); padding: var(--card-pad); border: var(--border-outline) solid var(--band); border-radius: calc(var(--radius-tile) + var(--card-pad) + var(--border-outline)); background: var(--card-fill); box-shadow: var(--shadow-rest); font-family: var(--font-body); color: var(--ink-soft);
   transition: transform var(--dur-slow) var(--ease-spring), box-shadow var(--dur-slow) var(--ease-standard); }
-.fmt-card.is-teal { --band: var(--teal); }
-.fmt-card.is-sun { --band: var(--sun); }
-.fmt-card.is-pink { --band: var(--pink-deep); }
+.fmt-card.is-teal { --band: var(--card-teal-line); }
+.fmt-card.is-sun { --band: var(--card-sun-line); }
+.fmt-card.is-pink { --band: var(--card-pink-line); }
 a.fmt-card:hover { transform: translateY(calc(-1 * var(--space-2))) rotate(1deg); box-shadow: var(--shadow-raised); }
 .fmt-card h3 { margin: var(--space-1) 0 0; font-family: var(--font-display); font-weight: 500; font-size: var(--text-lg); line-height: var(--leading-snug); color: var(--ink); }
 .fmt-card p { margin: 0; font-size: var(--text-base); line-height: var(--leading-relaxed); font-weight: 500; }
-.fmt-card .fmt-more { margin-top: auto; display: inline-flex; align-items: center; gap: var(--space-1); color: var(--purple); font-family: var(--font-display); font-weight: 500; }
+/* A service card: the tile and the title side by side, the rest beneath, Learn more centred (as on the website and in the app). */
+.fmt-card:not(.is-action) { display: grid; grid-template-columns: auto 1fr; align-items: center; column-gap: var(--space-4); row-gap: 0; }
+.fmt-card:not(.is-action) > :not(.fmt-tile, h3) { grid-column: 1 / -1; }
+.fmt-card:not(.is-action) > h3 { margin: 0; }
+.fmt-card:not(.is-action) > p { margin: var(--space-4) 0; }
+.fmt-card:not(.is-action) > .fmt-tile { width: var(--size-tile-md); height: var(--size-tile-md); border-radius: var(--radius-tile); }
+.fmt-card:not(.is-action) > .fmt-tile svg { width: var(--size-icon-lg); height: var(--size-icon-lg); }
+.fmt-card:not(.is-action) > .fmt-more { justify-self: center; align-self: end; }
+.fmt-card .fmt-more { margin-top: auto; display: inline-flex; align-items: center; gap: var(--space-1); color: var(--card-more); font-family: var(--font-display); font-weight: 500; }
 .fmt-card .fmt-more svg { width: var(--size-icon-sm); height: var(--size-icon-sm); fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
 /* An action card: a full-width button at the foot, so the card's corners
    are concentric with the button's (button radius + padding + outline). */
@@ -325,14 +527,17 @@ a.fmt-card:hover { transform: translateY(calc(-1 * var(--space-2))) rotate(1deg)
 .fmt-card.is-action .fmt-btn { margin-top: auto; }
 
 /* ── Button: a pill in the heading face ── */
-.fmt-btn { --glow: var(--purple); box-sizing: border-box; min-height: var(--size-button); display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2); padding: var(--space-2) var(--space-7); border: var(--border-outline) solid var(--purple); border-radius: var(--radius-pill); background: var(--purple); color: var(--paper); font-family: var(--font-display); font-weight: 500; font-size: var(--text-md); line-height: var(--leading-snug); text-decoration: none; box-shadow: var(--shadow-glow); cursor: pointer;
+.fmt-btn { --glow: var(--button-purple-fill); box-sizing: border-box; min-height: var(--size-button); display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2); padding: var(--space-2) var(--space-7); border: var(--border-outline) solid var(--button-purple-line); border-radius: var(--radius-pill); background: var(--button-purple-fill); color: var(--button-purple-ink); font-family: var(--font-display); font-weight: 500; font-size: var(--text-md); line-height: var(--leading-snug); text-decoration: none; box-shadow: var(--shadow-glow); cursor: pointer;
   transition: transform var(--dur-base) var(--ease-spring), background-color var(--dur-fast) var(--ease-standard); }
-.fmt-btn:hover { background: var(--purple-dark); border-color: var(--purple-dark); transform: translateY(calc(-1 * var(--space-hair))); }
-.fmt-btn.is-teal { --glow: var(--teal); box-shadow: var(--shadow-glow-teal); background: var(--teal-ink); border-color: var(--teal-ink); }
-.fmt-btn.is-teal:hover { background: var(--teal-deeper); border-color: var(--teal-deeper); }
-.fmt-btn.is-outline { background: var(--paper); color: var(--purple); box-shadow: none; }
-.fmt-btn.is-outline.is-teal { color: var(--teal-ink); }
-.fmt-btn.is-quiet { background: var(--sun-tint); border-color: var(--sun-line); color: var(--ink); box-shadow: none; justify-content: space-between; font-family: var(--font-body); font-weight: 700; font-size: var(--text-base); }
+.fmt-btn:hover { background: var(--button-purple-fill-hover); border-color: var(--button-purple-fill-hover); transform: translateY(calc(-1 * var(--space-hair))); }
+.fmt-btn.is-teal { --glow: var(--button-teal-fill); box-shadow: var(--shadow-glow-teal); background: var(--button-teal-fill); border-color: var(--button-teal-line); color: var(--button-teal-ink); }
+.fmt-btn.is-teal:hover { background: var(--button-teal-fill-hover); border-color: var(--button-teal-fill-hover); }
+.fmt-btn.is-outline { background: var(--button-outline-fill); color: var(--button-purple-outline-ink); box-shadow: none; }
+.fmt-btn.is-outline:hover { background: var(--button-purple-outline-fill-hover); color: var(--button-purple-outline-ink-hover); border-color: var(--button-purple-line); }
+.fmt-btn.is-outline.is-teal { color: var(--button-teal-outline-ink); }
+.fmt-btn.is-outline.is-teal:hover { background: var(--button-teal-outline-fill-hover); color: var(--button-teal-outline-ink-hover); border-color: var(--button-teal-line); }
+.fmt-btn:disabled, .fmt-btn[aria-disabled="true"] { background: var(--button-disabled-fill); color: var(--button-disabled-ink); border-color: var(--button-disabled-line); box-shadow: none; cursor: default; transform: none; }
+.fmt-btn.is-quiet { background: var(--button-quiet-fill); border-color: var(--button-quiet-line); color: var(--button-quiet-ink); box-shadow: none; justify-content: space-between; font-family: var(--font-body); font-weight: 700; font-size: var(--text-base); }
 .fmt-btn svg { width: var(--size-icon-sm); height: var(--size-icon-sm); fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
 
 /* ── Footstep trail: anatomical prints, left and right, walking ──
@@ -416,14 +621,14 @@ a.fmt-card:hover { transform: translateY(calc(-1 * var(--space-2))) rotate(1deg)
 /* Header: a tinted panel. The title and the Name line share the top row
    (the Name line on the title's baseline); the tag sits under the title.
    The row gap adds the swash's depth (space-3) so it clears the tag. */
-.fmt-head { --head-tint: var(--purple-tint); --head-line: var(--purple-line); display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "title name" "tag ."; align-items: end; column-gap: var(--grid-gap); row-gap: calc(var(--group-gap) + var(--space-3)); padding: var(--card-pad); border: var(--border-outline) solid var(--head-line); border-radius: calc(var(--radius-tile) + var(--card-pad) + var(--border-outline)); background: var(--head-tint); }
+.fmt-head { --head-tint: var(--head-purple-fill); --head-line: var(--head-purple-line); display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "title name" "tag ."; align-items: end; column-gap: var(--grid-gap); row-gap: calc(var(--group-gap) + var(--space-3)); padding: var(--card-pad); border: var(--border-outline) solid var(--head-line); border-radius: calc(var(--radius-tile) + var(--card-pad) + var(--border-outline)); background: var(--head-tint); }
 .fmt-head > div { display: contents; }
 .fmt-head h1 { grid-area: title; }
 .fmt-head .fmt-tag { grid-area: tag; justify-self: start; }
 .fmt-head .fmt-name { grid-area: name; }
-.fmt-head.is-teal { --head-tint: var(--teal-tint); --head-line: var(--teal-line); }
-.fmt-head.is-sun { --head-tint: var(--butter); --head-line: var(--sun-line); }
-.fmt-head.is-pink { --head-tint: var(--pink-tint); --head-line: var(--pink-line); }
+.fmt-head.is-teal { --head-tint: var(--head-teal-fill); --head-line: var(--head-teal-line); }
+.fmt-head.is-sun { --head-tint: var(--head-sun-fill); --head-line: var(--head-sun-line); }
+.fmt-head.is-pink { --head-tint: var(--head-pink-fill); --head-line: var(--head-pink-line); }
 .fmt-name { display: flex; align-items: flex-end; gap: var(--space-2); margin: 0 0 var(--space-1); font-weight: 700; font-size: var(--text-sm); color: var(--ink); white-space: nowrap; }
 .fmt-name span { display: block; width: calc(var(--space-30) * 1.6); height: var(--space-6); border-bottom: var(--border-outline) dashed var(--rule); }
 
@@ -472,13 +677,13 @@ a.fmt-card:hover { transform: translateY(calc(-1 * var(--space-2))) rotate(1deg)
 .fmt-choices { --cols: 3; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, max(calc((100% - 2 * var(--grid-gap)) / 3), calc(var(--space-30) + var(--space-10)))), 1fr)); gap: var(--grid-gap); }
 :is(.fmt-sheet, .fmt-page) .fmt-choices { grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); }
 .fmt-choices > li { display: flex; }
-.fmt-choice { --tone: var(--purple); --tone-tint: var(--purple-tint); --tone-line: var(--purple-line);
+.fmt-choice { --tone: var(--choice-purple-line-selected); --tone-tint: var(--choice-purple-fill-selected); --tone-line: var(--choice-purple-line);
   box-sizing: border-box; flex: 1 1 auto; display: flex; flex-direction: column; align-items: center; gap: var(--group-gap); min-height: var(--size-target);
   padding: var(--card-pad); border: var(--border-outline) solid var(--tone-line); border-radius: calc(var(--radius-tile) + var(--card-pad) + var(--border-outline));
-  background: var(--paper); font-family: var(--font-body); font-weight: 600; font-size: var(--text-kid); line-height: var(--leading-snug); color: var(--ink); text-align: center; text-wrap: pretty; }
-.fmt-choice.is-teal { --tone: var(--teal); --tone-tint: var(--teal-tint); --tone-line: var(--teal-line); }
-.fmt-choice.is-sun  { --tone: var(--sun-deep); --tone-tint: var(--sun-tint); --tone-line: var(--sun-line); }
-.fmt-choice.is-pink { --tone: var(--pink); --tone-tint: var(--pink-tint); --tone-line: var(--pink-line); }
+  background: var(--choice-fill); font-family: var(--font-body); font-weight: 600; font-size: var(--text-kid); line-height: var(--leading-snug); color: var(--ink); text-align: center; text-wrap: pretty; }
+.fmt-choice.is-teal { --tone: var(--choice-teal-line-selected); --tone-tint: var(--choice-teal-fill-selected); --tone-line: var(--choice-teal-line); }
+.fmt-choice.is-sun  { --tone: var(--choice-sun-line-selected); --tone-tint: var(--choice-sun-fill-selected); --tone-line: var(--choice-sun-line); }
+.fmt-choice.is-pink { --tone: var(--choice-pink-line-selected); --tone-tint: var(--choice-pink-fill-selected); --tone-line: var(--choice-pink-line); }
 .fmt-choice .fmt-tile { flex: none; }
 /* Icons sit level along a row; each label centres in the height left under its icon. */
 .fmt-choice > span:last-child { flex: 1 1 auto; display: flex; align-items: center; justify-content: center; }
@@ -510,4 +715,77 @@ button.fmt-choice:focus-visible { outline: var(--border-focus) solid var(--focus
 @page { margin: 0; }
 @media print {
   .fmt-sheet, .fmt-page { box-shadow: none !important; break-after: page; }
+}
+
+/* ── Logo ── */
+.fmt-logo { display: block; width: auto; color: var(--brand-ink); }
+.fmt-logo.is-inverse { color: var(--paper); }
+
+/* ── Wave: a band's colour as a gentle wave (240×40 tile, repeated every 12 waves' height) ──
+   `is-down` hangs it under a bar; `is-stroked` outlines the curved edge in bar.line. */
+.fmt-wave { --wave-h: var(--bar-wave); --wave-fill: var(--bar-fill); --wave-line: transparent; position: relative; display: block; height: var(--wave-h); pointer-events: none; }
+.fmt-wave::before, .fmt-wave::after { content: ""; position: absolute; inset: 0; background: var(--wave-fill);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 40' preserveAspectRatio='none'%3E%3Cpath d='M0 40V22C40 6 80 6 120 22S200 38 240 22V40Z'/%3E%3C/svg%3E") 0 0 / calc(var(--wave-h) * 12) var(--wave-h) repeat-x;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 40' preserveAspectRatio='none'%3E%3Cpath d='M0 40V22C40 6 80 6 120 22S200 38 240 22V40Z'/%3E%3C/svg%3E") 0 0 / calc(var(--wave-h) * 12) var(--wave-h) repeat-x; }
+.fmt-wave::after { background: var(--wave-line);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 40' preserveAspectRatio='none'%3E%3Cpath d='M0 22C40 6 80 6 120 22S200 38 240 22' fill='none' stroke='%23000' stroke-width='2' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") 0 0 / calc(var(--wave-h) * 12) var(--wave-h) repeat-x;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 40' preserveAspectRatio='none'%3E%3Cpath d='M0 22C40 6 80 6 120 22S200 38 240 22' fill='none' stroke='%23000' stroke-width='2' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") 0 0 / calc(var(--wave-h) * 12) var(--wave-h) repeat-x; }
+.fmt-wave.is-down { transform: scaleY(-1); }
+.fmt-wave.is-stroked { --wave-line: var(--bar-line); }
+
+/* ── Progress bar ── */
+.fmt-progress { position: relative; display: block; flex: 1 1 auto; height: var(--space-2); border-radius: var(--radius-pill); background: var(--purple-line); overflow: hidden; }
+.fmt-progress > i { position: absolute; inset: 0 auto 0 0; border-radius: inherit; background: var(--purple); transition: width var(--dur-slow) var(--ease-standard); }
+
+/* ── Icon button: a round 44px target, paper, outlined in purple-line ── */
+.fmt-iconbtn { box-sizing: border-box; flex: none; display: inline-grid; place-items: center; width: var(--size-target); height: var(--size-target); padding: 0; border: var(--border-outline) solid var(--purple-line); border-radius: 50%; background: var(--paper); color: var(--purple); cursor: pointer; transition: transform var(--dur-base) var(--ease-spring); }
+.fmt-iconbtn:active { transform: scale(0.92); }
+.fmt-iconbtn:focus-visible { outline: var(--border-focus) solid var(--focus); outline-offset: var(--border-focus); }
+.fmt-iconbtn svg { width: var(--size-icon-sm); height: var(--size-icon-sm); fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ── App bar: lilac, back button, title (or the lockup), progress; a shallow stroked wave beneath ── */
+.fmt-appbar-wrap { position: relative; }
+.fmt-appbar { display: grid; gap: var(--space-1); padding: var(--space-1) var(--gutter); background: var(--bar-fill); color: var(--bar-ink); }
+.fmt-appbar-row { display: flex; align-items: center; gap: var(--space-3); min-height: var(--size-target); }
+.fmt-appbar h1 { margin: 0; font-family: var(--font-display); font-weight: 600; font-size: var(--text-lg); line-height: var(--leading-snug); }
+.fmt-appbar h1.fmt-appbar-brand { display: flex; align-items: center; gap: var(--space-2); font-weight: var(--weight-brand); color: var(--bar-brand); white-space: nowrap; }
+.fmt-appbar-progress { display: flex; align-items: center; gap: var(--space-3); padding-block: var(--space-1); font-family: var(--font-body); font-weight: 700; font-size: var(--text-sm); color: var(--purple-ink); }
+.fmt-appbar-wrap > .fmt-wave { position: absolute; inset: 100% 0 auto; }
+
+/* ── Tab bar: lilac; a wave crest rises over the chosen tab (--at of --n) and glides between tabs ── */
+.fmt-tabbar { --crest: var(--bar-crest); position: relative; background: var(--bar-fill); border-top: var(--border-outline) solid var(--bar-line); padding: 0 calc(var(--gutter) / 2) var(--space-1); }
+.fmt-tabbar::before, .fmt-tabbar::after { content: ""; position: absolute; bottom: 100%; margin-bottom: calc(-1 * var(--border-outline)); left: calc(var(--gutter) / 2 + (100% - var(--gutter)) / var(--n) * (var(--at) + 0.5)); width: calc((100% - var(--gutter)) / var(--n) * 1.2); height: calc(var(--crest) + var(--border-outline)); translate: -50% 0; transition: left var(--dur-slow) var(--ease-spring); }
+.fmt-tabbar::before { background: var(--bar-fill);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 20' preserveAspectRatio='none'%3E%3Cpath d='M0 20C30 20 30 1 60 1S90 20 120 20Z'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 20' preserveAspectRatio='none'%3E%3Cpath d='M0 20C30 20 30 1 60 1S90 20 120 20Z'/%3E%3C/svg%3E") center / 100% 100% no-repeat; }
+.fmt-tabbar::after { background: var(--bar-line);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 20' preserveAspectRatio='none'%3E%3Cpath d='M0 20C30 20 30 1 60 1S90 20 120 20' fill='none' stroke='%23000' stroke-width='2' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 20' preserveAspectRatio='none'%3E%3Cpath d='M0 20C30 20 30 1 60 1S90 20 120 20' fill='none' stroke='%23000' stroke-width='2' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") center / 100% 100% no-repeat; }
+.fmt-tabbar [role="tablist"] { display: flex; }
+.fmt-tabbar button { flex: 1 1 0; min-height: var(--size-target); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-hair); padding: 0; border: 0; background: none; color: var(--bar-tab-ink); font-family: var(--font-body); font-weight: 600; font-size: var(--text-xs); cursor: pointer; }
+.fmt-tabbar button[aria-selected="true"] { color: var(--bar-tab-ink-selected); font-weight: 700; }
+.fmt-tabbar button[aria-selected="true"] svg { color: var(--bar-tab-icon-selected); translate: 0 calc(-1 * var(--space-1)); }
+.fmt-tabbar button svg { width: var(--size-icon); height: var(--size-icon); fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; transition: translate var(--dur-slow) var(--ease-spring); }
+.fmt-tabbar button:focus-visible { outline: var(--border-focus) solid var(--focus); outline-offset: calc(-1 * var(--border-focus)); border-radius: var(--radius-tile); }
+
+/* ── Action bar: a flow's buttons, floating, Back at the start and the next step at the end ── */
+.fmt-actionbar { display: flex; align-items: center; justify-content: space-between; gap: var(--grid-gap); padding: var(--space-3) var(--gutter); }
+
+/* ── Step focus: one step, big, to read across the room ── */
+.fmt-stepfocus { display: grid; justify-items: center; gap: var(--stack); text-align: center; }
+.fmt-stepfocus > p { margin: 0; font-family: var(--font-body); font-weight: 700; font-size: var(--text-md); color: var(--purple-ink); }
+.fmt-stepfocus-disc { box-sizing: border-box; display: grid; place-items: center; width: var(--space-30); height: var(--space-30); border: calc(var(--border-outline) * 2) solid var(--purple-line); border-radius: 50%; background: var(--purple-tint); color: var(--purple-ink); font-family: var(--font-display); font-weight: 600; font-size: var(--text-display); transition: background-color var(--dur-base) var(--ease-standard), transform var(--dur-slow) var(--ease-spring); }
+.fmt-stepfocus.is-done .fmt-stepfocus-disc { background: var(--teal); border-color: var(--teal); color: var(--paper); transform: scale(1.08); }
+.fmt-stepfocus-disc svg { width: 50%; height: 50%; fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+.fmt-stepfocus h2 { margin: 0; font-family: var(--font-display); font-weight: 600; font-size: var(--text-3xl); line-height: var(--leading-snug); color: var(--ink); }
+
+/* ── Celebration: a sun disc with a star that springs in ── */
+.fmt-celebrate { display: grid; justify-items: center; gap: var(--stack); text-align: center; }
+.fmt-celebrate-sun { box-sizing: border-box; display: grid; place-items: center; width: calc(var(--space-30) + var(--space-10)); height: calc(var(--space-30) + var(--space-10)); border: calc(var(--border-outline) * 2) solid var(--sun-line); border-radius: 50%; background: var(--sun-tint); color: var(--sun-deep); }
+.fmt-celebrate-sun svg { width: var(--space-24); height: var(--space-24); fill: var(--sun); stroke: currentColor; stroke-width: 1.6; stroke-linejoin: round; }
+.fmt-celebrate h2 { margin: 0; font-family: var(--font-display); font-weight: 600; font-size: var(--text-3xl); line-height: var(--leading-snug); color: var(--ink); }
+.fmt-celebrate p { margin: 0; max-width: var(--measure); font-family: var(--font-body); font-weight: 500; font-size: var(--text-lg); line-height: var(--leading-relaxed); color: var(--ink-soft); }
+@media (prefers-reduced-motion: no-preference) {
+  .fmt-celebrate-sun { animation: fmt-spring-in var(--dur-entrance) var(--ease-spring) both; }
+  @keyframes fmt-spring-in { from { transform: scale(0.4); } to { transform: scale(1); } }
 }

@@ -1,0 +1,12 @@
+<!-- @dsCard group="App" height=420 subtitle="One step, big; teal with a tick when done" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>StepFocus — preview</title></head>
+<body style="margin:0">
+<div id="root" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;padding:24px;background:var(--paper)"></div>
+<script>
+  var F = window.FollowMeTherapy, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null, h(F.StepFocus,{number:2,total:6,label:'Get dressed'}), h(F.StepFocus,{number:1,total:6,label:'Wash hands',done:true})));
+</script>
+</body>
+</html>

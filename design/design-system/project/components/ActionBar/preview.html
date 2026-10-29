@@ -1,0 +1,12 @@
+<!-- @dsCard group="App" height=220 subtitle="A flow's buttons, floating: Back at the start, the next step at the end" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>ActionBar — preview</title></head>
+<body style="margin:0">
+<div id="root" style="display:grid;gap:12px;background:var(--paper)"></div>
+<script>
+  var F = window.FollowMeTherapy, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null, h(F.ActionBar,{start:{label:'Back',outline:true},end:{label:'Next',chevron:true}}), h(F.ActionBar,{start:{label:'Back',outline:true},end:{label:'Done',variant:'teal',chevron:true}}), h(F.ActionBar,{end:{label:'Save',chevron:true,disabled:true}})));
+</script>
+</body>
+</html>

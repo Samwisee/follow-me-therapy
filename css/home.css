@@ -408,7 +408,7 @@ html[data-nav="rail"] main section[id] {
 .swash {
   padding-bottom: var(--space-3);
   white-space: nowrap;
-  background: /* token:sun */ url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 16'%3E%3Cpath d='M-17 8c6-5 11-5 17 0s11 5 17 0 11-5 17 0 11 5 17 0' fill='none' stroke='%23f2a516' stroke-width='4' stroke-linejoin='round'/%3E%3C/svg%3E") left bottom / var(--space-8) var(--space-4) round no-repeat;
+  background: /* token:swash-colour */ url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 16'%3E%3Cpath d='M-17 8c6-5 11-5 17 0s11 5 17 0 11-5 17 0 11 5 17 0' fill='none' stroke='%23f2a516' stroke-width='4' stroke-linejoin='round'/%3E%3C/svg%3E") left bottom / var(--space-8) var(--space-4) round no-repeat;
 }
 /* Each fact in its own colour with an icon; each one is a link. */
 .facts {
@@ -430,10 +430,10 @@ html[data-nav="rail"] main section[id] {
   min-height: var(--size-target);
   margin: 0;
   padding: var(--space-2) var(--space-4);
-  border: var(--border-outline) solid var(--purple-line);
+  border: var(--border-outline) solid var(--chip-purple-line);
   border-radius: var(--radius-pill);
-  background: var(--purple-tint);
-  color: var(--purple-ink);
+  background: var(--chip-purple-fill);
+  color: var(--chip-purple-ink);
   font-size: var(--text-sm);
   font-weight: 600;
   line-height: var(--leading-normal);
@@ -471,10 +471,10 @@ html[data-nav="rail"] main section[id] {
   stroke-linejoin: round;
 }
 /* The facts sit on the lilac hero (and the share image's lilac ground), so the
-   purple one turns paper rather than vanishing into its own tint: a chip on
-   its own tint goes paper, the same rule as the app. */
-.facts li.fact-age { background: var(--paper); }
-.facts li.fact-tele { border-color: var(--teal-line); background: var(--teal-tint); color: var(--teal-ink); }
+   purple one sits on its own tone's ground and turns paper (chip.fill-on-ground,
+   the same rule in every product). */
+.facts li.fact-age { background: var(--chip-fill-on-ground); }
+.facts li.fact-tele { border-color: var(--chip-teal-line); background: var(--chip-teal-fill); color: var(--chip-teal-ink); }
 /* Inside a fact: its main words with their icon, and any extra line. While
    the card is wide they sit in one row; when it narrows the chip stacks them
    in a column, so it stays as narrow as its widest line instead of
@@ -490,9 +490,9 @@ html[data-nav="rail"] main section[id] {
 
 .facts li.fact-place {
   column-gap: 0.3em; /* one word space between its two parts */
-  border-color: var(--sun-line);
-  background: var(--sun-tint);
-  color: var(--sun-ink);
+  border-color: var(--chip-sun-line);
+  background: var(--chip-sun-fill);
+  color: var(--chip-sun-ink);
 }
 @container (max-width: 28rem) {
   .facts li.fact-place {
@@ -500,9 +500,9 @@ html[data-nav="rail"] main section[id] {
     gap: 0;
   }
 }
-.facts li.fact-age:has(> a:hover) { border-color: var(--purple); }
-.facts li.fact-tele:has(> a:hover) { border-color: var(--teal); }
-.facts li.fact-place:has(> a:hover) { border-color: var(--sun-deep); }
+.facts li.fact-age:has(> a:hover) { border-color: var(--chip-purple-line-hover); }
+.facts li.fact-tele:has(> a:hover) { border-color: var(--chip-teal-line-hover); }
+.facts li.fact-place:has(> a:hover) { border-color: var(--chip-sun-line-hover); }
 .facts li:nth-child(1):hover { transform: rotate(-3deg) scale(1.04); }
 .facts li:nth-child(2):hover { transform: rotate(2deg) scale(1.04); }
 .facts li:nth-child(3):hover { transform: rotate(-2deg) scale(1.04); }
@@ -767,9 +767,9 @@ html[data-nav="rail"] main section[id] {
   margin: 0 0 var(--space-3);
 }
 .bio .chips li {
-  border-color: var(--teal-line);
-  background: var(--teal-tint);
-  color: var(--teal-deeper);
+  border-color: var(--chip-teal-line);
+  background: var(--chip-teal-fill);
+  color: var(--chip-teal-ink);
 }
 /* Below the md breakpoint the card stacks: side by side, the bio runs
    much longer than the photo and leaves it stranded. Stacked, the photo
@@ -868,9 +868,9 @@ html[data-nav="rail"] main section[id] {
    the size of a button, the set's radius and gap. */
 .privacy-note.info-note {
   display: flex;
-  --note-tint: var(--paper);
-  --note-ink: var(--deep);
-  --note-line: var(--deep);
+  --note-tint: var(--note-row-fill);
+  --note-ink: var(--note-row-ink);
+  --note-line: var(--note-row-line);
   align-items: center;
   gap: var(--space-3); /* the same gap as the phone and email tiles */
   margin-top: var(--grid-gap);
@@ -887,7 +887,7 @@ html[data-nav="rail"] main section[id] {
   border-radius: var(--set-radius);
 }
 .privacy-note.info-note a {
-  color: var(--deep);
+  color: var(--note-row-ink);
 }
 .privacy-note.info-note::before {
   float: none;
@@ -895,9 +895,9 @@ html[data-nav="rail"] main section[id] {
   margin: 0;
   width: var(--size-button);
   height: var(--size-button);
-  border-color: color-mix(in srgb, var(--deep) 30%, var(--paper));
+  border-color: color-mix(in srgb, var(--note-row-line) 30%, var(--note-row-fill));
   border-radius: var(--set-inner);
-  background: /* token:deep */ url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232e2363' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='5' y='10.5' width='14' height='10' rx='2.5'/%3E%3Cpath d='M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5'/%3E%3Cpath d='M12 14.5v2'/%3E%3C/svg%3E") center / var(--size-icon) no-repeat, var(--purple-mist);
+  background: /* token:note-row-ink */ url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232e2363' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='5' y='10.5' width='14' height='10' rx='2.5'/%3E%3Cpath d='M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5'/%3E%3Cpath d='M12 14.5v2'/%3E%3C/svg%3E") center / var(--size-icon) no-repeat, var(--note-row-tile-fill);
 }
 /* Get in touch is one set: the two choices, phone and email, and the privacy
    note share one padding (card-pad), one gap between them (grid-gap) and one

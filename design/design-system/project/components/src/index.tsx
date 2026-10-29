@@ -4,41 +4,18 @@ import { LOGO } from './logo';
 type Tone = 'purple' | 'teal' | 'sun' | 'pink';
 const cx = (...c: (string | false | undefined | null)[]) => c.filter(Boolean).join(' ');
 
-/* ── Icons (24px inline, 40px tile) ── */
-const ICON24: Record<string, string> = {
-  smile: '<circle cx="12" cy="12" r="9"/><path d="M8.5 14.5c1.8 2 5.2 2 7 0"/><path d="M9 9.8v.1M15 9.8v.1"/>',
-  video: '<rect x="3" y="6" width="13" height="12" rx="3"/><path d="M16 10.5l5-3v9l-5-3"/>',
-  pin: '<path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/>',
-  info: '<circle cx="12" cy="12" r="9"/><path d="M12 11v5.5"/><path d="M12 7.6v.1"/>',
-  book: '<path d="M3 5.5c3-1.3 6-1.3 9 .5 3-1.8 6-1.8 9-.5V19c-3-1.3-6-1.3-9 .5-3-1.8-6-1.8-9-.5z"/><path d="M12 6v13.5"/>',
-  heart: '<path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/>',
-  chevron: '<path d="M9 5l7 7-7 7"/>',
-  star: '<path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.8l6.1-.9z"/>',
-};
-const FOOT = '<ellipse cx="11.5" cy="3.1" rx="2.05" ry="2.55"/><circle cx="8.15" cy="2.25" r="1.35"/><circle cx="5.85" cy="2.9" r="1.2"/><circle cx="3.95" cy="4.15" r="1.05"/><circle cx="2.55" cy="5.85" r="0.9"/><path d="M7.6 6.6C11.2 6.2 13.9 7.8 13.6 10.8 13.4 12.8 11.4 14 10.9 16.2 10.5 18 11.6 19.4 11.2 21.2 10.8 23.2 9.3 24 7.7 24 5.6 24 4.3 22.7 4.3 20.6 4.3 17.6 3 15.8 2.8 12.8 2.5 9.2 4.4 6.9 7.6 6.6Z"/>';
-const ICON40: Record<string, { d: string; filled?: boolean }> = {
-  footprints: { filled: true, d: `<g transform="translate(6 7) rotate(-6 8 12) scale(.95)">${FOOT}</g><g transform="translate(19 4) rotate(6 8 12) scale(.95)"><g transform="translate(16 0) scale(-1 1)">${FOOT}</g></g>` },
-  stairs: { d: '<path d="M6 31h8v-7h7v-7h7v-7h6"/>' },
-  blocks: { d: '<rect x="6" y="22" width="12" height="12" rx="2.5"/><rect x="22" y="22" width="12" height="12" rx="2.5"/><rect x="14" y="7" width="12" height="12" rx="2.5" transform="rotate(8 20 13)"/>' },
-  clipboard: { d: '<rect x="9" y="7" width="22" height="28" rx="4"/><rect x="15" y="4" width="10" height="6" rx="2"/><path d="M15 22l4 4 7-8"/>' },
-  umbrella: { d: '<path d="M6 20a14 14 0 0 1 28 0"/><path d="M6 20c2.3-2.2 4.7-2.2 7 0 2.3-2.2 4.7-2.2 7 0 2.3-2.2 4.7-2.2 7 0 2.3-2.2 4.7-2.2 7 0"/><path d="M20 20v10.5a3.5 3.5 0 0 1-7 0"/><path d="M20 6V4"/>' },
-  'medicare-cross': { d: '<rect x="7" y="7" width="26" height="26" rx="7"/><path d="M20 13v14M13 20h14"/>' },
-  'shield-tick': { d: '<path d="M20 5l12 5v9c0 8-5 13-12 16C13 32 8 27 8 19v-9z"/><path d="M15 20l4 4 7-8"/>' },
-  // Calm-down strategies (worksheets and, later, the app)
-  breathe: { d: '<path d="M7 16h17a5 5 0 1 0-5-5"/><path d="M7 24h21a5 5 0 1 1-5 5"/><path d="M7 20h11"/>' },
-  cushion: { d: '<path d="M9 11c7 3 15 3 22 0c-2 6-2 12 0 18c-7-3-15-3-22 0c2-6 2-12 0-18z"/>' },
-  'push-wall': { d: '<path d="M32 6v28"/><path d="M26 13v11"/><path d="M22 11v13"/><path d="M18 12v12"/><path d="M14 16v11a6 6 0 0 0 6 6h3a3 3 0 0 0 3-3v-6"/>' },
-  water: { d: '<path d="M11 9h18l-2.5 23h-13z"/><path d="M12.5 18h15"/>' },
-  hug: { d: '<path d="M20 32s-11-7-11-15a6 6 0 0 1 11-3.5a6 6 0 0 1 11 3.5c0 8-11 15-11 15z"/>' },
-  'quiet-spot': { d: '<path d="M5 32L20 8l15 24z"/><path d="M15 32l5-8 5 8"/>' },
-};
-export type Icon24Name = keyof typeof ICON24;
-export type Icon40Name = keyof typeof ICON40;
+/* ── Icons: generated from design/icons.json (the single source, shared with the app) ── */
+import { ICONS } from './icons';
+const ICON40 = Object.fromEntries(Object.entries(ICONS).filter(([, v]) => v.grid === 40).map(([k, v]) => [k, { d: v.svg, filled: 'filled' in v && v.filled }])) as Record<string, { d: string; filled?: boolean }>;
+export type Icon24Name = string;
+export type Icon40Name = string;
 
 /** A 24×24 line icon in the current text colour. Decorative unless `label` is set. */
 export function Icon({ name, label }: { name: Icon24Name; label?: string }) {
-  return <svg viewBox="0 0 24 24" role={label ? 'img' : undefined} aria-label={label} aria-hidden={label ? undefined : true}
-    dangerouslySetInnerHTML={{ __html: (label ? `<title>${label}</title>` : '') + ICON24[name] }} />;
+  const ic = ICONS[name as keyof typeof ICONS];
+  return <svg viewBox={`0 0 ${ic.grid} ${ic.grid}`} role={label ? 'img' : undefined} aria-label={label} aria-hidden={label ? undefined : true}
+    className={'filled' in ic && ic.filled ? 'is-filled' : undefined}
+    dangerouslySetInnerHTML={{ __html: (label ? `<title>${label}</title>` : '') + ic.svg }} />;
 }
 
 /* ── Chip ── */
@@ -118,12 +95,12 @@ export function SectionTitle({ title, subtitle, accent = 'purple' }: SectionTitl
 }
 
 /* ── Button ── */
-export interface ButtonProps { variant?: 'primary' | 'teal' | 'quiet'; outline?: boolean; href?: string; onClick?: () => void; children?: React.ReactNode }
-/** Pill button in the heading face; one primary per view. Teal is "Ask a question". Quiet ones end with a chevron. */
-export function Button({ variant = 'primary', outline, href, onClick, children }: ButtonProps) {
+export interface ButtonProps { variant?: 'primary' | 'teal' | 'quiet'; outline?: boolean; chevron?: boolean; disabled?: boolean; href?: string; onClick?: () => void; children?: React.ReactNode }
+/** Pill button in the heading face; one primary per view. Teal is "Ask a question". `chevron` (›) for going on; quiet ones always end with one. */
+export function Button({ variant = 'primary', outline, chevron, disabled, href, onClick, children }: ButtonProps) {
   const cls = cx('fmt-btn', variant !== 'primary' && 'is-' + variant, outline && 'is-outline');
-  const inner = <>{children}{variant === 'quiet' && <Icon name="chevron" />}</>;
-  return href ? <a className={cls} href={href}>{inner}</a> : <button type="button" className={cls} onClick={onClick}>{inner}</button>;
+  const inner = <>{children}{(chevron || variant === 'quiet') && <Icon name="chevron" />}</>;
+  return href && !disabled ? <a className={cls} href={href}>{inner}</a> : <button type="button" className={cls} onClick={onClick} disabled={disabled}>{inner}</button>;
 }
 
 /* ── FootstepTrail ── */
@@ -153,9 +130,10 @@ export interface LogoProps { variant?: 'stacked' | 'horizontal' | 'mark'; invers
 /** The mark and lockups, drawn in `brand-ink` (the same token as the name) or white with `inverse`. */
 export function Logo({ variant = 'horizontal', inverse, height = 48, label = 'Follow Me Therapy' }: LogoProps) {
   const l = LOGO[variant];
-  return <svg viewBox={l.viewBox} role="img" aria-label={label}
-    style={{ height, width: 'auto', color: inverse ? 'var(--paper)' : 'var(--brand-ink)', display: 'block' }}
-    dangerouslySetInnerHTML={{ __html: `<title>${label}</title>` + l.body }} />;
+  // label="" makes it decorative (when the name is written beside it).
+  return <svg viewBox={l.viewBox} role={label ? 'img' : undefined} aria-label={label || undefined} aria-hidden={label ? undefined : true}
+    className={cx('fmt-logo', inverse && 'is-inverse')} style={{ height }}
+    dangerouslySetInnerHTML={{ __html: (label ? `<title>${label}</title>` : '') + l.body }} />;
 }
 
 /* ── Swash ── */
@@ -238,4 +216,64 @@ export function BookPage({ side = 'right', folio, ground = 'paper', children }: 
     {children}
     {folio != null && <span className="fmt-folio" style={{ marginTop: 'auto', alignSelf: side === 'left' ? 'flex-start' : 'flex-end' }}>{folio}</span>}
   </section>;
+}
+
+/* ── App chrome: the same parts as the app (Compose), for screens on the web ── */
+/** The wave where one band meets the next. `down` hangs it under a bar; `stroked` outlines its edge in bar.line (the app's bars). */
+export function Wave({ down, stroked, ground = 'var(--bar-fill)' }: { down?: boolean; stroked?: boolean; ground?: string }) {
+  return <span aria-hidden="true" className={cx('fmt-wave', down && 'is-down', stroked && 'is-stroked')} style={{ ['--wave-fill' as any]: ground }} />;
+}
+export interface ProgressBarProps { value: number; label?: string }
+/** A slim purple-line track with a purple fill that glides to its length. */
+export function ProgressBar({ value, label = 'Progress' }: ProgressBarProps) {
+  const v = Math.max(0, Math.min(1, value));
+  return <span className="fmt-progress" role="progressbar" aria-label={label} aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(v * 100)}>
+    <i style={{ width: `max(${v * 100}%, var(--space-2))` }} /></span>;
+}
+export interface AppBarProps { title: string; brand?: boolean; onBack?: () => void; back?: boolean; progress?: number; progressLabel?: string }
+/** The app's lilac top bar: a round back button, the title (or the lockup on the home screen), progress for flows, and a shallow stroked wave beneath. In an app it stays put while screens change. */
+export function AppBar({ title, brand, onBack, back, progress, progressLabel }: AppBarProps) {
+  return <div className="fmt-appbar-wrap">
+    <header className="fmt-appbar">
+      <div className="fmt-appbar-row">
+        {(back || onBack) && <button type="button" className="fmt-iconbtn" aria-label="Back" onClick={onBack}><Icon name="back" /></button>}
+        {brand ? <h1 className="fmt-appbar-brand"><Logo variant="mark" height="calc(var(--text-lg) * 1.45)" label="" /><span>Follow Me Therapy</span></h1> : <h1>{title}</h1>}
+      </div>
+      {progress != null && <div className="fmt-appbar-progress"><ProgressBar value={progress} label={progressLabel} />{progressLabel && <span>{progressLabel}</span>}</div>}
+    </header>
+    <Wave down stroked />
+  </div>;
+}
+export interface Tab { label: string; icon: Icon24Name }
+export interface TabBarProps { tabs: Tab[]; selected?: number; onSelect?: (i: number) => void }
+/** The app's lilac tab bar: icon and label per tab; a wave crest rises over the chosen tab and glides between tabs. */
+export function TabBar({ tabs, selected = 0, onSelect }: TabBarProps) {
+  return <nav className="fmt-tabbar" style={{ ['--at' as any]: selected, ['--n' as any]: tabs.length }}>
+    <div role="tablist">{tabs.map((t, i) => <button key={i} type="button" role="tab" aria-selected={i === selected} onClick={() => onSelect?.(i)}>
+      <Icon name={t.icon} /><span>{t.label}</span></button>)}</div>
+  </nav>;
+}
+export interface Action { label: string; variant?: 'primary' | 'teal'; outline?: boolean; chevron?: boolean; disabled?: boolean; onClick?: () => void }
+/** A flow's buttons: Back (or another way out) at the start, the next step at the end, floating with no panel. In an app they stay on screen between steps. */
+export function ActionBar({ start, end }: { start?: Action; end?: Action }) {
+  const b = (a?: Action) => a ? <Button variant={a.variant} outline={a.outline} chevron={a.chevron} disabled={a.disabled} onClick={a.onClick}>{a.label}</Button> : <span />;
+  return <div className="fmt-actionbar">{b(start)}{b(end)}</div>;
+}
+export interface StepFocusProps { number: number; total: number; label: string; done?: boolean }
+/** One step, big: "Step n of N", the number in a disc (teal with a tick when done) and the words in the heading face, to read across the room. */
+export function StepFocus({ number, total, label, done }: StepFocusProps) {
+  return <div className={cx('fmt-stepfocus', done && 'is-done')} aria-live="polite">
+    <p>Step {number} of {total}</p>
+    <span className="fmt-stepfocus-disc">{done ? <Icon name="tick" label="Done" /> : number}</span>
+    <h2>{label}</h2>
+  </div>;
+}
+export interface CelebrationProps { title: React.ReactNode; message: React.ReactNode }
+/** The end of a flow: a sun disc with a star that springs in, a title (put the swash on one word) and a short message. */
+export function Celebration({ title, message }: CelebrationProps) {
+  return <div className="fmt-celebrate" aria-live="polite">
+    <span className="fmt-celebrate-sun"><Icon name="star" /></span>
+    <h2>{title}</h2>
+    <p>{message}</p>
+  </div>;
 }

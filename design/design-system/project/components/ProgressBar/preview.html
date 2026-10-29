@@ -1,0 +1,12 @@
+<!-- @dsCard group="App" height=120 subtitle="A slim track that glides to its length" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>ProgressBar — preview</title></head>
+<body style="margin:0">
+<div id="root" style="display:grid;gap:20px;padding:24px;background:var(--paper)"></div>
+<script>
+  var F = window.FollowMeTherapy, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null, h(F.ProgressBar,{value:0.25,label:'2 of 6'}), h(F.ProgressBar,{value:0.75})));
+</script>
+</body>
+</html>
