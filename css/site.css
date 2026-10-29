@@ -1014,9 +1014,10 @@ a:hover > .chev,
   gap: var(--space-4);
   min-height: var(--size-target);
   margin-bottom: var(--space-3);
-  padding: var(--space-3) var(--space-4);
+  /* The same gap round its icon tile as Simone's photo in her card. */
+  padding: var(--card-pad);
   border: var(--border-outline) solid var(--band);
-  border-radius: var(--radius-note);
+  border-radius: calc(var(--radius-tile) + var(--card-pad) + var(--border-outline));
   background: var(--paper);
   color: var(--ink);
   text-align: left;
@@ -1037,6 +1038,9 @@ a:hover > .chev,
   transform: scale(0.97);
 }
 .mc-icon {
+  /* Pinned to the corner, so the gap round it matches the padding even when
+     the words beside it run to more lines. */
+  align-self: flex-start;
   display: grid;
   place-items: center;
   flex: none;

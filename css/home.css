@@ -943,6 +943,9 @@ html[data-nav="rail"] main section[id] {
   box-shadow: var(--shadow-raised);
 }
 .ct-icon {
+  /* Pinned to the corner, so the gap round it matches the padding even when
+     the address wraps. */
+  align-self: flex-start;
   display: grid;
   place-items: center;
   flex: none;

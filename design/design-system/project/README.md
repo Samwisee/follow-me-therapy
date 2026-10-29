@@ -62,7 +62,7 @@ Every section opens the same way (`SectionTitle`): the title centred in `text-3x
 
 ## Shape and space
 
-- **One squircle, one padding.** Every tile and photo frame has `radius-tile` (= `radius-md`) corners and sits `card-pad` inside its container, exactly like Simone's photo in her card, so every container's corner is the same `radius-md` + `card-pad` + `border-outline`.
+- **One squircle, one padding.** Every tile and photo frame has `radius-tile` (= `radius-md`) corners and sits `card-pad` inside its container, exactly like Simone's photo in her card (pinned to the corner, so the gap stays even when the words beside it wrap), so every container's corner is the same `radius-md` + `card-pad` + `border-outline`.
 - **Nest rule: corners are concentric.** A container's corner radius = the radius of whatever sits in its corner + the padding between them + the container's outline, so the two curves run parallel. Never pick a radius by eye.
   - Service and funding cards: icon tile `radius-tile` + `card-pad` + `border-outline`.
   - Contact cards and pop-ups: the full-width button at the foot is a pill, so radius = `size-button` / 2 + `card-pad` + `border-outline`.
