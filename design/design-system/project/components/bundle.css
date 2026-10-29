@@ -427,6 +427,16 @@ a.fmt-card:hover { transform: translateY(calc(-1 * var(--space-2))) rotate(1deg)
 .fmt-name { display: flex; align-items: flex-end; gap: var(--space-2); margin: 0 0 var(--space-1); font-weight: 700; font-size: var(--text-sm); color: var(--ink); white-space: nowrap; }
 .fmt-name span { display: block; width: calc(var(--space-30) * 1.6); height: var(--space-6); border-bottom: var(--border-outline) dashed var(--rule); }
 
+/* One text edge. Words outside containers sit text-inset in from the margin,
+   so they line up with the words inside containers (card-pad + outline in);
+   the containers themselves (header, notes, boxes, choices) hang out to the
+   margin. Lines, steps and cut lines follow the words. */
+:is(.fmt-sheet, .fmt-page, .fmt-screen) { --text-inset: calc(var(--card-pad) + var(--border-outline)); }
+:is(.fmt-sheet, .fmt-page, .fmt-screen) > :is(h2, .fmt-kid),
+:is(.fmt-sheet, .fmt-page, .fmt-screen) :is(.fmt-group, .fmt-row) > :is(h2, p, .fmt-steps, .fmt-write, .fmt-cut, .fmt-ticks) { margin-inline: var(--text-inset); }
+:is(.fmt-sheet, .fmt-page, .fmt-screen) .fmt-tracker :is(th, td):first-child { padding-inline-start: var(--text-inset); }
+:is(.fmt-sheet, .fmt-page, .fmt-screen) .fmt-foot { padding-inline: var(--text-inset); }
+
 /* Groups: a heading and what it introduces sit group-gap apart; groups
    sit stack apart (the sheet's gap). Proximity does the grouping. */
 .fmt-group { display: flex; flex-direction: column; gap: var(--group-gap); min-width: 0; }

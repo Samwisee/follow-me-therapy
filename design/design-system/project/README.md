@@ -127,6 +127,7 @@ The same tokens and components make the website, A4 handouts, the A5 staple book
 <!-- media:end -->
 
 - **Containers pick the medium:** `fmt-sheet` (A4 handout, `.medium-paper`), `fmt-page` (A5 book page, `.medium-book`) and `fmt-screen` (one activity as a scrolling screen: phone, iPad, laptop, the app). Every component inside sizes itself from the container's tokens, so a component never carries print or screen sizes of its own. To put any other component on paper, wrap it in `.medium-paper` or `.medium-book`.
+- **One text edge:** on a sheet, book page or screen, words outside containers sit `card-pad` + `border-outline` in from the margin, so they line up with the words inside the header and notes. Containers (header, notes, choice tiles, draw boxes) hang out to the margin. Steps, write-on lines, cut lines and the footer follow the words.
 - **Proximity groups:** a heading and what it introduces sit `group-gap` apart (`Group`); groups sit `stack` apart. `stack` is always more than twice `group-gap`, on every medium.
 - **Paper and screen behave alike:** a choice is a tile you circle on paper and a toggle button you tap on screen (`aria-pressed`, 44px or more), with the same tile, corner and colours. Write-on lines and draw boxes appear only on paper; on screen they become text fields and a drawing area.
 - **Paper only:** write-on lines, draw boxes and cut lines use `rule` (3:1 or better on paper and every tint), so they survive a mono home printer. Never `purple-line`, which disappears in greyscale.
