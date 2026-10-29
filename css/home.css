@@ -690,14 +690,18 @@ html[data-nav="rail"] main section[id] {
   background: var(--teal-tint);
   color: var(--teal-deeper);
 }
-@media (max-width: 640px) {
+/* Below the md breakpoint the card stacks: side by side, the bio runs
+   much longer than the photo and leaves it stranded. Stacked, the photo
+   spans the card (its corners nesting in the card's), square on phones and
+   capped in height on tablets. */
+@media (max-width: 960px) {
   .bio {
     display: block;
   }
-  /* Stacked: the photo spans the card, its corners nesting in the card's. */
   .bio > .bio-photo {
     width: 100%;
     min-height: 0;
+    max-height: calc(var(--space-30) * 3.5);
     aspect-ratio: 1;
     margin: 0 0 var(--space-5);
   }
