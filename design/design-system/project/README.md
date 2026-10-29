@@ -58,7 +58,7 @@ The components are a small React library (`window.FollowMeTherapy`) built from `
 
 ## Section titles
 
-Every section opens the same way (`SectionTitle`): the title centred in `text-3xl`, a short hand-drawn squiggle `space-4` under it in the band's accent (purple on lilac and white, `sun-deep` on butter, teal on mint), and an optional one-line subtitle. Page titles in an inner page's hero stay left-aligned without the squiggle.
+Every section opens the same way (`SectionTitle`): the title centred in `text-3xl`, a short hand-drawn squiggle `space-4` under it in the band's accent (purple on lilac and white, `sun` on butter (the same yellow as the swash), teal on mint), and an optional one-line subtitle. Page titles in an inner page's hero stay left-aligned without the squiggle.
 
 ## Shape and space
 
@@ -88,7 +88,7 @@ Every section opens the same way (`SectionTitle`): the title centred in `text-3x
 ## Layout and breakpoints
 
 - Between breakpoints everything is fluid (type, spacing, gutters), and grids reflow on their own (`auto-fit`), so resizing a window is smooth. The layout only changes at the `bp-*` tokens:
-  - `bp-xs` 480px: the top menu stretches edge to edge.
+  - `bp-xs` 480px: the top menu stretches edge to edge. Its links are a slim `size-nav-item` (36px) with the bar's padding making up the 44px tap area.
   - `bp-sm` 640px: one column; Simone's photo sits above her bio; the trail between steps walks down.
   - `bp-md` 960px: the menu moves from a floating bar along the top to a rail down the left (148px wide). The content glides over to make room, and the new menu slides in from its own edge. Nothing flies across the page.
   - `bp-short` 820px and `bp-shorter` 700px (window height): pop-ups tighten so they always fit.

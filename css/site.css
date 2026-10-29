@@ -190,7 +190,7 @@ a:hover > .chev,
   initial-value: 0px;
 }
 .tone-lilac { background-color: var(--purple-tint); --accent: var(--purple); }
-.tone-cream { background-color: var(--butter); --accent: var(--sun-deep); }
+.tone-cream { background-color: var(--butter); --accent: var(--sun); }
 .tone-mint { background-color: var(--teal-tint); --accent: var(--teal); }
 .tone-white { background-color: var(--paper); --accent: var(--purple); }
 .tone-deep { background-color: var(--deep); --accent: var(--sun); color: color-mix(in srgb, var(--paper) 85%, transparent); }
@@ -371,9 +371,10 @@ a:hover > .chev,
 }
 
 /* ── 8. Cards and icon tiles ──────────────────────────────────────────── */
-/* Service and funding cards: a coloured band along the top in the icon's
-   colour, an icon tile, the words, and "Learn more". They lift and tilt on
-   hover. The band colour follows the icon tile inside. */
+/* Service and funding cards, wrapped in their icon's colour. A service card
+   has its icon tile with the title beside it, a sentence and "Learn more";
+   a funding card is just the tile and the name, small enough for three in
+   a row even on a phone. Both open their details and lift on hover. */
 .svc-grid,
 .services-grid,
 .fund-grid,
@@ -389,10 +390,13 @@ a:hover > .chev,
 .contact-actions {
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
 }
-.fund-grid,
-.funding-grid,
 .cards {
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+}
+.fund-grid,
+.funding-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-3);
 }
 .service-item,
 .funding-card,
@@ -449,6 +453,45 @@ a:hover > .chev,
   color: var(--purple);
   font-family: var(--font-display);
   font-weight: 500;
+}
+/* Service card: the tile and the title side by side, the rest beneath. */
+.service-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  column-gap: var(--space-4);
+}
+.service-item > :not(.svc-icon, h3) {
+  grid-column: 1 / -1;
+}
+.service-item > .svc-icon {
+  margin-bottom: 0;
+}
+.service-item > h3 {
+  margin: 0;
+}
+.service-item > p {
+  margin: var(--space-4) 0;
+}
+.service-item > .more {
+  justify-self: start;
+  align-self: end;
+}
+/* Funding card: the tile and the name, centred; corners nest round the
+   tile with the tighter padding. */
+.funding-card {
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-2) var(--space-4);
+  border-radius: calc(var(--radius-tile) + var(--space-3) + var(--border-outline));
+  text-align: center;
+}
+.funding-card > .svc-icon {
+  margin-bottom: 0;
+}
+.funding-card > h3 {
+  margin: 0;
+  font-size: var(--text-md);
 }
 .contact-card {
   align-items: stretch;

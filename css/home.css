@@ -46,11 +46,13 @@ html[data-nav="rail"] body {
   box-shadow: var(--shadow-soft);
   transform: translateX(-50%);
 }
+/* Links are a slim 36px, but each one's tap area reaches the bar's edges
+   (the padding round them), so the target is still 44px. */
 .fixed-header a {
   position: relative;
   display: flex;
   align-items: center;
-  min-height: var(--size-target);
+  min-height: var(--size-nav-item);
   padding: 0 var(--space-4);
   border-radius: var(--radius-pill);
   color: var(--ink);
@@ -65,6 +67,11 @@ html[data-nav="rail"] body {
     font-size var(--dur-slow) var(--ease-standard),
     padding var(--dur-slow) var(--ease-standard);
 }
+.fixed-header a::after {
+  content: "";
+  position: absolute;
+  inset: calc(-1 * var(--space-1)) 0;
+}
 .fixed-header a:hover {
   background: var(--purple-tint);
 }
@@ -77,8 +84,8 @@ html[data-nav="rail"] body {
   display: grid;
   place-items: center;
   flex: none;
-  width: var(--size-tile);
-  height: var(--size-tile);
+  width: var(--size-nav-item);
+  height: var(--size-nav-item);
   min-height: 0;
   padding: 0;
   border: var(--border-outline) solid var(--purple-line);
@@ -103,6 +110,12 @@ html[data-nav="rail"] body {
 .fixed-header .nav-logo img {
   display: block;
   width: auto;
+  height: var(--size-icon-sm);
+}
+.fixed-header .nav-logo::after {
+  inset: calc(-1 * var(--space-1));
+}
+html[data-nav="rail"] .fixed-header .nav-logo img {
   height: var(--size-icon);
 }
 .rail-pill,
@@ -154,11 +167,14 @@ html[data-nav="rail"] .fixed-header {
   transform: translateY(-50%);
 }
 html[data-nav="rail"] .fixed-header .nav-logo {
+  width: var(--size-tile);
+  height: var(--size-tile);
   display: grid;
   align-self: center;
   margin-bottom: var(--space-3);
 }
 html[data-nav="rail"] .fixed-header a:not(.nav-logo) {
+  min-height: var(--size-target);
   z-index: var(--z-raised);
   padding: 0 var(--space-2) 0 calc(var(--space-3) * 3);
   font-size: var(--text-sm);
@@ -252,7 +268,7 @@ html[data-nav="rail"] .fixed-header a.active {
 /* Menu jumps land with the section title near the top of the screen,
    clear of the bar. */
 main section[id] {
-  scroll-margin-top: calc(var(--nav-offset) + var(--size-target) - var(--section-top) + var(--space-8));
+  scroll-margin-top: calc(var(--nav-offset) + var(--size-nav-item) + 2 * var(--space-1) - var(--section-top) + var(--space-8));
 }
 html[data-nav="rail"] main section[id] {
   scroll-margin-top: calc(var(--space-8) - var(--section-top));
@@ -274,7 +290,7 @@ html[data-nav="rail"] main section[id] {
   gap: var(--space-2) 0.3em;
   width: var(--col);
   margin-left: max(calc((100% - var(--col)) / 2), calc(var(--nav-inset) + var(--gutter)));
-  padding-top: calc(var(--nav-offset) + var(--size-target) + 2 * var(--space-1) + var(--stack));
+  padding-top: calc(var(--nav-offset) + var(--size-nav-item) + 2 * var(--space-1) + var(--stack));
   font-size: var(--text-display);
 }
 .logo-image {
@@ -461,14 +477,12 @@ html[data-nav="rail"] main section[id] {
   align-items: center;
   gap: var(--space-2);
 }
-@container (max-width: 36rem) {
-  .facts li.fact-tele {
-    flex-direction: column;
-    gap: var(--space-1);
-  }
-}
+
 .facts li.fact-place {
   column-gap: 0.3em; /* one word space between its two parts */
+  border-color: var(--sun-line);
+  background: var(--sun-tint);
+  color: var(--sun-ink);
 }
 @container (max-width: 28rem) {
   .facts li.fact-place {
@@ -482,10 +496,8 @@ html[data-nav="rail"] main section[id] {
 .facts li:nth-child(1):hover { transform: rotate(-3deg) scale(1.04); }
 .facts li:nth-child(2):hover { transform: rotate(2deg) scale(1.04); }
 .facts li:nth-child(3):hover { transform: rotate(-2deg) scale(1.04); }
-/* "Spots available": a small white pill with a calendar tick, inside the
-   telehealth chip, and a full chip (a link to book) under the Telehealth
-   title. */
-.fact-now,
+/* "Spots available, book now": a chip with a calendar tick under the
+   Telehealth title, linking to the booking form. */
 .book-note {
   display: inline-flex;
   align-items: center;
@@ -514,7 +526,6 @@ html[data-nav="rail"] main section[id] {
 .book-note .chev {
   margin-left: 0;
 }
-.fact-now svg:not(.chev),
 .book-note svg:not(.chev) {
   flex: none;
   width: var(--size-icon-sm);
@@ -678,6 +689,7 @@ html[data-nav="rail"] main section[id] {
 }
 .bio > .bio-photo {
   position: relative;
+  border: var(--border-outline) solid var(--teal-line);
   grid-column: 1;
   grid-row: 1 / span 6;
   align-self: stretch;

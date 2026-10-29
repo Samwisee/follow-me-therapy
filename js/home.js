@@ -222,7 +222,7 @@ document.addEventListener("DOMContentLoaded", function () {
       links[a.getAttribute("href").slice(1)] = a;
     });
     // Sections without their own link light up the one they belong to.
-    const map = { how: "services", company: "contact" };
+    const map = { funding: "services", how: "services", company: "contact" };
     const order = Object.keys(links);
     const sections = [...document.querySelectorAll("main section[id], footer section[id]")];
     let current = null;
