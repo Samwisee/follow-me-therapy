@@ -124,7 +124,10 @@ files = [p for p in (ROOT / "css").glob("*.css") if p.name != "tokens.css"]
 files += list(ROOT.glob("*.html")) + list((ROOT / "js").glob("*.js")) + [ROOT / "design/design-system/project/components/bundle.css"]
 for f in sorted(files):
     kind = "css" if f.suffix == ".css" else "html" if f.suffix == ".html" else "js"
-    text = strip(f.read_text(), kind)
+    raw = f.read_text()
+    # The tokens block build_tokens.py writes into the component CSS is the tokens themselves.
+    raw = re.sub(r"/\* media:start[\s\S]*?/\* media:end \*/", lambda m: re.sub(r"[^\n]", " ", m.group(0)), raw)
+    text = strip(raw, kind)
     if kind != "css":  # only <style> blocks and style="" attributes matter in HTML/JS
         keep = [(m.start(), m.group(0)) for m in re.finditer(r"<style[\s\S]*?</style>|style=\"[^\"]*\"", text)]
         lines = text.split("\n")

@@ -1,0 +1,14 @@
+<!-- @dsCard group="Activities" height=520 subtitle="Paper (circle) and screen (tap), same tiles" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Choices — preview</title></head>
+<body style="margin:0">
+<div id="root" style="padding:24px 28px;display:grid;gap:24px;background:var(--paper)"></div>
+<script>
+  var F = window.FollowMeTherapy, h = React.createElement;
+  var items = [{label:'Take 5 slow breaths',icon:'breathe'},{label:'Squeeze a cushion',icon:'cushion'},{label:'Push the wall',icon:'push-wall'},{label:'Have a drink of water',icon:'water'},{label:'Ask for a hug',icon:'hug'},{label:'Go to my quiet spot',icon:'quiet-spot'}];
+  function Live() { var s = React.useState([0]); return h(F.Choices, {tone:'teal', items:items, selected:s[0], onToggle:function(i){ s[1](s[0].indexOf(i) < 0 ? s[0].concat(i) : s[0].filter(function(x){return x!==i;})); }}); }
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null, h('p', {className:'fmt-kid', style:{margin:0}}, 'On a screen: tap the ones that help you.'), h(Live)));
+</script>
+</body>
+</html>

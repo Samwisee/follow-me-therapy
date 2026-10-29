@@ -1,0 +1,14 @@
+<!-- @dsCard group="Activities" height=460 subtitle="A group, lines to write on and a box to draw in, on A4 at 60%" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Activity parts — preview</title></head>
+<body style="margin:0">
+<div id="root" style="padding:24px;background:var(--purple-tint);display:flex;justify-content:center"></div>
+<script>
+  var F = window.FollowMeTherapy, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h('div', {className:'medium-paper', style:{zoom:.6, width:'190mm', padding:'var(--card-pad)', background:'var(--paper)', display:'flex', flexDirection:'column', gap:'var(--stack)', boxShadow:'var(--shadow-raised)'}},
+    h('div', {className:'fmt-row'}, h(F.Group, {title:'What was tricky today?'}, h(F.WriteLines, {kid:true, lines:2})), h(F.DrawBox, {prompt:'Draw yourself, ready to go!'})),
+    h(F.Group, {title:'Notes for our next session'}, h(F.WriteLines, {lines:3}))));
+</script>
+</body>
+</html>

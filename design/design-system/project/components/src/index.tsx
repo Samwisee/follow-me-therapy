@@ -13,6 +13,7 @@ const ICON24: Record<string, string> = {
   book: '<path d="M3 5.5c3-1.3 6-1.3 9 .5 3-1.8 6-1.8 9-.5V19c-3-1.3-6-1.3-9 .5-3-1.8-6-1.8-9-.5z"/><path d="M12 6v13.5"/>',
   heart: '<path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/>',
   chevron: '<path d="M9 5l7 7-7 7"/>',
+  star: '<path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.8l6.1-.9z"/>',
 };
 const FOOT = '<ellipse cx="11.5" cy="3.1" rx="2.05" ry="2.55"/><circle cx="8.15" cy="2.25" r="1.35"/><circle cx="5.85" cy="2.9" r="1.2"/><circle cx="3.95" cy="4.15" r="1.05"/><circle cx="2.55" cy="5.85" r="0.9"/><path d="M7.6 6.6C11.2 6.2 13.9 7.8 13.6 10.8 13.4 12.8 11.4 14 10.9 16.2 10.5 18 11.6 19.4 11.2 21.2 10.8 23.2 9.3 24 7.7 24 5.6 24 4.3 22.7 4.3 20.6 4.3 17.6 3 15.8 2.8 12.8 2.5 9.2 4.4 6.9 7.6 6.6Z"/>';
 const ICON40: Record<string, { d: string; filled?: boolean }> = {
@@ -23,6 +24,13 @@ const ICON40: Record<string, { d: string; filled?: boolean }> = {
   umbrella: { d: '<path d="M6 20a14 14 0 0 1 28 0"/><path d="M6 20c2.3-2.2 4.7-2.2 7 0 2.3-2.2 4.7-2.2 7 0 2.3-2.2 4.7-2.2 7 0 2.3-2.2 4.7-2.2 7 0"/><path d="M20 20v10.5a3.5 3.5 0 0 1-7 0"/><path d="M20 6V4"/>' },
   'medicare-cross': { d: '<rect x="7" y="7" width="26" height="26" rx="7"/><path d="M20 13v14M13 20h14"/>' },
   'shield-tick': { d: '<path d="M20 5l12 5v9c0 8-5 13-12 16C13 32 8 27 8 19v-9z"/><path d="M15 20l4 4 7-8"/>' },
+  // Calm-down strategies (worksheets and, later, the app)
+  breathe: { d: '<path d="M7 16h17a5 5 0 1 0-5-5"/><path d="M7 24h21a5 5 0 1 1-5 5"/><path d="M7 20h11"/>' },
+  cushion: { d: '<path d="M9 11c7 3 15 3 22 0c-2 6-2 12 0 18c-7-3-15-3-22 0c2-6 2-12 0-18z"/>' },
+  'push-wall': { d: '<path d="M32 6v28"/><path d="M26 13v11"/><path d="M22 11v13"/><path d="M18 12v12"/><path d="M14 16v11a6 6 0 0 0 6 6h3a3 3 0 0 0 3-3v-6"/>' },
+  water: { d: '<path d="M11 9h18l-2.5 23h-13z"/><path d="M12.5 18h15"/>' },
+  hug: { d: '<path d="M20 32s-11-7-11-15a6 6 0 0 1 11-3.5a6 6 0 0 1 11 3.5c0 8-11 15-11 15z"/>' },
+  'quiet-spot': { d: '<path d="M5 32L20 8l15 24z"/><path d="M15 32l5-8 5 8"/>' },
 };
 export type Icon24Name = keyof typeof ICON24;
 export type Icon40Name = keyof typeof ICON40;
@@ -130,10 +138,10 @@ export function FootstepTrail({ steps = 7, direction = 'across', ink = 'light', 
 
 /* ── StepPath ── */
 export interface Step { label: string; done?: boolean }
-export interface StepPathProps { steps: Step[]; direction?: 'across' | 'down'; doneText?: string }
-/** Numbered steps joined by footprints. An ordered list, so screen readers hear the order. */
-export function StepPath({ steps, direction = 'across', doneText = 'done' }: StepPathProps) {
-  return <ol className={cx('fmt-steps', direction === 'down' && 'is-down')}>
+export interface StepPathProps { steps: Step[]; direction?: 'across' | 'down'; doneText?: string; plain?: boolean; kid?: boolean }
+/** Numbered steps joined by footprints (`plain`: numbers only; `kid`: child-sized labels). An ordered list, so screen readers hear the order. */
+export function StepPath({ steps, direction = 'across', doneText = 'done', plain, kid }: StepPathProps) {
+  return <ol className={cx('fmt-steps', direction === 'down' && 'is-down', plain && 'is-plain', kid && 'is-kid')}>
     {steps.map((s, i) => <li key={i} className={s.done ? 'is-done' : undefined}>
       <span className="fmt-step">{s.label}{s.done && <span className="fmt-sr"> ({doneText})</span>}</span>
     </li>)}
@@ -156,18 +164,68 @@ export function Swash({ children }: { children?: React.ReactNode }) {
   return <span className="fmt-swash">{children}</span>;
 }
 
+/* ── Activity parts: the same on paper, tablet, phone and the app ── */
+/** A heading and what it introduces, group-gap apart. `fill` takes the spare height. */
+export function Group({ title, fill, children }: { title?: React.ReactNode; fill?: boolean; children?: React.ReactNode }) {
+  return <div className={cx('fmt-group', fill && 'is-fill')}>{title && <h2>{title}</h2>}{children}</div>;
+}
+/** Lines to write on (`kid`: wider spacing for a child's writing). */
+export function WriteLines({ lines = 2, kid }: { lines?: number; kid?: boolean }) {
+  return <div className={cx('fmt-write', kid && 'is-kid')} aria-hidden="true">{Array.from({ length: lines }, (_, i) => <i key={i} />)}</div>;
+}
+/** A dashed box to draw in, with its prompt at the foot. */
+export function DrawBox({ prompt, fill }: { prompt?: React.ReactNode; fill?: boolean }) {
+  return <div className={cx('fmt-draw', fill && 'is-fill')}>{prompt}</div>;
+}
+export interface Choice { label: string; icon?: Icon40Name }
+export interface ChoicesProps { items: Choice[]; tone?: Tone; columns?: number; selected?: number[]; onToggle?: (index: number) => void }
+/** Tiles to circle on paper or tap on a screen. With `onToggle` each tile is a toggle button (aria-pressed). */
+export function Choices({ items, tone = 'purple', columns = 3, selected = [], onToggle }: ChoicesProps) {
+  return <ul className="fmt-choices" style={{ ['--cols' as any]: columns }}>
+    {items.map((c, i) => {
+      const inner = <>{c.icon && <IconTile icon={c.icon} tone={tone} small />}<span>{c.label}</span></>;
+      const cls = cx('fmt-choice', tone !== 'purple' && 'is-' + tone);
+      return <li key={i}>{onToggle
+        ? <button type="button" className={cls} aria-pressed={selected.includes(i)} onClick={() => onToggle(i)}>{inner}</button>
+        : <div className={cls}>{inner}</div>}</li>;
+    })}
+  </ul>;
+}
+const CUTS = {
+  straight: { d: 'M8 40H588' },
+  wavy: { d: 'M8 40C55 10 100 10 148 40S242 70 290 40S384 10 432 40S526 70 574 40L588 32' },
+  zigzag: { d: 'M8 40L66 16L124 64L182 16L240 64L298 16L356 64L414 16L472 64L530 16L588 40' },
+  curve: { d: 'M8 70C140 -5 460 -5 588 70', low: true },
+} as const;
+/** A line to cut along, from a yellow start dot. */
+export function CutLine({ shape = 'straight' }: { shape?: keyof typeof CUTS }) {
+  const c = CUTS[shape];
+  return <div className={cx('fmt-cut', 'low' in c && 'is-low')}><svg viewBox="0 0 600 80" aria-hidden="true"><path d={c.d} /></svg></div>;
+}
+export interface TrackerProps { rows?: number; days?: string[]; label?: string }
+/** A week tracker: rows to write an activity in, a star to colour per day. */
+export function Tracker({ rows = 4, days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'], label = 'My activity' }: TrackerProps) {
+  return <table className="fmt-tracker">
+    <thead><tr><th scope="col">{label}</th>{days.map(d => <th scope="col" key={d}>{d}</th>)}</tr></thead>
+    <tbody>{Array.from({ length: rows }, (_, r) => <tr key={r}><td><span className="fmt-sr">Activity {r + 1}</span></td>
+      {days.map(d => <td key={d}><Icon name="star" /></td>)}</tr>)}</tbody>
+  </table>;
+}
+
 /* ── Print: Worksheet and BookPage ── */
-export interface WorksheetProps { tag?: string; tagTone?: Tone; title: React.ReactNode; name?: boolean; tip?: React.ReactNode; children?: React.ReactNode }
-/** An A4 handout (210 × 297 mm): tinted header, the activity, a tip for grown-ups and the footer. */
-export function Worksheet({ tag, tagTone = 'teal', title, name = true, tip, children }: WorksheetProps) {
+export interface WorksheetProps { tag?: string; tone?: Tone; title: React.ReactNode; name?: boolean; tip?: React.ReactNode; children?: React.ReactNode }
+/** An A4 handout (210 × 297 mm, .medium-paper): tinted header, the activity in groups, a tip for grown-ups, and the footer with the sign-off and copyright line. */
+export function Worksheet({ tag, tone = 'purple', title, name = true, tip, children }: WorksheetProps) {
+  const t = tone !== 'purple' ? 'is-' + tone : undefined;
   return <section className="fmt-sheet">
-    <header className="fmt-head">
-      <div>{tag && <Tag tone={tagTone}>{tag}</Tag>}<h1 style={{ marginTop: '3mm' }}>{title}</h1></div>
-      {name && <div className="fmt-name">Name<span /></div>}
+    <header className={cx('fmt-head', t)}>
+      <div>{tag && <Tag tone={tone}>{tag}</Tag>}<h1>{title}</h1></div>
+      {name && <p className="fmt-name">Name<span /></p>}
     </header>
     {children}
-    {tip && <InfoNote kind="evidence"><b style={{ color: 'var(--ink)' }}>For grown-ups: </b>{tip}</InfoNote>}
-    <footer className="fmt-foot"><Logo variant="horizontal" height="9mm" /><span>Simone · Paediatric OT · followmetherapy.com.au</span><FootstepTrail steps={5} size={10} /></footer>
+    {tip && <p className={cx('fmt-note', t)}><i><Icon name="info" /></i><span><b style={{ color: 'var(--ink)' }}>For grown-ups: </b>{tip}</span></p>}
+    <footer className="fmt-foot"><Logo variant="horizontal" height="var(--size-tile-sm)" />
+      <span>Simone · Paediatric OT · followmetherapy.com.au<br />© Follow Me Therapy 2026. For use by the family it was given to.</span></footer>
   </section>;
 }
 export interface BookPageProps { side?: 'left' | 'right'; folio?: number; ground?: 'paper' | 'teal-tint' | 'purple-tint' | 'butter'; children?: React.ReactNode }

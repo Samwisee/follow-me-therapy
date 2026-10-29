@@ -6,7 +6,10 @@
 <div id="root" style="padding:24px;background:var(--purple-tint);display:flex;justify-content:center"></div>
 <script>
   var F = window.FollowMeTherapy, h = React.createElement;
-  ReactDOM.createRoot(document.getElementById('root')).render(h('div', {style:{zoom:.55, boxShadow:'var(--shadow-raised)'}}, h(F.Worksheet, {tag:'Self-care', title:h(React.Fragment, null, 'My ', h(F.Swash, null, 'morning'), ' routine'), tip:'stick this where your child gets ready. Point to the next step instead of saying it, and let them do the ticking.'}, h('p', {className:'fmt-kid', style:{margin:0}}, 'Follow the footprints and tick each step.'), h('div', {style:{fontSize:'16pt'}}, h(F.StepPath, {direction:'down', steps:[{label:'Toilet and wash hands'},{label:'Get dressed'},{label:'Eat breakfast'},{label:'Brush teeth'},{label:'Shoes on'}]})), h('h2', null, 'What was tricky today?'), h('div', {className:'fmt-write is-kid'}, h('i'), h('i')))));
+  ReactDOM.createRoot(document.getElementById('root')).render(h('div', {style:{zoom:.55, boxShadow:'var(--shadow-raised)'}}, h(F.Worksheet, {tag:'Self-care', title:h(React.Fragment, null, 'My ', h(F.Swash, null, 'morning'), ' routine'), tip:'stick this where your child gets ready. Point to the next step instead of saying it, and let them do the colouring in.'},
+    h('div', {className:'fmt-group is-fill'}, h('p', {className:'fmt-kid'}, 'Colour in each number when it\'s done.'),
+      h('div', {className:'fmt-row', style:{flex:'1 1 auto'}}, h(F.StepPath, {direction:'down', plain:true, kid:true, steps:[{label:'Toilet and wash hands'},{label:'Get dressed'},{label:'Eat breakfast'},{label:'Brush teeth'},{label:'Shoes on'},{label:'Bag on, out the door'}]}), h(F.DrawBox, {prompt:'Draw yourself, ready to go!'}))),
+    h(F.Group, {title:'What was tricky today?'}, h(F.WriteLines, {kid:true, lines:2})))));
 </script>
 </body>
 </html>

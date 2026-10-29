@@ -1,12 +1,13 @@
 # Worksheet
 
-An A4 handout for home: a tinted header with a tag and title, the activity, a parent tip, and a footer with the logo and web address.
+An A4 handout for home (`fmt-sheet`, 210 × 297 mm). Inside it the semantic tokens take their paper values (`.medium-paper`), so every component sizes itself for print.
 
-- Markup: `<section class="fmt-sheet">` (210 × 297 mm, 10 mm padding) holding, in order: `fmt-head` (tag, `h1`, optional `fmt-name` write-on line), the activity, an optional `fmt-note` for grown-ups, and `fmt-foot`.
-- The consumer supplies the title, the activity content (tick list, picture boxes, `fmt-write` lines) and the parent tip.
-- Words a child reads use `fmt-kid` (16pt). Parent instructions stay at `print-body` (11pt). Nothing under 8.5pt.
-- Put one `fmt-swash` under the key word of the title.
-- Picture boxes are tinted `fmt-tile` squares. Drop in the photo or drawing, or leave blank for the child to draw.
-- Everything must still read in black and white. Many families print at home on mono printers, so never rely on colour alone to tell steps apart.
-- Render to PDF with Chromium (`page.pdf({format: 'A4', printBackground: true})`). Never ship the HTML to print from a browser.
-- In code: `<Worksheet tag="Self-care" title={…} tip="…">…</Worksheet>`.
+- Order, top to bottom, `stack` apart: the header (`fmt-head`: tag, `h1` with one `fmt-swash`, Name line on the title's baseline), the activity in Groups, one `fmt-note` "For grown-ups:" tip, and `fmt-foot`.
+- Tone (`tone`): purple, teal, sun or pink, matching the skill area. It sets the header tint, the tag and the note; write-on lines stay `rule`.
+- Header corner: `radius-tile` + `card-pad`. Note corner: `radius-tile` + `card-pad` + `border-outline`. Boxes and choices nest the same way.
+- Fill the page: give one Group `is-fill` (or `is-spread`) so spare height goes to the activity, not a gap above the footer. The footer always shows the logo, the sign-off and the copyright line; if it doesn't fit, cut content, never the footer.
+- Words a child reads: `text-kid` (16pt). Parent text: `text-base` (11pt). Nothing under 8.5pt.
+- Must work in black and white: steps differ by number and word, lines are `rule`.
+- The same content on a screen: swap `fmt-sheet` for `fmt-screen` (choices become buttons).
+- Render to PDF with Chromium (`page.pdf({format: 'A4', printBackground: true})`).
+- In code: `<Worksheet tag="Feelings" tone="teal" title={…} tip="…"><Group …/></Worksheet>`.

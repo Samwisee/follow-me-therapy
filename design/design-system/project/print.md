@@ -1,11 +1,12 @@
 # Print and the staple book
 
-Printed pieces use the same tokens and components as the site, with print sizes from the `print` token family and the `Worksheet` and `BookPage` components.
+Printed pieces use the same tokens and components as the site. Inside `Worksheet` (`.medium-paper`) and `BookPage` (`.medium-book`) every semantic token takes its print value (see One system, every medium in the README), so nothing needs print sizes of its own. Page sizes and margins come from the `print` token family.
 
 ## Handouts (A4, printed at home or in clinic)
 
 - Page `page-a4`. Keep text and icons inside `safe-margin` (10 mm). Home printers can't print to the edge, so don't run colour off the page.
-- They must work in black and white. Check every handout printed in greyscale. Steps differ by number, word or icon, never by colour alone.
+- They must work in black and white. Check every handout printed in greyscale. Steps differ by number, word or icon, never by colour alone. Lines to write on, draw in or cut along use `rule`.
+- Fill the page: spare height goes to the activity (`is-fill`, `is-spread`), never to a gap above the footer. The footer (logo, sign-off, copyright) is never cut.
 - Use tints sparingly (header, one note). Large solid fills waste ink at home.
 - Ship as PDF only, rendered by Chromium from the HTML source with `printBackground: true`.
 

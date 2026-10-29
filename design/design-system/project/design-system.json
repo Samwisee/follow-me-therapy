@@ -209,9 +209,9 @@
   ],
   "lastChange": {
     "by": "Sam",
-    "at": "2026-10-29T13:25:00Z",
+    "at": "2026-10-29T14:10:00Z",
     "via": "GitHub · Samwisee/follow-me-therapy",
-    "note": "Logo lockups redrawn with the name at weight-brand (400), matching the website; share card updated to the new design."
+    "note": "One system for every medium: text, spacing and padding tokens take print values inside A4 sheets and A5 book pages (and fluid values on phone, iPad and laptop). New activity components from the worksheets: Choices, Group, WriteLines, DrawBox, CutLine, Tracker, plus a screen container for the app. Write-on lines use the new rule colour."
   },
   "layout": "files",
   "libraries": [

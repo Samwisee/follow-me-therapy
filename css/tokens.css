@@ -28,6 +28,7 @@
   --brand-ink: var(--ink);
   --focus: var(--ink);
   --trail: var(--purple-light);
+  --rule: #857aa8;
   --teal-bright: #008c9e;
   --teal-deep: #015964;
   --teal-deeper: #035560;
@@ -54,6 +55,7 @@
   --text-md: clamp(17px, 16.5px + 0.1389vw, 18.5px);
   --text-lg: clamp(18.5px, 17.6667px + 0.2315vw, 21px);
   --text-xl: clamp(21px, 19.6667px + 0.3704vw, 25px);
+  --text-kid: clamp(20px, 18.6667px + 0.3704vw, 24px);
   --text-2xl: clamp(24px, 22px + 0.5556vw, 30px);
   --text-3xl: clamp(30px, 26.6667px + 0.9259vw, 40px);
   --text-4xl: clamp(32px, 26px + 1.6667vw, 50px);
@@ -85,6 +87,7 @@
   --section-space: clamp(72px, 58.6667px + 3.7037vw, 112px);
   --section-top: clamp(48px, 40px + 2.2222vw, 72px);
   --stack: clamp(28px, 24px + 1.1111vw, 40px);
+  --group-gap: clamp(10px, 8.6667px + 0.3704vw, 14px);
   --card-pad: clamp(20px, 18.6667px + 0.3704vw, 24px);
   --grid-gap: clamp(20px, 17.3333px + 0.7407vw, 28px);
   --content: 760px;
@@ -155,4 +158,48 @@
   --gutter-book: 15mm;
   --rule-write: 10mm;
   --rule-kid: 16mm;
+}
+
+/* A4 handouts: semantic tokens in print units. */
+.medium-paper, .fmt-sheet {
+  --text-xs: 8.5pt;
+  --text-sm: 10pt;
+  --text-base: 11pt;
+  --text-md: 12pt;
+  --text-lg: 13pt;
+  --text-xl: 16pt;
+  --text-kid: 16pt;
+  --text-2xl: 18pt;
+  --text-3xl: 22pt;
+  --text-4xl: 28pt;
+  --text-display: 40pt;
+  --gutter: 10mm;
+  --section-space: 8mm;
+  --section-top: 6mm;
+  --stack: 7mm;
+  --group-gap: 2.5mm;
+  --card-pad: 5mm;
+  --grid-gap: 4mm;
+}
+
+/* A5 staple-book pages: semantic tokens in print units. */
+.medium-book, .fmt-page {
+  --text-xs: 8.5pt;
+  --text-sm: 9.5pt;
+  --text-base: 10.5pt;
+  --text-md: 11.5pt;
+  --text-lg: 12pt;
+  --text-xl: 14pt;
+  --text-kid: 14pt;
+  --text-2xl: 16pt;
+  --text-3xl: 19pt;
+  --text-4xl: 24pt;
+  --text-display: 32pt;
+  --gutter: 12mm;
+  --section-space: 6mm;
+  --section-top: 5mm;
+  --stack: 5mm;
+  --group-gap: 2mm;
+  --card-pad: 4mm;
+  --grid-gap: 3mm;
 }

@@ -1,0 +1,146 @@
+{
+ "text-xs": {
+  "phone": "14px",
+  "tablet": "14px",
+  "laptop": "14px",
+  "paper": "8.5pt",
+  "book": "8.5pt",
+  "usage": "Fine print: footer details, crumbs, tags, pop-up notes."
+ },
+ "text-sm": {
+  "phone": "15px",
+  "tablet": "15px",
+  "laptop": "15px",
+  "paper": "10pt",
+  "book": "9.5pt",
+  "usage": "Small UI text: chips, credentials, links in pop-ups."
+ },
+ "text-base": {
+  "phone": "16.5px",
+  "tablet": "17px",
+  "laptop": "17.5px",
+  "paper": "11pt",
+  "book": "10.5pt",
+  "usage": "Running text."
+ },
+ "text-md": {
+  "phone": "17px",
+  "tablet": "17.5px",
+  "laptop": "18.5px",
+  "paper": "12pt",
+  "book": "11.5pt",
+  "usage": "Buttons, menu labels, card titles, list lines in the hero."
+ },
+ "text-lg": {
+  "phone": "18.5px",
+  "tablet": "19.5px",
+  "laptop": "21px",
+  "paper": "13pt",
+  "book": "12pt",
+  "usage": "Leads under a title; bigger card titles."
+ },
+ "text-xl": {
+  "phone": "21px",
+  "tablet": "23px",
+  "laptop": "25px",
+  "paper": "16pt",
+  "book": "14pt",
+  "usage": "The hero's lead line; pop-up titles; Simone's name."
+ },
+ "text-kid": {
+  "phone": "20px",
+  "tablet": "22px",
+  "laptop": "24px",
+  "paper": "16pt",
+  "book": "14pt",
+  "usage": "Anything a child reads: instructions, labels, steps. Never under 14pt on paper."
+ },
+ "text-2xl": {
+  "phone": "24px",
+  "tablet": "26.5px",
+  "laptop": "30px",
+  "paper": "18pt",
+  "book": "16pt",
+  "usage": "The OT quote."
+ },
+ "text-3xl": {
+  "phone": "30.5px",
+  "tablet": "34.5px",
+  "laptop": "40px",
+  "paper": "22pt",
+  "book": "19pt",
+  "usage": "Section headings (h2)."
+ },
+ "text-4xl": {
+  "phone": "32.5px",
+  "tablet": "40px",
+  "laptop": "50px",
+  "paper": "28pt",
+  "book": "24pt",
+  "usage": "Page titles on inner pages (h1)."
+ },
+ "text-display": {
+  "phone": "39px",
+  "tablet": "53px",
+  "laptop": "72px",
+  "paper": "40pt",
+  "book": "32pt",
+  "usage": "The practice name in the home page hero."
+ },
+ "gutter": {
+  "phone": "16.5px",
+  "tablet": "23px",
+  "laptop": "32px",
+  "paper": "10mm",
+  "book": "12mm",
+  "usage": "Space between the page edge and the content."
+ },
+ "section-space": {
+  "phone": "73px",
+  "tablet": "89.5px",
+  "laptop": "112px",
+  "paper": "8mm",
+  "book": "6mm",
+  "usage": "Top and bottom padding of every section band."
+ },
+ "section-top": {
+  "phone": "48.5px",
+  "tablet": "58.5px",
+  "laptop": "72px",
+  "paper": "6mm",
+  "book": "5mm",
+  "usage": "Top padding of a section band, above its title (the wave already adds air)."
+ },
+ "stack": {
+  "phone": "28.5px",
+  "tablet": "33.5px",
+  "laptop": "40px",
+  "paper": "7mm",
+  "book": "5mm",
+  "usage": "Space between groups: under a section title, and between the blocks of a worksheet."
+ },
+ "group-gap": {
+  "phone": "10px",
+  "tablet": "12px",
+  "laptop": "14px",
+  "paper": "2.5mm",
+  "book": "2mm",
+  "usage": "Space between a heading and the thing it introduces, so they read as one group (always smaller than stack)."
+ },
+ "card-pad": {
+  "phone": "20px",
+  "tablet": "22px",
+  "laptop": "24px",
+  "paper": "5mm",
+  "book": "4mm",
+  "usage": "Padding inside cards and notes."
+ },
+ "grid-gap": {
+  "phone": "20px",
+  "tablet": "23.5px",
+  "laptop": "28px",
+  "paper": "4mm",
+  "book": "3mm",
+  "usage": "Gap between cards in a grid."
+ }
+}

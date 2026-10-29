@@ -53,7 +53,7 @@ The components are a small React library (`window.FollowMeTherapy`) built from `
 
 - **The practice name** beside the logo (home hero, the inner pages' top bar) is Fredoka at `weight-brand` (400), a touch bolder than the logo's lines so the two read as one weight, with the logo 1.45× the text size. Fredoka is self-hosted as one variable font, so any weight from 300 to 700 is available.
 - Line heights: `leading-tight` 1.1 (display), `leading-snug` 1.25 (headings), `leading-normal` 1.5 (UI, lists, notes), `leading-relaxed` 1.7 (running text). Tracking: `tracking-tight` on headings, `tracking-caps` on uppercase eyebrows.
-- Print: `print-title` 28pt, `print-kid` 16pt (anything a child reads, never under 14pt), `print-body` 11pt for adults, `print-small` 8.5pt minimum.
+- `text-kid` is anything a child reads: 20 → 24px on screen, 16pt on A4, 14pt in the A5 book (never under 14pt on paper). On paper every `text-*` token takes its print size (see One system, every medium).
 - Highlight one or two words per title with `fmt-swash`: the same squiggle as the section titles, in `sun`, repeated along the words. One swash per page. A quote closes with the same squiggle as its section title, same colour, same spacing.
 
 ## Section titles
@@ -78,7 +78,8 @@ Every section opens the same way (`SectionTitle`): the title centred in `text-3x
 | `gutter` | 16 → 32px | Page edge to content |
 | `section-space` | 72 → 112px | Top and bottom of every section band |
 | `section-top` | 48 → 72px | Above a section's title (the wave already adds air) |
-| `stack` | 28 → 40px | Under a section title's squiggle |
+| `stack` | 28 → 40px | Under a section title's squiggle, and between groups |
+| `group-gap` | 10 → 14px | Between a heading and what it introduces |
 | `card-pad` | 20 → 24px | Inside cards, notes and pop-ups |
 | `grid-gap` | 20 → 28px | Between cards |
 | `content` / `measure` | 760px / 680px | Widest a section / a paragraph gets |
@@ -94,6 +95,43 @@ Every section opens the same way (`SectionTitle`): the title centred in `text-3x
   - `bp-md` 960px: the menu moves from a floating bar along the top to a rail down the left (148px wide). The content glides over to make room, and the new menu slides in from its own edge. Nothing flies across the page.
   - `bp-short` 820px and `bp-shorter` 700px (window height): pop-ups tighten so they always fit.
 - `tools/check_tokens.py` rejects any other media-query size.
+
+## One system, every medium
+
+The same tokens and components make the website, A4 handouts, the A5 staple book, and (later) the phone app. Nothing is redrawn per medium; it's put in a different container.
+
+- **Raw scales never change.** `space-*`, `radius-*`, `size-*` and `border-*` are physical: 1 CSS px = 1/96 inch = 0.26 mm = 1 Flutter logical pixel (dp). A `radius-md` corner is 16px on a phone and 4.2 mm on paper, and both look right.
+- **Semantic tokens change by medium.** Text sizes, `text-kid`, `gutter`, `section-space`, `section-top`, `stack`, `group-gap`, `card-pad` and `grid-gap` are fluid on screens (phone to laptop) and fixed print values on paper. The values below are generated from `design/tokens.json` (and written to `design/tokens-by-medium.json`):
+
+<!-- media:start -->
+| Token | Phone | iPad | Laptop | A4 paper | A5 book |
+|---|---|---|---|---|---|
+| `text-xs` | 14px | 14px | 14px | 8.5pt | 8.5pt |
+| `text-sm` | 15px | 15px | 15px | 10pt | 9.5pt |
+| `text-base` | 16.5px | 17px | 17.5px | 11pt | 10.5pt |
+| `text-md` | 17px | 17.5px | 18.5px | 12pt | 11.5pt |
+| `text-lg` | 18.5px | 19.5px | 21px | 13pt | 12pt |
+| `text-xl` | 21px | 23px | 25px | 16pt | 14pt |
+| `text-kid` | 20px | 22px | 24px | 16pt | 14pt |
+| `text-2xl` | 24px | 26.5px | 30px | 18pt | 16pt |
+| `text-3xl` | 30.5px | 34.5px | 40px | 22pt | 19pt |
+| `text-4xl` | 32.5px | 40px | 50px | 28pt | 24pt |
+| `text-display` | 39px | 53px | 72px | 40pt | 32pt |
+| `gutter` | 16.5px | 23px | 32px | 10mm | 12mm |
+| `section-space` | 73px | 89.5px | 112px | 8mm | 6mm |
+| `section-top` | 48.5px | 58.5px | 72px | 6mm | 5mm |
+| `stack` | 28.5px | 33.5px | 40px | 7mm | 5mm |
+| `group-gap` | 10px | 12px | 14px | 2.5mm | 2mm |
+| `card-pad` | 20px | 22px | 24px | 5mm | 4mm |
+| `grid-gap` | 20px | 23.5px | 28px | 4mm | 3mm |
+<!-- media:end -->
+
+- **Containers pick the medium:** `fmt-sheet` (A4 handout, `.medium-paper`), `fmt-page` (A5 book page, `.medium-book`) and `fmt-screen` (one activity as a scrolling screen: phone, iPad, laptop, the app). Every component inside sizes itself from the container's tokens, so a component never carries print or screen sizes of its own. To put any other component on paper, wrap it in `.medium-paper` or `.medium-book`.
+- **Proximity groups:** a heading and what it introduces sit `group-gap` apart (`Group`); groups sit `stack` apart. `stack` is always more than twice `group-gap`, on every medium.
+- **Paper and screen behave alike:** a choice is a tile you circle on paper and a toggle button you tap on screen (`aria-pressed`, 44px or more), with the same tile, corner and colours. Write-on lines and draw boxes appear only on paper; on screen they become text fields and a drawing area.
+- **Paper only:** write-on lines, draw boxes and cut lines use `rule` (3:1 or better on paper and every tint), so they survive a mono home printer. Never `purple-line`, which disappears in greyscale.
+- **Footprints:** on the website they lead the eye; on worksheets they're off for now (`StepPath plain`, cut lines start at a yellow dot).
+- **The app (later):** read `design/tokens-by-medium.json`. Use the phone column for compact widths and the iPad column for medium and expanded widths; colours, radii, type and components carry over as they are. The `fmt-screen` layout is the app's activity screen.
 
 ## Motion
 

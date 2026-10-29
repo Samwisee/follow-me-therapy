@@ -25,6 +25,11 @@ Therapy on her own. See README.md for the file layout.
 - Landing pages are generated: edit `tools/build_pages.py`, run
   `python3 tools/build_pages.py`. Pop-up text lives in `js/home.js` and is
   mirrored in `js/pages.js`; change both.
+- One system for every medium: semantic tokens (text-*, card-pad, grid-gap,
+  stack, group-gap, gutter) are fluid on screens and take print values inside
+  `.fmt-sheet`/`.medium-paper` (A4) and `.fmt-page`/`.medium-book` (A5), set in
+  tokens.json `extensions.followmetherapy.media`. Components never carry print
+  sizes of their own. Worksheets: footprints off for now (`StepPath plain`).
 - Link-preview (share) image: `tools/og.html` is built from the site's CSS,
   so it follows design changes. `python3 tools/make_og.py` renders it to a new
   `img/share-<hash>.jpg` (chat apps cache by URL) and updates every og:image
