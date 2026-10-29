@@ -109,9 +109,10 @@
 })();
 
 // Tap hints on touch screens: phones can't hover, so the first time a
-// tappable card, chip or button scrolls well into view it gives a small
-// lift and tilt (the same move as its hover), one after another in a group.
-// Once per element; nothing under prefers-reduced-motion.
+// tappable card, chip or tile scrolls well into view, a part of it moves to
+// say "tap me", each kind its own way. Buttons already look tappable, so they
+// don't. Once per element, one after another in a row; nothing under
+// prefers-reduced-motion.
 (() => {
   if (!("IntersectionObserver" in window) || !("animate" in Element.prototype)) return;
   const touch = matchMedia("(hover: none)");
@@ -119,29 +120,78 @@
   const css = getComputedStyle(document.documentElement);
   const token = (n, f) => css.getPropertyValue(n).trim() || f;
   const ms = (v) => (v.endsWith("ms") ? parseFloat(v) : parseFloat(v) * 1000);
-  const DUR = ms(token("--dur-slower", "600ms"));
-  const EASE = token("--ease-spring", "ease-out");
-  const LIFT = token("--space-2", "8px");
-  const TARGETS = ".service-item, .funding-card, .facts > li, .contact-tile, .book-note, .info-note:has(a[href]), .contact-card > a, .section-cta > a, .book-row > a, .hero-actions > a";
+  const SLOW = ms(token("--dur-slower", "600ms"));
+  const ENT = ms(token("--dur-entrance", "900ms"));
+  const SPRING = token("--ease-spring", "ease-out");
+  const SWAY = token("--ease-in-out", "ease-in-out");
+  const S1 = token("--space-1", "4px");
+
+  // Each kind of tappable thing and its hint.
+  const HINTS = [
+    // Service cards: the icon tile tilts and grows, as on hover, and the
+    // "Learn more" chevron steps forward twice.
+    [".service-item", (el, delay) => {
+      el.querySelector(".svc-icon")?.animate(
+        [{ rotate: "0deg", scale: "1" }, { rotate: "-8deg", scale: "1.08", offset: 0.4 }, { rotate: "0deg", scale: "1" }],
+        { duration: SLOW, easing: SPRING, delay });
+      el.querySelector(".more .chev")?.animate(
+        [{ translate: "0 0" }, { translate: `${S1} 0` }, { translate: "0 0" }, { translate: `${S1} 0` }, { translate: "0 0" }],
+        { duration: ENT, easing: SWAY, delay: delay + 150 });
+    }],
+    // Funding cards: the tile gives a springy press, like a key being pushed.
+    [".funding-card", (el, delay) => {
+      el.querySelector(".svc-icon")?.animate(
+        [{ scale: "1" }, { scale: "0.9", offset: 0.3 }, { scale: "1.06", offset: 0.65 }, { scale: "1" }],
+        { duration: SLOW, easing: SPRING, delay });
+    }],
+    // Hero chips: the outline brightens to the chip's own strong colour and
+    // fades back, with a small swell.
+    [".facts > li", (el, delay) => {
+      const strong = el.classList.contains("fact-tele") ? token("--teal", "teal")
+        : el.classList.contains("fact-place") ? token("--sun-deep", "orange") : token("--purple", "purple");
+      const rest = getComputedStyle(el).borderColor;
+      el.animate(
+        [{ borderColor: rest, scale: "1" }, { borderColor: strong, scale: "1.04", offset: 0.4 }, { borderColor: rest, scale: "1" }],
+        { duration: ENT, easing: SWAY, delay });
+    }],
+    // Phone and email: the phone rings (a quick shake); the envelope hops.
+    [".contact-tile", (el, delay) => {
+      const icon = el.querySelector(".ct-icon svg");
+      if (!icon) return;
+      const ring = el.getAttribute("href")?.startsWith("tel:");
+      icon.animate(ring
+        ? [{ rotate: "0deg" }, { rotate: "-14deg" }, { rotate: "12deg" }, { rotate: "-10deg" }, { rotate: "8deg" }, { rotate: "0deg" }]
+        : [{ translate: "0 0" }, { translate: `0 calc(-1 * ${S1})`, offset: 0.35 }, { translate: "0 0", offset: 0.6 }, { translate: `0 calc(-0.5 * ${S1})`, offset: 0.8 }, { translate: "0 0" }],
+        { duration: SLOW, easing: SWAY, delay });
+    }],
+    // The booking chip and the privacy note: the chevron nudges along.
+    [".info-note:has(a[href]), .book-note", (el, delay) => {
+      const icon = el.querySelector(".chev") || el.querySelector(".book-note svg");
+      if (icon) {
+        icon.animate(
+          [{ translate: "0 0" }, { translate: `${S1} 0` }, { translate: "0 0" }, { translate: `${S1} 0` }, { translate: "0 0" }],
+          { duration: ENT, easing: SWAY, delay });
+        return;
+      }
+      // A research note ("Read the review"): its outline brightens and fades.
+      const look = getComputedStyle(el);
+      el.animate(
+        [{ borderColor: look.borderColor }, { borderColor: look.getPropertyValue("--note-ink").trim() || look.borderColor, offset: 0.4 }, { borderColor: look.borderColor }],
+        { duration: ENT, easing: SWAY, delay });
+    }],
+  ];
   const start = () => {
     if (!touch.matches || still.matches) return;
     const io = new IntersectionObserver((entries) => {
       entries.filter((e) => e.isIntersecting).forEach((e) => {
         const el = e.target;
         io.unobserve(el);
-        const group = [...el.parentElement.children].filter((c) => c.matches(TARGETS));
-        const i = Math.max(0, group.indexOf(el));
-        el.animate(
-          [
-            { translate: "0 0", rotate: "0deg" },
-            { translate: `0 calc(-1 * ${LIFT})`, rotate: i % 2 ? "1.5deg" : "-1.5deg", offset: 0.45 },
-            { translate: "0 0", rotate: "0deg" },
-          ],
-          { duration: DUR, easing: EASE, delay: 450 + i * 110 }
-        );
+        const hint = HINTS.find(([sel]) => el.matches(sel));
+        const group = [...el.parentElement.children].filter((c) => c.matches(hint[0]));
+        hint[1](el, 450 + Math.max(0, group.indexOf(el)) * 120);
       });
     }, { threshold: 0.6 });
-    document.querySelectorAll(TARGETS).forEach((el) => io.observe(el));
+    HINTS.forEach(([sel]) => document.querySelectorAll(sel).forEach((el) => io.observe(el)));
   };
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start);
   else start();

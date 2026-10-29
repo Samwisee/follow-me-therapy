@@ -101,7 +101,7 @@ Every section opens the same way (`SectionTitle`): the title centred in `text-3x
 - Moving between pages cross-fades, with the logo and the practice name gliding to their new places.
 - Resizing is smooth: chips, cards, buttons, menu links and the words of headings glide to their new row when they wrap (`js/reflow.js`), instead of snapping. Small steady shifts while dragging aren't animated, only jumps.
 - The top menu's logo shrinks away below `bp-sm` and grows back above it.
-- On touch screens (no hover), each tappable card, chip and button gives one small lift and tilt the first time it scrolls into view, as a hint that it can be tapped.
+- On touch screens (no hover), the first time a tappable card, chip or tile scrolls into view it hints that it can be tapped, each kind its own way: a service card's icon tilts and its chevron steps forward; a funding tile gives a springy press; a hero chip's outline brightens; the phone icon rings and the envelope hops; a research note's outline brightens; a link chevron nudges. Buttons already look tappable, so they don't.
 - Everything stops under `prefers-reduced-motion`. Ambient artwork loops (the illustrations, the walking footprints) keep their own longer timings.
 
 ## Imagery
