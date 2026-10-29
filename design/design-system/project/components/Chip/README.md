@@ -5,7 +5,7 @@ A rounded pill with a border that states one fact: an age range, a way of workin
 - Markup: `<ul class="fmt-chips">` of `<li class="fmt-chip is-purple|is-teal|is-sun|is-pink|is-outline">`, an optional 24×24 line icon first, then the words.
 - Every chip has a 2px border in its tone's line colour (`purple-line`, `teal-line`, `sun-line`, `pink-line`). The border keeps chips distinct from the ground they sit on and from each other when printed in greyscale, and in Windows high-contrast mode.
 - Colour carries meaning: **purple** for who (ages), **teal** for telehealth, **sun** for in person, **pink** for reports and assessments. Always say it in words too; the colour only reinforces the label.
-- Use `is-outline` (paper fill) when the chip sits on `purple-tint`.
+- On its own tone's ground (a purple chip on a lilac band, header or note) a chip turns paper by itself (`component.chip.fill-on-ground`). Use `is-outline` for a plain label on paper.
 - The `fmt-live` line ("spots available now") belongs only on the telehealth chip, and only on screen. Leave it off print and anything cached, such as share images.
 - Add `is-stacked` to the list to centre chips in a column, as on the hero and share card.
 - A chip may be a link (`href`): the whole chip becomes the target, the border darkens on hover, and it gets the focus ring. Link to where the fact is explained (ages › What is OT, telehealth › the telehealth section). No chevron: the chip itself is the cue. Never make a chip do anything else; actions are Buttons.

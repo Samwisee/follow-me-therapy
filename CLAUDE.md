@@ -19,6 +19,14 @@ Therapy on her own. See README.md for the file layout.
   container radius = inner radius + padding + outline. `python3 tools/check_tokens.py` must say "Everything reads
   from the design tokens." (it also runs on every push to preview). A colour inside a
   data-URI SVG gets a `/* token:<name> */` tag before `url(` instead.
+- One design system for every product (see design/README.md): `design/tokens.json`
+  (incl. tones and component tokens), `design/components.json` (every shared
+  component, its rules, where each product implements it) and `design/icons.json`.
+  The app (Samwisee/follow-me-therapy-app) syncs them every build and hourly.
+  A shared component takes colours from its component tokens (`var(--chip-teal-fill)`),
+  never a colour directly; `check_tokens.py` enforces this, plus AAA contrast
+  and that every product has every component. A design change goes into all
+  products in the same piece of work: website CSS, Design System, app.
 - Design-system components: edit `design/design-system/project/components/src/index.tsx`
   or `bundle.css`, run `npm run design-system`, then publish that folder to the
   Design System artifact.

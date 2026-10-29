@@ -1,8 +1,37 @@
-# Design tokens: the single source
+# The design system: one source for every product
 
-`design/tokens.json` holds every colour, font, size, space, radius and shadow
-used by the website, the share image, the logo files and the printed
-resources. Change a value here and it flows everywhere.
+Three files here are the whole design system. Every product (the website, the
+share image, the Design System page, the worksheets and books, and the app in
+Samwisee/follow-me-therapy-app) reads them; none keeps its own copy of a rule.
+
+| File | What it holds |
+|---|---|
+| `design/tokens.json` | Every colour, font, size, space, radius, shadow and motion value; **tones** (the role each colour plays in purple, teal, sun and pink: tint, ink, line, solid, strong, ground, icon, on-solid); and **component tokens** (which role or value each part of a shared component takes: `component.chip.fill` = the tone's tint, `component.chip.fill-on-ground` = paper …) |
+| `design/components.json` | Every shared component: what it is, its rules, its tokens, and where the website, the Design System and the app implement it (or why one doesn't) |
+| `design/icons.json` | Every line icon |
+
+## How a change flows, and how it's enforced
+
+1. Change a value or rule in `tokens.json` (or a component in `components.json`, or an icon).
+2. `python3 tools/build_tokens.py` writes `css/tokens.css` (`--tone-teal-tint`,
+   `--chip-teal-fill`, `--bar-wave` …), the Design System's tokens and component
+   READMEs (their Rules block comes from components.json); `npm run design-system`
+   rebuilds the component library and its icons. On `preview` the Rebuild action
+   does this for you, and re-renders the share image.
+3. The app takes the same files on every build and hourly (its Design sync
+   workflow), regenerates its Kotlin (`FmtChipTokens`, `FmtIcons` …) and deploys.
+4. `python3 tools/check_tokens.py` (every push to preview) and the app's CI fail when:
+   - a value is written out by hand instead of a token;
+   - a product is missing a component listed in components.json (or doesn't say why);
+   - a shared component takes a colour directly (`var(--purple-tint)`,
+     `FmtColors.purpleTint`) instead of its component token, so a rule can't be
+     changed in one product only;
+   - any component's words fall under 7:1 on their fill (icons and state outlines
+     under 3:1) in a tone it's used in (WCAG 2.2 AAA).
+
+A new shared component: add it to components.json, then build it in each product
+(the checks fail until every product has it). Visual changes are checked by
+screenshotting every page and component before and after.
 
 ## What depends on it
 

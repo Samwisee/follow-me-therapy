@@ -1,4 +1,5 @@
-# When the design changes on preview (design/tokens.json, an edit here or a
+# When the design changes on preview (design/tokens.json, components.json or
+# icons.json, an edit here or a
 # push from Tokens Studio in Figma, or the site CSS, logo or fonts), rebuild
 # everything that depends on it, including the link-preview image, and commit
 # the result back to preview. Deploying to main stays a manual step.
@@ -6,7 +7,7 @@ name: Rebuild from design tokens
 on:
   push:
     branches: [preview]
-    paths: [design/tokens.json, css/**, tools/og.html, img/brand/**, img/simone-cutout.webp, fonts/**]
+    paths: [design/tokens.json, design/components.json, design/icons.json, design/design-system/project/components/src/**, css/**, tools/og.html, img/brand/**, img/simone-cutout.webp, fonts/**]
   workflow_dispatch:
 permissions:
   contents: write
@@ -21,6 +22,11 @@ jobs:
       - run: pip install fonttools brotli
       # The lockups' name follows the weight-brand token.
       - run: python3 tools/make_lockups.py && python3 tools/build_tokens.py && python3 tools/build_pages.py
+      # The Design System's components and icons (design/icons.json).
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - run: npm ci --no-audit --no-fund && npm run design-system
       - name: Re-render the link-preview image
         run: |
           pip install playwright pillow
