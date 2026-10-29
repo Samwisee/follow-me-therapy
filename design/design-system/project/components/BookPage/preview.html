@@ -1,19 +1,12 @@
 <!-- @dsCard group="Print" height=470 subtitle="A5 staple-book spread, shown at 50%" -->
-<div style="padding:24px;background:var(--butter);display:flex;justify-content:center">
-<div style="zoom:.5;display:flex;box-shadow:var(--shadow-raised)">
-<section class="fmt-page is-left" style="background:var(--teal-tint)">
-  <span class="fmt-tag is-teal" style="align-self:flex-start">Step 2</span>
-  <h1>Now we put on our <span class="fmt-swash">socks</span></h1>
-  <div style="flex:1;border-radius:6mm;background:var(--paper);display:grid;place-items:center;color:var(--ink-soft);font-weight:600">Illustration</div>
-  <p class="fmt-kid" style="margin:0">Scrunch it up, toes in, pull it up.</p>
-  <span class="fmt-folio">4</span>
-</section>
-<section class="fmt-page">
-  <h2>Your turn!</h2>
-  <ul class="fmt-ticks is-blank" style="gap:4mm"><li style="font-size:16pt;color:var(--ink);font-weight:600">Left sock</li><li style="font-size:16pt;color:var(--ink);font-weight:600">Right sock</li></ul>
-  <div style="flex:1;border:0.6mm dashed var(--purple-line);border-radius:6mm;display:grid;place-items:center;color:var(--ink-soft);font-weight:600">Draw your socks</div>
-  <p class="fmt-note" style="font-size:10pt;padding:4mm 5mm"><i style="width:9mm;height:9mm"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></i><span>Sit on the floor with your back to the wall for balance.</span></p>
-  <span class="fmt-folio" style="align-self:flex-end">5</span>
-</section>
-</div>
-</div>
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>BookPage — preview</title></head>
+<body style="margin:0">
+<div id="root" style="padding:24px;background:var(--butter);display:flex;justify-content:center"></div>
+<script>
+  var F = window.FollowMeTherapy, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h('div', {style:{zoom:.5, display:'flex', boxShadow:'var(--shadow-raised)'}}, h(F.BookPage, {side:'left', folio:4, ground:'teal-tint'}, h('div', null, h(F.Tag, {tone:'teal'}, 'Step 2')), h('h1', null, 'Now we put on our ', h(F.Swash, null, 'socks')), h('div', {style:{flex:1, borderRadius:'6mm', background:'var(--paper)', display:'grid', placeItems:'center', fontWeight:600}}, 'Illustration'), h('p', {className:'fmt-kid', style:{margin:0}}, 'Scrunch it up, toes in, pull it up.')), h(F.BookPage, {folio:5}, h('h2', null, 'Your turn!'), h(F.TickList, {blank:true, items:['Left sock','Right sock']}), h('div', {style:{flex:1, border:'0.6mm dashed var(--purple-line)', borderRadius:'6mm', display:'grid', placeItems:'center', fontWeight:600}}, 'Draw your socks'), h(F.InfoNote, null, 'Sit on the floor with your back to the wall for balance.'))));
+</script>
+</body>
+</html>

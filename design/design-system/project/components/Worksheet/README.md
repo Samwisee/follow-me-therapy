@@ -9,3 +9,4 @@ An A4 handout for home: a tinted header with a tag and title, the activity, a pa
 - Picture boxes are tinted `fmt-tile` squares. Drop in the photo or drawing, or leave blank for the child to draw.
 - Everything must still read in black and white. Many families print at home on mono printers, so never rely on colour alone to tell steps apart.
 - Render to PDF with Chromium (`page.pdf({format: 'A4', printBackground: true})`). Never ship the HTML to print from a browser.
+- In code: `<Worksheet tag="Self-care" title={…} tip="…">…</Worksheet>`.

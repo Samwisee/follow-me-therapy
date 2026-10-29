@@ -1,5 +1,12 @@
-<!-- @dsCard group="Content" height=250 subtitle="Ticked (done or included) and blank (to tick by hand)" -->
-<div style="padding:20px;display:grid;grid-template-columns:1fr 1fr;gap:28px;background:var(--paper)">
-  <ul class="fmt-ticks"><li>1:1 sessions at home or in the community</li><li>An individualised learning program</li><li>Coaching for the people who support your child every day</li></ul>
-  <ul class="fmt-ticks is-blank"><li>Shoes on</li><li>Bag packed</li><li>Drink bottle filled</li><li>Hat on</li></ul>
-</div>
+<!-- @dsCard group="Content" height=230 subtitle="Ticked, and blank boxes to tick by hand" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>TickList — preview</title></head>
+<body style="margin:0">
+<div id="root" style="padding:20px;display:grid;grid-template-columns:1fr 1fr;gap:28px;background:var(--paper)"></div>
+<script>
+  var F = window.FollowMeTherapy, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null, h(F.TickList, {items:['1:1 sessions at home or in the community','An individualised learning program','Coaching for the people who support your child every day']}), h(F.TickList, {blank:true, items:['Shoes on','Bag packed','Drink bottle filled','Hat on']})));
+</script>
+</body>
+</html>

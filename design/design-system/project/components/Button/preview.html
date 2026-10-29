@@ -1,6 +1,12 @@
-<!-- @dsCard group="Actions" height=150 -->
-<div style="padding:24px;display:flex;gap:18px;flex-wrap:wrap;align-items:center;background:var(--paper)">
-  <a class="fmt-btn" href="#">Start a referral</a>
-  <a class="fmt-btn is-teal" href="#">Book a call</a>
-  <a class="fmt-btn is-quiet" href="#" style="min-width:260px">ESDM in Melbourne<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></a>
-</div>
+<!-- @dsCard group="Actions" height=130 subtitle="Tab to see the focus ring" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Button — preview</title></head>
+<body style="margin:0">
+<div id="root" style="padding:24px;display:flex;gap:18px;flex-wrap:wrap;align-items:center;background:var(--paper)"></div>
+<script>
+  var F = window.FollowMeTherapy, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null, h(F.Button, null, 'Start a referral'), h(F.Button, {variant:'teal'}, 'Book a call'), h(F.Button, {variant:'quiet'}, 'ESDM in Melbourne')));
+</script>
+</body>
+</html>

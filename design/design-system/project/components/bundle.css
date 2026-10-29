@@ -28,7 +28,6 @@
 .fmt-tag { display: inline-block; padding: 4px 14px; border-radius: var(--radius-pill); background: var(--purple); color: var(--paper); font-family: var(--font-display); font-weight: 600; font-size: 15px; }
 .fmt-tag.is-teal { background: var(--teal); }
 .fmt-tag.is-sun { background: var(--sun); color: var(--ink); }
-.fmt-tag.is-ochre { background: var(--sun-deep); }
 .fmt-tag.is-pink { background: var(--pink-deep); }
 
 /* ── Tick list: plain lines, a teal tick circle each, no card ── */

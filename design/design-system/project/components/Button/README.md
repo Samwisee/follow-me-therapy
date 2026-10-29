@@ -8,3 +8,4 @@ Pill buttons in the heading face. Purple is the main action; teal a second one; 
 - On print, buttons become a short line of text with the web address, e.g. "Start a referral at followmetherapy.com.au".
 - Every button is at least 48px tall, so it's an easy target on a phone.
 - Keyboard focus shows an `ink` ring with a `paper` gap inside it (the `focus` token), which reads on every ground, including `deep`. Never remove it.
+- In code: `<Button variant="quiet" href="…">ESDM in Melbourne</Button>`.

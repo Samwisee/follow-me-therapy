@@ -10,3 +10,4 @@ A rounded pill with a border that states one fact: an age range, a way of workin
 - Add `is-stacked` to the list to centre chips in a column, as on the hero and share card.
 - Chips are labels, not buttons. If one needs to do something, use a Button.
 - Keep labels to two to six words. Never put a sentence in a chip.
+- In code: `<Chips><Chip tone="teal" icon="video" live="spots available now">Telehealth</Chip></Chips>`.

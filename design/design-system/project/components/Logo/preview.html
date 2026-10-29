@@ -1,11 +1,12 @@
-<!-- @dsCard group="Brand" height=300 subtitle="Stacked, horizontal and mark; ink on light, white on deep" -->
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
-  <div style="background:var(--paper);padding:28px;display:grid;gap:28px;justify-items:center;align-content:center">
-    <img src="/_blob/9a50621d36f128393cda5db610dfddeb" alt="Follow Me Therapy" style="height:110px">
-    <img src="/_blob/25e7652d75a616f412e47e4322cb2d86" alt="Follow Me Therapy, Paediatric Occupational Therapy" style="height:60px">
-  </div>
-  <div style="background:var(--deep);padding:28px;display:grid;gap:28px;justify-items:center;align-content:center">
-    <img src="/_blob/09087087fbd1c0e1d008e27257bcd2bf" alt="Follow Me Therapy" style="height:110px">
-    <div style="display:flex;gap:24px;align-items:center"><img src="/_blob/7f247c2a034dc570be2bf62585b242fa" alt="" style="height:60px"><img src="/_blob/df529b4467353931737a81d6f86ed731" alt="Follow Me Therapy, Paediatric Occupational Therapy" style="height:44px"></div>
-  </div>
-</div>
+<!-- @dsCard group="Brand" height=300 subtitle="Stacked, horizontal and mark; brand-ink on light, white on deep" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Logo — preview</title></head>
+<body style="margin:0">
+<div id="root" style="display:grid;grid-template-columns:1fr 1fr"></div>
+<script>
+  var F = window.FollowMeTherapy, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null, h('div', {style:{background:'var(--paper)',padding:28,display:'grid',gap:28,justifyItems:'center',alignContent:'center'}}, h(F.Logo, {variant:'stacked', height:110}), h(F.Logo, {variant:'horizontal', height:56})), h('div', {style:{background:'var(--deep)',padding:28,display:'grid',gap:28,justifyItems:'center',alignContent:'center'}}, h(F.Logo, {variant:'stacked', height:110, inverse:true}), h('div', {style:{display:'flex',gap:24,alignItems:'center'}}, h(F.Logo, {variant:'mark', height:56, inverse:true, label:''}), h(F.Logo, {variant:'horizontal', height:44, inverse:true})))));
+</script>
+</body>
+</html>

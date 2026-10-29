@@ -7,3 +7,4 @@ One A5 page of the staple book. Pages pair into spreads: a left page (`is-left`,
 - Number pages with `fmt-folio` on the outer corner. The cover is page 1 and isn't numbered.
 - A full-colour page ground (like the teal-tint above) must run 3 mm past the trim (`bleed`). Build the print PDF with that bleed added on all three outer edges.
 - See the Print section for page counts and imposition.
+- In code: `<BookPage side="left" folio={4} ground="teal-tint">…</BookPage>`.

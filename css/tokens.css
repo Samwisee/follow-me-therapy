@@ -1,18 +1,18 @@
 /* Follow Me Therapy design tokens. GENERATED from design/tokens.json by
    tools/build_tokens.py. Don't edit; change the tokens and rebuild. */
 :root {
-  --purple: #6b4ef0;
-  --purple-dark: #5a3fd6;
-  --purple-ink: #4b34c9;
+  --purple: #502eed;
+  --purple-dark: #482ccc;
+  --purple-ink: #4832c2;
   --purple-tint: #efe9ff;
   --purple-line: #d9cffc;
-  --teal: #007a8a;
-  --teal-ink: #00606d;
+  --teal: #00626e;
+  --teal-ink: #005965;
   --teal-tint: #e3f4f5;
   --teal-line: #a9d9de;
   --sun: #f2a516;
   --sun-deep: #9c6100;
-  --sun-ink: #7a4a00;
+  --sun-ink: #744600;
   --sun-tint: #fff0cc;
   --sun-line: #f3d38a;
   --butter: #fff4dc;
@@ -20,16 +20,16 @@
   --pink-tint: #ffe6ef;
   --pink-line: #f6b6cb;
   --ink: #2b2540;
-  --ink-soft: #5b556b;
+  --ink-soft: #504b5e;
   --deep: #2e2363;
   --paper: #ffffff;
   --live: #2fbf71;
-  --live-ink: #0f7a52;
+  --live-ink: #0b5c3e;
   --brand-ink: var(--ink);
   --focus: var(--ink);
   --trail: var(--purple-light);
   --teal-bright: #008c9e;
-  --teal-deep: #015a66;
+  --teal-deep: #015964;
   --teal-deeper: #035560;
   --mint: #c9f0ec;
   --sun-soft: #fde3a7;
@@ -40,7 +40,7 @@
   --purple-fog: #e6e0fb;
   --purple-pale: #e2dbff;
   --purple-light: #c7bbff;
-  --pink-deep: #c62c64;
+  --pink-deep: #912049;
   --pink-pale: #fde7ef;
   --coral: #ff6f61;
   --green: #19b37a;

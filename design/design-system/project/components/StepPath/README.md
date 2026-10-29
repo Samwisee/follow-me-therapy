@@ -7,3 +7,4 @@ Numbered steps joined by a pair of footprints: a process for parents ("How it wo
 - `li.is-done` fills the number in `teal`. Add hidden words for screen readers (`<span class="fmt-sr">(done)</span>`), since the fill alone isn't announced.
 - Labels: two to four words, sentence case. Three to six steps; longer sequences split over two rows or pages.
 - On print, `is-down` works as a tick-off routine strip: leave the numbers unfilled and let the child colour them in.
+- In code: `<StepPath steps={[{label:'Shoes on', done:true}, {label:'Hat on'}]} direction="down" />`.

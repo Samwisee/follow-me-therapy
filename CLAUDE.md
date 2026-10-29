@@ -15,6 +15,9 @@ Therapy on her own. See README.md for the file layout.
   source; see design/README.md), run `python3 tools/build_tokens.py`. Never
   hardcode a colour in CSS or HTML: use `var(--token)`. A colour inside a
   data-URI SVG gets a `/* token:<name> */` tag before `url(` instead.
+- Design-system components: edit `design/design-system/project/components/src/index.tsx`
+  or `bundle.css`, run `npm run design-system`, then publish that folder to the
+  Design System artifact.
 - Landing pages are generated: edit `tools/build_pages.py`, run
   `python3 tools/build_pages.py`. Pop-up text lives in `js/home.js` and is
   mirrored in `js/pages.js`; change both.
@@ -34,7 +37,11 @@ Therapy on her own. See README.md for the file layout.
 - ABN 84 679 395 414. Sessions run on Microsoft Teams.
 - Her email is on Microsoft 365 via GoDaddy: never change MX records or accept
   "Gmail setup" prompts.
-- Use chevrons (›), not arrows, for links. Keep accessibility clean (axe).
+- Use chevrons (›), not arrows, for links.
+- Accessibility target is WCAG 2.2 **AAA** (Simone works in accessibility):
+  text 7:1, focus ring, 44px targets, no colour-only meaning. Run
+  `npm run a11y` (with the local server up) before reporting; it must say
+  "no violations".
 
 ## Status
 

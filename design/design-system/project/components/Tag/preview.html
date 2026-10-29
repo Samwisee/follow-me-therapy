@@ -1,2 +1,12 @@
 <!-- @dsCard group="Labels" height=90 -->
-<div style="padding:20px;display:flex;gap:12px;flex-wrap:wrap;background:var(--paper)"><span class="fmt-tag">Self or plan-managed</span><span class="fmt-tag is-teal">Telehealth</span><span class="fmt-tag is-sun">Ages 3–6</span><span class="fmt-tag is-ochre">Up to age 5</span><span class="fmt-tag is-pink">Assessments</span></div>
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Tag — preview</title></head>
+<body style="margin:0">
+<div id="root" style="padding:20px;display:flex;gap:12px;flex-wrap:wrap;background:var(--paper)"></div>
+<script>
+  var F = window.FollowMeTherapy, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null, h(F.Tag, null, 'Self or plan-managed'), h(F.Tag, {tone:'teal'}, 'Telehealth'), h(F.Tag, {tone:'sun'}, 'Up to age 5'), h(F.Tag, {tone:'pink'}, 'Assessments')));
+</script>
+</body>
+</html>

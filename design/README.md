@@ -26,8 +26,10 @@ On the `preview` branch a GitHub Action runs the first two for you whenever
 
 `design/design-system/project/` holds everything the Design System artifact
 shows: the brand book (`README.md`, `print.md`), component guidelines and
-previews, and `components/bundle.css`, the component styles used by printed
-resources. It's published to the artifact from here, so this folder, not the
+previews, `components/bundle.css` (the component styles, also used by printed
+resources) and the live component library: `components/src/index.tsx`, built
+by `npm run design-system` into `components/bundle.js` with the logo embedded
+from `img/brand/`. It's published to the artifact from here, so this folder, not the
 page, is what to edit.
 
 ## Viewing and editing in Figma

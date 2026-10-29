@@ -6,6 +6,10 @@ Follow Me Therapy is Simone's paediatric occupational therapy practice: teleheal
 - To change a colour, font or size, change it there, in code or in Figma through the Tokens Studio plugin, which syncs that file on the `preview` branch. Then re-sync this page. An edit made only on this page doesn't reach the website and is overwritten at the next sync.
 - `brand-ink` colours the logo **and** the practice name together, everywhere. Never colour one without the other.
 
+## Using the components
+
+The components are a small React library (`window.FollowMeTherapy`) built from `components/src/index.tsx` in the repo, styled by `components/bundle.css` and coloured by the tokens. Every card on this page is a live render. In code: `h(FollowMeTherapy.Chip, {tone: 'teal', icon: 'video'}, 'Telehealth')`. For a plain HTML page or a print template, the same class names work without React (see each component's guidelines).
+
 ## Voice and content
 
 - **Write as Simone, in the first person.** "I'll check whether ESDM suits your child at the initial assessment." Speak to parents and carers as "you" and "your child".
@@ -24,7 +28,7 @@ Follow Me Therapy is Simone's paediatric occupational therapy practice: teleheal
 - **Grounds:** `paper` for pages and cards; `purple-tint` (lilac) for heroes and headers; `butter` and `teal-tint` (mint) for alternating sections; `deep` for the footer band.
 - **Brand pair:** `purple` leads (buttons, links, highlights); `teal` follows (ticks, telehealth, steps). `sun` is the warm accent: the swash under a key word, the disc behind Simone's photo, stars and rewards.
 - **Text:** headings in `ink`, body in `ink-soft`. Both pass on every light ground. Inside a tinted chip, use that tint's ink (`purple-ink`, `teal-ink`, `sun-ink`).
-- `sun` takes `ink` text, never white. `sun-deep`, `pink` and `pink-deep` take white text and work as icon colours on their tints.
+- `sun` takes `ink` text, never white. `sun-deep` and `pink` are icon colours only; `pink-deep` takes white text.
 - Fixed colour meanings: purple = who it's for (ages), teal = telehealth, sun = in person. Services: 5 Steps Forward purple, Steady Steps teal, ESDM sun, Assessments pink.
 - Use one tinted ground per section, never a gradient.
 
@@ -50,18 +54,21 @@ Follow Me Therapy is Simone's paediatric occupational therapy practice: teleheal
 - Illustrations are flat, friendly and in the palette (the site uses recoloured unDraw art). No stock photos of children.
 - No photos of real clients' children, ever.
 
-## Accessibility
+## Accessibility: WCAG 2.2 AAA
 
-The system targets WCAG 2.2 AA on screen and the same contrast on paper. These rules are part of the design, not extras.
+Simone works in accessibility, so the system targets **AAA**, the highest WCAG level, not the usual AA. The website passes an automated AAA audit (axe-core, all pages, desktop and phone, pop-ups open), and every token below was chosen to keep it that way.
 
-- **Contrast, checked:** body text `ink-soft` 6.0:1 or better on every light ground; headings `ink` 12:1 or better; chip text in its tint's ink 4.5:1 (pink) to 6.8:1; white on `purple` 5.3:1, `teal` 5.1:1, `sun-deep` 5.1:1, `pink-deep` 5.3:1; icon colours 4.4:1 or better on their tiles (icons need 3:1). A new colour pair needs the same check before it's used.
-- **Never colour alone.** Chips say what they mean in words; ticked steps get hidden "(done)" text; links in running text are underlined (`fmt-prose`); steps differ by number, not hue.
-- **Borders on tinted shapes** (chips, the promise note, step numbers), so they hold up in greyscale print and Windows high-contrast mode.
-- **Focus:** an `ink` ring with a `paper` gap inside it (`focus` token) on everything interactive. Never `outline: none` without a replacement.
-- **Targets:** buttons and tappable cards are at least 48px tall.
-- **Motion:** decoration may move once on arrival; nothing loops, and everything stops under `prefers-reduced-motion`.
-- **Reading:** left-align anything longer than two lines; keep lines under about 70 characters; no text under 15px on screen or 8.5pt in print (14pt for anything a child reads).
-- **Images:** the logo's alt text is "Follow Me Therapy"; illustrations get a one-line description of what they show; decorative motifs (trails, swashes) are `aria-hidden`.
+- **Text contrast 7:1 or better** (AAA 1.4.6) for every text colour on every ground it's used on: `ink-soft` 7.1:1 on its palest ground, `ink` 12:1+, chip inks 7.1:1, white on `purple` 7.1:1, on `teal` 7.1:1, on `pink-deep` 8.4:1, `ink` on `sun` 7.1:1. A new colour pair needs the same check before use; `tools/check_a11y.mjs` in the repo runs the audit.
+- **Non-text contrast 3:1 or better** for icons, focus rings and control edges. Decorative shapes (tints, trails, chip borders) carry no meaning on their own.
+- **Never colour alone** (1.4.1): chips say what they mean in words; done steps carry hidden "(done)" text; links in running text are underlined (`fmt-prose`).
+- **Focus** (2.4.13 Focus Appearance, AAA): a 3px `focus` (ink) ring with a 2px `paper` gap, on everything interactive, on every ground.
+- **Target size 44×44 or larger** (2.5.5, AAA): buttons are 48px tall; tappable cards are larger still.
+- **Motion** (2.3.3, AAA): decoration may move once on arrival, never loops, and stops under `prefers-reduced-motion`.
+- **Reading** (1.4.8, AAA): left-align anything longer than two lines, never justify, keep lines under 80 characters, line height at least 1.5, paragraph spacing larger than line spacing. No text under 15px on screen or 8.5pt in print (14pt for anything a child reads).
+- **Plain language** (3.1.5, AAA): write parent copy for a lower-secondary reading level; short sentences; explain any clinical term the first time.
+- **Images of text** (1.4.9, AAA): none, except the logo. Headings, chips and buttons are real text.
+- **Images:** the logo's text alternative is "Follow Me Therapy"; illustrations get a one-line description; decorative motifs (trails, swashes) are hidden from screen readers.
+- **Windows high contrast:** shapes drawn with fills get a system-colour border so they don't disappear.
 
 ## Signature elements
 
