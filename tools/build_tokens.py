@@ -96,8 +96,7 @@ def lst(group, prefix):
                         "usage": v.get("$description", "")} for k, v in TOK.items() if k.startswith(group + ".")]}
 
 ds = {"name": "Follow Me Therapy", "version": 1,
-      "meta": {"source": "github", "repo": "Samwisee/follow-me-therapy", "ref": "preview@" + __import__("subprocess").run(["git", "-C", str(ROOT), "rev-parse", "--short", "HEAD"], capture_output=True, text=True).stdout.strip(),
-               "paths": {"tokens": ["design/tokens.json"], "fonts": ["fonts/"], "assets": ["img/brand/", "img/"]}},
+      "meta": {"source": "github", "repo": "Samwisee/follow-me-therapy", "paths": {"tokens": ["design/tokens.json"], "fonts": ["fonts/"], "assets": ["img/brand/", "img/"]}},
       "color": {"themes": [{"id": "light", "name": "Light"}],
                 "tokens": [{"name": k.split(".", 1)[1],
                             "value": {"light": (("{" + v["$value"][7:]) if str(v["$value"]).startswith("{color.") else v["$value"])},
