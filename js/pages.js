@@ -213,3 +213,17 @@ document.addEventListener("DOMContentLoaded", function () {
   addEventListener("pageswap", name);
   addEventListener("pagereveal", name);
 })();
+
+// ── In-page links don't pile up history ──
+// Jumping to a section (the menu, chips, the skip link) replaces the current
+// history entry instead of adding one, so the browser's Back button leaves
+// the page rather than stepping back through every section you tapped.
+// The address still shows the section, and the jump behaves as normal.
+document.addEventListener("click", (e) => {
+  if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+  const a = e.target.closest && e.target.closest('a[href^="#"]');
+  if (!a || a.getAttribute("href").length < 2) return;
+  if (!document.getElementById(decodeURIComponent(a.getAttribute("href").slice(1)))) return;
+  e.preventDefault();
+  location.replace(a.getAttribute("href"));
+});
