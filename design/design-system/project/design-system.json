@@ -175,8 +175,8 @@
       "files": {
         "share-card.jpg": {
           "name": "share-card.jpg",
-          "blob": "d3a66c08ede3dabda37cc34326d7aeec",
-          "size": 77013,
+          "blob": "ca8348e272d26d94f8baf14ba4072c92",
+          "size": 78286,
           "type": "image/jpeg"
         },
         "simone-cutout.webp": {
@@ -209,9 +209,9 @@
   ],
   "lastChange": {
     "by": "Sam",
-    "at": "2026-10-29T02:55:00Z",
-    "via": "GitHub \u00b7 Samwisee/follow-me-therapy@c2c9fd9",
-    "note": "Re-synced tokens from design/tokens.json (now the single source): 18 colours added, brand-ink ties the logo to the name."
+    "at": "2026-10-29T03:30:00Z",
+    "via": "GitHub \u00b7 Samwisee/follow-me-therapy@094d7b7",
+    "note": "Accessibility and identity pass: AA colour fixes, bordered chips, anatomical footprints, StepPath, focus ring."
   },
   "layout": "files",
   "libraries": [],
