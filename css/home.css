@@ -817,8 +817,10 @@ html[data-nav="rail"] main section[id] {
   margin-top: var(--grid-gap);
   border-radius: var(--set-radius);
 }
-.privacy-note.info-note > span {
-  padding-top: 0;
+@media (max-width: 640px) {
+  .privacy-note.info-note {
+    align-items: flex-start;
+  }
 }
 .privacy-note.info-note a[href]::after {
   border-radius: var(--set-radius);
@@ -855,7 +857,7 @@ html[data-nav="rail"] main section[id] {
   --tint: var(--purple-tint);
   display: flex;
   align-items: center;
-  gap: var(--space-4);
+  gap: var(--space-3);
   min-width: 0;
   padding: var(--card-pad);
   border: var(--border-outline) solid var(--band);
@@ -909,15 +911,15 @@ html[data-nav="rail"] main section[id] {
 }
 .ct-text b {
   color: var(--ink);
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-weight: 500;
-  font-size: var(--text-md);
+  font-size: var(--text-base);
   overflow-wrap: break-word;
 }
 
 /* ── 7. Footer ────────────────────────────────────────────────────────── */
-/* The flags, the acknowledgement and the company details share one left
-   edge. Extra room at the foot for the Contact me button. */
+/* The flags sit centred; the acknowledgement and the company details share
+   one left edge. Extra room at the foot for the Contact me button. */
 #company {
   padding-block: var(--space-14) var(--space-24);
   color: color-mix(in srgb, var(--paper) 85%, transparent);
@@ -925,6 +927,7 @@ html[data-nav="rail"] main section[id] {
 .flags {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: var(--space-3);
   margin-bottom: var(--space-7);
 }
