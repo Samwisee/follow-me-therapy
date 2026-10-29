@@ -16,7 +16,7 @@ Static site for [followmetherapy.com.au](https://followmetherapy.com.au), hosted
 | `privacy.html`, `404.html` | Privacy policy and not-found page |
 | `fonts/` | Self-hosted Fredoka and Quicksand (OFL) |
 | `img/brand/` | Vector logo: the mark and two lockups, ink and white. The mark is traced from `img/logo.png` by `tools/trace_logo.py`; the lockups are built by `tools/make_lockups.py` (name outlined in Fredoka, so they print without the font) |
-| `img/` | Logo, icons, flags, Simone's cut-out, share image (`share-YYYY-MM.jpg`, rendered from `tools/og.html` by `python3 tools/make_og.py`; when it changes, give it a new file name and update the og:image tags, since chat apps cache images by URL) |
+| `img/` | Logo, icons, flags, Simone's cut-out, share image (`share-<hash>.jpg`, rendered from `tools/og.html` by `python3 tools/make_og.py`, which also names it by content and updates every og:image tag, since chat apps cache images by URL; CI re-renders it when the design changes) |
 | `sitemap.xml`, `robots.txt`, `CNAME` | Search and domain config |
 
 ## Editing

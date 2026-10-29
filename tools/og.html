@@ -1,78 +1,71 @@
 <!doctype html>
-<!-- Share image source. Render with: python3 tools/make_og.py -->
-<html lang="en">
+<!--
+  The link-preview (share) image: 1200 × 630, rendered by tools/make_og.py.
+  It's built from the website's own stylesheets and markup (the tokens, the
+  practice name at weight-brand, the hero chips, Simone's photo frame), so a
+  design change on the site changes this image the next time it's rendered.
+  Only the layout of the card itself lives here.
+-->
+<html lang="en" class="js fonts-ready">
 <head>
 <meta charset="utf-8" />
 <link rel="stylesheet" href="../css/tokens.css" />
+<link rel="stylesheet" href="../css/site.css" />
+<link rel="stylesheet" href="../css/home.css" />
 <style>
-  @font-face { font-family: Fredoka; font-weight: 600; src: url(../fonts/fredoka-latin-600-normal.woff2); }
-  @font-face { font-family: Fredoka; font-weight: 700; src: url(../fonts/fredoka-latin-700-normal.woff2); }
-  @font-face { font-family: Quicksand; font-weight: 600; src: url(../fonts/quicksand-latin-600-normal.woff2); }
-  @font-face { font-family: Quicksand; font-weight: 700; src: url(../fonts/quicksand-latin-700-normal.woff2); }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body { width: 1200px; height: 630px; overflow: hidden; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; scrollbar-gutter: auto; }
   body {
-    background: var(--purple-tint);
-    font-family: Quicksand, sans-serif;
-    color: var(--ink);
     display: grid;
-    grid-template-columns: 730px 1fr;
+    grid-template-columns: 700px 1fr;
+    background: var(--purple-tint);
     position: relative;
   }
-  /* soft corner blobs, like the site's waves */
-  body::before, body::after { content: ""; position: absolute; border-radius: 50%; z-index: 0; }
-  body::before { width: 300px; height: 300px; left: -170px; top: -170px; background: var(--sun-tint); }
-  body::after  { width: 260px; height: 260px; right: -90px; top: -110px; background: var(--teal-tint); }
-
+  /* The same soft shapes as the home hero. */
+  body::before, body::after { content: ""; position: absolute; border-radius: 50%; }
+  body::before { width: calc(var(--space-30) * 2.6); aspect-ratio: 1; left: calc(-1 * var(--space-30)); top: calc(-1 * var(--space-30)); background: var(--sun-soft); opacity: 0.6; }
+  body::after { width: calc(var(--space-30) * 1.8); aspect-ratio: 1; right: calc(-1 * var(--space-16)); bottom: calc(-1 * var(--space-16)); background: var(--mint); opacity: 0.7; }
   .words {
-    position: relative; z-index: 1;
+    position: relative; z-index: var(--z-base);
     display: flex; flex-direction: column; align-items: center; justify-content: center;
-    text-align: center; padding: 0 24px 0 48px;
+    padding-left: var(--space-12);
+    text-align: center;
   }
-  .logo { width: 86px; height: auto; margin-bottom: 10px; }
-  h1 { color: var(--brand-ink); font-family: Fredoka, sans-serif; font-weight: 700; font-size: 66px; line-height: 1; letter-spacing: -0.5px; white-space: nowrap; }
-  .sub { font-weight: 700; font-size: 24px; color: var(--ink-soft); margin: 12px 0 30px; }
-
-  .facts { list-style: none; display: flex; flex-direction: column; align-items: center; gap: 12px; }
-  .facts li {
-    display: inline-flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 10px;
-    font-weight: 700; font-size: 22px; padding: 10px 26px; border-radius: 999px; white-space: nowrap;
+  /* The practice name and logo, exactly as in the hero, at a fixed size. */
+  .words .title-container {
+    --nav-inset: 0px;
+    width: auto; margin: 0; padding: 0;
+    flex-direction: column; gap: var(--space-2);
+    font-size: 64px;
+    animation: none; opacity: 1;
   }
-  .facts svg { width: 25px; height: 25px; flex: none; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
-  .fact-age   { background: var(--paper); color: var(--purple-ink); border: 3px solid var(--purple-line); }
-  .fact-tele  { background: var(--teal-tint); color: var(--teal-ink); border: 3px solid var(--teal-line); }
-  .fact-place { flex-wrap: nowrap !important; background: var(--sun-tint); color: var(--sun-ink); border: 3px solid var(--sun-line); }
-  .fact-tele { flex-direction: column; gap: 4px !important; padding: 10px 30px !important; border-radius: 34px !important; }
-  .row { display: inline-flex; align-items: center; gap: 10px; }
-  .fact-now { display: flex; align-items: center; justify-content: center; gap: 10px; color: var(--live-ink); font-size: 20px; }
-  .live-dot { width: 13px; height: 13px; border-radius: 50%; background: var(--live); box-shadow: 0 0 0 5px color-mix(in srgb, var(--live) 25%, transparent); }
-
-  .photo { position: relative; z-index: 1; display: flex; align-items: center; justify-content: center; padding: 40px 48px 40px 0; }
-  .card {
-    width: 100%; height: 100%; background: var(--paper); border-radius: 48px; padding: 22px;
-    box-shadow: 0 16px 40px color-mix(in srgb, var(--deep) 12%, transparent);
-  }
-  .frame {
-    width: 100%; height: 100%; border-radius: 30px; background: var(--teal-tint);
-    position: relative; overflow: hidden;
-  }
-  .sun { position: absolute; width: 280px; height: 280px; border-radius: 50%; background: var(--sun-soft); left: 50%; top: 52%; transform: translate(-50%, -50%); }
-  .sim { position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); height: 96%; }
+  .words .site-title { white-space: nowrap; }
+  .words .eyebrow { margin: var(--space-4) 0 var(--space-7); }
+  .words .facts { flex-direction: column; margin: 0; container-type: normal; font-size: var(--text-xl); }
+  .words .facts li { font-size: 21px; }
+  .words .facts li svg { width: 26px; height: 26px; }
+  .words .facts li.fact-place { flex-direction: row; }
+  /* Simone in her frame, nested like the Meet Simone card. */
+  .photo { position: relative; z-index: var(--z-base); display: flex; align-items: center; padding: var(--space-10) var(--space-12) var(--space-10) var(--space-4); }
+  .photo .bio { display: block; width: 100%; height: 100%; }
+  .photo .bio-photo { width: 100%; height: 100%; min-height: 0; max-height: none; aspect-ratio: auto; margin: 0; }
+  .photo .bio-photo img { opacity: 1; }
 </style>
 </head>
 <body>
   <div class="words">
-    <img class="logo" src="../img/brand/follow-me-therapy-mark.svg" alt="" />
-    <h1>Follow Me Therapy</h1>
-    <p class="sub">Paediatric occupational therapy</p>
+    <div class="title-container">
+      <img class="logo-image" src="../img/brand/follow-me-therapy-mark.svg" alt="" width="226" height="250" />
+      <p class="site-title">Follow Me Therapy</p>
+    </div>
+    <p class="eyebrow">Paediatric Occupational Therapy</p>
     <ul class="facts">
-      <li class="fact-age"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" /><path d="M8.5 14.5c1.8 2 5.2 2 7 0" /><path d="M9 9.8v.1M15 9.8v.1" /></svg>Ages 0–18</li>
-      <li class="fact-tele"><span class="row"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="13" height="12" rx="3" /><path d="M16 10.5l5-3v9l-5-3" /></svg>Telehealth Australia-wide</span><span class="fact-now"><span class="live-dot"></span>spots available now</span></li>
-      <li class="fact-place"><svg viewBox="0 0 24 24"><path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11z" /><circle cx="12" cy="10" r="2.4" /></svg>Community sessions in North-Western Melbourne</li>
+      <li class="fact-age"><a><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M8.5 14.5c1.8 2 5.2 2 7 0" /><path d="M9 9.8v.1M15 9.8v.1" /></svg>Ages 0–18</a></li>
+      <li class="fact-tele"><a><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="13" height="12" rx="3" /><path d="M16 10.5l5-3v9l-5-3" /></svg>Telehealth Australia-wide</a></li>
+      <li class="fact-place"><a><span class="fact-main"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11z" /><circle cx="12" cy="10" r="2.4" /></svg>Community sessions</span> <span class="fact-more">in North-Western Melbourne</span></a></li>
     </ul>
   </div>
   <div class="photo">
-    <div class="card"><div class="frame"><div class="sun"></div><img class="sim" src="../img/simone-cutout.webp" alt="" /></div></div>
+    <div class="bio"><div class="bio-photo"><img src="../img/simone-cutout.webp" alt="" class="loaded" /></div></div>
   </div>
 </body>
 </html>

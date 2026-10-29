@@ -25,6 +25,10 @@ Therapy on her own. See README.md for the file layout.
 - Landing pages are generated: edit `tools/build_pages.py`, run
   `python3 tools/build_pages.py`. Pop-up text lives in `js/home.js` and is
   mirrored in `js/pages.js`; change both.
+- Link-preview (share) image: `tools/og.html` is built from the site's CSS,
+  so it follows design changes. `python3 tools/make_og.py` renders it to a new
+  `img/share-<hash>.jpg` (chat apps cache by URL) and updates every og:image
+  reference. CI re-runs it on preview when tokens, CSS, logo or fonts change.
 - Check visually before reporting: serve locally (`python3 -m http.server 8765`)
   and screenshot with Playwright at 1400px and 390px wide. The side rail menu
   appears at 960px (token `breakpoint.md`) and up; below that it's the top bar.

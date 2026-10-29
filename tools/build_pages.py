@@ -29,13 +29,13 @@ def page(slug,title,desc,crumb,h1,lead,chips,bands):
     <meta property="og:title" content="{title}" />
     <meta property="og:description" content="{desc}" />
     <meta property="og:url" content="{SITE}{slug}" />
-    <meta property="og:image" content="{SITE}img/share-2026-10-29.jpg" />
-    <meta property="og:image:secure_url" content="{SITE}img/share-2026-10-29.jpg" />
+    <meta property="og:image" content="{SITE}img/share-da39328641.jpg" />
+    <meta property="og:image:secure_url" content="{SITE}img/share-da39328641.jpg" />
     <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Follow Me Therapy: Simone, paediatric OT. Ages 0–18, telehealth Australia-wide, community sessions in North-Western Melbourne." />
-    <meta name="twitter:image" content="{SITE}img/share-2026-10-29.jpg" />
+    <meta name="twitter:image" content="{SITE}img/share-da39328641.jpg" />
     <meta property="og:locale" content="en_AU" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />

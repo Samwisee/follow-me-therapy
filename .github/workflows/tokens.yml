@@ -1,11 +1,12 @@
-# When design/tokens.json changes on preview (an edit here, or a push from
-# Tokens Studio in Figma), rebuild everything that depends on it and commit
+# When the design changes on preview (design/tokens.json, an edit here or a
+# push from Tokens Studio in Figma, or the site CSS, logo or fonts), rebuild
+# everything that depends on it, including the link-preview image, and commit
 # the result back to preview. Deploying to main stays a manual step.
 name: Rebuild from design tokens
 on:
   push:
     branches: [preview]
-    paths: [design/tokens.json]
+    paths: [design/tokens.json, css/**, tools/og.html, img/brand/**, img/simone-cutout.webp, fonts/**]
   workflow_dispatch:
 permissions:
   contents: write
@@ -18,10 +19,16 @@ jobs:
         with:
           python-version: "3.12"
       - run: python3 tools/build_tokens.py && python3 tools/build_pages.py
+      - name: Re-render the link-preview image
+        run: |
+          pip install playwright pillow
+          python3 -m playwright install --with-deps chromium
+          python3 tools/make_og.py
       - name: Commit rebuilt files
         run: |
           if git diff --quiet; then echo "Nothing to rebuild"; exit 0; fi
           git config user.name "Claude"
           git config user.email "noreply@anthropic.com"
-          git commit -am "Rebuild from design tokens"
+          git add -A
+          git commit -m "Rebuild from design tokens"
           git push
