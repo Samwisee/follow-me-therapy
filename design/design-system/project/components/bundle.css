@@ -444,7 +444,14 @@ a.fmt-card:hover { transform: translateY(calc(-1 * var(--space-2))) rotate(1deg)
 .fmt-group > p { margin: 0; }
 .fmt-group.is-fill { flex: 1 1 auto; }
 /* Spread: share the spare height evenly between the items (e.g. cutting lines). */
-.fmt-group.is-spread { flex: 1 1 auto; justify-content: space-around; gap: var(--stack); }
+.fmt-group.is-spread { flex: 1 1 auto; justify-content: space-between; gap: var(--stack); }
+/* In a filling group, stretchy parts take the spare height so the rhythm
+   (group-gap, stack, rule spacing) never changes: choice tiles and tracker
+   rows grow taller, a draw box grows. Lines to write on stay exactly
+   rule-kid apart; add or remove a line instead. */
+.fmt-group.is-fill > .fmt-choices { flex: 1 1 auto; grid-auto-rows: 1fr; }
+.fmt-group.is-fill > .fmt-tracker { flex: 1 1 auto; }
+.fmt-group.is-fill > .fmt-row { flex: 1 1 auto; }
 .fmt-row { display: flex; gap: var(--grid-gap); align-items: stretch; }
 .fmt-row > * { flex: 1 1 0; min-width: 0; }
 
@@ -473,6 +480,8 @@ a.fmt-card:hover { transform: translateY(calc(-1 * var(--space-2))) rotate(1deg)
 .fmt-choice.is-sun  { --tone: var(--sun-deep); --tone-tint: var(--sun-tint); --tone-line: var(--sun-line); }
 .fmt-choice.is-pink { --tone: var(--pink); --tone-tint: var(--pink-tint); --tone-line: var(--pink-line); }
 .fmt-choice .fmt-tile { flex: none; }
+/* Icons sit level along a row; each label centres in the height left under its icon. */
+.fmt-choice > span:last-child { flex: 1 1 auto; display: flex; align-items: center; justify-content: center; }
 button.fmt-choice { cursor: pointer; transition: border-color var(--dur-fast) var(--ease-standard), background-color var(--dur-fast) var(--ease-standard), transform var(--dur-base) var(--ease-spring); }
 button.fmt-choice:hover { border-color: var(--tone); }
 button.fmt-choice:active { transform: scale(0.97); }

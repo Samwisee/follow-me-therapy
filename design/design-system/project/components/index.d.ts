@@ -42,7 +42,7 @@ export declare function DrawBox(props: DrawBoxProps): React.ReactElement;
 export interface Choice { label: string; icon?: Icon40Name }
 export interface ChoicesProps { items: Choice[]; tone?: Tone; columns?: number; selected?: number[]; onToggle?: (index: number) => void }
 export declare function Choices(props: ChoicesProps): React.ReactElement;
-export interface CutLineProps { shape?: 'straight' | 'wavy' | 'zigzag' | 'curve' }
+export interface CutLineProps { shape?: 'straight' | 'curve' | 'wavy' | 'zigzag' | 'castle' }
 export declare function CutLine(props: CutLineProps): React.ReactElement;
 export interface TrackerProps { rows?: number; days?: string[]; label?: string }
 export declare function Tracker(props: TrackerProps): React.ReactElement;

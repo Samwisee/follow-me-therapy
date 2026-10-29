@@ -6,5 +6,6 @@ Tiles to choose from: a child circles them on paper, or taps them on a screen. T
 - On paper the tile is a `<div>`. On a screen it's a `<button type="button" aria-pressed>`: pressed tiles fill with the tint and take a double outline in the tone (not colour alone), and every tile is 44px or taller.
 - Columns: three on A4 and A5 (`--cols`), and on a screen as many as fit up to three, never fewer than two on a phone.
 - Labels are what the child reads (`text-kid`): two to five words, sentence case, a verb first ("Squeeze a cushion").
+- In a filling group the tiles grow taller; icons stay level along each row and each label centres in the space under its icon.
 - Corners nest: the icon tile's `radius-tile` + `card-pad` + `border-outline`.
 - In code: `<Choices tone="teal" items={[{label:'Take 5 slow breaths', icon:'breathe'}]} />`; add `selected` and `onToggle` on a screen.

@@ -1,4 +1,4 @@
-<!-- @dsCard group="Activities" height=360 subtitle="Four lines, easiest first" -->
+<!-- @dsCard group="Activities" height=420 subtitle="Four lines, easiest first" -->
 <!doctype html>
 <html>
 <head><meta charset="utf-8"><title>CutLine — preview</title></head>
@@ -6,7 +6,7 @@
 <div id="root" style="padding:24px 28px;display:grid;gap:20px;background:var(--paper)"></div>
 <script>
   var F = window.FollowMeTherapy, h = React.createElement;
-  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null, ['straight','wavy','zigzag','curve'].map(function(s){ return h(F.CutLine, {key:s, shape:s}); })));
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null, ['straight','curve','wavy','zigzag','castle'].map(function(s){ return h(F.CutLine, {key:s, shape:s}); })));
 </script>
 </body>
 </html>

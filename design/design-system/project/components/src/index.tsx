@@ -191,16 +191,19 @@ export function Choices({ items, tone = 'purple', columns = 3, selected = [], on
     })}
   </ul>;
 }
+// Each path's viewBox is cropped to its ink (plus the stroke), so the gap from
+// a heading to its line is the same group-gap for every shape.
 const CUTS = {
-  straight: { d: 'M8 40H588' },
-  wavy: { d: 'M8 40C55 10 100 10 148 40S242 70 290 40S384 10 432 40S526 70 574 40L588 32' },
-  zigzag: { d: 'M8 40L66 16L124 64L182 16L240 64L298 16L356 64L414 16L472 64L530 16L588 40' },
-  curve: { d: 'M8 70C140 -5 460 -5 588 70', low: true },
+  straight: { box: '0 36 600 8', d: 'M8 40H588' },
+  wavy: { box: '0 15.5 600 49', d: 'M8 40C55 10 100 10 148 40S242 70 290 40S384 10 432 40S526 70 574 40L588 32' },
+  zigzag: { box: '0 12 600 56', d: 'M8 40L66 16L124 64L182 16L240 64L298 16L356 64L414 16L472 64L530 16L588 40' },
+  curve: { box: '0 10 600 64', d: 'M8 70C140 -5 460 -5 588 70', low: true },
+  castle: { box: '0 21 600 38', d: 'M8 56H76V24H148V56H220V24H292V56H364V24H436V56H508V24H588', low: true },
 } as const;
 /** A line to cut along, from a yellow start dot. */
 export function CutLine({ shape = 'straight' }: { shape?: keyof typeof CUTS }) {
   const c = CUTS[shape];
-  return <div className={cx('fmt-cut', 'low' in c && 'is-low')}><svg viewBox="0 0 600 80" aria-hidden="true"><path d={c.d} /></svg></div>;
+  return <div className={cx('fmt-cut', 'low' in c && 'is-low')}><svg viewBox={c.box} aria-hidden="true"><path d={c.d} /></svg></div>;
 }
 export interface TrackerProps { rows?: number; days?: string[]; label?: string }
 /** A week tracker: rows to write an activity in, a star to colour per day. */

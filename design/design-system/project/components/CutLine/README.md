@@ -2,8 +2,8 @@
 
 A dashed line to cut along, starting at a yellow dot: scissor practice.
 
-- Markup: `<div class="fmt-cut">` holding an `<svg viewBox="0 0 600 80">` with one `<path>`; the dot is drawn by CSS. `is-low` lines the dot up with a path that starts low (the big curve).
-- Shapes: `straight`, `wavy`, `zigzag`, `curve`, in that order of difficulty. Number and name each one ("2 · Wavy") in a Group.
+- Markup: `<div class="fmt-cut">` holding an `<svg viewBox="0 0 600 80">` with one `<path>`; the dot is drawn by CSS. `is-low` lines the dot up with a path that starts low (the big curve, the castle).
+- Shapes, easiest first: `straight`, `curve`, `wavy`, `zigzag`, `castle` (square corners: turn the paper at each one). Each path's viewBox is cropped to its ink, so the heading sits the same `group-gap` above every line. Number and name each one ("2 · Wavy") in a Group.
 - The line is `ink`, 3.5 units thick with 12/9 dashes, so it prints clearly in black and white.
 - No footprints on worksheets for now; the dot marks the start.
 - In code: `<CutLine shape="zigzag" />`.
