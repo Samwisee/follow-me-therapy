@@ -148,7 +148,7 @@ html[data-nav="rail"] .fixed-header .nav-logo img {
     scrollbar-width: none;
     transform: none;
   }
-  .fixed-header a { padding: 0 var(--space-2); font-size: var(--text-xs); }
+  .fixed-header a { padding: 0 var(--space-3); font-size: var(--text-xs); }
   /* The hidden logo leaves the row, so the first link sits at the bar's end
      and its pill nests in the bar's curve. */
   .fixed-header .nav-logo { position: absolute; }
@@ -859,10 +859,13 @@ html[data-nav="rail"] main section[id] {
 }
 
 /* ── 6. Get in touch ──────────────────────────────────────────────────── */
-/* The privacy note: white on the lilac band, a padlock tile the size of a
-   button, the set's radius and gap. */
+/* The privacy note: in the footer's deep purple, so it reads as the quiet,
+   official one of the set (outline, padlock and link), with a padlock tile
+   the size of a button, the set's radius and gap. */
 .privacy-note.info-note {
   --note-tint: var(--paper);
+  --note-ink: var(--deep);
+  --note-line: var(--deep);
   align-items: center;
   gap: var(--space-3); /* the same gap as the phone and email tiles */
   margin-top: var(--grid-gap);
@@ -878,11 +881,15 @@ html[data-nav="rail"] main section[id] {
 .privacy-note.info-note a[href]::after {
   border-radius: var(--set-radius);
 }
+.privacy-note.info-note a {
+  color: var(--deep);
+}
 .privacy-note.info-note::before {
   width: var(--size-button);
   height: var(--size-button);
+  border-color: color-mix(in srgb, var(--deep) 30%, var(--paper));
   border-radius: var(--set-inner);
-  background: /* token:purple */ url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23502eed' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='5' y='10.5' width='14' height='10' rx='2.5'/%3E%3Cpath d='M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5'/%3E%3Cpath d='M12 14.5v2'/%3E%3C/svg%3E") center / var(--size-icon) no-repeat, var(--paper);
+  background: /* token:deep */ url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232e2363' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='5' y='10.5' width='14' height='10' rx='2.5'/%3E%3Cpath d='M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5'/%3E%3Cpath d='M12 14.5v2'/%3E%3C/svg%3E") center / var(--size-icon) no-repeat, var(--purple-mist);
 }
 /* Get in touch is one set: the two choices, phone and email, and the privacy
    note share one padding (card-pad), one gap between them (grid-gap) and one

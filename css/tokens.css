@@ -120,7 +120,11 @@
   --shadow-raised: 0 16px 32px color-mix(in srgb, var(--ink) 12%, transparent);
   --shadow-panel: 0 16px 40px color-mix(in srgb, var(--purple-ink) 12%, transparent);
   --shadow-overlay: 0 20px 50px color-mix(in srgb, var(--ink) 25%, transparent);
-  --shadow-glow: 0 8px 18px color-mix(in srgb, var(--glow, var(--purple)) 30%, transparent);
+  --shadow-glow-purple: 0 8px 18px color-mix(in srgb, var(--purple) 30%, transparent);
+  --shadow-glow-teal: 0 8px 18px color-mix(in srgb, var(--teal) 30%, transparent);
+  --shadow-glow-sun: 0 8px 18px color-mix(in srgb, var(--sun) 35%, transparent);
+  --shadow-glow-pink: 0 8px 18px color-mix(in srgb, var(--pink) 30%, transparent);
+  --shadow-glow: var(--shadow-glow-purple);
   --shadow-button: var(--shadow-glow);
   --dur-fast: 150ms;
   --dur-base: 250ms;

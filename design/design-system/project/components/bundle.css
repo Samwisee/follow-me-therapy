@@ -117,7 +117,7 @@ a.fmt-card:hover { transform: translateY(calc(-1 * var(--space-2))) rotate(1deg)
 .fmt-btn { --glow: var(--purple); box-sizing: border-box; min-height: var(--size-button); display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2); padding: var(--space-2) var(--space-7); border: var(--border-outline) solid var(--purple); border-radius: var(--radius-pill); background: var(--purple); color: var(--paper); font-family: var(--font-display); font-weight: 500; font-size: var(--text-md); line-height: var(--leading-snug); text-decoration: none; box-shadow: var(--shadow-glow); cursor: pointer;
   transition: transform var(--dur-base) var(--ease-spring), background-color var(--dur-fast) var(--ease-standard); }
 .fmt-btn:hover { background: var(--purple-dark); border-color: var(--purple-dark); transform: translateY(calc(-1 * var(--space-hair))); }
-.fmt-btn.is-teal { --glow: var(--teal); background: var(--teal-ink); border-color: var(--teal-ink); }
+.fmt-btn.is-teal { --glow: var(--teal); box-shadow: var(--shadow-glow-teal); background: var(--teal-ink); border-color: var(--teal-ink); }
 .fmt-btn.is-teal:hover { background: var(--teal-deeper); border-color: var(--teal-deeper); }
 .fmt-btn.is-outline { background: var(--paper); color: var(--purple); box-shadow: none; }
 .fmt-btn.is-outline.is-teal { color: var(--teal-ink); }

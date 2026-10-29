@@ -82,7 +82,7 @@ Every section opens the same way (`SectionTitle`): the title centred in `text-3x
 | `grid-gap` | 20 → 28px | Between cards |
 | `content` / `measure` | 760px / 680px | Widest a section / a paragraph gets |
 
-- Shadows by elevation: `shadow-rest` (cards at rest), `shadow-soft` (floating menu), `shadow-raised` (lifted on hover), `shadow-panel` (big white panels), `shadow-overlay` (pop-ups), `shadow-glow` (solid coloured things; set `--glow`). Screen only: on print, separate with tint or an outline.
+- Shadows by elevation: `shadow-rest` (cards at rest), `shadow-soft` (floating menu), `shadow-raised` (lifted on hover), `shadow-panel` (big white panels), `shadow-overlay` (pop-ups), `shadow-glow-purple`/`-teal`/`-sun`/`-pink` (solid coloured things, each glowing in its own colour). Screen only: on print, separate with tint or an outline.
 - Section edges on the website are gentle waves (`wave`, 40px). On print, use straight edges and tinted panels.
 
 ## Layout and breakpoints
@@ -101,6 +101,7 @@ Every section opens the same way (`SectionTitle`): the title centred in `text-3x
 - Moving between pages cross-fades, with the logo and the practice name gliding to their new places.
 - Resizing is smooth: chips, cards, buttons, menu links and the words of headings glide to their new row when they wrap (`js/reflow.js`), instead of snapping. Small steady shifts while dragging aren't animated, only jumps.
 - The top menu's logo shrinks away below `bp-sm` and grows back above it.
+- On touch screens (no hover), each tappable card, chip and button gives one small lift and tilt the first time it scrolls into view, as a hint that it can be tapped.
 - Everything stops under `prefers-reduced-motion`. Ambient artwork loops (the illustrations, the walking footprints) keep their own longer timings.
 
 ## Imagery

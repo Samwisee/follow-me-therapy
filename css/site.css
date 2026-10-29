@@ -311,6 +311,7 @@ a:hover > .chev,
    beside a purple button). */
 :is(.btn, .btn-secondary, .btn-outline).is-teal {
   --glow: var(--teal);
+  box-shadow: var(--shadow-glow-teal);
   border-color: var(--teal-ink);
   background: var(--teal-ink);
   color: var(--paper);
@@ -321,6 +322,7 @@ a:hover > .chev,
 }
 .btn-outline.is-teal,
 .btn.btn-outline.is-teal {
+  box-shadow: none;
   background: var(--paper);
   color: var(--teal-ink);
 }
@@ -397,6 +399,8 @@ a:hover > .chev,
 .funding-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--space-3);
+  max-width: calc(var(--space-30) * 4);
+  margin-inline: auto;
 }
 .service-item,
 .funding-card,
@@ -477,17 +481,24 @@ a:hover > .chev,
   justify-self: start;
   align-self: end;
 }
-/* Funding card: the tile and the name, centred; corners nest round the
-   tile with the tighter padding. */
+/* Funding card: the tile fills the card's width with the same padding on
+   the top, left and right, the name beneath; corners nest round the tile. */
 .funding-card {
-  align-items: center;
+  align-items: stretch;
   gap: var(--space-2);
-  padding: var(--space-3) var(--space-2) var(--space-4);
+  padding: var(--space-3) var(--space-3) var(--space-4);
   border-radius: calc(var(--radius-tile) + var(--space-3) + var(--border-outline));
   text-align: center;
 }
 .funding-card > .svc-icon {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
   margin-bottom: 0;
+}
+.funding-card > .svc-icon svg {
+  width: 50%;
+  height: 50%;
 }
 .funding-card > h3 {
   margin: 0;
@@ -712,9 +723,9 @@ a:hover > .chev,
   font-size: var(--text-xl);
   box-shadow: var(--shadow-glow);
 }
-:is(.steps, .steps-row) li:nth-child(2) .step-num { --glow: var(--teal); }
-:is(.steps, .steps-row) li:nth-child(3) .step-num { --glow: var(--sun); color: var(--ink); }
-:is(.steps, .steps-row) li:nth-child(4) .step-num { --glow: var(--pink); }
+:is(.steps, .steps-row) li:nth-child(2) .step-num { --glow: var(--teal); box-shadow: var(--shadow-glow-teal); }
+:is(.steps, .steps-row) li:nth-child(3) .step-num { --glow: var(--sun); color: var(--ink); box-shadow: var(--shadow-glow-sun); }
+:is(.steps, .steps-row) li:nth-child(4) .step-num { --glow: var(--pink); box-shadow: var(--shadow-glow-pink); }
 
 /* The trail: four footprints, alternating left and right, at a natural
    stride, centred in the gap between two discs. */

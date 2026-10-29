@@ -107,3 +107,42 @@
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", () => ready.then(start));
   else ready.then(start);
 })();
+
+// Tap hints on touch screens: phones can't hover, so the first time a
+// tappable card, chip or button scrolls well into view it gives a small
+// lift and tilt (the same move as its hover), one after another in a group.
+// Once per element; nothing under prefers-reduced-motion.
+(() => {
+  if (!("IntersectionObserver" in window) || !("animate" in Element.prototype)) return;
+  const touch = matchMedia("(hover: none)");
+  const still = matchMedia("(prefers-reduced-motion: reduce)");
+  const css = getComputedStyle(document.documentElement);
+  const token = (n, f) => css.getPropertyValue(n).trim() || f;
+  const ms = (v) => (v.endsWith("ms") ? parseFloat(v) : parseFloat(v) * 1000);
+  const DUR = ms(token("--dur-slower", "600ms"));
+  const EASE = token("--ease-spring", "ease-out");
+  const LIFT = token("--space-2", "8px");
+  const TARGETS = ".service-item, .funding-card, .facts > li, .contact-tile, .book-note, .info-note:has(a[href]), .contact-card > a, .section-cta > a, .book-row > a, .hero-actions > a";
+  const start = () => {
+    if (!touch.matches || still.matches) return;
+    const io = new IntersectionObserver((entries) => {
+      entries.filter((e) => e.isIntersecting).forEach((e) => {
+        const el = e.target;
+        io.unobserve(el);
+        const group = [...el.parentElement.children].filter((c) => c.matches(TARGETS));
+        const i = Math.max(0, group.indexOf(el));
+        el.animate(
+          [
+            { translate: "0 0", rotate: "0deg" },
+            { translate: `0 calc(-1 * ${LIFT})`, rotate: i % 2 ? "1.5deg" : "-1.5deg", offset: 0.45 },
+            { translate: "0 0", rotate: "0deg" },
+          ],
+          { duration: DUR, easing: EASE, delay: 450 + i * 110 }
+        );
+      });
+    }, { threshold: 0.6 });
+    document.querySelectorAll(TARGETS).forEach((el) => io.observe(el));
+  };
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start);
+  else start();
+})();
