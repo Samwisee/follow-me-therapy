@@ -8,3 +8,4 @@ A tinted strip, outlined in its line colour, with an icon tile in its top corner
 - **A note with a link is one target** on the website: the whole strip is clickable, lifts on hover, and takes the focus ring.
 - On print, notes are where parent tips go ("Try this at bath time").
 - In code: `<InfoNote kind="evidence">…</InfoNote>` (kinds: info, evidence, promise).
+- `is-centred` for short notes (up to three lines, like a worksheet's grown-ups tip): the tile sits `card-pad` from the top, left and bottom edges and `card-pad` from the words, which centre beside it instead of wrapping under it.

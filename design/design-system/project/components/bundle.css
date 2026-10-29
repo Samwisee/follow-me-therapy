@@ -275,6 +275,10 @@
 .fmt-note > i { float: left; margin: 0 var(--space-4) var(--space-2) 0; display: grid; place-items: center; width: var(--size-tile-md); height: var(--size-tile-md); border: var(--border-outline) solid var(--note-line); border-radius: var(--radius-tile); background: var(--paper); color: var(--note-ink); }
 .fmt-note > i svg { width: var(--size-icon-lg); height: var(--size-icon-lg); fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
 .fmt-note > span { display: block; }
+/* Centred: for short notes (a grown-ups tip). The tile sits card-pad from the
+   top, left and bottom edges and card-pad from the words, which centre beside it. */
+.fmt-note.is-centred { display: flex; align-items: center; gap: var(--card-pad); }
+.fmt-note.is-centred > i { float: none; flex: none; margin: 0; }
 .fmt-note.is-teal { --note-tint: var(--teal-tint); --note-ink: var(--teal); --note-line: var(--teal-line); }
 .fmt-note.is-sun { --note-tint: var(--butter); --note-ink: var(--sun-deep); --note-line: var(--sun-line); }
 .fmt-note.is-promise { --note-tint: var(--paper); font-family: var(--font-display); font-size: var(--text-lg); color: var(--ink); }
@@ -409,10 +413,14 @@ a.fmt-card:hover { transform: translateY(calc(-1 * var(--space-2))) rotate(1deg)
 :is(.fmt-sheet, .fmt-page) h2 { margin: 0; font-family: var(--font-display); font-weight: 600; font-size: var(--text-xl); line-height: var(--leading-snug); color: var(--ink); text-wrap: balance; }
 :is(.fmt-sheet, .fmt-page) p { margin: 0; }
 
-/* Header: a tinted panel, tag and title on the left, the Name line on the
-   right sitting on the title's baseline. Its corner nests round the tag. */
-.fmt-head { --head-tint: var(--purple-tint); display: flex; align-items: flex-end; justify-content: space-between; gap: var(--grid-gap); padding: var(--card-pad); border-radius: calc(var(--radius-tile) + var(--card-pad)); background: var(--head-tint); }
-.fmt-head > div { display: flex; flex-direction: column; align-items: flex-start; gap: var(--group-gap); min-width: 0; }
+/* Header: a tinted panel. The title and the Name line share the top row
+   (the Name line on the title's baseline); the tag sits under the title.
+   The row gap adds the swash's depth (space-3) so it clears the tag. */
+.fmt-head { --head-tint: var(--purple-tint); display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "title name" "tag ."; align-items: end; column-gap: var(--grid-gap); row-gap: calc(var(--group-gap) + var(--space-3)); padding: var(--card-pad); border-radius: calc(var(--radius-tile) + var(--card-pad)); background: var(--head-tint); }
+.fmt-head > div { display: contents; }
+.fmt-head h1 { grid-area: title; }
+.fmt-head .fmt-tag { grid-area: tag; justify-self: start; }
+.fmt-head .fmt-name { grid-area: name; }
 .fmt-head.is-teal { --head-tint: var(--teal-tint); }
 .fmt-head.is-sun { --head-tint: var(--butter); }
 .fmt-head.is-pink { --head-tint: var(--pink-tint); }

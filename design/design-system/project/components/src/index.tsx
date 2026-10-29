@@ -219,11 +219,11 @@ export function Worksheet({ tag, tone = 'purple', title, name = true, tip, child
   const t = tone !== 'purple' ? 'is-' + tone : undefined;
   return <section className="fmt-sheet">
     <header className={cx('fmt-head', t)}>
-      <div>{tag && <Tag tone={tone}>{tag}</Tag>}<h1>{title}</h1></div>
+      <div><h1>{title}</h1>{tag && <Tag tone={tone}>{tag}</Tag>}</div>
       {name && <p className="fmt-name">Name<span /></p>}
     </header>
     {children}
-    {tip && <p className={cx('fmt-note', t)}><i><Icon name="info" /></i><span><b style={{ color: 'var(--ink)' }}>For grown-ups: </b>{tip}</span></p>}
+    {tip && <p className={cx('fmt-note', 'is-centred', t)}><i><Icon name="info" /></i><span><b style={{ color: 'var(--ink)' }}>For grown-ups: </b>{tip}</span></p>}
     <footer className="fmt-foot"><Logo variant="horizontal" height="var(--size-tile-sm)" />
       <span>Simone · Paediatric OT · followmetherapy.com.au<br />© Follow Me Therapy 2026. For use by the family it was given to.</span></footer>
   </section>;
