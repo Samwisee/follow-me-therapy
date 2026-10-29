@@ -88,7 +88,7 @@ Every section opens the same way (`SectionTitle`): the title centred in `text-3x
 ## Layout and breakpoints
 
 - Between breakpoints everything is fluid (type, spacing, gutters), and grids reflow on their own (`auto-fit`), so resizing a window is smooth. The layout only changes at the `bp-*` tokens:
-  - `bp-xs` 480px: the top menu stretches edge to edge. Its links are a slim `size-nav-item` (36px) with the bar's padding making up the 44px tap area.
+  - `bp-xs` 480px: the top menu stretches edge to edge. Its links are a slim `size-nav-item` (32px) a hairline inside the bar, so the bar is 40px tall and its ends nest round the active pill; each link's tap area reaches past the bar to 44px.
   - `bp-sm` 640px: one column; Simone's photo sits above her bio; the trail between steps walks down.
   - `bp-md` 960px: the menu moves from a floating bar along the top to a rail down the left (148px wide). The content glides over to make room, and the new menu slides in from its own edge. Nothing flies across the page.
   - `bp-short` 820px and `bp-shorter` 700px (window height): pop-ups tighten so they always fit.
