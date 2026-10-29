@@ -139,13 +139,17 @@ document.addEventListener("DOMContentLoaded", function () {
   bands.forEach((b) => io.observe(b));
 });
 
-// Phones: the floating "Start a referral" button appears once the page's
-// own referral button has scrolled out of view, so the two never overlap.
+// "Start a referral" hands off from the top bar to the floating button once
+// the page's own referral button has scrolled out of view.
 (() => {
   const fab = document.querySelector(".ref-fab");
   const hero = document.querySelector(".hero-actions");
   if (!fab) return;
-  if (!hero || !("IntersectionObserver" in window)) { fab.classList.add("show"); return; }
-  new IntersectionObserver(([e]) => fab.classList.toggle("show", !e.isIntersecting && e.boundingClientRect.top < 0))
+  if (!hero || !("IntersectionObserver" in window)) { fab.classList.add("show"); document.body.classList.add("fab-on"); return; }
+  new IntersectionObserver(([e]) => {
+    const on = !e.isIntersecting && e.boundingClientRect.top < 0;
+    fab.classList.toggle("show", on);
+    document.body.classList.toggle("fab-on", on);
+  })
     .observe(hero);
 })();

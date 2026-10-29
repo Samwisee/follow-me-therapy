@@ -1082,39 +1082,72 @@ a:hover > .chev-back {
   pointer-events: none;
 }
 
-/* Phones: "Start a referral" leaves the top bar and floats bottom-right,
-   like the Contact me button on the home page. */
-.ref-fab { display: none; }
+/* "Start a referral" hands off from the top bar to a floating button.
+   At the top of the page it sits in the bar (on phones the hero button
+   does that job). Once you scroll past the hero, the bar's button shrinks
+   away and the floating one rises in at the bottom right; scrolling back
+   up reverses it. Both are the same link. */
+.ref-fab {
+  position: fixed;
+  right: max(24px, env(safe-area-inset-right));
+  bottom: calc(24px + env(safe-area-inset-bottom));
+  z-index: 60;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 56px;
+  padding: 0 24px 0 20px;
+  border-radius: var(--radius-pill);
+  background: var(--purple);
+  color: var(--paper);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-decoration: none;
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--purple) 40%, transparent);
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(24px) scale(0.7);
+  transform-origin: 100% 100%;
+  transition: opacity 0.3s ease, transform 0.45s cubic-bezier(0.3, 1.5, 0.5, 1), background-color 0.2s ease, visibility 0s linear 0.45s;
+}
+.ref-fab.show {
+  visibility: visible;
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.3s ease 0.1s, transform 0.45s cubic-bezier(0.3, 1.5, 0.5, 1) 0.1s, background-color 0.2s ease, visibility 0s;
+}
+.ref-fab:hover { background: var(--purple-dark); text-decoration: none; }
+.ref-fab:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--paper), 0 0 0 5px var(--focus); }
+.ref-fab svg { width: 24px; height: 24px; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.site-head .wrap > .btn-small {
+  transform-origin: 100% 50%;
+  transition: opacity 0.25s ease, transform 0.3s ease, visibility 0s;
+}
+body.fab-on .site-head .wrap > .btn-small {
+  visibility: hidden;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.2s ease, transform 0.25s ease, visibility 0s linear 0.25s;
+}
 @media (max-width: 600px) {
   .site-head .wrap > .btn-small { display: none !important; }
-  .ref-fab {
-    position: fixed;
-    right: 16px;
-    bottom: calc(16px + env(safe-area-inset-bottom));
-    z-index: 60;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    min-height: 56px;
-    padding: 0 22px 0 18px;
-    border-radius: var(--radius-pill);
-    background: var(--purple);
-    color: var(--paper);
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: 1.05rem;
-    text-decoration: none;
-    box-shadow: 0 8px 24px color-mix(in srgb, var(--purple) 40%, transparent);
-  }
-  .ref-fab:hover { background: var(--purple-dark); }
-  .ref-fab:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--paper), 0 0 0 5px var(--focus); }
-  .ref-fab svg { width: 24px; height: 24px; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .ref-fab { right: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); font-size: 1.05rem; padding: 0 22px 0 18px; }
   body { padding-bottom: 88px; }
 }
-@media (max-width: 600px) {
-  .ref-fab { visibility: hidden; opacity: 0; transform: translateY(24px) scale(0.7); transition: opacity 0.3s ease, transform 0.45s cubic-bezier(0.3, 1.5, 0.5, 1), visibility 0s linear 0.45s; }
-  .ref-fab.show { visibility: visible; opacity: 1; transform: none; transition: opacity 0.3s ease, transform 0.45s cubic-bezier(0.3, 1.5, 0.5, 1), visibility 0s; }
+@media (prefers-reduced-motion: reduce) {
+  .ref-fab, .ref-fab.show, .site-head .wrap > .btn-small, body.fab-on .site-head .wrap > .btn-small { transition: none; transform: none; }
 }
-@media (max-width: 600px) and (prefers-reduced-motion: reduce) {
-  .ref-fab, .ref-fab.show { transition: none; transform: none; }
+
+/* The practice name in the top bar: bigger, with the logo to match. */
+.site-head .brand { font-size: 1.6rem; gap: 12px; }
+.site-head .brand img { height: 46px; }
+@media (max-width: 520px) {
+  .site-head .head-left .brand span { font-size: 1.2rem; }
+  .site-head .head-left .brand img { height: 36px; }
+}
+
+/* Footprints between steps keep a natural stride, grouped mid-gap. */
+@media (min-width: 651px) {
+  .step-trail { justify-content: center; gap: 14px; }
 }

@@ -3543,3 +3543,6 @@ main section[id] { scroll-margin-top: -36px; }
 @media (min-width: 651px) {
   .step-trail { justify-content: center; gap: 14px; }
 }
+/* Optical alignment: line up the badge's lowercase letters with the title's
+   (the title's line box has room for descenders it doesn't use). */
+.th-title .book-note { position: relative; top: 0.2em; }
