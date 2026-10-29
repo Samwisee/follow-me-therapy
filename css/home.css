@@ -470,6 +470,10 @@ html[data-nav="rail"] main section[id] {
   stroke-linecap: round;
   stroke-linejoin: round;
 }
+/* The facts sit on the lilac hero (and the share image's lilac ground), so the
+   purple one turns paper rather than vanishing into its own tint: a chip on
+   its own tint goes paper, the same rule as the app. */
+.facts li.fact-age { background: var(--paper); }
 .facts li.fact-tele { border-color: var(--teal-line); background: var(--teal-tint); color: var(--teal-ink); }
 /* Inside a fact: its main words with their icon, and any extra line. While
    the card is wide they sit in one row; when it narrows the chip stacks them

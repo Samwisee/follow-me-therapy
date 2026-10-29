@@ -1,1 +1,1 @@
-`simone-cutout.webp`: Simone, cut out on a transparent ground. Place her on `teal-tint` with a `sun` disc behind, inside a white `radius-frame` card. `share-card.jpg`: the website's 1200×630 link-preview image (live as `img/share-a40024f0c0.jpg`), a worked example of the system.
+`simone-cutout.webp`: Simone, cut out on a transparent ground. Place her on `teal-tint` with a `sun` disc behind, inside a white `radius-frame` card. `share-card.jpg`: the website's 1200×630 link-preview image (live as `img/share-bd06348b60.jpg`), a worked example of the system.
