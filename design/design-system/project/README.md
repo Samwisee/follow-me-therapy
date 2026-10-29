@@ -43,8 +43,8 @@ The components are a small React library (`window.FollowMeTherapy`) built from `
 | `text-xs` | 14px | Fine print: footer details, tags, pop-up notes |
 | `text-sm` | 15px | Chips, credentials, menu labels on small screens |
 | `text-base` | 16.5 → 17.5px | Running text |
-| `text-md` | 17 → 18.5px | Buttons, menu, card titles |
-| `text-lg` | 18.5 → 21px | Leads under a page title; the promise note |
+| `text-md` | 17 → 18.5px | Buttons, menu, contact details |
+| `text-lg` | 18.5 → 21px | Card titles; leads under a page title; the promise note |
 | `text-xl` | 21 → 25px | The hero's lead line, pop-up titles, Simone's name |
 | `text-2xl` | 24 → 30px | The OT quote; the practice name in the inner pages' top bar |
 | `text-3xl` | 30 → 40px | Section titles |
@@ -53,17 +53,18 @@ The components are a small React library (`window.FollowMeTherapy`) built from `
 
 - Line heights: `leading-tight` 1.1 (display), `leading-snug` 1.25 (headings), `leading-normal` 1.5 (UI, lists, notes), `leading-relaxed` 1.7 (running text). Tracking: `tracking-tight` on headings, `tracking-caps` on uppercase eyebrows.
 - Print: `print-title` 28pt, `print-kid` 16pt (anything a child reads, never under 14pt), `print-body` 11pt for adults, `print-small` 8.5pt minimum.
-- Highlight one or two words per title with `fmt-swash` (a hand-drawn `sun` underline). One swash per page.
+- Highlight one or two words per title with `fmt-swash`: the same squiggle as the section titles, in `sun`, repeated along the words. One swash per page. A quote closes with the same squiggle as its section title, same colour, same spacing.
 
 ## Section titles
 
-Every section opens the same way (`SectionTitle`): the title centred in `text-3xl`, a short hand-drawn squiggle under it in the band's accent (purple on lilac and white, `sun-deep` on butter, teal on mint), and an optional one-line subtitle. Page titles in an inner page's hero stay left-aligned without the squiggle.
+Every section opens the same way (`SectionTitle`): the title centred in `text-3xl`, a short hand-drawn squiggle `space-4` under it in the band's accent (purple on lilac and white, `sun-deep` on butter, teal on mint), and an optional one-line subtitle. Page titles in an inner page's hero stay left-aligned without the squiggle.
 
 ## Shape and space
 
 - **Nest rule: corners are concentric.** A container's corner radius = the radius of whatever sits in its corner + the padding between them + the container's outline, so the two curves run parallel. Never pick a radius by eye.
   - Service and funding cards: icon tile `radius-tile` + `card-pad` + `border-outline`.
   - Contact cards and pop-ups: the full-width button at the foot is a pill, so radius = `size-button` / 2 + `card-pad` + `border-outline`.
+  - Info notes: the icon tile (`size-tile-md`, `radius-tile`) sits in the top corner, so radius = `radius-tile` + `card-pad` + `border-outline`. Phone and email tiles: icon tile `radius-md` + `space-3` + `border-outline`.
   - Simone's card: photo `radius-md` + `card-pad`. The side menu: the 44px pill's radius + `space-2` + `border-outline`. The top bar: the logo circle sits `space-1` inside a pill.
   - In components, `.fmt-nest` does the sum (`--nest-inner`, `--nest-gap`, `--nest-border`).
 - **Wrapped in colour:** cards, contact cards, the Get started choices and pop-ups wear a `border-outline` outline in their own colour: purple, teal, sun or pink. Purple is *Start a referral*; teal is *Ask a question*, everywhere. Icon tiles, chips, notes and step discs wear the same width in their *line* colour (`purple-line`, `teal-line`, `sun-line`, `pink-line`).
@@ -74,7 +75,8 @@ Every section opens the same way (`SectionTitle`): the title centred in `text-3x
 |---|---|---|
 | `gutter` | 16 → 32px | Page edge to content |
 | `section-space` | 72 → 112px | Top and bottom of every section band |
-| `stack` | 20 → 28px | Under a section title |
+| `section-top` | 48 → 72px | Above a section's title (the wave already adds air) |
+| `stack` | 28 → 40px | Under a section title's squiggle |
 | `card-pad` | 20 → 24px | Inside cards, notes and pop-ups |
 | `grid-gap` | 20 → 28px | Between cards |
 | `content` / `measure` | 760px / 680px | Widest a section / a paragraph gets |
@@ -87,7 +89,7 @@ Every section opens the same way (`SectionTitle`): the title centred in `text-3x
 - Between breakpoints everything is fluid (type, spacing, gutters), and grids reflow on their own (`auto-fit`), so resizing a window is smooth. The layout only changes at the `bp-*` tokens:
   - `bp-xs` 480px: the top menu stretches edge to edge.
   - `bp-sm` 640px: one column; Simone's photo sits above her bio; the trail between steps walks down.
-  - `bp-md` 960px: the menu moves from a floating bar along the top to a rail down the left (148px wide). The content slides over to make room, and the menu morphs between the two shapes as the window crosses the line.
+  - `bp-md` 960px: the menu moves from a floating bar along the top to a rail down the left (148px wide). The content glides over to make room, and the new menu slides in from its own edge. Nothing flies across the page.
   - `bp-short` 820px and `bp-shorter` 700px (window height): pop-ups tighten so they always fit.
 - `tools/check_tokens.py` rejects any other media-query size.
 

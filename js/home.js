@@ -308,10 +308,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // ── The menu: a bar along the top, or a rail down the left ──
 // <html data-nav> says which (set before the first paint in index.html).
-// When the window crosses the md breakpoint from the design tokens, the menu
-// morphs from one to the other: its outline glides to the new shape while
-// each link travels to its new place (a FLIP animation), and the content
-// slides across (--nav-inset, in CSS). In the rail, a pill glides to the
+// When the window crosses the md breakpoint from the design tokens, the new
+// menu slides in from its own edge and the content glides across. In the rail, a pill glides to the
 // section you're in and a line fills as you scroll.
 (() => {
   const root = document.documentElement;
@@ -320,8 +318,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const css = getComputedStyle(root);
   const token = (name, fallback) => css.getPropertyValue(name).trim() || fallback;
   const ms = (v) => (v.endsWith("ms") ? parseFloat(v) : parseFloat(v) * 1000);
-  const DUR = ms(token("--dur-slower", "600ms"));
-  const EASE = token("--ease-standard", "ease");
   const mq = matchMedia(`(min-width: ${token("--bp-md", "960px")})`);
   const still = matchMedia("(prefers-reduced-motion: reduce)");
   const isRail = () => root.dataset.nav === "rail";
@@ -382,50 +378,22 @@ document.addEventListener("DOMContentLoaded", function () {
     progress();
   };
 
-  // The morph between the bar and the rail.
-  let running = [];
+  // Switching between the bar and the rail: the menu simply slides in from
+  // its own edge (the rail from the left, the bar from the top) and fades
+  // up, while the content glides across (--nav-inset, in CSS). Nothing
+  // travels across the page.
+  const DUR_IN = ms(token("--dur-slow", "400ms"));
+  const EASE_IN = token("--ease-out", "ease-out");
   const setMode = (rail) => {
     if (isRail() === rail) return;
-    running.forEach((a) => a.cancel());
-    running = [];
-    document.querySelectorAll(".nav-ghost").forEach((g) => g.remove());
-    const animate = !still.matches && nav.animate && document.visibilityState === "visible";
-    const items = [...nav.querySelectorAll("a")];
-    const before = animate ? items.map((e) => e.getBoundingClientRect()) : [];
-    const box0 = nav.getBoundingClientRect();
-    const look = getComputedStyle(nav);
-    const r0 = look.borderRadius;
     root.dataset.nav = rail ? "rail" : "top";
     layout();
-    if (!animate) return;
-    const box1 = nav.getBoundingClientRect();
-    const r1 = getComputedStyle(nav).borderRadius;
-    // The outline: a stand-in that changes shape while the real menu's own
-    // background steps aside.
-    const ghost = document.createElement("div");
-    ghost.className = "nav-ghost";
-    ghost.setAttribute("aria-hidden", "true");
-    nav.before(ghost);
-    nav.classList.add("morphing");
-    // A pill's 999px radius is clamped to half its height, so the corners
-    // ease between the two shapes instead of ballooning.
-    const frame = (b, r) => ({ left: b.left + "px", top: b.top + "px", width: b.width + "px", height: b.height + "px",
-      borderRadius: Math.min(parseFloat(r) || 0, b.height / 2, b.width / 2) + "px" });
-    const opts = { duration: DUR, easing: EASE };
-    running.push(ghost.animate([frame(box0, r0), frame(box1, r1)], { ...opts, fill: "both" }));
-    // Each link travels from where it was to where it is now.
-    items.forEach((el, i) => {
-      const a = before[i], b = el.getBoundingClientRect();
-      if (!a.width || !b.width) return;
-      const dx = a.left + a.width / 2 - (b.left + b.width / 2);
-      const dy = a.top + a.height / 2 - (b.top + b.height / 2);
-      running.push(el.animate([{ transform: `translate(${dx}px, ${dy}px)` }, { transform: "none" }], { ...opts, delay: i * 18, fill: "backwards" }));
-    });
-    Promise.all(running.map((a) => a.finished)).then(() => {
-      ghost.remove();
-      nav.classList.remove("morphing");
-      running = [];
-    }, () => {});
+    if (still.matches || !nav.animate) return;
+    nav.getAnimations().forEach((a) => a.cancel());
+    nav.animate(
+      [{ translate: rail ? "-110% 0" : "0 -140%", opacity: 0 }, { translate: "0 0", opacity: 1 }],
+      { duration: DUR_IN, easing: EASE_IN }
+    );
   };
   mq.addEventListener("change", () => setMode(mq.matches));
 

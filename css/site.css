@@ -132,7 +132,7 @@ a:hover,
 a:focus-visible {
   text-decoration-line: underline;
 }
-:is(.btn, .btn-secondary, .btn-outline, .fab, .modal-link, .modal-choice, .fixed-header a, .facts a, .back-btn, .brand, .nav-logo, .skip-link):is(:hover, :focus-visible) {
+:is(.btn, .btn-secondary, .btn-outline, .fab, .modal-link, .modal-choice, .contact-tile, .fixed-header a, .facts a, .back-btn, .brand, .nav-logo, .skip-link):is(:hover, :focus-visible) {
   text-decoration: none;
 }
 /* One focus ring everywhere: the focus colour, offset from the edge. */
@@ -220,10 +220,10 @@ a:hover > .chev,
   margin-left: max(calc((100% - var(--col)) / 2), calc(var(--nav-inset) + var(--gutter)));
 }
 .content-section {
-  padding-block: var(--section-space);
+  padding-block: var(--section-top) var(--section-space);
 }
 .band {
-  padding-block: var(--section-space);
+  padding-block: var(--section-top) var(--section-space);
 }
 /* Paragraphs keep a comfortable reading width. */
 .content-section p,
@@ -247,11 +247,11 @@ a:hover > .chev,
   content: "";
   display: block;
   width: var(--space-20);
-  height: var(--space-3);
-  margin: var(--space-3) auto 0;
+  height: var(--space-4);
+  margin: var(--space-4) auto 0;
   background: var(--accent, var(--purple));
-  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 12'%3E%3Cpath d='M3 7c6-5 11-5 17 0s11 5 17 0 11-5 17 0 11 5 17 0 5-3 6-2' fill='none' stroke='%23000' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
-  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 12'%3E%3Cpath d='M3 7c6-5 11-5 17 0s11 5 17 0 11-5 17 0 11 5 17 0 5-3 6-2' fill='none' stroke='%23000' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 16'%3E%3Cpath d='M3 8c6-5 11-5 17 0s11 5 17 0 11-5 17 0 11 5 17 0 5-3 6-2' fill='none' stroke='%23000' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 16'%3E%3Cpath d='M3 8c6-5 11-5 17 0s11 5 17 0 11-5 17 0 11 5 17 0 5-3 6-2' fill='none' stroke='%23000' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
 }
 /* A subtitle sits close under the title, centred. */
 .tap-hint,
@@ -432,6 +432,7 @@ a:hover > .chev,
 }
 :is(.service-item, .funding-card, .card, .contact-card) h3 {
   margin: 0 0 var(--space-2);
+  font-size: var(--text-lg);
 }
 :is(.service-item, .funding-card, .card, .contact-card) p {
   margin: 0 0 var(--space-4);
@@ -508,7 +509,7 @@ a:hover > .chev,
   border: var(--border-outline) solid var(--note-line);
   /* Nest rule: the icon tile sits in the top corner, so the note's corner
      runs parallel to the tile's. */
-  border-radius: calc(var(--radius-md) + var(--card-pad) + var(--border-outline));
+  border-radius: calc(var(--radius-tile) + var(--card-pad) + var(--border-outline));
   background: var(--note-tint);
   font-size: var(--text-base);
   line-height: var(--leading-normal);
@@ -521,17 +522,17 @@ a:hover > .chev,
 .info-note::before {
   content: "";
   flex: none;
-  width: var(--size-tile);
-  height: var(--size-tile);
+  width: var(--size-tile-md);
+  height: var(--size-tile-md);
   border: var(--border-outline) solid var(--note-line);
-  border-radius: var(--radius-md);
-  background: /* token:purple */ url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23502eed' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 11v5.5'/%3E%3Cpath d='M12 7.6v.1'/%3E%3C/svg%3E") center / var(--size-icon) no-repeat, var(--paper);
+  border-radius: var(--radius-tile);
+  background: /* token:purple */ url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23502eed' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 11v5.5'/%3E%3Cpath d='M12 7.6v.1'/%3E%3C/svg%3E") center / var(--size-icon-lg) no-repeat, var(--paper);
 }
 .info-note > span {
   flex: 1;
   min-width: 0;
   /* The first line sits level with the middle of the tile. */
-  padding-top: max(0px, (var(--size-tile) - 1lh) / 2);
+  padding-top: max(0px, (var(--size-tile-md) - 1lh) / 2);
 }
 /* A note with a link ("Read the review") is one big target: the whole
    strip is clickable, lifts on hover and takes the focus ring. */
@@ -547,7 +548,7 @@ a:hover > .chev,
   content: "";
   position: absolute;
   inset: calc(-1 * var(--border-outline));
-  border-radius: calc(var(--radius-md) + var(--card-pad) + var(--border-outline));
+  border-radius: calc(var(--radius-tile) + var(--card-pad) + var(--border-outline));
 }
 .info-note:has(a[href]):hover {
   border-color: var(--note-ink);
@@ -574,7 +575,7 @@ a:hover > .chev,
   margin-top: var(--space-12);
 }
 .callout.info-note::before {
-  background: /* token:purple */ url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23502eed' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z'/%3E%3C/svg%3E") center / var(--size-icon) no-repeat, var(--purple-tint);
+  background: /* token:purple */ url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23502eed' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z'/%3E%3C/svg%3E") center / var(--size-icon-lg) no-repeat, var(--purple-tint);
 }
 /* Research: a book, in teal. */
 .evidence.info-note {
@@ -583,7 +584,7 @@ a:hover > .chev,
   --note-line: var(--teal-line);
 }
 .evidence.info-note::before {
-  background: /* token:teal */ url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300626e' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 5.5c3-1.3 6-1.3 9 .5 3-1.8 6-1.8 9-.5V19c-3-1.3-6-1.3-9 .5-3-1.8-6-1.8-9-.5z'/%3E%3Cpath d='M12 6v13.5'/%3E%3C/svg%3E") center / var(--size-icon) no-repeat, var(--paper);
+  background: /* token:teal */ url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300626e' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 5.5c3-1.3 6-1.3 9 .5 3-1.8 6-1.8 9-.5V19c-3-1.3-6-1.3-9 .5-3-1.8-6-1.8-9-.5z'/%3E%3Cpath d='M12 6v13.5'/%3E%3C/svg%3E") center / var(--size-icon-lg) no-repeat, var(--paper);
 }
 
 /* ── 10. Lists ────────────────────────────────────────────────────────── */

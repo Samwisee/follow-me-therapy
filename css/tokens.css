@@ -82,7 +82,8 @@
   --space-30: 120px;
   --gutter: clamp(16px, 10.6667px + 1.4815vw, 32px);
   --section-space: clamp(72px, 58.6667px + 3.7037vw, 112px);
-  --stack: clamp(20px, 17.3333px + 0.7407vw, 28px);
+  --section-top: clamp(48px, 40px + 2.2222vw, 72px);
+  --stack: clamp(28px, 24px + 1.1111vw, 40px);
   --card-pad: clamp(20px, 18.6667px + 0.3704vw, 24px);
   --grid-gap: clamp(20px, 17.3333px + 0.7407vw, 28px);
   --content: 760px;

@@ -43,7 +43,7 @@ def resolve(val, seen=()):
     return val
 
 
-LAYOUT_NAMES = {"section": "section-space", "card": "card-pad", "grid": "grid-gap"}
+LAYOUT_NAMES = {"section": "section-space", "section-top": "section-top", "card": "card-pad", "grid": "grid-gap"}
 
 
 def css_name(path):

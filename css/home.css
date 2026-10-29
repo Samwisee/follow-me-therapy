@@ -17,8 +17,8 @@
 /* Below 960px (md) it floats along the top as a compact pill; from 960px
    it stands as a rail down the left, and the content slides over to make
    room (--nav-inset glides; see site.css). The inline script in the head
-   sets <html data-nav="top|rail"> before the first paint, and js/home.js
-   animates the menu between the two when the window crosses 960px. */
+   sets <html data-nav="top|rail"> before the first paint; when the window
+   crosses 960px, js/home.js slides the new menu in from its own edge. */
 html[data-nav="rail"] body {
   --nav-inset: calc(var(--rail) + var(--rail-gap));
 }
@@ -232,33 +232,13 @@ html[data-nav="rail"] .fixed-header a.active {
 @keyframes railStep {
   from { opacity: 0; transform: rotate(12deg) translateY(var(--space-2)) scale(0.4); }
 }
-/* While the menu morphs between the bar and the rail (js/home.js), a
-   stand-in carries its outline and the links travel on their own. */
-.nav-ghost {
-  position: fixed;
-  z-index: var(--z-nav);
-  border: var(--border-outline) solid var(--purple-line);
-  background: var(--paper);
-  box-shadow: var(--shadow-soft);
-  pointer-events: none;
-}
-html[data-nav] .fixed-header.morphing {
-  border-color: transparent;
-  background: transparent;
-  box-shadow: none;
-  backdrop-filter: none;
-}
-html[data-nav] .fixed-header.morphing .rail-pill,
-html[data-nav] .fixed-header.morphing .rail-track {
-  opacity: 0;
-}
 /* Menu jumps land with the section title near the top of the screen,
    clear of the bar. */
 main section[id] {
-  scroll-margin-top: calc(var(--nav-offset) + var(--size-target) - var(--section-space) + var(--space-8));
+  scroll-margin-top: calc(var(--nav-offset) + var(--size-target) - var(--section-top) + var(--space-8));
 }
 html[data-nav="rail"] main section[id] {
-  scroll-margin-top: calc(var(--space-8) - var(--section-space));
+  scroll-margin-top: calc(var(--space-8) - var(--section-top));
 }
 
 /* ── 2. The hero ──────────────────────────────────────────────────────── */
@@ -387,9 +367,9 @@ html[data-nav="rail"] main section[id] {
 }
 /* A wavy yellow underline under "fullest lives". */
 .swash {
-  padding-bottom: var(--space-2);
+  padding-bottom: var(--space-3);
   white-space: nowrap;
-  background: /* token:sun */ url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 12' preserveAspectRatio='none'%3E%3Cpath d='M2 8c12-6 22 4 34-1s22-5 34 0 22 4 34-1 12-3 14-2' fill='none' stroke='%23f2a516' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E") left bottom / 100% var(--space-3) no-repeat;
+  background: /* token:sun */ url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 16'%3E%3Cpath d='M-17 8c6-5 11-5 17 0s11 5 17 0 11-5 17 0 11 5 17 0' fill='none' stroke='%23f2a516' stroke-width='4' stroke-linejoin='round'/%3E%3C/svg%3E") left bottom / var(--space-8) var(--space-4) round no-repeat;
 }
 /* Each fact in its own colour with an icon; each one is a link. */
 .facts {
@@ -576,23 +556,20 @@ html[data-nav="rail"] main section[id] {
 
 /* ── 3. What is OT ────────────────────────────────────────────────────── */
 .ot-quote {
-  position: relative;
   max-width: var(--measure);
-  margin: 0 auto var(--space-8);
-  padding-bottom: var(--space-7);
+  margin: 0 auto var(--stack);
 }
+/* Closes with the same squiggle as the section title above it, in the same
+   colour and at the same distance. */
 .ot-quote::after {
   content: "";
-  position: absolute;
-  left: 50%;
-  bottom: 0;
+  display: block;
   width: var(--space-20);
-  height: var(--space-3);
-  background: var(--sun);
-  transform: translateX(-50%);
-  /* The same squiggle as the section titles. */
-  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 12'%3E%3Cpath d='M3 7c6-5 11-5 17 0s11 5 17 0 11-5 17 0 11 5 17 0 5-3 6-2' fill='none' stroke='%23000' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
-  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 12'%3E%3Cpath d='M3 7c6-5 11-5 17 0s11 5 17 0 11-5 17 0 11 5 17 0 5-3 6-2' fill='none' stroke='%23000' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+  height: var(--space-4);
+  margin: var(--space-4) auto 0;
+  background: var(--accent, var(--purple));
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 16'%3E%3Cpath d='M3 8c6-5 11-5 17 0s11 5 17 0 11-5 17 0 11 5 17 0 5-3 6-2' fill='none' stroke='%23000' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 16'%3E%3Cpath d='M3 8c6-5 11-5 17 0s11 5 17 0 11-5 17 0 11 5 17 0 5-3 6-2' fill='none' stroke='%23000' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
 }
 .large-italic-centered {
   margin: 0 auto;
@@ -812,25 +789,78 @@ html[data-nav="rail"] main section[id] {
   font-size: var(--text-sm);
   text-align: center;
 }
+/* Phone and email: two tiles like the Get started choices, an icon tile in
+   the corner (so the tile's corners nest round it), a small label and the
+   number or address. */
 .contact-direct {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: var(--space-2) var(--space-8);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  gap: var(--space-4);
   margin-top: var(--space-8);
 }
-.contact-link {
-  display: inline-flex;
+.contact-tile {
+  --band: var(--purple);
+  --tint: var(--purple-tint);
+  display: flex;
   align-items: center;
-  gap: var(--space-2);
-  min-height: var(--size-target);
-  color: var(--purple);
-  font-size: var(--text-md);
-  font-weight: 600;
+  gap: var(--space-4);
+  min-width: 0;
+  padding: var(--space-3);
+  border: var(--border-outline) solid var(--band);
+  border-radius: calc(var(--radius-md) + var(--space-3) + var(--border-outline));
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: var(--shadow-rest);
+  transition:
+    transform var(--dur-base) var(--ease-spring),
+    box-shadow var(--dur-base) var(--ease-standard);
 }
-.contact-link img {
+.contact-tile.is-teal {
+  --band: var(--teal-ink);
+  --tint: var(--teal-tint);
+}
+.contact-tile:hover {
+  text-decoration: none;
+  transform: translateY(calc(-1 * var(--space-1)));
+  box-shadow: var(--shadow-raised);
+}
+.ct-icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: var(--size-tile);
+  height: var(--size-tile);
+  border: var(--border-outline) solid color-mix(in srgb, var(--band) 30%, var(--paper));
+  border-radius: var(--radius-md);
+  background: var(--tint);
+  color: var(--band);
+}
+.ct-icon svg {
   width: var(--size-icon);
   height: var(--size-icon);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.ct-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  line-height: var(--leading-snug);
+}
+.ct-text small {
+  color: var(--ink-soft);
+  font-size: var(--text-xs);
+  font-weight: 600;
+}
+.ct-text b {
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-md);
+  overflow-wrap: anywhere;
 }
 
 /* ── 7. Footer ────────────────────────────────────────────────────────── */

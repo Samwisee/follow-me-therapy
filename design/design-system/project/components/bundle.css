@@ -4,16 +4,16 @@
 /* ── Swash: a hand-drawn sun-coloured underline for one or two words ── */
 .fmt-swash {
   white-space: nowrap;
-  padding-bottom: var(--space-2);
-  background: /* token:sun */ url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 12' preserveAspectRatio='none'%3E%3Cpath d='M2 8c12-6 22 4 34-1s22-5 34 0 22 4 34-1 12-3 14-2' fill='none' stroke='%23f2a516' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E") left bottom / 100% var(--space-3) no-repeat;
+  padding-bottom: var(--space-3);
+  background: /* token:sun */ url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 16'%3E%3Cpath d='M-17 8c6-5 11-5 17 0s11 5 17 0 11-5 17 0 11 5 17 0' fill='none' stroke='%23f2a516' stroke-width='4' stroke-linejoin='round'/%3E%3C/svg%3E") left bottom / var(--space-8) var(--space-4) round no-repeat;
 }
 
 /* ── Section title: centred, with a short squiggle in the band's accent ── */
 .fmt-title { margin: 0 0 var(--stack); text-align: center; }
 .fmt-title h2 { margin: 0; font-family: var(--font-display); font-weight: 600; font-size: var(--text-3xl); line-height: var(--leading-snug); letter-spacing: var(--tracking-tight); color: var(--ink); text-wrap: balance; }
-.fmt-title h2::after { content: ""; display: block; width: var(--space-20); height: var(--space-3); margin: var(--space-3) auto 0; background: var(--accent, var(--purple));
-  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 12'%3E%3Cpath d='M3 7c6-5 11-5 17 0s11 5 17 0 11-5 17 0 11 5 17 0 5-3 6-2' fill='none' stroke='%23000' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
-  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 12'%3E%3Cpath d='M3 7c6-5 11-5 17 0s11 5 17 0 11-5 17 0 11 5 17 0 5-3 6-2' fill='none' stroke='%23000' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat; }
+.fmt-title h2::after { content: ""; display: block; width: var(--space-20); height: var(--space-4); margin: var(--space-4) auto 0; background: var(--accent, var(--purple));
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 16'%3E%3Cpath d='M3 8c6-5 11-5 17 0s11 5 17 0 11-5 17 0 11 5 17 0 5-3 6-2' fill='none' stroke='%23000' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 16'%3E%3Cpath d='M3 8c6-5 11-5 17 0s11 5 17 0 11-5 17 0 11 5 17 0 5-3 6-2' fill='none' stroke='%23000' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat; }
 .fmt-title p { max-width: var(--measure); margin: var(--space-2) auto 0; font-family: var(--font-body); font-size: var(--text-base); line-height: var(--leading-relaxed); color: var(--ink-soft); }
 .fmt-title.is-teal { --accent: var(--teal); }
 .fmt-title.is-sun { --accent: var(--sun-deep); }
@@ -65,10 +65,10 @@
 
 /* ── Info note: a tinted strip, outlined, with an icon tile ── */
 .fmt-note { --note-tint: var(--purple-tint); --note-ink: var(--purple); --note-line: var(--purple-line);
-  margin: 0; display: flex; align-items: flex-start; gap: var(--space-4); padding: var(--card-pad); border: var(--border-outline) solid var(--note-line); border-radius: calc(var(--radius-md) + var(--card-pad) + var(--border-outline)); background: var(--note-tint); font-family: var(--font-body); font-weight: 500; font-size: var(--text-base); line-height: var(--leading-normal); color: var(--ink-soft); }
-.fmt-note > i { flex: none; display: grid; place-items: center; width: var(--size-tile); height: var(--size-tile); border: var(--border-outline) solid var(--note-line); border-radius: var(--radius-md); background: var(--paper); color: var(--note-ink); }
-.fmt-note > i svg { width: var(--size-icon); height: var(--size-icon); fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
-.fmt-note > span { flex: 1; min-width: 0; padding-top: max(0px, (var(--size-tile) - 1lh) / 2); }
+  margin: 0; display: flex; align-items: flex-start; gap: var(--space-4); padding: var(--card-pad); border: var(--border-outline) solid var(--note-line); border-radius: calc(var(--radius-tile) + var(--card-pad) + var(--border-outline)); background: var(--note-tint); font-family: var(--font-body); font-weight: 500; font-size: var(--text-base); line-height: var(--leading-normal); color: var(--ink-soft); }
+.fmt-note > i { flex: none; display: grid; place-items: center; width: var(--size-tile-md); height: var(--size-tile-md); border: var(--border-outline) solid var(--note-line); border-radius: var(--radius-tile); background: var(--paper); color: var(--note-ink); }
+.fmt-note > i svg { width: var(--size-icon-lg); height: var(--size-icon-lg); fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.fmt-note > span { flex: 1; min-width: 0; padding-top: max(0px, (var(--size-tile-md) - 1lh) / 2); }
 .fmt-note.is-teal { --note-tint: var(--teal-tint); --note-ink: var(--teal); --note-line: var(--teal-line); }
 .fmt-note.is-promise { --note-tint: var(--paper); font-family: var(--font-display); font-size: var(--text-lg); color: var(--ink); }
 .fmt-note.is-promise > i { background: var(--purple-tint); }
@@ -104,7 +104,7 @@
 .fmt-card.is-sun { --band: var(--sun); }
 .fmt-card.is-pink { --band: var(--pink-deep); }
 a.fmt-card:hover { transform: translateY(calc(-1 * var(--space-2))) rotate(1deg); box-shadow: var(--shadow-raised); }
-.fmt-card h3 { margin: var(--space-1) 0 0; font-family: var(--font-display); font-weight: 500; font-size: var(--text-md); line-height: var(--leading-snug); color: var(--ink); }
+.fmt-card h3 { margin: var(--space-1) 0 0; font-family: var(--font-display); font-weight: 500; font-size: var(--text-lg); line-height: var(--leading-snug); color: var(--ink); }
 .fmt-card p { margin: 0; font-size: var(--text-base); line-height: var(--leading-relaxed); font-weight: 500; }
 .fmt-card .fmt-more { margin-top: auto; display: inline-flex; align-items: center; gap: var(--space-1); color: var(--purple); font-family: var(--font-display); font-weight: 500; }
 .fmt-card .fmt-more svg { width: var(--size-icon-sm); height: var(--size-icon-sm); fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
