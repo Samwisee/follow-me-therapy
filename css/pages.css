@@ -1065,9 +1065,9 @@ a:hover > .chev-back {
   margin-right: auto !important;
 }
 
-/* The top bar keeps its wavy bottom edge as you scroll: the section wave
-   exactly (same curve, 480 × 40 tile), turned upside down so it hangs below
-   the bar, in the bar's own solid lilac. */
+/* The top bar keeps its wavy bottom edge as you scroll: exactly the same
+   curve as the section edges (same path, same 480 × 40 tile, same start),
+   with the bar's solid lilac filling above it instead of below. */
 .site-head::after {
   content: "";
   position: absolute;
@@ -1076,9 +1076,8 @@ a:hover > .chev-back {
   top: calc(100% - 1px);
   height: 40px;
   background: inherit;
-  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 40' preserveAspectRatio='none'%3E%3Cpath d='M0 40V22C40 6 80 6 120 22S200 38 240 22V40Z'/%3E%3C/svg%3E") 0 0 / 480px 40px repeat-x;
-  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 40' preserveAspectRatio='none'%3E%3Cpath d='M0 40V22C40 6 80 6 120 22S200 38 240 22V40Z'/%3E%3C/svg%3E") 0 0 / 480px 40px repeat-x;
-  transform: scaleY(-1);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 40' preserveAspectRatio='none'%3E%3Cpath d='M0 0V22C40 6 80 6 120 22S200 38 240 22V0Z'/%3E%3C/svg%3E") 0 0 / 480px 40px repeat-x;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 40' preserveAspectRatio='none'%3E%3Cpath d='M0 0V22C40 6 80 6 120 22S200 38 240 22V0Z'/%3E%3C/svg%3E") 0 0 / 480px 40px repeat-x;
   pointer-events: none;
 }
 
@@ -1140,11 +1139,11 @@ body.fab-on .site-head .wrap > .btn-small {
 }
 
 /* The practice name in the top bar: bigger, with the logo to match. */
-.site-head .brand { font-size: 1.6rem; gap: 12px; }
-.site-head .brand img { height: 46px; }
+.site-head .brand { font-size: 1.9rem; gap: 14px; }
+.site-head .brand img { height: 54px; }
 @media (max-width: 520px) {
-  .site-head .head-left .brand span { font-size: 1.2rem; }
-  .site-head .head-left .brand img { height: 36px; }
+  .site-head .head-left .brand span { font-size: 1.4rem; }
+  .site-head .head-left .brand img { height: 42px; }
 }
 
 /* Footprints between steps keep a natural stride, grouped mid-gap. */
