@@ -1,0 +1,14 @@
+<!-- @dsCard group="Content" height=300 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>ActionCard — preview</title></head>
+<body style="margin:0">
+<div id="root" style="padding:24px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;background:var(--purple-tint)"></div>
+<script>
+  var F = window.FollowMeTherapy, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null,
+    h(F.ActionCard, {title:'Ready to start?', action:'Start a referral'}, 'Complete my referral form and I’ll take it from there.'),
+    h(F.ActionCard, {tone:'teal', title:'Have a question?', action:'Ask a question'}, 'Not sure yet? Send me a quick message and I’ll be in touch.')));
+</script>
+</body>
+</html>

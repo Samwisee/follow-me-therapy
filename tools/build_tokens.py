@@ -43,10 +43,46 @@ def resolve(val, seen=()):
     return val
 
 
+LAYOUT_NAMES = {"section": "section-space", "card": "card-pad", "grid": "grid-gap"}
+
+
 def css_name(path):
     group, name = path.split(".", 1)
-    return {"color": name, "font": f"font-{name}", "space": f"space-{name}",
-            "radius": f"radius-{name}", "shadow": f"shadow-{name}", "border": f"border-{name}", "print": name}.get(group)
+    if group == "layout":
+        return LAYOUT_NAMES.get(name, name)
+    if group == "motion":
+        return name if name.startswith("ease-") else f"dur-{name}"
+    return {"color": name, "font": f"font-{name}", "space": f"space-{name}", "text": f"text-{name}",
+            "leading": f"leading-{name}", "tracking": f"tracking-{name}", "size": f"size-{name}",
+            "radius": f"radius-{name}", "shadow": f"shadow-{name}", "border": f"border-{name}",
+            "z": f"z-{name}", "breakpoint": f"bp-{name}", "print": name}.get(group)
+
+
+# Fluid tokens grow linearly from FLUID_FROM to FLUID_TO viewport width.
+FLUID_FROM, FLUID_TO = 360, 1440
+
+
+def px(v):
+    return float(str(v).removesuffix("px"))
+
+
+def fmt(n):
+    return f"{n:.4f}".rstrip("0").rstrip(".")
+
+
+def css_value(tok):
+    raw = tok["$value"]
+    fl = tok.get("$extensions", {}).get("followmetherapy", {}).get("fluid")
+    if fl:
+        lo, hi = px(fl["min"]), px(fl["max"])
+        if lo == hi:
+            return f"{fmt(lo)}px"
+        slope = (hi - lo) / (FLUID_TO - FLUID_FROM)
+        base = lo - slope * FLUID_FROM
+        return f"clamp({fmt(lo)}px, {fmt(base)}px + {fmt(slope * 100)}vw, {fmt(hi)}px)"
+    if tok.get("$type") == "cubicBezier" and isinstance(raw, list):
+        return "cubic-bezier(" + ", ".join(fmt(x) for x in raw) + ")"
+    return raw
 
 
 COLORS = {p.split(".", 1)[1]: resolve(v["$value"]) for p, v in TOK.items() if p.startswith("color.")}
@@ -60,7 +96,7 @@ for p, v in TOK.items():
         continue
     raw = v["$value"]
     m = re.fullmatch(r"\{([^}]+)\}", raw) if isinstance(raw, str) else None
-    val = f"var(--{css_name(m.group(1))})" if m else resolve(raw)
+    val = f"var(--{css_name(m.group(1))})" if m else css_value(v)
     lines.append(f"  --{n}: {val};")
 lines.append("}")
 (ROOT / "css/tokens.css").write_text("\n".join(lines) + "\n")
@@ -106,7 +142,9 @@ ds = {"name": "Follow Me Therapy", "version": 1,
                "families": {"display": TOK["font.display"]["$value"], "body": TOK["font.body"]["$value"]},
                "groups": []},
       "spacing": lst("space", "space-"), "radius": lst("radius", "radius-"),
-      "shadow": lst("shadow", "shadow-"), "border": lst("border", "border-"), "print": lst("print", "")}
+      "shadow": lst("shadow", "shadow-"), "border": lst("border", "border-"), "print": lst("print", ""),
+      "layout": lst("layout", ""), "text": lst("text", "text-"), "size": lst("size", "size-"),
+      "motion": lst("motion", ""), "z": lst("z", "z-"), "breakpoint": lst("breakpoint", "bp-")}
 groups = {}
 for k, v in TOK.items():
     if not k.startswith("typography."):
@@ -115,7 +153,7 @@ for k, v in TOK.items():
     val = v["$value"]
     fam = resolve(val["fontFamily"]) == TOK["font.display"]["$value"] and "display" or "body"
     g = "Print" if name.startswith("print") else ("Display" if fam == "display" else "Text")
-    st = {"name": name, "fontSize": val["fontSize"], "lineHeight": val["lineHeight"], "fontWeight": val["fontWeight"],
+    st = {"name": name, "fontSize": resolve(val["fontSize"]), "lineHeight": resolve(val["lineHeight"]), "fontWeight": val["fontWeight"],
           "family": fam, "usage": v.get("$description", "")}
     sample = v.get("$extensions", {}).get("followmetherapy", {}).get("sample")
     if sample:

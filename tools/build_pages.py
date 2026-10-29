@@ -45,10 +45,8 @@ def page(slug,title,desc,crumb,h1,lead,chips,bands):
     <link rel="preload" href="fonts/fredoka-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="fonts/quicksand-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/site.css" />
     <link rel="stylesheet" href="css/pages.css" />
-    <link rel="stylesheet" href="css/contact.css" />
-    <link rel="stylesheet" href="css/cards.css" media="print" onload="this.media='all'" />
-    <noscript><link rel="stylesheet" href="css/cards.css" /></noscript>
     <script>
       (function () {{
         var d = document.documentElement;
@@ -85,7 +83,7 @@ def page(slug,title,desc,crumb,h1,lead,chips,bands):
           <ul class="chips rise rise-2">{chips_html}</ul>
           <div class="hero-actions rise rise-3">
             <a class="btn" href="{REF}" target="_blank" rel="noopener">Start a referral</a>
-            <a class="btn btn-outline" href="{ENQ}" target="_blank" rel="noopener">Ask a question</a>
+            <a class="btn btn-outline is-teal" href="{ENQ}" target="_blank" rel="noopener">Ask a question</a>
           </div>
         </div>
       </section>
@@ -96,7 +94,7 @@ def page(slug,title,desc,crumb,h1,lead,chips,bands):
           <p>Start a referral and I’ll be in touch, or ask me anything. You can also call <a href="tel:+61435076683">0435 076 683</a>.</p>
           <div class="hero-actions">
             <a class="btn" href="{REF}" target="_blank" rel="noopener">Start a referral</a>
-            <a class="btn btn-outline" href="{ENQ}" target="_blank" rel="noopener">Ask a question</a>
+            <a class="btn btn-outline is-teal" href="{ENQ}" target="_blank" rel="noopener">Ask a question</a>
           </div>
         </div>
       </section>

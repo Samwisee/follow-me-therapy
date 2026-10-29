@@ -90,10 +90,12 @@ document.addEventListener("DOMContentLoaded", function () {
     document.body.style.overflow = "";
     if (lastFocus) lastFocus.focus({ preventScroll: true });
   };
-  modal.querySelector(".close").addEventListener("click", close);
-  modal.addEventListener("click", (e) => { if (e.target === modal) close(); });
+  if (modal) {
+    modal.querySelector(".close").addEventListener("click", close);
+    modal.addEventListener("click", (e) => { if (e.target === modal) close(); });
+  }
   document.addEventListener("keydown", (e) => {
-    if (!modal.classList.contains("show")) return;
+    if (!modal || !modal.classList.contains("show")) return;
     if (e.key === "Escape") close();
     if (e.key === "Tab") {
       const items = modal.querySelectorAll("button, a[href]");
@@ -189,4 +191,25 @@ document.addEventListener("DOMContentLoaded", function () {
       else if (!e.shiftKey && document.activeElement === lastItem) { e.preventDefault(); first.focus(); }
     }
   });
+})();
+
+// ── Page transitions ──
+// The logo and the practice name that are on screen glide to their places
+// on the next page (cross-document view transitions; see site.css).
+(() => {
+  const vis = (el) => {
+    if (!el) return false;
+    const r = el.getBoundingClientRect();
+    return r.width > 0 && r.bottom > 0 && r.top < innerHeight;
+  };
+  const name = () => {
+    const logos = [".logo-image", ".brand img", ".nav-logo img"].map((q) => document.querySelector(q));
+    const words = [".site-title", ".brand span"].map((q) => document.querySelector(q));
+    [...logos, ...words].forEach((el) => el && (el.style.viewTransitionName = ""));
+    const logo = logos.find(vis), word = words.find(vis);
+    if (logo) logo.style.viewTransitionName = "brand-mark";
+    if (word) word.style.viewTransitionName = "brand-name";
+  };
+  addEventListener("pageswap", name);
+  addEventListener("pagereveal", name);
 })();

@@ -87,14 +87,33 @@ export function Card({ icon, tone = 'purple', title, more = 'Learn more', href, 
     {children && <p>{children}</p>}
     {more && <span className="fmt-more">{more}<Icon name="chevron" /></span>}
   </>;
-  return href ? <a className="fmt-card" href={href} style={{ textDecoration: 'none' }}>{body}</a> : <div className="fmt-card">{body}</div>;
+  const cls = cx('fmt-card', tone !== 'purple' && 'is-' + tone);
+  return href ? <a className={cls} href={href} style={{ textDecoration: 'none' }}>{body}</a> : <div className={cls}>{body}</div>;
+}
+
+/* ── ActionCard ── */
+export interface ActionCardProps { tone?: 'purple' | 'teal'; title: string; action: string; href?: string; children?: React.ReactNode }
+/** A choice with one full-width button at its foot (Ready to start? / Have a question?), wrapped in its colour. */
+export function ActionCard({ tone = 'purple', title, action, href = '#', children }: ActionCardProps) {
+  return <div className={cx('fmt-card', 'is-action', tone !== 'purple' && 'is-' + tone)}>
+    <h3>{title}</h3>
+    {children && <p>{children}</p>}
+    <a className={cx('fmt-btn', tone !== 'purple' && 'is-' + tone)} href={href}>{action}</a>
+  </div>;
+}
+
+/* ── SectionTitle ── */
+export interface SectionTitleProps { title: string; subtitle?: React.ReactNode; accent?: 'purple' | 'teal' | 'sun' }
+/** Every section's title: centred, a squiggle in the band's accent, an optional subtitle. */
+export function SectionTitle({ title, subtitle, accent = 'purple' }: SectionTitleProps) {
+  return <header className={cx('fmt-title', accent !== 'purple' && 'is-' + accent)}><h2>{title}</h2>{subtitle && <p>{subtitle}</p>}</header>;
 }
 
 /* ── Button ── */
-export interface ButtonProps { variant?: 'primary' | 'teal' | 'quiet'; href?: string; onClick?: () => void; children?: React.ReactNode }
-/** Pill button in the heading face; one primary per view. Quiet ones end with a chevron. */
-export function Button({ variant = 'primary', href, onClick, children }: ButtonProps) {
-  const cls = cx('fmt-btn', variant !== 'primary' && 'is-' + variant);
+export interface ButtonProps { variant?: 'primary' | 'teal' | 'quiet'; outline?: boolean; href?: string; onClick?: () => void; children?: React.ReactNode }
+/** Pill button in the heading face; one primary per view. Teal is "Ask a question". Quiet ones end with a chevron. */
+export function Button({ variant = 'primary', outline, href, onClick, children }: ButtonProps) {
+  const cls = cx('fmt-btn', variant !== 'primary' && 'is-' + variant, outline && 'is-outline');
   const inner = <>{children}{variant === 'quiet' && <Icon name="chevron" />}</>;
   return href ? <a className={cls} href={href}>{inner}</a> : <button type="button" className={cls} onClick={onClick}>{inner}</button>;
 }

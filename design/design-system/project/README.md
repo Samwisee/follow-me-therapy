@@ -5,7 +5,7 @@ Follow Me Therapy is Simone's paediatric occupational therapy practice: teleheal
 - The tokens on this page are a copy. The single source is `design/tokens.json` in the website repo (Samwisee/follow-me-therapy). The website, the share image, the logo files and these tokens are all built from it by `tools/build_tokens.py`.
 - To change a colour, font or size, change it there, in code or in Figma through the Tokens Studio plugin, which syncs that file on the `preview` branch. Then re-sync this page. An edit made only on this page doesn't reach the website and is overwritten at the next sync.
 - `brand-ink` colours the logo **and** the practice name together, everywhere. Never colour one without the other.
-- The website takes every colour, font, corner radius and outline width from the tokens. `tools/check_tokens.py` in the repo checks every page and stylesheet for hard-coded values, and runs automatically on each change.
+- The website takes everything from the tokens: colours, fonts, font sizes, line heights, spacing, radii, outlines, shadows, layers, durations, easings and breakpoints. `tools/check_tokens.py` in the repo checks every page and stylesheet (and this system's component CSS) for hard-coded values, and runs automatically on each change.
 
 ## Using the components
 
@@ -35,20 +35,68 @@ The components are a small React library (`window.FollowMeTherapy`) built from `
 
 ## Type
 
-- Two faces, both self-hosted and open-licensed (OFL, in `fonts/`): **Fredoka** for headings and buttons, and **Quicksand** for everything else.
-- Headings: `title`, `heading`, `subheading` (Fredoka 600/500, tight leading, −0.01em). The `wordmark` style (Fredoka 700) is for the name under the logo only.
-- Text: `lead` (19px, 600, `ink`) for the one intro line; `body` (17px, 500, line height 1.7, `ink-soft`); `chip` (700) for chip and tag labels; `small` for notes.
+- Two faces, both self-hosted and open-licensed (OFL, in `fonts/`): **Fredoka** for headings, buttons and the menu, and **Quicksand** for everything else.
+- **One size scale** (`text-*`), used by every page. The bigger sizes are fluid: they grow smoothly from a phone (360px wide) to a desktop (1440px), so nothing jumps as the window changes.
+
+| Token | Phone → desktop | Use |
+|---|---|---|
+| `text-xs` | 14px | Fine print: footer details, tags, pop-up notes |
+| `text-sm` | 15px | Chips, credentials, menu labels on small screens |
+| `text-base` | 16.5 → 17.5px | Running text |
+| `text-md` | 17 → 18.5px | Buttons, menu, card titles |
+| `text-lg` | 18.5 → 21px | Leads under a page title; the promise note |
+| `text-xl` | 21 → 25px | The hero's lead line, pop-up titles, Simone's name |
+| `text-2xl` | 24 → 30px | The OT quote; the practice name in the inner pages' top bar |
+| `text-3xl` | 30 → 40px | Section titles |
+| `text-4xl` | 32 → 50px | Page titles (h1) |
+| `text-display` | 38 → 72px | The practice name in the home hero |
+
+- Line heights: `leading-tight` 1.1 (display), `leading-snug` 1.25 (headings), `leading-normal` 1.5 (UI, lists, notes), `leading-relaxed` 1.7 (running text). Tracking: `tracking-tight` on headings, `tracking-caps` on uppercase eyebrows.
 - Print: `print-title` 28pt, `print-kid` 16pt (anything a child reads, never under 14pt), `print-body` 11pt for adults, `print-small` 8.5pt minimum.
 - Highlight one or two words per title with `fmt-swash` (a hand-drawn `sun` underline). One swash per page.
 
+## Section titles
+
+Every section opens the same way (`SectionTitle`): the title centred in `text-3xl`, a short hand-drawn squiggle under it in the band's accent (purple on lilac and white, `sun-deep` on butter, teal on mint), and an optional one-line subtitle. Page titles in an inner page's hero stay left-aligned without the squiggle.
+
 ## Shape and space
 
-- **Nested corners are concentric.** When a rounded thing sits inside another, the outer radius = the inner radius + the gap between them (+ the outer border). Simone's card: photo `radius-md` (16px) + 24px gap = 40px. The side menu: 22px pill + 8px gap + 2px border = 32px. Use `.fmt-nest` (set `--nest-inner` and `--nest-gap`) rather than picking a number by eye.
-- **Outlines:** every container that holds an icon, a label or a note (icon tiles, chips, info notes and their badges, step numbers, the side menu) wears a `border-outline` (2px) outline in its own line colour: `purple-line`, `teal-line`, `sun-line` or `pink-line`.
-- Everything is soft and round: chips and buttons are pills (`radius-pill`); cards `radius-card` (24px); photo frames `radius-frame` (28px); notes `radius-note` (22px); icon tiles `radius-tile`/`radius-card`.
-- Spacing steps run `space-1` (4px) to `space-14` (56px). Use `space-8` between cards and `space-14` between sections.
-- Shadows (`shadow-soft`, `shadow-raised`, `shadow-button`) are screen-only. On print, separate with tint or a `purple-line` border.
-- Section edges on the website are gentle waves. On print, use straight edges and tinted panels.
+- **Nest rule: corners are concentric.** A container's corner radius = the radius of whatever sits in its corner + the padding between them + the container's outline, so the two curves run parallel. Never pick a radius by eye.
+  - Service and funding cards: icon tile `radius-tile` + `card-pad` + `border-outline`.
+  - Contact cards and pop-ups: the full-width button at the foot is a pill, so radius = `size-button` / 2 + `card-pad` + `border-outline`.
+  - Simone's card: photo `radius-md` + `card-pad`. The side menu: the 44px pill's radius + `space-2` + `border-outline`. The top bar: the logo circle sits `space-1` inside a pill.
+  - In components, `.fmt-nest` does the sum (`--nest-inner`, `--nest-gap`, `--nest-border`).
+- **Wrapped in colour:** cards, contact cards, the Get started choices and pop-ups wear a `border-outline` outline in their own colour: purple, teal, sun or pink. Purple is *Start a referral*; teal is *Ask a question*, everywhere. Icon tiles, chips, notes and step discs wear the same width in their *line* colour (`purple-line`, `teal-line`, `sun-line`, `pink-line`).
+- Buttons are pills, `size-button` (52px) tall. Chips that are links are 44px tall.
+- **Spacing** is one scale, `space-1` (4px) to `space-30` (120px), plus fluid layout tokens that grow with the window:
+
+| Token | Phone → desktop | Use |
+|---|---|---|
+| `gutter` | 16 → 32px | Page edge to content |
+| `section-space` | 72 → 112px | Top and bottom of every section band |
+| `stack` | 20 → 28px | Under a section title |
+| `card-pad` | 20 → 24px | Inside cards, notes and pop-ups |
+| `grid-gap` | 20 → 28px | Between cards |
+| `content` / `measure` | 760px / 680px | Widest a section / a paragraph gets |
+
+- Shadows by elevation: `shadow-rest` (cards at rest), `shadow-soft` (floating menu), `shadow-raised` (lifted on hover), `shadow-panel` (big white panels), `shadow-overlay` (pop-ups), `shadow-glow` (solid coloured things; set `--glow`). Screen only: on print, separate with tint or an outline.
+- Section edges on the website are gentle waves (`wave`, 40px). On print, use straight edges and tinted panels.
+
+## Layout and breakpoints
+
+- Between breakpoints everything is fluid (type, spacing, gutters), and grids reflow on their own (`auto-fit`), so resizing a window is smooth. The layout only changes at the `bp-*` tokens:
+  - `bp-xs` 480px: the top menu stretches edge to edge.
+  - `bp-sm` 640px: one column; Simone's photo sits above her bio; the trail between steps walks down.
+  - `bp-md` 960px: the menu moves from a floating bar along the top to a rail down the left (148px wide). The content slides over to make room, and the menu morphs between the two shapes as the window crosses the line.
+  - `bp-short` 820px and `bp-shorter` 700px (window height): pop-ups tighten so they always fit.
+- `tools/check_tokens.py` rejects any other media-query size.
+
+## Motion
+
+- Durations: `dur-fast` 150ms (colours), `dur-base` 250ms (hover lifts), `dur-slow` 400ms (cards, pills), `dur-slower` 600ms (sections and pop-ups arriving, the menu morph), `dur-entrance` 900ms (one-off entrances).
+- Easings: `ease-standard` for most movement, `ease-out` for arrivals, `ease-spring` (a small overshoot) for playful hovers and pops, `ease-in-out` for loops.
+- Moving between pages cross-fades, with the logo and the practice name gliding to their new places.
+- Everything stops under `prefers-reduced-motion`. Ambient artwork loops (the illustrations, the walking footprints) keep their own longer timings.
 
 ## Imagery
 
@@ -64,8 +112,8 @@ Simone works in accessibility, so the system targets **AAA**, the highest WCAG l
 - **Text contrast 7:1 or better** (AAA 1.4.6) for every text colour on every ground it's used on: `ink-soft` 7.1:1 on its palest ground, `ink` 12:1+, chip inks 7.1:1, white on `purple` 7.1:1, on `teal` 7.1:1, on `pink-deep` 8.4:1, `ink` on `sun` 7.1:1. A new colour pair needs the same check before use; `tools/check_a11y.mjs` in the repo runs the audit.
 - **Non-text contrast 3:1 or better** for icons, focus rings and control edges. Decorative shapes (tints, trails, chip borders) carry no meaning on their own.
 - **Never colour alone** (1.4.1): chips say what they mean in words; done steps carry hidden "(done)" text; links in running text are underlined (`fmt-prose`).
-- **Focus** (2.4.13 Focus Appearance, AAA): a 3px `focus` (ink) ring with a 2px `paper` gap, on everything interactive, on every ground.
-- **Target size 44×44 or larger** (2.5.5, AAA): buttons are 48px tall; tappable cards are larger still.
+- **Focus** (2.4.13 Focus Appearance, AAA): a `border-focus` (3px) ring in `focus` (ink), offset by the same amount, on everything interactive, on every ground.
+- **Target size 44×44 or larger** (2.5.5, AAA): buttons are 52px tall (`size-button`), menu links and link chips 44px (`size-target`); tappable cards are larger still.
 - **Motion** (2.3.3, AAA): decoration may move once on arrival, never loops, and stops under `prefers-reduced-motion`.
 - **Reading** (1.4.8, AAA): left-align anything longer than two lines, never justify, keep lines under 80 characters, line height at least 1.5, paragraph spacing larger than line spacing. No text under 15px on screen or 8.5pt in print (14pt for anything a child reads).
 - **Plain language** (3.1.5, AAA): write parent copy for a lower-secondary reading level; short sentences; explain any clinical term the first time.

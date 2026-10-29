@@ -61,17 +61,7 @@
         }
       }
     </script>
-    <script>
-      (function () {
-        var d = document.documentElement;
-        d.classList.add("js");
-        var done = function () { d.classList.add("fonts-ready"); };
-        if (document.fonts && document.fonts.ready) {
-          Promise.race([document.fonts.ready, new Promise(function (r) { setTimeout(r, 700); })]).then(done);
-        } else { done(); }
-        setTimeout(done, 1200);
-      })();
-    </script>
+
 
     <!-- Google Fonts: Quicksand -->
     <link rel="preload" href="fonts/quicksand-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin />
@@ -80,16 +70,29 @@
     <link rel="preload" href="fonts/quicksand-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="fonts/quicksand-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/site.css" />
     <link rel="stylesheet" href="css/home.css" />
-    <link rel="stylesheet" href="css/contact.css" />
-    <link rel="stylesheet" href="css/cards.css" media="print" onload="this.media='all'" />
-    <noscript><link rel="stylesheet" href="css/cards.css" /></noscript>
-
+    <script>
+      // Before the first paint: note that JavaScript runs, choose the menu
+      // (a bar along the top, or the side rail from the md breakpoint in the
+      // design tokens) and hold the title until the fonts are in.
+      (function () {
+        var d = document.documentElement;
+        d.classList.add("js");
+        var bp = getComputedStyle(d).getPropertyValue("--bp-md").trim() || "960px";
+        d.setAttribute("data-nav", matchMedia("(min-width: " + bp + ")").matches ? "rail" : "top");
+        var done = function () { d.classList.add("fonts-ready"); };
+        if (document.fonts && document.fonts.ready) {
+          Promise.race([document.fonts.ready, new Promise(function (r) { setTimeout(r, 700); })]).then(done);
+        } else { done(); }
+        setTimeout(done, 1200);
+      })();
+    </script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
-    <header class="title-and-logo" id="top" style="border-radius: 0">
-      <div class="title-container" style="padding-top: 44px">
+    <header class="title-and-logo" id="top">
+      <div class="title-container">
         <div class="logo-walk">
           <img
             src="img/brand/follow-me-therapy-mark.svg"
@@ -99,7 +102,7 @@
             height="250"
           />
         </div>
-        <p class="site-title" style="font-weight: 500">Follow Me Therapy</p>
+        <p class="site-title">Follow Me Therapy</p>
       </div>
     </header>
     <nav class="fixed-header" aria-label="Main menu">
@@ -403,11 +406,7 @@
     </div>
 
     <div class="section-wrapper tone-lilac wave-top">
-      <section
-        id="contact"
-        class="content-section contact-section"
-        style="padding-bottom: 90px"
-      >
+      <section id="contact" class="content-section contact-section">
         <div class="fade-in-content">
           <div class="content-wrapper">
             <h2>Get in touch</h2>
@@ -433,7 +432,7 @@
                   href="https://follow-me-therapy.splose.com/public-form/e84c8756-615f-4404-a6f3-a90f3760223b"
                   target="_blank"
                   rel="noopener"
-                  class="btn-outline"
+                  class="btn-secondary is-teal"
                   >Ask a question</a
                 >
               </div>
@@ -457,11 +456,7 @@
     </div>
 
     <div class="section-wrapper tone-deep wave-top">
-      <section
-        id="company"
-        class="content-section"
-        style="padding: 56px 20px 110px; color: white"
-      >
+      <section id="company" class="content-section">
         <div class="content-wrapper company">
           <div class="flags">
             <img src="img/flag-1.png" alt="Aboriginal flag" width="100" height="60" loading="lazy" />

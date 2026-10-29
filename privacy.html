@@ -14,206 +14,27 @@
     <link rel="icon" href="img/icon-192.png" sizes="192x192" type="image/png" />
     <link rel="apple-touch-icon" href="img/icon-180.png" />
     <link rel="stylesheet" href="css/tokens.css" />
-    <style>
-      @font-face {
-        font-family: "Fredoka";
-        font-weight: 600;
-        font-display: swap;
-        src: url("fonts/fredoka-latin-600-normal.woff2") format("woff2");
-      }
-      @font-face {
-        font-family: "Quicksand";
-        font-weight: 500;
-        font-display: swap;
-        src: url("fonts/quicksand-latin-500-normal.woff2") format("woff2");
-      }
-      @font-face {
-        font-family: "Quicksand";
-        font-weight: 700;
-        font-display: swap;
-        src: url("fonts/quicksand-latin-700-normal.woff2") format("woff2");
-      }
-      * {
-        box-sizing: border-box;
-      }
-      html {
-        scrollbar-gutter: stable;
-      }
-      body {
-        margin: 0;
-        font-family: var(--font-body);
-        font-weight: 500;
-        color: var(--ink-soft);
-        background: var(--purple-tint);
-        line-height: 1.7;
-      }
-      .top {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        max-width: 760px;
-        margin: 0 auto;
-        padding: 24px 20px;
-        text-decoration: none;
-      }
-      .top img {
-        height: 44px;
-        width: auto;
-      }
-      .top span {
-        font-family: var(--font-display);
-        font-weight: 600;
-        font-size: 1.4em;
-        color: var(--brand-ink);
-      }
-      main {
-        max-width: 760px;
-        margin: 0 auto 60px;
-        padding: 36px 28px;
-        background: var(--paper);
-        border-radius: var(--radius-frame);
-        box-shadow: 0 12px 32px color-mix(in srgb, var(--purple-ink) 10%, transparent);
-      }
-      @media (max-width: 600px) {
-        main {
-          margin: 0 12px 40px;
-          padding: 28px 20px;
-        }
-      }
-      h1,
-      h2 {
-        font-family: var(--font-display);
-        font-weight: 600;
-        color: var(--ink);
-        line-height: 1.25;
-      }
-      h1 {
-        font-size: 2em;
-        margin: 0 0 4px;
-      }
-      h2 {
-        font-size: 1.25em;
-        margin: 32px 0 8px;
-      }
-      .updated {
-        margin-top: 0;
-        font-size: 0.9em;
-      }
-      ul {
-        padding-left: 1.2em;
-      }
-      li {
-        margin-bottom: 6px;
-      }
-      a {
-        color: var(--purple);
-        font-weight: 700;
-      }
-      .back {
-        display: inline-block;
-        margin-top: 28px;
-      }
-      /* Back, at the top: as on the other inner pages. */
-      /* Back lines up with the white page below; the name is centred. */
-      .top-row {
-        display: grid;
-        grid-template-columns: 1fr auto 1fr;
-        align-items: center;
-        max-width: 760px;
-        margin: 0 auto;
-      }
-      .top-row .back-btn {
-        justify-self: start;
-        border: var(--border-outline) solid var(--purple-line);
-      }
-      @media (max-width: 600px) {
-        .top-row {
-          margin: 0 12px;
-        }
-      }
-      .top-row .top {
-        margin: 0;
-        padding: 24px 0;
-      }
-      .back-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 4px;
-        flex: none;
-        padding: 8px 14px 8px 10px;
-        border-radius: var(--radius-pill);
-        background: var(--paper);
-        color: var(--purple);
-        font-family: var(--font-display);
-        font-weight: 500;
-        text-decoration: none;
-        box-shadow: 0 4px 12px color-mix(in srgb, var(--ink) 8%, transparent);
-        transition: transform 0.25s ease;
-      }
-      .back-btn svg {
-        width: 20px;
-        height: 20px;
-        fill: none;
-        stroke: currentColor;
-        stroke-width: 2.6;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-      }
-      .back-btn:hover {
-        transform: translateX(-3px);
-      }
-      @media (max-width: 520px) {
-        .back-btn {
-          padding: 8px;
-        }
-        .back-btn span {
-          display: none;
-        }
-      }
-      .skip-link {
-        position: absolute;
-        left: 12px;
-        top: -60px;
-        z-index: 100;
-        padding: 10px 16px;
-        border-radius: var(--radius-pill);
-        background: var(--purple);
-        color: var(--paper);
-        font-weight: 700;
-        text-decoration: none;
-      }
-      .skip-link:focus {
-        top: 12px;
-      }
-      .chev{display:inline-block;width:.85em;height:.85em;vertical-align:-.08em;fill:none;stroke:currentColor;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;margin-right:.2em}
-      .sr-only{position:absolute!important;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-      a { text-decoration: none; }
-      a:hover, a:focus-visible { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
-      .back-btn:hover, .top:hover { text-decoration: none; }
-    </style>
-    <script>
-      document.addEventListener("click", function (e) {
-        var back = e.target.closest && e.target.closest("[data-back]");
-        if (!back) return;
-        if (document.referrer.indexOf(location.origin) === 0 && history.length > 1) {
-          e.preventDefault();
-          history.back();
-        }
-      });
-    </script>
+    <link rel="stylesheet" href="css/site.css" />
+    <link rel="stylesheet" href="css/pages.css" />
+    <script>document.documentElement.classList.add("js");</script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
-    <header class="top-row">
-      <a class="back-btn" href="index.html" data-back aria-label="Back"
-        ><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg><span>Back</span></a
-      >
-      <a class="top" href="index.html">
-        <img src="img/brand/follow-me-therapy-mark.svg" alt="" width="226" height="250" />
-        <span>Follow Me Therapy</span>
-      </a>
+    <header class="site-head">
+      <div class="wrap">
+        <div class="head-left">
+          <a class="back-btn" href="index.html" data-back aria-label="Back"
+            ><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg><span>Back</span></a
+          >
+          <a class="brand" href="index.html"
+            ><img src="img/brand/follow-me-therapy-mark.svg" alt="" width="226" height="250" /><span>Follow Me Therapy</span></a
+          >
+        </div>
+      </div>
     </header>
-    <main id="main">
+    <main id="main" class="band tone-lilac">
+      <div class="wrap">
+      <article class="doc">
       <h1>Privacy Policy</h1>
       <p class="updated">Last updated: October 2026</p>
 
@@ -316,6 +137,9 @@
       </p>
 
       <a class="back" href="index.html"><svg class="chev chev-back" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg>Back to Follow Me Therapy</a>
+          </article>
+      </div>
     </main>
+    <script src="js/pages.js" defer></script>
   </body>
 </html>

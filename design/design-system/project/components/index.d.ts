@@ -18,7 +18,11 @@ export interface IconTileProps { icon: Icon40Name; tone?: Tone; small?: boolean;
 export declare function IconTile(props: IconTileProps): React.ReactElement;
 export interface CardProps { icon: Icon40Name; tone?: Tone; title: string; more?: string; href?: string; children?: React.ReactNode }
 export declare function Card(props: CardProps): React.ReactElement;
-export interface ButtonProps { variant?: 'primary' | 'teal' | 'quiet'; href?: string; onClick?: () => void; children?: React.ReactNode }
+export interface ActionCardProps { tone?: 'purple' | 'teal'; title: string; action: string; href?: string; children?: React.ReactNode }
+export declare function ActionCard(props: ActionCardProps): React.ReactElement;
+export interface SectionTitleProps { title: string; subtitle?: React.ReactNode; accent?: 'purple' | 'teal' | 'sun' }
+export declare function SectionTitle(props: SectionTitleProps): React.ReactElement;
+export interface ButtonProps { variant?: 'primary' | 'teal' | 'quiet'; outline?: boolean; href?: string; onClick?: () => void; children?: React.ReactNode }
 export declare function Button(props: ButtonProps): React.ReactElement;
 export interface FootstepTrailProps { steps?: number; direction?: 'across' | 'down'; ink?: 'light' | 'strong' | 'sun' | 'teal'; size?: number }
 export declare function FootstepTrail(props: FootstepTrailProps): React.ReactElement;
@@ -33,4 +37,4 @@ export interface WorksheetProps { tag?: string; tagTone?: Tone; title: React.Rea
 export declare function Worksheet(props: WorksheetProps): React.ReactElement;
 export interface BookPageProps { side?: 'left' | 'right'; folio?: number; ground?: 'paper' | 'teal-tint' | 'purple-tint' | 'butter'; children?: React.ReactNode }
 export declare function BookPage(props: BookPageProps): React.ReactElement;
-declare global { interface Window { FollowMeTherapy: { Icon: typeof Icon; Chip: typeof Chip; Chips: typeof Chips; Tag: typeof Tag; TickList: typeof TickList; InfoNote: typeof InfoNote; IconTile: typeof IconTile; Card: typeof Card; Button: typeof Button; FootstepTrail: typeof FootstepTrail; StepPath: typeof StepPath; Logo: typeof Logo; Swash: typeof Swash; Worksheet: typeof Worksheet; BookPage: typeof BookPage } } }
+declare global { interface Window { FollowMeTherapy: { Icon: typeof Icon; Chip: typeof Chip; Chips: typeof Chips; Tag: typeof Tag; TickList: typeof TickList; InfoNote: typeof InfoNote; IconTile: typeof IconTile; Card: typeof Card; ActionCard: typeof ActionCard; SectionTitle: typeof SectionTitle; Button: typeof Button; FootstepTrail: typeof FootstepTrail; StepPath: typeof StepPath; Logo: typeof Logo; Swash: typeof Swash; Worksheet: typeof Worksheet; BookPage: typeof BookPage } } }

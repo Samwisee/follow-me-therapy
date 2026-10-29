@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (tablet && tablet.nextElementSibling && "ResizeObserver" in window) {
     const words = tablet.nextElementSibling;
     const fit = () => {
-      const side = getComputedStyle(tablet.parentElement).flexDirection !== "column" && innerWidth > 650;
+      const side = getComputedStyle(tablet.parentElement).flexDirection !== "column";
       // From the top of the first line to the bottom of the last one
       // (margins don't count).
       const lines = [...words.querySelectorAll("p, li, h3")];
@@ -306,17 +306,28 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-// ── The side rail (1300px and up) ──
-// Adds a pill that glides to the current section and a progress line that
-// fills smoothly with the scroll. The section logic above still decides
-// which link is .active / .passed; this only animates it.
+// ── The menu: a bar along the top, or a rail down the left ──
+// <html data-nav> says which (set before the first paint in index.html).
+// When the window crosses the md breakpoint from the design tokens, the menu
+// morphs from one to the other: its outline glides to the new shape while
+// each link travels to its new place (a FLIP animation), and the content
+// slides across (--nav-inset, in CSS). In the rail, a pill glides to the
+// section you're in and a line fills as you scroll.
 (() => {
+  const root = document.documentElement;
   const nav = document.querySelector(".fixed-header");
   if (!nav) return;
+  const css = getComputedStyle(root);
+  const token = (name, fallback) => css.getPropertyValue(name).trim() || fallback;
+  const ms = (v) => (v.endsWith("ms") ? parseFloat(v) : parseFloat(v) * 1000);
+  const DUR = ms(token("--dur-slower", "600ms"));
+  const EASE = token("--ease-standard", "ease");
+  const mq = matchMedia(`(min-width: ${token("--bp-md", "960px")})`);
+  const still = matchMedia("(prefers-reduced-motion: reduce)");
+  const isRail = () => root.dataset.nav === "rail";
+
   const links = [...nav.querySelectorAll("a[href^='#']:not(.nav-logo)")];
-  if (!links.length) return;
   const sections = links.map((a) => document.getElementById(a.getAttribute("href").slice(1)));
-  const wide = matchMedia("(min-width: 1300px)");
   nav.classList.add("rail-v2");
   const track = document.createElement("span");
   track.className = "rail-track";
@@ -330,28 +341,20 @@ document.addEventListener("DOMContentLoaded", function () {
   const fill = track.firstChild;
   let centres = [];
 
-  const layout = () => {
-    if (!wide.matches) return;
-    centres = links.map((a) => a.offsetTop + a.offsetHeight / 2);
-    track.style.top = centres[0] + "px";
-    track.style.height = centres[centres.length - 1] - centres[0] + "px";
-    placePill();
-    progress();
-  };
   const placePill = () => {
     const a = links.find((l) => l.classList.contains("active"));
     links.forEach((l) => (l === a ? l.setAttribute("aria-current", "location") : l.removeAttribute("aria-current")));
-    if (!wide.matches) return;
+    if (!isRail()) return;
     pill.classList.toggle("on", !!a);
     if (!a) return;
     pill.style.width = a.offsetWidth + "px";
     pill.style.height = a.offsetHeight + "px";
-    pill.style.transform = "translate(" + (a.offsetLeft - 8) + "px," + a.offsetTop + "px)";
+    pill.style.transform = `translate(${a.offsetLeft}px, ${a.offsetTop}px)`;
   };
   // Continuous progress: how far the reading line has travelled from one
   // section to the next, mapped onto the gap between their dots.
   const progress = () => {
-    if (!wide.matches || centres.length < 2) return;
+    if (!isRail() || centres.length < 2) return;
     const line = innerHeight * 0.45;
     const tops = sections.map((s) => (s ? s.getBoundingClientRect().top : Infinity));
     let p = -1;
@@ -365,12 +368,66 @@ document.addEventListener("DOMContentLoaded", function () {
     let y = 0;
     if (p >= 0) {
       const i = Math.min(Math.floor(p), centres.length - 1);
-      const f = p - i;
       const to = centres[Math.min(i + 1, centres.length - 1)];
-      y = centres[i] + (to - centres[i]) * f - centres[0];
+      y = centres[i] + (to - centres[i]) * (p - i) - centres[0];
     }
-    fill.style.transform = "scaleY(" + Math.max(0, Math.min(1, y / span)) + ")";
+    fill.style.transform = `scaleY(${Math.max(0, Math.min(1, y / span))})`;
   };
+  const layout = () => {
+    if (!isRail()) return;
+    centres = links.map((a) => a.offsetTop + a.offsetHeight / 2);
+    track.style.top = centres[0] + "px";
+    track.style.height = centres[centres.length - 1] - centres[0] + "px";
+    placePill();
+    progress();
+  };
+
+  // The morph between the bar and the rail.
+  let running = [];
+  const setMode = (rail) => {
+    if (isRail() === rail) return;
+    running.forEach((a) => a.cancel());
+    running = [];
+    document.querySelectorAll(".nav-ghost").forEach((g) => g.remove());
+    const animate = !still.matches && nav.animate && document.visibilityState === "visible";
+    const items = [...nav.querySelectorAll("a")];
+    const before = animate ? items.map((e) => e.getBoundingClientRect()) : [];
+    const box0 = nav.getBoundingClientRect();
+    const look = getComputedStyle(nav);
+    const r0 = look.borderRadius;
+    root.dataset.nav = rail ? "rail" : "top";
+    layout();
+    if (!animate) return;
+    const box1 = nav.getBoundingClientRect();
+    const r1 = getComputedStyle(nav).borderRadius;
+    // The outline: a stand-in that changes shape while the real menu's own
+    // background steps aside.
+    const ghost = document.createElement("div");
+    ghost.className = "nav-ghost";
+    ghost.setAttribute("aria-hidden", "true");
+    nav.before(ghost);
+    nav.classList.add("morphing");
+    // A pill's 999px radius is clamped to half its height, so the corners
+    // ease between the two shapes instead of ballooning.
+    const frame = (b, r) => ({ left: b.left + "px", top: b.top + "px", width: b.width + "px", height: b.height + "px",
+      borderRadius: Math.min(parseFloat(r) || 0, b.height / 2, b.width / 2) + "px" });
+    const opts = { duration: DUR, easing: EASE };
+    running.push(ghost.animate([frame(box0, r0), frame(box1, r1)], { ...opts, fill: "both" }));
+    // Each link travels from where it was to where it is now.
+    items.forEach((el, i) => {
+      const a = before[i], b = el.getBoundingClientRect();
+      if (!a.width || !b.width) return;
+      const dx = a.left + a.width / 2 - (b.left + b.width / 2);
+      const dy = a.top + a.height / 2 - (b.top + b.height / 2);
+      running.push(el.animate([{ transform: `translate(${dx}px, ${dy}px)` }, { transform: "none" }], { ...opts, delay: i * 18, fill: "backwards" }));
+    });
+    Promise.all(running.map((a) => a.finished)).then(() => {
+      ghost.remove();
+      nav.classList.remove("morphing");
+      running = [];
+    }, () => {});
+  };
+  mq.addEventListener("change", () => setMode(mq.matches));
 
   new MutationObserver(placePill).observe(nav, { subtree: true, attributes: true, attributeFilter: ["class"] });
   let queued = false;
@@ -380,7 +437,28 @@ document.addEventListener("DOMContentLoaded", function () {
     requestAnimationFrame(() => { queued = false; progress(); });
   }, { passive: true });
   addEventListener("resize", layout);
-  wide.addEventListener("change", layout);
   if (document.fonts) document.fonts.ready.then(layout);
+  setMode(mq.matches);
   layout();
+})();
+
+// ── Page transitions ──
+// The logo and the practice name that are on screen glide to their places
+// on the next page (cross-document view transitions; see site.css).
+(() => {
+  const vis = (el) => {
+    if (!el) return false;
+    const r = el.getBoundingClientRect();
+    return r.width > 0 && r.bottom > 0 && r.top < innerHeight;
+  };
+  const name = () => {
+    const logos = [".logo-image", ".brand img", ".nav-logo img"].map((q) => document.querySelector(q));
+    const words = [".site-title", ".brand span"].map((q) => document.querySelector(q));
+    [...logos, ...words].forEach((el) => el && (el.style.viewTransitionName = ""));
+    const logo = logos.find(vis), word = words.find(vis);
+    if (logo) logo.style.viewTransitionName = "brand-mark";
+    if (word) word.style.viewTransitionName = "brand-name";
+  };
+  addEventListener("pageswap", name);
+  addEventListener("pagereveal", name);
 })();

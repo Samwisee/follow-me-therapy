@@ -13,8 +13,10 @@ Therapy on her own. See README.md for the file layout.
   then wait for the "pages build and deployment" run (`gh run list -L 1`) to succeed.
 - Colours, fonts, sizes, logo colour: edit `design/tokens.json` (the single
   source; see design/README.md), run `python3 tools/build_tokens.py`. Never
-  hardcode a colour, font, radius or outline width in CSS or HTML: use
-  `var(--token)`. `python3 tools/check_tokens.py` must say "Everything reads
+  hardcode a colour, font, font size, line height, spacing, radius, outline,
+  shadow, z-index, duration/easing or breakpoint in CSS or HTML: use
+  `var(--token)` (media queries use the `breakpoint` numbers). Corners nest:
+  container radius = inner radius + padding + outline. `python3 tools/check_tokens.py` must say "Everything reads
   from the design tokens." (it also runs on every push to preview). A colour inside a
   data-URI SVG gets a `/* token:<name> */` tag before `url(` instead.
 - Design-system components: edit `design/design-system/project/components/src/index.tsx`
@@ -25,7 +27,7 @@ Therapy on her own. See README.md for the file layout.
   mirrored in `js/pages.js`; change both.
 - Check visually before reporting: serve locally (`python3 -m http.server 8765`)
   and screenshot with Playwright at 1400px and 390px wide. The side rail menu
-  only appears at 1300px and up.
+  appears at 960px (token `breakpoint.md`) and up; below that it's the top bar.
 - Commit author: `git -c user.name=Claude -c user.email=noreply@anthropic.com`.
 
 ## Voice and content rules

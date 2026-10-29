@@ -209,9 +209,9 @@
   ],
   "lastChange": {
     "by": "Sam",
-    "at": "2026-10-29T06:30:00Z",
+    "at": "2026-10-29T05:00:00Z",
     "via": "GitHub \u00b7 Samwisee/follow-me-therapy",
-    "note": "Stairs icon is now plain steps (no flag); NDIS icon is now an umbrella (support/cover)."
+    "note": "Full system pass: one fluid type and spacing scale, layout, motion, shadow, layer and breakpoint tokens; the nest rule for corners; cards wrapped in their colour; SectionTitle and ActionCard components. The website reads every value from the tokens."
   },
   "layout": "files",
   "libraries": [
