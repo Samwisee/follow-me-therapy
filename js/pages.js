@@ -139,17 +139,54 @@ document.addEventListener("DOMContentLoaded", function () {
   bands.forEach((b) => io.observe(b));
 });
 
-// "Start a referral" hands off from the top bar to the floating button once
-// the page's own referral button has scrolled out of view.
+// The floating Contact me button, as on the home page: it appears once the
+// opening section has scrolled away, says "Contact me", shrinks to a circle
+// after 3 seconds, steps aside while the Get started section is on screen,
+// and opens the Get started pop-up. While hidden it can't be focused (inert).
 (() => {
-  const fab = document.querySelector(".ref-fab");
+  const fab = document.getElementById("contactUsButton");
+  const modal = document.getElementById("contactModal");
   const hero = document.querySelector(".hero-actions");
-  if (!fab) return;
-  if (!hero || !("IntersectionObserver" in window)) { fab.classList.add("show"); document.body.classList.add("fab-on"); return; }
-  new IntersectionObserver(([e]) => {
-    const on = !e.isIntersecting && e.boundingClientRect.top < 0;
+  const cta = document.getElementById("get-started");
+  if (!fab || !modal) return;
+  let collapse = null, past = !hero, atCta = false;
+  const update = () => {
+    const on = past && !atCta;
+    if (on === fab.classList.contains("show")) return;
     fab.classList.toggle("show", on);
-    document.body.classList.toggle("fab-on", on);
-  })
-    .observe(hero);
+    fab.inert = !on;
+    clearTimeout(collapse);
+    if (on) { fab.classList.remove("compact"); collapse = setTimeout(() => fab.classList.add("compact"), 3000); }
+  };
+  if ("IntersectionObserver" in window) {
+    if (hero) new IntersectionObserver(([e]) => { past = !e.isIntersecting && e.boundingClientRect.top < 0; update(); }).observe(hero);
+    if (cta) new IntersectionObserver(([e]) => { atCta = e.isIntersecting; update(); }, { threshold: 0.25 }).observe(cta);
+  } else { past = true; }
+  update();
+
+  let last = null;
+  const open = () => {
+    last = document.activeElement;
+    modal.classList.add("show");
+    document.body.style.overflow = "hidden";
+    modal.querySelector(".modal-content").focus({ preventScroll: true });
+  };
+  const close = () => {
+    modal.classList.remove("show");
+    document.body.style.overflow = "";
+    if (last) last.focus({ preventScroll: true });
+  };
+  fab.addEventListener("click", (e) => { e.preventDefault(); open(); });
+  modal.querySelector(".close").addEventListener("click", close);
+  modal.addEventListener("click", (e) => { if (e.target === modal) close(); });
+  document.addEventListener("keydown", (e) => {
+    if (!modal.classList.contains("show")) return;
+    if (e.key === "Escape") close();
+    if (e.key === "Tab") {
+      const items = modal.querySelectorAll("button, a[href]");
+      const first = items[0], lastItem = items[items.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); lastItem.focus(); }
+      else if (!e.shiftKey && document.activeElement === lastItem) { e.preventDefault(); first.focus(); }
+    }
+  });
 })();

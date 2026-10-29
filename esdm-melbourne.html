@@ -29,6 +29,7 @@
     <link rel="preload" href="fonts/quicksand-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="css/tokens.css" />
     <link rel="stylesheet" href="css/pages.css" />
+    <link rel="stylesheet" href="css/contact.css" />
     <link rel="stylesheet" href="css/cards.css" media="print" onload="this.media='all'" />
     <noscript><link rel="stylesheet" href="css/cards.css" /></noscript>
     <script>
@@ -56,11 +57,6 @@
             ><img src="img/brand/follow-me-therapy-mark.svg" alt="" width="226" height="250" /><span>Follow Me Therapy</span></a
           >
         </div>
-        <a class="btn btn-small" href="https://follow-me-therapy.splose.com/public-form/975d61d5-cd63-44e5-86e7-f9315fa6a5b0" target="_blank" rel="noopener">Start a referral</a>
-        <a class="ref-fab" href="https://follow-me-therapy.splose.com/public-form/975d61d5-cd63-44e5-86e7-f9315fa6a5b0" target="_blank" rel="noopener"
-          ><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="3" /><path d="M9 3h6v3H9z" /><path d="M12 10v6M9 13h6" /></svg
-          ><span>Start a referral</span><span class="sr-only"> (opens in a new tab)</span></a
-        >
       </div>
     </header>
     <main id="main">
@@ -96,7 +92,7 @@
           <p>I’ll check whether ESDM suits your child at the initial assessment. If another approach fits better, I’ll talk you through it.</p>
           <div class="fund-grid pop">
             <div class="funding-card" data-funding="ndis" role="button" tabindex="0" aria-haspopup="dialog">
-              <span class="svc-icon svc-footprints fund-svg"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 21c-4.2-3-7-5.6-7-8.6a3.6 3.6 0 0 1 7-1.3 3.6 3.6 0 0 1 7 1.3c0 3-2.8 5.6-7 8.6z"/><path d="M5 26h5.5l6 3.5h6.5a2.4 2.4 0 0 0 0-4.8h-4.5"/><path d="M10.5 33h11l11-6.6a2.3 2.3 0 0 0-2.6-3.7L24 25.7"/><path d="M5 23v13"/></svg></span>
+              <span class="svc-icon svc-footprints fund-svg"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M6 20a14 14 0 0 1 28 0"/><path d="M6 20c2.3-2.2 4.7-2.2 7 0 2.3-2.2 4.7-2.2 7 0 2.3-2.2 4.7-2.2 7 0 2.3-2.2 4.7-2.2 7 0"/><path d="M20 20v10.5a3.5 3.5 0 0 1-7 0"/><path d="M20 6V4"/></svg></span>
               <h3>NDIS</h3>
               <p>For self-managed and plan-managed participants.</p>
               <span class="more">How it works<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg></span>
@@ -117,10 +113,10 @@
 
         </div>
       </section>
-      <section class="band tone-lilac cta">
+      <section class="band tone-lilac cta" id="get-started">
         <div class="wrap">
           <h2>Ready to take the first step?</h2>
-          <p>Start a referral and I’ll be in touch, or ask me anything first. You can also call <a href="tel:+61435076683">0435 076 683</a>.</p>
+          <p>Start a referral and I’ll be in touch, or ask me anything. You can also call <a href="tel:+61435076683">0435 076 683</a>.</p>
           <div class="hero-actions">
             <a class="btn" href="https://follow-me-therapy.splose.com/public-form/975d61d5-cd63-44e5-86e7-f9315fa6a5b0" target="_blank" rel="noopener">Start a referral</a>
             <a class="btn btn-outline" href="https://follow-me-therapy.splose.com/public-form/e84c8756-615f-4404-a6f3-a90f3760223b" target="_blank" rel="noopener">Ask a question</a>
@@ -137,6 +133,55 @@
         <p class="foot-small">I acknowledge the Traditional Custodians of the lands across Australia, and the Wurundjeri people, on whose land I provide my services. I pay my respects to Elders past and present. All are welcome at Follow Me Therapy.</p>
       </div>
     </footer>
+    <a href="#get-started" class="fab" id="contactUsButton" aria-label="Contact me" inert>
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          d="M4 5h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H9l-4 3v-3H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linejoin="round"
+        />
+        <circle cx="8.5" cy="11" r="1.2" fill="currentColor" />
+        <circle cx="12" cy="11" r="1.2" fill="currentColor" />
+        <circle cx="15.5" cy="11" r="1.2" fill="currentColor" />
+      </svg>
+      <span class="fab-label">Contact me</span>
+    </a>
+    <div id="contactModal" class="modal contact-modal">
+      <div
+        class="modal-content"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="contactModalTitle"
+        tabindex="-1"
+      >
+        <button type="button" class="close" aria-label="Close">&times;</button>
+        <h3 id="contactModalTitle">Let’s get started!</h3>
+        <ul class="modal-chips">
+          <li>Telehealth spots available now</li>
+          <li>NDIS · Medicare · Private</li>
+        </ul>
+        <a href="https://follow-me-therapy.splose.com/public-form/975d61d5-cd63-44e5-86e7-f9315fa6a5b0" target="_blank" rel="noopener" class="modal-choice primary">
+          <span class="mc-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M7 4h7l4 4v12H7z" /><path d="M14 4v4h4M10 13h5M10 16h5" /></svg>
+          </span>
+          <span class="mc-text"><b>Start a referral</b><small>New to Follow Me Therapy? Begin here.</small></span>
+          <span class="mc-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg></span>
+        </a>
+        <a href="https://follow-me-therapy.splose.com/public-form/e84c8756-615f-4404-a6f3-a90f3760223b" target="_blank" rel="noopener" class="modal-choice">
+          <span class="mc-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-4 3v-3H4z" /><path d="M10 9.5a2 2 0 1 1 2.6 1.9c-.4.2-.6.5-.6.9M12 14h.01" /></svg>
+          </span>
+          <span class="mc-text"><b>Ask a question</b><small>Not sure yet? Send me a quick message.</small></span>
+          <span class="mc-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg></span>
+        </a>
+        <p class="modal-note">
+          Not about a client? Email
+          <a href="mailto:info@followmetherapy.com.au">info@followmetherapy.com.au</a>
+        </p>
+      </div>
+    </div>
     <div id="detailModal" class="modal">
       <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="detailTitle" tabindex="-1">
         <button type="button" class="close" aria-label="Close">&times;</button>

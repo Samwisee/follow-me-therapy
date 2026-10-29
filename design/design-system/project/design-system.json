@@ -33,12 +33,6 @@
           "size": 1190,
           "type": "image/svg+xml"
         },
-        "hands-heart.svg": {
-          "blob": "c17ee14178c0e01a648d24c0ee4a4383",
-          "name": "hands-heart.svg",
-          "size": 447,
-          "type": "image/svg+xml"
-        },
         "heart.svg": {
           "blob": "6f7354f4a154c8ffda0960f2f334d026",
           "name": "heart.svg",
@@ -76,9 +70,9 @@
           "type": "image/svg+xml"
         },
         "stairs.svg": {
-          "blob": "20d248a0ee98bf34a49c512e85adaace",
+          "blob": "eec49aca93339f4084778367d85a4e58",
           "name": "stairs.svg",
-          "size": 269,
+          "size": 231,
           "type": "image/svg+xml"
         },
         "tick.svg": {
@@ -92,6 +86,12 @@
           "name": "video.svg",
           "size": 283,
           "type": "image/svg+xml"
+        },
+        "umbrella.svg": {
+          "blob": "f389af09c97016046988a16eb22aa027",
+          "name": "umbrella.svg",
+          "size": 406,
+          "type": "image/svg+xml"
         }
       },
       "name": "Icons",
@@ -100,7 +100,7 @@
         "stairs.svg",
         "blocks.svg",
         "clipboard.svg",
-        "hands-heart.svg",
+        "umbrella.svg",
         "medicare-cross.svg",
         "shield-tick.svg",
         "smile.svg",
@@ -209,9 +209,9 @@
   ],
   "lastChange": {
     "by": "Sam",
-    "at": "2026-10-29T04:45:00Z",
+    "at": "2026-10-29T06:30:00Z",
     "via": "GitHub \u00b7 Samwisee/follow-me-therapy",
-    "note": "border-outline token; website fully reads from tokens (colours, fonts, radii, outlines), checked on every change."
+    "note": "Stairs icon is now plain steps (no flag); NDIS icon is now an umbrella (support/cover)."
   },
   "layout": "files",
   "libraries": [

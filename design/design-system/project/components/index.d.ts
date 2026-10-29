@@ -1,7 +1,7 @@
 import type * as React from 'react';
 type Tone = 'purple' | 'teal' | 'sun' | 'pink';
 type Icon24Name = 'smile' | 'video' | 'pin' | 'info' | 'book' | 'heart' | 'chevron';
-type Icon40Name = 'footprints' | 'stairs' | 'blocks' | 'clipboard' | 'hands-heart' | 'medicare-cross' | 'shield-tick';
+type Icon40Name = 'footprints' | 'stairs' | 'blocks' | 'clipboard' | 'umbrella' | 'medicare-cross' | 'shield-tick';
 export interface IconProps { name: Icon24Name; label?: string }
 export declare function Icon(props: IconProps): React.ReactElement;
 export interface ChipProps { tone?: Tone | 'outline'; icon?: Icon24Name; live?: string; href?: string; children?: React.ReactNode }

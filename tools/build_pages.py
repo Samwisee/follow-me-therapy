@@ -46,6 +46,7 @@ def page(slug,title,desc,crumb,h1,lead,chips,bands):
     <link rel="preload" href="fonts/quicksand-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="css/tokens.css" />
     <link rel="stylesheet" href="css/pages.css" />
+    <link rel="stylesheet" href="css/contact.css" />
     <link rel="stylesheet" href="css/cards.css" media="print" onload="this.media='all'" />
     <noscript><link rel="stylesheet" href="css/cards.css" /></noscript>
     <script>
@@ -73,11 +74,6 @@ def page(slug,title,desc,crumb,h1,lead,chips,bands):
             ><img src="img/brand/follow-me-therapy-mark.svg" alt="" width="226" height="250" /><span>Follow Me Therapy</span></a
           >
         </div>
-        <a class="btn btn-small" href="{REF}" target="_blank" rel="noopener">Start a referral</a>
-        <a class="ref-fab" href="{REF}" target="_blank" rel="noopener"
-          ><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="3" /><path d="M9 3h6v3H9z" /><path d="M12 10v6M9 13h6" /></svg
-          ><span>Start a referral</span><span class="sr-only"> (opens in a new tab)</span></a
-        >
       </div>
     </header>
     <main id="main">
@@ -94,10 +90,10 @@ def page(slug,title,desc,crumb,h1,lead,chips,bands):
         </div>
       </section>
 {body}
-      <section class="band tone-lilac cta">
+      <section class="band tone-lilac cta" id="get-started">
         <div class="wrap">
           <h2>Ready to take the first step?</h2>
-          <p>Start a referral and I’ll be in touch, or ask me anything first. You can also call <a href="tel:+61435076683">0435 076 683</a>.</p>
+          <p>Start a referral and I’ll be in touch, or ask me anything. You can also call <a href="tel:+61435076683">0435 076 683</a>.</p>
           <div class="hero-actions">
             <a class="btn" href="{REF}" target="_blank" rel="noopener">Start a referral</a>
             <a class="btn btn-outline" href="{ENQ}" target="_blank" rel="noopener">Ask a question</a>
@@ -114,6 +110,55 @@ def page(slug,title,desc,crumb,h1,lead,chips,bands):
         <p class="foot-small">I acknowledge the Traditional Custodians of the lands across Australia, and the Wurundjeri people, on whose land I provide my services. I pay my respects to Elders past and present. All are welcome at Follow Me Therapy.</p>
       </div>
     </footer>
+    <a href="#get-started" class="fab" id="contactUsButton" aria-label="Contact me" inert>
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          d="M4 5h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H9l-4 3v-3H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linejoin="round"
+        />
+        <circle cx="8.5" cy="11" r="1.2" fill="currentColor" />
+        <circle cx="12" cy="11" r="1.2" fill="currentColor" />
+        <circle cx="15.5" cy="11" r="1.2" fill="currentColor" />
+      </svg>
+      <span class="fab-label">Contact me</span>
+    </a>
+    <div id="contactModal" class="modal contact-modal">
+      <div
+        class="modal-content"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="contactModalTitle"
+        tabindex="-1"
+      >
+        <button type="button" class="close" aria-label="Close">&times;</button>
+        <h3 id="contactModalTitle">Let’s get started!</h3>
+        <ul class="modal-chips">
+          <li>Telehealth spots available now</li>
+          <li>NDIS · Medicare · Private</li>
+        </ul>
+        <a href="https://follow-me-therapy.splose.com/public-form/975d61d5-cd63-44e5-86e7-f9315fa6a5b0" target="_blank" rel="noopener" class="modal-choice primary">
+          <span class="mc-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M7 4h7l4 4v12H7z" /><path d="M14 4v4h4M10 13h5M10 16h5" /></svg>
+          </span>
+          <span class="mc-text"><b>Start a referral</b><small>New to Follow Me Therapy? Begin here.</small></span>
+          <span class="mc-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg></span>
+        </a>
+        <a href="https://follow-me-therapy.splose.com/public-form/e84c8756-615f-4404-a6f3-a90f3760223b" target="_blank" rel="noopener" class="modal-choice">
+          <span class="mc-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-4 3v-3H4z" /><path d="M10 9.5a2 2 0 1 1 2.6 1.9c-.4.2-.6.5-.6.9M12 14h.01" /></svg>
+          </span>
+          <span class="mc-text"><b>Ask a question</b><small>Not sure yet? Send me a quick message.</small></span>
+          <span class="mc-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg></span>
+        </a>
+        <p class="modal-note">
+          Not about a client? Email
+          <a href="mailto:info@followmetherapy.com.au">info@followmetherapy.com.au</a>
+        </p>
+      </div>
+    </div>
     <div id="detailModal" class="modal">
       <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="detailTitle" tabindex="-1">
         <button type="button" class="close" aria-label="Close">&times;</button>
@@ -138,9 +183,9 @@ def ul(items): return '          <ul class="checklist pop">'+''.join(f'<li>{i}</
 def cards(items): return '          <div class="cards pop">'+''.join(f'<div class="card"><h3>{t}</h3><p>{d}</p></div>' for t,d in items)+'</div>'
 def steps(items): return '          <ol class="steps-row pop">'+''.join(f'<li><span class="step-num">{i+1}</span><h3>{t}</h3><p>{d}</p></li>' for i,(t,d) in enumerate(items))+'</ol>'
 
-SVC={'pediatric': '              <div class="service-item" data-service="pediatric" role="button" tabindex="0" aria-haspopup="dialog">\n                <span class="svc-icon svc-footprints"><svg viewBox="0 0 40 40" aria-hidden="true"><g transform="translate(6 7) rotate(-6 8 12) scale(.95)"><ellipse cx="11.5" cy="3.1" rx="2.05" ry="2.55"/><circle cx="8.15" cy="2.25" r="1.35"/><circle cx="5.85" cy="2.9" r="1.2"/><circle cx="3.95" cy="4.15" r="1.05"/><circle cx="2.55" cy="5.85" r="0.9"/><path d="M7.6 6.6C11.2 6.2 13.9 7.8 13.6 10.8 13.4 12.8 11.4 14 10.9 16.2 10.5 18 11.6 19.4 11.2 21.2 10.8 23.2 9.3 24 7.7 24 5.6 24 4.3 22.7 4.3 20.6 4.3 17.6 3 15.8 2.8 12.8 2.5 9.2 4.4 6.9 7.6 6.6Z"/></g><g transform="translate(19 4) rotate(6 8 12) scale(.95)"><g transform="translate(16 0) scale(-1 1)"><ellipse cx="11.5" cy="3.1" rx="2.05" ry="2.55"/><circle cx="8.15" cy="2.25" r="1.35"/><circle cx="5.85" cy="2.9" r="1.2"/><circle cx="3.95" cy="4.15" r="1.05"/><circle cx="2.55" cy="5.85" r="0.9"/><path d="M7.6 6.6C11.2 6.2 13.9 7.8 13.6 10.8 13.4 12.8 11.4 14 10.9 16.2 10.5 18 11.6 19.4 11.2 21.2 10.8 23.2 9.3 24 7.7 24 5.6 24 4.3 22.7 4.3 20.6 4.3 17.6 3 15.8 2.8 12.8 2.5 9.2 4.4 6.9 7.6 6.6Z"/></g></g></svg></span>\n                <h3>5 Steps Forward</h3>\n                <p>A focused 5-session program for specific goals.</p>\n                <span class="more">Learn more<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg></span>\n              </div>\n', 'adult': '              <div class="service-item" data-service="adult" role="button" tabindex="0" aria-haspopup="dialog">\n                <span class="svc-icon svc-stairs"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M6 33h8v-7h7v-7h7v-7h6"/><path d="M30 12V5l5 2.5-5 2.5"/></svg></span>\n                <h3>Steady Steps</h3>\n                <p>A 12-session block of steady, ongoing support to build key skills.</p>\n                <span class="more">Learn more<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg></span>\n              </div>\n', 'home': '              <div class="service-item" data-service="home" role="button" tabindex="0" aria-haspopup="dialog">\n                <span class="svc-icon svc-esdm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="6" y="22" width="12" height="12" rx="2.5"/><rect x="22" y="22" width="12" height="12" rx="2.5"/><rect x="14" y="7" width="12" height="12" rx="2.5" transform="rotate(8 20 13)"/></svg></span>\n                <h3>Early Start Denver Model (ESDM)</h3>\n                <p>Play-based therapy for young children with autism or developmental delays.</p>\n                <span class="more">Learn more<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg></span>\n              </div>\n', 'assessments': '              <div class="service-item" data-service="assessments" role="button" tabindex="0" aria-haspopup="dialog">\n                <span class="svc-icon svc-assessments"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="9" y="7" width="22" height="28" rx="4"/><rect x="15" y="4" width="10" height="6" rx="2"/><path d="M15 22l4 4 7-8"/></svg></span>\n                <h3>Assessments</h3>\n                <p>NDIS access, functional capacity, progress, sensory and assistive technology reports.</p>\n                <span class="more">Learn more<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg></span>\n              </div>\n'}
+SVC={'pediatric': '              <div class="service-item" data-service="pediatric" role="button" tabindex="0" aria-haspopup="dialog">\n                <span class="svc-icon svc-footprints"><svg viewBox="0 0 40 40" aria-hidden="true"><g transform="translate(6 7) rotate(-6 8 12) scale(.95)"><ellipse cx="11.5" cy="3.1" rx="2.05" ry="2.55"/><circle cx="8.15" cy="2.25" r="1.35"/><circle cx="5.85" cy="2.9" r="1.2"/><circle cx="3.95" cy="4.15" r="1.05"/><circle cx="2.55" cy="5.85" r="0.9"/><path d="M7.6 6.6C11.2 6.2 13.9 7.8 13.6 10.8 13.4 12.8 11.4 14 10.9 16.2 10.5 18 11.6 19.4 11.2 21.2 10.8 23.2 9.3 24 7.7 24 5.6 24 4.3 22.7 4.3 20.6 4.3 17.6 3 15.8 2.8 12.8 2.5 9.2 4.4 6.9 7.6 6.6Z"/></g><g transform="translate(19 4) rotate(6 8 12) scale(.95)"><g transform="translate(16 0) scale(-1 1)"><ellipse cx="11.5" cy="3.1" rx="2.05" ry="2.55"/><circle cx="8.15" cy="2.25" r="1.35"/><circle cx="5.85" cy="2.9" r="1.2"/><circle cx="3.95" cy="4.15" r="1.05"/><circle cx="2.55" cy="5.85" r="0.9"/><path d="M7.6 6.6C11.2 6.2 13.9 7.8 13.6 10.8 13.4 12.8 11.4 14 10.9 16.2 10.5 18 11.6 19.4 11.2 21.2 10.8 23.2 9.3 24 7.7 24 5.6 24 4.3 22.7 4.3 20.6 4.3 17.6 3 15.8 2.8 12.8 2.5 9.2 4.4 6.9 7.6 6.6Z"/></g></g></svg></span>\n                <h3>5 Steps Forward</h3>\n                <p>A focused 5-session program for specific goals.</p>\n                <span class="more">Learn more<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg></span>\n              </div>\n', 'adult': '              <div class="service-item" data-service="adult" role="button" tabindex="0" aria-haspopup="dialog">\n                <span class="svc-icon svc-stairs"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M6 31h8v-7h7v-7h7v-7h6"/></svg></span>\n                <h3>Steady Steps</h3>\n                <p>A 12-session block of steady, ongoing support to build key skills.</p>\n                <span class="more">Learn more<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg></span>\n              </div>\n', 'home': '              <div class="service-item" data-service="home" role="button" tabindex="0" aria-haspopup="dialog">\n                <span class="svc-icon svc-esdm"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="6" y="22" width="12" height="12" rx="2.5"/><rect x="22" y="22" width="12" height="12" rx="2.5"/><rect x="14" y="7" width="12" height="12" rx="2.5" transform="rotate(8 20 13)"/></svg></span>\n                <h3>Early Start Denver Model (ESDM)</h3>\n                <p>Play-based therapy for young children with autism or developmental delays.</p>\n                <span class="more">Learn more<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg></span>\n              </div>\n', 'assessments': '              <div class="service-item" data-service="assessments" role="button" tabindex="0" aria-haspopup="dialog">\n                <span class="svc-icon svc-assessments"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="9" y="7" width="22" height="28" rx="4"/><rect x="15" y="4" width="10" height="6" rx="2"/><path d="M15 22l4 4 7-8"/></svg></span>\n                <h3>Assessments</h3>\n                <p>NDIS access, functional capacity, progress, sensory and assistive technology reports.</p>\n                <span class="more">Learn more<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg></span>\n              </div>\n'}
 def svcgrid(keys): return '          <div class="svc-grid pop">\n'+''.join(SVC[k] for k in keys)+'          </div>'
-FUNDHTML='          <div class="fund-grid pop">\n            <div class="funding-card" data-funding="ndis" role="button" tabindex="0" aria-haspopup="dialog">\n              <span class="svc-icon svc-footprints fund-svg"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 21c-4.2-3-7-5.6-7-8.6a3.6 3.6 0 0 1 7-1.3 3.6 3.6 0 0 1 7 1.3c0 3-2.8 5.6-7 8.6z"/><path d="M5 26h5.5l6 3.5h6.5a2.4 2.4 0 0 0 0-4.8h-4.5"/><path d="M10.5 33h11l11-6.6a2.3 2.3 0 0 0-2.6-3.7L24 25.7"/><path d="M5 23v13"/></svg></span>\n              <h3>NDIS</h3>\n              <p>For self-managed and plan-managed participants.</p>\n              <span class="more">How it works<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg></span>\n            </div>\n            <div class="funding-card" data-funding="medicare" role="button" tabindex="0" aria-haspopup="dialog">\n              <span class="svc-icon svc-stairs fund-svg"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="7" y="7" width="26" height="26" rx="7"/><path d="M20 13v14M13 20h14"/></svg></span>\n              <h3>Medicare</h3>\n              <p>Rebates with an eligible plan from your doctor.</p>\n              <span class="more">How it works<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg></span>\n            </div>\n            <div class="funding-card" data-funding="private" role="button" tabindex="0" aria-haspopup="dialog">\n              <span class="svc-icon svc-esdm fund-svg"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 5l12 5v9c0 8-5 13-12 16C13 32 8 27 8 19v-9z"/><path d="M15 20l4 4 7-8"/></svg></span>\n              <h3>Private</h3>\n              <p>Flexible short or long-term support, with possible health fund rebates.</p>\n              <span class="more">How it works<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg></span>\n            </div>\n          </div>\n'
+FUNDHTML='          <div class="fund-grid pop">\n            <div class="funding-card" data-funding="ndis" role="button" tabindex="0" aria-haspopup="dialog">\n              <span class="svc-icon svc-footprints fund-svg"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M6 20a14 14 0 0 1 28 0"/><path d="M6 20c2.3-2.2 4.7-2.2 7 0 2.3-2.2 4.7-2.2 7 0 2.3-2.2 4.7-2.2 7 0 2.3-2.2 4.7-2.2 7 0"/><path d="M20 20v10.5a3.5 3.5 0 0 1-7 0"/><path d="M20 6V4"/></svg></span>\n              <h3>NDIS</h3>\n              <p>For self-managed and plan-managed participants.</p>\n              <span class="more">How it works<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg></span>\n            </div>\n            <div class="funding-card" data-funding="medicare" role="button" tabindex="0" aria-haspopup="dialog">\n              <span class="svc-icon svc-stairs fund-svg"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="7" y="7" width="26" height="26" rx="7"/><path d="M20 13v14M13 20h14"/></svg></span>\n              <h3>Medicare</h3>\n              <p>Rebates with an eligible plan from your doctor.</p>\n              <span class="more">How it works<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg></span>\n            </div>\n            <div class="funding-card" data-funding="private" role="button" tabindex="0" aria-haspopup="dialog">\n              <span class="svc-icon svc-esdm fund-svg"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 5l12 5v9c0 8-5 13-12 16C13 32 8 27 8 19v-9z"/><path d="M15 20l4 4 7-8"/></svg></span>\n              <h3>Private</h3>\n              <p>Flexible short or long-term support, with possible health fund rebates.</p>\n              <span class="more">How it works<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg></span>\n            </div>\n          </div>\n'
 
 def p(t): return f'          <p>{t}</p>'
 

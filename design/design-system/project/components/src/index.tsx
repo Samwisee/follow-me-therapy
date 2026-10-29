@@ -17,10 +17,10 @@ const ICON24: Record<string, string> = {
 const FOOT = '<ellipse cx="11.5" cy="3.1" rx="2.05" ry="2.55"/><circle cx="8.15" cy="2.25" r="1.35"/><circle cx="5.85" cy="2.9" r="1.2"/><circle cx="3.95" cy="4.15" r="1.05"/><circle cx="2.55" cy="5.85" r="0.9"/><path d="M7.6 6.6C11.2 6.2 13.9 7.8 13.6 10.8 13.4 12.8 11.4 14 10.9 16.2 10.5 18 11.6 19.4 11.2 21.2 10.8 23.2 9.3 24 7.7 24 5.6 24 4.3 22.7 4.3 20.6 4.3 17.6 3 15.8 2.8 12.8 2.5 9.2 4.4 6.9 7.6 6.6Z"/>';
 const ICON40: Record<string, { d: string; filled?: boolean }> = {
   footprints: { filled: true, d: `<g transform="translate(6 7) rotate(-6 8 12) scale(.95)">${FOOT}</g><g transform="translate(19 4) rotate(6 8 12) scale(.95)"><g transform="translate(16 0) scale(-1 1)">${FOOT}</g></g>` },
-  stairs: { d: '<path d="M6 33h8v-7h7v-7h7v-7h6"/><path d="M30 12V5l5 2.5-5 2.5"/>' },
+  stairs: { d: '<path d="M6 31h8v-7h7v-7h7v-7h6"/>' },
   blocks: { d: '<rect x="6" y="22" width="12" height="12" rx="2.5"/><rect x="22" y="22" width="12" height="12" rx="2.5"/><rect x="14" y="7" width="12" height="12" rx="2.5" transform="rotate(8 20 13)"/>' },
   clipboard: { d: '<rect x="9" y="7" width="22" height="28" rx="4"/><rect x="15" y="4" width="10" height="6" rx="2"/><path d="M15 22l4 4 7-8"/>' },
-  'hands-heart': { d: '<path d="M20 21c-4.2-3-7-5.6-7-8.6a3.6 3.6 0 0 1 7-1.3 3.6 3.6 0 0 1 7 1.3c0 3-2.8 5.6-7 8.6z"/><path d="M5 26h5.5l6 3.5h6.5a2.4 2.4 0 0 0 0-4.8h-4.5"/><path d="M10.5 33h11l11-6.6a2.3 2.3 0 0 0-2.6-3.7L24 25.7"/><path d="M5 23v13"/>' },
+  umbrella: { d: '<path d="M6 20a14 14 0 0 1 28 0"/><path d="M6 20c2.3-2.2 4.7-2.2 7 0 2.3-2.2 4.7-2.2 7 0 2.3-2.2 4.7-2.2 7 0 2.3-2.2 4.7-2.2 7 0"/><path d="M20 20v10.5a3.5 3.5 0 0 1-7 0"/><path d="M20 6V4"/>' },
   'medicare-cross': { d: '<rect x="7" y="7" width="26" height="26" rx="7"/><path d="M20 13v14M13 20h14"/>' },
   'shield-tick': { d: '<path d="M20 5l12 5v9c0 8-5 13-12 16C13 32 8 27 8 19v-9z"/><path d="M15 20l4 4 7-8"/>' },
 };

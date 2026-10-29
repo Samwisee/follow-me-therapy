@@ -1231,72 +1231,6 @@ p {
 .site-title {
   animation: titleIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.5s both;
 }
-.fab {
-  position: fixed;
-  right: 20px;
-  bottom: calc(20px + env(safe-area-inset-bottom));
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  height: 60px;
-  padding: 0 22px 0 18px;
-  border-radius: 30px;
-  background: var(--purple);
-  color: var(--paper);
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 1.05em;
-  box-shadow: 0 8px 24px color-mix(in srgb, var(--purple) 40%, transparent);
-  transition:
-    opacity 0.35s ease,
-    transform 0.5s cubic-bezier(0.3, 1.5, 0.5, 1),
-    padding 0.35s ease,
-    gap 0.35s ease,
-    background-color 0.2s ease;
-}
-.fab.show {
-  opacity: 1;
-  transform: none;
-  pointer-events: auto;
-}
-.fab,
-.fab.show.tucked {
-  opacity: 0;
-  transform: translateY(24px) scale(0.6);
-  pointer-events: none;
-}
-.fab:hover {
-  background: var(--purple-dark);
-}
-.fab:active {
-  transform: scale(0.92);
-}
-.fab svg {
-  width: 26px;
-  height: 26px;
-  flex: none;
-}
-.fab-label {
-  max-width: 120px;
-  overflow: hidden;
-  white-space: nowrap;
-  transition:
-    max-width 0.35s ease,
-    opacity 0.25s ease;
-}
-.fab.compact {
-  padding: 0 17px;
-  gap: 0;
-}
-.fab.compact .fab-label {
-  max-width: 0;
-  opacity: 0;
-}
-.fab:focus-visible {
-  outline: 3px solid var(--butter-deep);
-  outline-offset: 3px;
-}
 @media (prefers-reduced-motion: reduce) {
   .logo-walk,
   .logo-walk .logo-image,
@@ -2009,7 +1943,6 @@ section[id] {
   font-size: 0.92em !important;
   margin: 22px auto 0 !important;
 }
-#contactModal .modal-note a,
 .evidence a,
 .more-link a,
 .privacy-note a {
@@ -2202,122 +2135,10 @@ h2::after {
 .modal-content:focus-visible {
   outline: 0;
 }
-#contactModal .modal-content {
-  max-width: 480px;
-  padding: 36px 24px 26px;
-}
-#contactModal h3 {
-  font-size: 1.6em;
-  margin: 0 36px 6px;
-}
 .modal-sub {
   text-align: center;
   margin: 0 auto 14px !important;
   font-size: 1em !important;
-}
-.modal-chips {
-  list-style: none;
-  padding: 0;
-  margin: 0 auto 20px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px;
-  max-width: none;
-}
-.modal-chips li {
-  margin: 0;
-  padding: 5px 12px;
-  border-radius: var(--radius-pill);
-  background: var(--teal-tint);
-  color: var(--teal-deeper);
-  font-weight: 700;
-  font-size: 0.82em;
-}
-.modal-choice {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 14px 16px;
-  margin-bottom: 10px;
-  border-radius: 20px;
-  border: 2px solid var(--purple-fog);
-  background: var(--paper);
-  color: var(--ink);
-  text-decoration: none;
-  text-align: left;
-  transition:
-    transform 0.25s cubic-bezier(0.3, 1.6, 0.5, 1),
-    border-color 0.2s,
-    background-color 0.2s,
-    box-shadow 0.2s;
-}
-.modal-choice:hover {
-  border-color: var(--purple);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 18px color-mix(in srgb, var(--purple) 15%, transparent);
-}
-.modal-choice:active {
-  transform: scale(0.97);
-}
-.modal-choice.primary {
-  background: var(--purple);
-  border-color: var(--purple);
-  color: var(--paper);
-  box-shadow: 0 8px 20px color-mix(in srgb, var(--purple) 30%, transparent);
-}
-.modal-choice.primary:hover {
-  background: var(--purple-dark);
-  border-color: var(--purple-dark);
-}
-.mc-icon {
-  flex: none;
-  width: 44px;
-  height: 44px;
-  border-radius: 14px;
-  display: grid;
-  place-items: center;
-  background: var(--purple-tint);
-  color: var(--purple);
-}
-.modal-choice.primary .mc-icon {
-  background: color-mix(in srgb, var(--paper) 18%, transparent);
-  color: var(--paper);
-}
-.mc-icon svg {
-  width: 24px;
-  height: 24px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-.mc-text {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  line-height: 1.3;
-}
-.mc-text b {
-  font-family: var(--display);
-  font-weight: 600;
-  font-size: 1.1em;
-}
-.modal-choice b {
-  color: inherit !important;
-}
-.mc-text small {
-  font-size: 0.88em;
-  opacity: 0.85;
-  margin-top: 2px;
-}
-.mc-arrow {
-  font-size: 1.3em;
-  transition: transform 0.25s ease;
-}
-.modal-choice:hover .mc-arrow {
-  transform: translateX(4px);
 }
 #serviceModal .btn-secondary {
   width: 100%;
@@ -2897,14 +2718,6 @@ html {
     max-width: 60% !important;
     margin: 0 auto 12px !important;
   }
-}
-
-/* Breathing room: under the Get started title, and under the Teams line. */
-#contactModalTitle {
-  margin-bottom: 14px !important;
-}
-#contactModal .modal-chips {
-  margin-bottom: 24px !important;
 }
 .telehealth-content .teams-note {
   margin-bottom: 28px !important;
@@ -3528,7 +3341,8 @@ main section[id] { scroll-margin-top: -36px; }
 .th-title { display: flex; flex-wrap: wrap; align-items: center; column-gap: 20px; row-gap: 4px; margin-bottom: 22px; }
 .th-title h2 { margin-bottom: 0 !important; }
 .telehealth-content .book-row { justify-content: center; margin: 32px 0 8px; }
-.inline-more { display: inline-flex; align-items: center; gap: 2px; margin-left: 0.4em; color: var(--purple); font-weight: 700; text-decoration: none; white-space: nowrap; }
+.inline-more { display: inline; color: var(--purple); font-weight: 700; text-decoration: none; white-space: nowrap; }
+.inline-more .chev { vertical-align: -0.2em; margin-left: 2px; }
 .inline-more .chev { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
 
 /* The title scales with the window up to the 1440px size, then stops, so a
@@ -3546,3 +3360,24 @@ main section[id] { scroll-margin-top: -36px; }
 /* Optical alignment: line up the badge's lowercase letters with the title's
    (the title's line box has room for descenders it doesn't use). */
 .th-title .book-note { position: relative; top: 0.2em; }
+.book-note .live-dot { margin-left: 3px; } /* keeps its glow ring inside the text column */
+
+/* Tablet top bar (769–1299px): the logo sits in the same lilac circle as the
+   side rail, and the bar's ends are concentric with it: equal padding all
+   round, so bar radius = circle radius + padding. */
+@media (min-width: 769px) and (max-width: 1299px) {
+  body .fixed-header { padding: 6px !important; }
+  body .fixed-header .nav-logo {
+    display: grid !important;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 0 !important;
+    border-radius: 50%;
+    background: var(--purple-tint) !important;
+    border: var(--border-outline) solid var(--purple-line);
+    box-sizing: border-box;
+  }
+  body .fixed-header .nav-logo img { height: 28px; }
+  body .fixed-header .nav-logo:hover { border-color: var(--purple); }
+}
