@@ -162,16 +162,14 @@
 .modal-body .list-label {
   margin: 4px 0 8px !important;
 }
+/* Pop-up lists: plain ticked lines, no card around each one, to save room. */
 .modal-body .checklist li {
-  background: #fff;
-  border: 2px solid var(--tone-tint);
-  border-radius: 16px;
-  padding: 10px 14px 10px 44px;
-  margin-bottom: 10px;
+  padding: 3px 0 3px 32px;
+  margin-bottom: 4px;
 }
 .modal-body .checklist li::before {
-  left: 14px !important;
-  top: 12px !important;
+  left: 2px !important;
+  top: 5px !important;
 }
 @media (prefers-reduced-motion: no-preference) {
   .modal.show .modal-icon {
@@ -285,13 +283,12 @@
   .modal-body .checklist li {
     font-size: 0.93em !important;
     line-height: 1.4 !important;
-    padding: 7px 10px 7px 34px;
-    margin-bottom: 6px !important;
-    border-radius: 12px;
+    padding: 2px 0 2px 28px;
+    margin-bottom: 4px !important;
   }
   .modal-body .checklist li::before {
-    left: 10px !important;
-    top: 9px !important;
+    left: 2px !important;
+    top: 4px !important;
     width: 16px;
     height: 16px;
   }
@@ -324,11 +321,11 @@
     margin-bottom: 6px;
   }
   .modal-body .checklist li {
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 1px;
+    padding-bottom: 1px;
   }
   .modal-body .checklist li::before {
-    top: 7px !important;
+    top: 3px !important;
   }
 }
 @media (max-height: 700px) {
