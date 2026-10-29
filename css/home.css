@@ -694,11 +694,12 @@ html[data-nav="rail"] main section[id] {
   .bio {
     display: block;
   }
+  /* Stacked: the photo spans the card, its corners nesting in the card's. */
   .bio > .bio-photo {
-    max-width: 20rem;
+    width: 100%;
     min-height: 0;
     aspect-ratio: 1;
-    margin: 0 auto var(--space-5);
+    margin: 0 0 var(--space-5);
   }
 }
 @media (prefers-reduced-motion: no-preference) {
