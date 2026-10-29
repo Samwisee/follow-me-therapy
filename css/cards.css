@@ -28,9 +28,9 @@
   text-align: left !important;
   padding: 24px !important;
   background: var(--paper);
-  border-radius: 24px !important;
+  border-radius: var(--radius-card) !important;
   border-top: 6px solid var(--band) !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06) !important;
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--ink) 6%, transparent) !important;
   cursor: pointer;
   transition:
     transform 0.35s cubic-bezier(0.3, 1.5, 0.5, 1),
@@ -66,7 +66,7 @@
 .funding-card .svc-icon {
   width: 60px !important;
   height: 60px !important;
-  border-radius: 18px !important;
+  border-radius: var(--radius-tile) !important;
   margin-bottom: 12px !important;
 }
 .service-item .svc-icon svg,
@@ -125,7 +125,7 @@
   place-items: center;
   width: 76px;
   height: 76px;
-  border-radius: 24px;
+  border-radius: var(--radius-card);
   background: var(--paper);
   color: var(--tone);
   box-shadow: 0 8px 20px color-mix(in srgb, var(--ink) 10%, transparent);
@@ -150,7 +150,7 @@
 .modal-tag {
   display: inline-block;
   padding: 4px 12px;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   background: var(--tone);
   color: var(--paper);
   font-weight: 700;
@@ -211,7 +211,7 @@
   color: var(--ink) !important;
   border: 2px solid var(--purple-mist) !important;
   border-top: 6px solid var(--band) !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06) !important;
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--ink) 6%, transparent) !important;
 }
 .modal-choice:not(.primary) {
   --band: var(--card-teal);
@@ -261,7 +261,7 @@
   .modal-icon {
     width: 54px;
     height: 54px;
-    border-radius: 18px;
+    border-radius: var(--radius-tile);
   }
   .modal-icon svg {
     width: 32px;
@@ -382,7 +382,7 @@
   margin: 40px auto 0 !important;
   padding: 20px 24px !important;
   border: 0 !important;
-  border-radius: 22px !important;
+  border-radius: var(--radius-note) !important;
   background: var(--note-tint, var(--purple-tint)) !important;
   box-shadow: none !important;
   filter: none !important;
@@ -415,7 +415,7 @@
 .callout.info-note {
   --note-tint: var(--paper);
   --note-ink: var(--purple);
-  font-family: "Fredoka", "Quicksand", sans-serif;
+  font-family: var(--font-display);
   font-weight: 500;
   font-size: 1.2rem !important;
   color: var(--ink);
@@ -537,7 +537,7 @@
 /* The notes' badges are squircles, like the icon tiles on the cards: a
    soft tile of colour with the icon drawn in lines. */
 .info-note::before {
-  border-radius: 16px !important;
+  border-radius: var(--radius-md) !important;
   box-shadow: none !important;
   background: /* token:purple */ url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23502eed' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 11v5.5'/%3E%3Cpath d='M12 7.6v.1'/%3E%3C/svg%3E") center / 26px 26px no-repeat, var(--paper) !important;
 }
@@ -560,3 +560,30 @@
   background: var(--paper);
   border: 2px solid var(--tone-tint, var(--purple-tint));
 }
+
+
+/* ══ Outlines, shared by every page ══
+   Every container that holds an icon, a label or a note wears an outline
+   of var(--border-outline) (design/tokens.json) in its own line colour, so
+   pastel shapes hold their edges on any ground, in greyscale print and in
+   high-contrast mode. Change the width once in the tokens. */
+.svc-icon { box-sizing: border-box; border: var(--border-outline) solid var(--purple-line) !important; }
+.svc-icon.svc-stairs { border-color: var(--teal-line) !important; }
+.svc-icon.svc-esdm { border-color: var(--sun-line) !important; }
+.svc-icon.svc-assessments { border-color: var(--pink-line) !important; }
+.modal-icon { box-sizing: border-box; border: var(--border-outline) solid color-mix(in srgb, var(--tone, var(--purple)) 30%, var(--paper)); }
+.modal-choice .mc-icon { box-sizing: border-box; border: var(--border-outline) solid color-mix(in srgb, var(--band, var(--purple)) 30%, var(--paper)); }
+
+/* Info notes: the strip and its badge both outlined in the note's line colour. */
+.info-note { --note-line: var(--purple-line); border: var(--border-outline) solid var(--note-line) !important; }
+.evidence.info-note { --note-line: var(--teal-line); }
+.callout.info-note { --note-line: var(--purple-line); }
+.info-note::before { box-sizing: border-box; border: var(--border-outline) solid var(--note-line) !important; }
+
+/* Step numbers: a solid disc with a ring in its own tint. */
+.step-num { box-sizing: border-box; border: var(--border-outline) solid color-mix(in srgb, var(--purple) 35%, var(--paper)); }
+.steps li:nth-child(2) .step-num, .steps-row li:nth-child(2) .step-num { border-color: color-mix(in srgb, var(--teal) 35%, var(--paper)); }
+.steps li:nth-child(3) .step-num, .steps-row li:nth-child(3) .step-num { border-color: color-mix(in srgb, var(--sun) 50%, var(--paper)); }
+
+/* The Back button on the inner pages is a pill like the chips. */
+.back-btn { border: var(--border-outline) solid var(--purple-line) !important; }

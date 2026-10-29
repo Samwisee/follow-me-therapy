@@ -41,7 +41,7 @@
       }
       body {
         margin: 0;
-        font-family: "Quicksand", system-ui, sans-serif;
+        font-family: var(--font-body);
         font-weight: 500;
         color: var(--ink-soft);
         background: var(--purple-tint);
@@ -61,7 +61,7 @@
         width: auto;
       }
       .top span {
-        font-family: "Fredoka", sans-serif;
+        font-family: var(--font-display);
         font-weight: 600;
         font-size: 1.4em;
         color: var(--brand-ink);
@@ -71,8 +71,8 @@
         margin: 0 auto 60px;
         padding: 36px 28px;
         background: var(--paper);
-        border-radius: 28px;
-        box-shadow: 0 12px 32px rgba(75, 52, 170, 0.1);
+        border-radius: var(--radius-frame);
+        box-shadow: 0 12px 32px color-mix(in srgb, var(--purple-ink) 10%, transparent);
       }
       @media (max-width: 600px) {
         main {
@@ -82,7 +82,7 @@
       }
       h1,
       h2 {
-        font-family: "Fredoka", sans-serif;
+        font-family: var(--font-display);
         font-weight: 600;
         color: var(--ink);
         line-height: 1.25;
@@ -124,6 +124,7 @@
       }
       .top-row .back-btn {
         justify-self: start;
+        border: var(--border-outline) solid var(--purple-line);
       }
       @media (max-width: 600px) {
         .top-row {
@@ -140,13 +141,13 @@
         gap: 4px;
         flex: none;
         padding: 8px 14px 8px 10px;
-        border-radius: 999px;
+        border-radius: var(--radius-pill);
         background: var(--paper);
         color: var(--purple);
-        font-family: "Fredoka", sans-serif;
+        font-family: var(--font-display);
         font-weight: 500;
         text-decoration: none;
-        box-shadow: 0 4px 12px rgba(43, 37, 64, 0.08);
+        box-shadow: 0 4px 12px color-mix(in srgb, var(--ink) 8%, transparent);
         transition: transform 0.25s ease;
       }
       .back-btn svg {
@@ -175,7 +176,7 @@
         top: -60px;
         z-index: 100;
         padding: 10px 16px;
-        border-radius: 999px;
+        border-radius: var(--radius-pill);
         background: var(--purple);
         color: var(--paper);
         font-weight: 700;

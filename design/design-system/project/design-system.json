@@ -209,9 +209,9 @@
   ],
   "lastChange": {
     "by": "Sam",
-    "at": "2026-10-29T04:30:00Z",
+    "at": "2026-10-29T04:45:00Z",
     "via": "GitHub \u00b7 Samwisee/follow-me-therapy",
-    "note": "Nest: concentric corners rule (outer radius = inner radius + gap + border)."
+    "note": "border-outline token; website fully reads from tokens (colours, fonts, radii, outlines), checked on every change."
   },
   "layout": "files",
   "libraries": [

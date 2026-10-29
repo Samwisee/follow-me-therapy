@@ -13,7 +13,9 @@ Therapy on her own. See README.md for the file layout.
   then wait for the "pages build and deployment" run (`gh run list -L 1`) to succeed.
 - Colours, fonts, sizes, logo colour: edit `design/tokens.json` (the single
   source; see design/README.md), run `python3 tools/build_tokens.py`. Never
-  hardcode a colour in CSS or HTML: use `var(--token)`. A colour inside a
+  hardcode a colour, font, radius or outline width in CSS or HTML: use
+  `var(--token)`. `python3 tools/check_tokens.py` must say "Everything reads
+  from the design tokens." (it also runs on every push to preview). A colour inside a
   data-URI SVG gets a `/* token:<name> */` tag before `url(` instead.
 - Design-system components: edit `design/design-system/project/components/src/index.tsx`
   or `bundle.css`, run `npm run design-system`, then publish that folder to the

@@ -46,7 +46,7 @@ def resolve(val, seen=()):
 def css_name(path):
     group, name = path.split(".", 1)
     return {"color": name, "font": f"font-{name}", "space": f"space-{name}",
-            "radius": f"radius-{name}", "shadow": f"shadow-{name}", "print": name}.get(group)
+            "radius": f"radius-{name}", "shadow": f"shadow-{name}", "border": f"border-{name}", "print": name}.get(group)
 
 
 COLORS = {p.split(".", 1)[1]: resolve(v["$value"]) for p, v in TOK.items() if p.startswith("color.")}
@@ -106,7 +106,7 @@ ds = {"name": "Follow Me Therapy", "version": 1,
                "families": {"display": TOK["font.display"]["$value"], "body": TOK["font.body"]["$value"]},
                "groups": []},
       "spacing": lst("space", "space-"), "radius": lst("radius", "radius-"),
-      "shadow": lst("shadow", "shadow-"), "print": lst("print", "")}
+      "shadow": lst("shadow", "shadow-"), "border": lst("border", "border-"), "print": lst("print", "")}
 groups = {}
 for k, v in TOK.items():
     if not k.startswith("typography."):

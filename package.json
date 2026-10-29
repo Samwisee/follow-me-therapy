@@ -4,7 +4,8 @@
   "description": "Build tools only. The site itself has no build step.",
   "scripts": {
     "design-system": "node tools/build_design_system.mjs",
-    "a11y": "node tools/check_a11y.mjs"
+    "a11y": "node tools/check_a11y.mjs",
+    "tokens:check": "python3 tools/check_tokens.py"
   },
   "devDependencies": {
     "esbuild": "0.24.0",

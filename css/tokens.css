@@ -45,8 +45,8 @@
   --coral: #ff6f61;
   --green: #19b37a;
   --green-teal: #1f9e89;
-  --font-display: "Fredoka", "Quicksand", system-ui, sans-serif;
-  --font-body: "Quicksand", system-ui, sans-serif;
+  --font-display: "Fredoka", "Fredoka Fallback", "Quicksand", "QS Fallback", system-ui, sans-serif;
+  --font-body: "Quicksand", "QS Fallback", system-ui, sans-serif;
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;
@@ -74,4 +74,5 @@
   --gutter-book: 15mm;
   --rule-write: 10mm;
   --rule-kid: 16mm;
+  --border-outline: 2px;
 }

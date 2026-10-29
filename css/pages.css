@@ -137,7 +137,7 @@
   src: url(../fonts/quicksand-latin-700-normal.woff2) format("woff2");
 }
 :root {
-  --display: "Fredoka", "Fredoka Fallback", system-ui, sans-serif;
+  --display: var(--font-display);
 }
 * {
   box-sizing: border-box;
@@ -147,7 +147,7 @@ html {
 }
 body {
   margin: 0;
-  font-family: "Quicksand", "QS Fallback", system-ui, sans-serif;
+  font-family: var(--font-body);
   font-size: 17px;
   line-height: 1.7;
   color: var(--ink-soft);
@@ -232,7 +232,7 @@ p {
   font-weight: 500;
   font-size: 1.05rem;
   padding: 12px 24px;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   border: 2px solid var(--purple);
   background: var(--purple);
   color: var(--paper);
@@ -320,9 +320,9 @@ p {
 }
 .chips li {
   padding: 6px 14px;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   background: var(--paper);
-  border: 2px solid var(--purple-line);
+  border: var(--border-outline) solid var(--purple-line);
   color: var(--purple-ink);
   font-weight: 700;
   font-size: 0.92rem;
@@ -361,7 +361,7 @@ p {
 }
 .card {
   background: var(--paper);
-  border-radius: 22px;
+  border-radius: var(--radius-note);
   padding: 22px;
   box-shadow: 0 8px 24px color-mix(in srgb, var(--ink) 7%, transparent);
 }
@@ -415,7 +415,7 @@ p {
   font-size: 0.95rem;
   padding: 14px 18px;
   background: color-mix(in srgb, var(--paper) 70%, transparent);
-  border-radius: 16px;
+  border-radius: var(--radius-md);
 }
 .cta {
   text-align: center;
@@ -512,7 +512,7 @@ h2::after {
 .service-item {
   position: relative;
   background: var(--paper);
-  border-radius: 24px;
+  border-radius: var(--radius-card);
   padding: 24px 22px;
   box-shadow: 0 8px 24px color-mix(in srgb, var(--ink) 7%, transparent);
   cursor: pointer;
@@ -577,14 +577,14 @@ h2::after {
   place-items: center;
   width: 68px;
   height: 68px;
-  border-radius: 22px;
+  border-radius: var(--radius-note);
   margin-bottom: 14px;
   transition: transform 0.4s cubic-bezier(0.3, 1.6, 0.5, 1);
 }
 .fund-svg {
   width: 56px;
   height: 56px;
-  border-radius: 18px;
+  border-radius: var(--radius-tile);
 }
 .funding-card:hover .svc-icon,
 .service-item:hover .svc-icon {
@@ -796,9 +796,9 @@ h2::after {
   max-height: calc(100dvh - 40px);
   overflow-y: auto;
   background: var(--paper);
-  border-radius: 28px;
+  border-radius: var(--radius-frame);
   padding: 40px 28px 30px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 20px 50px color-mix(in srgb, var(--ink) 25%, transparent);
   animation: modalIn 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .modal-content h3 {
@@ -821,7 +821,7 @@ h2::after {
   cursor: pointer;
 }
 .modal .close:hover {
-  background: rgba(0, 0, 0, 0.06);
+  background: color-mix(in srgb, var(--ink) 6%, transparent);
 }
 .modal-body p {
   margin: 0 0 14px;
@@ -885,7 +885,7 @@ h2::after {
   gap: 4px;
   flex: none;
   padding: 8px 14px 8px 10px;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   background: var(--paper);
   color: var(--purple);
   font-family: var(--display);
@@ -1008,7 +1008,7 @@ html {
   top: -60px;
   z-index: 1000;
   padding: 10px 16px;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   background: var(--purple);
   color: var(--paper) !important;
   font-weight: 700;
@@ -1064,4 +1064,23 @@ a:hover > .chev-back {
   text-align: center !important;
   margin-left: auto !important;
   margin-right: auto !important;
+}
+
+/* The top bar keeps its wavy bottom edge as you scroll: the same wave as
+   the section edges, hanging below the bar in the bar's own lilac. */
+.site-head::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  height: 20px;
+  background: inherit;
+  backdrop-filter: inherit;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 40' preserveAspectRatio='none'%3E%3Cpath d='M0 0V18C40 34 80 34 120 18S200 2 240 18V0Z'/%3E%3C/svg%3E") 0 0 / 480px 20px repeat-x;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 40' preserveAspectRatio='none'%3E%3Cpath d='M0 0V18C40 34 80 34 120 18S200 2 240 18V0Z'/%3E%3C/svg%3E") 0 0 / 480px 20px repeat-x;
+  pointer-events: none;
+}
+@media (max-width: 600px) {
+  .site-head::after { height: 14px; -webkit-mask-size: 240px 14px; mask-size: 240px 14px; }
 }

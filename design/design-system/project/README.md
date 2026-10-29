@@ -5,6 +5,7 @@ Follow Me Therapy is Simone's paediatric occupational therapy practice: teleheal
 - The tokens on this page are a copy. The single source is `design/tokens.json` in the website repo (Samwisee/follow-me-therapy). The website, the share image, the logo files and these tokens are all built from it by `tools/build_tokens.py`.
 - To change a colour, font or size, change it there, in code or in Figma through the Tokens Studio plugin, which syncs that file on the `preview` branch. Then re-sync this page. An edit made only on this page doesn't reach the website and is overwritten at the next sync.
 - `brand-ink` colours the logo **and** the practice name together, everywhere. Never colour one without the other.
+- The website takes every colour, font, corner radius and outline width from the tokens. `tools/check_tokens.py` in the repo checks every page and stylesheet for hard-coded values, and runs automatically on each change.
 
 ## Using the components
 
@@ -43,6 +44,7 @@ The components are a small React library (`window.FollowMeTherapy`) built from `
 ## Shape and space
 
 - **Nested corners are concentric.** When a rounded thing sits inside another, the outer radius = the inner radius + the gap between them (+ the outer border). Simone's card: photo `radius-md` (16px) + 24px gap = 40px. The side menu: 22px pill + 8px gap + 2px border = 32px. Use `.fmt-nest` (set `--nest-inner` and `--nest-gap`) rather than picking a number by eye.
+- **Outlines:** every container that holds an icon, a label or a note (icon tiles, chips, info notes and their badges, step numbers, the side menu) wears a `border-outline` (2px) outline in its own line colour: `purple-line`, `teal-line`, `sun-line` or `pink-line`.
 - Everything is soft and round: chips and buttons are pills (`radius-pill`); cards `radius-card` (24px); photo frames `radius-frame` (28px); notes `radius-note` (22px); icon tiles `radius-tile`/`radius-card`.
 - Spacing steps run `space-1` (4px) to `space-14` (56px). Use `space-8` between cards and `space-14` between sections.
 - Shadows (`shadow-soft`, `shadow-raised`, `shadow-button`) are screen-only. On print, separate with tint or a `purple-line` border.

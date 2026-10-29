@@ -1,0 +1,15 @@
+# On every push to preview: the site must take its design from the tokens.
+name: Design checks
+on:
+  push:
+    branches: [preview]
+  pull_request:
+jobs:
+  tokens:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python3 tools/check_tokens.py

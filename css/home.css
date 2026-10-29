@@ -267,8 +267,8 @@ html {
 }
 body,
 html {
-  font-family: "Quicksand", "QS Fallback", sans-serif;
-  background-color: #f9f9f9;
+  font-family: var(--font-body);
+  background-color: var(--paper);
   padding: 0;
 }
 body,
@@ -351,9 +351,9 @@ section {
   text-align: center;
 }
 .hero-content {
-  background: rgba(0, 0, 0, 0.5);
+  background: color-mix(in srgb, var(--ink) 50%, transparent);
   padding: 20px 40px;
-  border-radius: 10px;
+  border-radius: var(--radius-sm);
   max-width: 800px;
   margin: auto;
 }
@@ -392,7 +392,7 @@ section {
 }
 .service-item:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 20px color-mix(in srgb, var(--ink) 15%, transparent);
 }
 .service-item img {
   display: block;
@@ -423,7 +423,7 @@ section {
   top: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 16px color-mix(in srgb, var(--ink) 30%, transparent);
   animation: modalFadeIn 0.5s forwards;
   max-height: calc(100dvh - 40px);
   overflow-y: auto;
@@ -444,7 +444,7 @@ section {
   cursor: pointer;
 }
 .modal .close:hover {
-  background: rgba(0, 0, 0, 0.06);
+  background: color-mix(in srgb, var(--ink) 6%, transparent);
 }
 .modal .btn-primary,
 .modal .btn-secondary {
@@ -519,18 +519,18 @@ img {
   display: flex;
   justify-content: center;
   gap: 20px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 10px color-mix(in srgb, var(--ink) 10%, transparent);
   border-radius: 0 0 10px 10px;
   z-index: 1000;
 }
 .fixed-header a {
   padding: 0 10px;
   text-decoration: none;
-  color: #000;
+  color: var(--ink);
   border-radius: 5px;
 }
 footer.footer-section {
-  background-color: #2e2e2e;
+  background-color: var(--ink);
   color: var(--paper);
   padding: 20px 0;
   margin-top: 60px;
@@ -581,13 +581,13 @@ footer .social-links a:hover {
 }
 img.responsive-image {
   max-width: 50%;
-  border-radius: 10px;
+  border-radius: var(--radius-sm);
 }
 .divider {
   margin-left: 20%;
   margin-right: 20%;
   border: 0;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid var(--purple-line);
 }
 .about-wrapper {
   background-color: var(--teal-bright);
@@ -605,7 +605,7 @@ img.responsive-image {
   align-items: center;
   background-color: var(--lilac-bright);
   padding: 20px;
-  border-radius: 10px;
+  border-radius: var(--radius-sm);
 }
 .title-and-logo .site-title {
   text-align: start;
@@ -622,7 +622,7 @@ img.responsive-image {
 }
 .cta-emphasis {
   font-size: 54px;
-  color: #000;
+  color: var(--ink);
 }
 .large-italic-centered {
   font-size: 28px;
@@ -742,7 +742,7 @@ img.responsive-image {
 }
 .title-container .site-title {
   font-size: 5vw;
-  color: #000;
+  color: var(--ink);
   margin: 0;
   padding-right: 20px;
 }
@@ -796,7 +796,7 @@ img.responsive-image {
   --R: calc(var(--s) * sqrt(var(--m) * var(--m) + 1) + var(--b) / 2);
   height: calc(2 * var(--R));
   width: 100%;
-  --_g: #0000 calc(99% - var(--b)), #000 calc(101% - var(--b)) 99%, #0000 101%;
+  --_g: #0000 calc(99% - var(--b)), var(--ink) calc(101% - var(--b)) 99%, #0000 101%;
   mask:
     radial-gradient(
         var(--R) at left 50%bottom calc(-1 * var(--m) * var(--s)),
@@ -851,7 +851,7 @@ p {
 }
 .badge,
 .facts li {
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
 }
 .facts li {
   margin: 0;
@@ -974,7 +974,7 @@ p {
 .funding-card {
   background: var(--paper);
   padding: 24px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--ink) 6%, transparent);
 }
 .funding-card h3 {
   margin-bottom: 8px;
@@ -1014,9 +1014,9 @@ p {
 .chips li {
   margin: 0;
   padding: 6px 14px;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   background: color-mix(in srgb, var(--paper) 80%, transparent);
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  border: 1px solid color-mix(in srgb, var(--ink) 8%, transparent);
   font-size: 0.95em;
   font-weight: 600;
 }
@@ -1318,7 +1318,7 @@ p {
   }
 }
 :root {
-  --display: "Fredoka", "Quicksand", "QS Fallback", system-ui, sans-serif;
+  --display: var(--font-display);
 }
 body,
 html {
@@ -1434,8 +1434,8 @@ strong {
 .about-content {
   background: var(--paper);
   backdrop-filter: none;
-  border-radius: 28px;
-  box-shadow: 0 18px 40px rgba(75, 52, 170, 0.12);
+  border-radius: var(--radius-frame);
+  box-shadow: 0 18px 40px color-mix(in srgb, var(--purple-ink) 12%, transparent);
 }
 .badge,
 .eyebrow {
@@ -1476,7 +1476,7 @@ strong {
   font-weight: 500;
   font-size: 1.1em;
   padding: 14px 28px;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   border: 2px solid var(--purple);
   background: var(--purple);
   color: var(--paper);
@@ -1542,7 +1542,7 @@ strong {
   position: relative;
 }
 .service-item {
-  border-radius: 24px;
+  border-radius: var(--radius-card);
   box-shadow: 0 8px 24px color-mix(in srgb, var(--ink) 7%, transparent);
   transition:
     transform 0.35s cubic-bezier(0.3, 1.5, 0.5, 1),
@@ -1565,7 +1565,7 @@ strong {
   place-items: center;
   width: 76px;
   height: 76px;
-  border-radius: 24px;
+  border-radius: var(--radius-card);
   margin-bottom: 16px;
   transition: transform 0.4s cubic-bezier(0.3, 1.6, 0.5, 1);
 }
@@ -1657,10 +1657,10 @@ strong {
 .flex-container img,
 .simone-image,
 .telehealth-image {
-  border-radius: 24px !important;
+  border-radius: var(--radius-card) !important;
 }
 .funding-card {
-  border-radius: 24px;
+  border-radius: var(--radius-card);
   border-top: 6px solid var(--purple);
 }
 .funding-card:nth-child(2) {
@@ -1678,8 +1678,8 @@ strong {
 .about-simone-content {
   background: var(--paper);
   backdrop-filter: none;
-  border-radius: 28px;
-  box-shadow: 0 12px 32px rgba(0, 90, 100, 0.08);
+  border-radius: var(--radius-frame);
+  box-shadow: 0 12px 32px color-mix(in srgb, var(--teal-ink) 8%, transparent);
 }
 .person-role {
   color: var(--teal) !important;
@@ -1691,7 +1691,7 @@ strong {
   color: var(--teal-deeper);
 }
 .contact-card {
-  border-radius: 24px;
+  border-radius: var(--radius-card);
   box-shadow: 0 8px 24px color-mix(in srgb, var(--ink) 7%, transparent);
 }
 .contact-link {
@@ -1710,7 +1710,7 @@ strong {
 body .fixed-header {
   align-items: center;
   top: 10px;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   width: calc(100% - 20px);
   max-width: 620px;
   padding: 6px 8px;
@@ -1723,7 +1723,7 @@ body .fixed-header a {
   font-weight: 500;
   color: var(--ink);
   padding: 7px 12px;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   transition:
     background-color 0.25s ease,
     color 0.25s ease;
@@ -1764,7 +1764,7 @@ section[id] {
   backdrop-filter: blur(3px);
 }
 .modal-content {
-  border-radius: 28px;
+  border-radius: var(--radius-frame);
 }
 @media (max-width: 650px) {
   .steps {
@@ -1782,7 +1782,7 @@ section[id] {
     top: 6px;
     padding: 4px;
     gap: 0;
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
   }
   body .fixed-header a {
     padding: 7px 8px;
@@ -1799,7 +1799,7 @@ section[id] {
   }
 }
 .eyebrow {
-  font-family: "Quicksand", "QS Fallback", system-ui, sans-serif !important;
+  font-family: var(--font-body);
   text-align: center !important;
   line-height: 1.5;
 }
@@ -1847,7 +1847,7 @@ section[id] {
 .fund-svg {
   width: 60px;
   height: 60px;
-  border-radius: 18px;
+  border-radius: var(--radius-tile);
   margin-bottom: 12px;
 }
 .fund-svg svg {
@@ -2026,7 +2026,7 @@ section[id] {
   margin: 20px 0 0 !important;
   padding: 14px 18px;
   background: var(--purple-tint);
-  border-radius: 16px;
+  border-radius: var(--radius-md);
   clear: both;
 }
 .more-link {
@@ -2042,7 +2042,7 @@ section[id] {
     padding: 18px !important;
   }
   .bio-photo {
-    border-radius: 18px !important;
+    border-radius: var(--radius-tile) !important;
   }
 }
 .steps li {
@@ -2145,7 +2145,7 @@ img.illus {
   max-width: 280px;
   aspect-ratio: 1/1;
   margin: 4px 28px 14px 0;
-  border-radius: 16px !important;
+  border-radius: var(--radius-md) !important;
   background:
     radial-gradient(circle at 50% 60%, var(--sun-soft) 0 44%, transparent 44.5%),
     var(--teal-tint);
@@ -2170,7 +2170,7 @@ img.illus {
     width: 100%;
     max-width: none;
     margin: 0 0 18px;
-    border-radius: 18px !important;
+    border-radius: var(--radius-tile) !important;
   }
 }
 .is-visible h2::after,
@@ -2178,7 +2178,7 @@ h2::after {
   display: none !important;
 }
 .cta-emphasis {
-  font-family: "Quicksand", "QS Fallback", sans-serif !important;
+  font-family: var(--font-body);
   font-weight: 700 !important;
 }
 .is-visible .step-trail i {
@@ -2228,7 +2228,7 @@ h2::after {
 .modal-chips li {
   margin: 0;
   padding: 5px 12px;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   background: var(--teal-tint);
   color: var(--teal-deeper);
   font-weight: 700;
@@ -2861,7 +2861,7 @@ html {
   width: 30px;
   height: 30px;
   padding: 6px;
-  border-radius: 10px;
+  border-radius: var(--radius-sm);
   background: var(--teal-tint);
   color: var(--teal);
   fill: none;
@@ -2918,7 +2918,7 @@ html {
   top: -60px;
   z-index: 1000;
   padding: 10px 16px;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   background: var(--purple);
   color: var(--paper) !important;
   font-weight: 700;
@@ -3262,7 +3262,7 @@ a:hover > .chev-back {
     justify-content: flex-start !important;
     gap: 0 !important;
     padding: 14px 10px 12px !important;
-    border-radius: 28px !important;
+    border-radius: var(--radius-frame) !important;
   }
   body .fixed-header .nav-logo {
     align-self: center;
@@ -3272,7 +3272,7 @@ a:hover > .chev-back {
   body .fixed-header a:not(.nav-logo) {
     position: relative;
     padding: 9px 16px 9px 34px !important;
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
     text-align: left;
   }
   /* The dot for each section. */
@@ -3384,7 +3384,7 @@ main section[id] { scroll-margin-top: -36px; }
 /* Hero chips are links: the whole chip is the target. */
 .facts li { position: relative; }
 .facts li > a { display: contents; color: inherit; text-decoration: none; }
-.facts li > a::after { content: ""; position: absolute; inset: -2px; border-radius: 999px; }
+.facts li > a::after { content: ""; position: absolute; inset: calc(-1 * var(--border-outline)); border-radius: var(--radius-pill); }
 .facts li:has(> a) { cursor: pointer; transition: transform 0.3s cubic-bezier(0.3, 1.6, 0.5, 1), border-color 0.25s ease, box-shadow 0.25s ease; }
 .facts li.fact-age:has(> a:hover) { border-color: var(--purple) !important; }
 .facts li.fact-tele:has(> a:hover) { border-color: var(--teal) !important; }
@@ -3393,15 +3393,10 @@ main section[id] { scroll-margin-top: -36px; }
 .facts li > a:focus-visible { outline: none; }
 
 /* Experience chips: outlined like every other chip. */
-#about-simone .chips li { border: 2px solid var(--teal-line) !important; }
+#about-simone .chips li { border: var(--border-outline) solid var(--teal-line) !important; }
 
-/* Icon containers: each tile wears a border in its own line colour. */
-.svc-icon { box-sizing: border-box; border: 2px solid var(--purple-line); }
-.svc-icon.svc-stairs { border-color: var(--teal-line); }
-.svc-icon.svc-esdm { border-color: var(--sun-line); }
-.svc-icon.svc-assessments { border-color: var(--pink-line); }
-.creds svg { border: 2px solid var(--teal-line); padding: 5px; }
-.modal-icon { border: 2px solid color-mix(in srgb, var(--tone, var(--purple)) 30%, var(--paper)); box-sizing: border-box; }
+/* Icon containers: outlines live in css/cards.css, shared by every page. */
+.creds svg { border: var(--border-outline) solid var(--teal-line); padding: 5px; }
 
 /* Book telehealth, under the telehealth section. */
 .book-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px; margin: 28px 0 8px; }
@@ -3422,7 +3417,7 @@ main section[id] { scroll-margin-top: -36px; }
   body .fixed-header.rail-v2 {
     --nest-gap: 8px;
     --nest-inner: 22px; /* half the 44px pill: fully round */
-    --nest-border: 2px;
+    --nest-border: var(--border-outline);
     padding: 14px var(--nest-gap) var(--nest-gap) !important;
     background: var(--paper) !important;
     border: var(--nest-border) solid var(--purple-line);
@@ -3437,7 +3432,7 @@ main section[id] { scroll-margin-top: -36px; }
     padding: 0 !important;
     border-radius: 50%;
     background: var(--purple-tint) !important;
-    border: 2px solid var(--purple-line);
+    border: var(--border-outline) solid var(--purple-line);
     box-sizing: border-box;
     transition: transform 0.45s cubic-bezier(0.3, 1.6, 0.5, 1), border-color 0.3s ease;
   }
@@ -3454,7 +3449,7 @@ main section[id] { scroll-margin-top: -36px; }
     min-height: 44px;
     padding: 0 20px 0 42px !important;
     background: transparent !important;
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
     font-size: 1.08rem;
     transition: color 0.35s ease;
   }
