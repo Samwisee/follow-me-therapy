@@ -51,6 +51,7 @@ The components are a small React library (`window.FollowMeTherapy`) built from `
 | `text-4xl` | 32 → 50px | Page titles (h1) |
 | `text-display` | 38 → 72px | The practice name in the home hero |
 
+- **The practice name** beside the logo (home hero, the inner pages' top bar) is Fredoka at `weight-brand` (340), the weight whose strokes match the logo's lines, with the logo 1.45× the text size. Fredoka is self-hosted as one variable font, so any weight from 300 to 700 is available.
 - Line heights: `leading-tight` 1.1 (display), `leading-snug` 1.25 (headings), `leading-normal` 1.5 (UI, lists, notes), `leading-relaxed` 1.7 (running text). Tracking: `tracking-tight` on headings, `tracking-caps` on uppercase eyebrows.
 - Print: `print-title` 28pt, `print-kid` 16pt (anything a child reads, never under 14pt), `print-body` 11pt for adults, `print-small` 8.5pt minimum.
 - Highlight one or two words per title with `fmt-swash`: the same squiggle as the section titles, in `sun`, repeated along the words. One swash per page. A quote closes with the same squiggle as its section title, same colour, same spacing.
@@ -98,6 +99,8 @@ Every section opens the same way (`SectionTitle`): the title centred in `text-3x
 - Durations: `dur-fast` 150ms (colours), `dur-base` 250ms (hover lifts), `dur-slow` 400ms (cards, pills), `dur-slower` 600ms (sections and pop-ups arriving, the menu morph), `dur-entrance` 900ms (one-off entrances).
 - Easings: `ease-standard` for most movement, `ease-out` for arrivals, `ease-spring` (a small overshoot) for playful hovers and pops, `ease-in-out` for loops.
 - Moving between pages cross-fades, with the logo and the practice name gliding to their new places.
+- Resizing is smooth: chips, cards, buttons, menu links and the words of headings glide to their new row when they wrap (`js/reflow.js`), instead of snapping. Small steady shifts while dragging aren't animated, only jumps.
+- The top menu's logo shrinks away below `bp-sm` and grows back above it.
 - Everything stops under `prefers-reduced-motion`. Ambient artwork loops (the illustrations, the walking footprints) keep their own longer timings.
 
 ## Imagery

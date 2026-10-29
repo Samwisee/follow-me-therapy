@@ -394,6 +394,7 @@ html[data-nav="rail"] main section[id] {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
   gap: var(--space-3);
   margin: 0 auto var(--space-6);
   padding: 0;
@@ -448,61 +449,81 @@ html[data-nav="rail"] main section[id] {
   stroke-linejoin: round;
 }
 .facts li.fact-tele { border-color: var(--teal-line); background: var(--teal-tint); color: var(--teal-ink); }
-/* Telehealth with "Spots available" on one line while it fits; when the
-   card is too narrow, two lines in a chip that hugs them (a grid sizes to
-   its widest line, where a wrapping flex row would fill the card). */
+/* Inside a fact: its main words with their icon, and any extra line. While
+   the card is wide they sit in one row; when it narrows the chip stacks them
+   in a column, so it stays as narrow as its widest line instead of
+   stretching across the card. */
 .facts {
   container-type: inline-size;
 }
+.fact-main {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
 @container (max-width: 36rem) {
   .facts li.fact-tele {
-    display: inline-grid;
-    grid-template-columns: auto auto auto;
-    justify-content: center;
-    align-items: center;
-    column-gap: var(--space-2);
-    row-gap: 0;
-  }
-  .facts li.fact-tele .fact-now {
-    grid-column: 1 / -1;
-    text-align: center;
+    flex-direction: column;
+    gap: var(--space-1);
   }
 }
-.facts li.fact-place { border-color: var(--sun-line); background: var(--sun-tint); color: var(--sun-ink); }
+.facts li.fact-place {
+  column-gap: 0.3em; /* one word space between its two parts */
+}
+@container (max-width: 28rem) {
+  .facts li.fact-place {
+    flex-direction: column;
+    gap: 0;
+  }
+}
 .facts li.fact-age:has(> a:hover) { border-color: var(--purple); }
 .facts li.fact-tele:has(> a:hover) { border-color: var(--teal); }
 .facts li.fact-place:has(> a:hover) { border-color: var(--sun-deep); }
 .facts li:nth-child(1):hover { transform: rotate(-3deg) scale(1.04); }
 .facts li:nth-child(2):hover { transform: rotate(2deg) scale(1.04); }
 .facts li:nth-child(3):hover { transform: rotate(-2deg) scale(1.04); }
-.fact-now {
+/* "Spots available": a small white pill with a calendar tick, inside the
+   telehealth chip, and a full chip (a link to book) under the Telehealth
+   title. */
+.fact-now,
+.book-note {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-hair) var(--space-3) var(--space-hair) var(--space-2);
+  border: var(--border-outline) solid var(--teal-line);
+  border-radius: var(--radius-pill);
+  background: var(--paper);
   color: var(--live-ink);
   font-weight: 700;
+  line-height: var(--leading-normal);
 }
-/* "Spots available": a green light with a glow that grows and fades. */
-.live-dot {
-  position: relative;
+.book-note {
+  min-height: var(--size-target);
+  padding: 0 var(--space-4) 0 var(--space-3);
+  background: var(--teal-tint);
+  transition:
+    transform var(--dur-slow) var(--ease-spring),
+    border-color var(--dur-base) var(--ease-standard);
+}
+.book-note:hover {
+  border-color: var(--teal);
+  text-decoration: none;
+  transform: rotate(-2deg) scale(1.04);
+}
+.book-note .chev {
+  margin-left: 0;
+}
+.fact-now svg:not(.chev),
+.book-note svg:not(.chev) {
   flex: none;
-  width: var(--space-2);
-  height: var(--space-2);
-  margin-left: var(--space-1);
-  border-radius: 50%;
-  background: var(--live);
-}
-.live-dot::after {
-  content: "";
-  position: absolute;
-  inset: calc(-1 * var(--space-hair));
-  border-radius: 50%;
-  background: color-mix(in srgb, var(--live) 25%, transparent);
-}
-@media (prefers-reduced-motion: no-preference) {
-  .is-visible .live-dot::after {
-    animation: liveGlow 2.4s ease-in-out infinite;
-  }
-}
-@keyframes liveGlow {
-  50% { transform: scale(1.8); opacity: 0; }
+  width: var(--size-icon-sm);
+  height: var(--size-icon-sm);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 .cta-text {
   margin: 0 auto var(--space-4);
@@ -639,15 +660,16 @@ html[data-nav="rail"] main section[id] {
 
 /* ── 4. Meet Simone ───────────────────────────────────────────────────── */
 /* The photo beside her name, credentials and bio; the experience chips
-   underneath. The card's corners are concentric with the photo's:
-   card radius = photo radius + the padding. Stacks on phones. */
+   underneath, wrapped in teal like the other cards. Its corners are
+   concentric with the photo's: photo radius + padding + outline. Stacks on phones. */
 .bio {
   display: grid;
   grid-template-columns: minmax(12rem, 42%) 1fr;
   column-gap: var(--space-8);
   align-items: start;
   padding: var(--card-pad);
-  border-radius: calc(var(--radius-md) + var(--card-pad));
+  border: var(--border-outline) solid var(--teal);
+  border-radius: calc(var(--radius-md) + var(--card-pad) + var(--border-outline));
   background: var(--paper);
   box-shadow: var(--shadow-panel);
 }
@@ -766,18 +788,11 @@ html[data-nav="rail"] main section[id] {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-2);
+  gap: var(--space-4);
   margin-bottom: var(--stack);
 }
 .th-title h2 {
   margin-bottom: 0;
-}
-.book-note {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  color: var(--live-ink);
-  font-weight: 700;
 }
 .split {
   display: flex;
@@ -831,12 +846,15 @@ html[data-nav="rail"] main section[id] {
 .privacy-note.info-note {
   --note-tint: var(--paper);
   align-items: center;
+  gap: var(--space-3); /* the same gap as the phone and email tiles */
   margin-top: var(--grid-gap);
   border-radius: var(--set-radius);
 }
 @media (max-width: 640px) {
+  /* One short line, so it stays beside its tile even on phones. */
   .privacy-note.info-note {
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
   }
 }
 .privacy-note.info-note a[href]::after {

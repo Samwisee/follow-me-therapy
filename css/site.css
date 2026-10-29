@@ -106,6 +106,10 @@ ol {
 blockquote {
   margin: 0;
 }
+/* Words of headings that glide when they move to another line (js/reflow.js). */
+.rw {
+  display: inline-block;
+}
 .sr-only {
   position: absolute !important;
   width: 1px;
@@ -132,7 +136,7 @@ a:hover,
 a:focus-visible {
   text-decoration-line: underline;
 }
-:is(.btn, .btn-secondary, .btn-outline, .fab, .modal-link, .modal-choice, .contact-tile, .fixed-header a, .facts a, .back-btn, .brand, .nav-logo, .skip-link):is(:hover, :focus-visible) {
+:is(.btn, .btn-secondary, .btn-outline, .fab, .modal-link, .modal-choice, .contact-tile, .book-note, .fixed-header a, .facts a, .back-btn, .brand, .nav-logo, .skip-link):is(:hover, :focus-visible) {
   text-decoration: none;
 }
 /* One focus ring everywhere: the focus colour, offset from the edge. */

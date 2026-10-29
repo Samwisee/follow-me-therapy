@@ -165,6 +165,7 @@ def page(slug,title,desc,crumb,h1,lead,chips,bands):
       </div>
     </div>
     <script src="js/pages.js" defer></script>
+    <script src="js/reflow.js" defer></script>
   </body>
 </html>
 '''
