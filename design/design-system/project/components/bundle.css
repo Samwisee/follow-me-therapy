@@ -73,6 +73,19 @@
 .fmt-tile.is-sun    { background: var(--sun-tint); color: var(--sun-deep); border-color: var(--sun-line); }
 .fmt-tile.is-pink   { background: var(--pink-tint); color: var(--pink); border-color: var(--pink-line); }
 
+/* ── Nest: concentric corners ──
+   A container's radius = its child's radius + the gap between them (+ its
+   border), so the two curves run parallel. Set --nest-inner to the child's
+   radius and --nest-gap to the space around it. */
+.fmt-nest {
+  --nest-gap: var(--space-6);
+  --nest-inner: var(--radius-md);
+  --nest-border: 0px;
+  padding: var(--nest-gap);
+  border-radius: calc(var(--nest-inner) + var(--nest-gap) + var(--nest-border));
+}
+.fmt-nest > * { border-radius: var(--nest-inner); }
+
 /* ── Card ── */
 .fmt-card { display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-6); border-radius: var(--radius-card); background: var(--paper); box-shadow: var(--shadow-soft); font-family: var(--font-body); color: var(--ink-soft); }
 .fmt-card h3 { margin: var(--space-2) 0 0; font-family: var(--font-display); font-weight: 500; font-size: 19px; line-height: 1.2; color: var(--ink); }

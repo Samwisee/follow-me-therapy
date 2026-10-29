@@ -42,6 +42,7 @@ The components are a small React library (`window.FollowMeTherapy`) built from `
 
 ## Shape and space
 
+- **Nested corners are concentric.** When a rounded thing sits inside another, the outer radius = the inner radius + the gap between them (+ the outer border). Simone's card: photo `radius-md` (16px) + 24px gap = 40px. The side menu: 22px pill + 8px gap + 2px border = 32px. Use `.fmt-nest` (set `--nest-inner` and `--nest-gap`) rather than picking a number by eye.
 - Everything is soft and round: chips and buttons are pills (`radius-pill`); cards `radius-card` (24px); photo frames `radius-frame` (28px); notes `radius-note` (22px); icon tiles `radius-tile`/`radius-card`.
 - Spacing steps run `space-1` (4px) to `space-14` (56px). Use `space-8` between cards and `space-14` between sections.
 - Shadows (`shadow-soft`, `shadow-raised`, `shadow-button`) are screen-only. On print, separate with tint or a `purple-line` border.

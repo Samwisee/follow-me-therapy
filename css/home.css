@@ -2965,8 +2965,10 @@ html {
    curve round the photo and the chips evenly (card radius = gap + the
    chips' and photo's own radius). */
 .about-simone-content.bio {
-  padding: 24px !important;
-  border-radius: 40px !important;
+  --nest-gap: 24px;
+  --nest-inner: var(--radius-md); /* the photo's own corner */
+  padding: var(--nest-gap) !important;
+  border-radius: calc(var(--nest-inner) + var(--nest-gap)) !important;
 }
 .bio > .chips {
   margin: 0 !important;
@@ -3415,11 +3417,16 @@ main section[id] { scroll-margin-top: -36px; }
    pill and track; without JavaScript the older rail still works. */
 .rail-pill, .rail-track { display: none; }
 @media (min-width: 1300px) {
+  /* Concentric corners: the rail's radius is the pill's radius plus the
+     gap around it (and the border), so the two curves run parallel. */
   body .fixed-header.rail-v2 {
-    padding: 14px 8px !important;
+    --nest-gap: 8px;
+    --nest-inner: 22px; /* half the 44px pill: fully round */
+    --nest-border: 2px;
+    padding: 14px var(--nest-gap) var(--nest-gap) !important;
     background: var(--paper) !important;
-    border: 2px solid var(--purple-line);
-    border-radius: 34px !important;
+    border: var(--nest-border) solid var(--purple-line);
+    border-radius: calc(var(--nest-inner) + var(--nest-gap) + var(--nest-border)) !important;
     box-shadow: var(--shadow-soft);
   }
   body .fixed-header.rail-v2 .nav-logo {
@@ -3506,7 +3513,7 @@ main section[id] { scroll-margin-top: -36px; }
     display: block;
     position: absolute;
     left: 8px; top: 0;
-    border-radius: 999px;
+    border-radius: var(--nest-inner);
     background: var(--purple);
     box-shadow: 0 6px 16px color-mix(in srgb, var(--purple) 30%, transparent);
     z-index: 1;

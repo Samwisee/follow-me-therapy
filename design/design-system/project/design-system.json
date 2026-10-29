@@ -209,9 +209,9 @@
   ],
   "lastChange": {
     "by": "Sam",
-    "at": "2026-10-29T04:20:00Z",
-    "via": "GitHub \u00b7 Samwisee/follow-me-therapy@ca92257",
-    "note": "Chips can be links; icon tiles outlined in their line colour."
+    "at": "2026-10-29T04:30:00Z",
+    "via": "GitHub \u00b7 Samwisee/follow-me-therapy",
+    "note": "Nest: concentric corners rule (outer radius = inner radius + gap + border)."
   },
   "layout": "files",
   "libraries": [
