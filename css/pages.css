@@ -136,10 +136,11 @@
 .cta .hero-actions {
   justify-content: center;
 }
-/* Room at the foot of a phone page for the Contact me button. */
+/* Room at the foot of a phone page for the Contact me button, inside the
+   footer so the purple runs right to the bottom. */
 @media (max-width: 640px) {
-  body:has(.fab) {
-    padding-bottom: var(--space-24);
+  body:has(.fab) .site-foot {
+    padding-bottom: calc(var(--section-space) + var(--space-24));
   }
 }
 

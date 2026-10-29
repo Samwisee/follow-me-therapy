@@ -227,3 +227,22 @@ document.addEventListener("click", (e) => {
   e.preventDefault();
   location.replace(a.getAttribute("href"));
 });
+
+// ── The colour past the ends of the page ──
+// In the bottom half of the page, what shows below the footer (overscroll,
+// Safari's toolbar) is the footer's purple instead of white (site.css).
+(() => {
+  const root = document.documentElement;
+  let queued = false;
+  const check = () => {
+    queued = false;
+    const foot = [...document.querySelectorAll(".tone-deep")].pop();
+    const endsPurple = !!foot && foot.getBoundingClientRect().bottom + scrollY >= root.scrollHeight - 2;
+    root.classList.toggle("near-end", endsPurple && scrollY + innerHeight / 2 > root.scrollHeight / 2);
+  };
+  const queue = () => { if (!queued) { queued = true; requestAnimationFrame(check); } };
+  addEventListener("scroll", queue, { passive: true });
+  addEventListener("resize", queue);
+  addEventListener("pageshow", check);
+  check();
+})();

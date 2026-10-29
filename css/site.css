@@ -55,6 +55,13 @@ html {
   /* Keep the scrollbar's room when a pop-up stops the page scrolling, so
      nothing shifts sideways as it opens. */
   scrollbar-gutter: stable;
+  /* What shows past the ends of the page (a phone's overscroll, behind
+     Safari's toolbar): the page colour at the top, the footer's purple once
+     you're in the bottom half (js: html.near-end). */
+  background: var(--paper);
+}
+html.near-end {
+  background: var(--deep);
 }
 @media (prefers-reduced-motion: no-preference) {
   html { scroll-behavior: smooth; }
