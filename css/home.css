@@ -3521,3 +3521,12 @@ main section[id] { scroll-margin-top: -36px; }
 @media (min-width: 1300px) and (prefers-reduced-motion: reduce) {
   .rail-pill, body .fixed-header.rail-v2 a, body .fixed-header.rail-v2 a::before, body .fixed-header.rail-v2 .nav-logo { transition: none !important; animation: none !important; }
 }
+
+/* Telehealth: the title with its "Spots available now" beside it, the
+   booking button centred under the list, and the link to the full page at
+   the end of the opening paragraph. */
+.th-title { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 20px; row-gap: 4px; margin-bottom: 22px; }
+.th-title h2 { margin-bottom: 0 !important; }
+.telehealth-content .book-row { justify-content: center; margin: 32px 0 8px; }
+.inline-more { display: inline-flex; align-items: center; gap: 2px; color: var(--purple); font-weight: 700; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; white-space: nowrap; }
+.inline-more .chev { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
