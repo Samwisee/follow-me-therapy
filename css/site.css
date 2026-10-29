@@ -478,7 +478,7 @@ a:hover > .chev,
   margin: var(--space-4) 0;
 }
 .service-item > .more {
-  justify-self: start;
+  justify-self: center;
   align-self: end;
 }
 /* Funding card: the tile fills the card's width with the same padding on
