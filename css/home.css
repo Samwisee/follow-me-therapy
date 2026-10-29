@@ -430,7 +430,27 @@ html[data-nav="rail"] main section[id] {
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-.facts li.fact-tele { flex-wrap: wrap; border-color: var(--teal-line); background: var(--teal-tint); color: var(--teal-ink); }
+.facts li.fact-tele { border-color: var(--teal-line); background: var(--teal-tint); color: var(--teal-ink); }
+/* Telehealth with "Spots available" on one line while it fits; when the
+   card is too narrow, two lines in a chip that hugs them (a grid sizes to
+   its widest line, where a wrapping flex row would fill the card). */
+.facts {
+  container-type: inline-size;
+}
+@container (max-width: 36rem) {
+  .facts li.fact-tele {
+    display: inline-grid;
+    grid-template-columns: auto auto auto;
+    justify-content: center;
+    align-items: center;
+    column-gap: var(--space-2);
+    row-gap: 0;
+  }
+  .facts li.fact-tele .fact-now {
+    grid-column: 1 / -1;
+    text-align: center;
+  }
+}
 .facts li.fact-place { border-color: var(--sun-line); background: var(--sun-tint); color: var(--sun-ink); }
 .facts li.fact-age:has(> a:hover) { border-color: var(--purple); }
 .facts li.fact-tele:has(> a:hover) { border-color: var(--teal); }
