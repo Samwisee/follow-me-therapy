@@ -3366,7 +3366,7 @@ main section[id] { scroll-margin-top: -36px; }
    side rail, and the bar's ends are concentric with it: equal padding all
    round, so bar radius = circle radius + padding. */
 @media (min-width: 769px) and (max-width: 1299px) {
-  body .fixed-header { padding: 6px !important; }
+  body .fixed-header { padding: 6px !important; justify-content: space-between !important; }
   body .fixed-header .nav-logo {
     display: grid !important;
     place-items: center;

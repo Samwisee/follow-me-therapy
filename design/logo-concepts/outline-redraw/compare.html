@@ -1,0 +1,14 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="../../../css/tokens.css"><style>@font-face{font-family:Fredoka;font-weight:600;src:url(../../../fonts/fredoka-latin-600-normal.woff2)}
+body{margin:0;padding:24px 28px;background:#fff;font-family:var(--font-display);color:var(--ink);width:1060px}
+.row{display:flex;align-items:center;gap:34px;padding:16px 0;border-bottom:2px solid var(--purple-line)}
+.lab{width:150px;font-weight:700;font-size:15px}.big{width:150px;height:150px}
+.lock{display:flex;align-items:center;gap:12px;font-size:34px;font-weight:700;width:420px;white-space:nowrap;font-weight:600}.lock img{height:62px}
+.c{border-radius:50%;background:var(--purple-tint);border:2px solid var(--purple-line);display:grid;place-items:center}
+.tile{width:64px;height:64px;border-radius:14px;background:var(--deep);display:grid;place-items:center}.tile img{filter:invert(1) brightness(2)}
+</style>
+<script>
+const rows=[["Current (traced)","../../../img/brand/follow-me-therapy-mark.svg"],["6 · Redrawn","o1-redrawn.svg"],["7 · Walking","o2-walking.svg"],["8 · Follow me","o3-follow-me.svg"]];
+for(const [l,s] of rows)document.write(`<div class=row><div class=lab>${l}</div><img class=big src="${s}"><div class=lock><img src="${s}">Follow Me Therapy</div>
+<div class=c style="width:64px;height:64px"><img src="${s}" style="height:42px"></div><div class=c style="width:32px;height:32px"><img src="${s}" style="height:21px"></div>
+<img src="${s}" style="height:16px"><div class=tile><img src="${s}" style="height:44px"></div></div>`)
+</script>
