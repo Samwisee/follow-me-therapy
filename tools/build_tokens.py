@@ -77,7 +77,7 @@ def stamp_html(text):
     return re.sub(r'(<meta name="theme-color" content=")[^"]*(" data-token="([a-z0-9-]+)")',
                   lambda m: m.group(1) + COLORS[m.group(3)] + m.group(2), text)
 
-for f in list((ROOT / "css").glob("*.css")):
+for f in list((ROOT / "css").glob("*.css")) + list((ROOT / "design/design-system/project/components").glob("*.css")):
     if f.name != "tokens.css":
         f.write_text(stamp_css(f.read_text()))
 for f in list(ROOT.glob("*.html")) + [ROOT / "tools/build_pages.py"]:
@@ -124,7 +124,7 @@ for k, v in TOK.items():
         st["letterSpacing"] = val["letterSpacing"]
     groups.setdefault(g, {"name": g, "family": fam, "styles": []})["styles"].append(st)
 ds["type"]["groups"] = [groups[g] for g in ("Display", "Text", "Print") if g in groups]
-out = ROOT / "design/design-system"
+out = ROOT / "design/design-system/project"
 out.mkdir(parents=True, exist_ok=True)
 (out / "tokens.json").write_text(json.dumps(ds, indent=1, ensure_ascii=False) + "\n")
 print(f"tokens: {len(TOK)} ({len(COLORS)} colours) → css/tokens.css, stamps, logos, design-system/tokens.json")

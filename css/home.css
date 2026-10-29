@@ -3039,9 +3039,9 @@ a:hover > .chev-back {
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-.facts li.fact-age { background: var(--purple-tint) !important; color: var(--purple-ink) !important; }
-.facts li.fact-tele { background: var(--teal-tint) !important; color: var(--teal-ink) !important; }
-.facts li.fact-place { background: var(--sun-tint) !important; color: var(--sun-ink) !important; }
+.facts li.fact-age { background: var(--purple-tint) !important; color: var(--purple-ink) !important; border-color: var(--purple-line) !important; }
+.facts li.fact-tele { background: var(--teal-tint) !important; color: var(--teal-ink) !important; border-color: var(--teal-line) !important; }
+.facts li.fact-place { background: var(--sun-tint) !important; color: var(--sun-ink) !important; border-color: var(--sun-line) !important; }
 .facts li:nth-child(1):hover { transform: rotate(-3deg) scale(1.04); }
 .facts li:nth-child(2):hover { transform: rotate(2deg) scale(1.04); }
 .facts li:nth-child(3):hover { transform: rotate(-2deg) scale(1.04); }

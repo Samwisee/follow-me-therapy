@@ -12,7 +12,7 @@ resources. Change a value here and it flows everywhere.
 | Icons inside the CSS | Data-URI SVGs tagged `/* token:<name> */` are re-coloured |
 | `<meta name="theme-color" data-token="…">` | The phone address-bar colour |
 | `img/brand/*.svg` | The logo files (ink versions take `brand-ink`) |
-| `design/design-system/tokens.json` | The same tokens in the Design System artifact's format |
+| `design/design-system/project/tokens.json` | The same tokens in the Design System artifact's format |
 
 `brand-ink` is the colour of the logo **and** the practice name. They can't drift apart.
 
@@ -21,6 +21,14 @@ After a token change: run `python3 tools/build_tokens.py`, then
 image should change (and give it a new file name, see the main README).
 On the `preview` branch a GitHub Action runs the first two for you whenever
 `design/tokens.json` changes.
+
+## The design system page
+
+`design/design-system/project/` holds everything the Design System artifact
+shows: the brand book (`README.md`, `print.md`), component guidelines and
+previews, and `components/bundle.css`, the component styles used by printed
+resources. It's published to the artifact from here, so this folder, not the
+page, is what to edit.
 
 ## Viewing and editing in Figma
 

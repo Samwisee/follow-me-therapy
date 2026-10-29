@@ -1,0 +1,221 @@
+{
+  "v": 3,
+  "assetGroups": {
+    "Icons": {
+      "files": {
+        "blocks.svg": {
+          "blob": "ea627c8ba9274f30f149b7988c05294b",
+          "name": "blocks.svg",
+          "size": 394,
+          "type": "image/svg+xml"
+        },
+        "book.svg": {
+          "blob": "d8ba1745adb1b4ecbc81168470239b99",
+          "name": "book.svg",
+          "size": 316,
+          "type": "image/svg+xml"
+        },
+        "chevron.svg": {
+          "blob": "2d117bbd006e5b36f9beae0e7c732bbc",
+          "name": "chevron.svg",
+          "size": 221,
+          "type": "image/svg+xml"
+        },
+        "clipboard.svg": {
+          "blob": "c4d268aa31191c71047190e69dde8c32",
+          "name": "clipboard.svg",
+          "size": 333,
+          "type": "image/svg+xml"
+        },
+        "footprints.svg": {
+          "blob": "20c48465d706512d6b60e6f1938601cd",
+          "name": "footprints.svg",
+          "size": 1190,
+          "type": "image/svg+xml"
+        },
+        "hands-heart.svg": {
+          "blob": "c17ee14178c0e01a648d24c0ee4a4383",
+          "name": "hands-heart.svg",
+          "size": 447,
+          "type": "image/svg+xml"
+        },
+        "heart.svg": {
+          "blob": "6f7354f4a154c8ffda0960f2f334d026",
+          "name": "heart.svg",
+          "size": 276,
+          "type": "image/svg+xml"
+        },
+        "info.svg": {
+          "blob": "165fded554ba23d6094fcd758f656db6",
+          "name": "info.svg",
+          "size": 286,
+          "type": "image/svg+xml"
+        },
+        "medicare-cross.svg": {
+          "blob": "d26a665c5d7f3f0d282b17c6099c0b03",
+          "name": "medicare-cross.svg",
+          "size": 282,
+          "type": "image/svg+xml"
+        },
+        "pin.svg": {
+          "blob": "c5f569ab874462c311908060d39d76a1",
+          "name": "pin.svg",
+          "size": 308,
+          "type": "image/svg+xml"
+        },
+        "shield-tick.svg": {
+          "blob": "b28d95a3ec7aed8eae91240165586212",
+          "name": "shield-tick.svg",
+          "size": 288,
+          "type": "image/svg+xml"
+        },
+        "smile.svg": {
+          "blob": "3e80bfbdd317810df85e52d6f7189c94",
+          "name": "smile.svg",
+          "size": 310,
+          "type": "image/svg+xml"
+        },
+        "stairs.svg": {
+          "blob": "20d248a0ee98bf34a49c512e85adaace",
+          "name": "stairs.svg",
+          "size": 269,
+          "type": "image/svg+xml"
+        },
+        "tick.svg": {
+          "blob": "459290bf74445a55c16f940e14c00217",
+          "name": "tick.svg",
+          "size": 222,
+          "type": "image/svg+xml"
+        },
+        "video.svg": {
+          "blob": "4da9cf6927011ab08c4b0ba1953078df",
+          "name": "video.svg",
+          "size": 283,
+          "type": "image/svg+xml"
+        }
+      },
+      "name": "Icons",
+      "order": [
+        "footprints.svg",
+        "stairs.svg",
+        "blocks.svg",
+        "clipboard.svg",
+        "hands-heart.svg",
+        "medicare-cross.svg",
+        "shield-tick.svg",
+        "smile.svg",
+        "video.svg",
+        "pin.svg",
+        "tick.svg",
+        "chevron.svg",
+        "heart.svg",
+        "book.svg",
+        "info.svg"
+      ],
+      "tile": "s"
+    },
+    "Logos": {
+      "files": {
+        "follow-me-therapy-mark.png": {
+          "blob": "6b7ee4dcbdb62ae72bff162cb5d8864c",
+          "name": "follow-me-therapy-mark.png",
+          "size": 11835,
+          "type": "image/png"
+        },
+        "follow-me-therapy-lockup-stacked.svg": {
+          "name": "follow-me-therapy-lockup-stacked.svg",
+          "blob": "9a50621d36f128393cda5db610dfddeb",
+          "size": 27406,
+          "type": "image/svg+xml"
+        },
+        "follow-me-therapy-lockup-horizontal.svg": {
+          "name": "follow-me-therapy-lockup-horizontal.svg",
+          "blob": "25e7652d75a616f412e47e4322cb2d86",
+          "size": 65260,
+          "type": "image/svg+xml"
+        },
+        "follow-me-therapy-mark.svg": {
+          "name": "follow-me-therapy-mark.svg",
+          "blob": "0fcfff8b562e6978395293fd3fb1826a",
+          "size": 7302,
+          "type": "image/svg+xml"
+        },
+        "follow-me-therapy-lockup-stacked-white.svg": {
+          "name": "follow-me-therapy-lockup-stacked-white.svg",
+          "blob": "09087087fbd1c0e1d008e27257bcd2bf",
+          "size": 27406,
+          "type": "image/svg+xml"
+        },
+        "follow-me-therapy-lockup-horizontal-white.svg": {
+          "name": "follow-me-therapy-lockup-horizontal-white.svg",
+          "blob": "df529b4467353931737a81d6f86ed731",
+          "size": 65260,
+          "type": "image/svg+xml"
+        },
+        "follow-me-therapy-mark-white.svg": {
+          "name": "follow-me-therapy-mark-white.svg",
+          "blob": "7f247c2a034dc570be2bf62585b242fa",
+          "size": 7302,
+          "type": "image/svg+xml"
+        }
+      },
+      "name": "Logos",
+      "order": [
+        "follow-me-therapy-lockup-stacked.svg",
+        "follow-me-therapy-lockup-horizontal.svg",
+        "follow-me-therapy-mark.svg",
+        "follow-me-therapy-lockup-stacked-white.svg",
+        "follow-me-therapy-lockup-horizontal-white.svg",
+        "follow-me-therapy-mark-white.svg",
+        "follow-me-therapy-mark.png"
+      ],
+      "tile": "m"
+    },
+    "Photos": {
+      "files": {
+        "share-card.jpg": {
+          "name": "share-card.jpg",
+          "blob": "d3a66c08ede3dabda37cc34326d7aeec",
+          "size": 77013,
+          "type": "image/jpeg"
+        },
+        "simone-cutout.webp": {
+          "blob": "cfc98ddfb80b529534e080c02477fb8d",
+          "name": "simone-cutout.webp",
+          "size": 107948,
+          "type": "image/webp"
+        }
+      },
+      "name": "Photos",
+      "order": [
+        "simone-cutout.webp",
+        "share-card.jpg"
+      ],
+      "tile": "l"
+    }
+  },
+  "blobs": {},
+  "createdOnFiles": {
+    "at": "2026-10-29T02:20:00Z",
+    "v": 1
+  },
+  "docs": {
+    "sections": []
+  },
+  "groups": [
+    "Logos",
+    "Photos",
+    "Icons"
+  ],
+  "lastChange": {
+    "by": "Sam",
+    "at": "2026-10-29T02:55:00Z",
+    "via": "GitHub \u00b7 Samwisee/follow-me-therapy@c2c9fd9",
+    "note": "Re-synced tokens from design/tokens.json (now the single source): 18 colours added, brand-ink ties the logo to the name."
+  },
+  "layout": "files",
+  "libraries": [],
+  "namespace": "FollowMeTherapy",
+  "sections": {},
+  "title": "Follow Me Therapy"
+}
