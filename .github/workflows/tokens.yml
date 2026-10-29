@@ -18,7 +18,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: python3 tools/build_tokens.py && python3 tools/build_pages.py
+      - run: pip install fonttools brotli
+      # The lockups' name follows the weight-brand token.
+      - run: python3 tools/make_lockups.py && python3 tools/build_tokens.py && python3 tools/build_pages.py
       - name: Re-render the link-preview image
         run: |
           pip install playwright pillow

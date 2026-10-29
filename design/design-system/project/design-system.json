@@ -124,14 +124,14 @@
         },
         "follow-me-therapy-lockup-stacked.svg": {
           "name": "follow-me-therapy-lockup-stacked.svg",
-          "blob": "9a50621d36f128393cda5db610dfddeb",
-          "size": 27406,
+          "blob": "78c00bd2411566c9eac35751ab6d53cb",
+          "size": 25382,
           "type": "image/svg+xml"
         },
         "follow-me-therapy-lockup-horizontal.svg": {
           "name": "follow-me-therapy-lockup-horizontal.svg",
-          "blob": "25e7652d75a616f412e47e4322cb2d86",
-          "size": 65260,
+          "blob": "293cae5a7614609e687b39fd25a7ef5f",
+          "size": 65170,
           "type": "image/svg+xml"
         },
         "follow-me-therapy-mark.svg": {
@@ -142,14 +142,14 @@
         },
         "follow-me-therapy-lockup-stacked-white.svg": {
           "name": "follow-me-therapy-lockup-stacked-white.svg",
-          "blob": "09087087fbd1c0e1d008e27257bcd2bf",
-          "size": 27406,
+          "blob": "7bde207d31e12d1b1a0b43fb27f2d541",
+          "size": 25382,
           "type": "image/svg+xml"
         },
         "follow-me-therapy-lockup-horizontal-white.svg": {
           "name": "follow-me-therapy-lockup-horizontal-white.svg",
-          "blob": "df529b4467353931737a81d6f86ed731",
-          "size": 65260,
+          "blob": "d11017b3215216c6b9f640ce737f0788",
+          "size": 65170,
           "type": "image/svg+xml"
         },
         "follow-me-therapy-mark-white.svg": {
@@ -175,8 +175,8 @@
       "files": {
         "share-card.jpg": {
           "name": "share-card.jpg",
-          "blob": "5cb9c271a96e6ca96bd5ebcd6f5f9e74",
-          "size": 78428,
+          "blob": "b03a72cac6a63f99501b196be382b2c3",
+          "size": 78683,
           "type": "image/jpeg"
         },
         "simone-cutout.webp": {
@@ -209,9 +209,9 @@
   ],
   "lastChange": {
     "by": "Sam",
-    "at": "2026-10-29T05:20:00Z",
-    "via": "GitHub \u00b7 Samwisee/follow-me-therapy",
-    "note": "Squiggles everywhere (titles, quotes, the swash), bigger note tiles with nested corners, card titles up a size, more room under titles and less above, calmer menu switch."
+    "at": "2026-10-29T13:25:00Z",
+    "via": "GitHub · Samwisee/follow-me-therapy",
+    "note": "Logo lockups redrawn with the name at weight-brand (400), matching the website; share card updated to the new design."
   },
   "layout": "files",
   "libraries": [

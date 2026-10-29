@@ -1,17 +1,23 @@
 """Build the logo lockups (name outlined in Fredoka, so no font is needed to print) from the traced mark.
+The name is drawn at the `weight.brand` token from design/tokens.json, the same weight as the
+practice name on the website, so the logo files follow the design system.
 Writes img/brand/follow-me-therapy-*.svg in ink and white. Needs fonttools + brotli."""
 from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
-import re
+import re, json
 from fontTools.ttLib import TTFont
+from fontTools.varLib import instancer
 from fontTools.pens.svgPathPen import SVGPathPen
 from fontTools.pens.transformPen import TransformPen
 INK="#2b2540"
 mark=open(ROOT / 'img/brand/follow-me-therapy-mark.svg').read()
 md=re.search(r' d="([^"]+)"',mark).group(1)
 MW,MH=271,300
+BRAND_WEIGHT=json.load(open(ROOT / 'design/tokens.json'))['weight']['brand']['$value']
 def text_path(txt, font_file, size):
-    f=TTFont(font_file); gs=f.getGlyphSet(); cmap=f.getBestCmap(); upm=f['head'].unitsPerEm
+    f=TTFont(font_file)
+    if 'fvar' in f: f=instancer.instantiateVariableFont(f, {"wght": BRAND_WEIGHT})
+    gs=f.getGlyphSet(); cmap=f.getBestCmap(); upm=f['head'].unitsPerEm
     hmtx=f['hmtx']; s=size/upm; x=0; pen=SVGPathPen(gs)
     kern={}
     for ch in txt:
@@ -19,7 +25,7 @@ def text_path(txt, font_file, size):
         tp=TransformPen(pen,(s,0,0,-s,x,0)); gs[g].draw(tp); x+=hmtx[g][0]*s
     asc=f['hhea'].ascent*s; cap=f['OS/2'].sCapHeight*s
     return pen.getCommands(), x, cap
-F=str(ROOT / 'fonts')+'/fredoka-latin-700-normal.woff2'
+F=str(ROOT / 'fonts')+'/fredoka-latin-variable.woff2'
 FS=str(ROOT / 'fonts')+'/quicksand-latin-600-normal.woff2'
 def svg(w,h,body,title="Follow Me Therapy"):
     return f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w:.1f} {h:.1f}" width="{w:.0f}" height="{h:.0f}"><title>{title}</title>{body}</svg>\n'

@@ -149,7 +149,7 @@ The practice name is the idea: a child following a grown-up's lead. Show it with
 
 ## The logo
 
-- The mark is a line drawing of an adult and child holding hands, with the name set below or beside it in Fredoka 700.
+- The mark is a line drawing of an adult and child holding hands, with the name set below or beside it in Fredoka at `weight-brand`, the same weight as the practice name on the website. `tools/make_lockups.py` reads that token, so changing it redraws the lockups.
 - Vector files are in the Logos group, each in `ink` and in white:
   - `mark`: the figures alone. Use it for favicons, footers, stamps, and anywhere the name is already on the page.
   - `lockup-stacked`: the mark centred over the name. Use it for covers, title pages and square spaces.
