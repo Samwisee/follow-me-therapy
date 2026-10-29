@@ -809,7 +809,7 @@ html[data-nav="rail"] main section[id] {
 }
 
 /* ── 6. Get in touch ──────────────────────────────────────────────────── */
-/* The privacy note: white on the lilac band, a round padlock the size of a
+/* The privacy note: white on the lilac band, a padlock tile the size of a
    button, the set's radius and gap. */
 .privacy-note.info-note {
   --note-tint: var(--paper);
@@ -826,16 +826,23 @@ html[data-nav="rail"] main section[id] {
 .privacy-note.info-note::before {
   width: var(--size-button);
   height: var(--size-button);
-  border-radius: 50%;
+  border-radius: var(--set-inner);
   background: /* token:purple */ url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23502eed' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='5' y='10.5' width='14' height='10' rx='2.5'/%3E%3Cpath d='M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5'/%3E%3Cpath d='M12 14.5v2'/%3E%3C/svg%3E") center / var(--size-icon) no-repeat, var(--paper);
 }
 /* Get in touch is one set: the two choices, phone and email, and the privacy
-   note share one padding (card-pad), one gap between them (grid-gap) and so
-   one corner radius. Each holds something button-sized in its corner (the
-   buttons, a round icon the size of a button), so every corner is
-   size-button / 2 + card-pad + outline. */
+   note share one padding (card-pad), one gap between them (grid-gap) and one
+   corner. Each holds a button-height square in its corner (the buttons, the
+   icon tiles), all with radius-tile corners, so every container's corner is
+   radius-tile + card-pad + outline, with straight sides between. */
 .contact-section {
-  --set-radius: calc(var(--size-button) / 2 + var(--card-pad) + var(--border-outline));
+  --set-inner: var(--radius-tile);
+  --set-radius: calc(var(--set-inner) + var(--card-pad) + var(--border-outline));
+}
+.contact-section .contact-card {
+  border-radius: var(--set-radius);
+}
+.contact-section .contact-card > :is(.btn, .btn-secondary, .btn-outline) {
+  border-radius: var(--set-inner);
 }
 .contact-direct {
   display: grid;
@@ -876,7 +883,7 @@ html[data-nav="rail"] main section[id] {
   width: var(--size-button);
   height: var(--size-button);
   border: var(--border-outline) solid color-mix(in srgb, var(--band) 30%, var(--paper));
-  border-radius: 50%;
+  border-radius: var(--set-inner);
   background: var(--tint);
   color: var(--band);
 }
