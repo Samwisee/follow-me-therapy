@@ -1,4 +1,4 @@
-"""Render tools/og.html to img/og.jpg (1200x630 link-preview image)."""
+"""Render tools/og.html to img/share-2026-10.jpg (1200x630 link-preview image)."""
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 from PIL import Image
@@ -13,6 +13,6 @@ with sync_playwright() as p:
     page.wait_for_timeout(300)
     page.screenshot(path=str(png))
     b.close()
-Image.open(png).convert("RGB").save(root / "img" / "og.jpg", quality=88, optimize=True, progressive=True)
+Image.open(png).convert("RGB").save(root / "img" / "share-2026-10.jpg", quality=88, optimize=True, progressive=True)
 png.unlink()
-print("wrote img/og.jpg")
+print("wrote img/share-2026-10.jpg")
