@@ -15,7 +15,7 @@ export interface InfoNoteProps { kind?: 'info' | 'evidence' | 'promise'; childre
 export declare function InfoNote(props: InfoNoteProps): React.ReactElement;
 export interface IconTileProps { icon: Icon40Name; tone?: Tone; small?: boolean; label?: string }
 export declare function IconTile(props: IconTileProps): React.ReactElement;
-export interface CardProps { icon: Icon40Name; tone?: Tone; title: string; more?: string; href?: string; children?: React.ReactNode }
+export interface CardProps { icon: Icon40Name; tone?: Tone; title: string; more?: string; href?: string; progress?: number; progressLabel?: string; children?: React.ReactNode }
 export declare function Card(props: CardProps): React.ReactElement;
 export interface ActionCardProps { tone?: 'purple' | 'teal'; title: string; action: string; href?: string; children?: React.ReactNode }
 export declare function ActionCard(props: ActionCardProps): React.ReactElement;

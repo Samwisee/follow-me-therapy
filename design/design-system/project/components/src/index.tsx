@@ -63,13 +63,14 @@ export function IconTile({ icon, tone = 'purple', small, label }: IconTileProps)
 }
 
 /* ── Card ── */
-export interface CardProps { icon: Icon40Name; tone?: Tone; title: string; more?: string; href?: string; children?: React.ReactNode }
+export interface CardProps { icon: Icon40Name; tone?: Tone; title: string; more?: string; href?: string; progress?: number; progressLabel?: string; children?: React.ReactNode }
 /** A service or funding card: tile, title, one or two sentences, and a "Learn more ›" line. */
-export function Card({ icon, tone = 'purple', title, more = 'Learn more', href, children }: CardProps) {
+export function Card({ icon, tone = 'purple', title, more = 'Learn more', href, progress, progressLabel, children }: CardProps) {
   const body = <>
     <IconTile icon={icon} tone={tone} />
     <h3>{title}</h3>
     {children && <p>{children}</p>}
+    {progress != null && <ProgressBar value={progress} label={progressLabel} />}
     {more && <span className="fmt-more">{more}<Icon name="chevron" /></span>}
   </>;
   const cls = cx('fmt-card', tone !== 'purple' && 'is-' + tone);

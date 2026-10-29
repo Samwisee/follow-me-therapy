@@ -6,6 +6,7 @@ The app's lilac top bar: back button, title (or the lockup on the home screen), 
 ## Rules (every product)
 
 - Lilac fill; the wave (bar.wave) is outlined in bar.line.
+- The tabs share one bar with the lockup (the tab bar says where you are); a flow shows its title, a back button and its progress.
 - Persistent: its parts animate, it never rebuilds.
 
 Tokens: `component.bar` (fill, line, ink, brand, tab-ink, tab-ink-selected, tab-icon-selected, wave, crest) in design/tokens.json.

@@ -519,6 +519,7 @@ a.fmt-card:hover { transform: translateY(calc(-1 * var(--space-2))) rotate(1deg)
 .fmt-card:not(.is-action) > .fmt-tile { width: var(--size-tile-md); height: var(--size-tile-md); border-radius: var(--radius-tile); }
 .fmt-card:not(.is-action) > .fmt-tile svg { width: var(--size-icon-lg); height: var(--size-icon-lg); }
 .fmt-card:not(.is-action) > .fmt-more { justify-self: center; align-self: end; }
+.fmt-card:not(.is-action) > .fmt-progress { margin-bottom: var(--space-4); }
 .fmt-card .fmt-more { margin-top: auto; display: inline-flex; align-items: center; gap: var(--space-1); color: var(--card-more); font-family: var(--font-display); font-weight: 500; }
 .fmt-card .fmt-more svg { width: var(--size-icon-sm); height: var(--size-icon-sm); fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
 /* An action card: a full-width button at the foot, so the card's corners
