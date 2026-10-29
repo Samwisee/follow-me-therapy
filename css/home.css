@@ -809,10 +809,13 @@ html[data-nav="rail"] main section[id] {
 }
 
 /* ── 6. Get in touch ──────────────────────────────────────────────────── */
+/* The privacy note: an info note with a padlock, under the contact tiles,
+   white on the lilac band. */
 .privacy-note {
-  margin: var(--space-6) auto 0;
-  font-size: var(--text-sm);
-  text-align: center;
+  --note-tint: var(--paper);
+}
+.privacy-note::before {
+  background: /* token:purple */ url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23502eed' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='5' y='10.5' width='14' height='10' rx='2.5'/%3E%3Cpath d='M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5'/%3E%3Cpath d='M12 14.5v2'/%3E%3C/svg%3E") center / var(--size-icon-lg) no-repeat, var(--paper);
 }
 /* Phone and email: two tiles like the Get started choices, an icon tile in
    the corner (so the tile's corners nest round it), a small label and the
@@ -820,8 +823,8 @@ html[data-nav="rail"] main section[id] {
 .contact-direct {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
-  gap: var(--space-4);
-  margin-top: var(--space-8);
+  gap: var(--grid-gap);
+  margin-top: var(--grid-gap);
 }
 .contact-tile {
   --band: var(--purple);
@@ -883,7 +886,7 @@ html[data-nav="rail"] main section[id] {
 .ct-text b {
   color: var(--ink);
   font-family: var(--font-display);
-  font-weight: 600;
+  font-weight: 500;
   font-size: var(--text-md);
   overflow-wrap: anywhere;
 }
