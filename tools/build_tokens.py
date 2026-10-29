@@ -53,7 +53,7 @@ def css_name(path):
     if group == "motion":
         return name if name.startswith("ease-") else f"dur-{name}"
     return {"color": name, "font": f"font-{name}", "space": f"space-{name}", "text": f"text-{name}",
-            "leading": f"leading-{name}", "tracking": f"tracking-{name}", "size": f"size-{name}",
+            "leading": f"leading-{name}", "weight": f"weight-{name}", "tracking": f"tracking-{name}", "size": f"size-{name}",
             "radius": f"radius-{name}", "shadow": f"shadow-{name}", "border": f"border-{name}",
             "z": f"z-{name}", "breakpoint": f"bp-{name}", "print": name}.get(group)
 
@@ -153,7 +153,7 @@ for k, v in TOK.items():
     val = v["$value"]
     fam = resolve(val["fontFamily"]) == TOK["font.display"]["$value"] and "display" or "body"
     g = "Print" if name.startswith("print") else ("Display" if fam == "display" else "Text")
-    st = {"name": name, "fontSize": resolve(val["fontSize"]), "lineHeight": resolve(val["lineHeight"]), "fontWeight": val["fontWeight"],
+    st = {"name": name, "fontSize": resolve(val["fontSize"]), "lineHeight": resolve(val["lineHeight"]), "fontWeight": resolve(val["fontWeight"]),
           "family": fam, "usage": v.get("$description", "")}
     sample = v.get("$extensions", {}).get("followmetherapy", {}).get("sample")
     if sample:

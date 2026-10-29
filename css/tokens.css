@@ -47,6 +47,7 @@
   --green-teal: #1f9e89;
   --font-display: "Fredoka", "Fredoka Fallback", "Quicksand", "QS Fallback", system-ui, sans-serif;
   --font-body: "Quicksand", "QS Fallback", system-ui, sans-serif;
+  --weight-brand: 340;
   --text-xs: 14px;
   --text-sm: 15px;
   --text-base: clamp(16.5px, 16.1667px + 0.0926vw, 17.5px);

@@ -83,14 +83,14 @@
   min-width: 0;
   color: var(--brand-ink);
   font-family: var(--font-display);
-  font-weight: 600;
+  font-weight: var(--weight-brand);
   font-size: var(--text-2xl);
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking-tight);
 }
 .brand img {
   width: auto;
-  height: 1.8em;
+  height: 1.45em; /* the same logo-to-name ratio as the home hero */
 }
 @media (max-width: 480px) {
   .head-left { gap: var(--space-3); }
