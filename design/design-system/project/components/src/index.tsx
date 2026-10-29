@@ -220,7 +220,8 @@ export function BookPage({ side = 'right', folio, ground = 'paper', children }: 
 
 /* ── App chrome: the same parts as the app (Compose), for screens on the web ── */
 /** The wave where one band meets the next. `down` hangs it under a bar; `stroked` outlines its edge in bar.line (the app's bars). */
-export function Wave({ down, stroked, ground = 'var(--bar-fill)' }: { down?: boolean; stroked?: boolean; ground?: string }) {
+export interface WaveProps { down?: boolean; stroked?: boolean; ground?: string }
+export function Wave({ down, stroked, ground = 'var(--bar-fill)' }: WaveProps) {
   return <span aria-hidden="true" className={cx('fmt-wave', down && 'is-down', stroked && 'is-stroked')} style={{ ['--wave-fill' as any]: ground }} />;
 }
 export interface ProgressBarProps { value: number; label?: string }

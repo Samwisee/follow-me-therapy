@@ -209,9 +209,9 @@
   ],
   "lastChange": {
     "by": "Sam",
-    "at": "2026-10-29T14:10:00Z",
+    "at": "2026-10-29T23:08:06Z",
     "via": "GitHub · Samwisee/follow-me-therapy",
-    "note": "One system for every medium: text, spacing and padding tokens take print values inside A4 sheets and A5 book pages (and fluid values on phone, iPad and laptop). New activity components from the worksheets: Choices, Group, WriteLines, DrawBox, CutLine, Tracker, plus a screen container for the app. Write-on lines use the new rule colour."
+    "note": "One design system for every product: tones and component tokens (which role each part of a component takes) shared by the website, this page, the worksheets and the app; a component list with each one's rules and where every product implements it (each README's Rules block); one icon source. New app components: AppBar, TabBar, ActionBar, ProgressBar, StepFocus, Celebration and Wave. The service card now matches the website and app."
   },
   "layout": "files",
   "libraries": [
