@@ -29,7 +29,7 @@ def page(slug,title,desc,crumb,h1,lead,chips,bands):
     <meta property="og:title" content="{title}" />
     <meta property="og:description" content="{desc}" />
     <meta property="og:url" content="{SITE}{slug}" />
-    <meta property="og:image" content="{SITE}img/og.jpg" />
+    <meta property="og:image" content="{SITE}img/og.jpg?v=2" />
     <meta property="og:locale" content="en_AU" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="img/icon-32.png" sizes="32x32" type="image/png" />

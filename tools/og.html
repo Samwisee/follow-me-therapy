@@ -1,0 +1,77 @@
+<!doctype html>
+<!-- Share image source. Render with: python3 tools/make_og.py -->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<style>
+  @font-face { font-family: Fredoka; font-weight: 600; src: url(../fonts/fredoka-latin-600-normal.woff2); }
+  @font-face { font-family: Fredoka; font-weight: 700; src: url(../fonts/fredoka-latin-700-normal.woff2); }
+  @font-face { font-family: Quicksand; font-weight: 600; src: url(../fonts/quicksand-latin-600-normal.woff2); }
+  @font-face { font-family: Quicksand; font-weight: 700; src: url(../fonts/quicksand-latin-700-normal.woff2); }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; }
+  body {
+    background: #efe9ff;
+    font-family: Quicksand, sans-serif;
+    color: #2b2540;
+    display: grid;
+    grid-template-columns: 730px 1fr;
+    position: relative;
+  }
+  /* soft corner blobs, like the site's waves */
+  body::before, body::after { content: ""; position: absolute; border-radius: 50%; z-index: 0; }
+  body::before { width: 300px; height: 300px; left: -170px; top: -170px; background: #fff0cc; }
+  body::after  { width: 260px; height: 260px; right: -90px; top: -110px; background: #e3f4f5; }
+
+  .words {
+    position: relative; z-index: 1;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 0 24px 0 48px;
+  }
+  .logo { width: 86px; height: auto; margin-bottom: 10px; }
+  h1 { font-family: Fredoka, sans-serif; font-weight: 700; font-size: 66px; line-height: 1; letter-spacing: -0.5px; white-space: nowrap; }
+  .sub { font-weight: 700; font-size: 24px; color: #5b556b; margin: 12px 0 30px; }
+
+  .facts { list-style: none; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .facts li {
+    display: inline-flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 10px;
+    font-weight: 700; font-size: 22px; padding: 10px 26px; border-radius: 999px; white-space: nowrap;
+  }
+  .facts svg { width: 25px; height: 25px; flex: none; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+  .fact-age   { background: #fff; color: #4b34c9; border: 3px solid #d9cffc; }
+  .fact-tele  { background: #e3f4f5; color: #00606d; }
+  .fact-place { flex-wrap: nowrap !important; background: #fff0cc; color: #7a4a00; }
+  .fact-tele { flex-direction: column; gap: 4px !important; padding: 10px 30px !important; border-radius: 34px !important; }
+  .row { display: inline-flex; align-items: center; gap: 10px; }
+  .fact-now { display: flex; align-items: center; justify-content: center; gap: 10px; color: #0f7a52; font-size: 20px; }
+  .live-dot { width: 13px; height: 13px; border-radius: 50%; background: #2fbf71; box-shadow: 0 0 0 5px rgba(47,191,113,.25); }
+
+  .photo { position: relative; z-index: 1; display: flex; align-items: center; justify-content: center; padding: 40px 48px 40px 0; }
+  .card {
+    width: 100%; height: 100%; background: #fff; border-radius: 48px; padding: 22px;
+    box-shadow: 0 16px 40px rgba(46,35,99,.12);
+  }
+  .frame {
+    width: 100%; height: 100%; border-radius: 30px; background: #e3f4f5;
+    position: relative; overflow: hidden;
+  }
+  .sun { position: absolute; width: 280px; height: 280px; border-radius: 50%; background: #fbe3a6; left: 50%; top: 52%; transform: translate(-50%, -50%); }
+  .sim { position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); height: 96%; }
+</style>
+</head>
+<body>
+  <div class="words">
+    <img class="logo" src="../img/logo.png" alt="" />
+    <h1>Follow Me Therapy</h1>
+    <p class="sub">Paediatric occupational therapy</p>
+    <ul class="facts">
+      <li class="fact-age"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" /><path d="M8.5 14.5c1.8 2 5.2 2 7 0" /><path d="M9 9.8v.1M15 9.8v.1" /></svg>Ages 0–18</li>
+      <li class="fact-tele"><span class="row"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="13" height="12" rx="3" /><path d="M16 10.5l5-3v9l-5-3" /></svg>Telehealth Australia-wide</span><span class="fact-now"><span class="live-dot"></span>spots available now</span></li>
+      <li class="fact-place"><svg viewBox="0 0 24 24"><path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11z" /><circle cx="12" cy="10" r="2.4" /></svg>Community sessions in North-Western Melbourne</li>
+    </ul>
+  </div>
+  <div class="photo">
+    <div class="card"><div class="frame"><div class="sun"></div><img class="sim" src="../img/simone-cutout.webp" alt="" /></div></div>
+  </div>
+</body>
+</html>

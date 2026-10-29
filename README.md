@@ -13,7 +13,7 @@ Static site for [followmetherapy.com.au](https://followmetherapy.com.au), hosted
 | `css/cards.css` | The service and funding cards, their pop-ups and the Get started choices: one stylesheet loaded by every page, so they look the same everywhere |
 | `privacy.html`, `404.html` | Privacy policy and not-found page |
 | `fonts/` | Self-hosted Fredoka and Quicksand (OFL) |
-| `img/` | Logo, icons, flags, Simone's cut-out, share image (`og.jpg`) |
+| `img/` | Logo, icons, flags, Simone's cut-out, share image (`og.jpg`, rendered from `tools/og.html` by `python3 tools/make_og.py`; bump the `?v=` on the og:image tags when it changes) |
 | `sitemap.xml`, `robots.txt`, `CNAME` | Search and domain config |
 
 ## Editing
