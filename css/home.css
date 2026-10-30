@@ -28,6 +28,21 @@ html[data-nav="rail"] body {
   }
 }
 
+/* Crossing 960px (js/home.js): the old menu slides out to its own edge as
+   the new one slides in; the page itself doesn't cross-fade, so the content
+   glides live (--nav-inset). Only with motion allowed (the script checks). */
+html.nav-switch::view-transition-old(*) { display: none; }
+html.nav-switch::view-transition-new(*) { animation: none; }
+html.nav-switch::view-transition-group(*) { animation: none; }
+html.nav-switch::view-transition-old(fmt-nav-rail-out) { animation: var(--dur-slow) var(--ease-standard) both fmt-nav-left-out; }
+html.nav-switch::view-transition-old(fmt-nav-top-out) { animation: var(--dur-slow) var(--ease-standard) both fmt-nav-up-out; }
+html.nav-switch::view-transition-new(fmt-nav-rail-in) { animation: var(--dur-slow) var(--ease-out) both fmt-nav-left-in; }
+html.nav-switch::view-transition-new(fmt-nav-top-in) { animation: var(--dur-slow) var(--ease-out) both fmt-nav-up-in; }
+@keyframes fmt-nav-left-out { to { translate: -110% 0; opacity: 0; } }
+@keyframes fmt-nav-up-out { to { translate: 0 -140%; opacity: 0; } }
+@keyframes fmt-nav-left-in { from { translate: -110% 0; opacity: 0; } }
+@keyframes fmt-nav-up-in { from { translate: 0 -140%; opacity: 0; } }
+
 .fixed-header {
   position: fixed;
   top: var(--nav-offset);

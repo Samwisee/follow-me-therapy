@@ -378,17 +378,33 @@ document.addEventListener("DOMContentLoaded", function () {
     progress();
   };
 
-  // Switching between the bar and the rail: the menu simply slides in from
-  // its own edge (the rail from the left, the bar from the top) and fades
-  // up, while the content glides across (--nav-inset, in CSS). Nothing
-  // travels across the page.
+  // Switching between the bar and the rail: the old menu slides out to its
+  // own edge and the new one slides in from its own (the rail on the left,
+  // the bar at the top), while the content glides across (--nav-inset, in
+  // CSS). Nothing travels across the page. Without view transitions the new
+  // menu still slides in; with reduced motion it simply switches.
   const DUR_IN = ms(token("--dur-slow", "400ms"));
   const EASE_IN = token("--ease-out", "ease-out");
+  const apply = (rail) => { root.dataset.nav = rail ? "rail" : "top"; layout(); };
+  let first = true;
   const setMode = (rail) => {
-    if (isRail() === rail) return;
-    root.dataset.nav = rail ? "rail" : "top";
-    layout();
-    if (still.matches || !nav.animate) return;
+    if (isRail() === rail) { first = false; return; }
+    const was = isRail() ? "rail" : "top";
+    if (first || still.matches) { first = false; apply(rail); return; }
+    // The old menu slides out to its own edge while the new one slides in and
+    // the content glides across (view transitions; css/home.css).
+    if (document.startViewTransition) {
+      nav.style.viewTransitionName = "fmt-nav-" + was + "-out";
+      root.classList.add("nav-switch");
+      const t = document.startViewTransition(() => {
+        apply(rail);
+        nav.style.viewTransitionName = "fmt-nav-" + (rail ? "rail" : "top") + "-in";
+      });
+      t.finished.finally(() => { nav.style.viewTransitionName = ""; root.classList.remove("nav-switch"); });
+      return;
+    }
+    apply(rail);
+    if (!nav.animate) return;
     nav.getAnimations().forEach((a) => a.cancel());
     nav.animate(
       [{ translate: rail ? "-110% 0" : "0 -140%", opacity: 0 }, { translate: "0 0", opacity: 1 }],
