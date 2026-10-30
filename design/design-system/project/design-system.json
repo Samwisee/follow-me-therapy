@@ -209,9 +209,9 @@
   ],
   "lastChange": {
     "by": "Sam",
-    "at": "2026-10-30T07:20:00Z",
+    "at": "2026-10-30T10:05:00Z",
     "via": "GitHub · Samwisee/follow-me-therapy",
-    "note": "WeekCalendar: compact (icon-sized stars, 44px targets) and each row's name can link to its activity (href, with a chevron)."
+    "note": "Tracker: the printed outline star in each cell is styled again (it lost its style when screen stars became buttons)."
   },
   "layout": "files",
   "libraries": [

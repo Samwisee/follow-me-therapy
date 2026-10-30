@@ -764,6 +764,8 @@ button.fmt-choice:focus-visible { outline: var(--border-focus) solid var(--focus
 .fmt-tracker th { padding: var(--space-2) 0; font-family: var(--font-display); font-weight: 600; font-size: var(--text-md); color: var(--ink); text-align: center; border-bottom: var(--border-outline) solid var(--purple-line); }
 .fmt-tracker th:first-child { width: 32%; text-align: left; }
 .fmt-tracker td { height: var(--rule-kid); text-align: center; vertical-align: middle; border-bottom: var(--border-outline) dashed var(--rule); }
+/* On paper a cell holds a plain outline star to colour in; on a screen, a star button (.fmt-star). */
+.fmt-tracker td > svg { width: var(--size-icon-lg); height: var(--size-icon-lg); fill: none; stroke: var(--calendar-planned); stroke-width: 1.6; stroke-linejoin: round; vertical-align: middle; }
 .fmt-tracker td .fmt-star { margin-inline: auto; }
 
 /* Footer on every sheet: logo, sign-off and the copyright line. */
