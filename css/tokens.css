@@ -218,6 +218,11 @@
   --chip-outline-fill: var(--paper);
   --chip-live: var(--live);
   --chip-live-ink: var(--live-ink);
+  --chip-purple-fill-selected: var(--tone-purple-ink);
+  --chip-teal-fill-selected: var(--tone-teal-ink);
+  --chip-sun-fill-selected: var(--tone-sun-ink);
+  --chip-pink-fill-selected: var(--tone-pink-ink);
+  --chip-ink-selected: var(--paper);
   --tag-purple-fill: var(--tone-purple-solid);
   --tag-teal-fill: var(--tone-teal-solid);
   --tag-sun-fill: var(--tone-sun-solid);

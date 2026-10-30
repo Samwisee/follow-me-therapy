@@ -8,7 +8,7 @@ A chip you tap to choose (days of the week, an option): a toggle button.
 - Off: paper with the tone's line and ink. On: the tone's tint, a solid outline and a tick, so it never relies on colour alone.
 - A 44px target; announced as on or off.
 
-Tokens: `component.chip` (fill, ink, line, line-hover, fill-on-ground, outline-fill, live, live-ink) in design/tokens.json.
+Tokens: `component.chip` (fill, ink, line, line-hover, fill-on-ground, outline-fill, live, live-ink, fill-selected, ink-selected) in design/tokens.json.
 
 | Product | Implementation |
 |---|---|

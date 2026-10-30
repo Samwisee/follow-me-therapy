@@ -18,7 +18,7 @@ A rounded pill with a border that states one fact: an age range, a way of workin
 - Fill tint, words ink, outline line; on hover a link chip's outline turns solid.
 - A chip on its own tone's ground (the lilac hero, the app bar, a note) turns paper (chip.fill-on-ground).
 
-Tokens: `component.chip` (fill, ink, line, line-hover, fill-on-ground, outline-fill, live, live-ink) in design/tokens.json.
+Tokens: `component.chip` (fill, ink, line, line-hover, fill-on-ground, outline-fill, live, live-ink, fill-selected, ink-selected) in design/tokens.json.
 
 | Product | Implementation |
 |---|---|

@@ -220,6 +220,11 @@
   --chip-outline-fill: var(--paper);
   --chip-live: var(--live);
   --chip-live-ink: var(--live-ink);
+  --chip-purple-fill-selected: var(--tone-purple-ink);
+  --chip-teal-fill-selected: var(--tone-teal-ink);
+  --chip-sun-fill-selected: var(--tone-sun-ink);
+  --chip-pink-fill-selected: var(--tone-pink-ink);
+  --chip-ink-selected: var(--paper);
   --tag-purple-fill: var(--tone-purple-solid);
   --tag-teal-fill: var(--tone-teal-solid);
   --tag-sun-fill: var(--tone-sun-solid);
@@ -681,11 +686,13 @@ a.fmt-card:hover { transform: translateY(calc(-1 * var(--space-2))) rotate(1deg)
    everything else (the words, and whatever a group holds: steps, lines,
    choices, boxes, trackers, cut lines) sits text-inset in, which is
    card-pad + outline, so it lines up under the words inside the header and
-   reads as belonging to its heading. */
+   reads as belonging to its heading (on paper; screens below). */
 :is(.fmt-sheet, .fmt-page, .fmt-screen) { --text-inset: calc(var(--card-pad) + var(--border-outline)); }
 :is(.fmt-sheet, .fmt-page, .fmt-screen) > :is(h2, .fmt-kid, .fmt-group),
 :is(.fmt-sheet, .fmt-page, .fmt-screen) > .fmt-foot { margin-inline: var(--text-inset); }
 :is(.fmt-sheet, .fmt-page, .fmt-screen) .fmt-group .fmt-group { margin-inline: 0; }
+/* On a screen (narrow, cards edge to edge) the words line up with the containers' outer edge instead. */
+.fmt-screen { --text-inset: 0; }
 
 /* Groups: a heading and what it introduces sit group-gap apart; groups
    sit stack apart (the sheet's gap). Proximity does the grouping. */
@@ -864,6 +871,15 @@ button.fmt-choice:focus-visible { outline: var(--border-focus) solid var(--focus
 .fmt-chip.is-toggle.is-pink { --tc-ink: var(--chip-pink-ink); --tc-line: var(--chip-pink-line); --tc-fill: var(--chip-pink-fill); --tc-on: var(--chip-pink-line-hover); }
 .fmt-chip.is-toggle[aria-pressed="true"] { background: var(--tc-fill); border-color: var(--tc-on); }
 .fmt-chip.is-toggle:focus-visible { outline: var(--border-focus) solid var(--focus); outline-offset: var(--border-focus); }
+
+/* ── Filter chip: in the tone of what it filters; on = the tone's ink, white words, no tick ── */
+.fmt-chip.is-filter { --fc-ink: var(--chip-purple-ink); --fc-line: var(--chip-purple-line); --fc-on: var(--chip-purple-fill-selected); --fc-on-ink: var(--chip-purple-ink-selected);
+  cursor: pointer; background: var(--chip-outline-fill); color: var(--fc-ink); border-color: var(--fc-line); transition: background-color var(--dur-fast) var(--ease-standard), border-color var(--dur-fast) var(--ease-standard), color var(--dur-fast) var(--ease-standard); }
+.fmt-chip.is-filter.is-teal { --fc-ink: var(--chip-teal-ink); --fc-line: var(--chip-teal-line); --fc-on: var(--chip-teal-fill-selected); --fc-on-ink: var(--chip-teal-ink-selected); }
+.fmt-chip.is-filter.is-sun { --fc-ink: var(--chip-sun-ink); --fc-line: var(--chip-sun-line); --fc-on: var(--chip-sun-fill-selected); --fc-on-ink: var(--chip-sun-ink-selected); }
+.fmt-chip.is-filter.is-pink { --fc-ink: var(--chip-pink-ink); --fc-line: var(--chip-pink-line); --fc-on: var(--chip-pink-fill-selected); --fc-on-ink: var(--chip-pink-ink-selected); }
+.fmt-chip.is-filter:is([aria-pressed="true"], [aria-checked="true"]) { background: var(--fc-on); border-color: var(--fc-on); color: var(--fc-on-ink); }
+.fmt-chip.is-filter:focus-visible { outline: var(--border-focus) solid var(--focus); outline-offset: var(--border-focus); }
 
 /* ── Week calendar: days across, each activity's days planned / partly / done ── */
 .fmt-calendar { display: grid; gap: var(--space-3); font-family: var(--font-body); }

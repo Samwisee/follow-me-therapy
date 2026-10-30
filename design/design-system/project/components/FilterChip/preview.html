@@ -1,0 +1,19 @@
+<!-- @dsCard group="Labels" height=160 subtitle="Filters a list, in the tone of what it filters; the chosen one is ink with white words" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>FilterChip — preview</title></head>
+<body style="margin:0">
+<div id="root" style="padding:20px;display:flex;flex-wrap:wrap;gap:8px;background:var(--paper)"></div>
+<script>
+  var F = window.FollowMeTherapy, h = React.createElement;
+  function Filters() {
+    var kinds = [['All', 'purple'], ['Self-care', 'purple'], ['Feelings', 'teal'], ['Home practice', 'sun']];
+    var s = React.useState(0), info = React.useState(true);
+    return h(React.Fragment, null,
+      h(F.FilterChip, { icon: 'info', label: 'About these activities', on: info[0], onSelect: function () { info[1](!info[0]); } }),
+      kinds.map(function (k, i) { return h(F.FilterChip, { key: k[0], tone: k[1], on: s[0] === i, onSelect: function () { s[1](i); } }, k[0]); }));
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(h(Filters));
+</script>
+</body>
+</html>

@@ -298,6 +298,13 @@ export function ToggleChip({ tone = 'purple', on = false, onToggle, children }: 
     {on && <Icon name="tick" />}{children}</button>;
 }
 
+export interface FilterChipProps { tone?: Tone; on?: boolean; onSelect?: () => void; icon?: Icon24Name; label?: string; children?: React.ReactNode }
+/** A chip that filters a list, in the tone of what it filters; on = the tone's ink with white words, no tick. Icon-only (info) chips take a spoken label. */
+export function FilterChip({ tone = 'purple', on = false, onSelect, icon, label, children }: FilterChipProps) {
+  return <button type="button" className={cx('fmt-chip', 'is-filter', tone !== 'purple' && 'is-' + tone)} aria-pressed={on} aria-label={label} onClick={onSelect}>
+    {icon && <Icon name={icon} />}{children}</button>;
+}
+
 export type CalendarDay = 'none' | 'planned' | 'partial' | 'done';
 export interface CalendarRow { label: string; tone?: Tone; days: CalendarDay[] }
 export interface WeekCalendarProps { days?: string[]; dates?: (string | number)[]; today?: number; rows: CalendarRow[] }
