@@ -193,11 +193,23 @@ export function CutLine({ shape = 'straight' }: { shape?: keyof typeof CUTS }) {
 export interface TrackerProps { rows?: number; days?: string[]; label?: string }
 /** A week tracker: rows to write an activity in, a star to colour per day. */
 export function Tracker({ rows = 4, days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'], label = 'My activity' }: TrackerProps) {
+  const [done, setDone] = React.useState<string[]>([]);
+  const [pop, setPop] = React.useState<string | null>(null);
   return <table className="fmt-tracker">
     <thead><tr><th scope="col">{label}</th>{days.map(d => <th scope="col" key={d}>{d}</th>)}</tr></thead>
     <tbody>{Array.from({ length: rows }, (_, r) => <tr key={r}><td><span className="fmt-sr">Activity {r + 1}</span></td>
-      {days.map(d => <td key={d}><Icon name="star" /></td>)}</tr>)}</tbody>
+      {days.map(d => { const k = r + d, on = done.includes(k);
+        return <td key={d}><Star state={on ? 'done' : 'planned'} pop={pop === k} label={`${d}, activity ${r + 1}`}
+          onToggle={() => { setDone(on ? done.filter(x => x !== k) : [...done, k]); setPop(on ? null : k); }} /></td>; })}</tr>)}</tbody>
   </table>;
+}
+
+/** A star: planned (outline), partly done (pale), done (gold). With onToggle it's a button; adding it bursts (spring, twist, sparkles). */
+function Star({ state, pop, label, onToggle }: { state: 'planned' | 'partial' | 'done'; pop?: boolean; label: string; onToggle?: () => void }) {
+  const cls = cx('fmt-star', state !== 'planned' && 'is-' + state, pop && 'is-pop');
+  const icon = <>{pop && <span className="fmt-star-burst" aria-hidden="true">{Array.from({ length: 8 }, (_, i) => <i key={i} />)}</span>}<Icon name="star" /></>;
+  return onToggle ? <button type="button" className={cls} aria-pressed={state === 'done'} aria-label={label} onClick={onToggle}>{icon}</button>
+    : <span className={cls}>{icon}</span>;
 }
 
 /* ── Print: Worksheet and BookPage ── */
@@ -306,18 +318,21 @@ export function FilterChip({ tone = 'purple', on = false, onSelect, icon, label,
 }
 
 export type CalendarDay = 'none' | 'planned' | 'partial' | 'done';
-export interface CalendarRow { label: string; tone?: Tone; days: CalendarDay[] }
+export interface CalendarRow { label: string; tone?: Tone; days: CalendarDay[]; onToggle?: (day: number) => void }
 export interface WeekCalendarProps { days?: string[]; dates?: (string | number)[]; today?: number; rows: CalendarRow[] }
 const FULL_DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 const DAY_WORDS: Record<CalendarDay, string> = { none: 'not planned', planned: 'planned', partial: 'partly done', done: 'done' };
 /** A week of an activity plan: days across (today on lilac), each activity's days planned (a ring), partly done (tinted) or done (teal with a tick). */
-export function WeekCalendar({ days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'], dates, today, rows }: WeekCalendarProps) {
+export function WeekCalendar({ days = ['M', 'T', 'W', 'T', 'F', 'S', 'S'], dates, today, rows }: WeekCalendarProps) {
+  const [pop, setPop] = React.useState<string | null>(null);
   return <div className="fmt-calendar">
     <div className="fmt-calendar-days" aria-hidden="true">{days.map((d, i) => <span key={i} className={cx(i === today && 'is-today')}>{d}{dates && <b>{dates[i]}</b>}</span>)}</div>
-    {rows.map((r, ri) => <div key={ri} className={cx('fmt-calendar-row', r.tone && r.tone !== 'purple' && 'is-' + r.tone)}>
+    {rows.map((r, ri) => <div key={ri} className="fmt-calendar-row">
       <p>{r.label}</p>
-      <ol>{r.days.map((st, i) => <li key={i} className={cx('is-' + st, i === today && 'is-today')} aria-label={`${FULL_DAYS[i]}, ${r.label}: ${DAY_WORDS[st]}`}>
-        <span>{st === 'done' && <Icon name="tick" />}</span></li>)}</ol>
+      <ol>{r.days.map((st, i) => { const words = `${FULL_DAYS[i]}, ${r.label}`;
+        return <li key={i} className={cx('is-' + st, i === today && 'is-today')} aria-label={r.onToggle ? undefined : `${words}: ${DAY_WORDS[st]}`}>
+          {st === 'none' && !r.onToggle ? <span /> : <Star state={st === 'none' ? 'planned' : st} pop={pop === ri + '/' + i} label={words}
+            onToggle={r.onToggle && (() => { setPop(st === 'done' ? null : ri + '/' + i); r.onToggle!(i); })} />}</li>; })}</ol>
     </div>)}
   </div>;
 }

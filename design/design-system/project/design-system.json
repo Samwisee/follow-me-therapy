@@ -209,9 +209,9 @@
   ],
   "lastChange": {
     "by": "Sam",
-    "at": "2026-10-30T02:20:00Z",
+    "at": "2026-10-30T03:05:00Z",
     "via": "GitHub · Samwisee/follow-me-therapy",
-    "note": "FilterChip (filters a list in the tone of what it filters; chosen = the tone's ink with white words, no tick; an info icon chip); on screens, words line up with the containers' edge."
+    "note": "WeekCalendar is now the practice week's stars (dot, outline, pale, gold; practice rows tap); adding a star bursts with sparkles (WeekCalendar and Tracker)."
   },
   "layout": "files",
   "libraries": [

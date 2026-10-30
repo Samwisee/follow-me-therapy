@@ -376,23 +376,20 @@
   --breathe-fill: var(--teal-tint);
   --breathe-line: var(--teal-line);
   --breathe-dot: var(--teal);
-  --calendar-purple-planned: var(--tone-purple-line);
-  --calendar-teal-planned: var(--tone-teal-line);
-  --calendar-sun-planned: var(--tone-sun-line);
-  --calendar-pink-planned: var(--tone-pink-line);
-  --calendar-purple-partial: var(--tone-purple-tint);
-  --calendar-teal-partial: var(--tone-teal-tint);
-  --calendar-sun-partial: var(--tone-sun-tint);
-  --calendar-pink-partial: var(--tone-pink-tint);
-  --calendar-purple-partial-line: var(--tone-purple-solid);
-  --calendar-teal-partial-line: var(--tone-teal-solid);
-  --calendar-sun-partial-line: var(--tone-sun-solid);
-  --calendar-pink-partial-line: var(--tone-pink-solid);
-  --calendar-done-fill: var(--teal);
-  --calendar-done-ink: var(--paper);
+  --calendar-none: var(--rule);
+  --calendar-planned: var(--purple);
+  --calendar-partial: var(--sun-tint);
+  --calendar-partial-line: var(--sun-deep);
+  --calendar-done-fill: var(--sun);
+  --calendar-done-line: var(--sun-deep);
+  --calendar-burst-sun: var(--sun);
+  --calendar-burst-purple: var(--purple);
+  --calendar-burst-teal: var(--teal);
+  --calendar-burst-pink: var(--pink);
   --calendar-today: var(--purple-tint);
   --calendar-ink: var(--ink);
   --calendar-day-ink: var(--ink-soft);
+  --calendar-rule: var(--rule);
 }
 
 /* A4 handouts: semantic tokens in print units. */
@@ -763,8 +760,8 @@ button.fmt-choice:focus-visible { outline: var(--border-focus) solid var(--focus
 .fmt-tracker { width: 100%; border-collapse: collapse; table-layout: fixed; font-family: var(--font-body); }
 .fmt-tracker th { padding: var(--space-2) 0; font-family: var(--font-display); font-weight: 600; font-size: var(--text-md); color: var(--ink); text-align: center; border-bottom: var(--border-outline) solid var(--purple-line); }
 .fmt-tracker th:first-child { width: 32%; text-align: left; }
-.fmt-tracker td { height: var(--rule-kid); text-align: center; vertical-align: middle; border-bottom: var(--border-outline) dashed var(--rule); color: var(--purple); }
-.fmt-tracker td svg { width: var(--size-icon-lg); height: var(--size-icon-lg); fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linejoin: round; }
+.fmt-tracker td { height: var(--rule-kid); text-align: center; vertical-align: middle; border-bottom: var(--border-outline) dashed var(--rule); }
+.fmt-tracker td .fmt-star { margin-inline: auto; }
 
 /* Footer on every sheet: logo, sign-off and the copyright line. */
 .fmt-foot { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: var(--grid-gap); padding-top: var(--group-gap); border-top: var(--border-outline) solid var(--purple-line); font-size: var(--text-xs); font-weight: 600; line-height: var(--leading-snug); color: var(--ink-soft); }
@@ -882,20 +879,41 @@ button.fmt-choice:focus-visible { outline: var(--border-focus) solid var(--focus
 .fmt-chip.is-filter:focus-visible { outline: var(--border-focus) solid var(--focus); outline-offset: var(--border-focus); }
 
 /* ── Week calendar: days across, each activity's days planned / partly / done ── */
-.fmt-calendar { display: grid; gap: var(--space-3); font-family: var(--font-body); }
+.fmt-calendar { display: grid; gap: var(--space-1); font-family: var(--font-body); }
 .fmt-calendar-days, .fmt-calendar-row ol { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); margin: 0; padding: 0; list-style: none; }
-.fmt-calendar-days span { display: grid; justify-items: center; padding-block: var(--space-1); border-radius: var(--radius-tile); font-weight: 600; font-size: var(--text-xs); color: var(--calendar-day-ink); }
-.fmt-calendar-days b { font-weight: 700; font-size: var(--text-sm); color: var(--calendar-ink); }
+.fmt-calendar-days span { display: grid; justify-items: center; padding-block: var(--space-1); border-radius: var(--radius-tile); font-family: var(--font-display); font-weight: 600; font-size: var(--text-md); color: var(--calendar-ink); }
+.fmt-calendar-days b { font-family: var(--font-body); font-weight: 600; font-size: var(--text-xs); color: var(--calendar-day-ink); }
 .fmt-calendar-days .is-today { background: var(--calendar-today); }
-.fmt-calendar-row { --cal-planned: var(--calendar-purple-planned); --cal-partial: var(--calendar-purple-partial); --cal-partial-line: var(--calendar-purple-partial-line); display: grid; gap: var(--space-1); }
-.fmt-calendar-row.is-teal { --cal-planned: var(--calendar-teal-planned); --cal-partial: var(--calendar-teal-partial); --cal-partial-line: var(--calendar-teal-partial-line); }
-.fmt-calendar-row.is-sun { --cal-planned: var(--calendar-sun-planned); --cal-partial: var(--calendar-sun-partial); --cal-partial-line: var(--calendar-sun-partial-line); }
-.fmt-calendar-row.is-pink { --cal-planned: var(--calendar-pink-planned); --cal-partial: var(--calendar-pink-partial); --cal-partial-line: var(--calendar-pink-partial-line); }
-.fmt-calendar-row > p { margin: 0; font-weight: 700; font-size: var(--text-sm); color: var(--calendar-ink); }
-.fmt-calendar-row li { display: grid; place-items: center; padding-block: var(--space-1); border-radius: var(--radius-tile); }
+.fmt-calendar-row { display: grid; gap: var(--space-1); padding-top: var(--space-2); }
+.fmt-calendar-row > p { margin: 0; font-size: var(--text-md); color: var(--calendar-ink); }
+.fmt-calendar-row ol { border-block: var(--border-outline) dashed var(--calendar-rule); }
+.fmt-calendar-row li { display: grid; place-items: center; min-height: var(--rule-kid); }
 .fmt-calendar-row li.is-today { background: var(--calendar-today); }
-.fmt-calendar-row li > span { box-sizing: border-box; display: grid; place-items: center; width: var(--space-8); height: var(--space-8); border-radius: 50%; }
-.fmt-calendar-row li.is-planned > span { border: var(--border-outline) solid var(--cal-planned); }
-.fmt-calendar-row li.is-partial > span { border: var(--border-outline) solid var(--cal-partial-line); background: var(--cal-partial); }
-.fmt-calendar-row li.is-done > span { background: var(--calendar-done-fill); color: var(--calendar-done-ink); }
-.fmt-calendar-row li svg { width: var(--size-icon-sm); height: var(--size-icon-sm); fill: none; stroke: currentColor; stroke-width: 2.8; stroke-linecap: round; stroke-linejoin: round; }
+.fmt-calendar-row li.is-none > span { width: var(--space-2); height: var(--space-2); border-radius: 50%; background: var(--calendar-none); }
+
+/* ── A star (WeekCalendar, Tracker): planned = outline, done = gold; adding one bursts ── */
+.fmt-star { position: relative; display: grid; place-items: center; width: var(--size-target); height: var(--size-target); margin: 0; padding: 0; border: 0; border-radius: 50%; background: none; color: var(--calendar-planned); }
+button.fmt-star { cursor: pointer; }
+button.fmt-star:focus-visible { outline: var(--border-focus) solid var(--focus); outline-offset: calc(var(--border-focus) * -1); }
+.fmt-star svg { width: var(--size-icon-lg); height: var(--size-icon-lg); fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linejoin: round; }
+.fmt-star.is-partial svg { fill: var(--calendar-partial); stroke: var(--calendar-partial-line); }
+.fmt-star.is-done svg { fill: var(--calendar-done-fill); stroke: var(--calendar-done-line); }
+.fmt-star-burst { position: absolute; inset: 0; pointer-events: none; }
+.fmt-star-burst i { position: absolute; top: 50%; left: 50%; width: var(--space-2); height: var(--space-2); margin: calc(var(--space-1) * -1); border-radius: 50%; opacity: 0; background: var(--calendar-burst-sun); }
+.fmt-star-burst i:nth-child(4n + 1) { background: var(--calendar-burst-purple); }
+.fmt-star-burst i:nth-child(4n + 2) { background: var(--calendar-burst-teal); }
+.fmt-star-burst i:nth-child(4n + 3) { background: var(--calendar-burst-pink); }
+.fmt-star-burst i:nth-child(1) { --dx: 0; --dy: calc(var(--space-6) * -1); }
+.fmt-star-burst i:nth-child(2) { --dx: var(--space-4); --dy: calc(var(--space-4) * -1); }
+.fmt-star-burst i:nth-child(3) { --dx: var(--space-6); --dy: 0; }
+.fmt-star-burst i:nth-child(4) { --dx: var(--space-4); --dy: var(--space-4); }
+.fmt-star-burst i:nth-child(5) { --dx: 0; --dy: var(--space-6); }
+.fmt-star-burst i:nth-child(6) { --dx: calc(var(--space-4) * -1); --dy: var(--space-4); }
+.fmt-star-burst i:nth-child(7) { --dx: calc(var(--space-6) * -1); --dy: 0; }
+.fmt-star-burst i:nth-child(8) { --dx: calc(var(--space-4) * -1); --dy: calc(var(--space-4) * -1); }
+@media (prefers-reduced-motion: no-preference) {
+  .fmt-star.is-pop svg { animation: fmt-star-pop var(--dur-slower) var(--ease-spring); }
+  .fmt-star-burst i { animation: fmt-star-burst var(--dur-slower) var(--ease-out); }
+  @keyframes fmt-star-pop { 0% { transform: scale(0.3) rotate(-72deg); } 60% { transform: scale(1.35) rotate(12deg); } 100% { transform: scale(1) rotate(0); } }
+  @keyframes fmt-star-burst { 0% { opacity: 1; transform: translate(0, 0) scale(0.4); } 60% { opacity: 1; } 100% { opacity: 0; transform: translate(calc(var(--dx) * 1.6), calc(var(--dy) * 1.6)) scale(1); } }
+}

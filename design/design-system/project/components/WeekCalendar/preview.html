@@ -1,4 +1,4 @@
-<!-- @dsCard group="App" height=300 subtitle="Days across, each activity: planned, partly done or done" -->
+<!-- @dsCard group="App" height=360 subtitle="The practice week's stars: not planned (dot), planned, partly done, done; tap a practice star to add it" -->
 <!doctype html>
 <html>
 <head><meta charset="utf-8"><title>WeekCalendar — preview</title></head>
@@ -6,10 +6,15 @@
 <div id="root" style="padding:20px;max-width:420px;background:var(--paper)"></div>
 <script>
   var F = window.FollowMeTherapy, h = React.createElement;
-  ReactDOM.createRoot(document.getElementById('root')).render(h(F.WeekCalendar, { dates: [26, 27, 28, 29, 30, 31, 1], today: 4, rows: [
-    { label: 'Morning routine', days: ['done', 'done', 'partial', 'done', 'partial', 'planned', 'planned'] },
-    { label: 'Calm-down plan', tone: 'teal', days: ['none', 'done', 'none', 'none', 'none', 'none', 'none'] },
-    { label: 'Cutting practice', tone: 'sun', days: ['done', 'none', 'done', 'none', 'planned', 'none', 'none'] } ] }));
+  function Week() {
+    var s = React.useState(['done', 'none', 'done', 'none', 'planned', 'none', 'none']);
+    var practice = { label: 'Cutting practice', tone: 'sun', days: s[0], onToggle: function (i) { var d = s[0].slice(); d[i] = d[i] === 'done' ? 'planned' : 'done'; s[1](d); } };
+    return h(F.WeekCalendar, { dates: [26, 27, 28, 29, 30, 31, 1], today: 4, rows: [
+      { label: 'Morning routine', days: ['done', 'done', 'partial', 'done', 'partial', 'planned', 'planned'] },
+      { label: 'Calm-down plan · when needed', tone: 'teal', days: ['none', 'done', 'none', 'none', 'none', 'none', 'none'] },
+      practice ] });
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(h(Week));
 </script>
 </body>
 </html>
