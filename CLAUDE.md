@@ -5,7 +5,10 @@ Therapy on her own. See README.md for the file layout.
 
 ## Workflow (always)
 
-- Work on the `preview` branch. Never push to `main` unless Sam says "deploy".
+- Work on the `preview` branch. Never push to `main` unless Sam says "deploy",
+  with one standing exception: fixes for design consistency between products
+  (the website, Design System, worksheets and app drifting apart) are deployed
+  as part of the fix, without asking. Tell Sam about any drift you notice.
 - After each change, commit, push `preview`, and give Sam the preview link with
   the full commit hash:
   `https://raw.githack.com/Samwisee/follow-me-therapy/<full-hash>/index.html`
