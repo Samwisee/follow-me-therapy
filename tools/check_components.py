@@ -210,7 +210,7 @@ if APP:
                     report("colour", f"{p.relative_to(APP)}: {fn} uses FmtColors.{col} → use Fmt{c['tokens'].capitalize()}Tokens")
     APP_FUNS = {f for text in KT.values() for f in re.findall(r"@Composable\n(?:fun|internal fun) (?:\w+\.)?(Fmt\w+)\(", text)}
     APP_HELPERS = {"FmtTheme", "FmtText", "FmtIcon", "FmtGroup", "FmtKidText", "FmtScreen", "FmtOnGround", "FmtFlowScaffold", "FmtActionBarHost",
-                   "FmtActionSpacer", "FmtPage", "FmtSiteHead", "FmtBand", "FmtFooter", "FmtBackButton", "FmtIconButton", "FmtStarToggle"}
+                   "FmtActionSpacer", "FmtPage", "FmtSiteHead", "FmtBand", "FmtFooter", "FmtBackButton", "FmtIconButton", "FmtStarToggle", "FmtStarMark"}
     for f in sorted(APP_FUNS - LISTED_APP - APP_HELPERS):
         report("unlisted", f"app component {f} isn't in design/components.json")
 
