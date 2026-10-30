@@ -42,7 +42,7 @@ export declare function Choices(props: ChoicesProps): React.ReactElement;
 export declare function CutLine(props: { shape?: keyof typeof CUTS }): React.ReactElement;
 export interface TrackerProps { rows?: number; days?: string[]; label?: string }
 export declare function Tracker(props: TrackerProps): React.ReactElement;
-export interface WorksheetProps { tag?: string; tone?: Tone; title: React.ReactNode; name?: boolean; tip?: React.ReactNode; children?: React.ReactNode }
+export interface WorksheetProps { tag?: string; tone?: Tone; title: React.ReactNode; name?: boolean; note?: React.ReactNode; noteLeadIn?: string; tip?: React.ReactNode; children?: React.ReactNode }
 export declare function Worksheet(props: WorksheetProps): React.ReactElement;
 export interface BookPageProps { side?: 'left' | 'right'; folio?: number; ground?: 'paper' | 'teal-tint' | 'purple-tint' | 'butter'; children?: React.ReactNode }
 export declare function BookPage(props: BookPageProps): React.ReactElement;

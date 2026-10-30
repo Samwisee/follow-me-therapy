@@ -673,6 +673,9 @@ a.fmt-card:hover { transform: translateY(calc(-1 * var(--space-2))) rotate(1deg)
 .fmt-head h1 { grid-area: title; }
 .fmt-head .fmt-tag { grid-area: tag; justify-self: start; }
 .fmt-head .fmt-name { grid-area: name; }
+.fmt-head:has(> .fmt-head-note) { grid-template-areas: "title name" "tag ." "note note"; }
+.fmt-head-note { grid-area: note; margin: 0; font-family: var(--font-body); font-weight: 500; font-size: var(--text-base); line-height: var(--leading-normal); color: var(--ink-soft); }
+.fmt-head-note b { font-weight: 700; color: var(--ink); }
 .fmt-head.is-teal { --head-tint: var(--head-teal-fill); --head-line: var(--head-teal-line); }
 .fmt-head.is-sun { --head-tint: var(--head-sun-fill); --head-line: var(--head-sun-line); }
 .fmt-head.is-pink { --head-tint: var(--head-pink-fill); --head-line: var(--head-pink-line); }

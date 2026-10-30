@@ -213,14 +213,15 @@ function Star({ state, pop, label, onToggle }: { state: 'planned' | 'partial' | 
 }
 
 /* ── Print: Worksheet and BookPage ── */
-export interface WorksheetProps { tag?: string; tone?: Tone; title: React.ReactNode; name?: boolean; tip?: React.ReactNode; children?: React.ReactNode }
+export interface WorksheetProps { tag?: string; tone?: Tone; title: React.ReactNode; name?: boolean; note?: React.ReactNode; noteLeadIn?: string; tip?: React.ReactNode; children?: React.ReactNode }
 /** An A4 handout (210 × 297 mm, .medium-paper): tinted header, the activity in groups, a tip for grown-ups, and the footer with the sign-off and copyright line. */
-export function Worksheet({ tag, tone = 'purple', title, name = true, tip, children }: WorksheetProps) {
+export function Worksheet({ tag, tone = 'purple', title, name = true, note, noteLeadIn, tip, children }: WorksheetProps) {
   const t = tone !== 'purple' ? 'is-' + tone : undefined;
   return <section className="fmt-sheet">
     <header className={cx('fmt-head', t)}>
       <div><h1>{title}</h1>{tag && <Tag tone={tone}>{tag}</Tag>}</div>
       {name && <p className="fmt-name">Name<span /></p>}
+      {note && <p className="fmt-head-note">{noteLeadIn && <b>{noteLeadIn} </b>}{note}</p>}
     </header>
     {children}
     {tip && <p className={cx('fmt-note', 'is-centred', t)}><i><Icon name="info" /></i><span><b style={{ color: 'var(--ink)' }}>For grown-ups: </b>{tip}</span></p>}
