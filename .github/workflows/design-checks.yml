@@ -13,3 +13,5 @@ jobs:
         with:
           python-version: "3.12"
       - run: python3 tools/check_tokens.py
+      # The Design System and worksheets artifacts are published by hand; warn when they're behind.
+      - run: python3 tools/check_published.py

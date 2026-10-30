@@ -209,9 +209,9 @@
   ],
   "lastChange": {
     "by": "Sam",
-    "at": "2026-10-30T10:05:00Z",
+    "at": "2026-10-30T10:25:00Z",
     "via": "GitHub · Samwisee/follow-me-therapy",
-    "note": "Tracker: the printed outline star in each cell is styled again (it lost its style when screen stars became buttons)."
+    "note": "Worksheet's README shows both components it documents (Head and Page); Head's rule about notes inside the header was missing."
   },
   "layout": "files",
   "libraries": [

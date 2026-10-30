@@ -33,6 +33,9 @@ Therapy on her own. See README.md for the file layout.
 - Design-system components: edit `design/design-system/project/components/src/index.tsx`
   or `bundle.css`, run `npm run design-system`, then publish that folder to the
   Design System artifact.
+  Then refresh the worksheets canvas's `ds/followmetherapy` copy, and record both
+  with `python3 tools/check_published.py --record design-system` / `worksheets`.
+  `python3 tools/check_published.py` lists anything still to publish (CI warns too).
 - Landing pages are generated: edit `tools/build_pages.py`, run
   `python3 tools/build_pages.py`. Pop-up text lives in `js/home.js` and is
   mirrored in `js/pages.js`; change both.
