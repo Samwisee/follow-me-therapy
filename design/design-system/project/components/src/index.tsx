@@ -63,12 +63,13 @@ export function IconTile({ icon, tone = 'purple', small, label }: IconTileProps)
 }
 
 /* ── Card ── */
-export interface CardProps { icon: Icon40Name; tone?: Tone; title: string; more?: string; href?: string; progress?: number; progressLabel?: string; children?: React.ReactNode }
+export interface CardProps { icon: Icon40Name; tone?: Tone; title: string; more?: string; href?: string; progress?: number; progressLabel?: string; done?: boolean; children?: React.ReactNode }
 /** A service or funding card: tile, title, one or two sentences, and a "Learn more ›" line. */
-export function Card({ icon, tone = 'purple', title, more = 'Learn more', href, progress, progressLabel, children }: CardProps) {
+export function Card({ icon, tone = 'purple', title, more = 'Learn more', href, progress, progressLabel, done, children }: CardProps) {
   const body = <>
     <IconTile icon={icon} tone={tone} />
     <h3>{title}</h3>
+    {done && <span className="fmt-done"><Icon name="tick" label="Done" /></span>}
     {children && <p>{children}</p>}
     {progress != null && <ProgressBar value={progress} label={progressLabel} />}
     {more && <span className="fmt-more">{more}<Icon name="chevron" /></span>}
@@ -295,4 +296,21 @@ export interface ToggleChipProps { tone?: Tone; on?: boolean; onToggle?: () => v
 export function ToggleChip({ tone = 'purple', on = false, onToggle, children }: ToggleChipProps) {
   return <button type="button" className={cx('fmt-chip', 'is-toggle', tone !== 'purple' && 'is-' + tone)} aria-pressed={on} onClick={onToggle}>
     {on && <Icon name="tick" />}{children}</button>;
+}
+
+export type CalendarDay = 'none' | 'planned' | 'partial' | 'done';
+export interface CalendarRow { label: string; tone?: Tone; days: CalendarDay[] }
+export interface WeekCalendarProps { days?: string[]; dates?: (string | number)[]; today?: number; rows: CalendarRow[] }
+const FULL_DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+const DAY_WORDS: Record<CalendarDay, string> = { none: 'not planned', planned: 'planned', partial: 'partly done', done: 'done' };
+/** A week of an activity plan: days across (today on lilac), each activity's days planned (a ring), partly done (tinted) or done (teal with a tick). */
+export function WeekCalendar({ days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'], dates, today, rows }: WeekCalendarProps) {
+  return <div className="fmt-calendar">
+    <div className="fmt-calendar-days" aria-hidden="true">{days.map((d, i) => <span key={i} className={cx(i === today && 'is-today')}>{d}{dates && <b>{dates[i]}</b>}</span>)}</div>
+    {rows.map((r, ri) => <div key={ri} className={cx('fmt-calendar-row', r.tone && r.tone !== 'purple' && 'is-' + r.tone)}>
+      <p>{r.label}</p>
+      <ol>{r.days.map((st, i) => <li key={i} className={cx('is-' + st, i === today && 'is-today')} aria-label={`${FULL_DAYS[i]}, ${r.label}: ${DAY_WORDS[st]}`}>
+        <span>{st === 'done' && <Icon name="tick" />}</span></li>)}</ol>
+    </div>)}
+  </div>;
 }

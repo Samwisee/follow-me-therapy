@@ -289,6 +289,8 @@
   --card-sun-line: var(--tone-sun-solid);
   --card-pink-line: var(--tone-pink-solid);
   --card-more: var(--purple);
+  --card-done-fill: var(--teal);
+  --card-done-ink: var(--paper);
   --choice-fill: var(--paper);
   --choice-purple-line: var(--tone-purple-line);
   --choice-teal-line: var(--tone-teal-line);
@@ -367,6 +369,23 @@
   --breathe-fill: var(--teal-tint);
   --breathe-line: var(--teal-line);
   --breathe-dot: var(--teal);
+  --calendar-purple-planned: var(--tone-purple-line);
+  --calendar-teal-planned: var(--tone-teal-line);
+  --calendar-sun-planned: var(--tone-sun-line);
+  --calendar-pink-planned: var(--tone-pink-line);
+  --calendar-purple-partial: var(--tone-purple-tint);
+  --calendar-teal-partial: var(--tone-teal-tint);
+  --calendar-sun-partial: var(--tone-sun-tint);
+  --calendar-pink-partial: var(--tone-pink-tint);
+  --calendar-purple-partial-line: var(--tone-purple-solid);
+  --calendar-teal-partial-line: var(--tone-teal-solid);
+  --calendar-sun-partial-line: var(--tone-sun-solid);
+  --calendar-pink-partial-line: var(--tone-pink-solid);
+  --calendar-done-fill: var(--teal);
+  --calendar-done-ink: var(--paper);
+  --calendar-today: var(--purple-tint);
+  --calendar-ink: var(--ink);
+  --calendar-day-ink: var(--ink-soft);
 }
 
 /* A4 handouts: semantic tokens in print units. */

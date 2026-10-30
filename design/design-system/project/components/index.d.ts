@@ -15,7 +15,7 @@ export interface InfoNoteProps { kind?: 'info' | 'evidence' | 'promise'; childre
 export declare function InfoNote(props: InfoNoteProps): React.ReactElement;
 export interface IconTileProps { icon: Icon40Name; tone?: Tone; small?: boolean; label?: string }
 export declare function IconTile(props: IconTileProps): React.ReactElement;
-export interface CardProps { icon: Icon40Name; tone?: Tone; title: string; more?: string; href?: string; progress?: number; progressLabel?: string; children?: React.ReactNode }
+export interface CardProps { icon: Icon40Name; tone?: Tone; title: string; more?: string; href?: string; progress?: number; progressLabel?: string; done?: boolean; children?: React.ReactNode }
 export declare function Card(props: CardProps): React.ReactElement;
 export interface ActionCardProps { tone?: 'purple' | 'teal'; title: string; action: string; href?: string; children?: React.ReactNode }
 export declare function ActionCard(props: ActionCardProps): React.ReactElement;
@@ -65,4 +65,7 @@ export interface BreathingProps { label?: string }
 export declare function Breathing(props: BreathingProps): React.ReactElement;
 export interface ToggleChipProps { tone?: Tone; on?: boolean; onToggle?: () => void; children?: React.ReactNode }
 export declare function ToggleChip(props: ToggleChipProps): React.ReactElement;
-declare global { interface Window { FollowMeTherapy: { Icon: typeof Icon; Chip: typeof Chip; Chips: typeof Chips; Tag: typeof Tag; TickList: typeof TickList; InfoNote: typeof InfoNote; IconTile: typeof IconTile; Card: typeof Card; ActionCard: typeof ActionCard; SectionTitle: typeof SectionTitle; Button: typeof Button; FootstepTrail: typeof FootstepTrail; StepPath: typeof StepPath; Logo: typeof Logo; Swash: typeof Swash; Panel: typeof Panel; Group: typeof Group; WriteLines: typeof WriteLines; DrawBox: typeof DrawBox; Choices: typeof Choices; CutLine: typeof CutLine; Tracker: typeof Tracker; Worksheet: typeof Worksheet; BookPage: typeof BookPage; Wave: typeof Wave; ProgressBar: typeof ProgressBar; AppBar: typeof AppBar; TabBar: typeof TabBar; ActionBar: typeof ActionBar; StepFocus: typeof StepFocus; Celebration: typeof Celebration; Breathing: typeof Breathing; ToggleChip: typeof ToggleChip } } }
+export interface CalendarRow { label: string; tone?: Tone; days: CalendarDay[] }
+export interface WeekCalendarProps { days?: string[]; dates?: (string | number)[]; today?: number; rows: CalendarRow[] }
+export declare function WeekCalendar(props: WeekCalendarProps): React.ReactElement;
+declare global { interface Window { FollowMeTherapy: { Icon: typeof Icon; Chip: typeof Chip; Chips: typeof Chips; Tag: typeof Tag; TickList: typeof TickList; InfoNote: typeof InfoNote; IconTile: typeof IconTile; Card: typeof Card; ActionCard: typeof ActionCard; SectionTitle: typeof SectionTitle; Button: typeof Button; FootstepTrail: typeof FootstepTrail; StepPath: typeof StepPath; Logo: typeof Logo; Swash: typeof Swash; Panel: typeof Panel; Group: typeof Group; WriteLines: typeof WriteLines; DrawBox: typeof DrawBox; Choices: typeof Choices; CutLine: typeof CutLine; Tracker: typeof Tracker; Worksheet: typeof Worksheet; BookPage: typeof BookPage; Wave: typeof Wave; ProgressBar: typeof ProgressBar; AppBar: typeof AppBar; TabBar: typeof TabBar; ActionBar: typeof ActionBar; StepFocus: typeof StepFocus; Celebration: typeof Celebration; Breathing: typeof Breathing; ToggleChip: typeof ToggleChip; WeekCalendar: typeof WeekCalendar } } }

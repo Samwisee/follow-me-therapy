@@ -291,6 +291,8 @@
   --card-sun-line: var(--tone-sun-solid);
   --card-pink-line: var(--tone-pink-solid);
   --card-more: var(--purple);
+  --card-done-fill: var(--teal);
+  --card-done-ink: var(--paper);
   --choice-fill: var(--paper);
   --choice-purple-line: var(--tone-purple-line);
   --choice-teal-line: var(--tone-teal-line);
@@ -369,6 +371,23 @@
   --breathe-fill: var(--teal-tint);
   --breathe-line: var(--teal-line);
   --breathe-dot: var(--teal);
+  --calendar-purple-planned: var(--tone-purple-line);
+  --calendar-teal-planned: var(--tone-teal-line);
+  --calendar-sun-planned: var(--tone-sun-line);
+  --calendar-pink-planned: var(--tone-pink-line);
+  --calendar-purple-partial: var(--tone-purple-tint);
+  --calendar-teal-partial: var(--tone-teal-tint);
+  --calendar-sun-partial: var(--tone-sun-tint);
+  --calendar-pink-partial: var(--tone-pink-tint);
+  --calendar-purple-partial-line: var(--tone-purple-solid);
+  --calendar-teal-partial-line: var(--tone-teal-solid);
+  --calendar-sun-partial-line: var(--tone-sun-solid);
+  --calendar-pink-partial-line: var(--tone-pink-solid);
+  --calendar-done-fill: var(--teal);
+  --calendar-done-ink: var(--paper);
+  --calendar-today: var(--purple-tint);
+  --calendar-ink: var(--ink);
+  --calendar-day-ink: var(--ink-soft);
 }
 
 /* A4 handouts: semantic tokens in print units. */
@@ -541,6 +560,10 @@ a.fmt-card:hover { transform: translateY(calc(-1 * var(--space-2))) rotate(1deg)
 .fmt-card:not(.is-action) > .fmt-tile svg { width: var(--size-icon-lg); height: var(--size-icon-lg); }
 .fmt-card:not(.is-action) > .fmt-more { justify-self: center; align-self: end; }
 .fmt-card:not(.is-action) > .fmt-progress { margin-bottom: var(--space-4); }
+/* Done: a teal tick badge beside the title (in place of a chevron in a row). */
+.fmt-card:not(.is-action):has(> .fmt-done) { grid-template-columns: auto 1fr auto; }
+.fmt-card .fmt-done { display: grid; place-items: center; width: var(--size-icon-lg); height: var(--size-icon-lg); border-radius: 50%; background: var(--card-done-fill); color: var(--card-done-ink); }
+.fmt-card .fmt-done svg { width: var(--size-icon-sm); height: var(--size-icon-sm); fill: none; stroke: currentColor; stroke-width: 2.8; stroke-linecap: round; stroke-linejoin: round; }
 .fmt-card .fmt-more { margin-top: auto; display: inline-flex; align-items: center; gap: var(--space-1); color: var(--card-more); font-family: var(--font-display); font-weight: 500; }
 .fmt-card .fmt-more svg { width: var(--size-icon-sm); height: var(--size-icon-sm); fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
 /* An action card: a full-width button at the foot, so the card's corners
@@ -841,3 +864,22 @@ button.fmt-choice:focus-visible { outline: var(--border-focus) solid var(--focus
 .fmt-chip.is-toggle.is-pink { --tc-ink: var(--chip-pink-ink); --tc-line: var(--chip-pink-line); --tc-fill: var(--chip-pink-fill); --tc-on: var(--chip-pink-line-hover); }
 .fmt-chip.is-toggle[aria-pressed="true"] { background: var(--tc-fill); border-color: var(--tc-on); }
 .fmt-chip.is-toggle:focus-visible { outline: var(--border-focus) solid var(--focus); outline-offset: var(--border-focus); }
+
+/* ── Week calendar: days across, each activity's days planned / partly / done ── */
+.fmt-calendar { display: grid; gap: var(--space-3); font-family: var(--font-body); }
+.fmt-calendar-days, .fmt-calendar-row ol { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); margin: 0; padding: 0; list-style: none; }
+.fmt-calendar-days span { display: grid; justify-items: center; padding-block: var(--space-1); border-radius: var(--radius-tile); font-weight: 600; font-size: var(--text-xs); color: var(--calendar-day-ink); }
+.fmt-calendar-days b { font-weight: 700; font-size: var(--text-sm); color: var(--calendar-ink); }
+.fmt-calendar-days .is-today { background: var(--calendar-today); }
+.fmt-calendar-row { --cal-planned: var(--calendar-purple-planned); --cal-partial: var(--calendar-purple-partial); --cal-partial-line: var(--calendar-purple-partial-line); display: grid; gap: var(--space-1); }
+.fmt-calendar-row.is-teal { --cal-planned: var(--calendar-teal-planned); --cal-partial: var(--calendar-teal-partial); --cal-partial-line: var(--calendar-teal-partial-line); }
+.fmt-calendar-row.is-sun { --cal-planned: var(--calendar-sun-planned); --cal-partial: var(--calendar-sun-partial); --cal-partial-line: var(--calendar-sun-partial-line); }
+.fmt-calendar-row.is-pink { --cal-planned: var(--calendar-pink-planned); --cal-partial: var(--calendar-pink-partial); --cal-partial-line: var(--calendar-pink-partial-line); }
+.fmt-calendar-row > p { margin: 0; font-weight: 700; font-size: var(--text-sm); color: var(--calendar-ink); }
+.fmt-calendar-row li { display: grid; place-items: center; padding-block: var(--space-1); border-radius: var(--radius-tile); }
+.fmt-calendar-row li.is-today { background: var(--calendar-today); }
+.fmt-calendar-row li > span { box-sizing: border-box; display: grid; place-items: center; width: var(--space-8); height: var(--space-8); border-radius: 50%; }
+.fmt-calendar-row li.is-planned > span { border: var(--border-outline) solid var(--cal-planned); }
+.fmt-calendar-row li.is-partial > span { border: var(--border-outline) solid var(--cal-partial-line); background: var(--cal-partial); }
+.fmt-calendar-row li.is-done > span { background: var(--calendar-done-fill); color: var(--calendar-done-ink); }
+.fmt-calendar-row li svg { width: var(--size-icon-sm); height: var(--size-icon-sm); fill: none; stroke: currentColor; stroke-width: 2.8; stroke-linecap: round; stroke-linejoin: round; }
