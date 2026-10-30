@@ -1,0 +1,14 @@
+<!-- @dsCard group="Layout" height=420 subtitle="A tinted section of a screen, words at the text edge" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Panel — preview</title></head>
+<body style="margin:0">
+<div id="root" style="padding:20px;display:grid;gap:16px;background:var(--paper)"></div>
+<script>
+  var F = window.FollowMeTherapy, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null,
+    h(F.Panel, {title:'Keep a backup'}, h('p', null, 'A backup is one small file with everything you’ve saved here.'), h('div', null, h(F.Button, {outline:true}, 'Save a backup'))),
+    h(F.Panel, {title:'Start again', tone:'sun'}, h('p', null, 'Clear the routine, the calm-down plan and this week’s stars from this device.'))));
+</script>
+</body>
+</html>

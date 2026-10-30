@@ -275,6 +275,14 @@
   --head-teal-line: var(--tone-teal-line);
   --head-sun-line: var(--tone-sun-line);
   --head-pink-line: var(--tone-pink-line);
+  --panel-purple-fill: var(--tone-purple-ground);
+  --panel-teal-fill: var(--tone-teal-ground);
+  --panel-sun-fill: var(--tone-sun-ground);
+  --panel-pink-fill: var(--tone-pink-ground);
+  --panel-purple-line: var(--tone-purple-line);
+  --panel-teal-line: var(--tone-teal-line);
+  --panel-sun-line: var(--tone-sun-line);
+  --panel-pink-line: var(--tone-pink-line);
   --card-fill: var(--paper);
   --card-purple-line: var(--tone-purple-solid);
   --card-teal-line: var(--tone-teal-solid);

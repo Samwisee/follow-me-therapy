@@ -31,6 +31,8 @@ export declare function StepPath(props: StepPathProps): React.ReactElement;
 export interface LogoProps { variant?: 'stacked' | 'horizontal' | 'mark'; inverse?: boolean; height?: number | string; label?: string }
 export declare function Logo(props: LogoProps): React.ReactElement;
 export declare function Swash(props: { children?: React.ReactNode }): React.ReactElement;
+export interface PanelProps { title?: React.ReactNode; tone?: Tone; children?: React.ReactNode }
+export declare function Panel(props: PanelProps): React.ReactElement;
 export declare function Group(props: { title?: React.ReactNode; fill?: boolean; children?: React.ReactNode }): React.ReactElement;
 export declare function WriteLines(props: { lines?: number; kid?: boolean }): React.ReactElement;
 export declare function DrawBox(props: { prompt?: React.ReactNode; fill?: boolean }): React.ReactElement;
@@ -59,4 +61,4 @@ export interface StepFocusProps { number: number; total: number; label: string; 
 export declare function StepFocus(props: StepFocusProps): React.ReactElement;
 export interface CelebrationProps { title: React.ReactNode; message: React.ReactNode }
 export declare function Celebration(props: CelebrationProps): React.ReactElement;
-declare global { interface Window { FollowMeTherapy: { Icon: typeof Icon; Chip: typeof Chip; Chips: typeof Chips; Tag: typeof Tag; TickList: typeof TickList; InfoNote: typeof InfoNote; IconTile: typeof IconTile; Card: typeof Card; ActionCard: typeof ActionCard; SectionTitle: typeof SectionTitle; Button: typeof Button; FootstepTrail: typeof FootstepTrail; StepPath: typeof StepPath; Logo: typeof Logo; Swash: typeof Swash; Group: typeof Group; WriteLines: typeof WriteLines; DrawBox: typeof DrawBox; Choices: typeof Choices; CutLine: typeof CutLine; Tracker: typeof Tracker; Worksheet: typeof Worksheet; BookPage: typeof BookPage; Wave: typeof Wave; ProgressBar: typeof ProgressBar; AppBar: typeof AppBar; TabBar: typeof TabBar; ActionBar: typeof ActionBar; StepFocus: typeof StepFocus; Celebration: typeof Celebration } } }
+declare global { interface Window { FollowMeTherapy: { Icon: typeof Icon; Chip: typeof Chip; Chips: typeof Chips; Tag: typeof Tag; TickList: typeof TickList; InfoNote: typeof InfoNote; IconTile: typeof IconTile; Card: typeof Card; ActionCard: typeof ActionCard; SectionTitle: typeof SectionTitle; Button: typeof Button; FootstepTrail: typeof FootstepTrail; StepPath: typeof StepPath; Logo: typeof Logo; Swash: typeof Swash; Panel: typeof Panel; Group: typeof Group; WriteLines: typeof WriteLines; DrawBox: typeof DrawBox; Choices: typeof Choices; CutLine: typeof CutLine; Tracker: typeof Tracker; Worksheet: typeof Worksheet; BookPage: typeof BookPage; Wave: typeof Wave; ProgressBar: typeof ProgressBar; AppBar: typeof AppBar; TabBar: typeof TabBar; ActionBar: typeof ActionBar; StepFocus: typeof StepFocus; Celebration: typeof Celebration } } }

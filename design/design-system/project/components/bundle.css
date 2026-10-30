@@ -277,6 +277,14 @@
   --head-teal-line: var(--tone-teal-line);
   --head-sun-line: var(--tone-sun-line);
   --head-pink-line: var(--tone-pink-line);
+  --panel-purple-fill: var(--tone-purple-ground);
+  --panel-teal-fill: var(--tone-teal-ground);
+  --panel-sun-fill: var(--tone-sun-ground);
+  --panel-pink-fill: var(--tone-pink-ground);
+  --panel-purple-line: var(--tone-purple-line);
+  --panel-teal-line: var(--tone-teal-line);
+  --panel-sun-line: var(--tone-sun-line);
+  --panel-pink-line: var(--tone-pink-line);
   --card-fill: var(--paper);
   --card-purple-line: var(--tone-purple-solid);
   --card-teal-line: var(--tone-teal-solid);
@@ -428,10 +436,10 @@
 .fmt-chip.is-outline { background: var(--chip-outline-fill); color: var(--chip-purple-ink); border-color: var(--chip-purple-line); }
 /* On its own tone's ground (a lilac band, header or note) a chip turns paper
    (chip.fill-on-ground), so it never vanishes into its own tint. */
-:is(.tone-lilac, .fmt-head:not(.is-teal, .is-sun, .is-pink), .fmt-note:not(.is-teal, .is-sun, .is-promise), .fmt-appbar, .fmt-on-purple) .fmt-chip.is-purple,
-:is(.tone-mint, .fmt-head.is-teal, .fmt-note.is-teal, .fmt-on-teal) .fmt-chip.is-teal,
+:is(.tone-lilac, .fmt-head:not(.is-teal, .is-sun, .is-pink), .fmt-panel:not(.is-teal, .is-sun, .is-pink), .fmt-note:not(.is-teal, .is-sun, .is-promise), .fmt-appbar, .fmt-on-purple) .fmt-chip.is-purple,
+:is(.tone-mint, .fmt-head.is-teal, .fmt-panel.is-teal, .fmt-note.is-teal, .fmt-on-teal) .fmt-chip.is-teal,
 :is(.fmt-on-sun) .fmt-chip.is-sun,
-:is(.fmt-head.is-pink, .fmt-on-pink) .fmt-chip.is-pink { background: var(--chip-fill-on-ground); }
+:is(.fmt-head.is-pink, .fmt-panel.is-pink, .fmt-on-pink) .fmt-chip.is-pink { background: var(--chip-fill-on-ground); }
 /* A chip that's a link: the whole chip is the target. */
 .fmt-chip > a { display: contents; color: inherit; text-decoration: none; }
 .fmt-chip > a::after { content: ""; position: absolute; inset: calc(-1 * var(--border-outline)); border-radius: var(--radius-pill); }
@@ -649,6 +657,13 @@ a.fmt-card:hover { transform: translateY(calc(-1 * var(--space-2))) rotate(1deg)
 .fmt-group > h2 { margin: 0; font-family: var(--font-display); font-weight: 600; font-size: var(--text-xl); line-height: var(--leading-snug); color: var(--ink); text-wrap: balance; }
 .fmt-group > p { margin: 0; }
 .fmt-group.is-fill { flex: 1 1 auto; }
+/* ── Panel: a tinted section of a screen, words at the text edge ── */
+.fmt-panel { --panel-fill: var(--panel-purple-fill); --panel-line: var(--panel-purple-line); display: flex; flex-direction: column; gap: var(--group-gap); padding: var(--card-pad); border: var(--border-outline) solid var(--panel-line); border-radius: calc(var(--radius-tile) + var(--card-pad) + var(--border-outline)); background: var(--panel-fill); font-family: var(--font-body); font-weight: 500; font-size: var(--text-base); line-height: var(--leading-normal); color: var(--ink-soft); }
+.fmt-panel > h2 { margin: 0; font-family: var(--font-display); font-weight: 600; font-size: var(--text-xl); line-height: var(--leading-snug); color: var(--ink); text-wrap: balance; }
+.fmt-panel > p { margin: 0; }
+.fmt-panel.is-teal { --panel-fill: var(--panel-teal-fill); --panel-line: var(--panel-teal-line); }
+.fmt-panel.is-sun { --panel-fill: var(--panel-sun-fill); --panel-line: var(--panel-sun-line); }
+.fmt-panel.is-pink { --panel-fill: var(--panel-pink-fill); --panel-line: var(--panel-pink-line); }
 /* Spread: share the spare height evenly between the items (e.g. cutting lines). */
 .fmt-group.is-spread { flex: 1 1 auto; justify-content: space-between; gap: var(--stack); }
 /* In a filling group, stretchy parts take the spare height so the rhythm

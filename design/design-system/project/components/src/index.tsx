@@ -145,6 +145,11 @@ export function Swash({ children }: { children?: React.ReactNode }) {
 
 /* ── Activity parts: the same on paper, tablet, phone and the app ── */
 /** A heading and what it introduces, group-gap apart. `fill` takes the spare height. */
+export interface PanelProps { title?: React.ReactNode; tone?: Tone; children?: React.ReactNode }
+/** A tinted section of a screen: a heading and what it holds on the tone's ground, its words at the text edge. */
+export function Panel({ title, tone = 'purple', children }: PanelProps) {
+  return <section className={cx('fmt-panel', tone !== 'purple' && 'is-' + tone)}>{title && <h2>{title}</h2>}{children}</section>;
+}
 export function Group({ title, fill, children }: { title?: React.ReactNode; fill?: boolean; children?: React.ReactNode }) {
   return <div className={cx('fmt-group', fill && 'is-fill')}>{title && <h2>{title}</h2>}{children}</div>;
 }
