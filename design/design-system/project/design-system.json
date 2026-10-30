@@ -209,9 +209,9 @@
   ],
   "lastChange": {
     "by": "Sam",
-    "at": "2026-10-29T23:08:06Z",
+    "at": "2026-10-30T00:25:25Z",
     "via": "GitHub · Samwisee/follow-me-therapy",
-    "note": "One design system for every product: tones and component tokens (which role each part of a component takes) shared by the website, this page, the worksheets and the app; a component list with each one's rules and where every product implements it (each README's Rules block); one icon source. New app components: AppBar, TabBar, ActionBar, ProgressBar, StepFocus, Celebration and Wave. The service card now matches the website and app."
+    "note": "Cards can show progress inside, under their words (as the app's routine row does). The app's tabs share one bar with the lockup. New icon: add-to-home."
   },
   "layout": "files",
   "libraries": [
