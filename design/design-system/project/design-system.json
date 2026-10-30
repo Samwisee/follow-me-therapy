@@ -209,9 +209,9 @@
   ],
   "lastChange": {
     "by": "Sam",
-    "at": "2026-10-30T00:57:40Z",
+    "at": "2026-10-30T01:25:08Z",
     "via": "GitHub · Samwisee/follow-me-therapy",
-    "note": "ToggleChip (tap to choose: tint, solid outline and a tick) and Breathing join the system; the step, celebration and breathing screens take their colours from component tokens (step, celebrate, breathe) in every product."
+    "note": "WeekCalendar (a week of an activity plan: planned, partly done or done, today marked); cards show a teal tick when done and their progress bar from the start; menu icon."
   },
   "layout": "files",
   "libraries": [
