@@ -209,9 +209,9 @@
   ],
   "lastChange": {
     "by": "Sam",
-    "at": "2026-10-30T00:40:24Z",
+    "at": "2026-10-30T00:57:40Z",
     "via": "GitHub · Samwisee/follow-me-therapy",
-    "note": "New Panel: a tinted section of a screen (the tone's ground, outlined in its line), its words at the text edge. Used by the app's For grown-ups."
+    "note": "ToggleChip (tap to choose: tint, solid outline and a tick) and Breathing join the system; the step, celebration and breathing screens take their colours from component tokens (step, celebrate, breathe) in every product."
   },
   "layout": "files",
   "libraries": [
