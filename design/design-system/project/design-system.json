@@ -209,9 +209,9 @@
   ],
   "lastChange": {
     "by": "Sam",
-    "at": "2026-10-30T00:25:25Z",
+    "at": "2026-10-30T00:40:24Z",
     "via": "GitHub · Samwisee/follow-me-therapy",
-    "note": "Cards can show progress inside, under their words (as the app's routine row does). The app's tabs share one bar with the lockup. New icon: add-to-home."
+    "note": "New Panel: a tinted section of a screen (the tone's ground, outlined in its line), its words at the text edge. Used by the app's For grown-ups."
   },
   "layout": "files",
   "libraries": [
