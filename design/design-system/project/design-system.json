@@ -209,9 +209,9 @@
   ],
   "lastChange": {
     "by": "Sam",
-    "at": "2026-10-30T01:25:08Z",
+    "at": "2026-10-30T02:20:00Z",
     "via": "GitHub · Samwisee/follow-me-therapy",
-    "note": "WeekCalendar (a week of an activity plan: planned, partly done or done, today marked); cards show a teal tick when done and their progress bar from the start; menu icon."
+    "note": "FilterChip (filters a list in the tone of what it filters; chosen = the tone's ink with white words, no tick; an info icon chip); on screens, words line up with the containers' edge."
   },
   "layout": "files",
   "libraries": [
