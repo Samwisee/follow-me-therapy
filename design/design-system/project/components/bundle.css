@@ -884,13 +884,18 @@ button.fmt-choice:focus-visible { outline: var(--border-focus) solid var(--focus
 /* ── Week calendar: days across, each activity's days planned / partly / done ── */
 .fmt-calendar { display: grid; gap: var(--space-1); font-family: var(--font-body); }
 .fmt-calendar-days, .fmt-calendar-row ol { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); margin: 0; padding: 0; list-style: none; }
-.fmt-calendar-days span { display: grid; justify-items: center; padding-block: var(--space-1); border-radius: var(--radius-tile); font-family: var(--font-display); font-weight: 600; font-size: var(--text-md); color: var(--calendar-ink); }
+.fmt-calendar-days span { display: grid; justify-items: center; padding-block: var(--space-1); border-radius: var(--radius-tile); font-family: var(--font-display); font-weight: 600; font-size: var(--text-base); color: var(--calendar-ink); }
 .fmt-calendar-days b { font-family: var(--font-body); font-weight: 600; font-size: var(--text-xs); color: var(--calendar-day-ink); }
 .fmt-calendar-days .is-today { background: var(--calendar-today); }
-.fmt-calendar-row { display: grid; gap: var(--space-1); padding-top: var(--space-2); }
-.fmt-calendar-row > p { margin: 0; font-size: var(--text-md); color: var(--calendar-ink); }
+.fmt-calendar-row { display: grid; padding-top: var(--space-1); }
+.fmt-calendar-row > p { margin: 0; font-size: var(--text-base); color: var(--calendar-ink); }
+.fmt-calendar-row > a { display: inline-flex; align-items: center; gap: var(--space-1); min-height: var(--size-target); font-size: var(--text-base); color: var(--calendar-ink); text-decoration: none; }
+.fmt-calendar-row > a svg { width: var(--size-icon-sm); height: var(--size-icon-sm); fill: none; stroke: var(--calendar-planned); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.fmt-calendar-row > a:hover { text-decoration: underline; }
+.fmt-calendar-row > a:focus-visible { outline: var(--border-focus) solid var(--focus); outline-offset: var(--border-focus); border-radius: var(--radius-tile); }
 .fmt-calendar-row ol { border-block: var(--border-outline) dashed var(--calendar-rule); }
-.fmt-calendar-row li { display: grid; place-items: center; min-height: var(--rule-kid); }
+.fmt-calendar-row li { display: grid; place-items: center; min-height: var(--size-target); }
+.fmt-calendar-row .fmt-star svg { width: var(--size-icon); height: var(--size-icon); }
 .fmt-calendar-row li.is-today { background: var(--calendar-today); }
 .fmt-calendar-row li.is-none > span { width: var(--space-2); height: var(--space-2); border-radius: 50%; background: var(--calendar-none); }
 

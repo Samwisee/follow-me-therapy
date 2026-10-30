@@ -319,7 +319,7 @@ export function FilterChip({ tone = 'purple', on = false, onSelect, icon, label,
 }
 
 export type CalendarDay = 'none' | 'planned' | 'partial' | 'done';
-export interface CalendarRow { label: string; tone?: Tone; days: CalendarDay[]; onToggle?: (day: number) => void }
+export interface CalendarRow { label: string; tone?: Tone; days: CalendarDay[]; onToggle?: (day: number) => void; href?: string }
 export interface WeekCalendarProps { days?: string[]; dates?: (string | number)[]; today?: number; rows: CalendarRow[] }
 const FULL_DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 const DAY_WORDS: Record<CalendarDay, string> = { none: 'not planned', planned: 'planned', partial: 'partly done', done: 'done' };
@@ -329,7 +329,7 @@ export function WeekCalendar({ days = ['M', 'T', 'W', 'T', 'F', 'S', 'S'], dates
   return <div className="fmt-calendar">
     <div className="fmt-calendar-days" aria-hidden="true">{days.map((d, i) => <span key={i} className={cx(i === today && 'is-today')}>{d}{dates && <b>{dates[i]}</b>}</span>)}</div>
     {rows.map((r, ri) => <div key={ri} className="fmt-calendar-row">
-      <p>{r.label}</p>
+      {r.href ? <a href={r.href}>{r.label}<Icon name="chevron" /></a> : <p>{r.label}</p>}
       <ol>{r.days.map((st, i) => { const words = `${FULL_DAYS[i]}, ${r.label}`;
         return <li key={i} className={cx('is-' + st, i === today && 'is-today')} aria-label={r.onToggle ? undefined : `${words}: ${DAY_WORDS[st]}`}>
           {st === 'none' && !r.onToggle ? <span /> : <Star state={st === 'none' ? 'planned' : st} pop={pop === ri + '/' + i} label={words}

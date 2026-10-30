@@ -209,9 +209,9 @@
   ],
   "lastChange": {
     "by": "Sam",
-    "at": "2026-10-30T04:25:00Z",
+    "at": "2026-10-30T07:20:00Z",
     "via": "GitHub · Samwisee/follow-me-therapy",
-    "note": "Head takes an optional note under the tag (From Simone: …), inside the header instead of a separate note beneath it."
+    "note": "WeekCalendar: compact (icon-sized stars, 44px targets) and each row's name can link to its activity (href, with a chevron)."
   },
   "layout": "files",
   "libraries": [
