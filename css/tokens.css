@@ -354,6 +354,19 @@
   --swash-stroke: 4px;
   --swash-wavelength: var(--space-8);
   --swash-height: var(--space-4);
+  --step-fill: var(--purple-tint);
+  --step-line: var(--purple-line);
+  --step-ink: var(--purple-ink);
+  --step-done-fill: var(--teal);
+  --step-done-line: var(--teal);
+  --step-done-ink: var(--paper);
+  --celebrate-fill: var(--sun-tint);
+  --celebrate-line: var(--sun-line);
+  --celebrate-star: var(--sun);
+  --celebrate-star-line: var(--sun-deep);
+  --breathe-fill: var(--teal-tint);
+  --breathe-line: var(--teal-line);
+  --breathe-dot: var(--teal);
 }
 
 /* A4 handouts: semantic tokens in print units. */

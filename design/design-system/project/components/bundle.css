@@ -356,6 +356,19 @@
   --swash-stroke: 4px;
   --swash-wavelength: var(--space-8);
   --swash-height: var(--space-4);
+  --step-fill: var(--purple-tint);
+  --step-line: var(--purple-line);
+  --step-ink: var(--purple-ink);
+  --step-done-fill: var(--teal);
+  --step-done-line: var(--teal);
+  --step-done-ink: var(--paper);
+  --celebrate-fill: var(--sun-tint);
+  --celebrate-line: var(--sun-line);
+  --celebrate-star: var(--sun);
+  --celebrate-star-line: var(--sun-deep);
+  --breathe-fill: var(--teal-tint);
+  --breathe-line: var(--teal-line);
+  --breathe-dot: var(--teal);
 }
 
 /* A4 handouts: semantic tokens in print units. */
@@ -789,19 +802,42 @@ button.fmt-choice:focus-visible { outline: var(--border-focus) solid var(--focus
 
 /* ── Step focus: one step, big, to read across the room ── */
 .fmt-stepfocus { display: grid; justify-items: center; gap: var(--stack); text-align: center; }
-.fmt-stepfocus > p { margin: 0; font-family: var(--font-body); font-weight: 700; font-size: var(--text-md); color: var(--purple-ink); }
-.fmt-stepfocus-disc { box-sizing: border-box; display: grid; place-items: center; width: var(--space-30); height: var(--space-30); border: calc(var(--border-outline) * 2) solid var(--purple-line); border-radius: 50%; background: var(--purple-tint); color: var(--purple-ink); font-family: var(--font-display); font-weight: 600; font-size: var(--text-display); transition: background-color var(--dur-base) var(--ease-standard), transform var(--dur-slow) var(--ease-spring); }
-.fmt-stepfocus.is-done .fmt-stepfocus-disc { background: var(--teal); border-color: var(--teal); color: var(--paper); transform: scale(1.08); }
+.fmt-stepfocus > p { margin: 0; font-family: var(--font-body); font-weight: 700; font-size: var(--text-md); color: var(--step-ink); }
+.fmt-stepfocus-disc { box-sizing: border-box; display: grid; place-items: center; width: var(--space-30); height: var(--space-30); border: calc(var(--border-outline) * 2) solid var(--step-line); border-radius: 50%; background: var(--step-fill); color: var(--step-ink); font-family: var(--font-display); font-weight: 600; font-size: var(--text-display); transition: background-color var(--dur-base) var(--ease-standard), transform var(--dur-slow) var(--ease-spring); }
+.fmt-stepfocus.is-done .fmt-stepfocus-disc { background: var(--step-done-fill); border-color: var(--step-done-line); color: var(--step-done-ink); transform: scale(1.08); }
 .fmt-stepfocus-disc svg { width: 50%; height: 50%; fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
 .fmt-stepfocus h2 { margin: 0; font-family: var(--font-display); font-weight: 600; font-size: var(--text-3xl); line-height: var(--leading-snug); color: var(--ink); }
 
 /* ── Celebration: a sun disc with a star that springs in ── */
 .fmt-celebrate { display: grid; justify-items: center; gap: var(--stack); text-align: center; }
-.fmt-celebrate-sun { box-sizing: border-box; display: grid; place-items: center; width: calc(var(--space-30) + var(--space-10)); height: calc(var(--space-30) + var(--space-10)); border: calc(var(--border-outline) * 2) solid var(--sun-line); border-radius: 50%; background: var(--sun-tint); color: var(--sun-deep); }
-.fmt-celebrate-sun svg { width: var(--space-24); height: var(--space-24); fill: var(--sun); stroke: currentColor; stroke-width: 1.6; stroke-linejoin: round; }
+.fmt-celebrate-sun { box-sizing: border-box; display: grid; place-items: center; width: calc(var(--space-30) + var(--space-10)); height: calc(var(--space-30) + var(--space-10)); border: calc(var(--border-outline) * 2) solid var(--celebrate-line); border-radius: 50%; background: var(--celebrate-fill); color: var(--celebrate-star-line); }
+.fmt-celebrate-sun svg { width: var(--space-24); height: var(--space-24); fill: var(--celebrate-star); stroke: currentColor; stroke-width: 1.6; stroke-linejoin: round; }
 .fmt-celebrate h2 { margin: 0; font-family: var(--font-display); font-weight: 600; font-size: var(--text-3xl); line-height: var(--leading-snug); color: var(--ink); }
 .fmt-celebrate p { margin: 0; max-width: var(--measure); font-family: var(--font-body); font-weight: 500; font-size: var(--text-lg); line-height: var(--leading-relaxed); color: var(--ink-soft); }
 @media (prefers-reduced-motion: no-preference) {
   .fmt-celebrate-sun { animation: fmt-spring-in var(--dur-entrance) var(--ease-spring) both; }
   @keyframes fmt-spring-in { from { transform: scale(0.4); } to { transform: scale(1); } }
 }
+
+/* ── Breathing: a teal disc that grows (breathe in, 4s) and shrinks (breathe out, 4s) ── */
+.fmt-breathe { display: grid; justify-items: center; gap: var(--stack); text-align: center; }
+.fmt-breathe-disc { position: relative; display: grid; place-items: center; width: calc(var(--space-30) * 2); height: calc(var(--space-30) * 2); }
+.fmt-breathe-disc::before { content: ""; position: absolute; inset: 0; border: calc(var(--border-outline) * 2) solid var(--breathe-line); border-radius: 50%; background: var(--breathe-fill); transform: scale(0.55); }
+.fmt-breathe-disc::after { content: ""; position: relative; width: var(--space-16); height: var(--space-16); border-radius: 50%; background: var(--breathe-dot); }
+.fmt-breathe p { margin: 0; font-family: var(--font-display); font-weight: 600; font-size: var(--text-3xl); line-height: var(--leading-snug); color: var(--ink); }
+.fmt-breathe p::after { content: "Breathe in…"; }
+@media (prefers-reduced-motion: no-preference) {
+  .fmt-breathe-disc::before { animation: fmt-breathe-disc 8s ease-in-out infinite; }
+  .fmt-breathe p::after { animation: fmt-breathe-words 8s step-end infinite; }
+  @keyframes fmt-breathe-disc { 0%, 100% { transform: scale(0.55); } 50% { transform: scale(1); } }
+  @keyframes fmt-breathe-words { 0% { content: "Breathe in…"; } 50% { content: "Breathe out…"; } }
+}
+
+/* ── Toggle chip: tap to choose; on = tint, solid outline and a tick ── */
+.fmt-chip.is-toggle { --tc-ink: var(--chip-purple-ink); --tc-line: var(--chip-purple-line); --tc-fill: var(--chip-purple-fill); --tc-on: var(--chip-purple-line-hover);
+  cursor: pointer; background: var(--chip-outline-fill); color: var(--tc-ink); border-color: var(--tc-line); transition: background-color var(--dur-fast) var(--ease-standard), border-color var(--dur-fast) var(--ease-standard); }
+.fmt-chip.is-toggle.is-teal { --tc-ink: var(--chip-teal-ink); --tc-line: var(--chip-teal-line); --tc-fill: var(--chip-teal-fill); --tc-on: var(--chip-teal-line-hover); }
+.fmt-chip.is-toggle.is-sun { --tc-ink: var(--chip-sun-ink); --tc-line: var(--chip-sun-line); --tc-fill: var(--chip-sun-fill); --tc-on: var(--chip-sun-line-hover); }
+.fmt-chip.is-toggle.is-pink { --tc-ink: var(--chip-pink-ink); --tc-line: var(--chip-pink-line); --tc-fill: var(--chip-pink-fill); --tc-on: var(--chip-pink-line-hover); }
+.fmt-chip.is-toggle[aria-pressed="true"] { background: var(--tc-fill); border-color: var(--tc-on); }
+.fmt-chip.is-toggle:focus-visible { outline: var(--border-focus) solid var(--focus); outline-offset: var(--border-focus); }

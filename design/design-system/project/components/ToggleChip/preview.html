@@ -1,0 +1,14 @@
+<!-- @dsCard group="Labels" height=160 subtitle="Tap to choose: tint, solid outline and a tick when on" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>ToggleChip — preview</title></head>
+<body style="margin:0">
+<div id="root" style="padding:20px;display:flex;flex-wrap:wrap;gap:8px;background:var(--paper)"></div>
+<script>
+  var F = window.FollowMeTherapy, h = React.createElement;
+  function Days() { var d = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'], s = React.useState([0, 2, 4]);
+    return h(React.Fragment, null, d.map(function (x, i) { return h(F.ToggleChip, { key: x, on: s[0].indexOf(i) >= 0, onToggle: function () { s[1](s[0].indexOf(i) >= 0 ? s[0].filter(function (y) { return y !== i; }) : s[0].concat(i)); } }, x); })); }
+  ReactDOM.createRoot(document.getElementById('root')).render(h(Days));
+</script>
+</body>
+</html>

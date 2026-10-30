@@ -284,3 +284,15 @@ export function Celebration({ title, message }: CelebrationProps) {
     <p>{message}</p>
   </div>;
 }
+
+export interface BreathingProps { label?: string }
+/** A breathing guide: a teal disc that grows for four seconds and shrinks for four, the words changing to match. */
+export function Breathing({ label = 'Take 5 slow breaths. Follow the circle.' }: BreathingProps) {
+  return <div className="fmt-breathe" role="img" aria-label={label}><span className="fmt-breathe-disc" /><p aria-hidden="true" /></div>;
+}
+export interface ToggleChipProps { tone?: Tone; on?: boolean; onToggle?: () => void; children?: React.ReactNode }
+/** A chip you tap to choose (a day, an option): a toggle button with a tick when on, so it never relies on colour alone. */
+export function ToggleChip({ tone = 'purple', on = false, onToggle, children }: ToggleChipProps) {
+  return <button type="button" className={cx('fmt-chip', 'is-toggle', tone !== 'purple' && 'is-' + tone)} aria-pressed={on} onClick={onToggle}>
+    {on && <Icon name="tick" />}{children}</button>;
+}
