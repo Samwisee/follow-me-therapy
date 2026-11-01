@@ -18,9 +18,10 @@ Plain HTML: `<div class="fmt-card is-action is-teal"><h3>…</h3><p>…</p><a cl
 - Tappable containers are outlined in the tone's solid colour; static ones in its line colour.
 - Paper fill; lifts on hover, presses in on tap.
 - Corner nests round what sits in it: the tile, or the button (button/2 + card-pad + outline).
-- A row for an activity with progress always shows its bar (empty until started) and, when done, a teal tick in place of the chevron; it says 'done' to screen readers.
+- A row for an activity with progress always shows its bar (empty until started) and, when done, a gold star in place of the chevron (the WeekCalendar's done star); it says 'done' to screen readers.
+- The first time a done row is seen (back on the page after finishing), its star bursts like a star being added. Not with reduced motion.
 
-Tokens: `component.card` (fill, line, more, done-fill, done-ink) in design/tokens.json.
+Tokens: `component.card` (fill, line, more) in design/tokens.json.
 
 | Product | Implementation |
 |---|---|

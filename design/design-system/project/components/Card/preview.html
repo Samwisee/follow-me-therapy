@@ -1,4 +1,4 @@
-<!-- @dsCard group="Content" height=320 -->
+<!-- @dsCard group="Content" height=460 -->
 <!doctype html>
 <html>
 <head><meta charset="utf-8"><title>Card — preview</title></head>
@@ -6,7 +6,7 @@
 <div id="root" style="padding:24px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;background:var(--purple-tint)"></div>
 <script>
   var F = window.FollowMeTherapy, h = React.createElement;
-  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null, h(F.Card, {icon:'stairs', tone:'teal', title:'Steady Steps'}, 'A 12-session block of steady, ongoing support to build key skills.'), h(F.Card, {icon:'clipboard', tone:'pink', title:'Assessments'}, 'NDIS access, functional capacity, progress, sensory and assistive technology reports.')));
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null, h(F.Card, {icon:'stairs', tone:'teal', title:'Steady Steps'}, 'A 12-session block of steady, ongoing support to build key skills.'), h(F.Card, {icon:'clipboard', tone:'pink', title:'Assessments'}, 'NDIS access, functional capacity, progress, sensory and assistive technology reports.'), h('div', {style:{gridColumn:'1 / -1'}}, h(F.Card, {icon:'sunrise', title:'My morning routine', more:'All done today. Great job!', progress:1, progressLabel:'6 of 6 steps done', done:true, celebrate:true}))));
 </script>
 </body>
 </html>

@@ -63,13 +63,13 @@ export function IconTile({ icon, tone = 'purple', small, label }: IconTileProps)
 }
 
 /* ── Card ── */
-export interface CardProps { icon: Icon40Name; tone?: Tone; title: string; more?: string; href?: string; progress?: number; progressLabel?: string; done?: boolean; children?: React.ReactNode }
+export interface CardProps { icon: Icon40Name; tone?: Tone; title: string; more?: string; href?: string; progress?: number; progressLabel?: string; done?: boolean; celebrate?: boolean; children?: React.ReactNode }
 /** A service or funding card: tile, title, one or two sentences, and a "Learn more ›" line. */
-export function Card({ icon, tone = 'purple', title, more = 'Learn more', href, progress, progressLabel, done, children }: CardProps) {
+export function Card({ icon, tone = 'purple', title, more = 'Learn more', href, progress, progressLabel, done, celebrate, children }: CardProps) {
   const body = <>
     <IconTile icon={icon} tone={tone} />
     <h3>{title}</h3>
-    {done && <span className="fmt-done"><Icon name="tick" label="Done" /></span>}
+    {done && <span className="fmt-done" role="img" aria-label="Done"><Star state="done" pop={celebrate} label="Done" /></span>}
     {children && <p>{children}</p>}
     {progress != null && <ProgressBar value={progress} label={progressLabel} />}
     {more && <span className="fmt-more">{more}<Icon name="chevron" /></span>}

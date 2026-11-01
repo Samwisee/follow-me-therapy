@@ -296,8 +296,6 @@
   --card-sun-line: var(--tone-sun-solid);
   --card-pink-line: var(--tone-pink-solid);
   --card-more: var(--purple);
-  --card-done-fill: var(--teal);
-  --card-done-ink: var(--paper);
   --choice-fill: var(--paper);
   --choice-purple-line: var(--tone-purple-line);
   --choice-teal-line: var(--tone-teal-line);
@@ -555,7 +553,7 @@ a.fmt-card:hover { transform: translateY(calc(-1 * var(--space-2))) rotate(1deg)
 .fmt-card p { margin: 0; font-size: var(--text-base); line-height: var(--leading-relaxed); font-weight: 500; }
 /* A service card: the tile and the title side by side, the rest beneath, Learn more centred (as on the website and in the app). */
 .fmt-card:not(.is-action) { display: grid; grid-template-columns: auto 1fr; align-items: center; column-gap: var(--space-4); row-gap: 0; }
-.fmt-card:not(.is-action) > :not(.fmt-tile, h3) { grid-column: 1 / -1; }
+.fmt-card:not(.is-action) > :not(.fmt-tile, h3, .fmt-done) { grid-column: 1 / -1; }
 .fmt-card:not(.is-action) > h3 { margin: 0; }
 .fmt-card:not(.is-action) > p { margin: var(--space-4) 0; }
 .fmt-card:not(.is-action) > .fmt-tile { width: var(--size-tile-md); height: var(--size-tile-md); border-radius: var(--radius-tile); }
@@ -563,9 +561,8 @@ a.fmt-card:hover { transform: translateY(calc(-1 * var(--space-2))) rotate(1deg)
 .fmt-card:not(.is-action) > .fmt-more { justify-self: center; align-self: end; }
 .fmt-card:not(.is-action) > .fmt-progress { margin-bottom: var(--space-4); }
 /* Done: a teal tick badge beside the title (in place of a chevron in a row). */
-.fmt-card:not(.is-action):has(> .fmt-done) { grid-template-columns: auto 1fr auto; }
-.fmt-card .fmt-done { display: grid; place-items: center; width: var(--size-icon-lg); height: var(--size-icon-lg); border-radius: 50%; background: var(--card-done-fill); color: var(--card-done-ink); }
-.fmt-card .fmt-done svg { width: var(--size-icon-sm); height: var(--size-icon-sm); fill: none; stroke: currentColor; stroke-width: 2.8; stroke-linecap: round; stroke-linejoin: round; }
+.fmt-card:not(.is-action):has(> .fmt-done) { grid-template-columns: auto minmax(0, 1fr) auto; }
+.fmt-card .fmt-done { display: grid; place-items: center; }
 .fmt-card .fmt-more { margin-top: auto; display: inline-flex; align-items: center; gap: var(--space-1); color: var(--card-more); font-family: var(--font-display); font-weight: 500; }
 .fmt-card .fmt-more svg { width: var(--size-icon-sm); height: var(--size-icon-sm); fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
 /* An action card: a full-width button at the foot, so the card's corners

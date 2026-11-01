@@ -209,9 +209,9 @@
   ],
   "lastChange": {
     "by": "Sam",
-    "at": "2026-10-30T10:25:00Z",
+    "at": "2026-11-01T10:30:00Z",
     "via": "GitHub · Samwisee/follow-me-therapy",
-    "note": "Worksheet's README shows both components it documents (Head and Page); Head's rule about notes inside the header was missing."
+    "note": "Card: a done row shows a gold star (the WeekCalendar's) in place of the teal tick, bursting the first time it's seen done; the done mark keeps to its column."
   },
   "layout": "files",
   "libraries": [
