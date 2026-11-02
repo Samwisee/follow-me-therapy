@@ -44,6 +44,11 @@ Therapy on her own. See README.md for the file layout.
   `.fmt-sheet`/`.medium-paper` (A4) and `.fmt-page`/`.medium-book` (A5), set in
   tokens.json `extensions.followmetherapy.media`. Components never carry print
   sizes of their own. Worksheets: footprints off for now (`StepPath plain`).
+- Printable worksheets in the app: `python3 tools/build_worksheet_pdfs.py <saved canvas copy>
+  ../follow-me-therapy-app/composeApp/src/wasmJsMain/resources/worksheets` after any worksheet
+  or design change, then commit the PDFs in the app (its CI checks every printed sheet is there).
+- Activity categories each have a tone (design/components.json › categories): worksheets'
+  head, tag and note, the Design System and the app all take it from there.
 - Link-preview (share) image: `tools/og.html` is built from the site's CSS,
   so it follows design changes. `python3 tools/make_og.py` renders it to a new
   `img/share-<hash>.jpg` (chat apps cache by URL) and updates every og:image
