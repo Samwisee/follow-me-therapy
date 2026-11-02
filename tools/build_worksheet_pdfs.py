@@ -1,26 +1,29 @@
-"""Printable worksheets (A4 PDFs), from the worksheets canvas, for the app's
-"Print the worksheet" buttons.
+"""Printable worksheets for the app, from the worksheets canvas.
 
     python3 tools/build_worksheet_pdfs.py <canvas-root> <out-dir>
 
 <canvas-root> is a saved copy of the worksheets canvas (its project/*.dc.html
-artboards); <out-dir> is where the PDFs go, usually the app's
-composeApp/src/wasmJsMain/resources/worksheets. Each artboard is rendered
-with the website's own tokens.css and the Design System's bundle.css, fonts
-and logo, so a PDF looks like the canvas. Run it again whenever a worksheet
-or the design changes, and commit the PDFs with the app.
+artboards); <out-dir> is the app's composeApp/src/wasmJsMain/resources/worksheets.
+It writes:
+  sheets/<Name>.html  each worksheet, just its A4 sheet (templates filled in)
+  print.css           the website's tokens.css and the Design System's bundle.css,
+                      the fonts, and the print rules (A4, a sheet a page)
+  assets/             the fonts and the logo
+  print.html          the page the app opens: print.html?s=Main,Calm-plan shows
+                      those sheets with a big Print button (one print job for all)
+  worksheets.json     every sheet: {name, title}
+Vector, so it prints sharp, and small. Run it again whenever a worksheet or
+the design changes, and commit the result in the app (its CI checks it).
 """
 import json
 import re
+import shutil
 import sys
 from pathlib import Path
-
-from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parent.parent
 src = Path(sys.argv[1]) / "project"
 out = Path(sys.argv[2])
-out.mkdir(parents=True, exist_ok=True)
 
 # The canvas's uploaded files (/_blob/…) are these files of the website.
 BLOBS = {
@@ -30,67 +33,139 @@ BLOBS = {
     "e203ab5b910581a78400d8b3c6ed6a3b": "fonts/quicksand-latin-700-normal.woff2",
     "b3b42cc60fb233a38ec201683244feeb": "img/brand/follow-me-therapy-lockup-horizontal.svg",
 }
-CSS = [ROOT / "css/tokens.css", ROOT / "design/design-system/project/components/bundle.css"]
 
 
-def page_html(dc: str) -> str:
-    """The artboard as a plain page: its styles and its sheet, templates filled in."""
-    helmet = re.search(r"<helmet>(.*?)</helmet>", dc, re.S)
+def local(text: str) -> str:
+    """Canvas file links → the copies in assets/ (relative to print.html)."""
+    for blob, path in BLOBS.items():
+        text = text.replace(f"/_blob/{blob}", "assets/" + Path(path).name)
+    return text
+
+
+def sheet_of(dc: str) -> str:
+    """The artboard's A4 sheet, its templates filled in."""
     body = re.search(r"<x-dc>(.*?)</x-dc>", dc, re.S).group(1)
-    body = re.sub(r"<helmet>.*?</helmet>", "", body, flags=re.S)
-    # The only templates the sheets use: sc-for over a renderVals() list.
+    body = re.sub(r"<helmet>.*?</helmet>", "", body, flags=re.S).strip()
     vals = re.search(r"renderVals\(\)\s*\{\s*return\s*(\{.*?\});", dc, re.S)
     data = {}
     if vals and vals.group(1).strip() != "{}":
         data = json.loads(re.sub(r"(\w+):", r'"\1":', vals.group(1)).replace("'", '"'))
 
-    def expand(html: str, scope: dict) -> str:
+    def expand(html: str) -> str:  # the only template the sheets use: sc-for over a list
         while True:
             m = re.search(r'<sc-for list="\{\{(\w+)\}\}" as="(\w+)"[^>]*>', html)
             if not m:
-                break
+                return html
             depth, i = 1, m.end()
             while depth:
-                o = html.find("<sc-for", i)
-                c = html.find("</sc-for>", i)
+                o, c = html.find("<sc-for", i), html.find("</sc-for>", i)
                 if o != -1 and o < c:
                     depth += 1; i = o + 7
                 else:
                     depth -= 1; i = c + 9
             inner = html[m.end():i - 9]
-            rep = "".join(expand(inner.replace("{{" + m.group(2) + "}}", str(v)), scope) for v in scope[m.group(1)])
-            html = html[:m.start()] + rep + html[i:]
-        return html
+            html = html[:m.start()] + "".join(expand(inner.replace("{{" + m.group(2) + "}}", str(v))) for v in data[m.group(1)]) + html[i:]
 
-    body = expand(body, data)
-    for blob, path in BLOBS.items():
-        body = body.replace(f"/_blob/{blob}", (ROOT / path).as_uri())
-    style = (helmet.group(1) if helmet else "")
-    for blob, path in BLOBS.items():
-        style = style.replace(f"/_blob/{blob}", (ROOT / path).as_uri())
-    links = "".join(f'<link rel="stylesheet" href="{c.as_uri()}">' for c in CSS)
-    return f"""<!doctype html><html lang="en-AU"><head><meta charset="utf-8">{links}{style}
-<style>@page {{ size: A4; margin: 0; }} html, body {{ margin: 0; }}</style></head><body>{body}</body></html>"""
+    return local(expand(body))
 
 
-made = []
-with sync_playwright() as p:
-    browser = p.chromium.launch()
-    page = browser.new_page(viewport={"width": 794, "height": 1123})
-    for f in sorted(src.glob("*.dc.html")):
-        dc = f.read_text()
-        if 'class="fmt-sheet"' not in dc:
-            continue
-        tmp = out / ".page.html"
-        tmp.write_text(page_html(dc))
-        page.goto(tmp.as_uri())
-        page.evaluate("document.fonts.ready")
-        name = f.name.replace(".dc.html", "")
-        page.pdf(path=str(out / f"{name}.pdf"), width="210mm", height="297mm", print_background=True,
-                 margin={"top": "0", "right": "0", "bottom": "0", "left": "0"}, scale=1)
-        title = re.search(r"<title>(.*?)</title>", dc).group(1)
-        made.append({"file": f"{name}.pdf", "title": title})
-        tmp.unlink()
-    browser.close()
+PRINT_CSS = """
+/* Printing: an A4 page a sheet, nothing else. */
+@page { size: A4; margin: 0; }
+html, body { margin: 0; background: var(--purple-tint); }
+.bar { position: sticky; top: 0; z-index: var(--z-sticky); display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); padding: var(--space-3) var(--gutter); background: var(--bar-fill); border-bottom: var(--border-outline) solid var(--bar-line); font-family: var(--font-body); color: var(--ink); }
+.bar p { flex: 1 1 12em; margin: 0; font-size: var(--text-base); }
+.pages { display: grid; justify-items: center; gap: var(--space-6); padding: var(--space-6) 0 var(--space-12); }
+.page { overflow: hidden; background: var(--paper); box-shadow: var(--shadow-soft); }
+.page > .fmt-sheet { transform-origin: top left; }
+@media print {
+  html, body { background: var(--paper); }
+  .bar { display: none; }
+  .pages { display: block; padding: 0; }
+  .page { width: auto !important; height: auto !important; box-shadow: none; break-after: page; }
+  .page:last-child { break-after: auto; }
+  .page > .fmt-sheet { transform: none !important; }
+}
+"""
+
+PRINT_HTML = """<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Print · Follow Me Therapy</title>
+<link rel="stylesheet" href="print.css">
+</head>
+<body>
+<div class="bar">
+  <a class="fmt-btn is-outline" href="../">‹ Back</a>
+  <p id="status" role="status">Getting your worksheets ready…</p>
+  <button class="fmt-btn" id="print" type="button" disabled>Print</button>
+</div>
+<main class="pages" id="pages"></main>
+<script>
+// GENERATED by follow-me-therapy/tools/build_worksheet_pdfs.py. print.html?s=Main,Calm-plan
+(async function () {
+  var status = document.getElementById("status"), button = document.getElementById("print"), pages = document.getElementById("pages");
+  var all = await fetch("worksheets.json").then(function (r) { return r.json(); });
+  var asked = (new URLSearchParams(location.search).get("s") || "").split(",");
+  var chosen = asked.map(function (n) { return all.filter(function (w) { return w.name === n; })[0]; }).filter(Boolean);
+  if (!chosen.length) { status.textContent = "No worksheets chosen. Go back and pick some."; return; }
+  for (var i = 0; i < chosen.length; i++) {
+    var html = await fetch("sheets/" + chosen[i].name + ".html").then(function (r) { return r.text(); });
+    var page = document.createElement("div");
+    page.className = "page";
+    page.innerHTML = html;
+    pages.appendChild(page);
+  }
+  // On screen each sheet is shrunk to fit; printed, it's its full A4 size.
+  function fit() {
+    var scale = Math.min(1, (window.innerWidth - 32) / 794);
+    pages.querySelectorAll(".page").forEach(function (p) {
+      p.style.width = 794 * scale + "px"; p.style.height = 1123 * scale + "px";
+      p.firstElementChild.style.transform = "scale(" + scale + ")";
+    });
+  }
+  fit();
+  window.addEventListener("resize", fit);
+  await document.fonts.ready;
+  await Promise.all([].map.call(document.images, function (im) { return im.complete ? 0 : new Promise(function (d) { im.onload = im.onerror = d; }); }));
+  var n = chosen.length;
+  status.textContent = (n === 1 ? chosen[0].title : n + " worksheets") + ": ready to print on A4.";
+  button.disabled = false;
+  button.onclick = function () { window.print(); };
+  document.body.dataset.ready = String(n);
+  if (!navigator.webdriver) setTimeout(function () { try { window.print(); } catch (e) {} }, 300);
+})();
+</script>
+</body>
+</html>
+"""
+
+if out.exists():
+    for old in out.glob("*.pdf"):
+        old.unlink()
+    shutil.rmtree(out / "sheets", ignore_errors=True)
+(out / "sheets").mkdir(parents=True, exist_ok=True)
+(out / "assets").mkdir(exist_ok=True)
+for path in BLOBS.values():
+    shutil.copy(ROOT / path, out / "assets" / Path(path).name)
+
+made, faces = [], set()
+for f in sorted(src.glob("*.dc.html")):
+    dc = f.read_text()
+    if 'class="fmt-sheet"' not in dc:
+        continue
+    faces.update(re.findall(r"@font-face \{[^}]*\}", dc))
+    name = f.name.replace(".dc.html", "")
+    (out / "sheets" / f"{name}.html").write_text(sheet_of(dc) + "\n")
+    made.append({"name": name, "title": re.search(r"<title>(.*?)</title>", dc).group(1)})
+
+css = "/* GENERATED by follow-me-therapy/tools/build_worksheet_pdfs.py from the website's tokens.css and the Design System's bundle.css. */\n"
+css += local("\n".join(sorted(faces))) + "\n"
+css += (ROOT / "css/tokens.css").read_text() + "\n"
+css += (ROOT / "design/design-system/project/components/bundle.css").read_text() + "\n" + PRINT_CSS
+(out / "print.css").write_text(css)
+(out / "print.html").write_text(PRINT_HTML)
 (out / "worksheets.json").write_text(json.dumps(made, indent=1, ensure_ascii=False) + "\n")
 print(f"{len(made)} worksheets → {out}")
