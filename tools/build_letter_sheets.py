@@ -53,7 +53,7 @@ TAIL = """
   </p>
 
   <footer class="fmt-foot">
-    <img src="/_blob/b3b42cc60fb233a38ec201683244feeb" alt="Follow Me Therapy">
+    <img src="/_blob/9aa42ecabbb509ba515995b4bb0f3122" alt="Follow Me Therapy">
     <span>Simone · Paediatric OT · followmetherapy.com.au<br>© Follow Me Therapy 2026. For use by the family it was given to.</span>
   </footer>
 </section>

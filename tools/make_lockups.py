@@ -38,13 +38,20 @@ def build(color, suffix):
     W=max(tw,mw)+40; H=mh+gap+cap+40
     body=p(md,f' transform="translate({(W-mw)/2:.2f} 20) scale({ms:.4f})"')+p(td,f' transform="translate({(W-tw)/2:.2f} {20+mh+gap+cap:.2f})"',"nonzero")
     open(ROOT / f'img/brand/follow-me-therapy-lockup-stacked{suffix}.svg','w').write(svg(W,H,body))
-    # horizontal: mark left, name + descriptor right
-    td2,tw2,cap2=text_path("Follow Me Therapy",F,96)
-    sd,sw,scap=text_path("Paediatric Occupational Therapy",FS,38)
+    # horizontal: mark left; the name and the descriptor, both the same width, together
+    # exactly the mark's height (the name's cap top level with the mark's top, the
+    # descriptor's baseline level with its foot). Design System › Logo.
     mh=200; ms=mh/MH; mw=MW*ms; gx=40
-    W=20+mw+gx+max(tw2,sw)+20; H=mh+40
-    ty=20+mh/2-6; 
-    body=p(md,f' transform="translate(20 20) scale({ms:.4f})"')+p(td2,f' transform="translate({20+mw+gx:.2f} {ty:.2f})"',"nonzero")+p(sd,f' transform="translate({20+mw+gx+3:.2f} {ty+28+scap:.2f})"',"nonzero")
+    _,w1,c1=text_path("Follow Me Therapy",F,100)
+    _,w2,c2=text_path("Paediatric Occupational Therapy",FS,100)
+    r2=w1/w2                      # the descriptor's size, as a share of the name's, so they're one width
+    GAP=0.22                      # space between the lines, as a share of the name's size
+    k=mh/(c1/100+GAP+c2/100*r2)   # the name's size that makes the two lines the mark's height
+    td2,tw2,cap2=text_path("Follow Me Therapy",F,k)
+    sd,sw,scap=text_path("Paediatric Occupational Therapy",FS,k*r2)
+    W=20+mw+gx+max(tw2,sw)+20; H=mh+40+scap*0.35
+    tx=20+mw+gx
+    body=p(md,f' transform="translate(20 20) scale({ms:.4f})"')+p(td2,f' transform="translate({tx:.2f} {20+cap2:.2f})"',"nonzero")+p(sd,f' transform="translate({tx:.2f} {20+mh:.2f})"',"nonzero")
     open(ROOT / f'img/brand/follow-me-therapy-lockup-horizontal{suffix}.svg','w').write(svg(W,H,body))
 build(INK,"")
 build("#ffffff","-white")

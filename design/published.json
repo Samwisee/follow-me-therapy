@@ -2,7 +2,7 @@
  "design-system": {
   "project/README.md": "603f0a6f62cc15b8",
   "project/assets/Icons/README.md": "eebfcdcc29ca6209",
-  "project/assets/Logos/README.md": "45e0ad59243a2b58",
+  "project/assets/Logos/README.md": "b4c77e76c7266ed3",
   "project/assets/Photos/README.md": "434d8c82e94a4ed3",
   "project/assets/Photos/share-card.jpg": "a7d5f774718d112c",
   "project/components/ActionBar/README.md": "f4203fe75ad06a5f",
@@ -42,7 +42,7 @@
   "project/components/InfoNote/preview.html": "8a246627594d1f1a",
   "project/components/LetterTrace/README.md": "3d844aa64719c04b",
   "project/components/LetterTrace/preview.html": "3ea30ae4459a4da4",
-  "project/components/Logo/README.md": "5c7c8812704ec80b",
+  "project/components/Logo/README.md": "630fe61bc2aa7fae",
   "project/components/Logo/preview.html": "fd92f4cc1d645b94",
   "project/components/Nest/README.md": "bcf6d44c894e63da",
   "project/components/Nest/preview.html": "df782fa79bc8b286",
@@ -81,7 +81,7 @@
   "project/components/src/index.tsx": "168e5054e23ee1c7",
   "project/components/src/letters.ts": "cd51aea12baae240",
   "project/components/src/logo.ts": "7156b9d2f0a58ad6",
-  "project/design-system.json": "6a184dd498674146",
+  "project/design-system.json": "935862ce76ad6bed",
   "project/print.md": "19eee723e3efbb94",
   "project/tokens.json": "150799d1c4eaf297"
  },

@@ -32,6 +32,7 @@ BLOBS = {
     "ee657bae73f133dfb1b9775a5b6b32ce": "fonts/quicksand-latin-600-normal.woff2",
     "e203ab5b910581a78400d8b3c6ed6a3b": "fonts/quicksand-latin-700-normal.woff2",
     "b3b42cc60fb233a38ec201683244feeb": "img/brand/follow-me-therapy-lockup-horizontal.svg",
+    "9aa42ecabbb509ba515995b4bb0f3122": "img/brand/follow-me-therapy-lockup-horizontal.svg",
 }
 
 
@@ -75,6 +76,8 @@ PRINT_CSS = """
 html, body { margin: 0; background: var(--purple-tint); }
 .bar { position: sticky; top: 0; z-index: var(--z-sticky); display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); padding: var(--space-3) var(--gutter); background: var(--bar-fill); border-bottom: var(--border-outline) solid var(--bar-line); font-family: var(--font-body); color: var(--ink); }
 .bar p { flex: 1 1 12em; margin: 0; font-size: var(--text-base); }
+.bar #tip { flex-basis: 100%; order: 3; font-size: var(--text-sm); }
+.bar [hidden] { display: none; }
 .pages { display: grid; justify-items: center; gap: var(--space-6); padding: var(--space-6) 0 var(--space-12); }
 html, body { overflow-x: hidden; }
 /* On screen a sheet is shrunk to the page's width (the sheet sits out of the flow, so a
@@ -98,12 +101,14 @@ PRINT_HTML = """<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Print · Follow Me Therapy</title>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="stylesheet" href="print.css">
 </head>
 <body>
 <div class="bar">
   <a class="fmt-btn is-outline" id="back" href="../">‹ Back</a>
   <p id="status" role="status">Getting your worksheets ready…</p>
+  <p id="tip" hidden>In the print window, untick <b>Print headers and footers</b> so the page doesn't show the web address.</p>
   <button class="fmt-btn" id="print" type="button" disabled>Print</button>
 </div>
 <main class="pages" id="pages"></main>
@@ -140,6 +145,8 @@ document.getElementById("back").onclick = function (e) {
   status.textContent = (n === 1 ? chosen[0].title : n + " worksheets") + ": ready to print on A4.";
   button.disabled = false;
   button.onclick = function () { window.print(); };
+  // Safari on a Mac adds the web address and date unless that's unticked (phones don't).
+  if (/Macintosh/.test(navigator.userAgent) && /Safari/.test(navigator.userAgent) && !/Chrome|Chromium|Edg|Firefox/.test(navigator.userAgent) && navigator.maxTouchPoints < 2) document.getElementById("tip").hidden = false;
   document.body.dataset.ready = String(n);
   if (performance.mark) performance.mark("ready");
 })();
@@ -154,7 +161,7 @@ if out.exists():
     shutil.rmtree(out / "sheets", ignore_errors=True)
 (out / "sheets").mkdir(parents=True, exist_ok=True)
 (out / "assets").mkdir(exist_ok=True)
-for path in BLOBS.values():
+for path in list(BLOBS.values()) + ["img/favicon.svg"]:
     shutil.copy(ROOT / path, out / "assets" / Path(path).name)
 
 made, faces = [], set()
