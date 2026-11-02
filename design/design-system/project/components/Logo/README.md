@@ -17,5 +17,5 @@ The Follow Me Therapy mark and its two lockups, as vector files in the Logos gro
 |---|---|
 | Website | `.nav-logo` |
 | Design System | `.fmt-logo`, `<Logo>` |
-| App | `FmtMark`, `FmtLockup` |
+| App | `FmtMark`, `FmtLockup`, `FmtLockupFull` |
 <!-- rules:end -->

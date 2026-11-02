@@ -12,8 +12,9 @@ Somewhere to type on a screen: a name, a note, a reminder time. On paper the sam
 ## Rules (every product)
 
 - A dashed outline on all sides (field line), corners radius-sm, paper inside, at least the 44px target tall, so it's clear it's somewhere to type.
-- While typing, the outline turns solid purple (line-focus).
-- A time field shows the time with a clock; tapping it opens the device's own clock to pick a time (the native time picker), never a typed time.
+- While typing, the outline turns solid purple (line-focus): that's the focus mark, no extra ring.
+- The hint sits top left, in ink-hint (lighter than what's typed, still 7:1).
+- A time field shows the time with a clock; tapping it opens our clock (Picker), a date field our calendar. Never typed, never the device's own.
 - Times show as people say them: 7:30am, 4pm.
 
 Tokens: `component.field` (fill, line, line-focus, ink, placeholder, icon) in design/tokens.json.

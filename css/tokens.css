@@ -21,6 +21,7 @@
   --pink-line: #f6b6cb;
   --ink: #2b2540;
   --ink-soft: #504b5e;
+  --ink-hint: #5a5568;
   --deep: #2e2363;
   --paper: #ffffff;
   --live: #2fbf71;
@@ -486,8 +487,16 @@
   --field-line: var(--rule);
   --field-line-focus: var(--purple);
   --field-ink: var(--ink);
-  --field-placeholder: var(--ink-soft);
+  --field-placeholder: var(--ink-hint);
   --field-icon: var(--purple);
+  --picker-fill: var(--paper);
+  --picker-line: var(--purple-line);
+  --picker-ink: var(--ink);
+  --picker-soft: var(--ink-soft);
+  --picker-dial: var(--purple-tint);
+  --picker-selected: var(--purple);
+  --picker-on-selected: var(--paper);
+  --picker-today: var(--purple);
 }
 
 /* A4 handouts: semantic tokens in print units. */

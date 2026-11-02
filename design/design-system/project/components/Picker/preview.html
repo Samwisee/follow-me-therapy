@@ -1,0 +1,14 @@
+<!-- @dsCard group="Activities" height=560 subtitle="Our clock and calendar: tap the dial or a day" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Picker — preview</title></head>
+<body style="margin:0">
+<div id="root" style="padding:24px 28px;background:var(--purple-tint);display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start"></div>
+<script>
+  var F = window.FollowMeTherapy, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null,
+    h(F.TimePicker, {title: 'Reminder time', value: '07:30'}),
+    h(F.DatePicker, {title: 'Next session', value: '2026-11-12', today: '2026-11-02'})));
+</script>
+</body>
+</html>

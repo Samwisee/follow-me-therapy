@@ -166,9 +166,80 @@ export function Field({ label, placeholder, lines = 1, value, onChange }: { labe
     : <input aria-label={label} placeholder={placeholder} value={value} onChange={e => onChange?.(e.target.value)} />;
   return <label className="fmt-field">{input}</label>;
 }
-/** A time to pick, with a clock: tapping opens the device's own clock. `value` is 24-hour, "07:30". */
-export function TimeField({ label, value, onChange }: { label: string; value?: string; onChange?: (v: string) => void }) {
-  return <label className="fmt-field is-time"><Icon name="clock" /><input type="time" aria-label={label} value={value} onChange={e => onChange?.(e.target.value)} /></label>;
+/** "07:30" → "7:30am", "16:00" → "4pm": times as people say them. */
+export function showTime(t: string): string {
+  const [h, m] = t.split(':').map(Number);
+  return `${h % 12 || 12}${m ? ':' + String(m).padStart(2, '0') : ''}${h < 12 ? 'am' : 'pm'}`;
+}
+/** A time to pick, with a clock: tapping it opens our clock (TimePicker). `value` is 24-hour, "07:30". */
+export function TimeField({ label, value = '07:30', onChange }: { label: string; value?: string; onChange?: (v: string) => void }) {
+  const [open, setOpen] = React.useState(false);
+  return <>
+    <button type="button" className="fmt-field is-time" aria-label={`${label}, ${showTime(value)}. Change the time`} onClick={() => setOpen(true)}><Icon name="clock" />{showTime(value)}</button>
+    {open && <TimePicker title={label} value={value} onDone={v => { onChange?.(v); setOpen(false); }} onCancel={() => setOpen(false)} />}
+  </>;
+}
+
+/* ── Picker: our clock and calendar ── */
+const HOUR_WORDS = ['12', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'];
+export interface TimePickerProps { title?: string; value?: string; onDone?: (v: string) => void; onCancel?: () => void }
+/** Our clock: the time large (tap the hour or the minutes), am / pm, and a dial of 12 hours, then minutes in fives. */
+export function TimePicker({ title = 'Choose a time', value = '07:30', onDone, onCancel }: TimePickerProps) {
+  const [h0, m0] = value.split(':').map(Number);
+  const [h, setH] = React.useState(h0 % 12);
+  const [m, setM] = React.useState(Math.round(m0 / 5) * 5 % 60);
+  const [pm, setPm] = React.useState(h0 >= 12);
+  const [mode, setMode] = React.useState<'hour' | 'minute'>('hour');
+  const pick = mode === 'hour' ? h : m / 5;
+  const out = `${String(h + (pm ? 12 : 0)).padStart(2, '0')}:${String(m).padStart(2, '0')}`;
+  return <div className="fmt-picker" role="dialog" aria-label={title}>
+    <h2>{title}</h2>
+    <div className="fmt-picker-time">
+      <button type="button" aria-pressed={mode === 'hour'} onClick={() => setMode('hour')} aria-label={`Hour, ${h || 12}`}>{h || 12}</button>:
+      <button type="button" aria-pressed={mode === 'minute'} onClick={() => setMode('minute')} aria-label={`Minutes, ${m}`}>{String(m).padStart(2, '0')}</button>
+      <span className="fmt-chips"><ToggleChip on={!pm} onToggle={() => setPm(false)}>am</ToggleChip><ToggleChip on={pm} onToggle={() => setPm(true)}>pm</ToggleChip></span>
+    </div>
+    <div className="fmt-picker-dial">
+      <i className="fmt-picker-hand" style={{ transform: `rotate(${pick * 30 - 90}deg)` }} />
+      {HOUR_WORDS.map((w, i) => { const a = (i * 30 - 90) * Math.PI / 180;
+        const label = mode === 'hour' ? w : String(i * 5).padStart(2, '0');
+        return <button key={i} type="button" aria-pressed={pick === i} style={{ left: `${50 + 40 * Math.cos(a)}%`, top: `${50 + 40 * Math.sin(a)}%` }}
+          aria-label={mode === 'hour' ? `${w} o'clock` : `${i * 5} minutes`}
+          onClick={() => { if (mode === 'hour') { setH(i); setMode('minute'); } else setM(i * 5); }}>{label}</button>; })}
+    </div>
+    <div className="fmt-picker-foot"><Button outline onClick={onCancel}>Cancel</Button><Button onClick={() => onDone?.(out)}>Done</Button></div>
+  </div>;
+}
+
+const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+const WEEKDAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+export interface DatePickerProps { title?: string; value?: string; today?: string; onDone?: (v: string) => void; onCancel?: () => void }
+/** Our calendar: the month with ‹ ›, Monday first; today ringed, the chosen day a purple circle. Dates are yyyy-mm-dd. */
+export function DatePicker({ title = 'Choose a date', value, today = new Date().toISOString().slice(0, 10), onDone, onCancel }: DatePickerProps) {
+  const [sel, setSel] = React.useState(value || today);
+  const [y0, mo0] = sel.split('-').map(Number);
+  const [view, setView] = React.useState({ y: y0, m: mo0 - 1 });
+  const first = new Date(Date.UTC(view.y, view.m, 1));
+  const lead = (first.getUTCDay() + 6) % 7;
+  const days = new Date(Date.UTC(view.y, view.m + 1, 0)).getUTCDate();
+  const iso = (d: number) => `${view.y}-${String(view.m + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+  const move = (k: number) => setView(v => { const m = v.m + k; return { y: v.y + Math.floor(m / 12), m: (m + 12) % 12 }; });
+  return <div className="fmt-picker" role="dialog" aria-label={title}>
+    <h2>{title}</h2>
+    <div className="fmt-picker-month">
+      <button type="button" className="fmt-iconbtn" aria-label="Last month" onClick={() => move(-1)}><Icon name="back" /></button>
+      <b aria-live="polite">{MONTHS[view.m]} {view.y}</b>
+      <button type="button" className="fmt-iconbtn" aria-label="Next month" onClick={() => move(1)}><Icon name="chevron" /></button>
+    </div>
+    <div className="fmt-picker-days">
+      {['M', 'T', 'W', 'T', 'F', 'S', 'S'].map((d, i) => <span key={'w' + i} aria-hidden="true">{d}</span>)}
+      {Array.from({ length: lead }, (_, i) => <span key={'b' + i} />)}
+      {Array.from({ length: days }, (_, i) => { const d = i + 1, id = iso(d);
+        return <button key={id} type="button" className={cx(id === today && 'is-today')} aria-pressed={id === sel}
+          aria-label={`${WEEKDAYS[(lead + i) % 7]} ${d} ${MONTHS[view.m]}${id === today ? ', today' : ''}`} onClick={() => setSel(id)}>{d}</button>; })}
+    </div>
+    <div className="fmt-picker-foot"><Button outline onClick={onCancel}>Cancel</Button><Button onClick={() => onDone?.(sel)}>Done</Button></div>
+  </div>;
 }
 /** A dashed box to draw in, with its prompt at the foot. */
 export function DrawBox({ prompt, fill }: { prompt?: React.ReactNode; fill?: boolean }) {
