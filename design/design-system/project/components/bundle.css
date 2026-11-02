@@ -484,6 +484,12 @@
   --letter-start: var(--sun);
   --letter-start-line: var(--sun-deep);
   --letter-number: var(--ink);
+  --field-fill: var(--paper);
+  --field-line: var(--rule);
+  --field-line-focus: var(--purple);
+  --field-ink: var(--ink);
+  --field-placeholder: var(--ink-soft);
+  --field-icon: var(--purple);
 }
 
 /* A4 handouts: semantic tokens in print units. */
@@ -835,6 +841,18 @@ a.fmt-card:hover { transform: translateY(calc(-1 * var(--space-2))) rotate(1deg)
 .fmt-kid { font-family: var(--font-body); font-weight: 600; font-size: var(--text-kid); line-height: var(--leading-normal); color: var(--ink); }
 
 /* Lines to write on: dark enough for a mono printer. */
+/* Field: somewhere to type on screens (paper uses .fmt-write lines). A dashed
+   outline on all sides; solid purple while typing. A time field shows the time
+   with a clock and opens the device's own clock (<input type="time">). */
+.fmt-field { box-sizing: border-box; display: flex; align-items: center; gap: var(--space-2); min-height: var(--size-target); padding: var(--space-2) var(--space-3); border: var(--border-outline) dashed var(--field-line); border-radius: var(--radius-sm); background: var(--field-fill); color: var(--field-ink); font-family: var(--font-body); font-size: var(--text-base); cursor: text; }
+.fmt-field:focus-within { border-style: solid; border-color: var(--field-line-focus); outline: var(--border-focus) solid var(--focus); outline-offset: var(--border-focus); }
+.fmt-field :is(input, textarea) { flex: 1 1 auto; min-width: 0; margin: 0; padding: 0; border: 0; background: transparent; color: inherit; font: inherit; outline: none; resize: vertical; }
+.fmt-field ::placeholder { color: var(--field-placeholder); opacity: 1; }
+.fmt-field.is-time { position: relative; display: inline-flex; align-self: flex-start; cursor: pointer; }
+.fmt-field.is-time input { flex: none; cursor: pointer; }
+/* The browser's own clock button covers the whole field (our clock shows instead). */
+.fmt-field.is-time input::-webkit-calendar-picker-indicator { position: absolute; inset: 0; width: auto; height: auto; margin: 0; opacity: 0; cursor: pointer; }
+.fmt-field svg { flex: none; width: var(--size-icon); height: var(--size-icon); fill: none; stroke: var(--field-icon); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
 .fmt-write { display: grid; }
 .fmt-write i { display: block; height: var(--rule-write); border-bottom: var(--border-outline) dashed var(--rule); }
 .fmt-write.is-kid i { height: var(--rule-kid); }
@@ -1023,14 +1041,12 @@ button.fmt-choice:focus-visible { outline: var(--border-focus) solid var(--focus
 .fmt-calendar-days span { display: grid; justify-items: center; padding-block: var(--space-1); border-radius: var(--radius-tile); font-family: var(--font-display); font-weight: 600; font-size: var(--text-base); color: var(--calendar-ink); }
 .fmt-calendar-days b { font-family: var(--font-body); font-weight: 600; font-size: var(--text-xs); color: var(--calendar-day-ink); }
 .fmt-calendar-days .is-today { background: var(--calendar-today); }
-.fmt-calendar-row { display: grid; padding-top: var(--space-1); }
-.fmt-calendar-row > p { margin: 0; font-size: var(--text-base); color: var(--calendar-ink); }
-.fmt-calendar-row > a { display: inline-flex; align-items: center; gap: var(--space-1); min-height: var(--size-target); font-size: var(--text-base); color: var(--calendar-ink); text-decoration: none; }
-.fmt-calendar-row > a svg { width: var(--size-icon-sm); height: var(--size-icon-sm); fill: none; stroke: var(--calendar-planned); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
-.fmt-calendar-row > a:hover { text-decoration: underline; }
-.fmt-calendar-row > a:focus-visible { outline: var(--border-focus) solid var(--focus); outline-offset: var(--border-focus); border-radius: var(--radius-tile); }
-.fmt-calendar-row ol { border-block: var(--border-outline) dashed var(--calendar-rule); }
-.fmt-calendar-row li { display: grid; place-items: center; min-height: var(--size-target); }
+.fmt-calendar-row { display: grid; gap: var(--space-hair); padding-top: var(--space-2); border-bottom: var(--border-outline) dashed var(--calendar-rule); color: var(--calendar-ink); text-decoration: none; }
+.fmt-calendar-row > :is(p, span) { display: inline-flex; align-items: center; gap: var(--space-1); margin: 0; font-size: var(--text-sm); font-weight: 600; color: var(--calendar-ink); }
+.fmt-calendar-row > span svg { width: var(--size-icon-sm); height: var(--size-icon-sm); fill: none; stroke: var(--calendar-planned); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+a.fmt-calendar-row:hover > span { text-decoration: underline; }
+a.fmt-calendar-row:focus-visible { outline: var(--border-focus) solid var(--focus); outline-offset: var(--border-focus); border-radius: var(--radius-tile); }
+.fmt-calendar-row li { display: grid; place-items: center; min-height: calc(var(--size-icon) + var(--space-2)); }
 .fmt-calendar-row .fmt-star svg { width: var(--size-icon); height: var(--size-icon); }
 .fmt-calendar-row li.is-today { background: var(--calendar-today); }
 .fmt-calendar-row li.is-none > span { width: var(--space-2); height: var(--space-2); border-radius: 50%; background: var(--calendar-none); }

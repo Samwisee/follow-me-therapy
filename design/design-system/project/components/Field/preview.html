@@ -1,0 +1,15 @@
+<!-- @dsCard group="Activities" height=220 subtitle="Somewhere to type: dashed on all sides; a time field opens the device's clock" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Field — preview</title></head>
+<body style="margin:0">
+<div id="root" style="padding:24px 28px;background:var(--paper);display:grid;gap:12px;max-width:420px"></div>
+<script>
+  var F = window.FollowMeTherapy, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null,
+    h(F.Field, {label: 'Activity 1', placeholder: 'Activity 1'}),
+    h(F.Field, {label: 'A note for the family', placeholder: "What we're working on, in a sentence or two", lines: 2}),
+    h('div', null, h(F.TimeField, {label: 'Reminder time', value: '07:30'}))));
+</script>
+</body>
+</html>

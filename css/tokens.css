@@ -482,6 +482,12 @@
   --letter-start: var(--sun);
   --letter-start-line: var(--sun-deep);
   --letter-number: var(--ink);
+  --field-fill: var(--paper);
+  --field-line: var(--rule);
+  --field-line-focus: var(--purple);
+  --field-ink: var(--ink);
+  --field-placeholder: var(--ink-soft);
+  --field-icon: var(--purple);
 }
 
 /* A4 handouts: semantic tokens in print units. */

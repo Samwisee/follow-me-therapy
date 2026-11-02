@@ -159,6 +159,17 @@ export function Group({ title, fill, children }: { title?: React.ReactNode; fill
 export function WriteLines({ lines = 2, kid }: { lines?: number; kid?: boolean }) {
   return <div className={cx('fmt-write', kid && 'is-kid')} aria-hidden="true">{Array.from({ length: lines }, (_, i) => <i key={i} />)}</div>;
 }
+/** Somewhere to type on screens: a dashed outline on all sides (paper uses WriteLines). */
+export function Field({ label, placeholder, lines = 1, value, onChange }: { label: string; placeholder?: string; lines?: number; value?: string; onChange?: (v: string) => void }) {
+  const input = lines > 1
+    ? <textarea aria-label={label} placeholder={placeholder} rows={lines} value={value} onChange={e => onChange?.(e.target.value)} />
+    : <input aria-label={label} placeholder={placeholder} value={value} onChange={e => onChange?.(e.target.value)} />;
+  return <label className="fmt-field">{input}</label>;
+}
+/** A time to pick, with a clock: tapping opens the device's own clock. `value` is 24-hour, "07:30". */
+export function TimeField({ label, value, onChange }: { label: string; value?: string; onChange?: (v: string) => void }) {
+  return <label className="fmt-field is-time"><Icon name="clock" /><input type="time" aria-label={label} value={value} onChange={e => onChange?.(e.target.value)} /></label>;
+}
 /** A dashed box to draw in, with its prompt at the foot. */
 export function DrawBox({ prompt, fill }: { prompt?: React.ReactNode; fill?: boolean }) {
   return <div className={cx('fmt-draw', fill && 'is-fill')}>{prompt}</div>;
@@ -329,13 +340,16 @@ export function WeekCalendar({ days = ['M', 'T', 'W', 'T', 'F', 'S', 'S'], dates
   const [pop, setPop] = React.useState<string | null>(null);
   return <div className="fmt-calendar">
     <div className="fmt-calendar-days" aria-hidden="true">{days.map((d, i) => <span key={i} className={cx(i === today && 'is-today')}>{d}{dates && <b>{dates[i]}</b>}</span>)}</div>
-    {rows.map((r, ri) => <div key={ri} className="fmt-calendar-row">
-      {r.href ? <a href={r.href}>{r.label}<Icon name="chevron" /></a> : <p>{r.label}</p>}
-      <ol>{r.days.map((st, i) => { const words = `${FULL_DAYS[i]}, ${r.label}`;
+    {rows.map((r, ri) => { const link = r.href && !r.onToggle;
+      const summary = r.days.map((st, i) => `${FULL_DAYS[i]}: ${DAY_WORDS[st]}`).join(', ');
+      const Row = (link ? 'a' : 'div') as 'a';
+      return <Row key={ri} className="fmt-calendar-row" href={link ? r.href : undefined} aria-label={link ? `${r.label}. ${summary}` : undefined}>
+      {link ? <span>{r.label}<Icon name="chevron" /></span> : <p>{r.label}</p>}
+      <ol aria-hidden={link ? true : undefined}>{r.days.map((st, i) => { const words = `${FULL_DAYS[i]}, ${r.label}`;
         return <li key={i} className={cx('is-' + st, i === today && 'is-today')} aria-label={r.onToggle ? undefined : `${words}: ${DAY_WORDS[st]}`}>
           {st === 'none' && !r.onToggle ? <span /> : <Star state={st === 'none' ? 'planned' : st} pop={pop === ri + '/' + i} label={words}
             onToggle={r.onToggle && (() => { setPop(st === 'done' ? null : ri + '/' + i); r.onToggle!(i); })} />}</li>; })}</ol>
-    </div>)}
+    </Row>; })}
   </div>;
 }
 
