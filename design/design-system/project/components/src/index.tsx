@@ -6,6 +6,7 @@ const cx = (...c: (string | false | undefined | null)[]) => c.filter(Boolean).jo
 
 /* ── Icons: generated from design/icons.json (the single source, shared with the app) ── */
 import { ICONS } from './icons';
+import { LETTERS } from './letters';
 const ICON40 = Object.fromEntries(Object.entries(ICONS).filter(([, v]) => v.grid === 40).map(([k, v]) => [k, { d: v.svg, filled: 'filled' in v && v.filled }])) as Record<string, { d: string; filled?: boolean }>;
 export type Icon24Name = string;
 export type Icon40Name = string;
@@ -336,4 +337,32 @@ export function WeekCalendar({ days = ['M', 'T', 'W', 'T', 'F', 'S', 'S'], dates
             onToggle={r.onToggle && (() => { setPop(st === 'done' ? null : ri + '/' + i); r.onToggle!(i); })} />}</li>; })}</ol>
     </div>)}
   </div>;
+}
+
+export interface LetterTraceProps { letter: string; mode?: 'model' | 'trace' }
+/** A letter (a–z, A–Z) or a pre-writing shape ('circle', 'loops'…) on writing lines: the model (solid, a gold start dot, numbered strokes, an arrow the way to go) or a dashed copy to trace. Shapes from design/letters.json. */
+export function LetterTrace({ letter, mode = 'model' }: LetterTraceProps) {
+  const set: Record<string, { w: number; s: readonly string[] }> = letter.length > 1 ? LETTERS.shapes : letter === letter.toLowerCase() ? LETTERS.lowercase : LETTERS.capitals;
+  const g = set[letter];
+  if (!g) return null;
+  const strokes = g.s.map(st => st.split(' ').map(p => p.split(',').map(Number)));
+  const { top, waist, base, descender } = LETTERS.lines;
+  const model = mode === 'model';
+  const words = letter.length > 1 ? `Shape to trace: ${letter}.` : `Letter ${letter}. ${strokes.length} ${strokes.length === 1 ? 'stroke' : 'strokes'}.`;
+  return <svg className={cx('fmt-letter', !model && 'is-trace')} viewBox={`0 0 ${g.w} 100`} role="img" aria-label={words}>
+    <line className="fmt-letter-guide" x1="0" x2={g.w} y1={top} y2={top} />
+    <line className="fmt-letter-guide is-waist" x1="0" x2={g.w} y1={waist} y2={waist} />
+    <line className="fmt-letter-base" x1="0" x2={g.w} y1={base} y2={base} />
+    <line className="fmt-letter-guide" x1="0" x2={g.w} y1={descender} y2={descender} />
+    {strokes.map((st, i) => <polyline key={'s' + i} className="fmt-letter-stroke" points={st.map(p => p.join(',')).join(' ')} />)}
+    {model && strokes.map((st, i) => {
+      // An arrow a little way along, beside the stroke, the way it goes.
+      const k = Math.min(8, st.length - 2), [x0, y0] = st[k], [x1, y1] = st[Math.min(k + 3, st.length - 1)];
+      const len = Math.hypot(x1 - x0, y1 - y0) || 1, dx = (x1 - x0) / len, dy = (y1 - y0) / len, nx = dy, ny = -dx;
+      const ax = x0 + nx * 7, ay = y0 + ny * 7;
+      return <polyline key={'a' + i} className="fmt-letter-arrow" points={`${ax - dx * 3 + nx * 2.5},${ay - dy * 3 + ny * 2.5} ${ax},${ay} ${ax - dx * 3 - nx * 2.5},${ay - dy * 3 - ny * 2.5}`} />;
+    })}
+    {strokes.map((st, i) => <circle key={'d' + i} className="fmt-letter-start" cx={st[0][0]} cy={st[0][1]} r="3.5" />)}
+    {model && strokes.length > 1 && strokes.map((st, i) => <text key={'n' + i} className="fmt-letter-num" x={st[0][0] - 9} y={st[0][1] - 4 - 9 * strokes.slice(0, i).filter(o => Math.hypot(o[0][0] - st[0][0], o[0][1] - st[0][1]) < 6).length}>{i + 1}</text>)}
+  </svg>;
 }

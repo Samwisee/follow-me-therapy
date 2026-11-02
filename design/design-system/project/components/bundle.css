@@ -388,6 +388,13 @@
   --calendar-ink: var(--ink);
   --calendar-day-ink: var(--ink-soft);
   --calendar-rule: var(--rule);
+  --letter-model: var(--purple);
+  --letter-trace: var(--rule);
+  --letter-guide: var(--purple-line);
+  --letter-base: var(--rule);
+  --letter-start: var(--sun);
+  --letter-start-line: var(--sun-deep);
+  --letter-number: var(--ink);
 }
 
 /* A4 handouts: semantic tokens in print units. */
@@ -879,6 +886,19 @@ button.fmt-choice:focus-visible { outline: var(--border-focus) solid var(--focus
 .fmt-chip.is-filter.is-pink { --fc-ink: var(--chip-pink-ink); --fc-line: var(--chip-pink-line); --fc-on: var(--chip-pink-fill-selected); --fc-on-ink: var(--chip-pink-ink-selected); }
 .fmt-chip.is-filter:is([aria-pressed="true"], [aria-checked="true"]) { background: var(--fc-on); border-color: var(--fc-on); color: var(--fc-on-ink); }
 .fmt-chip.is-filter:focus-visible { outline: var(--border-focus) solid var(--focus); outline-offset: var(--border-focus); }
+
+/* ── Letter to trace: writing lines, the model (solid, start dot, numbers, arrow) or a dashed copy ── */
+.fmt-letter { display: block; height: var(--size-letter, calc(var(--space-30) * 1.2)); width: auto; overflow: visible; }
+.fmt-letter-guide { stroke: var(--letter-guide); stroke-width: 0.8; }
+.fmt-letter-guide.is-waist { stroke-dasharray: 3 3; }
+.fmt-letter-base { stroke: var(--letter-base); stroke-width: 1.2; }
+.fmt-letter-stroke { fill: none; stroke: var(--letter-model); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+.fmt-letter.is-trace .fmt-letter-stroke { stroke: var(--letter-trace); stroke-width: 2.6; stroke-dasharray: 4 4; }
+.fmt-letter-start { fill: var(--letter-start); stroke: var(--letter-start-line); stroke-width: 1.5; }
+.fmt-letter-arrow { fill: none; stroke: var(--letter-number); stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.fmt-letter-num { fill: var(--letter-number); font-family: var(--font-body); font-weight: 700; font-size: calc(var(--space-2) * 1.1); }
+/* A row of letters: the model, then copies to trace, on one line. */
+.fmt-letters { display: flex; align-items: flex-end; gap: var(--space-3); }
 
 /* ── Week calendar: days across, each activity's days planned / partly / done ── */
 .fmt-calendar { display: grid; gap: var(--space-1); font-family: var(--font-body); }

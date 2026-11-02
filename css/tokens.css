@@ -386,6 +386,13 @@
   --calendar-ink: var(--ink);
   --calendar-day-ink: var(--ink-soft);
   --calendar-rule: var(--rule);
+  --letter-model: var(--purple);
+  --letter-trace: var(--rule);
+  --letter-guide: var(--purple-line);
+  --letter-base: var(--rule);
+  --letter-start: var(--sun);
+  --letter-start-line: var(--sun-deep);
+  --letter-number: var(--ink);
 }
 
 /* A4 handouts: semantic tokens in print units. */
