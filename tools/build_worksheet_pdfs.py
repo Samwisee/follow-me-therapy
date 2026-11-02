@@ -135,6 +135,7 @@ PRINT_HTML = """<!doctype html>
   button.disabled = false;
   button.onclick = function () { window.print(); };
   document.body.dataset.ready = String(n);
+  if (performance.mark) performance.mark("ready");
   if (!navigator.webdriver) setTimeout(function () { try { window.print(); } catch (e) {} }, 300);
 })();
 </script>
