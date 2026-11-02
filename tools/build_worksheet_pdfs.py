@@ -76,15 +76,19 @@ html, body { margin: 0; background: var(--purple-tint); }
 .bar { position: sticky; top: 0; z-index: var(--z-sticky); display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); padding: var(--space-3) var(--gutter); background: var(--bar-fill); border-bottom: var(--border-outline) solid var(--bar-line); font-family: var(--font-body); color: var(--ink); }
 .bar p { flex: 1 1 12em; margin: 0; font-size: var(--text-base); }
 .pages { display: grid; justify-items: center; gap: var(--space-6); padding: var(--space-6) 0 var(--space-12); }
-.page { overflow: hidden; background: var(--paper); box-shadow: var(--shadow-soft); }
-.page > .fmt-sheet { transform-origin: top left; }
+html, body { overflow-x: hidden; }
+/* On screen a sheet is shrunk to the page's width (the sheet sits out of the flow, so a
+   794px sheet never widens the page on a phone); printed, it's its full A4 size. */
+.page { position: relative; width: min(794px, calc(100vw - 2 * var(--space-4))); aspect-ratio: 794 / 1123; overflow: hidden; background: var(--paper); box-shadow: var(--shadow-soft); }
+.page > .fmt-sheet { position: absolute; top: 0; left: 0; transform-origin: top left; }
 @media print {
   html, body { background: var(--paper); }
   .bar { display: none; }
   .pages { display: block; padding: 0; }
-  .page { width: auto !important; height: auto !important; box-shadow: none; break-after: page; }
+  html, body { overflow: visible; }
+  .page { position: static; width: auto; aspect-ratio: auto; overflow: visible; box-shadow: none; break-after: page; }
   .page:last-child { break-after: auto; }
-  .page > .fmt-sheet { transform: none !important; }
+  .page > .fmt-sheet { position: static; transform: none !important; }
 }
 """
 
@@ -122,12 +126,10 @@ document.getElementById("back").onclick = function (e) {
     page.innerHTML = html;
     pages.appendChild(page);
   }
-  // On screen each sheet is shrunk to fit; printed, it's its full A4 size.
+  // On screen each sheet is shrunk to its page's width (set by the CSS); printed, it's full A4.
   function fit() {
-    var scale = Math.min(1, (window.innerWidth - 32) / 794);
     pages.querySelectorAll(".page").forEach(function (p) {
-      p.style.width = 794 * scale + "px"; p.style.height = 1123 * scale + "px";
-      p.firstElementChild.style.transform = "scale(" + scale + ")";
+      p.firstElementChild.style.transform = "scale(" + p.clientWidth / 794 + ")";
     });
   }
   fit();
