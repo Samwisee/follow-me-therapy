@@ -45,8 +45,17 @@
   --purple-light: #c7bbff;
   --pink-deep: #912049;
   --pink-pale: #fde7ef;
+  --green: #2e8540;
+  --green-ink: #145526;
+  --green-deep: #1a6630;
+  --green-tint: #e6f4e4;
+  --green-line: #a6d6a0;
+  --blue: #2a6fd6;
+  --blue-ink: #1a4593;
+  --blue-deep: #1d4fa8;
+  --blue-tint: #e6effc;
+  --blue-line: #a3c2f0;
   --coral: #ff6f61;
-  --green: #19b37a;
   --green-teal: #1f9e89;
   --font-display: "Fredoka", "Fredoka Fallback", "Quicksand", "QS Fallback", system-ui, sans-serif;
   --font-body: "Quicksand", "QS Fallback", system-ui, sans-serif;
@@ -198,24 +207,50 @@
   --tone-pink-ground: var(--pink-tint);
   --tone-pink-icon: var(--pink);
   --tone-pink-on-solid: var(--paper);
+  --tone-green-tint: var(--green-tint);
+  --tone-green-ink: var(--green-ink);
+  --tone-green-line: var(--green-line);
+  --tone-green-solid: var(--green-deep);
+  --tone-green-strong: var(--green-deep);
+  --tone-green-strong-hover: var(--green-ink);
+  --tone-green-ground: var(--green-tint);
+  --tone-green-icon: var(--green);
+  --tone-green-on-solid: var(--paper);
+  --tone-blue-tint: var(--blue-tint);
+  --tone-blue-ink: var(--blue-ink);
+  --tone-blue-line: var(--blue-line);
+  --tone-blue-solid: var(--blue-deep);
+  --tone-blue-strong: var(--blue-deep);
+  --tone-blue-strong-hover: var(--blue-ink);
+  --tone-blue-ground: var(--blue-tint);
+  --tone-blue-icon: var(--blue);
+  --tone-blue-on-solid: var(--paper);
 
   /* Components: which role or value each part takes (tokens.json › component, design/components.json). */
   --chip-purple-fill: var(--tone-purple-tint);
   --chip-teal-fill: var(--tone-teal-tint);
   --chip-sun-fill: var(--tone-sun-tint);
   --chip-pink-fill: var(--tone-pink-tint);
+  --chip-green-fill: var(--tone-green-tint);
+  --chip-blue-fill: var(--tone-blue-tint);
   --chip-purple-ink: var(--tone-purple-ink);
   --chip-teal-ink: var(--tone-teal-ink);
   --chip-sun-ink: var(--tone-sun-ink);
   --chip-pink-ink: var(--tone-pink-ink);
+  --chip-green-ink: var(--tone-green-ink);
+  --chip-blue-ink: var(--tone-blue-ink);
   --chip-purple-line: var(--tone-purple-line);
   --chip-teal-line: var(--tone-teal-line);
   --chip-sun-line: var(--tone-sun-line);
   --chip-pink-line: var(--tone-pink-line);
+  --chip-green-line: var(--tone-green-line);
+  --chip-blue-line: var(--tone-blue-line);
   --chip-purple-line-hover: var(--tone-purple-solid);
   --chip-teal-line-hover: var(--tone-teal-solid);
   --chip-sun-line-hover: var(--tone-sun-solid);
   --chip-pink-line-hover: var(--tone-pink-solid);
+  --chip-green-line-hover: var(--tone-green-solid);
+  --chip-blue-line-hover: var(--tone-blue-solid);
   --chip-fill-on-ground: var(--paper);
   --chip-outline-fill: var(--paper);
   --chip-live: var(--live);
@@ -224,51 +259,73 @@
   --chip-teal-fill-selected: var(--tone-teal-ink);
   --chip-sun-fill-selected: var(--tone-sun-ink);
   --chip-pink-fill-selected: var(--tone-pink-ink);
+  --chip-green-fill-selected: var(--tone-green-ink);
+  --chip-blue-fill-selected: var(--tone-blue-ink);
   --chip-ink-selected: var(--paper);
   --tag-purple-fill: var(--tone-purple-solid);
   --tag-teal-fill: var(--tone-teal-solid);
   --tag-sun-fill: var(--tone-sun-solid);
   --tag-pink-fill: var(--tone-pink-solid);
+  --tag-green-fill: var(--tone-green-solid);
+  --tag-blue-fill: var(--tone-blue-solid);
   --tag-purple-ink: var(--tone-purple-on-solid);
   --tag-teal-ink: var(--tone-teal-on-solid);
   --tag-sun-ink: var(--tone-sun-on-solid);
   --tag-pink-ink: var(--tone-pink-on-solid);
+  --tag-green-ink: var(--tone-green-on-solid);
+  --tag-blue-ink: var(--tone-blue-on-solid);
   --tile-purple-fill: var(--tone-purple-tint);
   --tile-teal-fill: var(--tone-teal-tint);
   --tile-sun-fill: var(--tone-sun-tint);
   --tile-pink-fill: var(--tone-pink-tint);
+  --tile-green-fill: var(--tone-green-tint);
+  --tile-blue-fill: var(--tone-blue-tint);
   --tile-purple-icon: var(--tone-purple-icon);
   --tile-teal-icon: var(--tone-teal-icon);
   --tile-sun-icon: var(--tone-sun-icon);
   --tile-pink-icon: var(--tone-pink-icon);
+  --tile-green-icon: var(--tone-green-icon);
+  --tile-blue-icon: var(--tone-blue-icon);
   --tile-purple-line: var(--tone-purple-line);
   --tile-teal-line: var(--tone-teal-line);
   --tile-sun-line: var(--tone-sun-line);
   --tile-pink-line: var(--tone-pink-line);
+  --tile-green-line: var(--tone-green-line);
+  --tile-blue-line: var(--tone-blue-line);
   --tile-fill-on-ground: var(--paper);
   --note-purple-fill: var(--tone-purple-ground);
   --note-teal-fill: var(--tone-teal-ground);
   --note-sun-fill: var(--tone-sun-ground);
   --note-pink-fill: var(--tone-pink-ground);
+  --note-green-fill: var(--tone-green-ground);
+  --note-blue-fill: var(--tone-blue-ground);
   --note-purple-line: var(--tone-purple-line);
   --note-teal-line: var(--tone-teal-line);
   --note-sun-line: var(--tone-sun-line);
   --note-pink-line: var(--tone-pink-line);
+  --note-green-line: var(--tone-green-line);
+  --note-blue-line: var(--tone-blue-line);
   --note-purple-icon: var(--tone-purple-icon);
   --note-teal-icon: var(--tone-teal-icon);
   --note-sun-icon: var(--tone-sun-icon);
   --note-pink-icon: var(--tone-pink-icon);
+  --note-green-icon: var(--tone-green-icon);
+  --note-blue-icon: var(--tone-blue-icon);
   --note-lead-in: var(--ink);
   --note-purple-line-hover: var(--tone-purple-solid);
   --note-teal-line-hover: var(--tone-teal-solid);
   --note-sun-line-hover: var(--tone-sun-solid);
   --note-pink-line-hover: var(--tone-pink-solid);
+  --note-green-line-hover: var(--tone-green-solid);
+  --note-blue-line-hover: var(--tone-blue-solid);
   --note-tile-fill: var(--paper);
   --note-promise-fill: var(--paper);
   --note-purple-promise-tile-fill: var(--tone-purple-tint);
   --note-teal-promise-tile-fill: var(--tone-teal-tint);
   --note-sun-promise-tile-fill: var(--tone-sun-tint);
   --note-pink-promise-tile-fill: var(--tone-pink-tint);
+  --note-green-promise-tile-fill: var(--tone-green-tint);
+  --note-blue-promise-tile-fill: var(--tone-blue-tint);
   --note-promise-ink: var(--ink);
   --note-row-fill: var(--paper);
   --note-row-line: var(--deep);
@@ -278,70 +335,102 @@
   --head-teal-fill: var(--tone-teal-ground);
   --head-sun-fill: var(--tone-sun-ground);
   --head-pink-fill: var(--tone-pink-ground);
+  --head-green-fill: var(--tone-green-ground);
+  --head-blue-fill: var(--tone-blue-ground);
   --head-purple-line: var(--tone-purple-line);
   --head-teal-line: var(--tone-teal-line);
   --head-sun-line: var(--tone-sun-line);
   --head-pink-line: var(--tone-pink-line);
+  --head-green-line: var(--tone-green-line);
+  --head-blue-line: var(--tone-blue-line);
   --panel-purple-fill: var(--tone-purple-ground);
   --panel-teal-fill: var(--tone-teal-ground);
   --panel-sun-fill: var(--tone-sun-ground);
   --panel-pink-fill: var(--tone-pink-ground);
+  --panel-green-fill: var(--tone-green-ground);
+  --panel-blue-fill: var(--tone-blue-ground);
   --panel-purple-line: var(--tone-purple-line);
   --panel-teal-line: var(--tone-teal-line);
   --panel-sun-line: var(--tone-sun-line);
   --panel-pink-line: var(--tone-pink-line);
+  --panel-green-line: var(--tone-green-line);
+  --panel-blue-line: var(--tone-blue-line);
   --card-fill: var(--paper);
   --card-purple-line: var(--tone-purple-solid);
   --card-teal-line: var(--tone-teal-solid);
   --card-sun-line: var(--tone-sun-solid);
   --card-pink-line: var(--tone-pink-solid);
+  --card-green-line: var(--tone-green-solid);
+  --card-blue-line: var(--tone-blue-solid);
   --card-more: var(--purple);
   --choice-fill: var(--paper);
   --choice-purple-line: var(--tone-purple-line);
   --choice-teal-line: var(--tone-teal-line);
   --choice-sun-line: var(--tone-sun-line);
   --choice-pink-line: var(--tone-pink-line);
+  --choice-green-line: var(--tone-green-line);
+  --choice-blue-line: var(--tone-blue-line);
   --choice-purple-fill-selected: var(--tone-purple-tint);
   --choice-teal-fill-selected: var(--tone-teal-tint);
   --choice-sun-fill-selected: var(--tone-sun-tint);
   --choice-pink-fill-selected: var(--tone-pink-tint);
+  --choice-green-fill-selected: var(--tone-green-tint);
+  --choice-blue-fill-selected: var(--tone-blue-tint);
   --choice-purple-line-selected: var(--tone-purple-icon);
   --choice-teal-line-selected: var(--tone-teal-icon);
   --choice-sun-line-selected: var(--tone-sun-icon);
   --choice-pink-line-selected: var(--tone-pink-icon);
+  --choice-green-line-selected: var(--tone-green-icon);
+  --choice-blue-line-selected: var(--tone-blue-icon);
   --choice-purple-line-hover: var(--tone-purple-icon);
   --choice-teal-line-hover: var(--tone-teal-icon);
   --choice-sun-line-hover: var(--tone-sun-icon);
   --choice-pink-line-hover: var(--tone-pink-icon);
+  --choice-green-line-hover: var(--tone-green-icon);
+  --choice-blue-line-hover: var(--tone-blue-icon);
   --button-purple-fill: var(--tone-purple-strong);
   --button-teal-fill: var(--tone-teal-strong);
   --button-sun-fill: var(--tone-sun-strong);
   --button-pink-fill: var(--tone-pink-strong);
+  --button-green-fill: var(--tone-green-strong);
+  --button-blue-fill: var(--tone-blue-strong);
   --button-purple-ink: var(--tone-purple-on-solid);
   --button-teal-ink: var(--tone-teal-on-solid);
   --button-sun-ink: var(--tone-sun-on-solid);
   --button-pink-ink: var(--tone-pink-on-solid);
+  --button-green-ink: var(--tone-green-on-solid);
+  --button-blue-ink: var(--tone-blue-on-solid);
   --button-purple-line: var(--tone-purple-strong);
   --button-teal-line: var(--tone-teal-strong);
   --button-sun-line: var(--tone-sun-strong);
   --button-pink-line: var(--tone-pink-strong);
+  --button-green-line: var(--tone-green-strong);
+  --button-blue-line: var(--tone-blue-strong);
   --button-purple-fill-hover: var(--tone-purple-strong-hover);
   --button-teal-fill-hover: var(--tone-teal-strong-hover);
   --button-sun-fill-hover: var(--tone-sun-strong-hover);
   --button-pink-fill-hover: var(--tone-pink-strong-hover);
+  --button-green-fill-hover: var(--tone-green-strong-hover);
+  --button-blue-fill-hover: var(--tone-blue-strong-hover);
   --button-outline-fill: var(--paper);
   --button-purple-outline-ink: var(--tone-purple-strong);
   --button-teal-outline-ink: var(--tone-teal-strong);
   --button-sun-outline-ink: var(--tone-sun-strong);
   --button-pink-outline-ink: var(--tone-pink-strong);
+  --button-green-outline-ink: var(--tone-green-strong);
+  --button-blue-outline-ink: var(--tone-blue-strong);
   --button-purple-outline-fill-hover: var(--tone-purple-tint);
   --button-teal-outline-fill-hover: var(--tone-teal-tint);
   --button-sun-outline-fill-hover: var(--tone-sun-tint);
   --button-pink-outline-fill-hover: var(--tone-pink-tint);
+  --button-green-outline-fill-hover: var(--tone-green-tint);
+  --button-blue-outline-fill-hover: var(--tone-blue-tint);
   --button-purple-outline-ink-hover: var(--tone-purple-strong-hover);
   --button-teal-outline-ink-hover: var(--tone-teal-strong-hover);
   --button-sun-outline-ink-hover: var(--tone-sun-strong-hover);
   --button-pink-outline-ink-hover: var(--tone-pink-strong-hover);
+  --button-green-outline-ink-hover: var(--tone-green-strong-hover);
+  --button-blue-outline-ink-hover: var(--tone-blue-strong-hover);
   --button-quiet-fill: var(--sun-tint);
   --button-quiet-ink: var(--ink);
   --button-quiet-line: var(--sun-line);
@@ -472,13 +561,17 @@
 .fmt-chip.is-teal   { background: var(--chip-teal-fill); color: var(--chip-teal-ink); border-color: var(--chip-teal-line); }
 .fmt-chip.is-sun    { background: var(--chip-sun-fill); color: var(--chip-sun-ink); border-color: var(--chip-sun-line); }
 .fmt-chip.is-pink   { background: var(--chip-pink-fill); color: var(--chip-pink-ink); border-color: var(--chip-pink-line); }
+.fmt-chip.is-green   { background: var(--chip-green-fill); color: var(--chip-green-ink); border-color: var(--chip-green-line); }
+.fmt-chip.is-blue   { background: var(--chip-blue-fill); color: var(--chip-blue-ink); border-color: var(--chip-blue-line); }
 .fmt-chip.is-outline { background: var(--chip-outline-fill); color: var(--chip-purple-ink); border-color: var(--chip-purple-line); }
 /* On its own tone's ground (a lilac band, header or note) a chip turns paper
    (chip.fill-on-ground), so it never vanishes into its own tint. */
-:is(.tone-lilac, .fmt-head:not(.is-teal, .is-sun, .is-pink), .fmt-panel:not(.is-teal, .is-sun, .is-pink), .fmt-note:not(.is-teal, .is-sun, .is-promise), .fmt-appbar, .fmt-on-purple) .fmt-chip.is-purple,
+:is(.tone-lilac, .fmt-head:not(.is-teal, .is-sun, .is-pink, .is-green, .is-blue), .fmt-panel:not(.is-teal, .is-sun, .is-pink, .is-green, .is-blue), .fmt-note:not(.is-teal, .is-sun, .is-pink, .is-green, .is-blue, .is-promise), .fmt-appbar, .fmt-on-purple) .fmt-chip.is-purple,
 :is(.tone-mint, .fmt-head.is-teal, .fmt-panel.is-teal, .fmt-note.is-teal, .fmt-on-teal) .fmt-chip.is-teal,
 :is(.fmt-on-sun) .fmt-chip.is-sun,
 :is(.fmt-head.is-pink, .fmt-panel.is-pink, .fmt-on-pink) .fmt-chip.is-pink { background: var(--chip-fill-on-ground); }
+:is(.fmt-head.is-green, .fmt-panel.is-green, .fmt-on-green) .fmt-chip.is-green { background: var(--chip-fill-on-ground); }
+:is(.fmt-head.is-blue, .fmt-panel.is-blue, .fmt-on-blue) .fmt-chip.is-blue { background: var(--chip-fill-on-ground); }
 /* A chip that's a link: the whole chip is the target. */
 .fmt-chip > a { display: contents; color: inherit; text-decoration: none; }
 .fmt-chip > a::after { content: ""; position: absolute; inset: calc(-1 * var(--border-outline)); border-radius: var(--radius-pill); }
@@ -488,6 +581,8 @@
 .fmt-chip.is-teal:has(> a:hover) { border-color: var(--chip-teal-line-hover); }
 .fmt-chip.is-sun:has(> a:hover) { border-color: var(--chip-sun-line-hover); }
 .fmt-chip.is-pink:has(> a:hover) { border-color: var(--chip-pink-line-hover); }
+.fmt-chip.is-green:has(> a:hover) { border-color: var(--chip-green-line-hover); }
+.fmt-chip.is-blue:has(> a:hover) { border-color: var(--chip-blue-line-hover); }
 .fmt-chip:has(> a:focus-visible) { outline: var(--border-focus) solid var(--focus); outline-offset: var(--border-focus); }
 .fmt-chip > a:focus-visible { outline: none; }
 .fmt-chip .fmt-live { flex-basis: 100%; display: flex; align-items: center; justify-content: center; gap: var(--space-2); color: var(--chip-live-ink); }
@@ -498,6 +593,8 @@
 .fmt-tag.is-teal { background: var(--tag-teal-fill); color: var(--tag-teal-ink); }
 .fmt-tag.is-sun { background: var(--tag-sun-fill); color: var(--tag-sun-ink); }
 .fmt-tag.is-pink { background: var(--tag-pink-fill); color: var(--tag-pink-ink); }
+.fmt-tag.is-green { background: var(--tag-green-fill); color: var(--tag-green-ink); }
+.fmt-tag.is-blue { background: var(--tag-blue-fill); color: var(--tag-blue-ink); }
 
 /* ── Tick list: plain lines, a teal tick circle each, no card ── */
 .fmt-ticks { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-3); }
@@ -522,6 +619,9 @@
 .fmt-note.is-centred > i { float: none; flex: none; margin: 0; }
 .fmt-note.is-teal { --note-tint: var(--note-teal-fill); --note-ink: var(--note-teal-icon); --note-line: var(--note-teal-line); }
 .fmt-note.is-sun { --note-tint: var(--note-sun-fill); --note-ink: var(--note-sun-icon); --note-line: var(--note-sun-line); }
+.fmt-note.is-pink { --note-tint: var(--note-pink-fill); --note-ink: var(--note-pink-icon); --note-line: var(--note-pink-line); }
+.fmt-note.is-green { --note-tint: var(--note-green-fill); --note-ink: var(--note-green-icon); --note-line: var(--note-green-line); }
+.fmt-note.is-blue { --note-tint: var(--note-blue-fill); --note-ink: var(--note-blue-icon); --note-line: var(--note-blue-line); }
 .fmt-note.is-promise { --note-tint: var(--note-promise-fill); font-family: var(--font-display); font-size: var(--text-lg); color: var(--note-promise-ink); }
 .fmt-note.is-promise > i { background: var(--note-purple-promise-tile-fill); }
 
@@ -535,6 +635,8 @@
 .fmt-tile.is-teal   { background: var(--tile-teal-fill); color: var(--tile-teal-icon); border-color: var(--tile-teal-line); }
 .fmt-tile.is-sun    { background: var(--tile-sun-fill); color: var(--tile-sun-icon); border-color: var(--tile-sun-line); }
 .fmt-tile.is-pink   { background: var(--tile-pink-fill); color: var(--tile-pink-icon); border-color: var(--tile-pink-line); }
+.fmt-tile.is-green   { background: var(--tile-green-fill); color: var(--tile-green-icon); border-color: var(--tile-green-line); }
+.fmt-tile.is-blue   { background: var(--tile-blue-fill); color: var(--tile-blue-icon); border-color: var(--tile-blue-line); }
 
 /* ── Nest: concentric corners ──
    A container's radius = the radius of what sits in its corner + the padding
@@ -555,6 +657,8 @@
 .fmt-card.is-teal { --band: var(--card-teal-line); }
 .fmt-card.is-sun { --band: var(--card-sun-line); }
 .fmt-card.is-pink { --band: var(--card-pink-line); }
+.fmt-card.is-green { --band: var(--card-green-line); }
+.fmt-card.is-blue { --band: var(--card-blue-line); }
 a.fmt-card:hover { transform: translateY(calc(-1 * var(--space-2))) rotate(1deg); box-shadow: var(--shadow-raised); }
 .fmt-card h3 { margin: var(--space-1) 0 0; font-family: var(--font-display); font-weight: 500; font-size: var(--text-lg); line-height: var(--leading-snug); color: var(--ink); }
 .fmt-card p { margin: 0; font-size: var(--text-base); line-height: var(--leading-relaxed); font-weight: 500; }
@@ -683,6 +787,8 @@ a.fmt-card:hover { transform: translateY(calc(-1 * var(--space-2))) rotate(1deg)
 .fmt-head.is-teal { --head-tint: var(--head-teal-fill); --head-line: var(--head-teal-line); }
 .fmt-head.is-sun { --head-tint: var(--head-sun-fill); --head-line: var(--head-sun-line); }
 .fmt-head.is-pink { --head-tint: var(--head-pink-fill); --head-line: var(--head-pink-line); }
+.fmt-head.is-green { --head-tint: var(--head-green-fill); --head-line: var(--head-green-line); }
+.fmt-head.is-blue { --head-tint: var(--head-blue-fill); --head-line: var(--head-blue-line); }
 .fmt-name { display: flex; align-items: flex-end; gap: var(--space-2); margin: 0 0 var(--space-1); font-weight: 700; font-size: var(--text-sm); color: var(--ink); white-space: nowrap; }
 .fmt-name span { display: block; width: calc(var(--space-30) * 1.6); height: var(--space-6); border-bottom: var(--border-outline) dashed var(--rule); }
 
@@ -711,6 +817,8 @@ a.fmt-card:hover { transform: translateY(calc(-1 * var(--space-2))) rotate(1deg)
 .fmt-panel.is-teal { --panel-fill: var(--panel-teal-fill); --panel-line: var(--panel-teal-line); }
 .fmt-panel.is-sun { --panel-fill: var(--panel-sun-fill); --panel-line: var(--panel-sun-line); }
 .fmt-panel.is-pink { --panel-fill: var(--panel-pink-fill); --panel-line: var(--panel-pink-line); }
+.fmt-panel.is-green { --panel-fill: var(--panel-green-fill); --panel-line: var(--panel-green-line); }
+.fmt-panel.is-blue { --panel-fill: var(--panel-blue-fill); --panel-line: var(--panel-blue-line); }
 /* Spread: share the spare height evenly between the items (e.g. cutting lines). */
 .fmt-group.is-spread { flex: 1 1 auto; justify-content: space-between; gap: var(--stack); }
 /* In a filling group, stretchy parts take the spare height so the rhythm
@@ -747,6 +855,8 @@ a.fmt-card:hover { transform: translateY(calc(-1 * var(--space-2))) rotate(1deg)
 .fmt-choice.is-teal { --tone: var(--choice-teal-line-selected); --tone-tint: var(--choice-teal-fill-selected); --tone-line: var(--choice-teal-line); }
 .fmt-choice.is-sun  { --tone: var(--choice-sun-line-selected); --tone-tint: var(--choice-sun-fill-selected); --tone-line: var(--choice-sun-line); }
 .fmt-choice.is-pink { --tone: var(--choice-pink-line-selected); --tone-tint: var(--choice-pink-fill-selected); --tone-line: var(--choice-pink-line); }
+.fmt-choice.is-green { --tone: var(--choice-green-line-selected); --tone-tint: var(--choice-green-fill-selected); --tone-line: var(--choice-green-line); }
+.fmt-choice.is-blue { --tone: var(--choice-blue-line-selected); --tone-tint: var(--choice-blue-fill-selected); --tone-line: var(--choice-blue-line); }
 .fmt-choice .fmt-tile { flex: none; }
 /* Icons sit level along a row; each label centres in the height left under its icon. */
 .fmt-choice > span:last-child { flex: 1 1 auto; display: flex; align-items: center; justify-content: center; }
@@ -875,6 +985,8 @@ button.fmt-choice:focus-visible { outline: var(--border-focus) solid var(--focus
 .fmt-chip.is-toggle.is-teal { --tc-ink: var(--chip-teal-ink); --tc-line: var(--chip-teal-line); --tc-fill: var(--chip-teal-fill); --tc-on: var(--chip-teal-line-hover); }
 .fmt-chip.is-toggle.is-sun { --tc-ink: var(--chip-sun-ink); --tc-line: var(--chip-sun-line); --tc-fill: var(--chip-sun-fill); --tc-on: var(--chip-sun-line-hover); }
 .fmt-chip.is-toggle.is-pink { --tc-ink: var(--chip-pink-ink); --tc-line: var(--chip-pink-line); --tc-fill: var(--chip-pink-fill); --tc-on: var(--chip-pink-line-hover); }
+.fmt-chip.is-toggle.is-green { --tc-ink: var(--chip-green-ink); --tc-line: var(--chip-green-line); --tc-fill: var(--chip-green-fill); --tc-on: var(--chip-green-line-hover); }
+.fmt-chip.is-toggle.is-blue { --tc-ink: var(--chip-blue-ink); --tc-line: var(--chip-blue-line); --tc-fill: var(--chip-blue-fill); --tc-on: var(--chip-blue-line-hover); }
 .fmt-chip.is-toggle[aria-pressed="true"] { background: var(--tc-fill); border-color: var(--tc-on); }
 .fmt-chip.is-toggle:focus-visible { outline: var(--border-focus) solid var(--focus); outline-offset: var(--border-focus); }
 
@@ -884,6 +996,8 @@ button.fmt-choice:focus-visible { outline: var(--border-focus) solid var(--focus
 .fmt-chip.is-filter.is-teal { --fc-ink: var(--chip-teal-ink); --fc-line: var(--chip-teal-line); --fc-on: var(--chip-teal-fill-selected); --fc-on-ink: var(--chip-teal-ink-selected); }
 .fmt-chip.is-filter.is-sun { --fc-ink: var(--chip-sun-ink); --fc-line: var(--chip-sun-line); --fc-on: var(--chip-sun-fill-selected); --fc-on-ink: var(--chip-sun-ink-selected); }
 .fmt-chip.is-filter.is-pink { --fc-ink: var(--chip-pink-ink); --fc-line: var(--chip-pink-line); --fc-on: var(--chip-pink-fill-selected); --fc-on-ink: var(--chip-pink-ink-selected); }
+.fmt-chip.is-filter.is-green { --fc-ink: var(--chip-green-ink); --fc-line: var(--chip-green-line); --fc-on: var(--chip-green-fill-selected); --fc-on-ink: var(--chip-green-ink-selected); }
+.fmt-chip.is-filter.is-blue { --fc-ink: var(--chip-blue-ink); --fc-line: var(--chip-blue-line); --fc-on: var(--chip-blue-fill-selected); --fc-on-ink: var(--chip-blue-ink-selected); }
 .fmt-chip.is-filter:is([aria-pressed="true"], [aria-checked="true"]) { background: var(--fc-on); border-color: var(--fc-on); color: var(--fc-on-ink); }
 .fmt-chip.is-filter:focus-visible { outline: var(--border-focus) solid var(--focus); outline-offset: var(--border-focus); }
 

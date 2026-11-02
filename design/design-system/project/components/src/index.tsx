@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { LOGO } from './logo';
 
-type Tone = 'purple' | 'teal' | 'sun' | 'pink';
+type Tone = 'purple' | 'teal' | 'sun' | 'pink' | 'green' | 'blue';
 const cx = (...c: (string | false | undefined | null)[]) => c.filter(Boolean).join(' ');
 
 /* ── Icons: generated from design/icons.json (the single source, shared with the app) ── */
