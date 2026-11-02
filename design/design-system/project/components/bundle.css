@@ -899,6 +899,9 @@ button.fmt-choice:focus-visible { outline: var(--border-focus) solid var(--focus
 .fmt-letter-num { fill: var(--letter-number); font-family: var(--font-body); font-weight: 700; font-size: calc(var(--space-2) * 1.1); }
 /* A row of letters: the model, then copies to trace, on one line. */
 .fmt-letters { display: flex; align-items: flex-end; gap: var(--space-3); }
+/* A printed row in one drawing: the model, then copies (.is-trace groups) to trace, on lines across the page. */
+.fmt-letter.fmt-letter-row { width: 100%; height: auto; }
+.fmt-letter .is-trace .fmt-letter-stroke { stroke: var(--letter-trace); stroke-width: 2.6; stroke-dasharray: 4 4; }
 
 /* ── Week calendar: days across, each activity's days planned / partly / done ── */
 .fmt-calendar { display: grid; gap: var(--space-1); font-family: var(--font-body); }

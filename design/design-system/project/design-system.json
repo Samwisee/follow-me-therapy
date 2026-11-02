@@ -209,9 +209,9 @@
   ],
   "lastChange": {
     "by": "Sam",
-    "at": "2026-11-01T10:30:00Z",
+    "at": "2026-11-02T03:30:00Z",
     "via": "GitHub · Samwisee/follow-me-therapy",
-    "note": "Card: a done row shows a gold star (the WeekCalendar's) in place of the teal tick, bursting the first time it's seen done; the done mark keeps to its column."
+    "note": "LetterTrace: a–z, A–Z and pre-writing shapes to trace (Victorian foundation style, from design/letters.json); ten activity icons."
   },
   "layout": "files",
   "libraries": [
