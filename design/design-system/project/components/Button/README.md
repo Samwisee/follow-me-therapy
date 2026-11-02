@@ -16,6 +16,7 @@ Pill buttons in the heading face. Purple is the main action; teal a second one; 
 - Solid: strong fill, white words, a soft glow. Outline: paper with the strong colour. Quiet: sun tint.
 - Disabled: paper, ink-soft words, purple-line outline.
 - Chevron (›) for going on, never an arrow.
+- Busy (after a tap that takes a moment, like opening the print page): the words say what's happening (Opening…), a small spinner takes the chevron's place, and it can't be tapped again.
 
 Tokens: `component.button` (fill, ink, line, fill-hover, outline-fill, outline-ink, outline-fill-hover, outline-ink-hover, quiet-fill, quiet-ink, quiet-line, disabled-fill, disabled-ink, disabled-line) in design/tokens.json.
 

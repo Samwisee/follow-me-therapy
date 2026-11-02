@@ -21,7 +21,7 @@ export interface ActionCardProps { tone?: 'purple' | 'teal'; title: string; acti
 export declare function ActionCard(props: ActionCardProps): React.ReactElement;
 export interface SectionTitleProps { title: string; subtitle?: React.ReactNode; accent?: 'purple' | 'teal' | 'sun' }
 export declare function SectionTitle(props: SectionTitleProps): React.ReactElement;
-export interface ButtonProps { variant?: 'primary' | 'teal' | 'quiet'; outline?: boolean; chevron?: boolean; disabled?: boolean; href?: string; onClick?: () => void; children?: React.ReactNode }
+export interface ButtonProps { variant?: 'primary' | 'teal' | 'quiet'; outline?: boolean; chevron?: boolean; disabled?: boolean; busy?: boolean; href?: string; onClick?: () => void; children?: React.ReactNode }
 export declare function Button(props: ButtonProps): React.ReactElement;
 export interface FootstepTrailProps { steps?: number; direction?: 'across' | 'down'; ink?: 'light' | 'strong' | 'sun' | 'teal'; size?: number }
 export declare function FootstepTrail(props: FootstepTrailProps): React.ReactElement;

@@ -98,12 +98,12 @@ export function SectionTitle({ title, subtitle, accent = 'purple' }: SectionTitl
 }
 
 /* ── Button ── */
-export interface ButtonProps { variant?: 'primary' | 'teal' | 'quiet'; outline?: boolean; chevron?: boolean; disabled?: boolean; href?: string; onClick?: () => void; children?: React.ReactNode }
+export interface ButtonProps { variant?: 'primary' | 'teal' | 'quiet'; outline?: boolean; chevron?: boolean; disabled?: boolean; busy?: boolean; href?: string; onClick?: () => void; children?: React.ReactNode }
 /** Pill button in the heading face; one primary per view. Teal is "Ask a question". `chevron` (›) for going on; quiet ones always end with one. */
-export function Button({ variant = 'primary', outline, chevron, disabled, href, onClick, children }: ButtonProps) {
+export function Button({ variant = 'primary', outline, chevron, disabled, busy, href, onClick, children }: ButtonProps) {
   const cls = cx('fmt-btn', variant !== 'primary' && 'is-' + variant, outline && 'is-outline');
   const inner = <>{children}{(chevron || variant === 'quiet') && <Icon name="chevron" />}</>;
-  return href && !disabled ? <a className={cls} href={href}>{inner}</a> : <button type="button" className={cls} onClick={onClick} disabled={disabled}>{inner}</button>;
+  return href && !disabled ? <a className={cls} href={href} aria-busy={busy || undefined}>{inner}</a> : <button type="button" className={cls} onClick={onClick} disabled={disabled} aria-busy={busy || undefined}>{inner}</button>;
 }
 
 /* ── FootstepTrail ── */
