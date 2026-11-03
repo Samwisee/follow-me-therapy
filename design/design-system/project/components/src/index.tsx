@@ -191,16 +191,22 @@ export function TimePicker({ title = 'Choose a time', value = '07:30', onDone, o
   const [pm, setPm] = React.useState(h0 >= 12);
   const [mode, setMode] = React.useState<'hour' | 'minute'>('hour');
   const pick = mode === 'hour' ? h : m / 5;
+  // The hand turns the short way round (11 → 1 goes past 12): keep adding the shortest turn.
+  const turned = React.useRef(pick * 30);
+  turned.current += ((pick * 30 - turned.current) % 360 + 540) % 360 - 180;
   const out = `${String(h + (pm ? 12 : 0)).padStart(2, '0')}:${String(m).padStart(2, '0')}`;
   return <div className="fmt-picker" role="dialog" aria-label={title}>
     <h2>{title}</h2>
     <div className="fmt-picker-time">
       <button type="button" aria-pressed={mode === 'hour'} onClick={() => setMode('hour')} aria-label={`Hour, ${h || 12}`}>{h || 12}</button>:
       <button type="button" aria-pressed={mode === 'minute'} onClick={() => setMode('minute')} aria-label={`Minutes, ${m}`}>{String(m).padStart(2, '0')}</button>
-      <span className="fmt-chips"><ToggleChip on={!pm} onToggle={() => setPm(false)}>am</ToggleChip><ToggleChip on={pm} onToggle={() => setPm(true)}>pm</ToggleChip></span>
+      <span className="fmt-picker-ampm" role="radiogroup" aria-label="am or pm">
+        <button type="button" role="radio" aria-checked={!pm} onClick={() => setPm(false)}>am</button>
+        <button type="button" role="radio" aria-checked={pm} onClick={() => setPm(true)}>pm</button>
+      </span>
     </div>
     <div className="fmt-picker-dial">
-      <i className="fmt-picker-hand" style={{ transform: `rotate(${pick * 30 - 90}deg)` }} />
+      <i className="fmt-picker-hand" style={{ transform: `rotate(${turned.current - 90}deg)` }} />
       {HOUR_WORDS.map((w, i) => { const a = (i * 30 - 90) * Math.PI / 180;
         const label = mode === 'hour' ? w : String(i * 5).padStart(2, '0');
         return <button key={i} type="button" aria-pressed={pick === i} style={{ left: `${50 + 40 * Math.cos(a)}%`, top: `${50 + 40 * Math.sin(a)}%` }}
@@ -209,6 +215,21 @@ export function TimePicker({ title = 'Choose a time', value = '07:30', onDone, o
     </div>
     <div className="fmt-picker-foot"><Button outline onClick={onCancel}>Cancel</Button><Button onClick={() => onDone?.(out)}>Done</Button></div>
   </div>;
+}
+
+const DAY_SHORT = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+/** Days of the week (0 = Monday) as people say them: "Weekdays", "Mon, Wed, Fri". */
+export function showDays(days: number[]): string {
+  const s = [...new Set(days)].sort((a, b) => a - b), k = s.join();
+  return !s.length ? 'No days' : k === '0,1,2,3,4,5,6' ? 'Every day' : k === '0,1,2,3,4' ? 'Weekdays' : k === '5,6' ? 'Weekends' : s.map(d => DAY_SHORT[d]).join(', ');
+}
+/** Days of the week to pick, with a calendar: tapping it opens our calendar's week (DaysPicker). Days are 0 (Monday) to 6. */
+export function DaysField({ label, value = [0, 1, 2, 3, 4], onChange }: { label: string; value?: number[]; onChange?: (v: number[]) => void }) {
+  const [open, setOpen] = React.useState(false);
+  return <>
+    <button type="button" className="fmt-field is-time" aria-label={`${label}, ${showDays(value)}. Change the days`} onClick={() => setOpen(true)}><Icon name="calendar" />{showDays(value)}</button>
+    {open && <DaysPicker title={label} value={value} onDone={v => { onChange?.(v); setOpen(false); }} onCancel={() => setOpen(false)} />}
+  </>;
 }
 
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -238,6 +259,25 @@ export function DatePicker({ title = 'Choose a date', value, today = new Date().
         return <button key={id} type="button" className={cx(id === today && 'is-today')} aria-pressed={id === sel}
           aria-label={`${WEEKDAYS[(lead + i) % 7]} ${d} ${MONTHS[view.m]}${id === today ? ', today' : ''}`} onClick={() => setSel(id)}>{d}</button>; })}
     </div>
+    <div className="fmt-picker-foot"><Button outline onClick={onCancel}>Cancel</Button><Button onClick={() => onDone?.(sel)}>Done</Button></div>
+  </div>;
+}
+export interface DaysPickerProps { title?: string; value?: number[]; onDone?: (v: number[]) => void; onCancel?: () => void }
+/** Our calendar's week: which days, Monday first, as many as you like; Weekdays and Every day a tap away. Days are 0 (Monday) to 6. */
+export function DaysPicker({ title = 'Choose the days', value = [], onDone, onCancel }: DaysPickerProps) {
+  const [sel, setSel] = React.useState<number[]>(value);
+  const is = (k: string) => [...sel].sort().join() === k;
+  return <div className="fmt-picker" role="dialog" aria-label={title}>
+    <h2>{title}</h2>
+    <div className="fmt-picker-days is-week">
+      {['M', 'T', 'W', 'T', 'F', 'S', 'S'].map((d, i) => <span key={'w' + i} aria-hidden="true">{d}</span>)}
+      {WEEKDAYS.map((w, d) => <button key={w} type="button" aria-pressed={sel.includes(d)} aria-label={w}
+        onClick={() => setSel(s => s.includes(d) ? s.filter(x => x !== d) : [...s, d].sort())}>{DAY_SHORT[d].slice(0, 2)}</button>)}
+    </div>
+    <span className="fmt-chips fmt-picker-quick">
+      <ToggleChip on={is('0,1,2,3,4')} onToggle={() => setSel([0, 1, 2, 3, 4])}>Weekdays</ToggleChip>
+      <ToggleChip on={is('0,1,2,3,4,5,6')} onToggle={() => setSel([0, 1, 2, 3, 4, 5, 6])}>Every day</ToggleChip>
+    </span>
     <div className="fmt-picker-foot"><Button outline onClick={onCancel}>Cancel</Button><Button onClick={() => onDone?.(sel)}>Done</Button></div>
   </div>;
 }

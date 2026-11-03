@@ -1,4 +1,4 @@
-<!-- @dsCard group="Activities" height=560 subtitle="Our clock and calendar: tap the dial or a day" -->
+<!-- @dsCard group="Activities" height=560 subtitle="Our clock, calendar and week: tap the dial or a day" -->
 <!doctype html>
 <html>
 <head><meta charset="utf-8"><title>Picker — preview</title></head>
@@ -8,7 +8,8 @@
   var F = window.FollowMeTherapy, h = React.createElement;
   ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null,
     h(F.TimePicker, {title: 'Reminder time', value: '07:30'}),
-    h(F.DatePicker, {title: 'Next session', value: '2026-11-12', today: '2026-11-02'})));
+    h(F.DatePicker, {title: 'Next session', value: '2026-11-12', today: '2026-11-02'}),
+    h(F.DaysPicker, {title: 'Practice days', value: [0, 2, 4]})));
 </script>
 </body>
 </html>

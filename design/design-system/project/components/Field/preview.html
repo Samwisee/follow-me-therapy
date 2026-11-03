@@ -1,4 +1,4 @@
-<!-- @dsCard group="Activities" height=220 subtitle="Somewhere to type: dashed on all sides; a time field opens the device's clock" -->
+<!-- @dsCard group="Activities" height=220 subtitle="Somewhere to type: dashed on all sides; a time field opens our clock, a days field our week" -->
 <!doctype html>
 <html>
 <head><meta charset="utf-8"><title>Field — preview</title></head>
@@ -9,7 +9,8 @@
   ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null,
     h(F.Field, {label: 'Activity 1', placeholder: 'Activity 1'}),
     h(F.Field, {label: 'A note for the family', placeholder: "What we're working on, in a sentence or two", lines: 2}),
-    h('div', null, h(F.TimeField, {label: 'Reminder time', value: '07:30'}))));
+    h('div', null, h(F.TimeField, {label: 'Reminder time', value: '07:30'})),
+    h('div', null, h(F.DaysField, {label: 'Practice days', value: [0, 2, 4]}))));
 </script>
 </body>
 </html>
